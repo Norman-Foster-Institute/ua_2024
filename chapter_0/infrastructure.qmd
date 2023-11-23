@@ -51,7 +51,7 @@ mamba env create -f https://github.com/Norman-Foster-Institute/ua_2024/blob/main
 5. Activate the environment using:
 
 ```sh
-mamba activate sds
+mamba activate nfiua
 ```
 
 6. Start JupyterLab interface:
@@ -77,7 +77,7 @@ mamba env create -f https://github.com/Norman-Foster-Institute/ua_2024/blob/main
 5. Activate the environment using:
 
 ```sh
-mamba activate sds
+mamba activate nfiua
 ```
 
 6. Start JupyterLab interface:
@@ -93,7 +93,7 @@ A Jupyter Lab interface will show up in your browser. If it hasn't opened automa
 
 The best way to close the Jupyter Lab and shut down its process running in the terminal is to use the Jupyter Lab's interface. In the menu find [File]{.keystroke} > [Shut Down]{.keystroke}.
 
-![Shutting down Jupyter Lab](../assets/figures/chapter_01/shut_down.png)
+![Shutting down Jupyter Lab](../assets/chapter_0/shut_down.png)
 
 ### Opening Jupyter Lab next time
 
