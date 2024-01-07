@@ -1,19 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://github.com/Norman-Foster-Institute/ua_2024/chapter_1/notebooks.html</loc>
-    <lastmod>2024-01-07T13:08:37.392Z</lastmod>
+    <loc>https://Norman-Foster-Institute.github.io/ua_2024/chapter_2/qgis.html</loc>
+    <lastmod>2024-01-07T22:34:04.593Z</lastmod>
   </url>
   <url>
-    <loc>https://github.com/Norman-Foster-Institute/ua_2024/index.html</loc>
-    <lastmod>2024-01-07T13:08:31.872Z</lastmod>
+    <loc>https://Norman-Foster-Institute.github.io/ua_2024/index.html</loc>
+    <lastmod>2024-01-07T22:34:01.169Z</lastmod>
   </url>
   <url>
-    <loc>https://github.com/Norman-Foster-Institute/ua_2024/chapter_0/infrastructure.html</loc>
-    <lastmod>2024-01-07T13:08:31.272Z</lastmod>
+    <loc>https://Norman-Foster-Institute.github.io/ua_2024/chapter_0/anaconda.html</loc>
+    <lastmod>2024-01-07T22:33:59.851Z</lastmod>
   </url>
   <url>
-    <loc>https://github.com/Norman-Foster-Institute/ua_2024/chapter_2/pandas.html</loc>
-    <lastmod>2024-01-07T13:08:36.380Z</lastmod>
+    <loc>https://Norman-Foster-Institute.github.io/ua_2024/chapter_1/python.html</loc>
+    <lastmod>2024-01-07T22:33:37.558Z</lastmod>
+  </url>
+  <url>
+    <loc>https://Norman-Foster-Institute.github.io/ua_2024/chapter_1/pandas.html</loc>
+    <lastmod>2024-01-07T22:33:49.268Z</lastmod>
+  </url>
+  <url>
+    <loc>https://Norman-Foster-Institute.github.io/ua_2024/chapter_0/setup.html</loc>
+    <lastmod>2024-01-07T22:34:00.498Z</lastmod>
+  </url>
+  <url>
+    <loc>https://Norman-Foster-Institute.github.io/ua_2024/chapter_2/sql.html</loc>
+    <lastmod>2024-01-07T22:34:02.085Z</lastmod>
   </url>
 </urlset>

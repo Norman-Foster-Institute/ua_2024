@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>NFI Urban Analytics 2024 - Data wrangling</title>
+<title>NFI Urban Analytics 2024 - Pandas and Data</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -64,7 +64,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../chapter_1/notebooks.html" rel="prev">
+<link href="../chapter_2/qgis.html" rel="next">
+<link href="../chapter_1/python.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -122,7 +123,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapter_2/pandas.html">Chapter 2 - Pandas</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapter_1/python.html">Basic Coding</a></li><li class="breadcrumb-item"><a href="../chapter_1/pandas.html">Pandas and Data</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
     </div>
@@ -132,26 +133,86 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/Norman-Foster-Institute/ua_2024" rel="" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
+</div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">home</span></a>
+ <span class="menu-text">Home</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Introduction</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapter_1/notebooks.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Chapter 1 - Notebooks</span></a>
+  <a href="../chapter_0/setup.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Setup</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapter_2/pandas.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Chapter 2 - Pandas</span></a>
+  <a href="../chapter_0/anaconda.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Python Notebooks</span></a>
   </div>
 </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text">Basic Coding</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapter_1/python.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Python and Notebooks</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapter_1/pandas.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Pandas and Data</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+ <span class="menu-text">GIS Tools</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapter_2/qgis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Intro to GIS</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapter_2/sql.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">SQL - A cross platform language</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
     </ul>
     </div>
 </nav>
@@ -191,7 +252,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Data wrangling</h1>
+<h1 class="title">Pandas and Data</h1>
 </div>
 
 
@@ -220,7 +281,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="dataset">Dataset</h2>
 <p>You will be exploring demographic characteristics of Madrid. The data has been aggregated to a neighbourhood level by the statistic’s office of Madrid’s City Hall. It contains information per year (from 2018 to 2023) and genre.</p>
 <p>As with many datasets that will be used during this course, the data was originally gound in the data portal on the <a href="https://datos.madrid.es/portal/site/egob/menuitem.c05c1f754a33a9fbe4b2e4b284f1a5a0/?vgnextoid=0cccaebc07c1f710VgnVCM2000001f4a900aRCRD&amp;vgnextchannel=374512b9ace9f310VgnVCM100000171f5a0aRCRD&amp;vgnextfmt=default">following link</a></p>
-<p>The main tool you should use for this task is the <code>pandas</code> package. As with the <code>math</code> you used <a href="../chapter_1/notebooks.html">before</a>, you must import it first.</p>
+<p>The main tool you should use for this task is the <code>pandas</code> package. As with the <code>math</code> you used <a href="../chapter_1/python.html">before</a>, you must import it first.</p>
 <p>[1] Data munging and data wrangling are used interchangeably. Pick the one you like.</p>
 <div class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -3467,13 +3528,26 @@ dtype: Float64</code></pre>
 <p><code>seaborn</code> is, by convention, imported as <code>sns</code>. That came as a joke after <a href="https://en.wikipedia.org/wiki/Sam_Seaborn">Samuel Normal Seaborn</a>, a fictional character The West Wing show.</p>
 </blockquote>
 <p>The same plot using <code>seaborn</code> has a more pleasant default style and more customisability.</p>
-<div class="cell" data-execution_count="31">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>sns.displot(madrid_pop[<span class="st">"num_people"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<pre><code>TypeError: reduction operation 'argmin' not allowed for this dtype</code></pre>
+<div class="cell" data-execution_count="32">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>sns.distplot(madrid_pop[<span class="st">"num_people"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/var/folders/bs/sq3p18cs4dn1ws4kpmfyk_3c0000gn/T/ipykernel_35668/1382748844.py:1: UserWarning: 
+
+`distplot` is a deprecated function and will be removed in seaborn v0.14.0.
+
+Please adapt your code to use either `displot` (a figure-level function with
+similar flexibility) or `histplot` (an axes-level function for histograms).
+
+For a guide to updating your code to use the new functions, please see
+https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
+
+  sns.distplot(madrid_pop["num_people"])</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="32">
+<pre><code>&lt;Axes: xlabel='num_people', ylabel='Density'&gt;</code></pre>
 </div>
 <div class="cell-output cell-output-display">
-<p><img src="pandas_files/figure-html/cell-32-output-2.png" class="img-fluid"></p>
+<p><img src="pandas_files/figure-html/cell-32-output-3.png" class="img-fluid"></p>
 </div>
 </div>
 <p>Note you are using <code>sns</code> instead of <code>pd</code>, as the function belongs to <code>seaborn</code> instead of <code>pandas</code>.</p>
@@ -3482,24 +3556,42 @@ dtype: Float64</code></pre>
 <section id="line-and-bar-plots" class="level3">
 <h3 class="anchored" data-anchor-id="line-and-bar-plots">Line and bar plots</h3>
 <p>Another very common way of visually displaying a variable is with a line or a bar chart. For example, if you want to generate a line plot of the (sorted) total population per year:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>total_people_per_year <span class="op">=</span> madrid_pop.groupby(<span class="st">"year"</span>)[<span class="st">"num_people"</span>].<span class="bu">sum</span>()</span>
-<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>total_people_per_year.plot()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="33">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>total_people_per_year <span class="op">=</span> madrid_pop.groupby(<span class="st">"year"</span>)[<span class="st">"num_people"</span>].<span class="bu">sum</span>()</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>total_people_per_year.plot()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="33">
+<pre><code>&lt;Axes: xlabel='year'&gt;</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="pandas_files/figure-html/cell-33-output-2.png" class="img-fluid"></p>
+</div>
 </div>
 <p>What is evident is the impact of COVID on the total population. But understanding that the data is reported on the 1st of January of each year is crucial to understand why you see the offset on the dates.</p>
 <p>For a bar plot all you need to do is to change from <code>plot</code> to <code>plot.bar</code>:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>total_people_per_year.plot.bar()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="34">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>total_people_per_year.plot.bar()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="34">
+<pre><code>&lt;Axes: xlabel='year'&gt;</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="pandas_files/figure-html/cell-34-output-2.png" class="img-fluid"></p>
+</div>
 </div>
 <p>Let’s try to plot the <code>ratio_women</code> per neighbourhood, to see if we spot anything in particular.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>sns.lineplot(</span>
-<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span><span class="st">"year"</span>,</span>
-<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>    y<span class="op">=</span><span class="st">"ratio_women"</span>,</span>
-<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>    hue<span class="op">=</span><span class="st">"neighbourhood"</span>,</span>
-<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a>    data<span class="op">=</span>madrid_pop.sort_values(<span class="st">"year"</span>, ascending<span class="op">=</span><span class="va">True</span>),</span>
-<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a>    legend<span class="op">=</span><span class="va">False</span>,</span>
-<span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="35">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>sns.lineplot(</span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span><span class="st">"year"</span>,</span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>    y<span class="op">=</span><span class="st">"ratio_women"</span>,</span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a>    hue<span class="op">=</span><span class="st">"neighbourhood"</span>,</span>
+<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a>    data<span class="op">=</span>madrid_pop.sort_values(<span class="st">"year"</span>, ascending<span class="op">=</span><span class="va">True</span>),</span>
+<span id="cb47-6"><a href="#cb47-6" aria-hidden="true" tabindex="-1"></a>    legend<span class="op">=</span><span class="va">False</span>,</span>
+<span id="cb47-7"><a href="#cb47-7" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="35">
+<pre><code>&lt;Axes: xlabel='year', ylabel='ratio_women'&gt;</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="pandas_files/figure-html/cell-35-output-2.png" class="img-fluid"></p>
+</div>
 </div>
 <p>We can see some outliers, but the reality is that the data is hard to read so we probably would need some further analysis and visual considerations to efficiently communicate any possible trend.</p>
 <blockquote class="blockquote">
@@ -3536,17 +3628,311 @@ dtype: Float64</code></pre>
 <li>Compute the sum of <code>num_people</code> for each of them.</li>
 </ul>
 <p>To do this in <code>pandas</code>, meet one of its workhorses, and also one of the reasons why the library has become so popular: the <code>groupby</code> operator.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>mad_grouped <span class="op">=</span> madrid_pop.groupby(<span class="st">"year"</span>)</span>
-<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>mad_grouped</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="36">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>mad_grouped <span class="op">=</span> madrid_pop.groupby(<span class="st">"year"</span>)</span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>mad_grouped</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="36">
+<pre><code>&lt;pandas.core.groupby.generic.DataFrameGroupBy object at 0x145f03f10&gt;</code></pre>
+</div>
 </div>
 <p>The object <code>mad_grouped</code> still hasn’t computed anything. It is only a convenient way of specifying the grouping. But this allows us then to perform a multitude of operations on it. For our example, the sum is calculated as follows:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>mad_grouped.<span class="bu">sum</span>(numeric_only<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="37">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>mad_grouped.<span class="bu">sum</span>(numeric_only<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="37">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">code_municipality</th>
+<th data-quarto-table-cell-role="th">num_people</th>
+<th data-quarto-table-cell-role="th">num_people_men</th>
+<th data-quarto-table-cell-role="th">num_people_women</th>
+<th data-quarto-table-cell-role="th">ratio_women</th>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">year</th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2018</td>
+<td>4268008</td>
+<td>6443648</td>
+<td>3000680</td>
+<td>3442968</td>
+<td>81.100391</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">2019</td>
+<td>4268008</td>
+<td>6532252</td>
+<td>3042356</td>
+<td>3489896</td>
+<td>81.108315</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2020</td>
+<td>4268008</td>
+<td>6669460</td>
+<td>3109464</td>
+<td>3559996</td>
+<td>81.047788</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">2021</td>
+<td>4268008</td>
+<td>6624620</td>
+<td>3090314</td>
+<td>3534306</td>
+<td>81.013452</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2022</td>
+<td>4268008</td>
+<td>6573324</td>
+<td>3069648</td>
+<td>3503676</td>
+<td>80.939052</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">2023</td>
+<td>4268008</td>
+<td>6679862</td>
+<td>3119732</td>
+<td>3560130</td>
+<td>80.94286</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
 </div>
 <p>Similarly, you can also obtain a summary of each group:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>mad_grouped.describe()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="38">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>mad_grouped.describe()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="38">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th colspan="8" data-quarto-table-cell-role="th" data-halign="left">code_municipality</th>
+<th colspan="2" data-quarto-table-cell-role="th" data-halign="left">num_people</th>
+<th data-quarto-table-cell-role="th">...</th>
+<th colspan="2" data-quarto-table-cell-role="th" data-halign="left">num_people_women</th>
+<th colspan="8" data-quarto-table-cell-role="th" data-halign="left">ratio_women</th>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">count</th>
+<th data-quarto-table-cell-role="th">mean</th>
+<th data-quarto-table-cell-role="th">std</th>
+<th data-quarto-table-cell-role="th">min</th>
+<th data-quarto-table-cell-role="th">25%</th>
+<th data-quarto-table-cell-role="th">50%</th>
+<th data-quarto-table-cell-role="th">75%</th>
+<th data-quarto-table-cell-role="th">max</th>
+<th data-quarto-table-cell-role="th">count</th>
+<th data-quarto-table-cell-role="th">mean</th>
+<th data-quarto-table-cell-role="th">...</th>
+<th data-quarto-table-cell-role="th">75%</th>
+<th data-quarto-table-cell-role="th">max</th>
+<th data-quarto-table-cell-role="th">count</th>
+<th data-quarto-table-cell-role="th">mean</th>
+<th data-quarto-table-cell-role="th">std</th>
+<th data-quarto-table-cell-role="th">min</th>
+<th data-quarto-table-cell-role="th">25%</th>
+<th data-quarto-table-cell-role="th">50%</th>
+<th data-quarto-table-cell-role="th">75%</th>
+<th data-quarto-table-cell-role="th">max</th>
+</tr>
+<tr class="header">
+<th data-quarto-table-cell-role="th">year</th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2018</td>
+<td>152.0</td>
+<td>28079.0</td>
+<td>0.0</td>
+<td>28079.0</td>
+<td>28079.0</td>
+<td>28079.0</td>
+<td>28079.0</td>
+<td>28079.0</td>
+<td>152.0</td>
+<td>42392.421053</td>
+<td>...</td>
+<td>21771.75</td>
+<td>132695.0</td>
+<td>152.0</td>
+<td>0.533555</td>
+<td>0.01839</td>
+<td>0.481481</td>
+<td>0.521591</td>
+<td>0.534767</td>
+<td>0.54588</td>
+<td>0.583492</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">2019</td>
+<td>152.0</td>
+<td>28079.0</td>
+<td>0.0</td>
+<td>28079.0</td>
+<td>28079.0</td>
+<td>28079.0</td>
+<td>28079.0</td>
+<td>28079.0</td>
+<td>152.0</td>
+<td>42975.342105</td>
+<td>...</td>
+<td>21987.0</td>
+<td>135238.0</td>
+<td>152.0</td>
+<td>0.533607</td>
+<td>0.018198</td>
+<td>0.483197</td>
+<td>0.522356</td>
+<td>0.534355</td>
+<td>0.54565</td>
+<td>0.582908</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2020</td>
+<td>152.0</td>
+<td>28079.0</td>
+<td>0.0</td>
+<td>28079.0</td>
+<td>28079.0</td>
+<td>28079.0</td>
+<td>28079.0</td>
+<td>28079.0</td>
+<td>152.0</td>
+<td>43878.026316</td>
+<td>...</td>
+<td>22623.75</td>
+<td>138879.0</td>
+<td>152.0</td>
+<td>0.533209</td>
+<td>0.017944</td>
+<td>0.479319</td>
+<td>0.522586</td>
+<td>0.533905</td>
+<td>0.545599</td>
+<td>0.571061</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">2021</td>
+<td>152.0</td>
+<td>28079.0</td>
+<td>0.0</td>
+<td>28079.0</td>
+<td>28079.0</td>
+<td>28079.0</td>
+<td>28079.0</td>
+<td>28079.0</td>
+<td>152.0</td>
+<td>43583.026316</td>
+<td>...</td>
+<td>22530.75</td>
+<td>138033.0</td>
+<td>152.0</td>
+<td>0.532983</td>
+<td>0.017984</td>
+<td>0.475698</td>
+<td>0.522263</td>
+<td>0.533724</td>
+<td>0.545682</td>
+<td>0.568987</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2022</td>
+<td>152.0</td>
+<td>28079.0</td>
+<td>0.0</td>
+<td>28079.0</td>
+<td>28079.0</td>
+<td>28079.0</td>
+<td>28079.0</td>
+<td>28079.0</td>
+<td>152.0</td>
+<td>43245.552632</td>
+<td>...</td>
+<td>22296.5</td>
+<td>136133.0</td>
+<td>152.0</td>
+<td>0.532494</td>
+<td>0.017716</td>
+<td>0.477414</td>
+<td>0.521691</td>
+<td>0.533305</td>
+<td>0.54492</td>
+<td>0.56714</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">2023</td>
+<td>152.0</td>
+<td>28079.0</td>
+<td>0.0</td>
+<td>28079.0</td>
+<td>28079.0</td>
+<td>28079.0</td>
+<td>28079.0</td>
+<td>28079.0</td>
+<td>152.0</td>
+<td>43946.460526</td>
+<td>...</td>
+<td>22742.75</td>
+<td>139707.0</td>
+<td>152.0</td>
+<td>0.532519</td>
+<td>0.017486</td>
+<td>0.47853</td>
+<td>0.522637</td>
+<td>0.533363</td>
+<td>0.544488</td>
+<td>0.573983</td>
+</tr>
+</tbody>
+</table>
+
+<p>6 rows × 40 columns</p>
+</div>
+</div>
 </div>
 <p>You will not get into it today as it goes beyond the basics this chapter wants to cover, but keep in mind that <code>groupby</code> allows you to not only call generic functions (like <code>sum</code> or <code>describe</code>), but also your own functions. This opens the door for virtually any kind of transformation and aggregation possible.</p>
 <blockquote class="blockquote">
@@ -3801,11 +4187,14 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../chapter_1/notebooks.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Chapter 1 - Notebooks</span>
+      <a href="../chapter_1/python.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Python and Notebooks</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="../chapter_2/qgis.html" class="pagination-link">
+        <span class="nav-page-text">Intro to GIS</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->

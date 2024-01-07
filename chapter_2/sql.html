@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>NFI Urban Analytics 2024 - Infrastructure</title>
+<title>NFI Urban Analytics 2024 – sql</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,40 +20,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -64,6 +30,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
+<link href="../chapter_2/qgis.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -118,7 +85,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Infrastructure</li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapter_2/qgis.html">GIS Tools</a></li><li class="breadcrumb-item"><a href="../chapter_2/sql.html">SQL - A cross platform language</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
     </div>
@@ -128,26 +95,86 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/Norman-Foster-Institute/ua_2024" rel="" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
+</div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">home</span></a>
+ <span class="menu-text">Home</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Introduction</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapter_1/notebooks.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Chapter 1 - Notebooks</span></a>
+  <a href="../chapter_0/setup.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Setup</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapter_2/pandas.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Chapter 2 - Pandas</span></a>
+  <a href="../chapter_0/anaconda.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Python Notebooks</span></a>
   </div>
 </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text">Basic Coding</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapter_1/python.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Python and Notebooks</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapter_1/pandas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Pandas and Data</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+ <span class="menu-text">GIS Tools</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapter_2/qgis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Intro to GIS</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapter_2/sql.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">SQL - A cross platform language</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
     </ul>
     </div>
 </nav>
@@ -158,14 +185,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#communication" id="toc-communication" class="nav-link active" data-scroll-target="#communication">Communication</a></li>
-  <li><a href="#software-stack" id="toc-software-stack" class="nav-link" data-scroll-target="#software-stack">Software stack</a>
+  <li><a href="#sql---a-cross-platform-language" id="toc-sql---a-cross-platform-language" class="nav-link active" data-scroll-target="#sql---a-cross-platform-language">SQL - A cross platform language</a></li>
+  <li><a href="#intro-to-databases-data-analysis" id="toc-intro-to-databases-data-analysis" class="nav-link" data-scroll-target="#intro-to-databases-data-analysis">INTRO TO DATABASES &amp; DATA ANALYSIS</a>
   <ul class="collapse">
-  <li><a href="#create-an-environment" id="toc-create-an-environment" class="nav-link" data-scroll-target="#create-an-environment">Create an environment</a></li>
-  <li><a href="#closing-jupyter-lab" id="toc-closing-jupyter-lab" class="nav-link" data-scroll-target="#closing-jupyter-lab">Closing Jupyter Lab</a></li>
-  <li><a href="#opening-jupyter-lab-next-time" id="toc-opening-jupyter-lab-next-time" class="nav-link" data-scroll-target="#opening-jupyter-lab-next-time">Opening Jupyter Lab next time</a></li>
-  <li><a href="#plan-b-with-google-colab" id="toc-plan-b-with-google-colab" class="nav-link" data-scroll-target="#plan-b-with-google-colab">Plan B with Google Colab</a></li>
-  <li><a href="#troubleshooting" id="toc-troubleshooting" class="nav-link" data-scroll-target="#troubleshooting">Troubleshooting</a></li>
+  <li><a href="#key-topics" id="toc-key-topics" class="nav-link" data-scroll-target="#key-topics">Key Topics</a></li>
+  <li><a href="#software-needed" id="toc-software-needed" class="nav-link" data-scroll-target="#software-needed">Software needed</a></li>
+  <li><a href="#to-dos" id="toc-to-dos" class="nav-link" data-scroll-target="#to-dos">To-Dos</a>
+  <ul class="collapse">
+  <li><a href="#optional" id="toc-optional" class="nav-link" data-scroll-target="#optional">Optional</a></li>
+  </ul></li>
+  <li><a href="#useful-resources" id="toc-useful-resources" class="nav-link" data-scroll-target="#useful-resources">Useful Resources</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -173,150 +202,161 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Infrastructure</h1>
-</div>
 
 
-
-<div class="quarto-title-meta">
-
-    
-  
-    
-  </div>
-  
-
-</header>
-
-<p>The course does not use any specific resources. It is designed to run entirely on students’ machines using solely open-source software.</p>
-<section id="communication" class="level2">
-<h2 class="anchored" data-anchor-id="communication">Communication</h2>
-<p>Scholars enrolled in the Sustainable Cities program at the Norman Foster Institute have been added to a Google Spaces for online discussion. Scholars are encouraged to use the platform to seek help from peers, share thoughts and tips, and other meaningful contributions the rest of the group can benefit from. Learn from the mistakes of the others.</p>
-<p>The tutor will be part of the discussion forum but the priority is to help each other, rather than seek guidance outside of class.</p>
-</section>
-<section id="software-stack" class="level2">
-<h2 class="anchored" data-anchor-id="software-stack">Software stack</h2>
-<p>There are many options on how to run Python. You may already have a copy on your machine, you can run it in the browser and install it in a myriad ways. This course uses what is considered a standard for <strong>scientific</strong> computing based on two key components - a package manager (you will be using <code>mamba</code>, built on top <code>conda</code>) and an interface (Jupyter Lab).</p>
-<p>The basics will be explained in the first lesson but it would be beneficial if you could create an environment before the class.</p>
-<section id="create-an-environment" class="level3">
-<h3 class="anchored" data-anchor-id="create-an-environment">Create an environment</h3>
-<p>To run the course material, you will need a Python environment with all the packages for spatial data science installed. Unless you already know how to work with <code>conda</code> or <code>mamba</code>, follow the instructions below.</p>
-<div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">Windows</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">macOS &amp; Linux</a></li></ul>
-<div class="tab-content">
-<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
-<div class="callout callout-style-default callout-caution callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Caution
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Windows may complain that the app is not recognised. Click <em>More information</em> and you will be able to run the installer.</p>
-</div>
-</div>
+<section id="sql---a-cross-platform-language" class="level1">
+<h1>SQL - A cross platform language</h1>
 <ol type="1">
-<li>Download <code>miniforge</code> package manager from <a href="https://github.com/conda-forge/miniforge#download" class="external" target="_blank">Github</a> for your operating system.</li>
-<li>Execute the installer and make sure to create start menu shortcuts (there’s a tick box during installation).</li>
-<li>Open the installed <code>Miniforge Prompt</code> application.</li>
-<li>Create a Python environment using the following command:</li>
+<li><strong>SQL and PostgreSQL Basics:</strong></li>
 </ol>
-<div class="sourceCode" id="cb1"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">mamba</span> env create <span class="at">-f</span> https://github.com/Norman-Foster-Institute/ua_2024/blob/main/environment.yml</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ol start="5" type="1">
-<li>Activate the environment using:</li>
+<ul>
+<li>Understanding SQL (Structured Query Language)</li>
+<li>Introduction to PostgreSQL as a Relational Database Management System (RDBMS)</li>
+<li>Working with Schemas in PostgreSQL</li>
+</ul>
+<ol start="2" type="1">
+<li><strong>Data Manipulation with SQL and PostgreSQL:</strong></li>
 </ol>
-<div class="sourceCode" id="cb2"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">mamba</span> activate nfiua</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ol start="6" type="1">
-<li>Start JupyterLab interface:</li>
-</ol>
-<div class="sourceCode" id="cb3"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">jupyter</span> lab</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="callout callout-style-default callout-important callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Important
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Ensure that you install <code>miniforge</code> in a directory without any special characters in the name. It may occasionally break things.</p>
-</div>
-</div>
-</div>
-<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
-<ol type="1">
-<li>Download <code>miniforge</code> package manager from <a href="https://github.com/conda-forge/miniforge#download" class="external" target="_blank">Github</a> for your operating system and install it.</li>
-<li>Open <code>Terminal</code> application.</li>
-<li>Create a Python environment using the following command:</li>
-</ol>
-<div class="sourceCode" id="cb4"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">mamba</span> env create <span class="at">-f</span> https://github.com/Norman-Foster-Institute/ua_2024/blob/main/environment.yml</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ol start="5" type="1">
-<li>Activate the environment using:</li>
-</ol>
-<div class="sourceCode" id="cb5"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">mamba</span> activate nfiua</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ol start="6" type="1">
-<li>Start JupyterLab interface:</li>
-</ol>
-<div class="sourceCode" id="cb6"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">jupyter</span> lab</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div>
-</div>
-<p>A Jupyter Lab interface will show up in your browser. If it hasn’t opened automatically, copy the link printed in your command line/terminal.</p>
-</section>
-<section id="closing-jupyter-lab" class="level3">
-<h3 class="anchored" data-anchor-id="closing-jupyter-lab">Closing Jupyter Lab</h3>
-<p>The best way to close the Jupyter Lab and shut down its process running in the terminal is to use the Jupyter Lab’s interface. In the menu find <span class="keystroke">File</span> &gt; <span class="keystroke">Shut Down</span>.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="../assets/shut_down.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Shut down Jupyter Lab</figcaption>
-</figure>
-</div>
-</section>
-<section id="opening-jupyter-lab-next-time" class="level3">
-<h3 class="anchored" data-anchor-id="opening-jupyter-lab-next-time">Opening Jupyter Lab next time</h3>
-<p>The steps above are needed only the first time. Once you create the environment, it won’t disappear and you can use it until you don’t delete it. Once you close Jupyter Lab session, you can always start a new one:</p>
-<div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true">Windows</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false">macOS &amp; Linux</a></li></ul>
-<div class="tab-content">
-<div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
-<ol type="1">
-<li>Open <code>Miniforge Prompt</code></li>
-<li>Activate the environment:</li>
-</ol>
-<div class="sourceCode" id="cb7"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">mamba</span> activate nfiua</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li><strong><code>CREATE</code></strong>, <strong><code>SELECT</code></strong>, <strong><code>INSERT</code></strong>, <strong><code>DELETE</code></strong> Statements</li>
+<li>Primary Keys (PK) and Foreign Keys (FK)</li>
+<li>Creating and Managing Indexes for Performance Optimization</li>
+</ul>
 <ol start="3" type="1">
-<li>Start JupyterLab interface:</li>
+<li><strong>SQL Concepts:</strong></li>
 </ol>
-<div class="sourceCode" id="cb8"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">jupyter</span> lab</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
+<ul>
+<li>Aggregations: <strong><code>COUNT</code></strong>, <strong><code>SUM</code></strong>, <strong><code>AVG</code></strong>, <strong><code>MIN</code></strong>, <strong><code>MAX</code></strong></li>
+<li>Complex Queries and Subqueries <strong><code>WITH</code>, <code>WHERE</code></strong></li>
+<li>Conditional Statements: <strong><code>CASE</code></strong> Statements</li>
+</ul>
+<ol start="4" type="1">
+<li><strong>Introduction to GIS Integration with PostgreSQL:</strong></li>
+</ol>
+<ul>
+<li>Spatial Data Types in PostgreSQL</li>
+<li>Spatial Indexing for Efficient Spatial Queries</li>
+<li>Spatial Functions and Operators in PostgreSQL</li>
+</ul>
+<ol start="5" type="1">
+<li><strong>Spatial and Non-Spatial Joins:</strong></li>
+</ol>
+<ul>
+<li>Performing Spatial Joins for GIS Analysis</li>
+<li>Non-Spatial Joins for Relational Data Analysis</li>
+<li>Combining Spatial and Non-Spatial Data in Queries</li>
+</ul>
+<ol start="6" type="1">
+<li><strong>How to ask ChatGPT</strong></li>
+</ol>
+<ul>
+<li>Iterating query development</li>
+<li>Debugging</li>
+</ul>
+</section>
+<section id="intro-to-databases-data-analysis" class="level1">
+<h1>INTRO TO DATABASES &amp; DATA ANALYSIS</h1>
+<section id="key-topics" class="level2">
+<h2 class="anchored" data-anchor-id="key-topics">Key Topics</h2>
 <ol type="1">
-<li>Open <code>Terminal</code></li>
-<li>Activate the environment:</li>
+<li><strong>Introduction to Data Analysis and Databases:</strong></li>
 </ol>
-<div class="sourceCode" id="cb9"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">mamba</span> activate nfiua</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>Importance of Data Analysis in Decision Making</li>
+<li>Overview of Relational Databases</li>
+</ul>
+<ol start="2" type="1">
+<li><strong>Connecting to Google Cloud Platform (GCP):</strong></li>
+</ol>
+<ul>
+<li>Connecting to NFI’s database(s)</li>
+<li>Setting Up a GCP Account</li>
+</ul>
 <ol start="3" type="1">
-<li>Start JupyterLab interface:</li>
+<li><strong>SQL and PostgreSQL Basics:</strong></li>
 </ol>
-<div class="sourceCode" id="cb10"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">jupyter</span> lab</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div>
-</div>
+<ul>
+<li>Understanding SQL (Structured Query Language)</li>
+<li>Introduction to PostgreSQL as a Relational Database Management System (RDBMS)</li>
+<li>Working with Schemas in PostgreSQL</li>
+</ul>
+<ol start="4" type="1">
+<li><strong>Data Manipulation with SQL and PostgreSQL:</strong></li>
+</ol>
+<ul>
+<li><strong><code>CREATE</code></strong>, <strong><code>SELECT</code></strong>, <strong><code>INSERT</code></strong>, <strong><code>DELETE</code></strong> Statements</li>
+<li>Primary Keys (PK) and Foreign Keys (FK)</li>
+<li>Creating and Managing Indexes for Performance Optimization</li>
+</ul>
+<ol start="5" type="1">
+<li><strong>SQL Concepts:</strong></li>
+</ol>
+<ul>
+<li>Aggregations: <strong><code>COUNT</code></strong>, <strong><code>SUM</code></strong>, <strong><code>AVG</code></strong>, <strong><code>MIN</code></strong>, <strong><code>MAX</code></strong></li>
+<li>Complex Queries and Subqueries <strong><code>WITH</code>, <code>WHERE</code></strong></li>
+<li>Conditional Statements: <strong><code>CASE</code></strong> Statements</li>
+</ul>
+<ol start="6" type="1">
+<li><strong>Introduction to GIS Integration with PostgreSQL:</strong></li>
+</ol>
+<ul>
+<li>Spatial Data Types in PostgreSQL</li>
+<li>Spatial Indexing for Efficient Spatial Queries</li>
+<li>Spatial Functions and Operators in PostgreSQL</li>
+</ul>
+<ol start="7" type="1">
+<li><strong>Spatial and Non-Spatial Joins:</strong></li>
+</ol>
+<ul>
+<li>Performing Spatial Joins for GIS Analysis</li>
+<li>Non-Spatial Joins for Relational Data Analysis</li>
+<li>Combining Spatial and Non-Spatial Data in Queries</li>
+</ul>
 </section>
-<section id="plan-b-with-google-colab" class="level3">
-<h3 class="anchored" data-anchor-id="plan-b-with-google-colab">Plan B with Google Colab</h3>
-<p>If you are unable to install an environment using the instructions above, you can follow the course using <a href="https://colab.research.google.com">Google Colab</a>. You will just need to install the required packages to your Colab environment. Reach out in class or via Discord if you need to set it up.</p>
+<section id="software-needed" class="level2">
+<h2 class="anchored" data-anchor-id="software-needed">Software needed</h2>
+<ul>
+<li>For this session please make sure you have downloaded the following software(s):</li>
+</ul>
+<p><a href="https://tableplus.com/">TablePlus | Modern, Native Tool for Database Management.</a></p>
 </section>
-<section id="troubleshooting" class="level3">
-<h3 class="anchored" data-anchor-id="troubleshooting">Troubleshooting</h3>
-<p>In case of any issues related to environment creation, reach out in the class or via Google Spaces.</p>
+<section id="to-dos" class="level2">
+<h2 class="anchored" data-anchor-id="to-dos">To-Dos</h2>
+<ul>
+<li><p>Create a table with the following characteristics.</p>
+<p>Use schema. <code>ua0</code></p>
+<p>Table name : <code>[yourinitials] + “_prof_exp”</code></p>
+<p>Fields required: (assign data types as you think would be best)</p>
+<ul>
+<li><code>id</code></li>
+<li><code>scholar_id</code></li>
+<li><code>industry_id</code></li>
+<li><code>institution</code></li>
+<li><code>years_of_experience</code></li>
+<li><code>education</code></li>
+<li><code>location</code> (crs: 4326)</li>
+<li><code>end_year</code></li>
+<li><code>notes</code></li>
+</ul>
+<p>** If you think more fields are necessary, feel free to add them</p></li>
+<li><p>Create a <a href="https://github.com/">GitHub</a> account</p>
+<ul>
+<li>add link to <code>public.scholars.github_link</code> (varchar)</li>
+</ul></li>
+</ul>
+<section id="optional" class="level3">
+<h3 class="anchored" data-anchor-id="optional">Optional</h3>
+<p>Create a local instance of PostGIS for use in the upcoming months</p>
+<p><a href="https://www.youtube.com/watch?v=qw--VYLpxG4">Learn PostgreSQL Tutorial - Full Course for Beginners</a></p>
+</section>
+</section>
+<section id="useful-resources" class="level2">
+<h2 class="anchored" data-anchor-id="useful-resources">Useful Resources</h2>
+<ul>
+<li>**********POSTGRESQL &amp; POSTGIS CHEATSHEETS**********</li>
+</ul>
+<p><a href="https://gist.github.com/clhenrick/ebc8dc779fb6f5ee6a88">PostgreSQL &amp; PostGIS cheatsheet (a work in progress)</a></p>
+<p><a href="https://postgrescheatsheet.com/#/tables">Postgres Cheatsheet</a></p>
 
 
 </section>
@@ -556,6 +596,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../chapter_2/qgis.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Intro to GIS</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+  </div>
+</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
