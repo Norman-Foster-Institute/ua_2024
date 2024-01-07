@@ -15,6 +15,7 @@ dependencies = [
     "jupyterlab>=4.0.10",
     "quarto>=0.1.0",
     "matplotlib>=3.8.2",
+    "jupyter>=1.0.0",
 ]
 requires-python = "==3.11.*"
 readme = "README.md"
