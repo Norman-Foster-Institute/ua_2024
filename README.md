@@ -11,12 +11,17 @@ See the `quarto` [Guide](https://quarto.org/docs/guide/) for information on how 
 
 ## Content development
 
-- Prepare `conda` environment:
+- If using `conda` (slow): prepare `conda` environment:
   - `conda install -n base conda-libmamba-solver`
   - `conda config --set solver libmamba`
   - `conda env create -f environment.yml`
   - `conda activate nfiua`
   - Select the `nfiua` interpreter for VSCode.
+- If using PDM:
+  - `brew install pdm`
+  - `pdm install`
+  - Select the created `.venv` for your virtual environment.
+  - Manage packages with PDM - e.g. `pdm add` and `pdm remove` - which will edit the `pyproject.toml` file.
 - Install `quarto` on your system
   - Go to `quarto` [Get Started](https://quarto.org/docs/get-started/) and install the `quarto` binary for your system.
   - If you're on a mac, you can alternatively install through the `brew` package manager (if you have it installed). For example, `brew install quarto`.
