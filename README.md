@@ -9,3 +9,7 @@
 - This adds a Preview button to your `.qmd`, and `.ipynb` files which will dynamically render the content to a separate pane in `vscode`.
 - If using conda, make sure it is installed and that you install the packages listed in the `.yaml` file.
 - Alternatively, use the `pdm` package manager to install the packages in the `pyproject.toml` file, for example, `pdm install`.
+
+## Publishing
+
+Publishing is automatically done via the `.github/workflows/quarto-publish.yml` which will build the content and publishes to [Github Pages](https://Norman-Foster-Institute.github.io/ua_2024/)
