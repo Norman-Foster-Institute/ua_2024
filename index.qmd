@@ -1,7 +1,3 @@
 # Urban Analytics 2024
 
-## TOC
-
-- [Chapter 0: Infrastructure](./chapter_0/infrastructure.qmd)
-- [Chapter 1: Notebooks](./chapter_1/notebooks.ipynb)
-- [Chapter 2: Pandas](./chapter_2/pandas.ipynb)
+Welcome!

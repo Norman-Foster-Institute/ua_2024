@@ -1,4 +1,30 @@
 project:
-  title: "NFI Urban Analytics 2024"
+  title: "nfi-web"
   output-dir: ./output
   type: website
+website:
+  title: NFI Urban Analytics 2024
+  description: NFI Urban Analytics content.
+  page-navigation: true
+  repo-url: https://github.com/Norman-Foster-Institute/ua_2024
+  navbar:
+    search: true
+  search:
+    location: navbar
+    type: overlay
+  sidebar:
+    contents:
+      - href: index.qmd
+        text: home
+      - href: chapter_1/notebooks.ipynb
+        text: Chapter 1 - Notebooks
+      - href: chapter_2/pandas.ipynb
+        text: Chapter 2 - Pandas
+  page-footer:
+    center:
+      - text: "License"
+        href: https://github.com/Norman-Foster-Institute/ua_2024/blob/main/LICENSE
+format:
+  html:
+    theme: cosmo
+    toc: true
