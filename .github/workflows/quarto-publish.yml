@@ -26,7 +26,6 @@ jobs:
         name: Setup Python
         with:
           python-version: "3.11"
-          cache: true
       - run: pip install jupyter
       # See more at https://github.com/quarto-dev/quarto-actions/blob/main/examples/example-03-dependencies.md
       # NOTE: If Publishing to GitHub Pages, set the permissions correctly (see top of this yaml)
