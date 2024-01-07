@@ -13,6 +13,7 @@ dependencies:
   - geopy
   - h3-py
   - libpysal >=4.8.0
+  - nbformat
   - openpyxl
   - osmnx
   - pandas
