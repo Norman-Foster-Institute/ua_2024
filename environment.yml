@@ -1,41 +1,18 @@
 name: nfiua
 channels:
   - conda-forge
+  - defaults
 dependencies:
-  - python
+  - python=3.11
   # to run the code
-  - astropy
-  - contextily
-  - datashader
-  - esda
-  - geocube
-  - geopandas >=0.14
-  - geopy
-  - h3-py
-  - libpysal >=4.8.0
-  - nbformat
-  - openpyxl
+  - geopandas
   - osmnx
   - pandas
-  - pointpats >=2.4
-  - pyarrow
-  - pyinterpolate
-  - pyogrio
-  - rioxarray
-  - scikit-learn
-  - seaborn >=0.13
-  - splot
-  - spglm
-  - spreg
-  - statsmodels
-  - tobler >=0.11.2
-  - xarray
-  - xvec
+  - seaborn
   # infrastructure
+  - nbformat
   - ipykernel
+  - jupyter
   - jupyter-cache
   - jupyterlab
   - pip
-  - pip:
-      - KDEpy
-      - git+https://github.com/pysal/mgwr.git
