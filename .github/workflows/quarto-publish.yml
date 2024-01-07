@@ -22,13 +22,12 @@ jobs:
           tinytex: true
           # uncomment below and fill to pin a version
           # version: SPECIFIC-QUARTO-VERSION-HERE
-      - uses: pdm-project/setup-pdm@v3
-        name: Setup PDM
+      - uses: setup-python@v5
+        name: Setup Python
         with:
           python-version: "3.11"
           cache: true
-      - name: Install
-        run: pdm install
+      - run: pip install jupyter
       # See more at https://github.com/quarto-dev/quarto-actions/blob/main/examples/example-03-dependencies.md
       # NOTE: If Publishing to GitHub Pages, set the permissions correctly (see top of this yaml)
       - name: Publish to GitHub Pages (and render)

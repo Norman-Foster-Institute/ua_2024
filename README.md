@@ -30,6 +30,8 @@ See the `quarto` [Guide](https://quarto.org/docs/guide/) for information on how 
 - To manually build and preview locally:
   - `quarto render`
   - `quarto preview`
+- To manually deploy to Github pages:
+  - `quarto publish gh-pages`
 
 ## Publishing
 
