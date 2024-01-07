@@ -1,40 +1,5 @@
 [
   {
-    "objectID": "hello.html",
-    "href": "hello.html",
-    "title": "Urban Analytics 2024",
-    "section": "",
-    "text": "Chapter 0: Infrastructure\nChapter 1: Notebooks\nChapter 2: Pandas"
-  },
-  {
-    "objectID": "hello.html#toc",
-    "href": "hello.html#toc",
-    "title": "Urban Analytics 2024",
-    "section": "",
-    "text": "Chapter 0: Infrastructure\nChapter 1: Notebooks\nChapter 2: Pandas"
-  },
-  {
-    "objectID": "chapter_0/infrastructure.html",
-    "href": "chapter_0/infrastructure.html",
-    "title": "Infrastructure",
-    "section": "",
-    "text": "The course does not use any specific resources. It is designed to run entirely on students’ machines using solely open-source software."
-  },
-  {
-    "objectID": "chapter_0/infrastructure.html#communication",
-    "href": "chapter_0/infrastructure.html#communication",
-    "title": "Infrastructure",
-    "section": "Communication",
-    "text": "Communication\nScholars enrolled in the Sustainable Cities program at the Norman Foster Institute have been added to a Google Spaces for online discussion. Scholars are encouraged to use the platform to seek help from peers, share thoughts and tips, and other meaningful contributions the rest of the group can benefit from. Learn from the mistakes of the others.\nThe tutor will be part of the discussion forum but the priority is to help each other, rather than seek guidance outside of class."
-  },
-  {
-    "objectID": "chapter_0/infrastructure.html#software-stack",
-    "href": "chapter_0/infrastructure.html#software-stack",
-    "title": "Infrastructure",
-    "section": "Software stack",
-    "text": "Software stack\nThere are many options on how to run Python. You may already have a copy on your machine, you can run it in the browser and install it in a myriad ways. This course uses what is considered a standard for scientific computing based on two key components - a package manager (you will be using mamba, built on top conda) and an interface (Jupyter Lab).\nThe basics will be explained in the first lesson but it would be beneficial if you could create an environment before the class.\n\nCreate an environment\nTo run the course material, you will need a Python environment with all the packages for spatial data science installed. Unless you already know how to work with conda or mamba, follow the instructions below.\n\nWindowsmacOS & Linux\n\n\n\n\n\n\n\n\nCaution\n\n\n\nWindows may complain that the app is not recognised. Click More information and you will be able to run the installer.\n\n\n\nDownload miniforge package manager from Github for your operating system.\nExecute the installer and make sure to create start menu shortcuts (there’s a tick box during installation).\nOpen the installed Miniforge Prompt application.\nCreate a Python environment using the following command:\n\nmamba env create -f https://github.com/Norman-Foster-Institute/ua_2024/blob/main/environment.yml\n\nActivate the environment using:\n\nmamba activate nfiua\n\nStart JupyterLab interface:\n\njupyter lab\n\n\n\n\n\n\nImportant\n\n\n\nEnsure that you install miniforge in a directory without any special characters in the name. It may occasionally break things.\n\n\n\n\n\nDownload miniforge package manager from Github for your operating system and install it.\nOpen Terminal application.\nCreate a Python environment using the following command:\n\nmamba env create -f https://github.com/Norman-Foster-Institute/ua_2024/blob/main/environment.yml\n\nActivate the environment using:\n\nmamba activate nfiua\n\nStart JupyterLab interface:\n\njupyter lab\n\n\n\nA Jupyter Lab interface will show up in your browser. If it hasn’t opened automatically, copy the link printed in your command line/terminal.\n\n\nClosing Jupyter Lab\nThe best way to close the Jupyter Lab and shut down its process running in the terminal is to use the Jupyter Lab’s interface. In the menu find File &gt; Shut Down.\n\n\n\nShut down Jupyter Lab\n\n\n\n\nOpening Jupyter Lab next time\nThe steps above are needed only the first time. Once you create the environment, it won’t disappear and you can use it until you don’t delete it. Once you close Jupyter Lab session, you can always start a new one:\n\nWindowsmacOS & Linux\n\n\n\nOpen Miniforge Prompt\nActivate the environment:\n\nmamba activate nfiua\n\nStart JupyterLab interface:\n\njupyter lab\n\n\n\nOpen Terminal\nActivate the environment:\n\nmamba activate nfiua\n\nStart JupyterLab interface:\n\njupyter lab\n\n\n\n\n\nPlan B with Google Colab\nIf you are unable to install an environment using the instructions above, you can follow the course using Google Colab. You will just need to install the required packages to your Colab environment. Reach out in class or via Discord if you need to set it up.\n\n\nTroubleshooting\nIn case of any issues related to environment creation, reach out in the class or via Google Spaces."
-  },
-  {
     "objectID": "chapter_1/notebooks.html",
     "href": "chapter_1/notebooks.html",
     "title": "Jupyter and Python",
@@ -75,6 +40,41 @@
     "title": "Jupyter and Python",
     "section": "Acknowledgements",
     "text": "Acknowledgements\nThe ‘Let the snake in’ section is derived from A taste of Python section of the Geo-Python course 2022 by D. Whipp, H. Tenkanen, V. Heikinheimo, H. Aagesen, and C. Fink from the Department of Geosciences and Geography, University of Helsinki, licensed under CC-BY-SA 4.0."
+  },
+  {
+    "objectID": "hello.html",
+    "href": "hello.html",
+    "title": "Urban Analytics 2024",
+    "section": "",
+    "text": "Chapter 0: Infrastructure\nChapter 1: Notebooks\nChapter 2: Pandas"
+  },
+  {
+    "objectID": "hello.html#toc",
+    "href": "hello.html#toc",
+    "title": "Urban Analytics 2024",
+    "section": "",
+    "text": "Chapter 0: Infrastructure\nChapter 1: Notebooks\nChapter 2: Pandas"
+  },
+  {
+    "objectID": "chapter_0/infrastructure.html",
+    "href": "chapter_0/infrastructure.html",
+    "title": "Infrastructure",
+    "section": "",
+    "text": "The course does not use any specific resources. It is designed to run entirely on students’ machines using solely open-source software."
+  },
+  {
+    "objectID": "chapter_0/infrastructure.html#communication",
+    "href": "chapter_0/infrastructure.html#communication",
+    "title": "Infrastructure",
+    "section": "Communication",
+    "text": "Communication\nScholars enrolled in the Sustainable Cities program at the Norman Foster Institute have been added to a Google Spaces for online discussion. Scholars are encouraged to use the platform to seek help from peers, share thoughts and tips, and other meaningful contributions the rest of the group can benefit from. Learn from the mistakes of the others.\nThe tutor will be part of the discussion forum but the priority is to help each other, rather than seek guidance outside of class."
+  },
+  {
+    "objectID": "chapter_0/infrastructure.html#software-stack",
+    "href": "chapter_0/infrastructure.html#software-stack",
+    "title": "Infrastructure",
+    "section": "Software stack",
+    "text": "Software stack\nThere are many options on how to run Python. You may already have a copy on your machine, you can run it in the browser and install it in a myriad ways. This course uses what is considered a standard for scientific computing based on two key components - a package manager (you will be using mamba, built on top conda) and an interface (Jupyter Lab).\nThe basics will be explained in the first lesson but it would be beneficial if you could create an environment before the class.\n\nCreate an environment\nTo run the course material, you will need a Python environment with all the packages for spatial data science installed. Unless you already know how to work with conda or mamba, follow the instructions below.\n\nWindowsmacOS & Linux\n\n\n\n\n\n\n\n\nCaution\n\n\n\nWindows may complain that the app is not recognised. Click More information and you will be able to run the installer.\n\n\n\nDownload miniforge package manager from Github for your operating system.\nExecute the installer and make sure to create start menu shortcuts (there’s a tick box during installation).\nOpen the installed Miniforge Prompt application.\nCreate a Python environment using the following command:\n\nmamba env create -f https://github.com/Norman-Foster-Institute/ua_2024/blob/main/environment.yml\n\nActivate the environment using:\n\nmamba activate nfiua\n\nStart JupyterLab interface:\n\njupyter lab\n\n\n\n\n\n\nImportant\n\n\n\nEnsure that you install miniforge in a directory without any special characters in the name. It may occasionally break things.\n\n\n\n\n\nDownload miniforge package manager from Github for your operating system and install it.\nOpen Terminal application.\nCreate a Python environment using the following command:\n\nmamba env create -f https://github.com/Norman-Foster-Institute/ua_2024/blob/main/environment.yml\n\nActivate the environment using:\n\nmamba activate nfiua\n\nStart JupyterLab interface:\n\njupyter lab\n\n\n\nA Jupyter Lab interface will show up in your browser. If it hasn’t opened automatically, copy the link printed in your command line/terminal.\n\n\nClosing Jupyter Lab\nThe best way to close the Jupyter Lab and shut down its process running in the terminal is to use the Jupyter Lab’s interface. In the menu find File &gt; Shut Down.\n\n\n\nShut down Jupyter Lab\n\n\n\n\nOpening Jupyter Lab next time\nThe steps above are needed only the first time. Once you create the environment, it won’t disappear and you can use it until you don’t delete it. Once you close Jupyter Lab session, you can always start a new one:\n\nWindowsmacOS & Linux\n\n\n\nOpen Miniforge Prompt\nActivate the environment:\n\nmamba activate nfiua\n\nStart JupyterLab interface:\n\njupyter lab\n\n\n\nOpen Terminal\nActivate the environment:\n\nmamba activate nfiua\n\nStart JupyterLab interface:\n\njupyter lab\n\n\n\n\n\nPlan B with Google Colab\nIf you are unable to install an environment using the instructions above, you can follow the course using Google Colab. You will just need to install the required packages to your Colab environment. Reach out in class or via Discord if you need to set it up.\n\n\nTroubleshooting\nIn case of any issues related to environment creation, reach out in the class or via Google Spaces."
   },
   {
     "objectID": "chapter_2/pandas.html",
