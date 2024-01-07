@@ -13,3 +13,14 @@
 ## Publishing
 
 Publishing is automatically done via the `.github/workflows/quarto-publish.yml` which will build the content and publishes to [Github Pages](https://Norman-Foster-Institute.github.io/ua_2024/)
+
+> When testing in private mode, note that Github will publish the documentation to a temporary URL unless using a custom domain: [see here](https://stackoverflow.com/questions/72566417/why-is-github-pages-redirecting-me-to-a-weird-url)
+
+## Rendering and testing locally
+
+Note as per above that `vscode` has built-in support for previewing `quarto`.
+
+To manually build and preview locally:
+
+- `quarto render`
+- `quarto preview`
