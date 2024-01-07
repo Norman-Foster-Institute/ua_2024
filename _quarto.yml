@@ -1,0 +1,4 @@
+project:
+  title: "NFI Urban Analytics 2024"
+  output-dir: ./output
+  type: website

@@ -1,0 +1,129 @@
+# Compiled source #
+###################
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+
+# Packages #
+############
+# it's better to unpack these files and commit the raw source because diffs are hard to see otherwise
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# Logs and databases #
+######################
+*.log
+*.sql
+*.sqlite
+
+# OS generated files #
+######################
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Python #
+##########
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Jupyter Notebook #
+#####################
+.ipynb_checkpoints
+# Cell output data
+*.ipynb-meta
+
+# PDM #
+#######
+.pdm.toml
+.pdm-python
+.pdm-build/
+
+# Quarto #
+###########
+# Rendered output
+/output/
+# Temporary files
+.quarto/
+
+# R #
+######
+# R history files
+.Rhistory
+# R user-specific data
+.Ruserdata
+# R project files
+.Rproj.user/
+
+# Data #
+########
+# Exclude large data files or sensitive information
+/data/large_datasets/
+/data/secret_info/
+
+# Environment files #
+#####################
+# Virtual environment
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Spyder project settings #
+###########################
+.spyderproject
+.spyproject
+
+# Pycharm #
+###########
+.idea/
+
+# Joplin #
+##########
+*.joplin
+
+# VS Code #
+###########
+.vscode/
+
+
+/.quarto/
