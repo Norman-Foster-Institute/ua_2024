@@ -13,13 +13,24 @@ website:
     location: navbar
     type: overlay
   sidebar:
+    tools:
+      - icon: github
+        href: https://github.com/Norman-Foster-Institute/ua_2024
     contents:
       - href: index.qmd
-        text: home
-      - href: chapter_1/notebooks.ipynb
-        text: Chapter 1 - Notebooks
-      - href: chapter_2/pandas.ipynb
-        text: Chapter 2 - Pandas
+        text: Home
+      - section: Introduction
+        contents:
+          - chapter_0/setup.qmd
+          - chapter_0/anaconda.qmd
+      - section: Basic Coding
+        contents:
+          - chapter_1/python.ipynb
+          - chapter_1/pandas.ipynb
+      - section: GIS Tools
+        contents:
+          - chapter_2/qgis.qmd
+          - chapter_2/sql.qmd
   page-footer:
     center:
       - text: "License"

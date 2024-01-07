@@ -1,0 +1,101 @@
+# SQL - A cross platform language
+
+1. **SQL and PostgreSQL Basics:**
+- Understanding SQL (Structured Query Language)
+- Introduction to PostgreSQL as a Relational Database Management System (RDBMS)
+- Working with Schemas in PostgreSQL
+2. **Data Manipulation with SQL and PostgreSQL:**
+- **`CREATE`**, **`SELECT`**, **`INSERT`**, **`DELETE`** Statements
+- Primary Keys (PK) and Foreign Keys (FK)
+- Creating and Managing Indexes for Performance Optimization
+3. **SQL Concepts:**
+- Aggregations: **`COUNT`**, **`SUM`**, **`AVG`**, **`MIN`**, **`MAX`**
+- Complex Queries and Subqueries **`WITH`, `WHERE`**
+- Conditional Statements: **`CASE`** Statements
+4. **Introduction to GIS Integration with PostgreSQL:**
+- Spatial Data Types in PostgreSQL
+- Spatial Indexing for Efficient Spatial Queries
+- Spatial Functions and Operators in PostgreSQL
+5. **Spatial and Non-Spatial Joins:**
+- Performing Spatial Joins for GIS Analysis
+- Non-Spatial Joins for Relational Data Analysis
+- Combining Spatial and Non-Spatial Data in Queries
+6. **How to ask ChatGPT**
+- Iterating query development
+- Debugging
+
+# INTRO TO DATABASES & DATA ANALYSIS
+
+## Key Topics
+
+1. **Introduction to Data Analysis and Databases:**
+- Importance of Data Analysis in Decision Making
+- Overview of Relational Databases
+2. **Connecting to Google Cloud Platform (GCP):**
+- Connecting to NFI’s database(s)
+- Setting Up a GCP Account
+3. **SQL and PostgreSQL Basics:**
+- Understanding SQL (Structured Query Language)
+- Introduction to PostgreSQL as a Relational Database Management System (RDBMS)
+- Working with Schemas in PostgreSQL
+4. **Data Manipulation with SQL and PostgreSQL:**
+- **`CREATE`**, **`SELECT`**, **`INSERT`**, **`DELETE`** Statements
+- Primary Keys (PK) and Foreign Keys (FK)
+- Creating and Managing Indexes for Performance Optimization
+5. **SQL Concepts:**
+- Aggregations: **`COUNT`**, **`SUM`**, **`AVG`**, **`MIN`**, **`MAX`**
+- Complex Queries and Subqueries **`WITH`, `WHERE`**
+- Conditional Statements: **`CASE`** Statements
+6. **Introduction to GIS Integration with PostgreSQL:**
+- Spatial Data Types in PostgreSQL
+- Spatial Indexing for Efficient Spatial Queries
+- Spatial Functions and Operators in PostgreSQL
+7. **Spatial and Non-Spatial Joins:**
+- Performing Spatial Joins for GIS Analysis
+- Non-Spatial Joins for Relational Data Analysis
+- Combining Spatial and Non-Spatial Data in Queries
+
+## Software needed
+
+- For this session please make sure you have downloaded the following software(s):
+
+[TablePlus | Modern, Native Tool for Database Management.](https://tableplus.com/)
+
+## To-Dos
+
+- Create a table with the following characteristics.
+    
+    Use schema. `ua0`
+    
+    Table name : `[yourinitials] + “_prof_exp”`
+    
+    Fields required: (assign data types as you think would be best)
+    
+    - `id`
+    - `scholar_id`
+    - `industry_id`
+    - `institution`
+    - `years_of_experience`
+    - `education`
+    - `location` (crs: 4326)
+    - `end_year`
+    - `notes`
+    
+    ** If you think more fields are necessary, feel free to add them
+    
+- Create a [GitHub](https://github.com/) account
+    - add link to `public.scholars.github_link` (varchar)
+
+### Optional
+
+Create a local instance of PostGIS for use in the upcoming months
+
+[Learn PostgreSQL Tutorial - Full Course for Beginners](https://www.youtube.com/watch?v=qw--VYLpxG4)
+
+## Useful Resources
+
+- **********POSTGRESQL & POSTGIS CHEATSHEETS**********
+
+[PostgreSQL & PostGIS cheatsheet (a work in progress)](https://gist.github.com/clhenrick/ebc8dc779fb6f5ee6a88)
+
+[Postgres Cheatsheet](https://postgrescheatsheet.com/#/tables)

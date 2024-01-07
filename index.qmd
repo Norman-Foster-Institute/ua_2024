@@ -1,3 +1,31 @@
-# Urban Analytics 2024
+# NFI Urban Analytics 2024
 
-Welcome!
+## Introduction
+
+Welcome to the Python Urban Analytics course at the Norman Foster Institute. This course is designed to empower scholars with the skills and knowledge to harness the power of urban analytics and tools such as QGIS and Python in analyzing and interpreting urban data.
+
+See the sidebar for the **Sections** which contain readings, data, methods, and lab work.
+
+This content will be further elaborated and refined as the year progresses.
+
+We hope you enjoy the course!
+
+## Communication
+
+You have been added to a Google Spaces for online discussions. This platform is your primary hub for:
+
+- Seeking peer assistance.
+- Discussing course materials and urban analytics topics.
+- Collaborating on projects and assignments.
+- Announcements and updates from the course team.
+
+The learning process is enriched through collaborative effort. Your contributions make a difference!
+
+## Topics
+
+This course is will touch on a number of broad topics. High-level guidance will be provided and scholars will then be encouraged to further explore these approaches and develop their skillsets based on methods of interest or relevance to their work:
+
+- **Spatial Analysis**: Exploring Geographic Information Systems, spatial data handling, and mapping urban data.
+- **Python**: Introduction to Python and its usage for geospatial analysis.
+- **Data Handling**: Techniques for handling datasets and an introduction to data science methods.
+- **Project Work**: Lab work tasks and workflows.
