@@ -4,21 +4,21 @@
     "href": "chapter_1/pandas.html",
     "title": "Pandas and Data",
     "section": "",
-    "text": "You know the basics. What are Jupyter notebooks, how do they work, and how do you run Python in them. It is time to start using them for data science (no, that simple math you did the last time doesn’t count as data science).\nYou are about to enter the PyData ecosystem. It means that you will start learning how to work with Python from the middle. This course does not explicitly cover the fundamentals of programming. It is expected that those parts you need you’ll be able to pick as you go through the specialised data science stack. If you’re stuck, confused or need further explanation, use Google (or your favourite search engine), ask AI to explain the code or ask on Discord or during the class. Not everything will be told during the course (by design), and the internet is a friend of every programmer, so let’s figure out how to use it efficiently from the beginning.\nLet’s dig in!"
+    "text": "Now that you know some of the basics of Python Notebooks, it’s time to start using them for data science (no, that simple math you did the last time doesn’t count as data science!).\nYou are about to enter the Python data ecosystem. It means that you will start learning how to work with Python from the middle. This course does not explicitly cover the fundamentals of programming. It is expected that those parts you need you’ll be able to pick up as you go through the use of the data science stack. If you’re stuck, confused or need further explanation, use Google (or your favourite search engine), ask AI to explain the code, or ask the faculty for guidance. The internet is a friend of every programmer, so you’re encouraged to use it effectively from the get-go.\nLet’s dig in!"
   },
   {
     "objectID": "chapter_1/pandas.html#munging-and-wrangling",
     "href": "chapter_1/pandas.html#munging-and-wrangling",
     "title": "Pandas and Data",
     "section": "Munging and wrangling",
-    "text": "Munging and wrangling\nReal-world datasets are messy. There is no way around it: datasets have “holes” (missing data), the amount of formats in which data can be stored is endless, and the best structure to share data is not always the optimum to analyse them, hence the need to munge[1] them. As has been correctly pointed out in many outlets, much of the time spent in what is called Data Science is related not only to sophisticated modelling and insight but has to do with much more basic and less exotic tasks such as obtaining data, processing, and turning them into a shape that makes analysis possible, and exploring it to get to know their basic properties.\nSurprisingly, very little has been published on patterns, techniques, and best practices for quick and efficient data cleaning, manipulation, and transformation because of how labour-intensive and relevant this aspect is. In this session, you will use a few real-world datasets and learn how to process them into Python so they can be transformed and manipulated, if necessary, and analysed. For this, you will introduce some of the bread and butter of data analysis and scientific computing in Python. These are fundamental tools that are constantly used in almost any task relating to data analysis.\nThis notebook covers the basics and the content that is expected to be learnt by every student. You use a prepared dataset that saves us much of the more intricate processing that goes beyond the introductory level the session is aimed at. If you are interested in how it was done, there is a notebook.\nThis notebook discusses several patterns to clean and structure data properly, including tidying, subsetting, and aggregating. You finish with some basic visualisation. An additional extension presents more advanced tricks to manipulate tabular data."
+    "text": "Munging and wrangling\nReal-world datasets are messy. There is no way around it: datasets have “holes” (missing data), the number of formats in which data can be stored is endless, and the best structure to share data is not always the optimum to analyse them, hence the need to munge[1] them. As has been correctly pointed out in many outlets, much of the time spent in what is called Data Science is related not only to sophisticated modelling and insight but has to do with much more basic and less exotic tasks such as obtaining data, processing, and turning them into a shape that makes analysis possible, and exploring it to get to know their basic properties.\nSurprisingly, very little has been published on patterns, techniques, and best practices for quick and efficient data cleaning, manipulation, and transformation because of how labour-intensive this aspect is. In this session, you will use a few real-world datasets and learn how to process them into Python so they can be transformed and manipulated, if necessary, and analysed. For this, you will introduce some of the bread and butter of data analysis and scientific computing in Python. These are fundamental tools that are constantly used in almost any task relating to data analysis.\nThis notebook covers the basics and the content that needs to be grasped, and discusses several patterns to clean and structure data properly, including tidying, subsetting, and aggregating. You finish with some basic visualisation. An additional extension presents more advanced tricks to manipulate tabular data.\n[1] The terms data munging and data wrangling are used interchangeably. Pick the one you like best!"
   },
   {
     "objectID": "chapter_1/pandas.html#dataset",
     "href": "chapter_1/pandas.html#dataset",
     "title": "Pandas and Data",
     "section": "Dataset",
-    "text": "Dataset\nYou will be exploring demographic characteristics of Madrid. The data has been aggregated to a neighbourhood level by the statistic’s office of Madrid’s City Hall. It contains information per year (from 2018 to 2023) and genre.\nAs with many datasets that will be used during this course, the data was originally gound in the data portal on the following link\nThe main tool you should use for this task is the pandas package. As with the math you used before, you must import it first.\n[1] Data munging and data wrangling are used interchangeably. Pick the one you like.\n\nimport pandas as pd\n\nThe data is stored in a CSV file. To make things easier, you can read data from a file posted online so, for now, you do not need to download any dataset:\n\nmadrid_pop = pd.read_csv(\n    \"https://datos.madrid.es/egob/catalogo/300557-0-poblacion-distrito-barrio.csv\",\n    sep=\";\",\n)\n\n\nTip\nYou are using read_csv because the file you want to read is in CSV format. However, the current data is actually not separated by commas , but with a semicolon ;, hence the additional parameter in the code.\nNote that pandas allows for many more formats to be read and write. A full list of formats supported may be found in the documentation.\n\n\nAlternative\nInstead of reading the file directly off the web, it is possible to download it manually, store it on your computer, and read it locally. To do that, you can follow these steps:\n\nDownload the file by clicking on this link and saving the file\nPlace the file in the same folder as the notebook where you intend to read it\nReplace the code in the cell above with:\n\nmadrid_pop = pd.read_csv(\n    \"poblacion_1_enero.csv\",\n    sep=\";\",\n    index_col=\"distrito\",\n)"
+    "text": "Dataset\nYou will be exploring demographic characteristics of Madrid. The data has been aggregated to a neighbourhood level by the statistic’s office of Madrid’s City Hall. It contains information per year (from 2018 to 2023) and genre.\nAs with many datasets that will be used during this course, the data was originally found in the data portal on the following link\nThe main tool you should use for this task is the pandas package. As with the math you used before, you must import it first.\n\nimport pandas as pd\n\nThe data is stored in a CSV file. To make things easier, you can read data from a file posted online so, for now, you do not need to download any dataset:\n\nmadrid_pop = pd.read_csv(\n    \"https://datos.madrid.es/egob/catalogo/300557-0-poblacion-distrito-barrio.csv\",\n    sep=\";\",\n)\n\n\nTip\nYou are using read_csv because the file you want to read is in CSV format. However, the current data is actually not separated by commas , but with a semicolon ;, hence the additional parameter in the code.\nNote that pandas allows for many more formats to be read and write. A full list of formats supported may be found in the documentation.\n\n\nAlternative\nInstead of reading the file directly off the web, it is possible to download it manually, store it on your computer, and read it locally. To do that, you can follow these steps:\n\nDownload the file by clicking on this link and saving the file\nPlace the file in the same folder as the notebook where you intend to read it\nReplace the code in the cell above with:\n\nmadrid_pop = pd.read_csv(\n    \"poblacion_1_enero.csv\",\n    sep=\";\",\n    index_col=\"distrito\",\n)"
   },
   {
     "objectID": "chapter_1/pandas.html#pandas-101",
@@ -154,39 +154,46 @@
     "text": "This course is will touch on a number of broad topics. High-level guidance will be provided and scholars will then be encouraged to further explore these approaches and develop their skillsets based on methods of interest or relevance to their work:\n\nSpatial Analysis: Exploring Geographic Information Systems, spatial data handling, and mapping urban data.\nPython: Introduction to Python and its usage for geospatial analysis.\nData Handling: Techniques for handling datasets and an introduction to data science methods.\nProject Work: Lab work tasks and workflows."
   },
   {
-    "objectID": "chapter_0/setup.html",
-    "href": "chapter_0/setup.html",
-    "title": "Setup",
+    "objectID": "chapter_0/installation.html",
+    "href": "chapter_0/installation.html",
+    "title": "Software & Accounts",
     "section": "",
     "text": "Instructions for how to setup your Github account and how to sign-up for the Github Student Developer Pack will be given in class. Please don’t try to activate the Student Developer Pack ahead of class. This is so that it can be configured with the correct procedure.\n\n\n\nSetup for the CARTO account will be detailed in class after activating the Github Student Developer Pack.\n\n\n\nDownload and install QGIS form the official download links.\n\n\n\nDownload and install Anaconda from the official download links."
   },
   {
-    "objectID": "chapter_0/setup.html#github-and-the-github-student-developer-pack",
-    "href": "chapter_0/setup.html#github-and-the-github-student-developer-pack",
-    "title": "Setup",
+    "objectID": "chapter_0/installation.html#github-student-developer-pack",
+    "href": "chapter_0/installation.html#github-student-developer-pack",
+    "title": "Software & Accounts",
     "section": "",
     "text": "Instructions for how to setup your Github account and how to sign-up for the Github Student Developer Pack will be given in class. Please don’t try to activate the Student Developer Pack ahead of class. This is so that it can be configured with the correct procedure."
   },
   {
-    "objectID": "chapter_0/setup.html#carto-account",
-    "href": "chapter_0/setup.html#carto-account",
-    "title": "Setup",
+    "objectID": "chapter_0/installation.html#carto-account",
+    "href": "chapter_0/installation.html#carto-account",
+    "title": "Software & Accounts",
     "section": "",
     "text": "Setup for the CARTO account will be detailed in class after activating the Github Student Developer Pack."
   },
   {
-    "objectID": "chapter_0/setup.html#qgis",
-    "href": "chapter_0/setup.html#qgis",
-    "title": "Setup",
+    "objectID": "chapter_0/installation.html#qgis",
+    "href": "chapter_0/installation.html#qgis",
+    "title": "Software & Accounts",
     "section": "",
     "text": "Download and install QGIS form the official download links."
   },
   {
-    "objectID": "chapter_0/setup.html#anaconda",
-    "href": "chapter_0/setup.html#anaconda",
-    "title": "Setup",
+    "objectID": "chapter_0/installation.html#anaconda",
+    "href": "chapter_0/installation.html#anaconda",
+    "title": "Software & Accounts",
     "section": "",
     "text": "Download and install Anaconda from the official download links."
+  },
+  {
+    "objectID": "chapter_0/index.html",
+    "href": "chapter_0/index.html",
+    "title": "Overview",
+    "section": "",
+    "text": "Overview\nThis section details installation and steps for setting up your Github account, signing up for the Github Student Developer Pack, software downloads, and getting Python notebooks running on your system."
   },
   {
     "objectID": "chapter_0/anaconda.html",

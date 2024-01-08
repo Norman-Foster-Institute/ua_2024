@@ -147,7 +147,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
- <span class="menu-text">Introduction</span></a>
+ <span class="menu-text">Setup</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -155,8 +155,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapter_0/setup.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Setup</span></a>
+  <a href="../chapter_0/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapter_0/installation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Software &amp; Accounts</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -267,22 +273,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<p>You know the basics. What are Jupyter notebooks, how do they work, and how do you run Python in them. It is time to start using them for data science (no, that simple math you did the last time doesn’t count as data science).</p>
-<p>You are about to enter the PyData ecosystem. It means that you will start learning how to work with Python from the middle. This course does not explicitly cover the fundamentals of programming. It is expected that those parts you need you’ll be able to pick as you go through the specialised data science stack. If you’re stuck, confused or need further explanation, use Google (or your favourite search engine), ask AI to explain the code or ask on Discord or during the class. Not everything will be told during the course (by design), and the internet is a friend of every programmer, so let’s figure out how to use it efficiently from the beginning.</p>
+<p>Now that you know some of the basics of Python Notebooks, it’s time to start using them for data science (no, that simple math you did the last time doesn’t count as data science!).</p>
+<p>You are about to enter the Python data ecosystem. It means that you will start learning how to work with Python from the middle. This course does not explicitly cover the fundamentals of programming. It is expected that those parts you need you’ll be able to pick up as you go through the use of the data science stack. If you’re stuck, confused or need further explanation, use Google (or your favourite search engine), ask AI to explain the code, or ask the faculty for guidance. The internet is a friend of every programmer, so you’re encouraged to use it effectively from the get-go.</p>
 <p>Let’s dig in!</p>
 <section id="munging-and-wrangling" class="level2">
 <h2 class="anchored" data-anchor-id="munging-and-wrangling">Munging and wrangling</h2>
-<p>Real-world datasets are messy. There is no way around it: datasets have “holes” (missing data), the amount of formats in which data can be stored is endless, and the best structure to share data is not always the optimum to analyse them, hence the need to <a href="http://dictionary.reference.com/browse/munge">munge</a>[1] them. As has been correctly pointed out in many outlets, much of the time spent in what is called Data Science is related not only to sophisticated modelling and insight but has to do with much more basic and less exotic tasks such as obtaining data, processing, and turning them into a shape that makes analysis possible, and exploring it to get to know their basic properties.</p>
-<p>Surprisingly, very little has been published on patterns, techniques, and best practices for quick and efficient data cleaning, manipulation, and transformation because of how labour-intensive and relevant this aspect is. In this session, you will use a few real-world datasets and learn how to process them into Python so they can be transformed and manipulated, if necessary, and analysed. For this, you will introduce some of the bread and butter of data analysis and scientific computing in Python. These are fundamental tools that are constantly used in almost any task relating to data analysis.</p>
-<p>This notebook covers the basics and the content that is expected to be learnt by every student. You use a prepared dataset that saves us much of the more intricate processing that goes beyond the introductory level the session is aimed at. If you are interested in how it was done, there is a <a href="https://github.com/martinfleis/sds/blob/main/data/chicago_influenza_1918/preprocessing.ipynb">notebook</a>.</p>
-<p>This notebook discusses several patterns to clean and structure data properly, including tidying, subsetting, and aggregating. You finish with some basic visualisation. An additional extension presents more advanced tricks to manipulate tabular data.</p>
+<p>Real-world datasets are messy. There is no way around it: datasets have “holes” (missing data), the number of formats in which data can be stored is endless, and the best structure to share data is not always the optimum to analyse them, hence the need to <a href="http://dictionary.reference.com/browse/munge">munge</a>[1] them. As has been correctly pointed out in many outlets, much of the time spent in what is called Data Science is related not only to sophisticated modelling and insight but has to do with much more basic and less exotic tasks such as obtaining data, processing, and turning them into a shape that makes analysis possible, and exploring it to get to know their basic properties.</p>
+<p>Surprisingly, very little has been published on patterns, techniques, and best practices for quick and efficient data cleaning, manipulation, and transformation because of how labour-intensive this aspect is. In this session, you will use a few real-world datasets and learn how to process them into Python so they can be transformed and manipulated, if necessary, and analysed. For this, you will introduce some of the bread and butter of data analysis and scientific computing in Python. These are fundamental tools that are constantly used in almost any task relating to data analysis.</p>
+<p>This notebook covers the basics and the content that needs to be grasped, and discusses several patterns to clean and structure data properly, including tidying, subsetting, and aggregating. You finish with some basic visualisation. An additional extension presents more advanced tricks to manipulate tabular data.</p>
+<p>[1] The terms data munging and data wrangling are used interchangeably. Pick the one you like best!</p>
 </section>
 <section id="dataset" class="level2">
 <h2 class="anchored" data-anchor-id="dataset">Dataset</h2>
 <p>You will be exploring demographic characteristics of Madrid. The data has been aggregated to a neighbourhood level by the statistic’s office of Madrid’s City Hall. It contains information per year (from 2018 to 2023) and genre.</p>
-<p>As with many datasets that will be used during this course, the data was originally gound in the data portal on the <a href="https://datos.madrid.es/portal/site/egob/menuitem.c05c1f754a33a9fbe4b2e4b284f1a5a0/?vgnextoid=0cccaebc07c1f710VgnVCM2000001f4a900aRCRD&amp;vgnextchannel=374512b9ace9f310VgnVCM100000171f5a0aRCRD&amp;vgnextfmt=default">following link</a></p>
-<p>The main tool you should use for this task is the <code>pandas</code> package. As with the <code>math</code> you used <a href="../chapter_1/python.html">before</a>, you must import it first.</p>
-<p>[1] Data munging and data wrangling are used interchangeably. Pick the one you like.</p>
+<p>As with many datasets that will be used during this course, the data was originally found in the data portal on the <a href="https://datos.madrid.es/portal/site/egob/menuitem.c05c1f754a33a9fbe4b2e4b284f1a5a0/?vgnextoid=0cccaebc07c1f710VgnVCM2000001f4a900aRCRD&amp;vgnextchannel=374512b9ace9f310VgnVCM100000171f5a0aRCRD&amp;vgnextfmt=default">following link</a></p>
+<p>The main tool you should use for this task is the <code>pandas</code> package. As with the <code>math</code> you used before, you must import it first.</p>
 <div class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
