@@ -1,6 +1,6 @@
-# Setup
+# Software & Accounts
 
-## Github and the Github Student Developer Pack
+## Github & Student Developer Pack
 
 Instructions for how to setup your Github account and how to sign-up for the Github [Student Developer Pack](https://education.github.com/pack) will be given in class. Please don't try to activate the Student Developer Pack ahead of class. This is so that it can be configured with the correct procedure.
 

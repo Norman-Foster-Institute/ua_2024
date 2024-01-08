@@ -1,0 +1,3 @@
+# Overview
+
+This section details installation and steps for setting up your Github account, signing up for the Github Student Developer Pack, software downloads, and getting Python notebooks running on your system.

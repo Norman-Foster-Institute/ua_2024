@@ -19,9 +19,10 @@ website:
     contents:
       - href: index.qmd
         text: Home
-      - section: Introduction
+      - section: Setup
         contents:
-          - chapter_0/setup.qmd
+          - chapter_0/index.qmd
+          - chapter_0/installation.qmd
           - chapter_0/anaconda.qmd
       - section: Basic Coding
         contents:

@@ -37,7 +37,7 @@ Don't confuse the "Jupyer Lab" with the "Jupyter Notebook" apps. The former is a
 
 You can now create a new Notebook or you otherwise open an existing Python Notebook. Notebooks are composed of cells.
 
-![Jupyter Notebool cell](../assets/jupyter-cell.png)
+![Jupyter Notebool cell](./images/jupyter-cell.png)
 
 Cells can be either code (Python) or text (Markdown). A typical notebook is then a series of cells where some include text describing what is happening while others contain the code, either waiting for execution or already executed. The cells with the executed code may also contain outputs. The individual code cells can be "played" to see how the code actions unfold from step to step.
 
@@ -52,7 +52,7 @@ You can try creating your own cell content and experimenting with running the ce
 
 Shut down Jupyter Lab from the menubar in the web interface using [File]{.keystroke} > [Shut Down]{.keystroke}.
 
-![Shut down Jupyter Lab](../assets/jupyter-shut-down.png){width=300}
+![Shut down Jupyter Lab](./images/jupyter-shut-down.png){width=300}
 
 ### Plan B with Google Colab
 
