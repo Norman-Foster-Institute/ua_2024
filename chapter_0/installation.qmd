@@ -2,7 +2,7 @@
 
 ## Github & Student Developer Pack
 
-Instructions for how to setup your Github account and how to sign-up for the Github [Student Developer Pack](https://education.github.com/pack) will be given in class. Please don't try to activate the Student Developer Pack ahead of class. This is so that it can be configured with the correct procedure.
+Instructions for how to setup your Github account and how to sign-up for the Github [Student Developer Pack](https://education.github.com/pack) will be given in class. Please don't try to activate the Student Developer Pack ahead of class. This is so that it can be configured with the correct accounts and procedure.
 
 ## CARTO Account
 
@@ -15,3 +15,7 @@ Download and install QGIS form the official [download links](https://qgis.org/en
 ## Anaconda
 
 Download and install Anaconda from the official [download links](https://www.anaconda.com/download/).
+
+## Table Plus
+
+Download and install [TablePlus.](https://tableplus.com/). This is a tool for interacting with databases.
