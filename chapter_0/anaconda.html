@@ -182,13 +182,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapter_1/python.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Python and Notebooks</span></a>
+ <span class="menu-text">Python Notebooks</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapter_1/open_source.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Open Source</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapter_1/pandas.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Pandas and Data</span></a>
+ <span class="menu-text">Pandas &amp; Data</span></a>
   </div>
 </li>
       </ul>
@@ -232,8 +238,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#launching-jupyter-lab" id="toc-launching-jupyter-lab" class="nav-link" data-scroll-target="#launching-jupyter-lab">Launching Jupyter Lab</a></li>
   <li><a href="#opening-a-python-notebook" id="toc-opening-a-python-notebook" class="nav-link" data-scroll-target="#opening-a-python-notebook">Opening a Python Notebook</a></li>
   <li><a href="#closing-jupyter-lab" id="toc-closing-jupyter-lab" class="nav-link" data-scroll-target="#closing-jupyter-lab">Closing Jupyter Lab</a></li>
-  <li><a href="#plan-b-with-google-colab" id="toc-plan-b-with-google-colab" class="nav-link" data-scroll-target="#plan-b-with-google-colab">Plan B with Google Colab</a></li>
-  <li><a href="#plan-c-with-the-command-line" id="toc-plan-c-with-the-command-line" class="nav-link" data-scroll-target="#plan-c-with-the-command-line">Plan C with the command line</a></li>
+  <li><a href="#alternative-b-google-colab" id="toc-alternative-b-google-colab" class="nav-link" data-scroll-target="#alternative-b-google-colab">Alternative B: Google Colab</a></li>
+  <li><a href="#alternative-c-the-command-line" id="toc-alternative-c-the-command-line" class="nav-link" data-scroll-target="#alternative-c-the-command-line">Alternative C: The command line</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -304,16 +310,29 @@ Tip
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="./images/jupyter-cell.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Jupyter Notebool cell</figcaption>
+<figcaption class="figure-caption">Jupyter Notebook cell</figcaption>
 </figure>
 </div>
-<p>Cells can be either code (Python) or text (Markdown). A typical notebook consists of a series of cells where some include text with explanations or background information, while others contain the executable code, either waiting for execution or already executed. The cells with the executed code will display outputs once the cell has been run. The individual code cells can be “played” to see how the code actions unfold from step to step.</p>
-<p>You can try creating your own cell content and experimenting with running the cells. Remember that the cells are only aware of previously run cells. We can start with simple math that Python can do natively. Run the following code cell in your notebook. After inserting the text, you can either click the “play” button or press the <span class="keystroke">Shift</span> + <span class="keystroke">Enter</span> keys.</p>
+<p>Cells can either consist of code or <code>Markdown</code> formatted text. A typical notebook consists of a series of cells; some would include text with explanations or background information, while others would contain the executable code. The code in the cells has to be “executed” by ppressing the play button. Once executed, the code will generate outputs showing the results of the computation.</p>
+<p>You can try creating your own cell content and experimenting with running the cells. Remember that the cells are only aware of previously executed cells. We can start with simple math that Python can do natively. Run the following code cell in your notebook. After inserting the text, you can either click the “play” button or press the <span class="keystroke">Shift</span> + <span class="keystroke">Enter</span> keys.</p>
 <div class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="op">+</span> <span class="dv">1</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># this will return 2 if once the cell is run</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># this will display the number "2" once the cell is executed</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="op">+</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
 <pre><code>2</code></pre>
+</div>
+</div>
+<p>You can also try using variables and printing:</p>
+<div class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># this stores the calculation in "my_variable"</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>my_variable <span class="op">=</span> <span class="dv">2</span> <span class="op">*</span> <span class="dv">10</span> <span class="op">/</span> <span class="dv">3</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># this prints the variable using "f-string" interpolation</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'The calculation result is: </span><span class="sc">{</span>my_variable<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># let's round the number to two decimal places</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'The rounded result is: </span><span class="sc">{</span><span class="bu">round</span>(my_variable, <span class="dv">2</span>)<span class="sc">}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>The calculation result is: 6.666666666666667
+The rounded result is: 6.67</code></pre>
 </div>
 </div>
 </section>
@@ -327,13 +346,13 @@ Tip
 </figure>
 </div>
 </section>
-<section id="plan-b-with-google-colab" class="level3">
-<h3 class="anchored" data-anchor-id="plan-b-with-google-colab">Plan B with Google Colab</h3>
+<section id="alternative-b-google-colab" class="level3">
+<h3 class="anchored" data-anchor-id="alternative-b-google-colab">Alternative B: Google Colab</h3>
 <p>If you are unable to install an environment using the instructions above, you can follow the course using <a href="https://colab.research.google.com">Google Colab</a>. You will need to install any required packages to your Colab environment. Reach out in class if you need help getting set up.</p>
 </section>
-<section id="plan-c-with-the-command-line" class="level3">
-<h3 class="anchored" data-anchor-id="plan-c-with-the-command-line">Plan C with the command line</h3>
-<p>It is also possible to install and run Python environments and packages from the command line using, for example, the Terminal window in a Mac, or the corresponding environment on Windows. Details for installation and usage are different for different systems.</p>
+<section id="alternative-c-the-command-line" class="level3">
+<h3 class="anchored" data-anchor-id="alternative-c-the-command-line">Alternative C: The command line</h3>
+<p>If you already have experience with Python, IDEs, and the command line, feel free to setup your development environment accordingly. The method for doing so will depend on your operating system and your preference for IDEs. We recommend <em>VSCode</em> as an IDE.</p>
 
 
 </section>
@@ -581,7 +600,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   </div>
   <div class="nav-page nav-page-next">
       <a href="../chapter_1/python.html" class="pagination-link">
-        <span class="nav-page-text">Python and Notebooks</span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text">Python Notebooks</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

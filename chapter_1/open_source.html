@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>NFI Urban Analytics 2024 – index</title>
+<title>NFI Urban Analytics 2024 – open_source</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../chapter_0/installation.html" rel="next">
-<link href="../index.html" rel="prev">
+<link href="../chapter_1/pandas.html" rel="next">
+<link href="../chapter_1/python.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -86,7 +86,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapter_0/index.html">Setup</a></li><li class="breadcrumb-item"><a href="../chapter_0/index.html">Overview</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapter_1/python.html">Basic Coding</a></li><li class="breadcrumb-item"><a href="../chapter_1/open_source.html">Open Source</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
     </div>
@@ -118,7 +118,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapter_0/index.html" class="sidebar-item-text sidebar-link active">
+  <a href="../chapter_0/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Overview</span></a>
   </div>
 </li>
@@ -153,7 +153,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapter_1/open_source.html" class="sidebar-item-text sidebar-link">
+  <a href="../chapter_1/open_source.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Open Source</span></a>
   </div>
 </li>
@@ -198,7 +198,11 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
+  <li><a href="#open-source" id="toc-open-source" class="nav-link active" data-scroll-target="#open-source">Open Source</a>
+  <ul class="collapse">
+  <li><a href="#fetching-the-notebooks" id="toc-fetching-the-notebooks" class="nav-link" data-scroll-target="#fetching-the-notebooks">Fetching the notebooks</a></li>
+  <li><a href="#using-the-notebooks" id="toc-using-the-notebooks" class="nav-link" data-scroll-target="#using-the-notebooks">Using the notebooks</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -207,11 +211,43 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<section id="overview" class="level1">
-<h1>Overview</h1>
-<p>This section details installation and steps for setting up your Github account, signing up for the Github Student Developer Pack, software downloads, and getting Python notebooks running on your system.</p>
+<section id="open-source" class="level1">
+<h1>Open Source</h1>
+<p>Use open-source code wherever possible! Open source code consists of a dynamic ecosystem of constantly co-evolving code packages. This collaborative development has permitted a remarkable progression in the capabilities and sophistication of freely accessible code. This has benefitted geospatial and urban analysis immensely, making these tools more widely accessible to those who wish to use them.</p>
+<p>To further cement some basic Python skills, we’ll be making use of the open-source <a href="https://github.com/jerry-git/learn-python3">learn-python3</a> repository, created and maintained by Github user <code>jerry-git</code>.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>We will be using open-source packages extensively throughout this course. To show your appreciation for online open-source code, please click the “Star” button in the respective Github repositories! If the repository provides a citation or publication reference, please be sure to cite these clearly in any derivative work. If you continue to develop your Python skills you may one day be able to become an active contributor to the ongoing development of open-source projects.</p>
+</div>
+</div>
+<section id="fetching-the-notebooks" class="level2">
+<h2 class="anchored" data-anchor-id="fetching-the-notebooks">Fetching the notebooks</h2>
+<ul>
+<li>Go to the <a href="https://github.com/jerry-git/learn-python3">learn-python3</a> repository.</li>
+<li>Before using code from online code repositories, double-check the license type. In this case, it is MIT licensed which is an open-source license.</li>
+<li>Download the repository to a local folder by clicking on the green “code” dropdown button, and select “Download ZIP”.</li>
+<li>Unzip if necessary and move the folder to a working location of your choosing.</li>
+</ul>
+</section>
+<section id="using-the-notebooks" class="level2">
+<h2 class="anchored" data-anchor-id="using-the-notebooks">Using the notebooks</h2>
+<ul>
+<li>Open your Anaconda Navigator and launch Jupyter Lab as previously.</li>
+<li>Once Jupyter Lab has launched, navigate to the downloaded folder and open the <code>notebooks</code> &gt; <code>beginner</code> &gt; <code>notebooks</code> folder.</li>
+<li>Sequentially work through notebooks from <code>1</code> to <code>7</code>. Feel free to experiment with the notebook content.</li>
+<li>Emerging AI tools such as ChatGPT are incredibly useful for understanding and adapting code. These tools are largely replacing previously used online resources such as <a href="https://stackoverflow.com">Stack Overflow</a> (though these can still be useful).</li>
+</ul>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -450,13 +486,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../index.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Home</span>
+      <a href="../chapter_1/python.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Python Notebooks</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../chapter_0/installation.html" class="pagination-link">
-        <span class="nav-page-text">Software &amp; Accounts</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../chapter_1/pandas.html" class="pagination-link">
+        <span class="nav-page-text">Pandas &amp; Data</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

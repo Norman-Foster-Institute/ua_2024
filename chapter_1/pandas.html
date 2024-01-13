@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>NFI Urban Analytics 2024 - Pandas and Data</title>
+<title>NFI Urban Analytics 2024 - Pandas &amp; Data</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -65,7 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
 <link href="../chapter_2/qgis.html" rel="next">
-<link href="../chapter_1/python.html" rel="prev">
+<link href="../chapter_1/open_source.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -123,7 +123,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapter_1/python.html">Basic Coding</a></li><li class="breadcrumb-item"><a href="../chapter_1/pandas.html">Pandas and Data</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapter_1/python.html">Basic Coding</a></li><li class="breadcrumb-item"><a href="../chapter_1/pandas.html">Pandas &amp; Data</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
     </div>
@@ -185,13 +185,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapter_1/python.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Python and Notebooks</span></a>
+ <span class="menu-text">Python Notebooks</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapter_1/open_source.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Open Source</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapter_1/pandas.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Pandas and Data</span></a>
+ <span class="menu-text">Pandas &amp; Data</span></a>
   </div>
 </li>
       </ul>
@@ -230,12 +236,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#munging-and-wrangling" id="toc-munging-and-wrangling" class="nav-link active" data-scroll-target="#munging-and-wrangling">Munging and wrangling</a></li>
+  <li><a href="#acknowledgements" id="toc-acknowledgements" class="nav-link" data-scroll-target="#acknowledgements">Acknowledgements</a></li>
   <li><a href="#dataset" id="toc-dataset" class="nav-link" data-scroll-target="#dataset">Dataset</a></li>
   <li><a href="#pandas-101" id="toc-pandas-101" class="nav-link" data-scroll-target="#pandas-101">Pandas 101</a>
   <ul class="collapse">
   <li><a href="#data-structures" id="toc-data-structures" class="nav-link" data-scroll-target="#data-structures">Data Structures</a></li>
   <li><a href="#inspect" id="toc-inspect" class="nav-link" data-scroll-target="#inspect">Inspect</a></li>
-  <li><a href="#summarise" id="toc-summarise" class="nav-link" data-scroll-target="#summarise">Summarise</a></li>
+  <li><a href="#summary-statistics" id="toc-summary-statistics" class="nav-link" data-scroll-target="#summary-statistics">Summary Statistics</a></li>
   <li><a href="#create-new-columns" id="toc-create-new-columns" class="nav-link" data-scroll-target="#create-new-columns">Create new columns</a></li>
   <li><a href="#index-based-queries" id="toc-index-based-queries" class="nav-link" data-scroll-target="#index-based-queries">Index-based queries</a></li>
   <li><a href="#condition-based-queries" id="toc-condition-based-queries" class="nav-link" data-scroll-target="#condition-based-queries">Condition-based queries</a></li>
@@ -249,7 +256,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul></li>
   <li><a href="#tidy-data" id="toc-tidy-data" class="nav-link" data-scroll-target="#tidy-data">Tidy data</a></li>
   <li><a href="#grouping-transforming-aggregating" id="toc-grouping-transforming-aggregating" class="nav-link" data-scroll-target="#grouping-transforming-aggregating">Grouping, transforming, aggregating</a></li>
-  <li><a href="#acknowledgements" id="toc-acknowledgements" class="nav-link" data-scroll-target="#acknowledgements">Acknowledgements</a></li>
   </ul>
 </nav>
     </div>
@@ -258,7 +264,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Pandas and Data</h1>
+<h1 class="title">Pandas &amp; Data</h1>
 </div>
 
 
@@ -274,59 +280,62 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 <p>Now that you know some of the basics of Python Notebooks, it’s time to start using them for data science (no, that simple math you did the last time doesn’t count as data science!).</p>
-<p>You are about to enter the Python data ecosystem. It means that you will start learning how to work with Python from the middle. This course does not explicitly cover the fundamentals of programming. It is expected that those parts you need you’ll be able to pick up as you go through the use of the data science stack. If you’re stuck, confused or need further explanation, use Google (or your favourite search engine), ask AI to explain the code, or ask the faculty for guidance. The internet is a friend of every programmer, so you’re encouraged to use it effectively from the get-go.</p>
+<p>You are about to enter the Python data ecosystem. This course does not explicitly cover the fundamentals of programming; if you’re stuck, confused, or need further explanation, the answers are more often than not easily accessible through online resources such as your favourite search engine, <a href="https://stackoverflow.com">Stack Overflow</a>, and the amazingly capable explanatory power of emerging AI tools such as <a href="https://chat.openai.com">ChatGPT</a>. The internet is a friend of every programmer and you’re encouraged to use it effectively from the get-go. There has never been an easier time to learn how to code!</p>
 <p>Let’s dig in!</p>
 <section id="munging-and-wrangling" class="level2">
 <h2 class="anchored" data-anchor-id="munging-and-wrangling">Munging and wrangling</h2>
-<p>Real-world datasets are messy. There is no way around it: datasets have “holes” (missing data), the number of formats in which data can be stored is endless, and the best structure to share data is not always the optimum to analyse them, hence the need to <a href="http://dictionary.reference.com/browse/munge">munge</a>[1] them. As has been correctly pointed out in many outlets, much of the time spent in what is called Data Science is related not only to sophisticated modelling and insight but has to do with much more basic and less exotic tasks such as obtaining data, processing, and turning them into a shape that makes analysis possible, and exploring it to get to know their basic properties.</p>
-<p>Surprisingly, very little has been published on patterns, techniques, and best practices for quick and efficient data cleaning, manipulation, and transformation because of how labour-intensive this aspect is. In this session, you will use a few real-world datasets and learn how to process them into Python so they can be transformed and manipulated, if necessary, and analysed. For this, you will introduce some of the bread and butter of data analysis and scientific computing in Python. These are fundamental tools that are constantly used in almost any task relating to data analysis.</p>
-<p>This notebook covers the basics and the content that needs to be grasped, and discusses several patterns to clean and structure data properly, including tidying, subsetting, and aggregating. You finish with some basic visualisation. An additional extension presents more advanced tricks to manipulate tabular data.</p>
-<p>[1] The terms data munging and data wrangling are used interchangeably. Pick the one you like best!</p>
+<p>Real-world datasets are messy. There is no way around it: datasets have “holes” (missing data), the number of formats in which data can be stored can be endless, and the best structure to share data is not always the optimal for analysis. Hence the need to “munge” or “wrangle” data. Much of the time spent in what is called Data Science is related not only to modelling and insight but more often than not has to do with much more basic and less exotic tasks such as obtaining the data, data cleaning, and other preparation which makes analysis possible.</p>
+<p>Surprisingly, very little has been published on patterns, techniques, and best practices for quick and efficient data cleaning, manipulation, and transformation because of how labour-intensive this aspect is. In this session, we will use real-world datasets and learn how to transform and manipulate these, if necessary, prior to analysis. For this, we will introduce some of the bread-and-butter of data analysis and scientific computing in Python. These are fundamental tools that are widely and consistently used on almost any tasks relating to data analysis.</p>
+<p>This notebook covers the basics and the content that needs to be grasped, and discusses several patterns to clean and structure data properly, including tidying, subsetting, and aggregating. We will conclude with some basic visualisation. An additional extension presents more advanced tricks to manipulate tabular data.</p>
+</section>
+<section id="acknowledgements" class="level2">
+<h2 class="anchored" data-anchor-id="acknowledgements">Acknowledgements</h2>
+<p>This section is adapted from the <a href="https://github.com/martinfleis/sds">Spatial Data Science for Social Geography</a> by Martin Fleischman, which in turn is based on <a href="https://darribas.org/gds_course/content/home.html">A Course on Geographic Data Science</a> by Dani Arribas-Bel, both licensed under CC-BY-SA 4.0. The content and datasets were adapted, primarily to accommodate a different dataset.</p>
 </section>
 <section id="dataset" class="level2">
 <h2 class="anchored" data-anchor-id="dataset">Dataset</h2>
-<p>You will be exploring demographic characteristics of Madrid. The data has been aggregated to a neighbourhood level by the statistic’s office of Madrid’s City Hall. It contains information per year (from 2018 to 2023) and genre.</p>
-<p>As with many datasets that will be used during this course, the data was originally found in the data portal on the <a href="https://datos.madrid.es/portal/site/egob/menuitem.c05c1f754a33a9fbe4b2e4b284f1a5a0/?vgnextoid=0cccaebc07c1f710VgnVCM2000001f4a900aRCRD&amp;vgnextchannel=374512b9ace9f310VgnVCM100000171f5a0aRCRD&amp;vgnextfmt=default">following link</a></p>
-<p>The main tool you should use for this task is the <code>pandas</code> package. As with the <code>math</code> you used before, you must import it first.</p>
+<p>We will be exploring demographic characteristics of Madrid. The data has been aggregated to a neighbourhood level by the statistic’s office of Madrid’s City Hall. It contains information per year (from 2018 to 2023) and theme.</p>
+<p>As with many datasets that will be used during this course, the data was originally found in an online data portal at the <a href="https://datos.madrid.es/portal/site/egob/menuitem.c05c1f754a33a9fbe4b2e4b284f1a5a0/?vgnextoid=0cccaebc07c1f710VgnVCM2000001f4a900aRCRD&amp;vgnextchannel=374512b9ace9f310VgnVCM100000171f5a0aRCRD&amp;vgnextfmt=default">following link</a></p>
+<p>The main tool we will use for this task is the <code>pandas</code> package. As with any Python module or package, the Pandas package has to be imported into the Notebook prior to usage.</p>
 <div class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>The data is stored in a CSV file. To make things easier, you can read data from a file posted online so, for now, you do not need to download any dataset:</p>
+<p>Pandas let’s us work with datasets, and stores the information in a <code>DataFrame</code> consisting of rows and columns. Here, we will read an online <code>csv</code> dataset into a Pandas <code>DataFrame</code>. Pandas can open local files directly, but also has the nifty ability to download files directly from the web:</p>
 <div class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>madrid_pop <span class="op">=</span> pd.read_csv(</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"https://datos.madrid.es/egob/catalogo/300557-0-poblacion-distrito-barrio.csv"</span>,</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    sep<span class="op">=</span><span class="st">";"</span>,</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># here we will directly fetch the CSV dataset and save it as a Pandas DataFrame</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>madrid_pop <span class="op">=</span> pd.read_csv(</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"https://datos.madrid.es/egob/catalogo/300557-0-poblacion-distrito-barrio.csv"</span>,</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    sep<span class="op">=</span><span class="st">";"</span>,</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <blockquote class="blockquote">
-<p><strong>Tip</strong></p>
-<p>You are using <code>read_csv</code> because the file you want to read is in CSV format. However, the current data is actually not separated by <em>commas</em> <code>,</code> but with a semicolon <code>;</code>, hence the additional parameter in the code.</p>
-<p>Note that <code>pandas</code> allows for many more formats to be read and write. A full list of formats supported may be found in <a href="https://pandas.pydata.org/docs/user_guide/io.html">the documentation</a>.</p>
+<p><strong>Delimiters</strong></p>
+<p>In this case we are using the Pandas <code>read_csv</code> method because the source file is a <code>csv</code>. By default, <code>csv</code> files are assumed to use commas for data delimitation, but this file uses semi-colons instead. This is why we are passing the optional <code>sep</code> parameter to specify a <code>;</code> delimeter.</p>
 </blockquote>
 <blockquote class="blockquote">
-<p><strong>Alternative</strong></p>
-<p>Instead of reading the file directly off the web, it is possible to download it manually, store it on your computer, and read it locally. To do that, you can follow these steps:</p>
-<ol type="1">
-<li>Download the file by clicking on <a href="https://datos.madrid.es/egob/catalogo/300557-0-poblacion-distrito-barrio.csv">this link</a> and saving the file</li>
-<li>Place the file in the same folder as the notebook where you intend to read it</li>
-<li>Replace the code in the cell above with:</li>
-</ol>
-<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>madrid_pop <span class="op">=</span> pd.read_csv(</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"poblacion_1_enero.csv"</span>,</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    sep<span class="op">=</span><span class="st">";"</span>,</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    index_col<span class="op">=</span><span class="st">"distrito"</span>,</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Formats</strong></p>
+<p>Note that <code>pandas</code> allows for many more formats to be read and written. A full list of formats supported may be found in <a href="https://pandas.pydata.org/docs/user_guide/io.html">the documentation</a>.</p>
 </blockquote>
+<p>It is also possible to download the file and read it locally. In this case, you would download the file by clicking on <a href="https://datos.madrid.es/egob/catalogo/300557-0-poblacion-distrito-barrio.csv">this link</a>. Then place it in the same folder as the notebook where you intend to read it from, and run the below cell.</p>
+<div class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># remember, this cell will only work if you have downloaded the file</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># and, if the filepath is correct!</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># uncomment the below lines to run!</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># madrid_pop = pd.read_csv(</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co">#     "poblacion_1_enero.csv",</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co">#     sep=";",</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co"># )</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 <section id="pandas-101" class="level2">
 <h2 class="anchored" data-anchor-id="pandas-101">Pandas 101</h2>
-<p>Now, you are ready to start playing and interrogating the dataset! What you have at your fingertips is a table summarising, for each of the districts in Madrid, how many people lived there by genre. These tables are called <code>DataFrame</code> objects, and they have a lot of functionality built-in to explore and manipulate the data they contain. Let’s explore a few of those cool tricks!</p>
+<p>Now, we are ready to start playing and interrogating the dataset! What you have at your fingertips is a table summarising, for each of the districts in Madrid, how many people lived there by gender. These tables are called <code>DataFrame</code> objects, and they have a lot of functionality built-in to explore and manipulate the data they contain. Let’s explore a few of those cool tricks!</p>
 <section id="data-structures" class="level3">
 <h3 class="anchored" data-anchor-id="data-structures">Data Structures</h3>
 <p>The first aspect worth spending a bit of time on is the structure of a <code>DataFrame</code>. You can print it by simply typing its name:</p>
-<div class="cell" data-execution_count="3">
+<div class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>madrid_pop</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="3">
+<div class="cell-output cell-output-display" data-execution_count="4">
 <div>
 
 
@@ -497,11 +506,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<p>As you can expect, the dataset was inputed in the original local languange so to make things a little easier, we are going to translate the column names using one list of texts.</p>
+<p>As you can expect, the dataset was provided in the original local language, so to make things a little easier, we are going to translate the column names using one list of texts. for this we will reassign the column names corresponding to their English equivalents.</p>
 <blockquote class="blockquote">
 <p><em>Note that there are multiple ways of arriving at the same output, the below is just one of them</em></p>
 </blockquote>
-<div class="cell" data-execution_count="4">
+<div class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>en_cols <span class="op">=</span> [</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"date"</span>,</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"code_municipality"</span>,</span>
@@ -514,10 +523,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">"num_people_men"</span>,</span>
 <span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">"num_people_women"</span>,</span>
 <span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>]</span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>madrid_pop.columns <span class="op">=</span> en_cols</span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>madrid_pop</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="4">
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>madrid_pop.columns <span class="op">=</span> en_cols</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>madrid_pop</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="5">
 <div>
 
 
@@ -688,20 +696,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<p>Note the printing is cut to keep a nice and compact view but enough to see its structure. Since they represent a table of data, <code>DataFrame</code> objects have two dimensions: rows and columns. Each of these is automatically assigned a name in what you will call its <em>index</em>. When printing, the index of each dimension is rendered in bold, as opposed to the standard rendering for the content. The example above shows how the column index is automatically picked up from the <code>.csv</code> file’s column names. For rows, we will specify <code>disctrict</code> to be used as the index.</p>
-<blockquote class="blockquote">
-<p>In our case, because we had not established the <code>index_col</code> from the loading of the file <code>pandas</code> automatically generates a sequence starting in <code>0</code> and going all the way to the number of rows minus one. This is the standard structure of a <code>DataFrame</code> object, so you will come to it over and over. Importantly, even when you move to spatial data, your datasets will have a similar structure.</p>
-</blockquote>
-<div class="cell" data-execution_count="5">
+<p>The default printing is truncated to keep a compact view, but is enough to convey its structure. <code>DataFrame</code> objects have two dimensions: rows and columns. Rows are typically identified with an index column and columns are typically identified with names describing their content. The above example shows how the column names were automatically lifted from the <code>csv</code> file’s column headers.</p>
+<p>We can set the row index using the <code>set_index()</code> method. Let’s set the index to use the <code>district</code> column.</p>
+<div class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove leading and trailing spaces from 'distrito'</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>madrid_pop[<span class="st">"district"</span>] <span class="op">=</span> madrid_pop[<span class="st">"district"</span>].<span class="bu">str</span>.strip()</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>madrid_pop.set_index(<span class="st">"district"</span>, inplace<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co"># set the index based on the district column</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>madrid_pop.set_index(<span class="st">"district"</span>, inplace<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>One final feature that is worth mentioning about these tables is that they can hold columns with different types of data. In this example, you have counts (or <code>int</code> for integer types) and ratios (or ‘float’ for floating point numbers - a number with decimals) for each column. But it is useful to keep in mind that you can combine this with columns that hold other types of data such as categories, text (<code>str</code>, for string), dates or, as you will see later in the course, geographic features.</p>
-<p>To extract a single column from this <code>DataFrame</code>, specify its name in the square brackets (<code>[]</code>). Note that the name, in this case, is a <code>string</code>. A piece of text. As such, it needs to be within single (<code>'</code>) or double quotes (<code>"</code>). The resulting data structure is no longer a <code>DataFrame</code>, but you have a <code>Series</code> because you deal with a single column.</p>
-<div class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>madrid_pop[<span class="st">"num_people_women"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="6">
+<p>Columns can be assigned as one of various forms of data such as integers as <code>int</code>, decimals as <code>float</code>, text as <code>str</code>, or if pandas is unable to use a standard type, it might use the <code>object</code> type as a catch-all type.</p>
+<p>To extract a single column from this <code>DataFrame</code>, specify its name in square brackets (<code>[]</code>). Note that the name is a <code>string</code> - a piece of text - which needs to be denoted with single (<code>'</code>) or double quotes (<code>"</code>). Without the quotes, Python will think you are referring to a variable, and will then complain that the variable can’t be found!</p>
+<p>A single column is not a <code>DataFrame</code> but a <code>Series</code>, which also means that a <code>DataFrame</code> is a collection of <code>Series</code>!</p>
+<div class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># this will fetch and return the num_people_women column as a Series</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>madrid_pop[<span class="st">"num_people_women"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="7">
 <pre><code>district
 Centro           68.917
 Arganzuela       81.550
@@ -720,10 +729,10 @@ Name: num_people_women, Length: 918, dtype: object</code></pre>
 </section>
 <section id="inspect" class="level3">
 <h3 class="anchored" data-anchor-id="inspect">Inspect</h3>
-<p>Inspecting what it looks like. You can check the table’s top (or bottom) X lines by passing X to the method <code>head</code> (<code>tail</code>). For example, for the top/bottom five lines:</p>
-<div class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>madrid_pop.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="7">
+<p>You can specifically print the <code>DataFrames</code> top (or bottom) lines by passing a number to the method <code>head</code> or <code>tail</code>. For example, for the top or bottom three lines:</p>
+<div class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>madrid_pop.head(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="8">
 <div>
 
 
@@ -791,39 +800,15 @@ Name: num_people_women, Length: 918, dtype: object</code></pre>
 <td>53.458</td>
 <td>64.460</td>
 </tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">Salamanca</td>
-<td>1 de enero de 2023</td>
-<td>28079</td>
-<td>Madrid</td>
-<td>4</td>
-<td>4</td>
-<td>Salamanca</td>
-<td>145.702</td>
-<td>64.452</td>
-<td>81.250</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">Chamartín</td>
-<td>1 de enero de 2023</td>
-<td>28079</td>
-<td>Madrid</td>
-<td>5</td>
-<td>5</td>
-<td>Chamartín</td>
-<td>144.796</td>
-<td>65.245</td>
-<td>79.551</td>
-</tr>
 </tbody>
 </table>
 
 </div>
 </div>
 </div>
-<div class="cell" data-execution_count="8">
+<div class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>madrid_pop.tail(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="8">
+<div class="cell-output cell-output-display" data-execution_count="9">
 <div>
 
 
@@ -897,11 +882,11 @@ Name: num_people_women, Length: 918, dtype: object</code></pre>
 </div>
 </div>
 </div>
-<p>Inspecting your datasets is vital to find errors that could skew your analysis. As you can see, the last row of our dataset has been aggregated to consolidate the sum of all column values ( Spanish: <em><code>Todos</code></em> -&gt; English: <em><code>All</code></em> ).</p>
-<p>Before continuing, let’s fix that. First we are going to check if we have any more occurrences of <em><code>Todos</code></em>.</p>
-<div class="cell" data-execution_count="9">
+<p>Inspecting datasets is vital to find errors that might skew your analysis. The last row of the dataset contains the sums of other column values ( Spanish: <em><code>Todos</code></em> -&gt; English: <em><code>All</code></em> ).</p>
+<p>Before continuing, let’s fix this by removing these columns from the dataset. First, let’s check if we have any more occurrences of <em><code>Todos</code></em>. We can use Pandas’ <code>loc</code> indexer to fetch rows where the index column contains the text string <code>Todos</code>.</p>
+<div class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>madrid_pop.loc[<span class="st">"Todos"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="9">
+<div class="cell-output cell-output-display" data-execution_count="10">
 <div>
 
 
@@ -1013,7 +998,7 @@ Name: num_people_women, Length: 918, dtype: object</code></pre>
 </div>
 <p>Now that we know that for every year the data has been aggregated and added back as a new row, we know that removing the last row would not be enough to correct our DataFrame.</p>
 <p>We will make use of the <code>drop</code> function in combination with the native <code>loc</code> function of DataFrames.</p>
-<div class="cell" data-execution_count="10">
+<div class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Rows before droping values: "</span>, <span class="bu">len</span>(madrid_pop))</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>madrid_pop.drop(index<span class="op">=</span><span class="st">"Todos"</span>, inplace<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Rows after droping values: "</span>, <span class="bu">len</span>(madrid_pop))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1023,7 +1008,7 @@ Rows after droping values:  912</code></pre>
 </div>
 </div>
 <p>Now, let’s get an overview of the table:</p>
-<div class="cell" data-execution_count="11">
+<div class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>madrid_pop.info()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
@@ -1044,32 +1029,28 @@ dtypes: int64(1), object(8)
 memory usage: 71.2+ KB</code></pre>
 </div>
 </div>
-<blockquote class="blockquote">
-<p>Can you spot something wrong ?</p>
-</blockquote>
-<p>Intereger numbers can sometimes be used as category tags (like for the case of <code>code_district</code> or <code>code_neighbourhood</code>). However, the actual values of population counts would be better stored as full integers. For that, we will perform the following operations :</p>
+<p><strong>Can you spot something wrong?</strong></p>
+<p>Integer numbers are sometimes stored as text values, especially if the input dataset contained commas, periods, or null data values. The actual values of population counts would be better stored as full integers so that we can more effectively work with this data as a numeric data type. Let’s take the following steps:</p>
 <ol type="1">
-<li>List the columns that have people counts</li>
-<li>Loop throuhg each one and :</li>
+<li>Create a list containg the column names that have people counts</li>
+<li>Loop through the list, removing periods from the numbers, then casting the values to integer types while allowing for <code>null</code> data values</li>
 </ol>
-<ul>
-<li>Remove all dots <code>.</code></li>
-<li>Convert the values to numeric; allowing for potentia <code>NaN</code> values</li>
-<li>Specify that the values are <code>Int64</code></li>
-</ul>
-<div class="cell" data-execution_count="12">
+<div class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># List of columns to process</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>columns_to_process <span class="op">=</span> [<span class="st">"num_people"</span>, <span class="st">"num_people_men"</span>, <span class="st">"num_people_women"</span>]</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Loop through columns and perform operations</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Loop through columns</span></span>
 <span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> column <span class="kw">in</span> columns_to_process:</span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>    madrid_pop[column] <span class="op">=</span> madrid_pop[column].<span class="bu">str</span>.replace(<span class="st">"."</span>, <span class="st">""</span>)  <span class="co"># Remove dots</span></span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>    madrid_pop[column] <span class="op">=</span> pd.to_numeric(</span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>        madrid_pop[column], errors<span class="op">=</span><span class="st">"coerce"</span></span>
-<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>    )  <span class="co"># Convert to numeric</span></span>
-<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>    madrid_pop[column] <span class="op">=</span> madrid_pop[column].astype(<span class="st">"Int64"</span>)  <span class="co"># Convert to Int64</span></span>
-<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>madrid_pop.info()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># create a copy of the column</span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>    dirty_numbers <span class="op">=</span> madrid_pop[column]</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># remove "." from the numbers</span></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>    clean_numbers <span class="op">=</span> dirty_numbers.<span class="bu">str</span>.replace(<span class="st">"."</span>, <span class="st">""</span>)</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># convert to numeric - coerce will convert non numeric values to NaN (Not a Number) or "null" types</span></span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>    numeric_numbers <span class="op">=</span> pd.to_numeric(clean_numbers, errors<span class="op">=</span><span class="st">"coerce"</span>)</span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># overwrite the original column</span></span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>    madrid_pop[column] <span class="op">=</span> numeric_numbers</span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>madrid_pop.info()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
 Index: 912 entries, Centro to Barajas
@@ -1082,20 +1063,19 @@ Data columns (total 9 columns):
  3   code_district       912 non-null    object
  4   code_neighbourhood  912 non-null    object
  5   neighbourhood       912 non-null    object
- 6   num_people          912 non-null    Int64 
- 7   num_people_men      912 non-null    Int64 
- 8   num_people_women    912 non-null    Int64 
-dtypes: Int64(3), int64(1), object(5)
-memory usage: 73.9+ KB</code></pre>
+ 6   num_people          912 non-null    int64 
+ 7   num_people_men      912 non-null    int64 
+ 8   num_people_women    912 non-null    int64 
+dtypes: int64(4), object(5)
+memory usage: 71.2+ KB</code></pre>
 </div>
 </div>
 </section>
-<section id="summarise" class="level3">
-<h3 class="anchored" data-anchor-id="summarise">Summarise</h3>
-<p>Or of the <em>values</em> of the table:</p>
-<div class="cell" data-execution_count="13">
+<section id="summary-statistics" class="level3">
+<h3 class="anchored" data-anchor-id="summary-statistics">Summary Statistics</h3>
+<div class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>madrid_pop.describe()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="13">
+<div class="cell-output cell-output-display" data-execution_count="14">
 <div>
 
 
@@ -1113,9 +1093,9 @@ memory usage: 73.9+ KB</code></pre>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">count</td>
 <td>912.0</td>
-<td>912.0</td>
-<td>912.0</td>
-<td>912.0</td>
+<td>912.000000</td>
+<td>912.000000</td>
+<td>912.000000</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">mean</td>
@@ -1134,37 +1114,37 @@ memory usage: 73.9+ KB</code></pre>
 <tr class="even">
 <td data-quarto-table-cell-role="th">min</td>
 <td>28079.0</td>
-<td>945.0</td>
-<td>490.0</td>
-<td>455.0</td>
+<td>945.000000</td>
+<td>490.000000</td>
+<td>455.000000</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">25%</td>
 <td>28079.0</td>
-<td>17330.5</td>
-<td>8132.0</td>
-<td>9267.25</td>
+<td>17330.500000</td>
+<td>8132.000000</td>
+<td>9267.250000</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">50%</td>
 <td>28079.0</td>
-<td>24700.5</td>
-<td>11580.0</td>
-<td>13640.0</td>
+<td>24700.500000</td>
+<td>11580.000000</td>
+<td>13640.000000</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">75%</td>
 <td>28079.0</td>
-<td>42166.5</td>
-<td>19700.25</td>
-<td>22349.75</td>
+<td>42166.500000</td>
+<td>19700.250000</td>
+<td>22349.750000</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">max</td>
 <td>28079.0</td>
-<td>262339.0</td>
-<td>122632.0</td>
-<td>139707.0</td>
+<td>262339.000000</td>
+<td>122632.000000</td>
+<td>139707.000000</td>
 </tr>
 </tbody>
 </table>
@@ -1172,11 +1152,11 @@ memory usage: 73.9+ KB</code></pre>
 </div>
 </div>
 </div>
-<p>Note how the output is also a <code>DataFrame</code> object, so you can do with it the same things you would with the original table (e.g.&nbsp;writing it to a file).</p>
+<p>Note how the output is also a <code>DataFrame</code> object, so you can manipulate it the same way that you would with the original table (e.g.&nbsp;writing it to a file).</p>
 <p>In this case, the summary might be better presented if the table is “transposed”:</p>
-<div class="cell" data-execution_count="14">
+<div class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>madrid_pop[columns_to_process].describe().T</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="14">
+<div class="cell-output cell-output-display" data-execution_count="15">
 <div>
 
 
@@ -1201,9 +1181,9 @@ memory usage: 73.9+ KB</code></pre>
 <td>43336.804825</td>
 <td>51564.255101</td>
 <td>945.0</td>
-<td>17330.5</td>
+<td>17330.50</td>
 <td>24700.5</td>
-<td>42166.5</td>
+<td>42166.50</td>
 <td>262339.0</td>
 </tr>
 <tr class="even">
@@ -1212,7 +1192,7 @@ memory usage: 73.9+ KB</code></pre>
 <td>20210.739035</td>
 <td>24072.657139</td>
 <td>490.0</td>
-<td>8132.0</td>
+<td>8132.00</td>
 <td>11580.0</td>
 <td>19700.25</td>
 <td>122632.0</td>
@@ -1235,9 +1215,9 @@ memory usage: 73.9+ KB</code></pre>
 </div>
 </div>
 <p>Equally, common descriptive statistics are also available. To obtain minimum values for each column, you can use <code>.min()</code>.</p>
-<div class="cell" data-execution_count="15">
+<div class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>madrid_pop.<span class="bu">min</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="15">
+<div class="cell-output cell-output-display" data-execution_count="16">
 <pre><code>date                  1 de enero de 2018
 code_municipality                  28079
 municipality                      Madrid
@@ -1251,17 +1231,17 @@ dtype: object</code></pre>
 </div>
 </div>
 <p>Or to obtain a minimum for a single column only.</p>
-<div class="cell" data-execution_count="16">
+<div class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>madrid_pop[<span class="st">"num_people_women"</span>].<span class="bu">min</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="16">
+<div class="cell-output cell-output-display" data-execution_count="17">
 <pre><code>455</code></pre>
 </div>
 </div>
 <p>Note here how you have restricted the calculation of the minimum value to one column only by getting the <code>Series</code> and calling <code>.min()</code> on that.</p>
 <p>Similarly, you can restrict the calculations to a single district using <code>.loc[]</code> indexer:</p>
-<div class="cell" data-execution_count="17">
+<div class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>madrid_pop.loc[<span class="st">"Centro"</span>].<span class="bu">min</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="17">
+<div class="cell-output cell-output-display" data-execution_count="18">
 <pre><code>date                  1 de enero de 2018
 code_municipality                  28079
 municipality                      Madrid
@@ -1274,10 +1254,11 @@ num_people_women                    3529
 dtype: object</code></pre>
 </div>
 </div>
-<p>Let’s see when and where did said minimum ocurred.</p>
-<div class="cell" data-execution_count="18">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>madrid_pop[madrid_pop[<span class="st">"num_people_women"</span>] <span class="op">==</span> <span class="dv">3529</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="18">
+<p>Let’s see when and where the said minimum occurred.</p>
+<div class="cell" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># we can use comparators to index into the DataFrame where a specific column equals a specific value</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>madrid_pop[madrid_pop[<span class="st">"num_people_women"</span>] <span class="op">==</span> <span class="dv">3529</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="19">
 <div>
 
 
@@ -1331,24 +1312,24 @@ dtype: object</code></pre>
 <section id="create-new-columns" class="level3">
 <h3 class="anchored" data-anchor-id="create-new-columns">Create new columns</h3>
 <p>You can generate new variables by applying operations to existing ones. For example, you can calculate the ratio of women.</p>
-<div class="cell" data-execution_count="19">
+<div class="cell" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>ratio_women <span class="op">=</span> madrid_pop[<span class="st">"num_people_women"</span>] <span class="op">/</span> madrid_pop[<span class="st">"num_people"</span>]</span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>ratio_women.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="19">
+<div class="cell-output cell-output-display" data-execution_count="20">
 <pre><code>district
 Centro        0.493367
-Arganzuela     0.53195
+Arganzuela    0.531950
 Retiro        0.546651
 Salamanca     0.557645
 Chamartín     0.549401
-dtype: Float64</code></pre>
+dtype: float64</code></pre>
 </div>
 </div>
 <p>Once you have created the variable, you can make it part of the table:</p>
-<div class="cell" data-execution_count="20">
+<div class="cell" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>madrid_pop[<span class="st">"ratio_women"</span>] <span class="op">=</span> ratio_women</span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>madrid_pop.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="20">
+<div class="cell-output cell-output-display" data-execution_count="21">
 <div>
 
 
@@ -1406,7 +1387,7 @@ dtype: Float64</code></pre>
 <td>153304</td>
 <td>71754</td>
 <td>81550</td>
-<td>0.53195</td>
+<td>0.531950</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Retiro</td>
@@ -1456,14 +1437,15 @@ dtype: Float64</code></pre>
 </section>
 <section id="index-based-queries" class="level3">
 <h3 class="anchored" data-anchor-id="index-based-queries">Index-based queries</h3>
-<p>Here, you explore how to subset parts of a <code>DataFrame</code> if you know exactly which bits you want. For example, if you want to extract the influenza mortality and total population of the first four areas in the table, you use <code>loc</code> with lists:</p>
-<div class="cell" data-execution_count="21">
+<p>Here, you explore how to subset parts of a <code>DataFrame</code> if you know exactly which bits you want.</p>
+<p>For example, if you want to extract the “date”, “neighbourhood”, and “ratio_women” columns for the “Centro” and “Retiro” districts, you can use the Pandas <code>loc</code> indexer. Indexing in Pandas is very flexible and powerful, but can also be a bit confusing for the same reason. The <a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.loc.html">loc documentation</a> and some back-and-forth with AI can be helpful in clearing up points of confusion!</p>
+<div class="cell" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>women_ratio_2districts <span class="op">=</span> madrid_pop.loc[</span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>    [<span class="st">"Centro"</span>, <span class="st">"Retiro"</span>],</span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>    [<span class="st">"date"</span>, <span class="st">"ratio_women"</span>],</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>    [<span class="st">"Centro"</span>, <span class="st">"Retiro"</span>],  <span class="co"># the rows to retrieve</span></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>    [<span class="st">"date"</span>, <span class="st">"neighbourhood"</span>, <span class="st">"ratio_women"</span>],  <span class="co"># the columns to retrieve</span></span>
 <span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>]</span>
 <span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>women_ratio_2districts</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="21">
+<div class="cell-output cell-output-display" data-execution_count="22">
 <div>
 
 
@@ -1472,10 +1454,12 @@ dtype: Float64</code></pre>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
 <th data-quarto-table-cell-role="th">date</th>
+<th data-quarto-table-cell-role="th">neighbourhood</th>
 <th data-quarto-table-cell-role="th">ratio_women</th>
 </tr>
 <tr class="odd">
 <th data-quarto-table-cell-role="th">district</th>
+<th data-quarto-table-cell-role="th"></th>
 <th data-quarto-table-cell-role="th"></th>
 <th data-quarto-table-cell-role="th"></th>
 </tr>
@@ -1484,78 +1468,89 @@ dtype: Float64</code></pre>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Centro</td>
 <td>1 de enero de 2023</td>
+<td>Centro</td>
 <td>0.493367</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Centro</td>
 <td>1 de enero de 2023</td>
+<td>Palacio</td>
 <td>0.508234</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Centro</td>
 <td>1 de enero de 2023</td>
-<td>0.47853</td>
+<td>Embajadores</td>
+<td>0.478530</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Centro</td>
 <td>1 de enero de 2023</td>
+<td>Cortes</td>
 <td>0.505362</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Centro</td>
 <td>1 de enero de 2023</td>
+<td>Justicia</td>
 <td>0.491685</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">...</td>
 <td>...</td>
 <td>...</td>
+<td>...</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Retiro</td>
 <td>1 de enero de 2018</td>
+<td>Adelfas</td>
 <td>0.540638</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Retiro</td>
 <td>1 de enero de 2018</td>
+<td>Estrella</td>
 <td>0.535416</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Retiro</td>
 <td>1 de enero de 2018</td>
+<td>Ibiza</td>
 <td>0.562966</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Retiro</td>
 <td>1 de enero de 2018</td>
+<td>LosJerónimos</td>
 <td>0.531449</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Retiro</td>
 <td>1 de enero de 2018</td>
+<td>NiñoJesús</td>
 <td>0.545746</td>
 </tr>
 </tbody>
 </table>
 
-<p>84 rows × 2 columns</p>
+<p>84 rows × 3 columns</p>
 </div>
 </div>
 </div>
 <p>You can see how you can create a list with the names (index IDs) along each of the two dimensions of a <code>DataFrame</code> (rows and columns), and <code>loc</code> will return a subset of the original table only with the elements queried for.</p>
-<p>An alternative to list-based queries is what is called “range-based” queries. These work on the indices of the table, but instead of requiring the ID of each item you want to retrieve, they operate by requiring only two IDs: the first and last element in a range of items. Range queries are expressed with a colon (<code>:</code>). However, to perform this operation Index IDs need to be unique. Since this is not our case we will create a new index composed the year and the <code>code_neighbourhood</code> as a new index to our DataFrame.</p>
-<div class="cell" data-execution_count="22">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Reset the index to bring back 'district' as a regular column</span></span>
+<p>An alternative to list-based queries is what is called “range-based” queries. These work on the indices of the table, but instead of requiring the ID of each item you want to retrieve, they operate by requiring only two IDs: the first and last element in a range of items. Range queries are expressed with a colon (<code>:</code>). However, to perform this operation Index IDs need to be unique. Since this is not our case we will first create a new index composed the year and the <code>code_neighbourhood</code> as a new index to our DataFrame.</p>
+<div class="cell" data-execution_count="23">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Reset the index to move 'district' back to a regular column</span></span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>madrid_pop.reset_index(inplace<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract the last 4 digits from the 'date' column and create a new 'year' column</span></span>
 <span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>madrid_pop[<span class="st">"year"</span>] <span class="op">=</span> madrid_pop[<span class="st">"date"</span>].<span class="bu">str</span>[<span class="op">-</span><span class="dv">4</span>:]</span>
 <span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a new column with the combination of 'year' and 'code_neighbourhood'</span></span>
 <span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>madrid_pop[<span class="st">"new_index"</span>] <span class="op">=</span> madrid_pop[<span class="st">"year"</span>] <span class="op">+</span> <span class="st">"_"</span> <span class="op">+</span> madrid_pop[<span class="st">"code_neighbourhood"</span>]</span>
-<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Set the new index</span></span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Set this as the new index</span></span>
 <span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>madrid_pop.set_index(<span class="st">"new_index"</span>, inplace<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a>madrid_pop.head(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="22">
+<div class="cell-output cell-output-display" data-execution_count="23">
 <div>
 
 
@@ -1620,7 +1615,7 @@ dtype: Float64</code></pre>
 <td>153304</td>
 <td>71754</td>
 <td>81550</td>
-<td>0.53195</td>
+<td>0.531950</td>
 <td>2023</td>
 </tr>
 <tr class="odd">
@@ -1644,12 +1639,13 @@ dtype: Float64</code></pre>
 </div>
 </div>
 </div>
-<p>Look at the order of the index. This is important beacuase “range-based” queries assume you understand what come first in the data to input the index cutoff values.</p>
-<div class="cell" data-execution_count="23">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>range_query <span class="op">=</span> madrid_pop.loc[<span class="st">"2019_1"</span>:<span class="st">"2018_1"</span>, <span class="st">"num_people"</span>:<span class="st">"num_people_women"</span>]</span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>range_query</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="23">
+<p>Look at the order of the row and column indexes. This is important becuase “range-based” queries assume you understand the order and arrangement.</p>
+<div class="cell" data-execution_count="24">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># return all content between rows "2019_1":"2018_1" and columns "num_people":"num_people_women"</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>range_query <span class="op">=</span> madrid_pop.loc[<span class="st">"2019_1"</span>:<span class="st">"2018_1"</span>, <span class="st">"num_people"</span>:<span class="st">"num_people_women"</span>]</span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>range_query</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="24">
 <div>
 
 
@@ -1749,10 +1745,10 @@ dtype: Float64</code></pre>
 <h3 class="anchored" data-anchor-id="condition-based-queries">Condition-based queries</h3>
 <p>However, sometimes, you do not know exactly which observations you want, but you do know what conditions they need to satisfy (e.g.&nbsp;areas with more than 2,000 inhabitants). For these cases, <code>DataFrames</code> support selection based on conditions. Let us see a few examples. Suppose you want to select…</p>
 <p><em>… neighbourhoods wich over time have had less than 50% of women</em></p>
-<div class="cell" data-execution_count="24">
+<div class="cell" data-execution_count="25">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>fewer_women <span class="op">=</span> madrid_pop[madrid_pop[<span class="st">"ratio_women"</span>] <span class="op">&lt;</span> <span class="fl">0.5</span>]</span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>fewer_women</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="24">
+<div class="cell-output cell-output-display" data-execution_count="25">
 <div>
 
 
@@ -1817,7 +1813,7 @@ dtype: Float64</code></pre>
 <td>46204</td>
 <td>24094</td>
 <td>22110</td>
-<td>0.47853</td>
+<td>0.478530</td>
 <td>2023</td>
 </tr>
 <tr class="odd">
@@ -2012,7 +2008,7 @@ dtype: Float64</code></pre>
 <td>1895</td>
 <td>967</td>
 <td>928</td>
-<td>0.48971</td>
+<td>0.489710</td>
 <td>2022</td>
 </tr>
 <tr class="even">
@@ -2057,7 +2053,7 @@ dtype: Float64</code></pre>
 <td>18208</td>
 <td>9291</td>
 <td>8917</td>
-<td>0.48973</td>
+<td>0.489730</td>
 <td>2021</td>
 </tr>
 <tr class="odd">
@@ -2117,7 +2113,7 @@ dtype: Float64</code></pre>
 <td>1918</td>
 <td>988</td>
 <td>930</td>
-<td>0.48488</td>
+<td>0.484880</td>
 <td>2021</td>
 </tr>
 <tr class="odd">
@@ -2237,7 +2233,7 @@ dtype: Float64</code></pre>
 <td>134881</td>
 <td>67829</td>
 <td>67052</td>
-<td>0.49712</td>
+<td>0.497120</td>
 <td>2019</td>
 </tr>
 <tr class="odd">
@@ -2442,11 +2438,11 @@ dtype: Float64</code></pre>
 </div>
 </div>
 <p><em>… most populated area across all years:</em></p>
-<div class="cell" data-execution_count="25">
+<div class="cell" data-execution_count="26">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>largest_hood_num <span class="op">=</span> madrid_pop[<span class="st">"num_people"</span>].<span class="bu">max</span>()</span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>largest_hood <span class="op">=</span> madrid_pop[madrid_pop[<span class="st">"num_people"</span>] <span class="op">==</span> largest_hood_num]</span>
 <span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>largest_hood</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="25">
+<div class="cell-output cell-output-display" data-execution_count="26">
 <div>
 
 
@@ -2505,20 +2501,21 @@ dtype: Float64</code></pre>
 </div>
 </div>
 </div>
-<blockquote class="blockquote">
-<p><strong>Tip</strong></p>
 <p>If you are interested, more detail about <code>query</code> is available in the <a href="https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#the-query-method">pandas documentation</a>. This is another way of slicing Dataframes, but for now we will stay with the <code>loc</code> function.</p>
-</blockquote>
 </section>
 <section id="combining-queries" class="level3">
 <h3 class="anchored" data-anchor-id="combining-queries">Combining queries</h3>
 <p>Now, all of these queries can be combined with each other for further flexibility. For example, imagine you want to know the areas that have more than 100K inhabitants and have over 50% of women.</p>
-<div class="cell" data-execution_count="26">
+<div class="cell" data-execution_count="27">
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>women_power <span class="op">=</span> madrid_pop.loc[</span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>    (madrid_pop[<span class="st">"num_people_women"</span>] <span class="op">&gt;</span> <span class="dv">100000</span>) <span class="op">&amp;</span> (madrid_pop[<span class="st">"ratio_women"</span>] <span class="op">&gt;</span> <span class="fl">0.5</span>)</span>
-<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>]</span>
-<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>women_power</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="26">
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># the &amp; symbol will combine True conditions for the left result set</span></span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># with the True conditions from the right result set</span></span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># there is also an "or" operator which uses the "Pipe" symbol "|" instead</span></span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>    (madrid_pop[<span class="st">"num_people_women"</span>] <span class="op">&gt;</span> <span class="dv">100000</span>)</span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>    <span class="op">&amp;</span> (madrid_pop[<span class="st">"ratio_women"</span>] <span class="op">&gt;</span> <span class="fl">0.5</span>)</span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a>women_power</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="27">
 <div>
 
 
@@ -2943,7 +2940,7 @@ dtype: Float64</code></pre>
 <td>238154</td>
 <td>110401</td>
 <td>127753</td>
-<td>0.53643</td>
+<td>0.536430</td>
 <td>2019</td>
 </tr>
 <tr class="odd">
@@ -3075,11 +3072,11 @@ dtype: Float64</code></pre>
 </section>
 <section id="sorting" class="level3">
 <h3 class="anchored" data-anchor-id="sorting">Sorting</h3>
-<p>Among the many operations <code>DataFrame</code> objects support, one of the most useful ones is to sort a table based on a given column. For example, imagine you want to sort the table by the influenza cases:</p>
-<div class="cell" data-execution_count="27">
+<p>Among the many operations <code>DataFrame</code> objects support, one of the most useful ones is to sort a table based on a given column. For example, imagine you want to sort the table by the ratio of women:</p>
+<div class="cell" data-execution_count="28">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>madrid_sorted <span class="op">=</span> madrid_pop.sort_values(<span class="st">"ratio_women"</span>, ascending<span class="op">=</span><span class="va">False</span>)</span>
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>madrid_sorted</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="27">
+<div class="cell-output cell-output-display" data-execution_count="28">
 <div>
 
 
@@ -3249,7 +3246,7 @@ dtype: Float64</code></pre>
 <td>46204</td>
 <td>24094</td>
 <td>22110</td>
-<td>0.47853</td>
+<td>0.478530</td>
 <td>2023</td>
 </tr>
 <tr class="even">
@@ -3290,11 +3287,11 @@ dtype: Float64</code></pre>
 </div>
 </div>
 <p>Given the rates differ, it may be better to sort by neighbourhood and then by year.</p>
-<div class="cell" data-execution_count="28">
+<div class="cell" data-execution_count="29">
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>sort_ls <span class="op">=</span> [<span class="st">"code_neighbourhood"</span>, <span class="st">"year"</span>]</span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>madrid_sorted <span class="op">=</span> madrid_pop.sort_values(sort_ls, ascending<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>madrid_sorted</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="28">
+<div class="cell-output cell-output-display" data-execution_count="29">
 <div>
 
 
@@ -3359,7 +3356,7 @@ dtype: Float64</code></pre>
 <td>134881</td>
 <td>67829</td>
 <td>67052</td>
-<td>0.49712</td>
+<td>0.497120</td>
 <td>2019</td>
 </tr>
 <tr class="odd">
@@ -3504,39 +3501,34 @@ dtype: Float64</code></pre>
 </div>
 </div>
 </div>
-<p>This allows you to do so-called hierarchical sorting: sort first based on one column, if equal, then based on another column, etc.</p>
+<p>This allows you to do so-called hierarchical sorting: sort first based on one column then based on another.</p>
 </section>
 </section>
 <section id="visual-exploration" class="level2">
 <h2 class="anchored" data-anchor-id="visual-exploration">Visual Exploration</h2>
-<p>The next step to continue exploring a dataset is to get a feel for what it looks like, visually. You have already learnt how to unconver and inspect specific parts of the data, to check for particular cases you might be interested in. Now, you will see how to plot the data to get a sense of the overall distribution of values. For that, you can use the plotting capabilities of <code>pandas</code>.</p>
+<p>The next step to continue exploring a dataset is to get a feel for what it looks like, visually. We have already learnt how to uncover and inspect specific parts of the data to check for particular cases we might be interested in. Now, we will see how to plot the data to get a sense of the overall distribution of values. For that, we can use the plotting capabilities of <code>pandas</code>.</p>
 <section id="histograms" class="level3">
 <h3 class="anchored" data-anchor-id="histograms">Histograms</h3>
 <p>One of the most common graphical devices to display the distribution of values in a variable is a histogram. Values are assigned into groups of equal intervals, and the groups are plotted as bars rising as high as the number of values into the group.</p>
-<p>A histogram is easily created with the following command. In this case, let us have a look at the shape of the overall numbers of people:</p>
-<div class="cell" data-execution_count="29">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>_ <span class="op">=</span> madrid_pop[<span class="st">"num_people"</span>].plot.hist()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<p><img src="pandas_files/figure-html/cell-30-output-1.png" class="img-fluid"></p>
-</div>
-</div>
-<blockquote class="blockquote">
-<p><strong>Assigning to <code>_</code></strong></p>
-<p><code>pandas</code> returns an object with the drawing from its plotting methods. Since you are in Jupyter environment, and you don’t need to work further with that object; you can assign it to <code>_</code>, a convention for an unused variable.</p>
-</blockquote>
-<p>However, the default <code>pandas</code> plots can be a bit dull. A better option is to use another package, called <a href="https://seaborn.pydata.org"><code>seaborn</code></a>.</p>
+<p>A histogram is easily created with the following command. In this case, let’s have a look at the shape of the overall numbers of people:</p>
 <div class="cell" data-execution_count="30">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>madrid_pop[<span class="st">"num_people"</span>].plot.hist(bins<span class="op">=</span><span class="dv">25</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="30">
+<pre><code>&lt;Axes: ylabel='Frequency'&gt;</code></pre>
 </div>
-<blockquote class="blockquote">
-<p><strong>Why <code>sns</code>?</strong></p>
-<p><code>seaborn</code> is, by convention, imported as <code>sns</code>. That came as a joke after <a href="https://en.wikipedia.org/wiki/Sam_Seaborn">Samuel Normal Seaborn</a>, a fictional character The West Wing show.</p>
-</blockquote>
-<p>The same plot using <code>seaborn</code> has a more pleasant default style and more customisability.</p>
-<div class="cell" data-execution_count="32">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>sns.distplot(madrid_pop[<span class="st">"num_people"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="pandas_files/figure-html/cell-31-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+<p>However, the default <code>pandas</code> plots can be a bit dull. A better option is to use another package, called <a href="https://seaborn.pydata.org"><code>seaborn</code></a>.</p>
+<p><code>seaborn</code> is, by convention, imported as <code>sns</code>. Seaborn is a humorous reference to <a href="https://en.wikipedia.org/wiki/Sam_Seaborn">Samuel Normal Seaborn</a>, a fictional character The West Wing show.</p>
+<p>The same plot using <code>seaborn</code> has more agreeable default styles and more customisability.</p>
+<div class="cell" data-execution_count="31">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>sns.distplot(madrid_pop[<span class="st">"num_people"</span>], bins<span class="op">=</span><span class="dv">25</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>/var/folders/bs/sq3p18cs4dn1ws4kpmfyk_3c0000gn/T/ipykernel_35668/1382748844.py:1: UserWarning: 
+<pre><code>/var/folders/bs/sq3p18cs4dn1ws4kpmfyk_3c0000gn/T/ipykernel_25510/1337644598.py:3: UserWarning: 
 
 `distplot` is a deprecated function and will be removed in seaborn v0.14.0.
 
@@ -3546,25 +3538,25 @@ similar flexibility) or `histplot` (an axes-level function for histograms).
 For a guide to updating your code to use the new functions, please see
 https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
 
-  sns.distplot(madrid_pop["num_people"])</code></pre>
+  sns.distplot(madrid_pop["num_people"], bins=25)</code></pre>
 </div>
-<div class="cell-output cell-output-display" data-execution_count="32">
+<div class="cell-output cell-output-display" data-execution_count="31">
 <pre><code>&lt;Axes: xlabel='num_people', ylabel='Density'&gt;</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <p><img src="pandas_files/figure-html/cell-32-output-3.png" class="img-fluid"></p>
 </div>
 </div>
-<p>Note you are using <code>sns</code> instead of <code>pd</code>, as the function belongs to <code>seaborn</code> instead of <code>pandas</code>.</p>
-<p>You can quickly see most of the areas have seen somewhere between 0 and 50K people; and very few have more than 200K. However, remember that in this case we are visualizing all years together, which could lead to missinterpretations.</p>
+<p>Note we are using <code>sns</code> instead of <code>pd</code>, as the function belongs to <code>seaborn</code> instead of <code>pandas</code>.</p>
+<p>We can quickly see most of the areas have seen somewhere between 0 and 50K people; and very few have more than 200K. However, remember that in this case we are visualizing all years together, which could lead to misinterpretations.</p>
 </section>
 <section id="line-and-bar-plots" class="level3">
 <h3 class="anchored" data-anchor-id="line-and-bar-plots">Line and bar plots</h3>
 <p>Another very common way of visually displaying a variable is with a line or a bar chart. For example, if you want to generate a line plot of the (sorted) total population per year:</p>
-<div class="cell" data-execution_count="33">
+<div class="cell" data-execution_count="32">
 <div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>total_people_per_year <span class="op">=</span> madrid_pop.groupby(<span class="st">"year"</span>)[<span class="st">"num_people"</span>].<span class="bu">sum</span>()</span>
 <span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>total_people_per_year.plot()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="33">
+<div class="cell-output cell-output-display" data-execution_count="32">
 <pre><code>&lt;Axes: xlabel='year'&gt;</code></pre>
 </div>
 <div class="cell-output cell-output-display">
@@ -3573,9 +3565,9 @@ https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
 </div>
 <p>What is evident is the impact of COVID on the total population. But understanding that the data is reported on the 1st of January of each year is crucial to understand why you see the offset on the dates.</p>
 <p>For a bar plot all you need to do is to change from <code>plot</code> to <code>plot.bar</code>:</p>
-<div class="cell" data-execution_count="34">
+<div class="cell" data-execution_count="33">
 <div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>total_people_per_year.plot.bar()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="34">
+<div class="cell-output cell-output-display" data-execution_count="33">
 <pre><code>&lt;Axes: xlabel='year'&gt;</code></pre>
 </div>
 <div class="cell-output cell-output-display">
@@ -3583,7 +3575,7 @@ https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
 </div>
 </div>
 <p>Let’s try to plot the <code>ratio_women</code> per neighbourhood, to see if we spot anything in particular.</p>
-<div class="cell" data-execution_count="35">
+<div class="cell" data-execution_count="34">
 <div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>sns.lineplot(</span>
 <span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span><span class="st">"year"</span>,</span>
 <span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>    y<span class="op">=</span><span class="st">"ratio_women"</span>,</span>
@@ -3591,28 +3583,24 @@ https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
 <span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a>    data<span class="op">=</span>madrid_pop.sort_values(<span class="st">"year"</span>, ascending<span class="op">=</span><span class="va">True</span>),</span>
 <span id="cb47-6"><a href="#cb47-6" aria-hidden="true" tabindex="-1"></a>    legend<span class="op">=</span><span class="va">False</span>,</span>
 <span id="cb47-7"><a href="#cb47-7" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="35">
+<div class="cell-output cell-output-display" data-execution_count="34">
 <pre><code>&lt;Axes: xlabel='year', ylabel='ratio_women'&gt;</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <p><img src="pandas_files/figure-html/cell-35-output-2.png" class="img-fluid"></p>
 </div>
 </div>
-<p>We can see some outliers, but the reality is that the data is hard to read so we probably would need some further analysis and visual considerations to efficiently communicate any possible trend.</p>
-<blockquote class="blockquote">
-<p><strong>One line or multiple lines?</strong></p>
-<p>You may have noticed that in some cases, the code is on a single line, but longer code is split into multiple lines. Python requires you to follow the <a href="https://peps.python.org/pep-0008/">indentation rules</a>, but apart from that, there are not a lot of other limits.</p>
-</blockquote>
+<p>We can see some outliers, but the reality is that the data is hard to read so we probably would need some further analysis and visual considerations to efficiently communicate any possible trends.</p>
 </section>
 </section>
 <section id="tidy-data" class="level2">
 <h2 class="anchored" data-anchor-id="tidy-data">Tidy data</h2>
 <blockquote class="blockquote">
 <p><strong>Clean vs.&nbsp;Tidy</strong></p>
-<p>This section is a bit more advanced and hence considered optional. Feel free to skip it, move to the next, and return later when you feel more confident.</p>
+<p>This section is a bit more advanced and hence considered optional. Feel free to skip it and return later when you feel more confident.</p>
 </blockquote>
-<p>Once you can read your data in, explore specific cases, and have a first visual approach to the entire set, the next step can be preparing it for more sophisticated analysis. Maybe you are thinking of modeling it through regression, or on creating subgroups in the dataset with particular characteristics, or maybe you simply need to present summary measures that relate to a slightly different arrangement of the data than you have been presented with.</p>
-<p>For all these cases, you first need what statistician, and general R wizard, Hadley Wickham calls <em>“tidy data”</em>. The general idea to “tidy” your data is to convert them from whatever structure they were handed in to you into one that allows convenient and standardized manipulation, and that supports directly inputting the data into what he calls “<em>tidy</em>” analysis tools. But, at a more practical level, what is exactly <em>“tidy data”</em>? In Wickham’s own words:</p>
+<p>Once you can read your data in, explore specific cases, and have a first visual approach to the entire set, the next step can be preparing it for more sophisticated analysis. Maybe you are thinking of modelling it through regression, or on creating subgroups in the dataset with particular characteristics, or maybe you simply need to present summary measures that relate to a slightly different arrangement of the data than you have been presented with.</p>
+<p>For all these cases, you first need what statistician, and general R wizard, Hadley Wickham calls <em>“tidy data”</em>. The general idea to “tidy” your data is to convert them from whatever structure they were handed to you into one that allows convenient and standardized manipulation, and that supports directly inputting the data into what he calls “<em>tidy</em>” analysis tools. But, at a more practical level, what is exactly <em>“tidy data”</em>? In Wickham’s own words:</p>
 <blockquote class="blockquote">
 <p><em>Tidy data is a standard way of mapping the meaning of a dataset to its structure. A dataset is messy or tidy depending on how rows, columns and tables are matched up with observations, variables and types.</em></p>
 </blockquote>
@@ -3622,28 +3610,28 @@ https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
 <li>Each observation forms a row.</li>
 <li>Each type of observational unit forms a table.</li>
 </ol>
-<p>If you are further interested in the concept of <em>“tidy data”</em>, I recommend you check out the <a href="http://www.jstatsoft.org/v59/i10/">original paper</a> (open access) and the <a href="https://github.com/hadley/tidy-data">public repository</a> associated with it.</p>
+<p>If you are further interested in the concept of <em>“tidy data”</em>, we recommend the <a href="http://www.jstatsoft.org/v59/i10/">original paper</a> (open access) and the associated <a href="https://github.com/hadley/tidy-data">public repository</a>.</p>
 </section>
 <section id="grouping-transforming-aggregating" class="level2">
 <h2 class="anchored" data-anchor-id="grouping-transforming-aggregating">Grouping, transforming, aggregating</h2>
-<p>One of the advantage of tidy datasets is they allow to perform advanced transformations in a more direct way. One of the most common ones is what is called “group-by” operations. Originated in the world of databases, these operations allow you to group observations in a table by one of its labels, index, or category, and apply operations on the data group by group.</p>
-<p>For example, given our dataframe, you might want to compute the total sum of the population by each district. This task can be split into two different ones:</p>
+<p>One of the advantage of tidy datasets is they allow advanced transformations in a more direct way. One of the most common ones is what is called “group-by” operations. These originated in the world of databases, and allow you to group observations from a data table by labels, index, or category, and to then apply operations on the data on a group by group basis.</p>
+<p>For example, given our <code>DataFrame</code>, we might want to compute the total sum of the population by each district. This task can be split into two different steps:</p>
 <ul>
 <li>Group the table in each of the different districts.</li>
 <li>Compute the sum of <code>num_people</code> for each of them.</li>
 </ul>
-<p>To do this in <code>pandas</code>, meet one of its workhorses, and also one of the reasons why the library has become so popular: the <code>groupby</code> operator.</p>
-<div class="cell" data-execution_count="36">
+<p>To do this in <code>pandas</code>, meet one of its workhorses and also one of the reasons why the library has become so popular: the <code>groupby</code> operator.</p>
+<div class="cell" data-execution_count="35">
 <div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>mad_grouped <span class="op">=</span> madrid_pop.groupby(<span class="st">"year"</span>)</span>
 <span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>mad_grouped</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="36">
-<pre><code>&lt;pandas.core.groupby.generic.DataFrameGroupBy object at 0x145f03f10&gt;</code></pre>
+<div class="cell-output cell-output-display" data-execution_count="35">
+<pre><code>&lt;pandas.core.groupby.generic.DataFrameGroupBy object at 0x145152d90&gt;</code></pre>
 </div>
 </div>
 <p>The object <code>mad_grouped</code> still hasn’t computed anything. It is only a convenient way of specifying the grouping. But this allows us then to perform a multitude of operations on it. For our example, the sum is calculated as follows:</p>
-<div class="cell" data-execution_count="37">
+<div class="cell" data-execution_count="36">
 <div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>mad_grouped.<span class="bu">sum</span>(numeric_only<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="37">
+<div class="cell-output cell-output-display" data-execution_count="36">
 <div>
 
 
@@ -3713,7 +3701,7 @@ https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
 <td>6679862</td>
 <td>3119732</td>
 <td>3560130</td>
-<td>80.94286</td>
+<td>80.942860</td>
 </tr>
 </tbody>
 </table>
@@ -3721,10 +3709,10 @@ https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
 </div>
 </div>
 </div>
-<p>Similarly, you can also obtain a summary of each group:</p>
-<div class="cell" data-execution_count="38">
+<p>Similarly, we can also obtain a summary of each group:</p>
+<div class="cell" data-execution_count="37">
 <div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>mad_grouped.describe()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="38">
+<div class="cell-output cell-output-display" data-execution_count="37">
 <div>
 
 
@@ -3805,11 +3793,11 @@ https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
 <td>132695.0</td>
 <td>152.0</td>
 <td>0.533555</td>
-<td>0.01839</td>
+<td>0.018390</td>
 <td>0.481481</td>
 <td>0.521591</td>
 <td>0.534767</td>
-<td>0.54588</td>
+<td>0.545880</td>
 <td>0.583492</td>
 </tr>
 <tr class="even">
@@ -3825,7 +3813,7 @@ https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
 <td>152.0</td>
 <td>42975.342105</td>
 <td>...</td>
-<td>21987.0</td>
+<td>21987.00</td>
 <td>135238.0</td>
 <td>152.0</td>
 <td>0.533607</td>
@@ -3833,7 +3821,7 @@ https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
 <td>0.483197</td>
 <td>0.522356</td>
 <td>0.534355</td>
-<td>0.54565</td>
+<td>0.545650</td>
 <td>0.582908</td>
 </tr>
 <tr class="odd">
@@ -3897,7 +3885,7 @@ https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
 <td>152.0</td>
 <td>43245.552632</td>
 <td>...</td>
-<td>22296.5</td>
+<td>22296.50</td>
 <td>136133.0</td>
 <td>152.0</td>
 <td>0.532494</td>
@@ -3905,8 +3893,8 @@ https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
 <td>0.477414</td>
 <td>0.521691</td>
 <td>0.533305</td>
-<td>0.54492</td>
-<td>0.56714</td>
+<td>0.544920</td>
+<td>0.567140</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">2023</td>
@@ -3926,7 +3914,7 @@ https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
 <td>152.0</td>
 <td>0.532519</td>
 <td>0.017486</td>
-<td>0.47853</td>
+<td>0.478530</td>
 <td>0.522637</td>
 <td>0.533363</td>
 <td>0.544488</td>
@@ -3939,19 +3927,15 @@ https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
 </div>
 </div>
 </div>
-<p>You will not get into it today as it goes beyond the basics this chapter wants to cover, but keep in mind that <code>groupby</code> allows you to not only call generic functions (like <code>sum</code> or <code>describe</code>), but also your own functions. This opens the door for virtually any kind of transformation and aggregation possible.</p>
+<p>We will not get into it today as it goes beyond the basics this chapter covers, but keep in mind that <code>groupby</code> allows us to not only call generic functions (like <code>sum</code> or <code>describe</code>), but also custom functions. This opens the door for virtually any kind of transformation and aggregation possible.</p>
 <blockquote class="blockquote">
 <p><strong>Additional reading</strong></p>
 <ul>
-<li>A good introduction to data manipulation in Python is Wes McKinney’s “<a href="https://wesmckinney.com/book/pandas-basics">Python for Data Analysis</a>” [<span class="citation" data-cites="mckinney2012python">@mckinney2012python</span>].</li>
-<li>To explore further some of the visualization capabilities in at your fingertips, the Python library <code>seaborn</code> is an excellent choice. Its online <a href="https://seaborn.pydata.org/tutorial.html">tutorial</a> is a fantastic place to start.</li>
-<li>A good extension is Hadley Wickham’s “Tidy data” paper [<span class="citation" data-cites="wickham2014tidy">@wickham2014tidy</span>], which presents a very popular way of organising tabular data for efficient manipulation.</li>
+<li>A good introduction to data manipulation in Python is Wes McKinney’s “<a href="https://wesmckinney.com/book/pandas-basics">Python for Data Analysis</a>”.</li>
+<li>To further explore some of the visualization capabilities, the Python library <code>seaborn</code> is an excellent choice. Its online <a href="https://seaborn.pydata.org/tutorial.html">tutorial</a> is a fantastic place to start.</li>
+<li>A good extension is Hadley Wickham’s “Tidy data” paper, which presents a very popular way of organising tabular data for efficient manipulation.</li>
 </ul>
 </blockquote>
-</section>
-<section id="acknowledgements" class="level2">
-<h2 class="anchored" data-anchor-id="acknowledgements">Acknowledgements</h2>
-<p>This section is derived from <em>SDS</em> by <a href="https://github.com/martinfleis/sds"><span class="citation" data-cites="martinfleis">@martinfleis</span></a> which in turn is based on <em>A Course on Geographic Data Science</em> by <span class="citation" data-cites="darribas_gds_course">@darribas_gds_course</span>, both licensed under CC-BY-SA 4.0. The text was slightly adapted, mostly to accommodate a different dataset used.</p>
 
 
 </section>
@@ -4192,8 +4176,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../chapter_1/python.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Python and Notebooks</span>
+      <a href="../chapter_1/open_source.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Open Source</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

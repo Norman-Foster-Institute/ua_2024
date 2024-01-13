@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>NFI Urban Analytics 2024 - Python and Notebooks</title>
+<title>NFI Urban Analytics 2024 - Python Notebooks</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -64,7 +64,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../chapter_1/pandas.html" rel="next">
+<link href="../chapter_1/open_source.html" rel="next">
 <link href="../chapter_0/anaconda.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -120,7 +120,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapter_1/python.html">Basic Coding</a></li><li class="breadcrumb-item"><a href="../chapter_1/python.html">Python and Notebooks</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapter_1/python.html">Basic Coding</a></li><li class="breadcrumb-item"><a href="../chapter_1/python.html">Python Notebooks</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
     </div>
@@ -182,13 +182,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapter_1/python.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Python and Notebooks</span></a>
+ <span class="menu-text">Python Notebooks</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapter_1/open_source.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Open Source</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapter_1/pandas.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Pandas and Data</span></a>
+ <span class="menu-text">Pandas &amp; Data</span></a>
   </div>
 </li>
       </ul>
@@ -226,7 +232,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#simple-python-math" id="toc-simple-python-math" class="nav-link active" data-scroll-target="#simple-python-math">Simple Python math</a></li>
+  <li><a href="#acknowledgements" id="toc-acknowledgements" class="nav-link active" data-scroll-target="#acknowledgements">Acknowledgements</a></li>
+  <li><a href="#simple-python-math" id="toc-simple-python-math" class="nav-link" data-scroll-target="#simple-python-math">Simple Python math</a></li>
   <li><a href="#functions" id="toc-functions" class="nav-link" data-scroll-target="#functions">Functions</a>
   <ul class="collapse">
   <li><a href="#math-operations" id="toc-math-operations" class="nav-link" data-scroll-target="#math-operations">Math operations</a></li>
@@ -237,7 +244,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#updating-variables" id="toc-updating-variables" class="nav-link" data-scroll-target="#updating-variables">Updating variables</a></li>
   </ul></li>
   <li><a href="#data-types" id="toc-data-types" class="nav-link" data-scroll-target="#data-types">Data types</a></li>
-  <li><a href="#acknowledgements" id="toc-acknowledgements" class="nav-link" data-scroll-target="#acknowledgements">Acknowledgements</a></li>
   </ul>
 </nav>
     </div>
@@ -246,7 +252,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Python and Notebooks</h1>
+<h1 class="title">Python Notebooks</h1>
 </div>
 
 
@@ -261,6 +267,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
+<section id="acknowledgements" class="level2">
+<h2 class="anchored" data-anchor-id="acknowledgements">Acknowledgements</h2>
+<p>This Notebook is based on ‘Let the snake in’ from the <em><a href="https://geo-python-site.readthedocs.io/en/latest/notebooks/L1/a-taste-of-python.html">A taste of Python</a></em> section of the <em><a href="https://geo-python-site.readthedocs.io">Geo-Python</a> course 2022</em> by D. Whipp, H. Tenkanen, V. Heikinheimo, H. Aagesen, and C. Fink from the Department of Geosciences and Geography, University of Helsinki, licensed under CC-BY-SA 4.0.</p>
+</section>
 <section id="simple-python-math" class="level2">
 <h2 class="anchored" data-anchor-id="simple-python-math">Simple Python math</h2>
 <p>Python can be used as a simple calculator. Remember, you can press <span class="keystroke">Shift</span> + <span class="keystroke">Enter</span> to execute the code in the cells below. Try it out by typing some simple math into new cells and see what you get.</p>
@@ -502,10 +512,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>In this case, we get at <code>TypeError</code> because we are trying to execute a math operation with data types that are not compatible. There is no way in Python to multiply numbers with a character string.</p>
-</section>
-<section id="acknowledgements" class="level2">
-<h2 class="anchored" data-anchor-id="acknowledgements">Acknowledgements</h2>
-<p>The ‘Let the snake in’ section is derived from <em><a href="https://geo-python-site.readthedocs.io/en/latest/notebooks/L1/a-taste-of-python.html">A taste of Python</a></em> section of the <em><a href="https://geo-python-site.readthedocs.io">Geo-Python</a> course 2022</em> by D. Whipp, H. Tenkanen, V. Heikinheimo, H. Aagesen, and C. Fink from the Department of Geosciences and Geography, University of Helsinki, licensed under CC-BY-SA 4.0.</p>
 
 
 </section>
@@ -751,8 +757,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../chapter_1/pandas.html" class="pagination-link">
-        <span class="nav-page-text">Pandas and Data</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../chapter_1/open_source.html" class="pagination-link">
+        <span class="nav-page-text">Open Source</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
