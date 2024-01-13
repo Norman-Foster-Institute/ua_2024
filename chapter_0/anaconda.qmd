@@ -37,15 +37,25 @@ Don't confuse the "Jupyer Lab" with the "Jupyter Notebook" apps. The former is a
 
 You can now create a new Notebook or, otherwise, open an existing Python Notebook. Notebooks are composed of cells.
 
-![Jupyter Notebool cell](./images/jupyter-cell.png)
+![Jupyter Notebook cell](./images/jupyter-cell.png)
 
-Cells can be either code (Python) or text (Markdown). A typical notebook consists of a series of cells where some include text with explanations or background information, while others contain the executable code, either waiting for execution or already executed. The cells with the executed code will display outputs once the cell has been run. The individual code cells can be "played" to see how the code actions unfold from step to step.
+Cells can either consist of code or `Markdown` formatted text. A typical notebook consists of a series of cells; some would include text with explanations or background information, while others would contain the executable code. The code in the cells has to be "executed" by ppressing the play button. Once executed, the code will generate outputs showing the results of the computation.
 
-You can try creating your own cell content and experimenting with running the cells. Remember that the cells are only aware of previously run cells. We can start with simple math that Python can do natively. Run the following code cell in your notebook. After inserting the text, you can either click the “play” button or press the <span class="keystroke">Shift</span> + <span class="keystroke">Enter</span> keys.
+You can try creating your own cell content and experimenting with running the cells. Remember that the cells are only aware of previously executed cells. We can start with simple math that Python can do natively. Run the following code cell in your notebook. After inserting the text, you can either click the “play” button or press the <span class="keystroke">Shift</span> + <span class="keystroke">Enter</span> keys.
 
 ```{python}
+# this will display the number "2" once the cell is executed
 1 + 1
-# this will return 2 if once the cell is run
+```
+
+You can also try using variables and printing:
+```{python}
+# this stores the calculation in "my_variable"
+my_variable = 2 * 10 / 3
+# this prints the variable using "f-string" interpolation
+print(f'The calculation result is: {my_variable}')
+# let's round the number to two decimal places
+print(f'The rounded result is: {round(my_variable, 2)}')
 ```
 
 ### Closing Jupyter Lab
@@ -54,10 +64,10 @@ Shut down Jupyter Lab from the menubar in the web interface using [File]{.keystr
 
 ![Shut down Jupyter Lab](./images/jupyter-shut-down.png){width=300}
 
-### Plan B with Google Colab
+### Alternative B: Google Colab
 
 If you are unable to install an environment using the instructions above, you can follow the course using [Google Colab](https://colab.research.google.com). You will need to install any required packages to your Colab environment. Reach out in class if you need help getting set up.
 
-### Plan C with the command line
+### Alternative C: The command line
 
-It is also possible to install and run Python environments and packages from the command line using, for example, the Terminal window in a Mac, or the corresponding environment on Windows. Details for installation and usage are different for different systems.
+If you already have experience with Python, IDEs, and the command line, feel free to setup your development environment accordingly. The method for doing so will depend on your operating system and your preference for IDEs. We recommend _VSCode_ as an IDE.

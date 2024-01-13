@@ -27,6 +27,7 @@ website:
       - section: Basic Coding
         contents:
           - chapter_1/python.ipynb
+          - chapter_1/open_source.qmd
           - chapter_1/pandas.ipynb
       - section: GIS Tools
         contents:
