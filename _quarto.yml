@@ -32,6 +32,7 @@ website:
       - section: GIS Tools
         contents:
           - chapter_2/qgis.qmd
+          - chapter_2/cloud.qmd
           - chapter_2/sql.qmd
   page-footer:
     center:

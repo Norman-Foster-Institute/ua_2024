@@ -1,4 +1,4 @@
-# SQL - A cross platform language
+# SQL for GIS
 
 1. **SQL and PostgreSQL Basics:**
 - Understanding SQL (Structured Query Language)

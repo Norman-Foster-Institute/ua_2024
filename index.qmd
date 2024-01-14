@@ -1,12 +1,12 @@
 # NFI Urban Analytics 2024
 
-## Introduction
+## UA Part 1
 
-Welcome to the Python Urban Analytics course at the Norman Foster Institute. This course is designed to empower scholars with the skills and knowledge to harness the power of urban analytics and tools such as QGIS and Python in analyzing and interpreting urban data.
+Welcome to Part 1 of the Urban Analytics course at the Norman Foster Institute. This course is designed to empower scholars with the skills and knowledge to harness the power of urban analytics and tools such as QGIS and Python in analyzing and interpreting urban data.
 
-See the sidebar for the **Sections** which contain readings, data, methods, and lab work.
+See the sidebar for the **Sections**.
 
-This content will be further elaborated and refined as the year progresses.
+Part II is published separately.
 
 We hope you enjoy the course!
 
