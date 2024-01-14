@@ -1,5 +1,7 @@
 # SQL for GIS
 
+> This is a draft outline and will be fleshed-out closer to class.
+
 1. **SQL and PostgreSQL Basics:**
 - Understanding SQL (Structured Query Language)
 - Introduction to PostgreSQL as a Relational Database Management System (RDBMS)
@@ -61,6 +63,20 @@
 
 [TablePlus | Modern, Native Tool for Database Management.](https://tableplus.com/)
 
+## Connecting to data on PostGIS 👨🏽‍💻
+
+|  ⚙  | **CONNECTION SETTINGS** |
+| --- | ------------------------|
+| **IP Address** |  _(will be provided during class)_ |
+| **Database names** |  nfi / urban_analytics |
+| **Port** | 5432 |
+| **Username** | scholar |
+| **Password** | _(will be provided during class)_ |
+
+::: {.callout-tip}
+Note that the connections to the Databases are restricted by the source IP address.
+:::
+
 ## To-Dos
 
 - Create a table with the following characteristics.
@@ -94,7 +110,7 @@ Create a local instance of PostGIS for use in the upcoming months
 
 ## Useful Resources
 
-- **********POSTGRESQL & POSTGIS CHEATSHEETS**********
+- **POSTGRESQL & POSTGIS CHEATSHEETS**
 
 [PostgreSQL & PostGIS cheatsheet (a work in progress)](https://gist.github.com/clhenrick/ebc8dc779fb6f5ee6a88)
 
