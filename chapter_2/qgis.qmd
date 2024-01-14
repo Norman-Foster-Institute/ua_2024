@@ -138,8 +138,16 @@ We'll now add another column, this time we'll use another column as input and we
 - Select `Labels` in the left pane, select `Single Labels`, then select the `BARRIO_MT` column, then apply. This will add the Barrio names to the map. You can format labels to your heart's content.
 - Select `Symbology` in the left pane. In class, we will walk through a variety of options for map styling. There are almost limitless options so feel free to be creative.
 
-## Conclusion
+## Resources & Lab Work
 
 There is a lot that can be done with QGIS and we have just skimmed the surface!
 
-For lab-work, please experiment with these or other datasets: labelling and styling to develop a comfortable familiarity with the available options.
+The [QGIS Tutorials and Tips](https://www.qgistutorials.com/en/index.html) is a great resource for QGIS.
+
+For lab-work, please do the following tutorials from [QGIS Tutorials and Tips](https://www.qgistutorials.com/en/docs/introduction.html) in your own time to build some general familiarity with QGIS:
+
+- [Making a Map](https://www.qgistutorials.com/en/docs/3/making_a_map.html)
+- [Basic Vector Styling](https://www.qgistutorials.com/en/docs/3/basic_vector_styling.html)
+- [Digitizing Map Data](https://www.qgistutorials.com/en/docs/3/digitizing_basics.html)
+- [Working with Projections](https://www.qgistutorials.com/en/docs/3/working_with_projections.html)
+- [Creating Heatmaps](https://www.qgistutorials.com/en/docs/3/creating_heatmaps.html)

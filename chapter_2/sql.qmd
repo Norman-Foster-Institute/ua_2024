@@ -1,6 +1,6 @@
 # SQL for GIS
 
-> This is a draft outline and will be fleshed-out closer to class.
+> This is a draft outline and will be fleshed-out closer to class. To make visible, edit `_quarto.yml` to include in directory.
 
 1. **SQL and PostgreSQL Basics:**
 - Understanding SQL (Structured Query Language)

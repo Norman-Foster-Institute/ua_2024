@@ -34,7 +34,6 @@ website:
           - chapter_2/gis.qmd
           - chapter_2/qgis.qmd
           - chapter_2/cloud.qmd
-          - chapter_2/sql.qmd
   page-footer:
     center:
       - text: "License"
