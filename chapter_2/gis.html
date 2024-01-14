@@ -192,12 +192,6 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">Cloud GIS</span></a>
   </div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../chapter_2/sql.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">SQL for GIS</span></a>
-  </div>
-</li>
       </ul>
   </li>
     </ul>
@@ -223,23 +217,22 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#projected" id="toc-projected" class="nav-link" data-scroll-target="#projected">Projected</a></li>
   <li><a href="#some-visual-examples" id="toc-some-visual-examples" class="nav-link" data-scroll-target="#some-visual-examples">Some visual examples</a></li>
   </ul></li>
-  <li><a href="#gis-data-sources" id="toc-gis-data-sources" class="nav-link" data-scroll-target="#gis-data-sources">GIS Data Sources</a>
+  <li><a href="#gis-data" id="toc-gis-data" class="nav-link" data-scroll-target="#gis-data">GIS Data</a>
   <ul class="collapse">
-  <li><a href="#official-sources" id="toc-official-sources" class="nav-link" data-scroll-target="#official-sources">Official Sources</a></li>
-  <li><a href="#non-official-sources" id="toc-non-official-sources" class="nav-link" data-scroll-target="#non-official-sources">Non-Official Sources</a></li>
+  <li><a href="#sources" id="toc-sources" class="nav-link" data-scroll-target="#sources">Sources</a></li>
   <li><a href="#purposely-collected-data" id="toc-purposely-collected-data" class="nav-link" data-scroll-target="#purposely-collected-data">Purposely Collected Data</a></li>
   <li><a href="#adapted-data" id="toc-adapted-data" class="nav-link" data-scroll-target="#adapted-data">Adapted Data</a></li>
-  <li><a href="#licenses" id="toc-licenses" class="nav-link" data-scroll-target="#licenses">Licenses:</a></li>
-  <li><a href="#attribution" id="toc-attribution" class="nav-link" data-scroll-target="#attribution">Attribution</a></li>
-  <li><a href="#privacy-considerations" id="toc-privacy-considerations" class="nav-link" data-scroll-target="#privacy-considerations">Privacy Considerations</a></li>
   </ul></li>
-  <li><a href="#reprojections-in-qgis" id="toc-reprojections-in-qgis" class="nav-link" data-scroll-target="#reprojections-in-qgis">Reprojections in QGIS</a></li>
-  <li><a href="#attributes" id="toc-attributes" class="nav-link" data-scroll-target="#attributes">Attributes</a></li>
-  <li><a href="#map-types" id="toc-map-types" class="nav-link" data-scroll-target="#map-types">Map types</a></li>
+  <li><a href="#attribution" id="toc-attribution" class="nav-link" data-scroll-target="#attribution">Attribution</a>
+  <ul class="collapse">
+  <li><a href="#licenses" id="toc-licenses" class="nav-link" data-scroll-target="#licenses">Licenses:</a></li>
+  </ul></li>
+  <li><a href="#privacy" id="toc-privacy" class="nav-link" data-scroll-target="#privacy">Privacy</a></li>
   <li><a href="#quirks-part-1" id="toc-quirks-part-1" class="nav-link" data-scroll-target="#quirks-part-1">Quirks (Part 1)</a>
   <ul class="collapse">
   <li><a href="#maup" id="toc-maup" class="nav-link" data-scroll-target="#maup">MAUP</a></li>
   </ul></li>
+  <li><a href="#resources-lab-work" id="toc-resources-lab-work" class="nav-link" data-scroll-target="#resources-lab-work">Resources &amp; Lab Work</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -273,37 +266,12 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="formats" class="level4">
 <h4 class="anchored" data-anchor-id="formats">Formats</h4>
-<table class="table">
-<colgroup>
-<col style="width: 31%">
-<col style="width: 31%">
-<col style="width: 37%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: center;">Extension</th>
-<th style="text-align: center;">File Type</th>
-<th style="text-align: left;">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">Esri Shapefile</td>
-<td style="text-align: center;"><code>.shp</code></td>
-<td style="text-align: left;">Shapefile is a prevalent geospatial file type in GIS software, requiring three mandatory files: <code>SHP</code> (feature geometry), <code>SHX</code> (shape index position), and <code>DBF</code> (attribute data). Optional files like <code>PRJ</code> (coordinate reference system) are also common.</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">GeoPackage</td>
-<td style="text-align: center;"><code>.gpkg</code></td>
-<td style="text-align: left;">GeoPackage, a portable and compact format, is ideal for transferring geospatial information. Based on SQLite, it supports vector data, tile matrix sets, and extensions. It’s efficient for storing multiple data layers and a popular alternative to shapefiles for handling larger datasets.</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">Geographic JavaScript Object Notation</td>
-<td style="text-align: center;"><code>.geojson</code></td>
-<td style="text-align: left;">GeoJSON encodes geographic data structures using JSON. Common in online mapping applications, it represents geographic features like points, lines, and polygons in an open-standard format.</td>
-</tr>
-</tbody>
-</table>
+<p><strong>Esri Shapefile</strong></p>
+<p>Shapefile is a prevalent geospatial file type in GIS software, requiring three mandatory files: <code>SHP</code> (feature geometry), <code>SHX</code> (shape index position), and <code>DBF</code> (attribute data). Optional files like <code>PRJ</code> (coordinate reference system) are also common.</p>
+<p><strong>GeoPackage</strong></p>
+<p>GeoPackage, a portable and compact format, is ideal for transferring geospatial information. Based on SQLite, it supports vector data, tile matrix sets, and extensions. It’s efficient for storing multiple data layers and a popular alternative to shapefiles for handling larger datasets.</p>
+<p><strong>GeoJSON</strong></p>
+<p>GeoJSON encodes geographic data structures using JSON. Common in online mapping applications, it represents geographic features like points, lines, and polygons in an open-standard format. |</p>
 <p>Reference: <a href="https://gisgeography.com/gis-formats/">https://gisgeography.com/gis-formats/</a></p>
 </section>
 </section>
@@ -312,32 +280,10 @@ ul.task-list li input[type="checkbox"] {
 <p>Rasters contain a grid of pixels, where the value used for each grid cell can represent a characteristic such as temperature or landcover. Geographic rasters typically include Geospatial information necessary to correctly project and locate the information in GIS software.</p>
 <section id="formats-1" class="level4">
 <h4 class="anchored" data-anchor-id="formats-1">Formats</h4>
-<table class="table">
-<colgroup>
-<col style="width: 33%">
-<col style="width: 33%">
-<col style="width: 33%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Extension</th>
-<th>File Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>American Standard Code for Information Interchange ASCII Grid</td>
-<td><code>.asc</code></td>
-<td>ASCII Grid files (<code>ASC</code>) store raster data as text in a grid format. Each cell in the grid is represented by a numeric value (which can be a float), corresponding to the geographic attribute being mapped, such as elevation. ASCII Grid files include a header specifying metadata like cell size, number of rows and columns, and coordinates of the lower left corner. The format is simple and can be generated or edited with a text editor, making it versatile for GIS data storage and exchange. Commonly used as an interchange format, it can be space, comma, or tab-delimited.</td>
-</tr>
-<tr class="even">
-<td>GeoTIFF</td>
-<td><code>.tif</code></td>
-<td>GeoTIFF is a widely used file format in GIS and remote sensing applications, known for its ability to embed georeferencing information within a standard TIFF (Tagged Image File Format). It stores raster images and allows embedding of metadata such as map projections, coordinate systems, ellipsoids, and datums. This embedded geospatial data enables the precise positioning of the image in the correct geographic space. GeoTIFFs are commonly used for storing satellite imagery, aerial photography, and GIS data. They can also be accompanied by additional files, like world files (<code>TFW</code>), for georeferencing.</td>
-</tr>
-</tbody>
-</table>
+<p><strong>ASCII Grid</strong></p>
+<p>ASCII Grid files (<code>ASC</code>) store raster data as text in a grid format. Each cell in the grid is represented by a numeric value (which can be a float), corresponding to the geographic attribute being mapped, such as elevation. ASCII Grid files include a header specifying metadata like cell size, number of rows and columns, and coordinates of the lower left corner. The format is simple and can be generated or edited with a text editor, making it versatile for GIS data storage and exchange. Commonly used as an interchange format, it can be space, comma, or tab-delimited.</p>
+<p><strong>GeoTIFF</strong></p>
+<p>GeoTIFF is a widely used file format in GIS and remote sensing applications, known for its ability to embed georeferencing information within a standard TIFF (Tagged Image File Format). It stores raster images and allows embedding of metadata such as map projections, coordinate systems, ellipsoids, and datums. This embedded geospatial data enables the precise positioning of the image in the correct geographic space. GeoTIFFs are commonly used for storing satellite imagery, aerial photography, and GIS data.</p>
 <p>Reference: <a href="https://gisgeography.com/gis-formats/">https://gisgeography.com/gis-formats/</a></p>
 </section>
 </section>
@@ -357,7 +303,7 @@ Tip
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>A useful reference website for CRS is <a href="https://epsg.io/">EPSG.io: Coordinate Systems Worldwide</a></p>
+<p>A useful reference website for different CRS is <a href="https://epsg.io/">EPSG.io: Coordinate Systems Worldwide</a></p>
 </div>
 </div>
 <section id="geographic" class="level3">
@@ -374,7 +320,7 @@ Tip
 </section>
 <section id="projected" class="level3">
 <h3 class="anchored" data-anchor-id="projected">Projected</h3>
-<p>Projected <em>Coordinate Reference Systems</em> (CRS) use a two-dimensional Cartesian coordinate system to represent locations on a flat surface. These CRSs are created by “projecting” the curved Earth onto a flat surface, which introduces distortions, which inevitably requires tradeoffs in distances, areas, or shapes, with different projection systems involving different trade-offs. Projected CRSs are commonly used for local or small-scale mapping appropriate to specific countries or regions of the globe, where locally accurate measurements and comparisons are required.</p>
+<p>Projected <em>Coordinate Reference Systems</em> (CRS) use a two-dimensional Cartesian coordinate system to represent locations on a flat surface. These CRSs are created by “projecting” the curved Earth onto a flat surface, which introduces distortions. This inevitably requires tradeoffs in distances, areas, or shapes, with different projection systems involving different trade-offs. Projected CRSs are commonly used for local or small-scale mapping appropriate to specific countries or regions of the globe, where locally accurate measurements and comparisons are required.</p>
 <ul>
 <li><strong>Units</strong>: Meters (most commonly)</li>
 <li><strong>Common Examples:</strong>
@@ -390,85 +336,46 @@ Tip
 <p><a href="https://gisgeography.com/map-projection-types/">https://gisgeography.com/map-projection-types/</a></p>
 </section>
 </section>
-<section id="gis-data-sources" class="level2">
-<h2 class="anchored" data-anchor-id="gis-data-sources">GIS Data Sources</h2>
-<p>Discovering sources for GIS (Geographic Information System) data is essential for spatial analysis and mapping. There are various official and non-official sources, each offering different types of data suited to specific needs and applications.</p>
-<section id="official-sources" class="level3">
-<h3 class="anchored" data-anchor-id="official-sources">Official Sources</h3>
+<section id="gis-data" class="level2">
+<h2 class="anchored" data-anchor-id="gis-data">GIS Data</h2>
+<section id="sources" class="level3">
+<h3 class="anchored" data-anchor-id="sources">Sources</h3>
+<p>Discovering sources for GIS (Geographic Information System) data is a handy skill for spatial analysis and mapping! There are various official and non-official sources, each offering different types of data suited to specific needs and applications. When searching for and using different data sources, try to remain cognisant of the merits and limitations of different sources, which may impact considerations such as data accuracy or bias.</p>
 <ul>
-<li><strong>Government Agencies:</strong> Agencies such as the US Geological Survey (USGS) and the Environmental Protection Agency (EPA) provide official and reliable GIS data. However, these datasets may reflect governmental priorities and perspectives.</li>
-<li><strong>International Organizations:</strong> Organizations like the United Nations (UN) and the World Bank offer global GIS datasets, ideal for international research. They may not always capture local nuances due to their broad scope.</li>
-<li><strong>Local Authorities:</strong> City and regional councils supply local GIS data, which is often tailored to specific local government projects and priorities.</li>
-</ul>
-</section>
-<section id="non-official-sources" class="level3">
-<h3 class="anchored" data-anchor-id="non-official-sources">Non-Official Sources</h3>
-<ul>
-<li><strong>Private Sector:</strong> Companies such as ArcGIS Living Atlas, Esri, and CARTO Datawarehouse offer comprehensive, commercially-oriented GIS datasets.</li>
-<li><strong>Specialized GIS Data Portals:</strong> Portals like the Harvard Geospatial Library provide access to specialized datasets across various fields.</li>
-<li><strong>Open Data Platforms:</strong> Platforms such as OpenStreetMap offer freely accessible GIS data, contributed by a community of users. These datasets might require additional validation due to their open-source nature.</li>
-<li><strong>Space Agencies:</strong> Agencies like NASA and the European Space Agency (ESA) provide official satellite imagery, particularly useful for environmental and spatial studies.</li>
-<li><strong>Academic Institutions:</strong> Universities often share GIS data derived from research projects. While not officially sanctioned, this data can be valuable but might need adaptation for specific uses.</li>
-<li><strong>Social Media and Crowdsourced Data:</strong> Platforms like Twitter and Facebook can be sources of GIS data, reflecting public behavior and trends. This data is not official and requires careful adaptation to account for inherent biases.</li>
-<li><strong>Web Scraping:</strong> Involves the automated collection of data from websites. This method is not an official source and the quality of data can vary. It’s useful for obtaining unique, real-time data. Web scraping demands significant technical skills for data extraction and processing. Legal and ethical considerations are important, as scraping can sometimes violate terms of service or data privacy laws.</li>
+<li><strong>Government Agencies:</strong> National agencies often provide official and reliable forms of GIS data. However, these datasets may reflect governmental priorities and perspectives or they may be reluctant to make these datasets openly available.</li>
+<li><strong>International Organizations:</strong> Organizations such as the United Nations (UN) and the World Bank offer global GIS datasets, but these may have limited local detail due to their broad scope.</li>
+<li><strong>Local Authorities:</strong> City and regional councils often create and maintain local GIS datasets, often tailored to specific local government projects and priorities.</li>
+<li><strong>Private Sector:</strong> There are many private sector organisations which generate, curate, or distribute data, however, these datasets are less likely to be openly available and may incur substantial monetary cost.</li>
+<li><strong>Open Data Platforms:</strong> Platforms such as OpenStreetMap offer freely accessible GIS data, contributed by a community of users. These datasets might require additional validation if used for mission-critical purposes, though can otherwise be extremely useful, allowing for generalisable workflows and providing coverage in some instances where no other options exist.</li>
+<li><strong>APIs and Web Scraping:</strong> Involves the automated collection of data from APIs or websites. The quality of data can vary but may otherwise be useful for obtaining interesting data. These techniques may involve significant technical skills for data extraction and processing. Legal and ethical considerations are important, as scraping can sometimes violate terms of service or data privacy laws.</li>
 </ul>
 </section>
 <section id="purposely-collected-data" class="level3">
 <h3 class="anchored" data-anchor-id="purposely-collected-data">Purposely Collected Data</h3>
-<p>Purposely collected data is specifically gathered to meet the objectives of a defined research question or project goal. This type of data is obtained through structured methods such as surveys, experiments, or systematic observations.</p>
-<section id="characteristics" class="level4">
-<h4 class="anchored" data-anchor-id="characteristics">Characteristics:</h4>
-<ul>
-<li><strong>Tailored Collection:</strong> The data is methodically gathered to align closely with the specific needs and aims of a particular study or project.</li>
-<li><strong>Control Over Variables:</strong> Efforts are made to control or monitor variables, enhancing the relevance and accuracy of the data.</li>
-<li><strong>Highly Relevant:</strong> The data’s targeted collection ensures its direct applicability and relevance to the specific research goals.</li>
-</ul>
-</section>
-<section id="potential-built-in-biases" class="level4">
-<h4 class="anchored" data-anchor-id="potential-built-in-biases">Potential Built-in Biases:</h4>
-<ul>
-<li><strong>Selection Bias:</strong> There’s a possibility of preferentially selecting data that confirms a pre-existing hypothesis, while disregarding contradicting data.</li>
-<li><strong>Researcher Bias:</strong> The inclinations or hypotheses of the researcher may inadvertently influence the data collection methods and interpretation.</li>
-<li><strong>Sampling Bias:</strong> The methodology for selecting samples could impact the representativeness of the data, potentially leading to skewed outcomes.</li>
-</ul>
-</section>
+<p>Purposely collected data is gathered specifically to address a certain research question or project goal, using structured approaches like surveys, experiments, or observations. It’s tailored to meet the specific needs of a study, with careful control over variables to ensure the data’s relevance and accuracy. This type of data is highly pertinent to the project it’s collected for, due to its focused nature and methodical collection process.</p>
 </section>
 <section id="adapted-data" class="level3">
 <h3 class="anchored" data-anchor-id="adapted-data">Adapted Data</h3>
-<p>Adapted data is information that was initially collected for purposes other than the current research project but is repurposed or reinterpreted to suit new research needs. This category includes data from existing public databases, prior studies, or information obtained through web scraping.</p>
-<section id="characteristics-1" class="level4">
-<h4 class="anchored" data-anchor-id="characteristics-1">Characteristics:</h4>
-<ul>
-<li><strong>Broadly Collected:</strong> Originally gathered for various general or distinct objectives, often from pre-existing sources.</li>
-<li><strong>Varied Sources:</strong> Derived from multiple sources, each with unique data collection methods.</li>
-<li><strong>Versatility:</strong> Provides the opportunity to apply pre-existing data to new or unrelated research questions.</li>
-</ul>
-</section>
-<section id="built-in-biases" class="level4">
-<h4 class="anchored" data-anchor-id="built-in-biases">Built-in Biases:</h4>
-<ul>
-<li><strong>Bias of Original Purpose:</strong> The initial intent behind the data collection may affect the type and nature of the data, potentially reducing its applicability to new research questions.</li>
-<li><strong>Risk of Contextual Misinterpretation:</strong> Lacking the original context, there is a danger of misinterpreting the data when adapting it for different uses.</li>
-<li><strong>Concerns about Data Quality and Completeness:</strong> The original data may not fulfill the specific quality or completeness standards required for the new research purpose.</li>
-</ul>
+<p>On the other hand, adapted data refers to information originally collected for different purposes, but later used for new research needs. It includes data from various sources such as public databases, previous studies, or web scraping. This data is characterized by its broad range of collection goals and the diverse methods used in its initial gathering. Its versatility lies in the ability to repurpose existing data for new or unrelated research questions, making it a flexible resource in research contexts.</p>
 </section>
 </section>
+<section id="attribution" class="level2">
+<h2 class="anchored" data-anchor-id="attribution">Attribution</h2>
+<p>Attribution or citation refers to giving proper credit to the original source or creator of the data. Just as with citing sources in academic papers, it’s important to acknowledge the origin of the data you are using. This helps provide transparency, accountability, and recognition to the creators of the dataset.</p>
 <section id="licenses" class="level3">
 <h3 class="anchored" data-anchor-id="licenses">Licenses:</h3>
 <p>When dealing with data, licenses refer to legal agreements or permissions that determine how the data can be used, distributed, or modified. Different datasets may have different licensing requirements, so it’s important to understand and comply with the specific license terms associated with the data you are using.</p>
 <p>Examples:</p>
 <ul>
-<li><strong>Creative Commons (CC) licenses</strong>: Standardized licenses that allow creators to choose permissions for their work. Used for creative works like images, music, videos, and written content.</li>
-<li><strong>Open Database License (ODbL)</strong>: Specifically for databases. Allows users to freely use, share, and modify the database. Modifications and derivative works must be under the same license. Used for open data projects and community-driven data initiatives.</li>
-<li><strong>GNU General Public License (GPL)</strong>: Copyleft license for open-source software. Allows modification and distribution. Modifications and derivative works must be under the same license. Used for promoting open-source principles and collaboration.</li>
+<li><p><strong>Creative Commons (CC) licenses</strong>: These are standardized licenses that allow creators to specify permissions for their work. They are commonly used for a variety of creative works, including images, music, videos, and written content.</p></li>
+<li><p><strong>Open Government Licenses</strong>: These licenses have been adopted by governments and may allow individuals and organizations permissive use, reuse, and sharing of information.</p></li>
+<li><p><strong>GNU General Public License (GPL)</strong>: This is a copyleft license for open-source software. It permits users to modify and distribute the software, but any modifications or derivative works must also be licensed under the GPL. This license is popular for promoting open-source principles and collaborative software development.</p></li>
+<li><p><strong>MIT / Apache / BSD Licenses</strong>: Permissive open-source software licenses. These may allow great flexibility such as using, copying, modifying, and distributing derivative work, even for commercial purposes. The primary requirement is to include the original copyright and license notice in any significant portions of the software.</p></li>
 </ul>
 </section>
-<section id="attribution" class="level3">
-<h3 class="anchored" data-anchor-id="attribution">Attribution</h3>
-<p>Attribution or citation refers to giving proper credit to the original source or creator of the data. Just like when citing sources in academic papers, it’s important to acknowledge the origin of the data you are using. This helps provide transparency, accountability, and recognition to the creators of the dataset.</p>
 </section>
-<section id="privacy-considerations" class="level3">
-<h3 class="anchored" data-anchor-id="privacy-considerations">Privacy Considerations</h3>
+<section id="privacy" class="level2">
+<h2 class="anchored" data-anchor-id="privacy">Privacy</h2>
 <p>Privacy considerations are important when working with data, especially if the data contains personally identifiable information or sensitive information. It’s very important to handle and store data in a way that respects privacy laws and regulations. This may involve anonymizing or de-identifying data, implementing security measures, and obtaining consent from individuals whose data is being used.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -484,35 +391,32 @@ Note
 </div>
 </div>
 </section>
-</section>
-<section id="reprojections-in-qgis" class="level2">
-<h2 class="anchored" data-anchor-id="reprojections-in-qgis">Reprojections in QGIS</h2>
-<p>Often times, data from several datasources (or even the same one) comes with different projection systems. Other times it’s a matter of software support or visual preference, but what’s really important is to aim for consolidating all your data layers into the same projection system. This will help with accurate calculations and ‘real’ overlap of layers.</p>
-</section>
-<section id="attributes" class="level2">
-<h2 class="anchored" data-anchor-id="attributes">Attributes</h2>
-<p>Attributes in GIS layers provide additional information about the spatial features in the data. They include text, numbers, dates, or images. Attributes help add context to the geographic elements, enabling better analysis and visualization. They can be used to filter, classify, and symbolize features based on their characteristics. Attributes play a crucial role in data analysis, allowing us to gain insights, make comparisons, and create meaningful visual representations.</p>
-</section>
-<section id="map-types" class="level2">
-<h2 class="anchored" data-anchor-id="map-types">Map types</h2>
-<p><strong>Point Maps</strong>: Represent specific locations.</p>
-<p><strong>Heat Maps</strong>: Visualise the density or intensity of a phenomenon. <img src="./images/heatmap_a.png" class="img-fluid" width="250" alt="Gradient and cell values ‘A’"> <img src="./images/heatmap_b.png" class="img-fluid" width="250" alt="Gradient and cell values ‘B’"></p>
-<p><strong>Flow Maps</strong>: Represent flows or strengths of connections. <img src="./images/flow_map.png" class="img-fluid" width="500" alt="Flow Map"></p>
-<p><strong>Cartograms</strong>: Distort the geographic shape of regions to represent a specific variable. <img src="./images/cartogram.png" class="img-fluid" width="500" alt="Cartogram"></p>
-<p><strong>Cloropleth</strong>: Use color to represent a particular attribute or variable. <img src="./images/choropleth.png" class="img-fluid" width="500" alt="Choropleth"></p>
-</section>
 <section id="quirks-part-1" class="level2">
 <h2 class="anchored" data-anchor-id="quirks-part-1">Quirks (Part 1)</h2>
 <section id="maup" class="level3">
 <h3 class="anchored" data-anchor-id="maup">MAUP</h3>
 <p>The <strong>Modifiable Areal Unit Problem (MAUP)</strong> is a common issue in geography and maps. It refers to the fact that the results of statistical analysis or visual representation can be influenced by the <strong>choice of spatial unit or scale used to aggregate data</strong>. The MAUP arises because geographic phenomena can be measured and analysed at different levels of spatial granularity, such as census tracts, counties, or regions. When data is aggregated into different spatial units, it can lead to different patterns, relationships, and <strong>interpretations</strong>.</p>
 <p><a href="https://gisgeography.com/maup-modifiable-areal-unit-problem/">https://gisgeography.com/maup-modifiable-areal-unit-problem/</a></p>
-<p><strong>Crime Rates</strong>: Imagine you have crime data recorded at the neighborhoud level. If you aggregate the data into larger units, such as police precincts, the crime rates may appear different due to the varying sizes and characteristics of neighborhouds within each precinct. This can result in different spatial patterns and potentially lead to incorrect conclusions about crime rates in different areas.</p>
+<p><strong>Crime Rates</strong>: Imagine you have crime data recorded at the neighborhoud level. If you aggregate the data into larger units, such as police precincts, the crime rates may appear different due to the varying sizes and characteristics of neighborhouds within each precinct. This can result in different spatial patterns and potentially lead to incorrect conclusions about crime rates at different scales or units of analysis.</p>
 <p><a href="https://www.youtube.com/watch?v=7NTw1v7DuAA&amp;t=115s">https://www.youtube.com/watch?v=7NTw1v7DuAA&amp;t=115s</a></p>
-<p>These examples demonstrate how the choice of spatial unit can significantly impact the analysis and interpretation of geographic data, highlighting the need to carefully consider the scale and boundaries of spatial units when conducting spatial analysis or creating maps.</p>
-
-
+<p>These examples demonstrate how the choice of spatial unit can significantly impact the analysis and interpretation of geographic data, highlighting the need to use consistency with the scale, units, and boundaries of spatial analysis.</p>
 </section>
+</section>
+<section id="resources-lab-work" class="level2">
+<h2 class="anchored" data-anchor-id="resources-lab-work">Resources &amp; Lab Work</h2>
+<p>Please review the following resources for information on common types of map visualisations:</p>
+<ul>
+<li>CARTO - <a href="https://carto.com/blog/popular-thematic-map-types-techniques-spatial-data">5 Popular Thematic map Types</a></li>
+<li>Fundamentals of Data Visualisation
+<ul>
+<li><a href="https://clauswilke.com/dataviz/color-basics.html">Color scales</a></li>
+<li><a href="https://clauswilke.com/dataviz/geospatial-data.html">Visualizing geospatial data</a></li>
+<li><a href="https://clauswilke.com/dataviz/geospatial-data.html">Common pitfalls of color use</a></li>
+</ul></li>
+<li><a href="https://colorbrewer2.org/#type=sequential&amp;scheme=BuGn&amp;n=3">Color Brewer</a></li>
+</ul>
+
+
 </section>
 </section>
 
