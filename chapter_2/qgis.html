@@ -31,7 +31,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
 <link href="../chapter_2/cloud.html" rel="next">
-<link href="../chapter_1/pandas.html" rel="prev">
+<link href="../chapter_2/gis.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -86,7 +86,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapter_2/qgis.html">GIS Tools</a></li><li class="breadcrumb-item"><a href="../chapter_2/qgis.html">Intro to GIS</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapter_2/gis.html">GIS Tools</a></li><li class="breadcrumb-item"><a href="../chapter_2/qgis.html">Intro to QGIS</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
     </div>
@@ -176,8 +176,14 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapter_2/qgis.html" class="sidebar-item-text sidebar-link active">
+  <a href="../chapter_2/gis.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Intro to GIS</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapter_2/qgis.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Intro to QGIS</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -204,38 +210,20 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#intro-to-gis" id="toc-intro-to-gis" class="nav-link active" data-scroll-target="#intro-to-gis">Intro to GIS</a>
+  <li><a href="#intro-to-qgis" id="toc-intro-to-qgis" class="nav-link active" data-scroll-target="#intro-to-qgis">Intro to QGIS</a>
   <ul class="collapse">
-  <li><a href="#file-types" id="toc-file-types" class="nav-link" data-scroll-target="#file-types">File types</a>
-  <ul class="collapse">
-  <li><a href="#vector" id="toc-vector" class="nav-link" data-scroll-target="#vector">Vector</a></li>
-  <li><a href="#raster" id="toc-raster" class="nav-link" data-scroll-target="#raster">Raster</a></li>
-  </ul></li>
-  <li><a href="#coordinate-reference-systems" id="toc-coordinate-reference-systems" class="nav-link" data-scroll-target="#coordinate-reference-systems">Coordinate Reference Systems</a>
-  <ul class="collapse">
-  <li><a href="#geographic" id="toc-geographic" class="nav-link" data-scroll-target="#geographic">Geographic</a></li>
-  <li><a href="#projected" id="toc-projected" class="nav-link" data-scroll-target="#projected">Projected</a></li>
-  <li><a href="#some-visual-examples" id="toc-some-visual-examples" class="nav-link" data-scroll-target="#some-visual-examples">Some visual examples</a></li>
-  </ul></li>
-  <li><a href="#qgis-ui" id="toc-qgis-ui" class="nav-link" data-scroll-target="#qgis-ui">QGIS UI 👨🏽‍💻</a></li>
-  <li><a href="#gis-data-sources" id="toc-gis-data-sources" class="nav-link" data-scroll-target="#gis-data-sources">GIS Data Sources</a>
-  <ul class="collapse">
-  <li><a href="#official-sources" id="toc-official-sources" class="nav-link" data-scroll-target="#official-sources">Official Sources</a></li>
-  <li><a href="#non-official-sources" id="toc-non-official-sources" class="nav-link" data-scroll-target="#non-official-sources">Non-Official Sources</a></li>
-  <li><a href="#purposely-collected-data" id="toc-purposely-collected-data" class="nav-link" data-scroll-target="#purposely-collected-data">Purposely Collected Data</a></li>
-  <li><a href="#adapted-data" id="toc-adapted-data" class="nav-link" data-scroll-target="#adapted-data">Adapted Data</a></li>
-  <li><a href="#licenses" id="toc-licenses" class="nav-link" data-scroll-target="#licenses">Licenses:</a></li>
-  <li><a href="#attribution" id="toc-attribution" class="nav-link" data-scroll-target="#attribution">Attribution</a></li>
-  <li><a href="#privacy-considerations" id="toc-privacy-considerations" class="nav-link" data-scroll-target="#privacy-considerations">Privacy Considerations</a></li>
-  </ul></li>
-  <li><a href="#reprojections-in-qgis" id="toc-reprojections-in-qgis" class="nav-link" data-scroll-target="#reprojections-in-qgis">Reprojections in QGIS 👨🏽‍💻</a></li>
-  <li><a href="#attributes" id="toc-attributes" class="nav-link" data-scroll-target="#attributes">Attributes 👨🏽‍💻</a></li>
-  <li><a href="#connecting-to-data-on-postgis" id="toc-connecting-to-data-on-postgis" class="nav-link" data-scroll-target="#connecting-to-data-on-postgis">Connecting to data on PostGIS 👨🏽‍💻</a></li>
-  <li><a href="#map-types" id="toc-map-types" class="nav-link" data-scroll-target="#map-types">Map types</a></li>
-  <li><a href="#quirks-part-1" id="toc-quirks-part-1" class="nav-link" data-scroll-target="#quirks-part-1">Quirks (Part 1)</a>
-  <ul class="collapse">
-  <li><a href="#maup" id="toc-maup" class="nav-link" data-scroll-target="#maup">MAUP</a></li>
-  </ul></li>
+  <li><a href="#datasets" id="toc-datasets" class="nav-link" data-scroll-target="#datasets">Datasets</a></li>
+  <li><a href="#qgis-ui" id="toc-qgis-ui" class="nav-link" data-scroll-target="#qgis-ui">QGIS UI</a></li>
+  <li><a href="#plugins" id="toc-plugins" class="nav-link" data-scroll-target="#plugins">Plugins</a></li>
+  <li><a href="#coordinate-reference-systems" id="toc-coordinate-reference-systems" class="nav-link" data-scroll-target="#coordinate-reference-systems">Coordinate Reference Systems</a></li>
+  <li><a href="#loading-data" id="toc-loading-data" class="nav-link" data-scroll-target="#loading-data">Loading Data</a></li>
+  <li><a href="#saving-and-exporting-data" id="toc-saving-and-exporting-data" class="nav-link" data-scroll-target="#saving-and-exporting-data">Saving and exporting data</a></li>
+  <li><a href="#attributes" id="toc-attributes" class="nav-link" data-scroll-target="#attributes">Attributes</a></li>
+  <li><a href="#loading-csv-files" id="toc-loading-csv-files" class="nav-link" data-scroll-target="#loading-csv-files">Loading CSV files</a></li>
+  <li><a href="#selecting-and-deleting-features" id="toc-selecting-and-deleting-features" class="nav-link" data-scroll-target="#selecting-and-deleting-features">Selecting and deleting features</a></li>
+  <li><a href="#joins" id="toc-joins" class="nav-link" data-scroll-target="#joins">Joins</a></li>
+  <li><a href="#visulation" id="toc-visulation" class="nav-link" data-scroll-target="#visulation">Visulation</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -245,426 +233,166 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<section id="intro-to-gis" class="level1">
-<h1>Intro to GIS</h1>
-<section id="file-types" class="level2">
-<h2 class="anchored" data-anchor-id="file-types">File types</h2>
-<p><strong>Vector</strong> and <strong>raster</strong> data are two fundamental types of spatial data used in Geographic Information Systems (GIS). Vector data represents geographical features as distinct shapes using points, lines, and polygons, each of which can carry detailed attribute information, making it ideal for precise mapping applications like boundaries, roads, and infrastructure networks. It excels in accuracy and detail for discrete data. In contrast, raster data consists of a grid of pixels, each holding a value, effectively representing continuous data. This format is well-suited for environmental analysis, land cover studies, and satellite imagery, as it captures variations over a wide area, such as elevation, temperature, or vegetation. While vector data is preferred for its precision in depicting specific geographic entities and managing related data, raster data is favored for its ability to represent complex, continuous phenomena over large spatial scales.</p>
-<section id="vector" class="level3">
-<h3 class="anchored" data-anchor-id="vector">Vector</h3>
-<section id="types" class="level4">
-<h4 class="anchored" data-anchor-id="types">Types</h4>
-<p>Vector data types are primarily categorized into Points, Lines, and Polygons, each with distinct characteristics and uses. Additionally, there are multi-geometry versions of these types, like Multi-Points, Multi-Lines, etc., which offer more complex representations.</p>
+<section id="intro-to-qgis" class="level1">
+<h1>Intro to QGIS</h1>
+<section id="datasets" class="level2">
+<h2 class="anchored" data-anchor-id="datasets">Datasets</h2>
 <ul>
-<li><strong>Points</strong>: In vector GIS, Points are used to represent discrete locations on the earth’s surface. Each point is defined by a pair of coordinates (e.g.&nbsp;latitude and longitude) and can represent features like the location of a city, a well, or a landmark.</li>
-<li><strong>Lines</strong>: Lines are sequences of points connected by straight segments. They are used to represent linear features such as roads, rivers, or utility lines. Lines are characterized by length and direction and can also include attributes like road type or river name.</li>
-<li><strong>Polygons</strong>: Polygons are closed shapes formed by a series of connected line segments. They are used to represent areas such as city boundaries, land parcels, or lakes. Polygons have attributes such as area and perimeter and can include additional information like population density or land use type.</li>
-<li><strong>Multi-Geometry Versions</strong>:
-<ul>
-<li><strong>Multi-Points</strong>: This type represents a collection of points as a single entity. For instance, a Multi-Point could represent a chain of islands or a group of dispersed historical sites.</li>
-<li><strong>Multi-Lines (or Multi-Polylines)</strong>: These are collections of lines that are treated as a single feature. An example might be the total network of streets in a city or various segments of a long-distance hiking trail.</li>
-<li><strong>Multi-Polygons</strong>: This type includes several polygons that are associated but not physically connected, like the different parcels of a dispersed national park or the territories of a country spread over several islands.</li>
-</ul></li>
+<li><p>Download the municipal neighbourhoods as a SHP file: <a href="https://datos.madrid.es/portal/site/egob/menuitem.c05c1f754a33a9fbe4b2e4b284f1a5a0/?vgnextoid=760e5eb0d73a7710VgnVCM2000001f4a900aRCRD&amp;vgnextchannel=374512b9ace9f310VgnVCM100000171f5a0aRCRD&amp;vgnextfmt=default">Barrios municipales de Madrid</a></p></li>
+<li><p>Download the population by district and neighbourhood dataset as a CSV file: <a href="https://datos.madrid.es/portal/site/egob/menuitem.c05c1f754a33a9fbe4b2e4b284f1a5a0/?vgnextoid=0cccaebc07c1f710VgnVCM2000001f4a900aRCRD&amp;vgnextchannel=374512b9ace9f310VgnVCM100000171f5a0aRCRD&amp;vgnextfmt=default">Población por distrito y barrio a 1 de enero</a></p></li>
 </ul>
 </section>
-<section id="formats" class="level4">
-<h4 class="anchored" data-anchor-id="formats">Formats</h4>
-<table class="table">
-<colgroup>
-<col style="width: 31%">
-<col style="width: 31%">
-<col style="width: 37%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: center;">Extension</th>
-<th style="text-align: center;">File Type</th>
-<th style="text-align: left;">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">Esri Shapefile</td>
-<td style="text-align: center;"><code>.SHP</code>, <code>.DBF</code>, <code>.SHX</code></td>
-<td style="text-align: left;">Shapefile is a prevalent geospatial file type in GIS software, requiring three mandatory files: <code>SHP</code> (feature geometry), <code>SHX</code> (shape index position), and <code>DBF</code> (attribute data). Optional files like <code>PRJ</code> (coordinate reference system) are also common.</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">GeoPackage</td>
-<td style="text-align: center;"><code>.GPKG</code></td>
-<td style="text-align: left;">GeoPackage, a portable and compact format, is ideal for transferring geospatial information. Based on SQLite, it supports vector data, tile matrix sets, and extensions. It’s efficient for storing multiple data layers and a popular alternative to shapefiles for handling larger datasets.</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">Geographic JavaScript Object Notation</td>
-<td style="text-align: center;"><code>.GEOJSON</code>, <code>.JSON</code></td>
-<td style="text-align: left;">GeoJSON encodes geographic data structures using JSON. Common in online mapping applications, it represents geographic features like points, lines, and polygons in an open-standard format.</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Geography Markup Language</td>
-<td style="text-align: center;"><code>.GML</code></td>
-<td style="text-align: left;">GML, an XML extension, stores geographic entities as text, including properties, geometry, and spatial reference. It’s similar to GeoJSON but more verbose, offering a human-readable and machine-readable format.</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">Google Keyhole Markup Language</td>
-<td style="text-align: center;"><code>.KML</code>, <code>.KMZ</code></td>
-<td style="text-align: left;">KML, developed for Google Earth, is an XML-based GIS format. <code>KMZ</code>, a compressed version, is the standard Google Earth format. KML/KMZ files include geospatial coordinates (WGS84) and altitude (meters). Adopted as an international standard by the Open Geospatial Consortium in 2008.</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">GPS eXchange Format</td>
-<td style="text-align: center;"><code>.GPX</code></td>
-<td style="text-align: left;">GPX, an XML schema, describes waypoints, tracks, and routes from GPS receivers. It’s an exchange format, facilitating data transfer across programs. GPX files store coordinates, with optional properties like time and elevation.</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">OpenStreetMap</td>
-<td style="text-align: center;"><code>.OSM</code></td>
-<td style="text-align: left;">OSM files, OpenStreetMap’s native format, come from the world’s largest crowdsourced GIS project. They include vector features and are XML-based. The <code>PBF</code> Format is a smaller, more efficient alternative. OSM files are compatible with QGIS for data interoperability.</td>
-</tr>
-</tbody>
-</table>
-<p>Reference: <a href="https://gisgeography.com/gis-formats/">https://gisgeography.com/gis-formats/</a></p>
+<section id="qgis-ui" class="level2">
+<h2 class="anchored" data-anchor-id="qgis-ui">QGIS UI</h2>
+<p>We’ll first explore the QGIS user interface, taking some time to explore:</p>
+<ul>
+<li><strong>Main Interface</strong>: The map area, toolbars, layers panel, status bar, dock panels.</li>
+<li><strong>Toolbars</strong>: These are collections of icons and tools that provide quick access to commonly used features and functions in QGIS. These can be customised based on your preferences. Some of the common toolbars provide functionality such as zooming, panning, selecting features, and editing features.</li>
+<li><strong>Map View</strong>: This is the central area where your maps and layers are displayed. We’ll explore how to navigate the map view, including zooming, panning, and identifying features.</li>
+<li><strong>Browser Panel</strong>: For browsing and loading data from your file system, databases, and web services.</li>
+<li><strong>Layers Panel</strong>: Here, you can see a list of all the layers loaded in your project. Layers can be organised, styled, and otherwise configured.</li>
+<li><strong>Attribute Table</strong>: This panel lets you view and edit the attribute data associated with your vector layers.</li>
+<li><strong>Status Bar</strong>: Located at the bottom, the status bar shows information about the map and your project, such as the current map scale, the coordinate reference system, and messaging about ongoing processes.</li>
+<li><strong>Plugins</strong>: QGIS can be extended with plugins. We’ll briefly touch on how to find, install, and use plugins to enhance the functionality of QGIS.</li>
+</ul>
 </section>
-</section>
-<section id="raster" class="level3">
-<h3 class="anchored" data-anchor-id="raster">Raster</h3>
-<p>Rasters contain a grid of pixels, where the value used for each grid cell can represent a characteristic such as temperature or landcover. Geographic rasters typically include Geospatial information necessary to correctly project and locate the information in GIS software.</p>
-<section id="formats-1" class="level4">
-<h4 class="anchored" data-anchor-id="formats-1">Formats</h4>
-<table class="table">
-<colgroup>
-<col style="width: 33%">
-<col style="width: 33%">
-<col style="width: 33%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Extension</th>
-<th>File Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>American Standard Code for Information Interchange ASCII Grid</td>
-<td><code>.ASC</code></td>
-<td>ASCII Grid files (<code>ASC</code>) store raster data as text in a grid format. Each cell in the grid is represented by a numeric value (which can be a float), corresponding to the geographic attribute being mapped, such as elevation. ASCII Grid files include a header specifying metadata like cell size, number of rows and columns, and coordinates of the lower left corner. The format is simple and can be generated or edited with a text editor, making it versatile for GIS data storage and exchange. Commonly used as an interchange format, it can be space, comma, or tab-delimited.</td>
-</tr>
-<tr class="even">
-<td>GeoTIFF</td>
-<td><code>.TIF</code>, <code>.TIFF</code></td>
-<td>GeoTIFF is a widely used file format in GIS and remote sensing applications, known for its ability to embed georeferencing information within a standard TIFF (Tagged Image File Format). It stores raster images and allows embedding of metadata such as map projections, coordinate systems, ellipsoids, and datums. This embedded geospatial data enables the precise positioning of the image in the correct geographic space. GeoTIFFs are commonly used for storing satellite imagery, aerial photography, and GIS data. They can also be accompanied by additional files, like world files (<code>TFW</code>), for georeferencing.</td>
-</tr>
-</tbody>
-</table>
-<p>Reference: <a href="https://gisgeography.com/gis-formats/">https://gisgeography.com/gis-formats/</a></p>
-</section>
-</section>
+<section id="plugins" class="level2">
+<h2 class="anchored" data-anchor-id="plugins">Plugins</h2>
+<p>Install the Quick Map Services (QMS) Plugin:</p>
+<ul>
+<li>From the <code>Plugins</code> menu, select <code>Manage and Install Plugins</code></li>
+<li>Search for <code>QMS</code></li>
+<li>Install <code>QuickMapServices</code></li>
+<li><code>Install</code> and <code>Close</code> the window.</li>
+</ul>
+<p>This plugin will add a new menu entry under the <code>Web</code> menu.</p>
+<ul>
+<li>From the <code>Web</code> menu, select <code>QuickMapServices</code>, then <code>OSM</code> and <code>OSM Standard</code>.</li>
+<li>This will add a map to your map view.</li>
+</ul>
 </section>
 <section id="coordinate-reference-systems" class="level2">
 <h2 class="anchored" data-anchor-id="coordinate-reference-systems">Coordinate Reference Systems</h2>
-<p>Geographic data is intrinsically tied to the earth’s surface and is represented using coordinates within defined Coordinate Reference Systems (CRS). Broadly, these systems fall into two categories: <strong>Geographic</strong> Coordinate Systems and <strong>Projected</strong> Coordinate Systems.</p>
-<p>Geographic CRSs use a three-dimensional spherical surface to define locations on the earth. They are based on latitude and longitude measurements and are most commonly referenced to the WGS84 datum. While they accurately represent the earth’s curved surface and preserve the true shape and angular relationships of features, distances and areas may not be as accurate, especially over larger areas.</p>
-<p>Projected CRSs translate the earth’s three-dimensional surface onto a two-dimensional plane, making it easier to analyze and visualize spatial data. They use a mathematical projection to flatten the curved surface of the earth, which can lead to distortions in shape, area, distance, or direction. Different types of projections are designed to minimize these distortions for specific regions or purposes. For example, some are optimized for preserving area (equal-area projections), while others preserve distances or shapes.</p>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Tip
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>A useful reference website for CRS is <a href="https://epsg.io/">EPSG.io: Coordinate Systems Worldwide</a></p>
-</div>
-</div>
-<section id="geographic" class="level3">
-<h3 class="anchored" data-anchor-id="geographic">Geographic</h3>
-<p>Geographic <em>Coordinate Reference Systems</em> (CRS) use a three-dimensional spherical or ellipsoidal surface to represent locations on the Earth’s curved surface. Geographic CRSs are based on latitude and longitude coordinates and are useful for global or regional mapping.</p>
+<p>Geospatial data is represented using a coordinate reference system (CRS). QGIS will ordinarily detect this information automatically. However, it can display information in any selected CRS, so you can open multiple files in different CRSs and these will display correctly. This is because QGIS will reproject each respective file into the map’s currently selected CRS system.</p>
+<p>In the lower right corner of the status bar at the bottom of the screen:</p>
 <ul>
-<li><strong>Units</strong>: Degrees</li>
-<li><strong>Common Examples:</strong>
+<li>Select the CRS button to open the project’s CRS configuration.</li>
+<li>Search for CRS code <code>3857</code>, then select it, <code>Apply</code>, and <code>OK</code>.</li>
+</ul>
+<blockquote class="blockquote">
+<p>Hint: When using OSM base maps, the base maps will render more performantly in the Web Mercator projection (<code>3857</code>). This is because QGIS then doesn’t need to dynamically reproject the map tiles out of their native <code>3857</code> projection.</p>
+</blockquote>
+</section>
+<section id="loading-data" class="level2">
+<h2 class="anchored" data-anchor-id="loading-data">Loading Data</h2>
+<p>Load your first dataset by dragging and dropping the shapefile (the downloaded file ending with <code>.shp</code>) into your map view.</p>
 <ul>
-<li><strong>WGS 84 (World Geodetic System 1984)</strong> <code>EPSG:4326</code>: A widely used CRS for global mapping and GPS navigation.</li>
-<li><strong>NAD83 (North American Datum 1983)</strong> <code>EPSG:4269</code>: A CRS commonly used in North America.</li>
-</ul></li>
+<li>You can toggle layer visibility and order using the Layers Panel.</li>
+<li>Use the <code>Select Features</code> button to select a feature and see it highlighted.</li>
+<li>Click the <code>Pan Map to Selection</code> button to see the map zoom to the currently selected feature</li>
+<li>Click the <code>Zoom Full</code> button to return to a view of the full dataset.</li>
+<li>Use the <code>Identify Features</code> button to see attribute information for a particular feature.</li>
+<li>Click the <code>Toggle Editing</code> button -&gt; this will let you delete existing features or add new features - use with caution! Don’t make any changes for now, just click the <code>Toggle Editing</code> button again to exit edit mode.</li>
 </ul>
 </section>
-<section id="projected" class="level3">
-<h3 class="anchored" data-anchor-id="projected">Projected</h3>
-<p>Projected <em>Coordinate Reference Systems</em> (CRS) use a two-dimensional Cartesian coordinate system to represent locations on a flat surface. These CRSs are created by “projecting” the curved Earth onto a flat surface, which introduces distortions, which inevitably requires tradeoffs in distances, areas, or shapes, with different projection systems involving different trade-offs. Projected CRSs are commonly used for local or small-scale mapping appropriate to specific countries or regions of the globe, where locally accurate measurements and comparisons are required.</p>
+<section id="saving-and-exporting-data" class="level2">
+<h2 class="anchored" data-anchor-id="saving-and-exporting-data">Saving and exporting data</h2>
+<p>We don’t want to edit the original dataset, so let’s make a copy and work with that instead:</p>
 <ul>
-<li><strong>Units</strong>: Meters (most commonly)</li>
-<li><strong>Common Examples:</strong>
-<ul>
-<li><strong>UTM Zone 30N (ETRS89)</strong> <code>EPSG:3035</code>: This CRS is commonly used in Europe (around latitude 30° North).</li>
-<li><strong>British National Grid (BNG)</strong> <code>EPSG:27700</code>: This CRS is commonly used in the United Kingdom.</li>
-<li><strong>State Plane Coordinate System (SPCS)</strong>: This CRS is widely used in the United States for local or regional mapping.</li>
-</ul></li>
+<li>Right click the layer in the Layer Panel and select <code>export</code> -&gt; <code>Save Features as</code></li>
+<li>Select the <code>GeoPackage</code> format.</li>
+<li>Select a file location on disk and give it a distinctive name such as <code>my_gpkg</code>.</li>
+<li>Select <code>3857</code> for the CRS projection</li>
+<li>Check that <code>Add saved file to map</code> at the bottom of the window is selected</li>
+<li>Select <code>OK</code></li>
+<li>The file will be saved and will automatically load into your map.</li>
+<li>Remove the original <code>SHP</code> file from your Layers Panel since it is no longer needed. This can be done with the <code>Remove Layer</code> button.</li>
 </ul>
-</section>
-<section id="some-visual-examples" class="level3">
-<h3 class="anchored" data-anchor-id="some-visual-examples">Some visual examples</h3>
-<p><a href="https://gisgeography.com/map-projection-types/">https://gisgeography.com/map-projection-types/</a></p>
-</section>
-</section>
-<section id="qgis-ui" class="level2">
-<h2 class="anchored" data-anchor-id="qgis-ui">QGIS UI 👨🏽‍💻</h2>
-<ul>
-<li>General layout</li>
-<li>The <strong>toolbox</strong></li>
-<li>Extensions / plugins</li>
-<li>Web tiles</li>
-</ul>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>💻 Install Quick Map Services (QMS) → load OSM standard</p>
-</div>
-</div>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Tip
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>💻 <strong>Exercise</strong> → Load/Import data from DATOS MADRID Neighbourhoods (<strong>.shp</strong>); Population (<strong>.csv</strong>) → Explore data attributes : filter based on date (<code>fecha</code>)</p>
-</div>
-</div>
-<p><a href="https://datos.madrid.es/portal/site/egob/menuitem.c05c1f754a33a9fbe4b2e4b284f1a5a0/?vgnextoid=760e5eb0d73a7710VgnVCM2000001f4a900aRCRD&amp;vgnextchannel=374512b9ace9f310VgnVCM100000171f5a0aRCRD&amp;vgnextfmt=default">Barrios municipales de Madrid</a></p>
-<p><a href="https://datos.madrid.es/portal/site/egob/menuitem.c05c1f754a33a9fbe4b2e4b284f1a5a0/?vgnextoid=0cccaebc07c1f710VgnVCM2000001f4a900aRCRD&amp;vgnextchannel=374512b9ace9f310VgnVCM100000171f5a0aRCRD&amp;vgnextfmt=default">Población por distrito y barrio a 1 de enero</a></p>
-</section>
-<section id="gis-data-sources" class="level2">
-<h2 class="anchored" data-anchor-id="gis-data-sources">GIS Data Sources</h2>
-<p>Discovering sources for GIS (Geographic Information System) data is essential for spatial analysis and mapping. There are various official and non-official sources, each offering different types of data suited to specific needs and applications.</p>
-<section id="official-sources" class="level3">
-<h3 class="anchored" data-anchor-id="official-sources">Official Sources</h3>
-<ul>
-<li><strong>Government Agencies:</strong> Agencies such as the US Geological Survey (USGS) and the Environmental Protection Agency (EPA) provide official and reliable GIS data. However, these datasets may reflect governmental priorities and perspectives.</li>
-<li><strong>International Organizations:</strong> Organizations like the United Nations (UN) and the World Bank offer global GIS datasets, ideal for international research. They may not always capture local nuances due to their broad scope.</li>
-<li><strong>Local Authorities:</strong> City and regional councils supply local GIS data, which is often tailored to specific local government projects and priorities.</li>
-</ul>
-</section>
-<section id="non-official-sources" class="level3">
-<h3 class="anchored" data-anchor-id="non-official-sources">Non-Official Sources</h3>
-<ul>
-<li><strong>Private Sector:</strong> Companies such as ArcGIS Living Atlas, Esri, and CARTO Datawarehouse offer comprehensive, commercially-oriented GIS datasets.</li>
-<li><strong>Specialized GIS Data Portals:</strong> Portals like the Harvard Geospatial Library provide access to specialized datasets across various fields.</li>
-<li><strong>Open Data Platforms:</strong> Platforms such as OpenStreetMap offer freely accessible GIS data, contributed by a community of users. These datasets might require additional validation due to their open-source nature.</li>
-<li><strong>Space Agencies:</strong> Agencies like NASA and the European Space Agency (ESA) provide official satellite imagery, particularly useful for environmental and spatial studies.</li>
-<li><strong>Academic Institutions:</strong> Universities often share GIS data derived from research projects. While not officially sanctioned, this data can be valuable but might need adaptation for specific uses.</li>
-<li><strong>Social Media and Crowdsourced Data:</strong> Platforms like Twitter and Facebook can be sources of GIS data, reflecting public behavior and trends. This data is not official and requires careful adaptation to account for inherent biases.</li>
-<li><strong>Web Scraping:</strong> Involves the automated collection of data from websites. This method is not an official source and the quality of data can vary. It’s useful for obtaining unique, real-time data. Web scraping demands significant technical skills for data extraction and processing. Legal and ethical considerations are important, as scraping can sometimes violate terms of service or data privacy laws.</li>
-</ul>
-</section>
-<section id="purposely-collected-data" class="level3">
-<h3 class="anchored" data-anchor-id="purposely-collected-data">Purposely Collected Data</h3>
-<p>Purposely collected data is specifically gathered to meet the objectives of a defined research question or project goal. This type of data is obtained through structured methods such as surveys, experiments, or systematic observations.</p>
-<section id="characteristics" class="level4">
-<h4 class="anchored" data-anchor-id="characteristics">Characteristics:</h4>
-<ul>
-<li><strong>Tailored Collection:</strong> The data is methodically gathered to align closely with the specific needs and aims of a particular study or project.</li>
-<li><strong>Control Over Variables:</strong> Efforts are made to control or monitor variables, enhancing the relevance and accuracy of the data.</li>
-<li><strong>Highly Relevant:</strong> The data’s targeted collection ensures its direct applicability and relevance to the specific research goals.</li>
-</ul>
-</section>
-<section id="potential-built-in-biases" class="level4">
-<h4 class="anchored" data-anchor-id="potential-built-in-biases">Potential Built-in Biases:</h4>
-<ul>
-<li><strong>Selection Bias:</strong> There’s a possibility of preferentially selecting data that confirms a pre-existing hypothesis, while disregarding contradicting data.</li>
-<li><strong>Researcher Bias:</strong> The inclinations or hypotheses of the researcher may inadvertently influence the data collection methods and interpretation.</li>
-<li><strong>Sampling Bias:</strong> The methodology for selecting samples could impact the representativeness of the data, potentially leading to skewed outcomes.</li>
-</ul>
-</section>
-</section>
-<section id="adapted-data" class="level3">
-<h3 class="anchored" data-anchor-id="adapted-data">Adapted Data</h3>
-<p>Adapted data is information that was initially collected for purposes other than the current research project but is repurposed or reinterpreted to suit new research needs. This category includes data from existing public databases, prior studies, or information obtained through web scraping.</p>
-<section id="characteristics-1" class="level4">
-<h4 class="anchored" data-anchor-id="characteristics-1">Characteristics:</h4>
-<ul>
-<li><strong>Broadly Collected:</strong> Originally gathered for various general or distinct objectives, often from pre-existing sources.</li>
-<li><strong>Varied Sources:</strong> Derived from multiple sources, each with unique data collection methods.</li>
-<li><strong>Versatility:</strong> Provides the opportunity to apply pre-existing data to new or unrelated research questions.</li>
-</ul>
-</section>
-<section id="built-in-biases" class="level4">
-<h4 class="anchored" data-anchor-id="built-in-biases">Built-in Biases:</h4>
-<ul>
-<li><strong>Bias of Original Purpose:</strong> The initial intent behind the data collection may affect the type and nature of the data, potentially reducing its applicability to new research questions.</li>
-<li><strong>Risk of Contextual Misinterpretation:</strong> Lacking the original context, there is a danger of misinterpreting the data when adapting it for different uses.</li>
-<li><strong>Concerns about Data Quality and Completeness:</strong> The original data may not fulfill the specific quality or completeness standards required for the new research purpose.</li>
-</ul>
-</section>
-</section>
-<section id="licenses" class="level3">
-<h3 class="anchored" data-anchor-id="licenses">Licenses:</h3>
-<p>When dealing with data, licenses refer to legal agreements or permissions that determine how the data can be used, distributed, or modified. Different datasets may have different licensing requirements, so it’s important to understand and comply with the specific license terms associated with the data you are using.</p>
-<p>Examples:</p>
-<ul>
-<li><strong>Creative Commons (CC) licenses</strong>: Standardized licenses that allow creators to choose permissions for their work. Used for creative works like images, music, videos, and written content.</li>
-<li><strong>Open Database License (ODbL)</strong>: Specifically for databases. Allows users to freely use, share, and modify the database. Modifications and derivative works must be under the same license. Used for open data projects and community-driven data initiatives.</li>
-<li><strong>GNU General Public License (GPL)</strong>: Copyleft license for open-source software. Allows modification and distribution. Modifications and derivative works must be under the same license. Used for promoting open-source principles and collaboration.</li>
-</ul>
-</section>
-<section id="attribution" class="level3">
-<h3 class="anchored" data-anchor-id="attribution">Attribution</h3>
-<p>Attribution or citation refers to giving proper credit to the original source or creator of the data. Just like when citing sources in academic papers, it’s important to acknowledge the origin of the data you are using. This helps provide transparency, accountability, and recognition to the creators of the dataset.</p>
-</section>
-<section id="privacy-considerations" class="level3">
-<h3 class="anchored" data-anchor-id="privacy-considerations">Privacy Considerations</h3>
-<p>Privacy considerations are important when working with data, especially if the data contains personally identifiable information or sensitive information. It’s very important to handle and store data in a way that respects privacy laws and regulations. This may involve anonymizing or de-identifying data, implementing security measures, and obtaining consent from individuals whose data is being used.</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Please avoid using any and all data containing private or sensitive data unless you first review this and seek approval from faculty. Handling these forms of data comes with numerous steps and safeguards and will generally be strongly discouraged.</p>
-</div>
-</div>
-</section>
-</section>
-<section id="reprojections-in-qgis" class="level2">
-<h2 class="anchored" data-anchor-id="reprojections-in-qgis">Reprojections in QGIS 👨🏽‍💻</h2>
-<p>Often times, data from several datasources (or even the same one) comes with different projection systems. Other times it’s a matter of software support or visual preference, but what’s really important is to aim for consolidating all your data layers into the same projection system. This will help with accurate calculations and ‘real’ overlap of layers.</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>💻 Using Madrid’s neighbourhoods (above) and the toolbox → Search for ’<strong>reproject layer’</strong> → Reproject layer to <strong>EPSG: 4326</strong> (and others) and save as a different files (or try Geopackage layers) → Restart a new project and load the new layer → See the layer properties of each and how they overlap or change shapes.</p>
-</div>
-</div>
 </section>
 <section id="attributes" class="level2">
-<h2 class="anchored" data-anchor-id="attributes">Attributes 👨🏽‍💻</h2>
+<h2 class="anchored" data-anchor-id="attributes">Attributes</h2>
 <p>Attributes in GIS layers provide additional information about the spatial features in the data. They include text, numbers, dates, or images. Attributes help add context to the geographic elements, enabling better analysis and visualization. They can be used to filter, classify, and symbolize features based on their characteristics. Attributes play a crucial role in data analysis, allowing us to gain insights, make comparisons, and create meaningful visual representations.</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Inputting and editing data<br>
-💻 → calculate the area of all polygons and save in new field</p>
-</div>
-</div>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Attribute based joins 💻 → Identify the common attributes between the two layers (population and polygons) → Create a Join based on attributes → Calculate the density of population and the density of men and women separately. → delete unnecessary attributes → Save and export (selected features only)</p>
-</div>
-</div>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Styling and visualising data 💻 → Create a Cloropeth map with the new density measure</p>
-</div>
-</div>
+<p>Using the Municipal Boundaries <code>my_gpkg</code> dataset:</p>
+<ul>
+<li>Open the attribute table for the neighbourhood boundaries by right clicking on the layer in the Layers Panel and selecting <code>Attribute Table</code>. From the Attribute table you can try the same steps you tried for the map view (selecting, zooming to, editing).</li>
+<li>Toggle Editing Mode by pressing the <code>Toggle Editing Mode</code> button.</li>
+<li>Click on the <code>New Field</code> button in the toolbar</li>
+<li>Set the Name as <code>area</code> and the type as <code>Decimal number</code>, then <code>OK</code>.</li>
+<li>Check that no rows are selected (otherwise the calculation only applies to the selected rows).</li>
+<li>Open the Field Calculator by clicking its icon (abacus symbol) in the toolbar.</li>
+<li>Select <code>Update existing field</code> and select the <code>area</code> column.</li>
+<li>In the <code>Expression</code> pane, enter <code>$area</code>, then press the blue forward button below to preview the results of the calculation.</li>
+<li>Press <code>OK</code> and check that your area column has been updated.</li>
+<li>Press the <code>Save edits</code> button to save your calculation.</li>
+<li>Turn off editing mode.</li>
+</ul>
+<p>We’ll now add another column, this time we’ll use another column as input and we will transform the data from a text to an integer.</p>
+<ul>
+<li>Turn editing mode on</li>
+<li>Open the Field Calculator</li>
+<li>This time select <code>Create a new field</code> and call it <code>cod_barrio</code></li>
+<li>Check that it is an <code>Integer</code> type</li>
+<li>In the expression, enter <code>to_int(COD_BAR)</code> -&gt; this will take the text from the <code>COD_BAR</code> column and will cast this to an integer. In the process, the data will drop the leading zero.</li>
+<li>Apply the change, save to disk, and toggle editing to off.</li>
+</ul>
 </section>
-<section id="connecting-to-data-on-postgis" class="level2">
-<h2 class="anchored" data-anchor-id="connecting-to-data-on-postgis">Connecting to data on PostGIS 👨🏽‍💻</h2>
-<table class="table">
-<thead>
-<tr class="header">
-<th>⚙</th>
-<th><strong>CONNECTION SETTINGS</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><strong>IP Address</strong></td>
-<td><em>(will be provided during class)</em></td>
-</tr>
-<tr class="even">
-<td><strong>Database names</strong></td>
-<td>nfi / urban_analytics</td>
-</tr>
-<tr class="odd">
-<td><strong>Port</strong></td>
-<td>5432</td>
-</tr>
-<tr class="even">
-<td><strong>Username</strong></td>
-<td>scholar</td>
-</tr>
-<tr class="odd">
-<td><strong>Password</strong></td>
-<td><em>(will be provided during class)</em></td>
-</tr>
-</tbody>
-</table>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Tip
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Note that the connections to the Databases are restricted by the source IP address.</p>
-</div>
-</div>
+<section id="loading-csv-files" class="level2">
+<h2 class="anchored" data-anchor-id="loading-csv-files">Loading CSV files</h2>
+<ul>
+<li>To load the CSV file we’ll go to the <code>Layer</code> menu bar, <code>Add Layer</code>, then <code>Add Delimited Text Layer</code>.</li>
+<li>For <code>File name</code>, navigate to your CSV file</li>
+<li>This file uses semi-colon delimeters, so select <code>Custom delimiters</code> and check that <code>Semicolon</code> is selected</li>
+<li>Check that the option for <code>First record has field names</code> is selected. This will automatically use the first line of the CSV to set the attribute names.</li>
+<li>Select <code>No geometry</code>. This will load the dataset without visual geometric information. Note that if you have longitude and latitude information in CSV columns (or Eastings and Northings for projected CRS), then you can specify these columns and QGIS will generate the point geometries accordingly.</li>
+<li>Select <code>Add</code> then <code>Close</code>.</li>
+<li>Note that this layer looks different in the Layers Panel because it doesn’t have associated geometry. However, you can still view the Attribute Table.</li>
+<li>Right click on the layer and select <code>export</code> -&gt; <code>Save Features as</code>. Then save the layer as a new CSV file called <code>my_csv</code>. As before, select the option to add the layer to the map, save, then remove the original input CSV from the Layers Panel.</li>
+</ul>
 </section>
-<section id="map-types" class="level2">
-<h2 class="anchored" data-anchor-id="map-types">Map types</h2>
-<p><strong>Point Maps</strong>: Represent specific locations.</p>
-<p><strong>Heat Maps</strong>: Visualise the density or intensity of a phenomenon. <img src="./images/heatmap_a.png" class="img-fluid" width="250" alt="Gradient and cell values ‘A’"> <img src="./images/heatmap_b.png" class="img-fluid" width="250" alt="Gradient and cell values ‘B’"></p>
-<p><strong>Flow Maps</strong>: Represent flows or strengths of connections. <img src="./images/flow_map.png" class="img-fluid" width="500" alt="Flow Map"></p>
-<p><strong>Cartograms</strong>: Distort the geographic shape of regions to represent a specific variable. <img src="./images/cartogram.png" class="img-fluid" width="500" alt="Cartogram"></p>
-<p><strong>Cloropleth</strong>: Use color to represent a particular attribute or variable. <img src="./images/choropleth.png" class="img-fluid" width="500" alt="Choropleth"></p>
+<section id="selecting-and-deleting-features" class="level2">
+<h2 class="anchored" data-anchor-id="selecting-and-deleting-features">Selecting and deleting features</h2>
+<ul>
+<li>Open the attribute table for the <code>my_csv</code> layer by right clicking on the data table in the Layers Panel and selecting <code>Attribute Table</code>.</li>
+<li>Order the data by clicking the <code>fecha</code> column header, order in descending order by clicking again.</li>
+<li>Click on the first entry then hold down shift and click on the last entry with a <code>fecha</code> value of <code>1 de enero de 2023</code></li>
+<li>Click the <code>Invert selection</code> button.</li>
+<li>Toggle editing.</li>
+<li>Click the <code>Delete selected features</code> button.</li>
+<li>Save and turn off editing.</li>
+</ul>
 </section>
-<section id="quirks-part-1" class="level2">
-<h2 class="anchored" data-anchor-id="quirks-part-1">Quirks (Part 1)</h2>
-<section id="maup" class="level3">
-<h3 class="anchored" data-anchor-id="maup">MAUP</h3>
-<p>The <strong>Modifiable Areal Unit Problem (MAUP)</strong> is a common issue in geography and maps. It refers to the fact that the results of statistical analysis or visual representation can be influenced by the <strong>choice of spatial unit or scale used to aggregate data</strong>. The MAUP arises because geographic phenomena can be measured and analysed at different levels of spatial granularity, such as census tracts, counties, or regions. When data is aggregated into different spatial units, it can lead to different patterns, relationships, and <strong>interpretations</strong>.</p>
-<p><a href="https://gisgeography.com/maup-modifiable-areal-unit-problem/">https://gisgeography.com/maup-modifiable-areal-unit-problem/</a></p>
-<p><strong>Crime Rates</strong>: Imagine you have crime data recorded at the neighborhoud level. If you aggregate the data into larger units, such as police precincts, the crime rates may appear different due to the varying sizes and characteristics of neighborhouds within each precinct. This can result in different spatial patterns and potentially lead to incorrect conclusions about crime rates in different areas.</p>
-<p><a href="https://www.youtube.com/watch?v=7NTw1v7DuAA&amp;t=115s">https://www.youtube.com/watch?v=7NTw1v7DuAA&amp;t=115s</a></p>
-<p>These examples demonstrate how the choice of spatial unit can significantly impact the analysis and interpretation of geographic data, highlighting the need to carefully consider the scale and boundaries of spatial units when conducting spatial analysis or creating maps.</p>
+<section id="joins" class="level2">
+<h2 class="anchored" data-anchor-id="joins">Joins</h2>
+<ul>
+<li>Open the Attribute Panels for both the <code>my_gpkg</code> and the <code>my_csv</code> layers.</li>
+<li>We want to “Join” information from the CSV dataset to the neighbourhood boundaries using the matching identifiers in the respective <code>cod_barrio</code> / <code>cod_barrio</code> columns.</li>
+<li>Close the Attribute Panels.</li>
+<li>Double click on the <code>my_gpkg</code> layer to open the properties panel.</li>
+<li>Click <code>Joins</code> in the left sidebar.</li>
+<li>Click the plus button to create a new join.</li>
+<li>Select the <code>my_csv</code> table for the <code>Join layer</code> -&gt; the layer from which attributes will be joined to <code>my_gpkg</code>.</li>
+<li>Select the <code>cod_barrio</code> column for the <code>Join field</code></li>
+<li>Select the <code>cod_barrio</code> column for the <code>Target field</code></li>
+<li>Click <code>OK</code> and close the layer properties.</li>
+<li>Reopen the Attribute Panel for the <code>my_gpkg</code> dataset, you’ll see extra columns which have now joined the data from the <code>my_csv</code> table into their corresponding boundaries based on the matching identifiers.</li>
+<li>Let’s export this to a new file to <code>my_joined_gpkg</code>, which will now include the joined data.</li>
+<li>Remove <code>my_csv</code> and <code>my_gpkg</code> from the Layers Panel.</li>
+</ul>
+</section>
+<section id="visulation" class="level2">
+<h2 class="anchored" data-anchor-id="visulation">Visulation</h2>
+<ul>
+<li>Open the <code>my_joined_gpkg</code> layer properties by double clicking on the layer name in the Layers Panel.</li>
+<li>Select <code>Labels</code> in the left pane, select <code>Single Labels</code>, then select the <code>BARRIO_MT</code> column, then apply. This will add the Barrio names to the map. You can format labels to your heart’s content.</li>
+<li>Select <code>Symbology</code> in the left pane. In class, we will walk through a variety of options for map styling. There are almost limitless options so feel free to be creative.</li>
+</ul>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>There is a lot that can be done with QGIS and we have just skimmed the surface!</p>
+<p>For lab-work, please experiment with these or other datasets: labelling and styling to develop a comfortable familiarity with the available options.</p>
 
 
-</section>
 </section>
 </section>
 
@@ -904,8 +632,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../chapter_1/pandas.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Pandas &amp; Data</span>
+      <a href="../chapter_2/gis.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Intro to GIS</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

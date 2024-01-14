@@ -85,7 +85,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapter_2/qgis.html">GIS Tools</a></li><li class="breadcrumb-item"><a href="../chapter_2/sql.html">SQL for GIS</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapter_2/gis.html">GIS Tools</a></li><li class="breadcrumb-item"><a href="../chapter_2/sql.html">SQL for GIS</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
     </div>
@@ -175,8 +175,14 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapter_2/qgis.html" class="sidebar-item-text sidebar-link">
+  <a href="../chapter_2/gis.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Intro to GIS</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapter_2/qgis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Intro to QGIS</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -208,6 +214,7 @@ ul.task-list li input[type="checkbox"] {
   <ul class="collapse">
   <li><a href="#key-topics" id="toc-key-topics" class="nav-link" data-scroll-target="#key-topics">Key Topics</a></li>
   <li><a href="#software-needed" id="toc-software-needed" class="nav-link" data-scroll-target="#software-needed">Software needed</a></li>
+  <li><a href="#connecting-to-data-on-postgis" id="toc-connecting-to-data-on-postgis" class="nav-link" data-scroll-target="#connecting-to-data-on-postgis">Connecting to data on PostGIS 👨🏽‍💻</a></li>
   <li><a href="#to-dos" id="toc-to-dos" class="nav-link" data-scroll-target="#to-dos">To-Dos</a>
   <ul class="collapse">
   <li><a href="#optional" id="toc-optional" class="nav-link" data-scroll-target="#optional">Optional</a></li>
@@ -224,6 +231,9 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="sql-for-gis" class="level1">
 <h1>SQL for GIS</h1>
+<blockquote class="blockquote">
+<p>This is a draft outline and will be fleshed-out closer to class.</p>
+</blockquote>
 <ol type="1">
 <li><strong>SQL and PostgreSQL Basics:</strong></li>
 </ol>
@@ -338,6 +348,52 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 <p><a href="https://tableplus.com/">TablePlus | Modern, Native Tool for Database Management.</a></p>
 </section>
+<section id="connecting-to-data-on-postgis" class="level2">
+<h2 class="anchored" data-anchor-id="connecting-to-data-on-postgis">Connecting to data on PostGIS 👨🏽‍💻</h2>
+<table class="table">
+<thead>
+<tr class="header">
+<th>⚙</th>
+<th><strong>CONNECTION SETTINGS</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>IP Address</strong></td>
+<td><em>(will be provided during class)</em></td>
+</tr>
+<tr class="even">
+<td><strong>Database names</strong></td>
+<td>nfi / urban_analytics</td>
+</tr>
+<tr class="odd">
+<td><strong>Port</strong></td>
+<td>5432</td>
+</tr>
+<tr class="even">
+<td><strong>Username</strong></td>
+<td>scholar</td>
+</tr>
+<tr class="odd">
+<td><strong>Password</strong></td>
+<td><em>(will be provided during class)</em></td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Note that the connections to the Databases are restricted by the source IP address.</p>
+</div>
+</div>
+</section>
 <section id="to-dos" class="level2">
 <h2 class="anchored" data-anchor-id="to-dos">To-Dos</h2>
 <ul>
@@ -371,7 +427,7 @@ ul.task-list li input[type="checkbox"] {
 <section id="useful-resources" class="level2">
 <h2 class="anchored" data-anchor-id="useful-resources">Useful Resources</h2>
 <ul>
-<li>**********POSTGRESQL &amp; POSTGIS CHEATSHEETS**********</li>
+<li><strong>POSTGRESQL &amp; POSTGIS CHEATSHEETS</strong></li>
 </ul>
 <p><a href="https://gist.github.com/clhenrick/ebc8dc779fb6f5ee6a88">PostgreSQL &amp; PostGIS cheatsheet (a work in progress)</a></p>
 <p><a href="https://postgrescheatsheet.com/#/tables">Postgres Cheatsheet</a></p>
