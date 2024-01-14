@@ -235,8 +235,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#munging-and-wrangling" id="toc-munging-and-wrangling" class="nav-link active" data-scroll-target="#munging-and-wrangling">Munging and wrangling</a></li>
-  <li><a href="#acknowledgements" id="toc-acknowledgements" class="nav-link" data-scroll-target="#acknowledgements">Acknowledgements</a></li>
+  <li><a href="#acknowledgements" id="toc-acknowledgements" class="nav-link active" data-scroll-target="#acknowledgements">Acknowledgements</a></li>
+  <li><a href="#munging-and-wrangling" id="toc-munging-and-wrangling" class="nav-link" data-scroll-target="#munging-and-wrangling">Munging and wrangling</a></li>
   <li><a href="#dataset" id="toc-dataset" class="nav-link" data-scroll-target="#dataset">Dataset</a></li>
   <li><a href="#pandas-101" id="toc-pandas-101" class="nav-link" data-scroll-target="#pandas-101">Pandas 101</a>
   <ul class="collapse">
@@ -282,15 +282,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Now that you know some of the basics of Python Notebooks, it’s time to start using them for data science (no, that simple math you did the last time doesn’t count as data science!).</p>
 <p>You are about to enter the Python data ecosystem. This course does not explicitly cover the fundamentals of programming; if you’re stuck, confused, or need further explanation, the answers are more often than not easily accessible through online resources such as your favourite search engine, <a href="https://stackoverflow.com">Stack Overflow</a>, and the amazingly capable explanatory power of emerging AI tools such as <a href="https://chat.openai.com">ChatGPT</a>. The internet is a friend of every programmer and you’re encouraged to use it effectively from the get-go. There has never been an easier time to learn how to code!</p>
 <p>Let’s dig in!</p>
+<blockquote class="blockquote">
+<p>This notebook can be <a href="https://github.com/Norman-Foster-Institute/ua_2024/tree/main/chapter_1">downloaded from here</a></p>
+</blockquote>
+<section id="acknowledgements" class="level2">
+<h2 class="anchored" data-anchor-id="acknowledgements">Acknowledgements</h2>
+<p>This section is adapted from the <a href="https://github.com/martinfleis/sds">Spatial Data Science for Social Geography</a> by Martin Fleischman, which in turn is based on <a href="https://darribas.org/gds_course/content/home.html">A Course on Geographic Data Science</a> by Dani Arribas-Bel, both licensed under CC-BY-SA 4.0. The content and datasets were reworked to accommodate the Madrid neighbourhood population statistics dataset.</p>
+</section>
 <section id="munging-and-wrangling" class="level2">
 <h2 class="anchored" data-anchor-id="munging-and-wrangling">Munging and wrangling</h2>
 <p>Real-world datasets are messy. There is no way around it: datasets have “holes” (missing data), the number of formats in which data can be stored can be endless, and the best structure to share data is not always the optimal for analysis. Hence the need to “munge” or “wrangle” data. Much of the time spent in what is called Data Science is related not only to modelling and insight but more often than not has to do with much more basic and less exotic tasks such as obtaining the data, data cleaning, and other preparation which makes analysis possible.</p>
 <p>Surprisingly, very little has been published on patterns, techniques, and best practices for quick and efficient data cleaning, manipulation, and transformation because of how labour-intensive this aspect is. In this session, we will use real-world datasets and learn how to transform and manipulate these, if necessary, prior to analysis. For this, we will introduce some of the bread-and-butter of data analysis and scientific computing in Python. These are fundamental tools that are widely and consistently used on almost any tasks relating to data analysis.</p>
 <p>This notebook covers the basics and the content that needs to be grasped, and discusses several patterns to clean and structure data properly, including tidying, subsetting, and aggregating. We will conclude with some basic visualisation. An additional extension presents more advanced tricks to manipulate tabular data.</p>
-</section>
-<section id="acknowledgements" class="level2">
-<h2 class="anchored" data-anchor-id="acknowledgements">Acknowledgements</h2>
-<p>This section is adapted from the <a href="https://github.com/martinfleis/sds">Spatial Data Science for Social Geography</a> by Martin Fleischman, which in turn is based on <a href="https://darribas.org/gds_course/content/home.html">A Course on Geographic Data Science</a> by Dani Arribas-Bel, both licensed under CC-BY-SA 4.0. The content and datasets were adapted, primarily to accommodate a different dataset.</p>
 </section>
 <section id="dataset" class="level2">
 <h2 class="anchored" data-anchor-id="dataset">Dataset</h2>
@@ -3528,7 +3531,7 @@ dtype: float64</code></pre>
 <span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>sns.distplot(madrid_pop[<span class="st">"num_people"</span>], bins<span class="op">=</span><span class="dv">25</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>/var/folders/bs/sq3p18cs4dn1ws4kpmfyk_3c0000gn/T/ipykernel_25510/1337644598.py:3: UserWarning: 
+<pre><code>/var/folders/bs/sq3p18cs4dn1ws4kpmfyk_3c0000gn/T/ipykernel_47523/1337644598.py:3: UserWarning: 
 
 `distplot` is a deprecated function and will be removed in seaborn v0.14.0.
 
@@ -3625,7 +3628,7 @@ https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
 <div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>mad_grouped <span class="op">=</span> madrid_pop.groupby(<span class="st">"year"</span>)</span>
 <span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>mad_grouped</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="35">
-<pre><code>&lt;pandas.core.groupby.generic.DataFrameGroupBy object at 0x145152d90&gt;</code></pre>
+<pre><code>&lt;pandas.core.groupby.generic.DataFrameGroupBy object at 0x14055b650&gt;</code></pre>
 </div>
 </div>
 <p>The object <code>mad_grouped</code> still hasn’t computed anything. It is only a convenient way of specifying the grouping. But this allows us then to perform a multitude of operations on it. For our example, the sum is calculated as follows:</p>
@@ -3928,14 +3931,12 @@ https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
 </div>
 </div>
 <p>We will not get into it today as it goes beyond the basics this chapter covers, but keep in mind that <code>groupby</code> allows us to not only call generic functions (like <code>sum</code> or <code>describe</code>), but also custom functions. This opens the door for virtually any kind of transformation and aggregation possible.</p>
-<blockquote class="blockquote">
 <p><strong>Additional reading</strong></p>
 <ul>
-<li>A good introduction to data manipulation in Python is Wes McKinney’s “<a href="https://wesmckinney.com/book/pandas-basics">Python for Data Analysis</a>”.</li>
+<li>A good introduction to data manipulation in Python is Wes McKinney’s <a href="https://wesmckinney.com/book/pandas-basics">Python for Data Analysis</a>.</li>
 <li>To further explore some of the visualization capabilities, the Python library <code>seaborn</code> is an excellent choice. Its online <a href="https://seaborn.pydata.org/tutorial.html">tutorial</a> is a fantastic place to start.</li>
 <li>A good extension is Hadley Wickham’s “Tidy data” paper, which presents a very popular way of organising tabular data for efficient manipulation.</li>
 </ul>
-</blockquote>
 
 
 </section>
