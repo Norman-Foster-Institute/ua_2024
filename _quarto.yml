@@ -3,8 +3,8 @@ project:
   output-dir: ./output
   type: website
 website:
-  title: NFI Urban Analytics 2024
-  description: NFI Urban Analytics content - Part I.
+  title: NFI Urban Analytics 2024 - Part 1
+  description: NFI Urban Analytics content - Part 1
   page-navigation: true
   repo-url: https://github.com/Norman-Foster-Institute/ua_2024
   navbar:
