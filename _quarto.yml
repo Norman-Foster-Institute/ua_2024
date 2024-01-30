@@ -3,8 +3,8 @@ project:
   output-dir: ./output
   type: website
 website:
-  title: NFI Urban Analytics 2024
-  description: NFI Urban Analytics content.
+  title: NFI Urban Analytics 2024 - Part 1
+  description: NFI Urban Analytics content - Part 1
   page-navigation: true
   repo-url: https://github.com/Norman-Foster-Institute/ua_2024
   navbar:
@@ -27,11 +27,13 @@ website:
       - section: Basic Coding
         contents:
           - chapter_1/python.ipynb
+          - chapter_1/open_source.qmd
           - chapter_1/pandas.ipynb
       - section: GIS Tools
         contents:
+          - chapter_2/gis.qmd
           - chapter_2/qgis.qmd
-          - chapter_2/sql.qmd
+          - chapter_2/cloud.qmd
   page-footer:
     center:
       - text: "License"

@@ -1,0 +1,3 @@
+# Cloud GIS
+
+This will be an in-class hands-on session providing an introduction to the use of CARTO for publishing and styling interactive maps.

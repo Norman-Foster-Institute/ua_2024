@@ -1,4 +1,4 @@
-# Urban Analytics 2024
+# Urban Analytics 2024 - Part 1
 
 Published to: [Github Pages](https://Norman-Foster-Institute.github.io/ua_2024/)
 
