@@ -3,7 +3,7 @@ name = "ua_2024"
 version = "0.1.0"
 description = "Default template for PDM package"
 authors = [
-    {name = "", email = ""},
+    {name = ""},
 ]
 dependencies = [
     "ipykernel>=6.28.0",

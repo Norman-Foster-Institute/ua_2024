@@ -98,8 +98,9 @@ Projected _Coordinate Reference Systems_ (CRS) use a two-dimensional Cartesian c
 ### Some visual examples
 
 ```{=html}
-<iframe width="780" height="500" src="https://gisgeography.com/map-projection-types/" title="Webpage example"></iframe>
+<iframe width="100%" height="500" src="https://gisgeography.com/map-projection-types/" title="Webpage example"></iframe>
 ```
+> [https://gisgeography.com](https://gisgeography.com/map-projection-types/)
 ---
 
 ## GIS Data
@@ -159,12 +160,14 @@ Please avoid using any and all data containing private or sensitive data unless 
 The **Modifiable Areal Unit Problem (MAUP)** is a common issue in geography and maps. It refers to the fact that the results of statistical analysis or visual representation can be influenced by the **choice of spatial unit or scale used to aggregate data**. The MAUP arises because geographic phenomena can be measured and analysed at different levels of spatial granularity, such as census tracts, counties, or regions. When data is aggregated into different spatial units, it can lead to different patterns, relationships, and **interpretations**.
 
 ```{=html}
-<iframe width="780" height="600" src="https://gisgeography.com/maup-modifiable-areal-unit-problem/" title="Webpage example"></iframe>
+<iframe width="100%" height="600" src="https://gisgeography.com/maup-modifiable-areal-unit-problem/" title="Webpage example"></iframe>
 ```
+> [https://gisgeography.com](https://gisgeography.com/maup-modifiable-areal-unit-problem)
 
 **Crime Rates**: Imagine you have crime data recorded at the neighborhoud level. If you aggregate the data into larger units, such as police precincts, the crime rates may appear different due to the varying sizes and characteristics of neighborhouds within each precinct. This can result in different spatial patterns and potentially lead to incorrect conclusions about crime rates at different scales or units of analysis.
 
 {{< video https://www.youtube.com/watch?v=7NTw1v7DuAA >}}
+> [YouTube](https://www.youtube.com/watch?v=7NTw1v7DuAA)
 
 These examples demonstrate how the choice of spatial unit can significantly impact the analysis and interpretation of geographic data, highlighting the need to use consistency with the scale, units, and boundaries of spatial analysis.
 ---

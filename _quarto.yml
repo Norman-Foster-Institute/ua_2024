@@ -13,6 +13,8 @@ website:
     location: navbar
     type: overlay
   sidebar:
+    style: "docked"
+    collapse-level: 1
     tools:
       - icon: github
         href: https://github.com/Norman-Foster-Institute/ua_2024
