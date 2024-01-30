@@ -172,7 +172,7 @@ The **Modifiable Areal Unit Problem (MAUP)** is a common issue in geography and 
 These examples demonstrate how the choice of spatial unit can significantly impact the analysis and interpretation of geographic data, highlighting the need to use consistency with the scale, units, and boundaries of spatial analysis.
 ---
 
-## Resources & Lab Work
+## Resources
 
 Please review the following resources for information on common types of map visualisations and best practices:
 

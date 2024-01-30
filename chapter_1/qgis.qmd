@@ -1,11 +1,5 @@
 # Intro to QGIS
 
-## Datasets
-
-- Download the municipal neighbourhoods as a SHP file: [Barrios municipales de Madrid](https://datos.madrid.es/portal/site/egob/menuitem.c05c1f754a33a9fbe4b2e4b284f1a5a0/?vgnextoid=760e5eb0d73a7710VgnVCM2000001f4a900aRCRD&vgnextchannel=374512b9ace9f310VgnVCM100000171f5a0aRCRD&vgnextfmt=default)
-
-- Download the population by district and neighbourhood dataset as a CSV file: [Población por distrito y barrio a 1 de enero](https://datos.madrid.es/portal/site/egob/menuitem.c05c1f754a33a9fbe4b2e4b284f1a5a0/?vgnextoid=0cccaebc07c1f710VgnVCM2000001f4a900aRCRD&vgnextchannel=374512b9ace9f310VgnVCM100000171f5a0aRCRD&vgnextfmt=default)
-
 ## QGIS UI
 
 We'll first explore the QGIS user interface, taking some time to explore:
@@ -32,6 +26,15 @@ This plugin will add a new menu entry under the `Web` menu.
 
 - From the `Web` menu, select `QuickMapServices`, then `OSM` and `OSM Standard`.
 - This will add a map to your map view.
+
+## XYZ Tiles
+
+## Datasets
+
+- Download the municipal neighbourhoods as a SHP file: [Barrios municipales de Madrid](https://datos.madrid.es/portal/site/egob/menuitem.c05c1f754a33a9fbe4b2e4b284f1a5a0/?vgnextoid=760e5eb0d73a7710VgnVCM2000001f4a900aRCRD&vgnextchannel=374512b9ace9f310VgnVCM100000171f5a0aRCRD&vgnextfmt=default)
+
+- Download the population by district and neighbourhood dataset as a CSV file: [Población por distrito y barrio a 1 de enero](https://datos.madrid.es/portal/site/egob/menuitem.c05c1f754a33a9fbe4b2e4b284f1a5a0/?vgnextoid=0cccaebc07c1f710VgnVCM2000001f4a900aRCRD&vgnextchannel=374512b9ace9f310VgnVCM100000171f5a0aRCRD&vgnextfmt=default)
+
 
 ## Coordinate Reference Systems
 
@@ -132,13 +135,22 @@ We'll now add another column, this time we'll use another column as input and we
 - Let's export this to a new file to `my_joined_gpkg`, which will now include the joined data.
 - Remove `my_csv` and `my_gpkg` from the Layers Panel.
 
-## Visulation
+## Visualisation
 
 - Open the `my_joined_gpkg` layer properties by double clicking on the layer name in the Layers Panel.
 - Select `Labels` in the left pane, select `Single Labels`, then select the `BARRIO_MT` column, then apply. This will add the Barrio names to the map. You can format labels to your heart's content.
 - Select `Symbology` in the left pane. In class, we will walk through a variety of options for map styling. There are almost limitless options so feel free to be creative.
 
-## Resources & Lab Work
+## Connecting to DB
+
+::: {.callout-tip}
+Connection details will be provided during class. Note that all connections to the database are IP protected.
+:::
+
+## Mapping Vector Data
+
+
+## Resources
 
 There is a lot that can be done with QGIS and we have just skimmed the surface!
 
