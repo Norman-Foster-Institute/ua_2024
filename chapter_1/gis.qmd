@@ -8,18 +8,19 @@
 
 #### Types
 
-Vector data types are primarily categorized into Points, Lines, and Polygons, each with distinct characteristics and uses. Additionally, there are multi-geometry versions of these types, like Multi-Points, Multi-Lines, etc., which offer more complex representations.
+Vector data types are primarily categorized into Points, Linestrings, and Polygons, each with distinct characteristics and uses. Additionally, there are multi-geometry versions of these types, such as MultiPoints, MultiLinestrings, and MultiPolygons, which offer more complex feature groupings.
 
-- **Points**: In vector GIS, Points are used to represent discrete locations on the earth's surface. Each point is defined by a pair of coordinates (e.g. latitude and longitude) and can represent features like the location of a city, a well, or a landmark.
-- **Lines**: Lines are sequences of points connected by straight segments. They are used to represent linear features such as roads, rivers, or utility lines. Lines are characterized by length and direction and can also include attributes like road type or river name.
-- **Polygons**: Polygons are closed shapes formed by a series of connected line segments. They are used to represent areas such as city boundaries, land parcels, or lakes. Polygons have attributes such as area and perimeter and can include additional information like population density or land use type.
+- **Points**: Points are used to represent discrete locations on the earth's surface. Each point is defined by a pair of coordinates (e.g. latitude and longitude, or an easting and northing) and can represent features such as the location of a tree or a landmark. They can have attributes further describing characteristics of interest, such as tree species or landmark name.
+- **Linestring**: Lines connect a series of points to describe linear features such as roads or rivers. Linestring geometries inherently have length and may include attributes such as road type or river name.
+- **Polygons**: Polygons are closed shapes used to represent areas such as city boundaries or land parcels. Polygon geometries inherently have an area and perimeter and may have attributes such as population counts or land use types.
 
 ![Geometry types](./images/pts_lns_pols.jpg)
 
 - **Multi-Geometry Versions**:
-  - **Multi-Points**: This type represents a collection of points as a single entity. For instance, a Multi-Point could represent a chain of islands or a group of dispersed historical sites.
-  - **Multi-Lines (or Multi-Polylines)**: These are collections of lines that are treated as a single feature. An example might be the total network of streets in a city or various segments of a long-distance hiking trail.
-  - **Multi-Polygons**: This type includes several polygons that are associated but not physically connected, like the different parcels of a dispersed national park or the territories of a country spread over several islands.
+  Multi geometries provide a way to associated a grouping of Features which can share the same feature attributes.
+  - **MultiPoint**: For example, a grouping of trees.
+  - **MultiLinestring**: For example, a grouping of related segments describing a long-distance hiking trail.
+  - **MultiPolygon**: For example, a grouping of buildings which together represent a larger entity such as a hospital or university.
 
 #### Formats
 
@@ -29,15 +30,15 @@ Shapefile is a prevalent geospatial file type in GIS software, requiring three m
 - `SHP` (feature geometry)
 - `SHX` (shape index position)
 - `DBF` (attribute data)
-- Optional files like `PRJ` (coordinate reference system) are also common.
+- Shapefiles often also include optional files such as `PRJ` (coordinate reference system).
 
 **GeoPackage**
 
-GeoPackage, a portable and compact format, is ideal for transferring geospatial information. Based on SQLite, it supports vector data, tile matrix sets, and extensions. It's efficient for storing **multiple data layers** and a popular alternative to shapefiles for handling larger datasets.
+GeoPackage provides a modern and simpler alternative to shapefiles and is rapidly gaining acceptance. It supports vector data and can store **multiple data layers** and it's use of SQLite means that you can use SQL queries.
 
 **GeoJSON**
 
-GeoJSON encodes geographic data structures using JSON. Common in online mapping applications, it represents geographic features like points, lines, and polygons in an open-standard format. |
+GeoJSON encodes geographic data structures using JSON, a format commonly used for web development.
 
 > Reference: [https://gisgeography.com/gis-formats/](https://gisgeography.com/gis-formats/)
 
@@ -52,11 +53,11 @@ Rasters contain a grid of pixels, where the value used for each grid cell can re
 
 **ASCII Grid**
 
-ASCII Grid files (`ASC`) store raster data as text in a grid format. Each cell in the grid is represented by a numeric value (which can be a float), corresponding to the geographic attribute being mapped, such as elevation. ASCII Grid files include a header specifying metadata like cell size, number of rows and columns, and coordinates of the lower left corner. The format is simple and can be generated or edited with a text editor, making it versatile for GIS data storage and exchange. Commonly used as an interchange format, it can be space, comma, or tab-delimited.
+ASCII Grid files (`ASC`) store raster data as text in a grid format. Each cell in the grid is represented by a numeric value corresponding to the geographic attribute being mapped, such as elevation. ASCII Grid files include a header specifying metadata like cell size, number of rows and columns, and coordinates of the lower left corner. The format is simple and can be generated or edited with a text editor, and may use space, comma, or tab-delimiters.
 
 **GeoTIFF**
 
-GeoTIFF is a widely used file format in GIS and remote sensing applications, known for its ability to embed georeferencing information within a standard TIFF (Tagged Image File Format). It stores raster images and allows embedding of metadata such as map projections, coordinate systems, ellipsoids, and datums. This embedded geospatial data enables the precise positioning of the image in the correct geographic space. GeoTIFFs are commonly used for storing satellite imagery, aerial photography, and GIS data.
+GeoTIFF is widely becoming the defacto raster format in GIS. It embeds coordinate reference system information within a TIFF (Tagged Image File Format). GeoTIFFs are commonly used for storing satellite imagery, elevation data, and land surface temperatures.
 
 > Reference: [https://gisgeography.com/gis-formats/](https://gisgeography.com/gis-formats/)
 ---
@@ -65,9 +66,9 @@ GeoTIFF is a widely used file format in GIS and remote sensing applications, kno
 
 Geographic data is intrinsically tied to the earth's surface and is represented using coordinates within defined Coordinate Reference Systems (CRS). Broadly, these systems fall into two categories: **Geographic** Coordinate Systems and **Projected** Coordinate Systems.
 
-Geographic CRSs use a three-dimensional spherical surface to define locations on the earth. They are based on latitude and longitude measurements and are most commonly referenced to the WGS84 datum. While they accurately represent the earth's curved surface and preserve the true shape and angular relationships of features, distances and areas may not be as accurate, especially over larger areas.
+Geographic CRSs use a spherical surface to define locations on the earth's surface. They are based on degrees in latitude and longitude and are most commonly referenced to the WGS84 datum. While they accurately represent the earth's curved surface and preserve the true shape and angular relationships of features, distances and areas may not be as accurate, especially over larger distances.
 
-Projected CRSs translate the earth's three-dimensional surface onto a two-dimensional plane, making it easier to analyze and visualize spatial data. They use a mathematical projection to flatten the curved surface of the earth, which can lead to distortions in shape, area, distance, or direction. Different types of projections are designed to minimize these distortions for specific regions or purposes. For example, some are optimized for preserving area (equal-area projections), while others preserve distances or shapes.
+Projected CRSs translate the earth's three-dimensional surface onto a two-dimensional plane, making it easier to analyze and visualize spatial data. They use a mathematical projection to flatten the curved surface of the earth, which can lead to distortions in shape, area, distance, or direction. Different types of projections are designed to minimize these distortions for specific regions or purposes. For example, projections can be optimized for preserving areas (equal-area projections), angles and shapes (conformal), or distances (equidistant).
 
 ![Dimaxion Fuller projection. NFF image rights.](./images/fuller_nff.png)
 
@@ -77,7 +78,7 @@ A useful reference website for different CRS is [EPSG.io: Coordinate Systems Wor
 
 ### Geographic
 
-Geographic _Coordinate Reference Systems_ (CRS) use a three-dimensional spherical or ellipsoidal surface to represent locations on the Earth's curved surface. Geographic CRSs are based on latitude and longitude coordinates and are useful for global or regional mapping.
+Geographic _Coordinate Reference Systems_ (CRS) use a spherical or ellipsoidal surface to represent locations on the Earth's curved surface. Geographic CRSs are based on latitude and longitude coordinates and are useful for global or regional mapping.
 
 - **Units**: Degrees
 - **Common Examples:**
@@ -86,13 +87,13 @@ Geographic _Coordinate Reference Systems_ (CRS) use a three-dimensional spherica
 
 ### Projected
 
-Projected _Coordinate Reference Systems_ (CRS) use a two-dimensional Cartesian coordinate system to represent locations on a flat surface. These CRSs are created by "projecting" the curved Earth onto a flat surface, which introduces distortions. This inevitably requires tradeoffs in distances, areas, or shapes, with different projection systems involving different trade-offs. Projected CRSs are commonly used for local or small-scale mapping appropriate to specific countries or regions of the globe, where locally accurate measurements and comparisons are required.
+Projected _Coordinate Reference Systems_ (CRS) use a Cartesian coordinate system to represent locations on a flat surface. These CRSs are created by "projecting" the curved Earth onto a flat surface, which introduces distortions. This inevitably requires tradeoffs in distances, areas, or shapes, with different projection systems involving different trade-offs. Projected CRSs are commonly used for local or small-scale mapping appropriate to specific countries or regions of the globe, where locally accurate measurements and comparisons are required.
 
 - **Units**: Meters (most commonly)
 - **Common Examples:**
-  - **UTM Zone 30N (ETRS89)** `EPSG:3035`: This CRS is commonly used in Europe (around latitude 30° North).
+  - **LAEA (Lambert Azimuthal Equal Area) Europe projection** `EPSG:3035`: This CRS is commonly used for Europe, though note that countries will typically also have even more localised projected CRS.
   - **British National Grid (BNG)** `EPSG:27700`: This CRS is commonly used in the United Kingdom.
-  - **State Plane Coordinate System (SPCS)**: This CRS is widely used in the United States for local or regional mapping.
+  - **State Plane Coordinate System (SPCS)**: This CRS is widely used in the United States, and divides the country into zones, each with their own projection.
 
 
 ### Some visual examples
@@ -111,18 +112,19 @@ Discovering sources for GIS (Geographic Information System) data is a handy skil
 
 - **Government Agencies:** National agencies often provide official and reliable forms of GIS data. However, these datasets may reflect governmental priorities and perspectives or they may be reluctant to make these datasets openly available.
 - **International Organizations:** Organizations such as the United Nations (UN) and the World Bank offer global GIS datasets, but these may have limited local detail due to their broad scope.
-- **Local Authorities:** City and regional councils often create and maintain local GIS datasets, often tailored to specific local government projects and priorities.
+- **Local Authorities:** City and regional councils often create and maintain local GIS datasets, often tailored to specific local government projects and priorities. Their local specificity may make it tricky to compare to different datasets sourced from other cities.
 - **Private Sector:** There are many private sector organisations which generate, curate, or distribute data, however, these datasets are less likely to be openly available and may incur substantial monetary cost.
-- **Open Data Platforms:** Platforms such as OpenStreetMap offer freely accessible GIS data, contributed by a community of users. These datasets might require additional validation if used for mission-critical purposes, though can otherwise be extremely useful, allowing for generalisable workflows and providing coverage in some instances where no other options exist.
-- **APIs and Web Scraping:** Involves the automated collection of data from APIs or websites. The quality of data can vary but may otherwise be useful for obtaining interesting data. These techniques may involve significant technical skills for data extraction and processing. Legal and ethical considerations are important, as scraping can sometimes violate terms of service or data privacy laws.
+- **Open Data Platforms:** Platforms such as OpenStreetMap offer freely accessible GIS data, contributed by a community of users. These datasets may require additional validation if used for mission-critical purposes, though can otherwise be extremely useful, allowing for generalisable workflows and providing coverage in some instances where no other options exist.
+- **APIs and Web Scraping:** Involves the automated collection of data from online APIs or websites. The quality of data can vary but may otherwise be useful for obtaining interesting data. These techniques may involve significant technical skills for data extraction and processing. Legal and ethical considerations are important, as scraping can sometimes violate terms of service or data privacy laws.
 
 ### Purposely Collected Data
 
-Purposely collected data is gathered specifically to address a certain research question or project goal, using structured approaches like surveys, experiments, or observations. It's tailored to meet the specific needs of a study, with careful control over variables to ensure the data's relevance and accuracy. This type of data is highly pertinent to the project it's collected for, due to its focused nature and methodical collection process.
+Purposely collected data is gathered specifically to address a certain research question or project goal, using structured approaches such as surveys, experiments, or observations. It's tailored to meet the specific needs of a study, with careful control over variables to ensure the data's relevance and accuracy. This type of data is highly pertinent to the project it's collected for, due to its focused nature and methodical collection process.
 
 ### Adapted Data
 
-On the other hand, adapted data refers to information originally collected for different purposes, but later used for new research needs. It includes data from various sources such as public databases, previous studies, or web scraping. This data is characterized by its broad range of collection goals and the diverse methods used in its initial gathering. Its versatility lies in the ability to repurpose existing data for new or unrelated research questions, making it a flexible resource in research contexts.
+On the other hand, data can also be adapted to new research needs from information originally collected for different purposes. This may include repurposing data from various sources such as public databases, existing research studies, or web scraping.
+
 ---
 
 ## Attribution
@@ -157,24 +159,18 @@ Please avoid using any and all data containing private or sensitive data unless 
 
 ### MAUP
 
-The **Modifiable Areal Unit Problem (MAUP)** is a common issue in geography and maps. It refers to the fact that the results of statistical analysis or visual representation can be influenced by the **choice of spatial unit or scale used to aggregate data**. The MAUP arises because geographic phenomena can be measured and analysed at different levels of spatial granularity, such as census tracts, counties, or regions. When data is aggregated into different spatial units, it can lead to different patterns, relationships, and **interpretations**.
+The **Modifiable Areal Unit Problem (MAUP)** is encountered when using different scales or zones of analysis to group data. This can cause significant changes in the balance and aggregation of data purely based on how it is grouped. This can have a potentially significant impact on visualisation or analysis. MAUP is exploited for political purposes through the process of gerrymandering.
 
-```{=html}
-<iframe width="100%" height="600" src="https://gisgeography.com/maup-modifiable-areal-unit-problem/" title="Webpage example"></iframe>
-```
 > [https://gisgeography.com](https://gisgeography.com/maup-modifiable-areal-unit-problem)
 
-**Crime Rates**: Imagine you have crime data recorded at the neighborhoud level. If you aggregate the data into larger units, such as police precincts, the crime rates may appear different due to the varying sizes and characteristics of neighborhouds within each precinct. This can result in different spatial patterns and potentially lead to incorrect conclusions about crime rates at different scales or units of analysis.
+{{< video https://www.youtube.com/watch?v=FCTKT0KaQdc >}}
+> [YouTube](https://www.youtube.com/watch?v=FCTKT0KaQdc)
 
-{{< video https://www.youtube.com/watch?v=7NTw1v7DuAA >}}
-> [YouTube](https://www.youtube.com/watch?v=7NTw1v7DuAA)
-
-These examples demonstrate how the choice of spatial unit can significantly impact the analysis and interpretation of geographic data, highlighting the need to use consistency with the scale, units, and boundaries of spatial analysis.
 ---
 
 ## Resources
 
-Please review the following resources for information on common types of map visualisations and best practices:
+The following resources provide further information on common types of map visualisations and best practices:
 
 - CARTO - [5 Popular Thematic map Types](https://carto.com/blog/popular-thematic-map-types-techniques-spatial-data)
 - Fundamentals of Data Visualisation

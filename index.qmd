@@ -2,13 +2,24 @@
 
 ## UA Part 1
 
-Welcome to Part 1 of the Urban Analytics course at the Norman Foster Institute. This course is designed to empower scholars with the skills and knowledge to harness the power of urban analytics and tools such as QGIS and Python in analyzing and interpreting urban data.
+Welcome to Part 1 of the Urban Analytics course at NFI. This course is designed to empower scholars with the skills and knowledge to harness the power of urban analytics for analyzing and interpreting urban data.
 
-See the sidebar for the **Sections**.
+This is a practical course and is best approached with a hands-on and explorative mindset. It consists of three parts:
 
-Part 2 is published separately.
+- Part 1 includes information on general setup and provides an introduction to basic concepts. See the sidebar for the **Sections**.
+- Part 2 will be released separately and delves into targeted themes and skills development.
+- Part 3 will be framed around pilot cities specific workflows.
 
 We hope you enjoy the course!
+
+## Topics
+
+This course is will touch on a number of broad topics. High-level guidance will be provided and scholars will then be encouraged to further explore these approaches and develop their skillsets based on methods of interest or relevance to their work:
+
+- **Spatial Analysis**: Exploring Geographic Information Systems, spatial data handling, and mapping urban data.
+- **Python**: Introduction to Python and its usage for geospatial analysis.
+- **Data Handling**: Techniques for handling datasets and an introduction to data science methods.
+- **Project Work**: Lab work tasks and workflows.
 
 ## Communication
 
@@ -19,13 +30,3 @@ You have been added to a Google Spaces for online discussions. This platform is 
 - Collaborating on projects and assignments.
 - Announcements and updates from the course team.
 
-The learning process is enriched through collaborative effort. Your contributions make a difference!
-
-## Topics
-
-This course is will touch on a number of broad topics. High-level guidance will be provided and scholars will then be encouraged to further explore these approaches and develop their skillsets based on methods of interest or relevance to their work:
-
-- **Spatial Analysis**: Exploring Geographic Information Systems, spatial data handling, and mapping urban data.
-- **Python**: Introduction to Python and its usage for geospatial analysis.
-- **Data Handling**: Techniques for handling datasets and an introduction to data science methods.
-- **Project Work**: Lab work tasks and workflows.
