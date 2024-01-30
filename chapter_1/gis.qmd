@@ -34,7 +34,7 @@ Shapefile is a prevalent geospatial file type in GIS software, requiring three m
 
 **GeoPackage**
 
-GeoPackage provides a modern and simpler alternative to shapefiles and is rapidly gaining acceptance. It supports vector data and can store **multiple data layers** and it's use of SQLite means that you can use SQL queries.
+GeoPackage provides a modern and simpler alternative to shapefiles and is rapidly gaining acceptance. It can store **multiple data layers** and it's use of SQLite means that you can use SQL query data from the file.
 
 **GeoJSON**
 
@@ -57,7 +57,7 @@ ASCII Grid files (`ASC`) store raster data as text in a grid format. Each cell i
 
 **GeoTIFF**
 
-GeoTIFF is widely becoming the defacto raster format in GIS. It embeds coordinate reference system information within a TIFF (Tagged Image File Format). GeoTIFFs are commonly used for storing satellite imagery, elevation data, and land surface temperatures.
+GeoTIFF is widely becoming the defacto raster format in GIS. It embeds coordinate reference system information within a TIFF (Tagged Image File Format) file. GeoTIFFs are commonly used for storing satellite imagery, elevation data, and land surface temperatures.
 
 > Reference: [https://gisgeography.com/gis-formats/](https://gisgeography.com/gis-formats/)
 ---
@@ -70,7 +70,7 @@ Geographic CRSs use a spherical surface to define locations on the earth's surfa
 
 Projected CRSs translate the earth's three-dimensional surface onto a two-dimensional plane, making it easier to analyze and visualize spatial data. They use a mathematical projection to flatten the curved surface of the earth, which can lead to distortions in shape, area, distance, or direction. Different types of projections are designed to minimize these distortions for specific regions or purposes. For example, projections can be optimized for preserving areas (equal-area projections), angles and shapes (conformal), or distances (equidistant).
 
-![Dimaxion Fuller projection. NFF image rights.](./images/fuller_nff.png)
+![Dymaxion Fuller projection. NFF image rights.](./images/fuller_nff.png)
 
 ::: {.callout-tip}
 A useful reference website for different CRS is [EPSG.io: Coordinate Systems Worldwide](https://epsg.io/)
