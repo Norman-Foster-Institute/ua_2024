@@ -1,13 +1,145 @@
 [
   {
-    "objectID": "chapter_1/cloud.html",
-    "href": "chapter_1/cloud.html",
-    "title": "Cloud GIS",
+    "objectID": "chapter_0/installation.html",
+    "href": "chapter_0/installation.html",
+    "title": "Software & Accounts",
     "section": "",
-    "text": "Cloud GIS\nThis will be an in-class hands-on session providing an introduction to the use of CARTO for publishing and styling interactive maps.",
+    "text": "Instructions for how to setup your Github account and how to sign-up for the Github Student Developer Pack will be given in class. Please don’t try to activate the Student Developer Pack ahead of class. This is so that it can be configured with the correct accounts and procedure.\n\n\n\nSetup for the CARTO account will be detailed in class after activating the Github Student Developer Pack.\n\n\n\nDownload and install QGIS form the official download links.\n\n\n\nDownload and install Anaconda from the official download links.\n\n\n\nDownload and install TablePlus.. This is a tool for interacting with databases.",
     "crumbs": [
-      "GIS Tools",
-      "Cloud GIS"
+      "Setup",
+      "Software & Accounts"
+    ]
+  },
+  {
+    "objectID": "chapter_0/installation.html#github-student-developer-pack",
+    "href": "chapter_0/installation.html#github-student-developer-pack",
+    "title": "Software & Accounts",
+    "section": "",
+    "text": "Instructions for how to setup your Github account and how to sign-up for the Github Student Developer Pack will be given in class. Please don’t try to activate the Student Developer Pack ahead of class. This is so that it can be configured with the correct accounts and procedure.",
+    "crumbs": [
+      "Setup",
+      "Software & Accounts"
+    ]
+  },
+  {
+    "objectID": "chapter_0/installation.html#carto-account",
+    "href": "chapter_0/installation.html#carto-account",
+    "title": "Software & Accounts",
+    "section": "",
+    "text": "Setup for the CARTO account will be detailed in class after activating the Github Student Developer Pack.",
+    "crumbs": [
+      "Setup",
+      "Software & Accounts"
+    ]
+  },
+  {
+    "objectID": "chapter_0/installation.html#qgis",
+    "href": "chapter_0/installation.html#qgis",
+    "title": "Software & Accounts",
+    "section": "",
+    "text": "Download and install QGIS form the official download links.",
+    "crumbs": [
+      "Setup",
+      "Software & Accounts"
+    ]
+  },
+  {
+    "objectID": "chapter_0/installation.html#anaconda",
+    "href": "chapter_0/installation.html#anaconda",
+    "title": "Software & Accounts",
+    "section": "",
+    "text": "Download and install Anaconda from the official download links.",
+    "crumbs": [
+      "Setup",
+      "Software & Accounts"
+    ]
+  },
+  {
+    "objectID": "chapter_0/installation.html#table-plus",
+    "href": "chapter_0/installation.html#table-plus",
+    "title": "Software & Accounts",
+    "section": "",
+    "text": "Download and install TablePlus.. This is a tool for interacting with databases.",
+    "crumbs": [
+      "Setup",
+      "Software & Accounts"
+    ]
+  },
+  {
+    "objectID": "chapter_0/index.html",
+    "href": "chapter_0/index.html",
+    "title": "Overview",
+    "section": "",
+    "text": "Overview\nThis section details installation and steps for setting up your Github account, signing up for the Github Student Developer Pack, software downloads, and getting Python notebooks running on your system.",
+    "crumbs": [
+      "Setup",
+      "Overview"
+    ]
+  },
+  {
+    "objectID": "chapter_2/python.html",
+    "href": "chapter_2/python.html",
+    "title": "Python Notebooks",
+    "section": "",
+    "text": "Welcome to Python and Notebooks, a potent combination for learning Python and structuring code workflows.\n\nThis notebook can be downloaded from here.\n\n\n\nThis Notebook is adapted from ‘Let the snake in’ from the A taste of Python section of the Geo-Python course 2022 by D. Whipp, H. Tenkanen, V. Heikinheimo, H. Aagesen, and C. Fink from the Department of Geosciences and Geography, University of Helsinki, licensed under CC-BY-SA 4.0.\n\n\n\nPython can be used as a simple calculator. Remember, you can press Shift + Enter to execute the code in the cells below. Try it out by typing some simple math into new cells and see what you get.\n\n42 * 12\n\n504\n\n\n\n12 / 3\n\n4.0\n\n\nIf you want to edit and re-run some code, change the cell re-execute.\n\n\n\nYou can use Python for more advanced math by using a function. Functions are pieces of code that perform a single action, such as printing information to the screen (e.g., the print() function). Functions exist for a huge number of operations in Python.\nLet’s try out a few simple examples using functions to find the sin or square root of a value. You can type sin(3) or sqrt(4) into the cells below to test this out.\n\nsin(3)\n\nNameError: name 'sin' is not defined\n\n\n\nsqrt(4)\n\nNameError: name 'sqrt' is not defined\n\n\nWell, that didn’t work. Python can calculate square roots or do basic trigonometry, but we need one more step.\n\n\nThe table below shows the list of basic arithmetic operations that can be done by default in Python.\n\n\n\nOperation\nSymbol\nExample syntax\nReturned value\n\n\n\n\nAddition\n+\n2 + 2\n4\n\n\nSubtraction\n-\n4 - 2\n2\n\n\nMultiplication\n*\n2 * 3\n6\n\n\nDivision\n/\n4 / 2\n2\n\n\nExponentiation\n**\n2 ** 3\n8\n\n\n\nFor anything more advanced, we need to load a module or a package. For math operations, this module is called math and can be loaded by typing import math.\n\nimport math\n\nNow that we have access to functions in the math module, we can use it by typing the module name, a period (dot), and the name of the function we want to use. For example, math.sin(3). Try this with the sine and square root examples from above.\n\nmath.sin(3)\n\n0.1411200080598672\n\n\n\nmath.sqrt(4)\n\n2.0\n\n\nLet’s summarise what you’ve just done with modules:\n\nA module is a group of code items, such as functions, related to one another. Individual modules are often in a group called a package.\nModules can be loaded using import. Functions that are part of the module modulename can then be used by typing modulename.functionname(). For example, sin() is a function that is part of the math module and is used by typing math.sin() with some number between the parentheses.\nWithin a Jupyter Notebook, the variables you defined earlier in the notebook will be available for use in the following cells as long as you have executed the cells.\nModules may also contain constants such as math.pi (notice no parentheses at the end). Type this in the cell below to see the constant’s math.pi value.\n\n\nmath.pi\n\n3.141592653589793\n\n\n\n\n\nFunctions can also be combined. The print() function returns values within the parentheses as text on the screen. Below, try printing the value of the square root of four.\n\nprint(math.sqrt(4))\n\n2.0\n\n\nYou can also combine text with other calculated values using the print() function. For example, print('Two plus two is', 2+2) would generate the text reading 'Two plus two is 4'. Combine the print() function with the math.sqrt() function in the cell below to produce text that reads 'The square root of 4 is 2.0'.\n\nprint(\"The square root of 4 is\", math.sqrt(4))\n\nThe square root of 4 is 2.0\n\n\n\n\n\n\nA variable can store values calculated in expressions and used for other calculations. Assigning value to variables is straightforward. To assign a value, you type variable_name = value, where variable_name is the name of the variable you wish to define. In the cell below, define a variable called temp_celsius, assign it a value of 10.0, and then print that variable value using the print() function. Note that you should do this on two separate lines.\n\ntemp_celsius = 10.0\nprint(temp_celsius)\n\n10.0\n\n\nAs we did above, you can combine text and even use some math when printing out variable values. The idea is similar to adding 2+2 or calculating the square root of four from the previous section. In the cell below, print out the value of temp_celsius in degrees Fahrenheit by multiplying temp_celsius by 9/5 and adding 32. This should be done within the print() function to produce output that reads 'Temperature in Fahrenheit: 50.0'.\n\nprint(\"Temperature in Fahrenheit:\", 9 / 5 * temp_celsius + 32)\n\nTemperature in Fahrenheit: 50.0\n\n\n\n\nValues stored in variables can also be updated. Let’s redefine the value of temp_celsius to be equal to 15.0 and print its value in the cells below.\n\ntemp_celsius = 15.0\n\n\nprint(\"temperature in Celsius is now:\", temp_celsius)\n\ntemperature in Celsius is now: 15.0\n\n\nWarning\nIf you try to run some code that accesses a variable that has not yet been defined, you will get a NameError message. Try printing out the value of the variable temp_fahrenheit using the print() function in the cell below.\n\nprint(\"Temperature in Celsius:\", 5 / 9 * (temp_fahrenheit - 32))\n\nTemperature in Celsius: 15.0\n\n\nNote\nOne of the interesting things here is that if we define the undefined variable in a cell lower down in the notebook and execute that cell, we can return to the earlier cell, and the code should now work. That was a bit of a complicated sentence, so let’s test this all out. First, let’s define a variable called temp_fahrenheit in the cell below and assign it to be equal to 9/5 * temp_celsius + 32, the conversion factor from temperatures in Celsius to Fahrenheit. Then, return to the cell above this text and run that cell again. See how the error message has gone away? temp_fahrenheit has now been defined, and thus, the cell above no longer generates a NameError when the code is executed.\nAlso, the number beside the cell, for example, In [2], tells you the order in which the Python cells have been executed. This way, you can see a history of the order in which you have run the cells.\n\ntemp_fahrenheit = 9 / 5 * temp_celsius + 32\n\nTo check their current values, print out the values of temp_celsius and temp_fahrenheit in the cell below.\n\nprint(\"temperature in Celsius:\", temp_celsius, \"and in Fahrenheit:\", temp_fahrenheit)\n\ntemperature in Celsius: 15.0 and in Fahrenheit: 59.0\n\n\n\n\n\n\nA data type determines the characteristics of data in a program. There are four basic data types in Python, as shown in the table below.\n\n\n\nData type name\nData type\nExample\n\n\n\n\nint\nWhole integer values\n4\n\n\nfloat\nDecimal values\n3.1415\n\n\nstr\nCharacter strings\n'Hot'\n\n\nbool\nTrue/false values\nTrue\n\n\n\nThe data type can be found using the type() function. As you will see, the data types are essential because some are incompatible.\nLet’s define a variable weather_forecast and assign it the value 'Hot'. After this, we can check its data type using the type() function.\n\nweather_forecast = \"Hot\"\ntype(weather_forecast)\n\nstr\n\n\nLet’s also check the type of temp_fahrenheit.\n\ntype(temp_fahrenheit)\n\nfloat\n\n\nWhat happens if you try to combine temp_fahrenheit and weather_forecast in a single math equation such as temp_fahrenheit = temp_fahrenheit + 5.0 * weather_forecast?\n\ntemp_fahrenheit = temp_fahrenheit + 5.0 * weather_forecast\n\nTypeError: can't multiply sequence by non-int of type 'float'\n\n\nIn this case, we get at TypeError because we are trying to execute a math operation with data types that are not compatible. There is no way in Python to multiply numbers with a character string.",
+    "crumbs": [
+      "Basic Coding",
+      "Python Notebooks"
+    ]
+  },
+  {
+    "objectID": "chapter_2/python.html#acknowledgements",
+    "href": "chapter_2/python.html#acknowledgements",
+    "title": "Python Notebooks",
+    "section": "",
+    "text": "This Notebook is adapted from ‘Let the snake in’ from the A taste of Python section of the Geo-Python course 2022 by D. Whipp, H. Tenkanen, V. Heikinheimo, H. Aagesen, and C. Fink from the Department of Geosciences and Geography, University of Helsinki, licensed under CC-BY-SA 4.0.",
+    "crumbs": [
+      "Basic Coding",
+      "Python Notebooks"
+    ]
+  },
+  {
+    "objectID": "chapter_2/python.html#simple-python-math",
+    "href": "chapter_2/python.html#simple-python-math",
+    "title": "Python Notebooks",
+    "section": "",
+    "text": "Python can be used as a simple calculator. Remember, you can press Shift + Enter to execute the code in the cells below. Try it out by typing some simple math into new cells and see what you get.\n\n42 * 12\n\n504\n\n\n\n12 / 3\n\n4.0\n\n\nIf you want to edit and re-run some code, change the cell re-execute.",
+    "crumbs": [
+      "Basic Coding",
+      "Python Notebooks"
+    ]
+  },
+  {
+    "objectID": "chapter_2/python.html#functions",
+    "href": "chapter_2/python.html#functions",
+    "title": "Python Notebooks",
+    "section": "",
+    "text": "You can use Python for more advanced math by using a function. Functions are pieces of code that perform a single action, such as printing information to the screen (e.g., the print() function). Functions exist for a huge number of operations in Python.\nLet’s try out a few simple examples using functions to find the sin or square root of a value. You can type sin(3) or sqrt(4) into the cells below to test this out.\n\nsin(3)\n\nNameError: name 'sin' is not defined\n\n\n\nsqrt(4)\n\nNameError: name 'sqrt' is not defined\n\n\nWell, that didn’t work. Python can calculate square roots or do basic trigonometry, but we need one more step.\n\n\nThe table below shows the list of basic arithmetic operations that can be done by default in Python.\n\n\n\nOperation\nSymbol\nExample syntax\nReturned value\n\n\n\n\nAddition\n+\n2 + 2\n4\n\n\nSubtraction\n-\n4 - 2\n2\n\n\nMultiplication\n*\n2 * 3\n6\n\n\nDivision\n/\n4 / 2\n2\n\n\nExponentiation\n**\n2 ** 3\n8\n\n\n\nFor anything more advanced, we need to load a module or a package. For math operations, this module is called math and can be loaded by typing import math.\n\nimport math\n\nNow that we have access to functions in the math module, we can use it by typing the module name, a period (dot), and the name of the function we want to use. For example, math.sin(3). Try this with the sine and square root examples from above.\n\nmath.sin(3)\n\n0.1411200080598672\n\n\n\nmath.sqrt(4)\n\n2.0\n\n\nLet’s summarise what you’ve just done with modules:\n\nA module is a group of code items, such as functions, related to one another. Individual modules are often in a group called a package.\nModules can be loaded using import. Functions that are part of the module modulename can then be used by typing modulename.functionname(). For example, sin() is a function that is part of the math module and is used by typing math.sin() with some number between the parentheses.\nWithin a Jupyter Notebook, the variables you defined earlier in the notebook will be available for use in the following cells as long as you have executed the cells.\nModules may also contain constants such as math.pi (notice no parentheses at the end). Type this in the cell below to see the constant’s math.pi value.\n\n\nmath.pi\n\n3.141592653589793\n\n\n\n\n\nFunctions can also be combined. The print() function returns values within the parentheses as text on the screen. Below, try printing the value of the square root of four.\n\nprint(math.sqrt(4))\n\n2.0\n\n\nYou can also combine text with other calculated values using the print() function. For example, print('Two plus two is', 2+2) would generate the text reading 'Two plus two is 4'. Combine the print() function with the math.sqrt() function in the cell below to produce text that reads 'The square root of 4 is 2.0'.\n\nprint(\"The square root of 4 is\", math.sqrt(4))\n\nThe square root of 4 is 2.0",
+    "crumbs": [
+      "Basic Coding",
+      "Python Notebooks"
+    ]
+  },
+  {
+    "objectID": "chapter_2/python.html#variables",
+    "href": "chapter_2/python.html#variables",
+    "title": "Python Notebooks",
+    "section": "",
+    "text": "A variable can store values calculated in expressions and used for other calculations. Assigning value to variables is straightforward. To assign a value, you type variable_name = value, where variable_name is the name of the variable you wish to define. In the cell below, define a variable called temp_celsius, assign it a value of 10.0, and then print that variable value using the print() function. Note that you should do this on two separate lines.\n\ntemp_celsius = 10.0\nprint(temp_celsius)\n\n10.0\n\n\nAs we did above, you can combine text and even use some math when printing out variable values. The idea is similar to adding 2+2 or calculating the square root of four from the previous section. In the cell below, print out the value of temp_celsius in degrees Fahrenheit by multiplying temp_celsius by 9/5 and adding 32. This should be done within the print() function to produce output that reads 'Temperature in Fahrenheit: 50.0'.\n\nprint(\"Temperature in Fahrenheit:\", 9 / 5 * temp_celsius + 32)\n\nTemperature in Fahrenheit: 50.0\n\n\n\n\nValues stored in variables can also be updated. Let’s redefine the value of temp_celsius to be equal to 15.0 and print its value in the cells below.\n\ntemp_celsius = 15.0\n\n\nprint(\"temperature in Celsius is now:\", temp_celsius)\n\ntemperature in Celsius is now: 15.0\n\n\nWarning\nIf you try to run some code that accesses a variable that has not yet been defined, you will get a NameError message. Try printing out the value of the variable temp_fahrenheit using the print() function in the cell below.\n\nprint(\"Temperature in Celsius:\", 5 / 9 * (temp_fahrenheit - 32))\n\nTemperature in Celsius: 15.0\n\n\nNote\nOne of the interesting things here is that if we define the undefined variable in a cell lower down in the notebook and execute that cell, we can return to the earlier cell, and the code should now work. That was a bit of a complicated sentence, so let’s test this all out. First, let’s define a variable called temp_fahrenheit in the cell below and assign it to be equal to 9/5 * temp_celsius + 32, the conversion factor from temperatures in Celsius to Fahrenheit. Then, return to the cell above this text and run that cell again. See how the error message has gone away? temp_fahrenheit has now been defined, and thus, the cell above no longer generates a NameError when the code is executed.\nAlso, the number beside the cell, for example, In [2], tells you the order in which the Python cells have been executed. This way, you can see a history of the order in which you have run the cells.\n\ntemp_fahrenheit = 9 / 5 * temp_celsius + 32\n\nTo check their current values, print out the values of temp_celsius and temp_fahrenheit in the cell below.\n\nprint(\"temperature in Celsius:\", temp_celsius, \"and in Fahrenheit:\", temp_fahrenheit)\n\ntemperature in Celsius: 15.0 and in Fahrenheit: 59.0",
+    "crumbs": [
+      "Basic Coding",
+      "Python Notebooks"
+    ]
+  },
+  {
+    "objectID": "chapter_2/python.html#data-types",
+    "href": "chapter_2/python.html#data-types",
+    "title": "Python Notebooks",
+    "section": "",
+    "text": "A data type determines the characteristics of data in a program. There are four basic data types in Python, as shown in the table below.\n\n\n\nData type name\nData type\nExample\n\n\n\n\nint\nWhole integer values\n4\n\n\nfloat\nDecimal values\n3.1415\n\n\nstr\nCharacter strings\n'Hot'\n\n\nbool\nTrue/false values\nTrue\n\n\n\nThe data type can be found using the type() function. As you will see, the data types are essential because some are incompatible.\nLet’s define a variable weather_forecast and assign it the value 'Hot'. After this, we can check its data type using the type() function.\n\nweather_forecast = \"Hot\"\ntype(weather_forecast)\n\nstr\n\n\nLet’s also check the type of temp_fahrenheit.\n\ntype(temp_fahrenheit)\n\nfloat\n\n\nWhat happens if you try to combine temp_fahrenheit and weather_forecast in a single math equation such as temp_fahrenheit = temp_fahrenheit + 5.0 * weather_forecast?\n\ntemp_fahrenheit = temp_fahrenheit + 5.0 * weather_forecast\n\nTypeError: can't multiply sequence by non-int of type 'float'\n\n\nIn this case, we get at TypeError because we are trying to execute a math operation with data types that are not compatible. There is no way in Python to multiply numbers with a character string.",
+    "crumbs": [
+      "Basic Coding",
+      "Python Notebooks"
     ]
   },
   {
@@ -165,146 +297,91 @@
     ]
   },
   {
-    "objectID": "chapter_0/installation.html",
-    "href": "chapter_0/installation.html",
-    "title": "Software & Accounts",
+    "objectID": "chapter_1/gis.html",
+    "href": "chapter_1/gis.html",
+    "title": "Intro to GIS",
     "section": "",
-    "text": "Instructions for how to setup your Github account and how to sign-up for the Github Student Developer Pack will be given in class. Please don’t try to activate the Student Developer Pack ahead of class. This is so that it can be configured with the correct accounts and procedure.\n\n\n\nSetup for the CARTO account will be detailed in class after activating the Github Student Developer Pack.\n\n\n\nDownload and install QGIS form the official download links.\n\n\n\nDownload and install Anaconda from the official download links.\n\n\n\nDownload and install TablePlus.. This is a tool for interacting with databases.",
+    "text": "Vector and raster data are two fundamental types of spatial data used in Geographic Information Systems (GIS). Vector data represents geographical features as distinct shapes using points, lines, and polygons, each of which can carry detailed attribute information, making it ideal for precise mapping applications like boundaries, roads, and infrastructure networks. It excels in accuracy and detail for discrete data. In contrast, raster data consists of a grid of pixels, each holding a value, effectively representing continuous data. This format is well-suited for environmental analysis, land cover studies, and satellite imagery, as it captures variations over a wide area, such as elevation, temperature, or vegetation. While vector data is preferred for its precision in depicting specific geographic entities and managing related data, raster data is favored for its ability to represent complex, continuous phenomena over large spatial scales.\n\n\n\n\nVector data types are primarily categorized into Points, Linestrings, and Polygons, each with distinct characteristics and uses. Additionally, there are multi-geometry versions of these types, such as MultiPoints, MultiLinestrings, and MultiPolygons, which offer more complex feature groupings.\n\nPoints: Points are used to represent discrete locations on the earth’s surface. Each point is defined by a pair of coordinates (e.g. latitude and longitude, or an easting and northing) and can represent features such as the location of a tree or a landmark. They can have attributes further describing characteristics of interest, such as tree species or landmark name.\nLinestring: Lines connect a series of points to describe linear features such as roads or rivers. Linestring geometries inherently have length and may include attributes such as road type or river name.\nPolygons: Polygons are closed shapes used to represent areas such as city boundaries or land parcels. Polygon geometries inherently have an area and perimeter and may have attributes such as population counts or land use types.\n\n\n\n\nGeometry types\n\n\n\nMulti-Geometry Versions: Multi geometries provide a way to associated a grouping of Features which can share the same feature attributes.\n\nMultiPoint: For example, a grouping of trees.\nMultiLinestring: For example, a grouping of related segments describing a long-distance hiking trail.\nMultiPolygon: For example, a grouping of buildings which together represent a larger entity such as a hospital or university.\n\n\n\n\n\nEsri Shapefile\nShapefile is a prevalent geospatial file type in GIS software, requiring three mandatory files: - SHP (feature geometry) - SHX (shape index position) - DBF (attribute data) - Shapefiles often also include optional files such as PRJ (coordinate reference system).\nGeoPackage\nGeoPackage provides a modern and simpler alternative to shapefiles and is rapidly gaining acceptance. It can store multiple data layers and it’s use of SQLite means that you can use SQL query data from the file.\nGeoJSON\nGeoJSON encodes geographic data structures using JSON, a format commonly used for web development.\n\nReference: https://gisgeography.com/gis-formats/\n\n\n\n\n\nRasters contain a grid of pixels, where the value used for each grid cell can represent a characteristic such as temperature or landcover. Geographic rasters typically include Geospatial information necessary to correctly project and locate the information in GIS software.\n\n\n\nRaster image grid cells\n\n\n\n\n\nASCII Grid\nASCII Grid files (ASC) store raster data as text in a grid format. Each cell in the grid is represented by a numeric value corresponding to the geographic attribute being mapped, such as elevation. ASCII Grid files include a header specifying metadata like cell size, number of rows and columns, and coordinates of the lower left corner. The format is simple and can be generated or edited with a text editor, and may use space, comma, or tab-delimiters.\nGeoTIFF\nGeoTIFF is widely becoming the defacto raster format in GIS. It embeds coordinate reference system information within a TIFF (Tagged Image File Format) file. GeoTIFFs are commonly used for storing satellite imagery, elevation data, and land surface temperatures.\n\nReference: https://gisgeography.com/gis-formats/\n\n\n\n\n\n\n\nGeographic data is intrinsically tied to the earth’s surface and is represented using coordinates within defined Coordinate Reference Systems (CRS). Broadly, these systems fall into two categories: Geographic Coordinate Systems and Projected Coordinate Systems.\nGeographic CRSs use a spherical surface to define locations on the earth’s surface. They are based on degrees in latitude and longitude and are most commonly referenced to the WGS84 datum. While they accurately represent the earth’s curved surface and preserve the true shape and angular relationships of features, distances and areas may not be as accurate, especially over larger distances.\nProjected CRSs translate the earth’s three-dimensional surface onto a two-dimensional plane, making it easier to analyze and visualize spatial data. They use a mathematical projection to flatten the curved surface of the earth, which can lead to distortions in shape, area, distance, or direction. Different types of projections are designed to minimize these distortions for specific regions or purposes. For example, projections can be optimized for preserving areas (equal-area projections), angles and shapes (conformal), or distances (equidistant).\n\n\n\nDymaxion Fuller projection. NFF image rights.\n\n\n\n\n\n\n\n\nTip\n\n\n\nA useful reference website for different CRS is EPSG.io: Coordinate Systems Worldwide\n\n\n\n\nGeographic Coordinate Reference Systems (CRS) use a spherical or ellipsoidal surface to represent locations on the Earth’s curved surface. Geographic CRSs are based on latitude and longitude coordinates and are useful for global or regional mapping.\n\nUnits: Degrees\nCommon Examples:\n\nWGS 84 (World Geodetic System 1984) EPSG:4326: A widely used CRS for global mapping and GPS navigation.\nNAD83 (North American Datum 1983) EPSG:4269: A CRS commonly used in North America.\n\n\n\n\n\nProjected Coordinate Reference Systems (CRS) use a Cartesian coordinate system to represent locations on a flat surface. These CRSs are created by “projecting” the curved Earth onto a flat surface, which introduces distortions. This inevitably requires tradeoffs in distances, areas, or shapes, with different projection systems involving different trade-offs. Projected CRSs are commonly used for local or small-scale mapping appropriate to specific countries or regions of the globe, where locally accurate measurements and comparisons are required.\n\nUnits: Meters (most commonly)\nCommon Examples:\n\nLAEA (Lambert Azimuthal Equal Area) Europe projection EPSG:3035: This CRS is commonly used for Europe, though note that countries will typically also have even more localised projected CRS.\nBritish National Grid (BNG) EPSG:27700: This CRS is commonly used in the United Kingdom.\nState Plane Coordinate System (SPCS): This CRS is widely used in the United States, and divides the country into zones, each with their own projection.\n\n\n\n\n\n\n\nhttps://gisgeography.com\n\n\n\n\n\n\n\n\nDiscovering sources for GIS (Geographic Information System) data is a handy skill for spatial analysis and mapping! There are various official and non-official sources, each offering different types of data suited to specific needs and applications. When searching for and using different data sources, try to remain cognisant of the merits and limitations of different sources, which may impact considerations such as data accuracy or bias.\n\nGovernment Agencies: National agencies often provide official and reliable forms of GIS data. However, these datasets may reflect governmental priorities and perspectives or they may be reluctant to make these datasets openly available.\nInternational Organizations: Organizations such as the United Nations (UN) and the World Bank offer global GIS datasets, but these may have limited local detail due to their broad scope.\nLocal Authorities: City and regional councils often create and maintain local GIS datasets, often tailored to specific local government projects and priorities. Their local specificity may make it tricky to compare to different datasets sourced from other cities.\nPrivate Sector: There are many private sector organisations which generate, curate, or distribute data, however, these datasets are less likely to be openly available and may incur substantial monetary cost.\nOpen Data Platforms: Platforms such as OpenStreetMap offer freely accessible GIS data, contributed by a community of users. These datasets may require additional validation if used for mission-critical purposes, though can otherwise be extremely useful, allowing for generalisable workflows and providing coverage in some instances where no other options exist.\nAPIs and Web Scraping: Involves the automated collection of data from online APIs or websites. The quality of data can vary but may otherwise be useful for obtaining interesting data. These techniques may involve significant technical skills for data extraction and processing. Legal and ethical considerations are important, as scraping can sometimes violate terms of service or data privacy laws.\n\n\n\n\nPurposely collected data is gathered specifically to address a certain research question or project goal, using structured approaches such as surveys, experiments, or observations. It’s tailored to meet the specific needs of a study, with careful control over variables to ensure the data’s relevance and accuracy. This type of data is highly pertinent to the project it’s collected for, due to its focused nature and methodical collection process.\n\n\n\nOn the other hand, data can also be adapted to new research needs from information originally collected for different purposes. This may include repurposing data from various sources such as public databases, existing research studies, or web scraping.\n\n\n\n\n\nAttribution or citation refers to giving proper credit to the original source or creator of the data. Just as with citing sources in academic papers, it’s important to acknowledge the origin of the data you are using. This helps provide transparency, accountability, and recognition to the creators of the dataset.\n\n\nWhen dealing with data, licenses refer to legal agreements or permissions that determine how the data can be used, distributed, or modified. Different datasets may have different licensing requirements, so it’s important to understand and comply with the specific license terms associated with the data you are using.\nExamples:\n\nCreative Commons (CC) licenses: These are standardized licenses that allow creators to specify permissions for their work. They are commonly used for a variety of creative works, including images, music, videos, and written content.\nOpen Government Licenses: These licenses have been adopted by governments and may allow individuals and organizations permissive use, reuse, and sharing of information.\nGNU General Public License (GPL): This is a copyleft license for open-source software. It permits users to modify and distribute the software, but any modifications or derivative works must also be licensed under the GPL. This license is popular for promoting open-source principles and collaborative software development.\nMIT / Apache / BSD Licenses: Permissive open-source software licenses. These may allow great flexibility such as using, copying, modifying, and distributing derivative work, even for commercial purposes. The primary requirement is to include the original copyright and license notice in any significant portions of the software.\n\n\n\n\n\n\nPrivacy considerations are important when working with data, especially if the data contains personally identifiable information or sensitive information. It’s very important to handle and store data in a way that respects privacy laws and regulations. This may involve anonymizing or de-identifying data, implementing security measures, and obtaining consent from individuals whose data is being used.\n\n\n\n\n\n\nNote\n\n\n\nPlease avoid using any and all data containing private or sensitive data unless you first review this and seek approval from faculty. Handling these forms of data comes with numerous steps and safeguards and will generally be strongly discouraged.\n\n\n\n\n\n\n\n\nThe Modifiable Areal Unit Problem (MAUP) is encountered when using different scales or zones of analysis to group data. This can cause significant changes in the balance and aggregation of data purely based on how it is grouped. This can have a potentially significant impact on visualisation or analysis. MAUP is exploited for political purposes through the process of gerrymandering.\n\nhttps://gisgeography.com\n\n\n\nYouTube\n\n\n\n\n\n\nThe following resources provide further information on common types of map visualisations and best practices:\n\nCARTO - 5 Popular Thematic map Types\nFundamentals of Data Visualisation\n\nColor scales\nVisualizing geospatial data\nCommon pitfalls of color use\n\nColor Brewer",
     "crumbs": [
-      "Setup",
-      "Software & Accounts"
+      "GIS Tools",
+      "Intro to GIS"
     ]
   },
   {
-    "objectID": "chapter_0/installation.html#github-student-developer-pack",
-    "href": "chapter_0/installation.html#github-student-developer-pack",
-    "title": "Software & Accounts",
+    "objectID": "chapter_1/gis.html#file-types",
+    "href": "chapter_1/gis.html#file-types",
+    "title": "Intro to GIS",
     "section": "",
-    "text": "Instructions for how to setup your Github account and how to sign-up for the Github Student Developer Pack will be given in class. Please don’t try to activate the Student Developer Pack ahead of class. This is so that it can be configured with the correct accounts and procedure.",
+    "text": "Vector and raster data are two fundamental types of spatial data used in Geographic Information Systems (GIS). Vector data represents geographical features as distinct shapes using points, lines, and polygons, each of which can carry detailed attribute information, making it ideal for precise mapping applications like boundaries, roads, and infrastructure networks. It excels in accuracy and detail for discrete data. In contrast, raster data consists of a grid of pixels, each holding a value, effectively representing continuous data. This format is well-suited for environmental analysis, land cover studies, and satellite imagery, as it captures variations over a wide area, such as elevation, temperature, or vegetation. While vector data is preferred for its precision in depicting specific geographic entities and managing related data, raster data is favored for its ability to represent complex, continuous phenomena over large spatial scales.\n\n\n\n\nVector data types are primarily categorized into Points, Linestrings, and Polygons, each with distinct characteristics and uses. Additionally, there are multi-geometry versions of these types, such as MultiPoints, MultiLinestrings, and MultiPolygons, which offer more complex feature groupings.\n\nPoints: Points are used to represent discrete locations on the earth’s surface. Each point is defined by a pair of coordinates (e.g. latitude and longitude, or an easting and northing) and can represent features such as the location of a tree or a landmark. They can have attributes further describing characteristics of interest, such as tree species or landmark name.\nLinestring: Lines connect a series of points to describe linear features such as roads or rivers. Linestring geometries inherently have length and may include attributes such as road type or river name.\nPolygons: Polygons are closed shapes used to represent areas such as city boundaries or land parcels. Polygon geometries inherently have an area and perimeter and may have attributes such as population counts or land use types.\n\n\n\n\nGeometry types\n\n\n\nMulti-Geometry Versions: Multi geometries provide a way to associated a grouping of Features which can share the same feature attributes.\n\nMultiPoint: For example, a grouping of trees.\nMultiLinestring: For example, a grouping of related segments describing a long-distance hiking trail.\nMultiPolygon: For example, a grouping of buildings which together represent a larger entity such as a hospital or university.\n\n\n\n\n\nEsri Shapefile\nShapefile is a prevalent geospatial file type in GIS software, requiring three mandatory files: - SHP (feature geometry) - SHX (shape index position) - DBF (attribute data) - Shapefiles often also include optional files such as PRJ (coordinate reference system).\nGeoPackage\nGeoPackage provides a modern and simpler alternative to shapefiles and is rapidly gaining acceptance. It can store multiple data layers and it’s use of SQLite means that you can use SQL query data from the file.\nGeoJSON\nGeoJSON encodes geographic data structures using JSON, a format commonly used for web development.\n\nReference: https://gisgeography.com/gis-formats/\n\n\n\n\n\nRasters contain a grid of pixels, where the value used for each grid cell can represent a characteristic such as temperature or landcover. Geographic rasters typically include Geospatial information necessary to correctly project and locate the information in GIS software.\n\n\n\nRaster image grid cells\n\n\n\n\n\nASCII Grid\nASCII Grid files (ASC) store raster data as text in a grid format. Each cell in the grid is represented by a numeric value corresponding to the geographic attribute being mapped, such as elevation. ASCII Grid files include a header specifying metadata like cell size, number of rows and columns, and coordinates of the lower left corner. The format is simple and can be generated or edited with a text editor, and may use space, comma, or tab-delimiters.\nGeoTIFF\nGeoTIFF is widely becoming the defacto raster format in GIS. It embeds coordinate reference system information within a TIFF (Tagged Image File Format) file. GeoTIFFs are commonly used for storing satellite imagery, elevation data, and land surface temperatures.\n\nReference: https://gisgeography.com/gis-formats/",
     "crumbs": [
-      "Setup",
-      "Software & Accounts"
+      "GIS Tools",
+      "Intro to GIS"
     ]
   },
   {
-    "objectID": "chapter_0/installation.html#carto-account",
-    "href": "chapter_0/installation.html#carto-account",
-    "title": "Software & Accounts",
+    "objectID": "chapter_1/gis.html#coordinate-reference-systems",
+    "href": "chapter_1/gis.html#coordinate-reference-systems",
+    "title": "Intro to GIS",
     "section": "",
-    "text": "Setup for the CARTO account will be detailed in class after activating the Github Student Developer Pack.",
+    "text": "Geographic data is intrinsically tied to the earth’s surface and is represented using coordinates within defined Coordinate Reference Systems (CRS). Broadly, these systems fall into two categories: Geographic Coordinate Systems and Projected Coordinate Systems.\nGeographic CRSs use a spherical surface to define locations on the earth’s surface. They are based on degrees in latitude and longitude and are most commonly referenced to the WGS84 datum. While they accurately represent the earth’s curved surface and preserve the true shape and angular relationships of features, distances and areas may not be as accurate, especially over larger distances.\nProjected CRSs translate the earth’s three-dimensional surface onto a two-dimensional plane, making it easier to analyze and visualize spatial data. They use a mathematical projection to flatten the curved surface of the earth, which can lead to distortions in shape, area, distance, or direction. Different types of projections are designed to minimize these distortions for specific regions or purposes. For example, projections can be optimized for preserving areas (equal-area projections), angles and shapes (conformal), or distances (equidistant).\n\n\n\nDymaxion Fuller projection. NFF image rights.\n\n\n\n\n\n\n\n\nTip\n\n\n\nA useful reference website for different CRS is EPSG.io: Coordinate Systems Worldwide\n\n\n\n\nGeographic Coordinate Reference Systems (CRS) use a spherical or ellipsoidal surface to represent locations on the Earth’s curved surface. Geographic CRSs are based on latitude and longitude coordinates and are useful for global or regional mapping.\n\nUnits: Degrees\nCommon Examples:\n\nWGS 84 (World Geodetic System 1984) EPSG:4326: A widely used CRS for global mapping and GPS navigation.\nNAD83 (North American Datum 1983) EPSG:4269: A CRS commonly used in North America.\n\n\n\n\n\nProjected Coordinate Reference Systems (CRS) use a Cartesian coordinate system to represent locations on a flat surface. These CRSs are created by “projecting” the curved Earth onto a flat surface, which introduces distortions. This inevitably requires tradeoffs in distances, areas, or shapes, with different projection systems involving different trade-offs. Projected CRSs are commonly used for local or small-scale mapping appropriate to specific countries or regions of the globe, where locally accurate measurements and comparisons are required.\n\nUnits: Meters (most commonly)\nCommon Examples:\n\nLAEA (Lambert Azimuthal Equal Area) Europe projection EPSG:3035: This CRS is commonly used for Europe, though note that countries will typically also have even more localised projected CRS.\nBritish National Grid (BNG) EPSG:27700: This CRS is commonly used in the United Kingdom.\nState Plane Coordinate System (SPCS): This CRS is widely used in the United States, and divides the country into zones, each with their own projection.\n\n\n\n\n\n\n\nhttps://gisgeography.com",
     "crumbs": [
-      "Setup",
-      "Software & Accounts"
+      "GIS Tools",
+      "Intro to GIS"
     ]
   },
   {
-    "objectID": "chapter_0/installation.html#qgis",
-    "href": "chapter_0/installation.html#qgis",
-    "title": "Software & Accounts",
+    "objectID": "chapter_1/gis.html#gis-data",
+    "href": "chapter_1/gis.html#gis-data",
+    "title": "Intro to GIS",
     "section": "",
-    "text": "Download and install QGIS form the official download links.",
+    "text": "Discovering sources for GIS (Geographic Information System) data is a handy skill for spatial analysis and mapping! There are various official and non-official sources, each offering different types of data suited to specific needs and applications. When searching for and using different data sources, try to remain cognisant of the merits and limitations of different sources, which may impact considerations such as data accuracy or bias.\n\nGovernment Agencies: National agencies often provide official and reliable forms of GIS data. However, these datasets may reflect governmental priorities and perspectives or they may be reluctant to make these datasets openly available.\nInternational Organizations: Organizations such as the United Nations (UN) and the World Bank offer global GIS datasets, but these may have limited local detail due to their broad scope.\nLocal Authorities: City and regional councils often create and maintain local GIS datasets, often tailored to specific local government projects and priorities. Their local specificity may make it tricky to compare to different datasets sourced from other cities.\nPrivate Sector: There are many private sector organisations which generate, curate, or distribute data, however, these datasets are less likely to be openly available and may incur substantial monetary cost.\nOpen Data Platforms: Platforms such as OpenStreetMap offer freely accessible GIS data, contributed by a community of users. These datasets may require additional validation if used for mission-critical purposes, though can otherwise be extremely useful, allowing for generalisable workflows and providing coverage in some instances where no other options exist.\nAPIs and Web Scraping: Involves the automated collection of data from online APIs or websites. The quality of data can vary but may otherwise be useful for obtaining interesting data. These techniques may involve significant technical skills for data extraction and processing. Legal and ethical considerations are important, as scraping can sometimes violate terms of service or data privacy laws.\n\n\n\n\nPurposely collected data is gathered specifically to address a certain research question or project goal, using structured approaches such as surveys, experiments, or observations. It’s tailored to meet the specific needs of a study, with careful control over variables to ensure the data’s relevance and accuracy. This type of data is highly pertinent to the project it’s collected for, due to its focused nature and methodical collection process.\n\n\n\nOn the other hand, data can also be adapted to new research needs from information originally collected for different purposes. This may include repurposing data from various sources such as public databases, existing research studies, or web scraping.",
     "crumbs": [
-      "Setup",
-      "Software & Accounts"
+      "GIS Tools",
+      "Intro to GIS"
     ]
   },
   {
-    "objectID": "chapter_0/installation.html#anaconda",
-    "href": "chapter_0/installation.html#anaconda",
-    "title": "Software & Accounts",
+    "objectID": "chapter_1/gis.html#attribution",
+    "href": "chapter_1/gis.html#attribution",
+    "title": "Intro to GIS",
     "section": "",
-    "text": "Download and install Anaconda from the official download links.",
+    "text": "Attribution or citation refers to giving proper credit to the original source or creator of the data. Just as with citing sources in academic papers, it’s important to acknowledge the origin of the data you are using. This helps provide transparency, accountability, and recognition to the creators of the dataset.\n\n\nWhen dealing with data, licenses refer to legal agreements or permissions that determine how the data can be used, distributed, or modified. Different datasets may have different licensing requirements, so it’s important to understand and comply with the specific license terms associated with the data you are using.\nExamples:\n\nCreative Commons (CC) licenses: These are standardized licenses that allow creators to specify permissions for their work. They are commonly used for a variety of creative works, including images, music, videos, and written content.\nOpen Government Licenses: These licenses have been adopted by governments and may allow individuals and organizations permissive use, reuse, and sharing of information.\nGNU General Public License (GPL): This is a copyleft license for open-source software. It permits users to modify and distribute the software, but any modifications or derivative works must also be licensed under the GPL. This license is popular for promoting open-source principles and collaborative software development.\nMIT / Apache / BSD Licenses: Permissive open-source software licenses. These may allow great flexibility such as using, copying, modifying, and distributing derivative work, even for commercial purposes. The primary requirement is to include the original copyright and license notice in any significant portions of the software.",
     "crumbs": [
-      "Setup",
-      "Software & Accounts"
+      "GIS Tools",
+      "Intro to GIS"
     ]
   },
   {
-    "objectID": "chapter_0/installation.html#table-plus",
-    "href": "chapter_0/installation.html#table-plus",
-    "title": "Software & Accounts",
+    "objectID": "chapter_1/gis.html#privacy",
+    "href": "chapter_1/gis.html#privacy",
+    "title": "Intro to GIS",
     "section": "",
-    "text": "Download and install TablePlus.. This is a tool for interacting with databases.",
+    "text": "Privacy considerations are important when working with data, especially if the data contains personally identifiable information or sensitive information. It’s very important to handle and store data in a way that respects privacy laws and regulations. This may involve anonymizing or de-identifying data, implementing security measures, and obtaining consent from individuals whose data is being used.\n\n\n\n\n\n\nNote\n\n\n\nPlease avoid using any and all data containing private or sensitive data unless you first review this and seek approval from faculty. Handling these forms of data comes with numerous steps and safeguards and will generally be strongly discouraged.",
     "crumbs": [
-      "Setup",
-      "Software & Accounts"
+      "GIS Tools",
+      "Intro to GIS"
     ]
   },
   {
-    "objectID": "chapter_0/index.html",
-    "href": "chapter_0/index.html",
-    "title": "Overview",
+    "objectID": "chapter_1/gis.html#quirks-part-1",
+    "href": "chapter_1/gis.html#quirks-part-1",
+    "title": "Intro to GIS",
     "section": "",
-    "text": "Overview\nThis section details installation and steps for setting up your Github account, signing up for the Github Student Developer Pack, software downloads, and getting Python notebooks running on your system.",
+    "text": "The Modifiable Areal Unit Problem (MAUP) is encountered when using different scales or zones of analysis to group data. This can cause significant changes in the balance and aggregation of data purely based on how it is grouped. This can have a potentially significant impact on visualisation or analysis. MAUP is exploited for political purposes through the process of gerrymandering.\n\nhttps://gisgeography.com\n\n\n\nYouTube",
     "crumbs": [
-      "Setup",
-      "Overview"
+      "GIS Tools",
+      "Intro to GIS"
     ]
   },
   {
-    "objectID": "chapter_2/python.html",
-    "href": "chapter_2/python.html",
-    "title": "Python Notebooks",
+    "objectID": "chapter_1/gis.html#resources",
+    "href": "chapter_1/gis.html#resources",
+    "title": "Intro to GIS",
     "section": "",
-    "text": "Welcome to Python and Notebooks, a potent combination for learning Python and structuring code workflows.\n\nThis notebook can be downloaded from here.\n\n\n\nThis Notebook is adapted from ‘Let the snake in’ from the A taste of Python section of the Geo-Python course 2022 by D. Whipp, H. Tenkanen, V. Heikinheimo, H. Aagesen, and C. Fink from the Department of Geosciences and Geography, University of Helsinki, licensed under CC-BY-SA 4.0.\n\n\n\nPython can be used as a simple calculator. Remember, you can press Shift + Enter to execute the code in the cells below. Try it out by typing some simple math into new cells and see what you get.\n\n42 * 12\n\n504\n\n\n\n12 / 3\n\n4.0\n\n\nIf you want to edit and re-run some code, change the cell re-execute.\n\n\n\nYou can use Python for more advanced math by using a function. Functions are pieces of code that perform a single action, such as printing information to the screen (e.g., the print() function). Functions exist for a huge number of operations in Python.\nLet’s try out a few simple examples using functions to find the sin or square root of a value. You can type sin(3) or sqrt(4) into the cells below to test this out.\n\nsin(3)\n\nNameError: name 'sin' is not defined\n\n\n\nsqrt(4)\n\nNameError: name 'sqrt' is not defined\n\n\nWell, that didn’t work. Python can calculate square roots or do basic trigonometry, but we need one more step.\n\n\nThe table below shows the list of basic arithmetic operations that can be done by default in Python.\n\n\n\nOperation\nSymbol\nExample syntax\nReturned value\n\n\n\n\nAddition\n+\n2 + 2\n4\n\n\nSubtraction\n-\n4 - 2\n2\n\n\nMultiplication\n*\n2 * 3\n6\n\n\nDivision\n/\n4 / 2\n2\n\n\nExponentiation\n**\n2 ** 3\n8\n\n\n\nFor anything more advanced, we need to load a module or a package. For math operations, this module is called math and can be loaded by typing import math.\n\nimport math\n\nNow that we have access to functions in the math module, we can use it by typing the module name, a period (dot), and the name of the function we want to use. For example, math.sin(3). Try this with the sine and square root examples from above.\n\nmath.sin(3)\n\n0.1411200080598672\n\n\n\nmath.sqrt(4)\n\n2.0\n\n\nLet’s summarise what you’ve just done with modules:\n\nA module is a group of code items, such as functions, related to one another. Individual modules are often in a group called a package.\nModules can be loaded using import. Functions that are part of the module modulename can then be used by typing modulename.functionname(). For example, sin() is a function that is part of the math module and is used by typing math.sin() with some number between the parentheses.\nWithin a Jupyter Notebook, the variables you defined earlier in the notebook will be available for use in the following cells as long as you have executed the cells.\nModules may also contain constants such as math.pi (notice no parentheses at the end). Type this in the cell below to see the constant’s math.pi value.\n\n\nmath.pi\n\n3.141592653589793\n\n\n\n\n\nFunctions can also be combined. The print() function returns values within the parentheses as text on the screen. Below, try printing the value of the square root of four.\n\nprint(math.sqrt(4))\n\n2.0\n\n\nYou can also combine text with other calculated values using the print() function. For example, print('Two plus two is', 2+2) would generate the text reading 'Two plus two is 4'. Combine the print() function with the math.sqrt() function in the cell below to produce text that reads 'The square root of 4 is 2.0'.\n\nprint(\"The square root of 4 is\", math.sqrt(4))\n\nThe square root of 4 is 2.0\n\n\n\n\n\n\nA variable can store values calculated in expressions and used for other calculations. Assigning value to variables is straightforward. To assign a value, you type variable_name = value, where variable_name is the name of the variable you wish to define. In the cell below, define a variable called temp_celsius, assign it a value of 10.0, and then print that variable value using the print() function. Note that you should do this on two separate lines.\n\ntemp_celsius = 10.0\nprint(temp_celsius)\n\n10.0\n\n\nAs we did above, you can combine text and even use some math when printing out variable values. The idea is similar to adding 2+2 or calculating the square root of four from the previous section. In the cell below, print out the value of temp_celsius in degrees Fahrenheit by multiplying temp_celsius by 9/5 and adding 32. This should be done within the print() function to produce output that reads 'Temperature in Fahrenheit: 50.0'.\n\nprint(\"Temperature in Fahrenheit:\", 9 / 5 * temp_celsius + 32)\n\nTemperature in Fahrenheit: 50.0\n\n\n\n\nValues stored in variables can also be updated. Let’s redefine the value of temp_celsius to be equal to 15.0 and print its value in the cells below.\n\ntemp_celsius = 15.0\n\n\nprint(\"temperature in Celsius is now:\", temp_celsius)\n\ntemperature in Celsius is now: 15.0\n\n\nWarning\nIf you try to run some code that accesses a variable that has not yet been defined, you will get a NameError message. Try printing out the value of the variable temp_fahrenheit using the print() function in the cell below.\n\nprint(\"Temperature in Celsius:\", 5 / 9 * (temp_fahrenheit - 32))\n\nTemperature in Celsius: 15.0\n\n\nNote\nOne of the interesting things here is that if we define the undefined variable in a cell lower down in the notebook and execute that cell, we can return to the earlier cell, and the code should now work. That was a bit of a complicated sentence, so let’s test this all out. First, let’s define a variable called temp_fahrenheit in the cell below and assign it to be equal to 9/5 * temp_celsius + 32, the conversion factor from temperatures in Celsius to Fahrenheit. Then, return to the cell above this text and run that cell again. See how the error message has gone away? temp_fahrenheit has now been defined, and thus, the cell above no longer generates a NameError when the code is executed.\nAlso, the number beside the cell, for example, In [2], tells you the order in which the Python cells have been executed. This way, you can see a history of the order in which you have run the cells.\n\ntemp_fahrenheit = 9 / 5 * temp_celsius + 32\n\nTo check their current values, print out the values of temp_celsius and temp_fahrenheit in the cell below.\n\nprint(\"temperature in Celsius:\", temp_celsius, \"and in Fahrenheit:\", temp_fahrenheit)\n\ntemperature in Celsius: 15.0 and in Fahrenheit: 59.0\n\n\n\n\n\n\nA data type determines the characteristics of data in a program. There are four basic data types in Python, as shown in the table below.\n\n\n\nData type name\nData type\nExample\n\n\n\n\nint\nWhole integer values\n4\n\n\nfloat\nDecimal values\n3.1415\n\n\nstr\nCharacter strings\n'Hot'\n\n\nbool\nTrue/false values\nTrue\n\n\n\nThe data type can be found using the type() function. As you will see, the data types are essential because some are incompatible.\nLet’s define a variable weather_forecast and assign it the value 'Hot'. After this, we can check its data type using the type() function.\n\nweather_forecast = \"Hot\"\ntype(weather_forecast)\n\nstr\n\n\nLet’s also check the type of temp_fahrenheit.\n\ntype(temp_fahrenheit)\n\nfloat\n\n\nWhat happens if you try to combine temp_fahrenheit and weather_forecast in a single math equation such as temp_fahrenheit = temp_fahrenheit + 5.0 * weather_forecast?\n\ntemp_fahrenheit = temp_fahrenheit + 5.0 * weather_forecast\n\nTypeError: can't multiply sequence by non-int of type 'float'\n\n\nIn this case, we get at TypeError because we are trying to execute a math operation with data types that are not compatible. There is no way in Python to multiply numbers with a character string.",
+    "text": "The following resources provide further information on common types of map visualisations and best practices:\n\nCARTO - 5 Popular Thematic map Types\nFundamentals of Data Visualisation\n\nColor scales\nVisualizing geospatial data\nCommon pitfalls of color use\n\nColor Brewer",
     "crumbs": [
-      "Basic Coding",
-      "Python Notebooks"
-    ]
-  },
-  {
-    "objectID": "chapter_2/python.html#acknowledgements",
-    "href": "chapter_2/python.html#acknowledgements",
-    "title": "Python Notebooks",
-    "section": "",
-    "text": "This Notebook is adapted from ‘Let the snake in’ from the A taste of Python section of the Geo-Python course 2022 by D. Whipp, H. Tenkanen, V. Heikinheimo, H. Aagesen, and C. Fink from the Department of Geosciences and Geography, University of Helsinki, licensed under CC-BY-SA 4.0.",
-    "crumbs": [
-      "Basic Coding",
-      "Python Notebooks"
-    ]
-  },
-  {
-    "objectID": "chapter_2/python.html#simple-python-math",
-    "href": "chapter_2/python.html#simple-python-math",
-    "title": "Python Notebooks",
-    "section": "",
-    "text": "Python can be used as a simple calculator. Remember, you can press Shift + Enter to execute the code in the cells below. Try it out by typing some simple math into new cells and see what you get.\n\n42 * 12\n\n504\n\n\n\n12 / 3\n\n4.0\n\n\nIf you want to edit and re-run some code, change the cell re-execute.",
-    "crumbs": [
-      "Basic Coding",
-      "Python Notebooks"
-    ]
-  },
-  {
-    "objectID": "chapter_2/python.html#functions",
-    "href": "chapter_2/python.html#functions",
-    "title": "Python Notebooks",
-    "section": "",
-    "text": "You can use Python for more advanced math by using a function. Functions are pieces of code that perform a single action, such as printing information to the screen (e.g., the print() function). Functions exist for a huge number of operations in Python.\nLet’s try out a few simple examples using functions to find the sin or square root of a value. You can type sin(3) or sqrt(4) into the cells below to test this out.\n\nsin(3)\n\nNameError: name 'sin' is not defined\n\n\n\nsqrt(4)\n\nNameError: name 'sqrt' is not defined\n\n\nWell, that didn’t work. Python can calculate square roots or do basic trigonometry, but we need one more step.\n\n\nThe table below shows the list of basic arithmetic operations that can be done by default in Python.\n\n\n\nOperation\nSymbol\nExample syntax\nReturned value\n\n\n\n\nAddition\n+\n2 + 2\n4\n\n\nSubtraction\n-\n4 - 2\n2\n\n\nMultiplication\n*\n2 * 3\n6\n\n\nDivision\n/\n4 / 2\n2\n\n\nExponentiation\n**\n2 ** 3\n8\n\n\n\nFor anything more advanced, we need to load a module or a package. For math operations, this module is called math and can be loaded by typing import math.\n\nimport math\n\nNow that we have access to functions in the math module, we can use it by typing the module name, a period (dot), and the name of the function we want to use. For example, math.sin(3). Try this with the sine and square root examples from above.\n\nmath.sin(3)\n\n0.1411200080598672\n\n\n\nmath.sqrt(4)\n\n2.0\n\n\nLet’s summarise what you’ve just done with modules:\n\nA module is a group of code items, such as functions, related to one another. Individual modules are often in a group called a package.\nModules can be loaded using import. Functions that are part of the module modulename can then be used by typing modulename.functionname(). For example, sin() is a function that is part of the math module and is used by typing math.sin() with some number between the parentheses.\nWithin a Jupyter Notebook, the variables you defined earlier in the notebook will be available for use in the following cells as long as you have executed the cells.\nModules may also contain constants such as math.pi (notice no parentheses at the end). Type this in the cell below to see the constant’s math.pi value.\n\n\nmath.pi\n\n3.141592653589793\n\n\n\n\n\nFunctions can also be combined. The print() function returns values within the parentheses as text on the screen. Below, try printing the value of the square root of four.\n\nprint(math.sqrt(4))\n\n2.0\n\n\nYou can also combine text with other calculated values using the print() function. For example, print('Two plus two is', 2+2) would generate the text reading 'Two plus two is 4'. Combine the print() function with the math.sqrt() function in the cell below to produce text that reads 'The square root of 4 is 2.0'.\n\nprint(\"The square root of 4 is\", math.sqrt(4))\n\nThe square root of 4 is 2.0",
-    "crumbs": [
-      "Basic Coding",
-      "Python Notebooks"
-    ]
-  },
-  {
-    "objectID": "chapter_2/python.html#variables",
-    "href": "chapter_2/python.html#variables",
-    "title": "Python Notebooks",
-    "section": "",
-    "text": "A variable can store values calculated in expressions and used for other calculations. Assigning value to variables is straightforward. To assign a value, you type variable_name = value, where variable_name is the name of the variable you wish to define. In the cell below, define a variable called temp_celsius, assign it a value of 10.0, and then print that variable value using the print() function. Note that you should do this on two separate lines.\n\ntemp_celsius = 10.0\nprint(temp_celsius)\n\n10.0\n\n\nAs we did above, you can combine text and even use some math when printing out variable values. The idea is similar to adding 2+2 or calculating the square root of four from the previous section. In the cell below, print out the value of temp_celsius in degrees Fahrenheit by multiplying temp_celsius by 9/5 and adding 32. This should be done within the print() function to produce output that reads 'Temperature in Fahrenheit: 50.0'.\n\nprint(\"Temperature in Fahrenheit:\", 9 / 5 * temp_celsius + 32)\n\nTemperature in Fahrenheit: 50.0\n\n\n\n\nValues stored in variables can also be updated. Let’s redefine the value of temp_celsius to be equal to 15.0 and print its value in the cells below.\n\ntemp_celsius = 15.0\n\n\nprint(\"temperature in Celsius is now:\", temp_celsius)\n\ntemperature in Celsius is now: 15.0\n\n\nWarning\nIf you try to run some code that accesses a variable that has not yet been defined, you will get a NameError message. Try printing out the value of the variable temp_fahrenheit using the print() function in the cell below.\n\nprint(\"Temperature in Celsius:\", 5 / 9 * (temp_fahrenheit - 32))\n\nTemperature in Celsius: 15.0\n\n\nNote\nOne of the interesting things here is that if we define the undefined variable in a cell lower down in the notebook and execute that cell, we can return to the earlier cell, and the code should now work. That was a bit of a complicated sentence, so let’s test this all out. First, let’s define a variable called temp_fahrenheit in the cell below and assign it to be equal to 9/5 * temp_celsius + 32, the conversion factor from temperatures in Celsius to Fahrenheit. Then, return to the cell above this text and run that cell again. See how the error message has gone away? temp_fahrenheit has now been defined, and thus, the cell above no longer generates a NameError when the code is executed.\nAlso, the number beside the cell, for example, In [2], tells you the order in which the Python cells have been executed. This way, you can see a history of the order in which you have run the cells.\n\ntemp_fahrenheit = 9 / 5 * temp_celsius + 32\n\nTo check their current values, print out the values of temp_celsius and temp_fahrenheit in the cell below.\n\nprint(\"temperature in Celsius:\", temp_celsius, \"and in Fahrenheit:\", temp_fahrenheit)\n\ntemperature in Celsius: 15.0 and in Fahrenheit: 59.0",
-    "crumbs": [
-      "Basic Coding",
-      "Python Notebooks"
-    ]
-  },
-  {
-    "objectID": "chapter_2/python.html#data-types",
-    "href": "chapter_2/python.html#data-types",
-    "title": "Python Notebooks",
-    "section": "",
-    "text": "A data type determines the characteristics of data in a program. There are four basic data types in Python, as shown in the table below.\n\n\n\nData type name\nData type\nExample\n\n\n\n\nint\nWhole integer values\n4\n\n\nfloat\nDecimal values\n3.1415\n\n\nstr\nCharacter strings\n'Hot'\n\n\nbool\nTrue/false values\nTrue\n\n\n\nThe data type can be found using the type() function. As you will see, the data types are essential because some are incompatible.\nLet’s define a variable weather_forecast and assign it the value 'Hot'. After this, we can check its data type using the type() function.\n\nweather_forecast = \"Hot\"\ntype(weather_forecast)\n\nstr\n\n\nLet’s also check the type of temp_fahrenheit.\n\ntype(temp_fahrenheit)\n\nfloat\n\n\nWhat happens if you try to combine temp_fahrenheit and weather_forecast in a single math equation such as temp_fahrenheit = temp_fahrenheit + 5.0 * weather_forecast?\n\ntemp_fahrenheit = temp_fahrenheit + 5.0 * weather_forecast\n\nTypeError: can't multiply sequence by non-int of type 'float'\n\n\nIn this case, we get at TypeError because we are trying to execute a math operation with data types that are not compatible. There is no way in Python to multiply numbers with a character string.",
-    "crumbs": [
-      "Basic Coding",
-      "Python Notebooks"
+      "GIS Tools",
+      "Intro to GIS"
     ]
   },
   {
@@ -346,6 +423,59 @@
     "crumbs": [
       "Home"
     ]
+  },
+  {
+    "objectID": "chapter_1/cloud.html",
+    "href": "chapter_1/cloud.html",
+    "title": "Cloud GIS",
+    "section": "",
+    "text": "Cloud GIS\nThis will be an in-class hands-on session providing an introduction to the use of CARTO for publishing and styling interactive maps.",
+    "crumbs": [
+      "GIS Tools",
+      "Cloud GIS"
+    ]
+  },
+  {
+    "objectID": "chapter_1/sql.html",
+    "href": "chapter_1/sql.html",
+    "title": "SQL for GIS",
+    "section": "",
+    "text": "This is a draft outline and will be fleshed-out closer to class. To make visible, edit _quarto.yml to include in directory.\n\n\nSQL and PostgreSQL Basics:\n\n\nUnderstanding SQL (Structured Query Language)\nIntroduction to PostgreSQL as a Relational Database Management System (RDBMS)\nWorking with Schemas in PostgreSQL\n\n\nData Manipulation with SQL and PostgreSQL:\n\n\nCREATE, SELECT, INSERT, DELETE Statements\nPrimary Keys (PK) and Foreign Keys (FK)\nCreating and Managing Indexes for Performance Optimization\n\n\nSQL Concepts:\n\n\nAggregations: COUNT, SUM, AVG, MIN, MAX\nComplex Queries and Subqueries WITH, WHERE\nConditional Statements: CASE Statements\n\n\nIntroduction to GIS Integration with PostgreSQL:\n\n\nSpatial Data Types in PostgreSQL\nSpatial Indexing for Efficient Spatial Queries\nSpatial Functions and Operators in PostgreSQL\n\n\nSpatial and Non-Spatial Joins:\n\n\nPerforming Spatial Joins for GIS Analysis\nNon-Spatial Joins for Relational Data Analysis\nCombining Spatial and Non-Spatial Data in Queries\n\n\nHow to ask ChatGPT\n\n\nIterating query development\nDebugging"
+  },
+  {
+    "objectID": "chapter_1/sql.html#key-topics",
+    "href": "chapter_1/sql.html#key-topics",
+    "title": "SQL for GIS",
+    "section": "Key Topics",
+    "text": "Key Topics\n\nIntroduction to Data Analysis and Databases:\n\n\nImportance of Data Analysis in Decision Making\nOverview of Relational Databases\n\n\nConnecting to Google Cloud Platform (GCP):\n\n\nConnecting to NFI’s database(s)\nSetting Up a GCP Account\n\n\nSQL and PostgreSQL Basics:\n\n\nUnderstanding SQL (Structured Query Language)\nIntroduction to PostgreSQL as a Relational Database Management System (RDBMS)\nWorking with Schemas in PostgreSQL\n\n\nData Manipulation with SQL and PostgreSQL:\n\n\nCREATE, SELECT, INSERT, DELETE Statements\nPrimary Keys (PK) and Foreign Keys (FK)\nCreating and Managing Indexes for Performance Optimization\n\n\nSQL Concepts:\n\n\nAggregations: COUNT, SUM, AVG, MIN, MAX\nComplex Queries and Subqueries WITH, WHERE\nConditional Statements: CASE Statements\n\n\nIntroduction to GIS Integration with PostgreSQL:\n\n\nSpatial Data Types in PostgreSQL\nSpatial Indexing for Efficient Spatial Queries\nSpatial Functions and Operators in PostgreSQL\n\n\nSpatial and Non-Spatial Joins:\n\n\nPerforming Spatial Joins for GIS Analysis\nNon-Spatial Joins for Relational Data Analysis\nCombining Spatial and Non-Spatial Data in Queries"
+  },
+  {
+    "objectID": "chapter_1/sql.html#software-needed",
+    "href": "chapter_1/sql.html#software-needed",
+    "title": "SQL for GIS",
+    "section": "Software needed",
+    "text": "Software needed\n\nFor this session please make sure you have downloaded the following software(s):\n\nTablePlus | Modern, Native Tool for Database Management."
+  },
+  {
+    "objectID": "chapter_1/sql.html#connecting-to-data-on-postgis",
+    "href": "chapter_1/sql.html#connecting-to-data-on-postgis",
+    "title": "SQL for GIS",
+    "section": "Connecting to data on PostGIS 👨🏽‍💻",
+    "text": "Connecting to data on PostGIS 👨🏽‍💻\n\n\n\n⚙\nCONNECTION SETTINGS\n\n\n\n\nIP Address\n(will be provided during class)\n\n\nDatabase names\nnfi / urban_analytics\n\n\nPort\n5432\n\n\nUsername\nscholar\n\n\nPassword\n(will be provided during class)\n\n\n\n\n\n\n\n\n\nTip\n\n\n\nNote that the connections to the Databases are restricted by the source IP address."
+  },
+  {
+    "objectID": "chapter_1/sql.html#to-dos",
+    "href": "chapter_1/sql.html#to-dos",
+    "title": "SQL for GIS",
+    "section": "To-Dos",
+    "text": "To-Dos\n\nCreate a table with the following characteristics.\nUse schema. ua0\nTable name : [yourinitials] + “_prof_exp”\nFields required: (assign data types as you think would be best)\n\nid\nscholar_id\nindustry_id\ninstitution\nyears_of_experience\neducation\nlocation (crs: 4326)\nend_year\nnotes\n\n** If you think more fields are necessary, feel free to add them\nCreate a GitHub account\n\nadd link to public.scholars.github_link (varchar)\n\n\n\nOptional\nCreate a local instance of PostGIS for use in the upcoming months\nLearn PostgreSQL Tutorial - Full Course for Beginners"
+  },
+  {
+    "objectID": "chapter_1/sql.html#useful-resources",
+    "href": "chapter_1/sql.html#useful-resources",
+    "title": "SQL for GIS",
+    "section": "Useful Resources",
+    "text": "Useful Resources\n\nPOSTGRESQL & POSTGIS CHEATSHEETS\n\nPostgreSQL & PostGIS cheatsheet (a work in progress)\nPostgres Cheatsheet"
   },
   {
     "objectID": "chapter_2/pandas.html",
@@ -488,136 +618,6 @@
     "crumbs": [
       "Setup",
       "Python Notebooks"
-    ]
-  },
-  {
-    "objectID": "chapter_1/sql.html",
-    "href": "chapter_1/sql.html",
-    "title": "SQL for GIS",
-    "section": "",
-    "text": "This is a draft outline and will be fleshed-out closer to class. To make visible, edit _quarto.yml to include in directory.\n\n\nSQL and PostgreSQL Basics:\n\n\nUnderstanding SQL (Structured Query Language)\nIntroduction to PostgreSQL as a Relational Database Management System (RDBMS)\nWorking with Schemas in PostgreSQL\n\n\nData Manipulation with SQL and PostgreSQL:\n\n\nCREATE, SELECT, INSERT, DELETE Statements\nPrimary Keys (PK) and Foreign Keys (FK)\nCreating and Managing Indexes for Performance Optimization\n\n\nSQL Concepts:\n\n\nAggregations: COUNT, SUM, AVG, MIN, MAX\nComplex Queries and Subqueries WITH, WHERE\nConditional Statements: CASE Statements\n\n\nIntroduction to GIS Integration with PostgreSQL:\n\n\nSpatial Data Types in PostgreSQL\nSpatial Indexing for Efficient Spatial Queries\nSpatial Functions and Operators in PostgreSQL\n\n\nSpatial and Non-Spatial Joins:\n\n\nPerforming Spatial Joins for GIS Analysis\nNon-Spatial Joins for Relational Data Analysis\nCombining Spatial and Non-Spatial Data in Queries\n\n\nHow to ask ChatGPT\n\n\nIterating query development\nDebugging"
-  },
-  {
-    "objectID": "chapter_1/sql.html#key-topics",
-    "href": "chapter_1/sql.html#key-topics",
-    "title": "SQL for GIS",
-    "section": "Key Topics",
-    "text": "Key Topics\n\nIntroduction to Data Analysis and Databases:\n\n\nImportance of Data Analysis in Decision Making\nOverview of Relational Databases\n\n\nConnecting to Google Cloud Platform (GCP):\n\n\nConnecting to NFI’s database(s)\nSetting Up a GCP Account\n\n\nSQL and PostgreSQL Basics:\n\n\nUnderstanding SQL (Structured Query Language)\nIntroduction to PostgreSQL as a Relational Database Management System (RDBMS)\nWorking with Schemas in PostgreSQL\n\n\nData Manipulation with SQL and PostgreSQL:\n\n\nCREATE, SELECT, INSERT, DELETE Statements\nPrimary Keys (PK) and Foreign Keys (FK)\nCreating and Managing Indexes for Performance Optimization\n\n\nSQL Concepts:\n\n\nAggregations: COUNT, SUM, AVG, MIN, MAX\nComplex Queries and Subqueries WITH, WHERE\nConditional Statements: CASE Statements\n\n\nIntroduction to GIS Integration with PostgreSQL:\n\n\nSpatial Data Types in PostgreSQL\nSpatial Indexing for Efficient Spatial Queries\nSpatial Functions and Operators in PostgreSQL\n\n\nSpatial and Non-Spatial Joins:\n\n\nPerforming Spatial Joins for GIS Analysis\nNon-Spatial Joins for Relational Data Analysis\nCombining Spatial and Non-Spatial Data in Queries"
-  },
-  {
-    "objectID": "chapter_1/sql.html#software-needed",
-    "href": "chapter_1/sql.html#software-needed",
-    "title": "SQL for GIS",
-    "section": "Software needed",
-    "text": "Software needed\n\nFor this session please make sure you have downloaded the following software(s):\n\nTablePlus | Modern, Native Tool for Database Management."
-  },
-  {
-    "objectID": "chapter_1/sql.html#connecting-to-data-on-postgis",
-    "href": "chapter_1/sql.html#connecting-to-data-on-postgis",
-    "title": "SQL for GIS",
-    "section": "Connecting to data on PostGIS 👨🏽‍💻",
-    "text": "Connecting to data on PostGIS 👨🏽‍💻\n\n\n\n⚙\nCONNECTION SETTINGS\n\n\n\n\nIP Address\n(will be provided during class)\n\n\nDatabase names\nnfi / urban_analytics\n\n\nPort\n5432\n\n\nUsername\nscholar\n\n\nPassword\n(will be provided during class)\n\n\n\n\n\n\n\n\n\nTip\n\n\n\nNote that the connections to the Databases are restricted by the source IP address."
-  },
-  {
-    "objectID": "chapter_1/sql.html#to-dos",
-    "href": "chapter_1/sql.html#to-dos",
-    "title": "SQL for GIS",
-    "section": "To-Dos",
-    "text": "To-Dos\n\nCreate a table with the following characteristics.\nUse schema. ua0\nTable name : [yourinitials] + “_prof_exp”\nFields required: (assign data types as you think would be best)\n\nid\nscholar_id\nindustry_id\ninstitution\nyears_of_experience\neducation\nlocation (crs: 4326)\nend_year\nnotes\n\n** If you think more fields are necessary, feel free to add them\nCreate a GitHub account\n\nadd link to public.scholars.github_link (varchar)\n\n\n\nOptional\nCreate a local instance of PostGIS for use in the upcoming months\nLearn PostgreSQL Tutorial - Full Course for Beginners"
-  },
-  {
-    "objectID": "chapter_1/sql.html#useful-resources",
-    "href": "chapter_1/sql.html#useful-resources",
-    "title": "SQL for GIS",
-    "section": "Useful Resources",
-    "text": "Useful Resources\n\nPOSTGRESQL & POSTGIS CHEATSHEETS\n\nPostgreSQL & PostGIS cheatsheet (a work in progress)\nPostgres Cheatsheet"
-  },
-  {
-    "objectID": "chapter_1/gis.html",
-    "href": "chapter_1/gis.html",
-    "title": "Intro to GIS",
-    "section": "",
-    "text": "Vector and raster data are two fundamental types of spatial data used in Geographic Information Systems (GIS). Vector data represents geographical features as distinct shapes using points, lines, and polygons, each of which can carry detailed attribute information, making it ideal for precise mapping applications like boundaries, roads, and infrastructure networks. It excels in accuracy and detail for discrete data. In contrast, raster data consists of a grid of pixels, each holding a value, effectively representing continuous data. This format is well-suited for environmental analysis, land cover studies, and satellite imagery, as it captures variations over a wide area, such as elevation, temperature, or vegetation. While vector data is preferred for its precision in depicting specific geographic entities and managing related data, raster data is favored for its ability to represent complex, continuous phenomena over large spatial scales.\n\n\n\n\nVector data types are primarily categorized into Points, Linestrings, and Polygons, each with distinct characteristics and uses. Additionally, there are multi-geometry versions of these types, such as MultiPoints, MultiLinestrings, and MultiPolygons, which offer more complex feature groupings.\n\nPoints: Points are used to represent discrete locations on the earth’s surface. Each point is defined by a pair of coordinates (e.g. latitude and longitude, or an easting and northing) and can represent features such as the location of a tree or a landmark. They can have attributes further describing characteristics of interest, such as tree species or landmark name.\nLinestring: Lines connect a series of points to describe linear features such as roads or rivers. Linestring geometries inherently have length and may include attributes such as road type or river name.\nPolygons: Polygons are closed shapes used to represent areas such as city boundaries or land parcels. Polygon geometries inherently have an area and perimeter and may have attributes such as population counts or land use types.\n\n\n\n\nGeometry types\n\n\n\nMulti-Geometry Versions: Multi geometries provide a way to associated a grouping of Features which can share the same feature attributes.\n\nMultiPoint: For example, a grouping of trees.\nMultiLinestring: For example, a grouping of related segments describing a long-distance hiking trail.\nMultiPolygon: For example, a grouping of buildings which together represent a larger entity such as a hospital or university.\n\n\n\n\n\nEsri Shapefile\nShapefile is a prevalent geospatial file type in GIS software, requiring three mandatory files: - SHP (feature geometry) - SHX (shape index position) - DBF (attribute data) - Shapefiles often also include optional files such as PRJ (coordinate reference system).\nGeoPackage\nGeoPackage provides a modern and simpler alternative to shapefiles and is rapidly gaining acceptance. It supports vector data and can store multiple data layers and it’s use of SQLite means that you can use SQL queries.\nGeoJSON\nGeoJSON encodes geographic data structures using JSON, a format commonly used for web development.\n\nReference: https://gisgeography.com/gis-formats/\n\n\n\n\n\nRasters contain a grid of pixels, where the value used for each grid cell can represent a characteristic such as temperature or landcover. Geographic rasters typically include Geospatial information necessary to correctly project and locate the information in GIS software.\n\n\n\nRaster image grid cells\n\n\n\n\n\nASCII Grid\nASCII Grid files (ASC) store raster data as text in a grid format. Each cell in the grid is represented by a numeric value corresponding to the geographic attribute being mapped, such as elevation. ASCII Grid files include a header specifying metadata like cell size, number of rows and columns, and coordinates of the lower left corner. The format is simple and can be generated or edited with a text editor, and may use space, comma, or tab-delimiters.\nGeoTIFF\nGeoTIFF is widely becoming the defacto raster format in GIS. It embeds coordinate reference system information within a TIFF (Tagged Image File Format). GeoTIFFs are commonly used for storing satellite imagery, elevation data, and land surface temperatures.\n\nReference: https://gisgeography.com/gis-formats/\n\n\n\n\n\n\n\nGeographic data is intrinsically tied to the earth’s surface and is represented using coordinates within defined Coordinate Reference Systems (CRS). Broadly, these systems fall into two categories: Geographic Coordinate Systems and Projected Coordinate Systems.\nGeographic CRSs use a spherical surface to define locations on the earth’s surface. They are based on degrees in latitude and longitude and are most commonly referenced to the WGS84 datum. While they accurately represent the earth’s curved surface and preserve the true shape and angular relationships of features, distances and areas may not be as accurate, especially over larger distances.\nProjected CRSs translate the earth’s three-dimensional surface onto a two-dimensional plane, making it easier to analyze and visualize spatial data. They use a mathematical projection to flatten the curved surface of the earth, which can lead to distortions in shape, area, distance, or direction. Different types of projections are designed to minimize these distortions for specific regions or purposes. For example, projections can be optimized for preserving areas (equal-area projections), angles and shapes (conformal), or distances (equidistant).\n\n\n\nDimaxion Fuller projection. NFF image rights.\n\n\n\n\n\n\n\n\nTip\n\n\n\nA useful reference website for different CRS is EPSG.io: Coordinate Systems Worldwide\n\n\n\n\nGeographic Coordinate Reference Systems (CRS) use a spherical or ellipsoidal surface to represent locations on the Earth’s curved surface. Geographic CRSs are based on latitude and longitude coordinates and are useful for global or regional mapping.\n\nUnits: Degrees\nCommon Examples:\n\nWGS 84 (World Geodetic System 1984) EPSG:4326: A widely used CRS for global mapping and GPS navigation.\nNAD83 (North American Datum 1983) EPSG:4269: A CRS commonly used in North America.\n\n\n\n\n\nProjected Coordinate Reference Systems (CRS) use a Cartesian coordinate system to represent locations on a flat surface. These CRSs are created by “projecting” the curved Earth onto a flat surface, which introduces distortions. This inevitably requires tradeoffs in distances, areas, or shapes, with different projection systems involving different trade-offs. Projected CRSs are commonly used for local or small-scale mapping appropriate to specific countries or regions of the globe, where locally accurate measurements and comparisons are required.\n\nUnits: Meters (most commonly)\nCommon Examples:\n\nLAEA (Lambert Azimuthal Equal Area) Europe projection EPSG:3035: This CRS is commonly used for Europe, though note that countries will typically also have even more localised projected CRS.\nBritish National Grid (BNG) EPSG:27700: This CRS is commonly used in the United Kingdom.\nState Plane Coordinate System (SPCS): This CRS is widely used in the United States, and divides the country into zones, each with their own projection.\n\n\n\n\n\n\n\nhttps://gisgeography.com\n\n\n\n\n\n\n\n\nDiscovering sources for GIS (Geographic Information System) data is a handy skill for spatial analysis and mapping! There are various official and non-official sources, each offering different types of data suited to specific needs and applications. When searching for and using different data sources, try to remain cognisant of the merits and limitations of different sources, which may impact considerations such as data accuracy or bias.\n\nGovernment Agencies: National agencies often provide official and reliable forms of GIS data. However, these datasets may reflect governmental priorities and perspectives or they may be reluctant to make these datasets openly available.\nInternational Organizations: Organizations such as the United Nations (UN) and the World Bank offer global GIS datasets, but these may have limited local detail due to their broad scope.\nLocal Authorities: City and regional councils often create and maintain local GIS datasets, often tailored to specific local government projects and priorities. Their local specificity may make it tricky to compare to different datasets sourced from other cities.\nPrivate Sector: There are many private sector organisations which generate, curate, or distribute data, however, these datasets are less likely to be openly available and may incur substantial monetary cost.\nOpen Data Platforms: Platforms such as OpenStreetMap offer freely accessible GIS data, contributed by a community of users. These datasets may require additional validation if used for mission-critical purposes, though can otherwise be extremely useful, allowing for generalisable workflows and providing coverage in some instances where no other options exist.\nAPIs and Web Scraping: Involves the automated collection of data from online APIs or websites. The quality of data can vary but may otherwise be useful for obtaining interesting data. These techniques may involve significant technical skills for data extraction and processing. Legal and ethical considerations are important, as scraping can sometimes violate terms of service or data privacy laws.\n\n\n\n\nPurposely collected data is gathered specifically to address a certain research question or project goal, using structured approaches such as surveys, experiments, or observations. It’s tailored to meet the specific needs of a study, with careful control over variables to ensure the data’s relevance and accuracy. This type of data is highly pertinent to the project it’s collected for, due to its focused nature and methodical collection process.\n\n\n\nOn the other hand, data can also be adapted to new research needs from information originally collected for different purposes. This may include repurposing data from various sources such as public databases, existing research studies, or web scraping.\n\n\n\n\n\nAttribution or citation refers to giving proper credit to the original source or creator of the data. Just as with citing sources in academic papers, it’s important to acknowledge the origin of the data you are using. This helps provide transparency, accountability, and recognition to the creators of the dataset.\n\n\nWhen dealing with data, licenses refer to legal agreements or permissions that determine how the data can be used, distributed, or modified. Different datasets may have different licensing requirements, so it’s important to understand and comply with the specific license terms associated with the data you are using.\nExamples:\n\nCreative Commons (CC) licenses: These are standardized licenses that allow creators to specify permissions for their work. They are commonly used for a variety of creative works, including images, music, videos, and written content.\nOpen Government Licenses: These licenses have been adopted by governments and may allow individuals and organizations permissive use, reuse, and sharing of information.\nGNU General Public License (GPL): This is a copyleft license for open-source software. It permits users to modify and distribute the software, but any modifications or derivative works must also be licensed under the GPL. This license is popular for promoting open-source principles and collaborative software development.\nMIT / Apache / BSD Licenses: Permissive open-source software licenses. These may allow great flexibility such as using, copying, modifying, and distributing derivative work, even for commercial purposes. The primary requirement is to include the original copyright and license notice in any significant portions of the software.\n\n\n\n\n\n\nPrivacy considerations are important when working with data, especially if the data contains personally identifiable information or sensitive information. It’s very important to handle and store data in a way that respects privacy laws and regulations. This may involve anonymizing or de-identifying data, implementing security measures, and obtaining consent from individuals whose data is being used.\n\n\n\n\n\n\nNote\n\n\n\nPlease avoid using any and all data containing private or sensitive data unless you first review this and seek approval from faculty. Handling these forms of data comes with numerous steps and safeguards and will generally be strongly discouraged.\n\n\n\n\n\n\n\n\nThe Modifiable Areal Unit Problem (MAUP) is encountered when using different scales or zones of analysis to group data. This can cause significant changes in the balance and aggregation of data purely based on how it is grouped. This can have a potentially significant impact on visualisation or analysis. MAUP is exploited for political purposes through the process of gerrymandering.\n\nhttps://gisgeography.com\n\n\n\nYouTube\n\n\n\n\n\n\nThe following resources provide further information on common types of map visualisations and best practices:\n\nCARTO - 5 Popular Thematic map Types\nFundamentals of Data Visualisation\n\nColor scales\nVisualizing geospatial data\nCommon pitfalls of color use\n\nColor Brewer",
-    "crumbs": [
-      "GIS Tools",
-      "Intro to GIS"
-    ]
-  },
-  {
-    "objectID": "chapter_1/gis.html#file-types",
-    "href": "chapter_1/gis.html#file-types",
-    "title": "Intro to GIS",
-    "section": "",
-    "text": "Vector and raster data are two fundamental types of spatial data used in Geographic Information Systems (GIS). Vector data represents geographical features as distinct shapes using points, lines, and polygons, each of which can carry detailed attribute information, making it ideal for precise mapping applications like boundaries, roads, and infrastructure networks. It excels in accuracy and detail for discrete data. In contrast, raster data consists of a grid of pixels, each holding a value, effectively representing continuous data. This format is well-suited for environmental analysis, land cover studies, and satellite imagery, as it captures variations over a wide area, such as elevation, temperature, or vegetation. While vector data is preferred for its precision in depicting specific geographic entities and managing related data, raster data is favored for its ability to represent complex, continuous phenomena over large spatial scales.\n\n\n\n\nVector data types are primarily categorized into Points, Linestrings, and Polygons, each with distinct characteristics and uses. Additionally, there are multi-geometry versions of these types, such as MultiPoints, MultiLinestrings, and MultiPolygons, which offer more complex feature groupings.\n\nPoints: Points are used to represent discrete locations on the earth’s surface. Each point is defined by a pair of coordinates (e.g. latitude and longitude, or an easting and northing) and can represent features such as the location of a tree or a landmark. They can have attributes further describing characteristics of interest, such as tree species or landmark name.\nLinestring: Lines connect a series of points to describe linear features such as roads or rivers. Linestring geometries inherently have length and may include attributes such as road type or river name.\nPolygons: Polygons are closed shapes used to represent areas such as city boundaries or land parcels. Polygon geometries inherently have an area and perimeter and may have attributes such as population counts or land use types.\n\n\n\n\nGeometry types\n\n\n\nMulti-Geometry Versions: Multi geometries provide a way to associated a grouping of Features which can share the same feature attributes.\n\nMultiPoint: For example, a grouping of trees.\nMultiLinestring: For example, a grouping of related segments describing a long-distance hiking trail.\nMultiPolygon: For example, a grouping of buildings which together represent a larger entity such as a hospital or university.\n\n\n\n\n\nEsri Shapefile\nShapefile is a prevalent geospatial file type in GIS software, requiring three mandatory files: - SHP (feature geometry) - SHX (shape index position) - DBF (attribute data) - Shapefiles often also include optional files such as PRJ (coordinate reference system).\nGeoPackage\nGeoPackage provides a modern and simpler alternative to shapefiles and is rapidly gaining acceptance. It supports vector data and can store multiple data layers and it’s use of SQLite means that you can use SQL queries.\nGeoJSON\nGeoJSON encodes geographic data structures using JSON, a format commonly used for web development.\n\nReference: https://gisgeography.com/gis-formats/\n\n\n\n\n\nRasters contain a grid of pixels, where the value used for each grid cell can represent a characteristic such as temperature or landcover. Geographic rasters typically include Geospatial information necessary to correctly project and locate the information in GIS software.\n\n\n\nRaster image grid cells\n\n\n\n\n\nASCII Grid\nASCII Grid files (ASC) store raster data as text in a grid format. Each cell in the grid is represented by a numeric value corresponding to the geographic attribute being mapped, such as elevation. ASCII Grid files include a header specifying metadata like cell size, number of rows and columns, and coordinates of the lower left corner. The format is simple and can be generated or edited with a text editor, and may use space, comma, or tab-delimiters.\nGeoTIFF\nGeoTIFF is widely becoming the defacto raster format in GIS. It embeds coordinate reference system information within a TIFF (Tagged Image File Format). GeoTIFFs are commonly used for storing satellite imagery, elevation data, and land surface temperatures.\n\nReference: https://gisgeography.com/gis-formats/",
-    "crumbs": [
-      "GIS Tools",
-      "Intro to GIS"
-    ]
-  },
-  {
-    "objectID": "chapter_1/gis.html#coordinate-reference-systems",
-    "href": "chapter_1/gis.html#coordinate-reference-systems",
-    "title": "Intro to GIS",
-    "section": "",
-    "text": "Geographic data is intrinsically tied to the earth’s surface and is represented using coordinates within defined Coordinate Reference Systems (CRS). Broadly, these systems fall into two categories: Geographic Coordinate Systems and Projected Coordinate Systems.\nGeographic CRSs use a spherical surface to define locations on the earth’s surface. They are based on degrees in latitude and longitude and are most commonly referenced to the WGS84 datum. While they accurately represent the earth’s curved surface and preserve the true shape and angular relationships of features, distances and areas may not be as accurate, especially over larger distances.\nProjected CRSs translate the earth’s three-dimensional surface onto a two-dimensional plane, making it easier to analyze and visualize spatial data. They use a mathematical projection to flatten the curved surface of the earth, which can lead to distortions in shape, area, distance, or direction. Different types of projections are designed to minimize these distortions for specific regions or purposes. For example, projections can be optimized for preserving areas (equal-area projections), angles and shapes (conformal), or distances (equidistant).\n\n\n\nDimaxion Fuller projection. NFF image rights.\n\n\n\n\n\n\n\n\nTip\n\n\n\nA useful reference website for different CRS is EPSG.io: Coordinate Systems Worldwide\n\n\n\n\nGeographic Coordinate Reference Systems (CRS) use a spherical or ellipsoidal surface to represent locations on the Earth’s curved surface. Geographic CRSs are based on latitude and longitude coordinates and are useful for global or regional mapping.\n\nUnits: Degrees\nCommon Examples:\n\nWGS 84 (World Geodetic System 1984) EPSG:4326: A widely used CRS for global mapping and GPS navigation.\nNAD83 (North American Datum 1983) EPSG:4269: A CRS commonly used in North America.\n\n\n\n\n\nProjected Coordinate Reference Systems (CRS) use a Cartesian coordinate system to represent locations on a flat surface. These CRSs are created by “projecting” the curved Earth onto a flat surface, which introduces distortions. This inevitably requires tradeoffs in distances, areas, or shapes, with different projection systems involving different trade-offs. Projected CRSs are commonly used for local or small-scale mapping appropriate to specific countries or regions of the globe, where locally accurate measurements and comparisons are required.\n\nUnits: Meters (most commonly)\nCommon Examples:\n\nLAEA (Lambert Azimuthal Equal Area) Europe projection EPSG:3035: This CRS is commonly used for Europe, though note that countries will typically also have even more localised projected CRS.\nBritish National Grid (BNG) EPSG:27700: This CRS is commonly used in the United Kingdom.\nState Plane Coordinate System (SPCS): This CRS is widely used in the United States, and divides the country into zones, each with their own projection.\n\n\n\n\n\n\n\nhttps://gisgeography.com",
-    "crumbs": [
-      "GIS Tools",
-      "Intro to GIS"
-    ]
-  },
-  {
-    "objectID": "chapter_1/gis.html#gis-data",
-    "href": "chapter_1/gis.html#gis-data",
-    "title": "Intro to GIS",
-    "section": "",
-    "text": "Discovering sources for GIS (Geographic Information System) data is a handy skill for spatial analysis and mapping! There are various official and non-official sources, each offering different types of data suited to specific needs and applications. When searching for and using different data sources, try to remain cognisant of the merits and limitations of different sources, which may impact considerations such as data accuracy or bias.\n\nGovernment Agencies: National agencies often provide official and reliable forms of GIS data. However, these datasets may reflect governmental priorities and perspectives or they may be reluctant to make these datasets openly available.\nInternational Organizations: Organizations such as the United Nations (UN) and the World Bank offer global GIS datasets, but these may have limited local detail due to their broad scope.\nLocal Authorities: City and regional councils often create and maintain local GIS datasets, often tailored to specific local government projects and priorities. Their local specificity may make it tricky to compare to different datasets sourced from other cities.\nPrivate Sector: There are many private sector organisations which generate, curate, or distribute data, however, these datasets are less likely to be openly available and may incur substantial monetary cost.\nOpen Data Platforms: Platforms such as OpenStreetMap offer freely accessible GIS data, contributed by a community of users. These datasets may require additional validation if used for mission-critical purposes, though can otherwise be extremely useful, allowing for generalisable workflows and providing coverage in some instances where no other options exist.\nAPIs and Web Scraping: Involves the automated collection of data from online APIs or websites. The quality of data can vary but may otherwise be useful for obtaining interesting data. These techniques may involve significant technical skills for data extraction and processing. Legal and ethical considerations are important, as scraping can sometimes violate terms of service or data privacy laws.\n\n\n\n\nPurposely collected data is gathered specifically to address a certain research question or project goal, using structured approaches such as surveys, experiments, or observations. It’s tailored to meet the specific needs of a study, with careful control over variables to ensure the data’s relevance and accuracy. This type of data is highly pertinent to the project it’s collected for, due to its focused nature and methodical collection process.\n\n\n\nOn the other hand, data can also be adapted to new research needs from information originally collected for different purposes. This may include repurposing data from various sources such as public databases, existing research studies, or web scraping.",
-    "crumbs": [
-      "GIS Tools",
-      "Intro to GIS"
-    ]
-  },
-  {
-    "objectID": "chapter_1/gis.html#attribution",
-    "href": "chapter_1/gis.html#attribution",
-    "title": "Intro to GIS",
-    "section": "",
-    "text": "Attribution or citation refers to giving proper credit to the original source or creator of the data. Just as with citing sources in academic papers, it’s important to acknowledge the origin of the data you are using. This helps provide transparency, accountability, and recognition to the creators of the dataset.\n\n\nWhen dealing with data, licenses refer to legal agreements or permissions that determine how the data can be used, distributed, or modified. Different datasets may have different licensing requirements, so it’s important to understand and comply with the specific license terms associated with the data you are using.\nExamples:\n\nCreative Commons (CC) licenses: These are standardized licenses that allow creators to specify permissions for their work. They are commonly used for a variety of creative works, including images, music, videos, and written content.\nOpen Government Licenses: These licenses have been adopted by governments and may allow individuals and organizations permissive use, reuse, and sharing of information.\nGNU General Public License (GPL): This is a copyleft license for open-source software. It permits users to modify and distribute the software, but any modifications or derivative works must also be licensed under the GPL. This license is popular for promoting open-source principles and collaborative software development.\nMIT / Apache / BSD Licenses: Permissive open-source software licenses. These may allow great flexibility such as using, copying, modifying, and distributing derivative work, even for commercial purposes. The primary requirement is to include the original copyright and license notice in any significant portions of the software.",
-    "crumbs": [
-      "GIS Tools",
-      "Intro to GIS"
-    ]
-  },
-  {
-    "objectID": "chapter_1/gis.html#privacy",
-    "href": "chapter_1/gis.html#privacy",
-    "title": "Intro to GIS",
-    "section": "",
-    "text": "Privacy considerations are important when working with data, especially if the data contains personally identifiable information or sensitive information. It’s very important to handle and store data in a way that respects privacy laws and regulations. This may involve anonymizing or de-identifying data, implementing security measures, and obtaining consent from individuals whose data is being used.\n\n\n\n\n\n\nNote\n\n\n\nPlease avoid using any and all data containing private or sensitive data unless you first review this and seek approval from faculty. Handling these forms of data comes with numerous steps and safeguards and will generally be strongly discouraged.",
-    "crumbs": [
-      "GIS Tools",
-      "Intro to GIS"
-    ]
-  },
-  {
-    "objectID": "chapter_1/gis.html#quirks-part-1",
-    "href": "chapter_1/gis.html#quirks-part-1",
-    "title": "Intro to GIS",
-    "section": "",
-    "text": "The Modifiable Areal Unit Problem (MAUP) is encountered when using different scales or zones of analysis to group data. This can cause significant changes in the balance and aggregation of data purely based on how it is grouped. This can have a potentially significant impact on visualisation or analysis. MAUP is exploited for political purposes through the process of gerrymandering.\n\nhttps://gisgeography.com\n\n\n\nYouTube",
-    "crumbs": [
-      "GIS Tools",
-      "Intro to GIS"
-    ]
-  },
-  {
-    "objectID": "chapter_1/gis.html#resources",
-    "href": "chapter_1/gis.html#resources",
-    "title": "Intro to GIS",
-    "section": "",
-    "text": "The following resources provide further information on common types of map visualisations and best practices:\n\nCARTO - 5 Popular Thematic map Types\nFundamentals of Data Visualisation\n\nColor scales\nVisualizing geospatial data\nCommon pitfalls of color use\n\nColor Brewer",
-    "crumbs": [
-      "GIS Tools",
-      "Intro to GIS"
     ]
   }
 ]
