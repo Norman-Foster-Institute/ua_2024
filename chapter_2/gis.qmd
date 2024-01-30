@@ -13,6 +13,8 @@ Vector data types are primarily categorized into Points, Lines, and Polygons, ea
 - **Points**: In vector GIS, Points are used to represent discrete locations on the earth's surface. Each point is defined by a pair of coordinates (e.g. latitude and longitude) and can represent features like the location of a city, a well, or a landmark.
 - **Lines**: Lines are sequences of points connected by straight segments. They are used to represent linear features such as roads, rivers, or utility lines. Lines are characterized by length and direction and can also include attributes like road type or river name.
 - **Polygons**: Polygons are closed shapes formed by a series of connected line segments. They are used to represent areas such as city boundaries, land parcels, or lakes. Polygons have attributes such as area and perimeter and can include additional information like population density or land use type.
+![Geometry types](chapter_2/images/pts_lns_pols.jpg)
+
 - **Multi-Geometry Versions**:
   - **Multi-Points**: This type represents a collection of points as a single entity. For instance, a Multi-Point could represent a chain of islands or a group of dispersed historical sites.
   - **Multi-Lines (or Multi-Polylines)**: These are collections of lines that are treated as a single feature. An example might be the total network of streets in a city or various segments of a long-distance hiking trail.
