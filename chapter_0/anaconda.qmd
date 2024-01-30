@@ -54,6 +54,11 @@ Shut down Jupyter Lab from the menubar in the web interface using [File]{.keystr
 
 ![Shut down Jupyter Lab](./images/jupyter-shut-down.png){width=300}
 
-### Plan B with Google Colab
+### Plan B - Google Colab
 
 If you are unable to install an environment using the instructions above, you can follow the course using [Google Colab](https://colab.research.google.com). You will need to install any required packages to your Colab environment. Reach out in class if you need help getting set up.
+
+### Pan C - Launching from Terminal
+
+With time you will come to realise that certain actions are faster to excecute from your command promt (Windows) / Terminal (Mac). This might look scary at first, but overtime it might become more natural to launch Jupyter Lab directly from the terminal. 
+> More instructions on this 
