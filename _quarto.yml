@@ -24,16 +24,16 @@ website:
           - chapter_0/index.qmd
           - chapter_0/installation.qmd
           - chapter_0/anaconda.qmd
-      - section: Basic Coding
-        contents:
-          - chapter_1/python.ipynb
-          - chapter_1/open_source.qmd
-          - chapter_1/pandas.ipynb
       - section: GIS Tools
         contents:
-          - chapter_2/gis.qmd
-          - chapter_2/qgis.qmd
-          - chapter_2/cloud.qmd
+          - chapter_1/gis.qmd
+          - chapter_1/qgis.qmd
+          - chapter_1/cloud.qmd
+      - section: Basic Coding
+        contents:
+          - chapter_2/python.ipynb
+          - chapter_2/open_source.qmd
+          - chapter_2/pandas.ipynb
   page-footer:
     center:
       - text: "License"

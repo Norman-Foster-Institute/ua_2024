@@ -171,7 +171,7 @@ These examples demonstrate how the choice of spatial unit can significantly impa
 
 ## Resources & Lab Work
 
-Please review the following resources for information on common types of map visualisations:
+Please review the following resources for information on common types of map visualisations and best practices:
 
 - CARTO - [5 Popular Thematic map Types](https://carto.com/blog/popular-thematic-map-types-techniques-spatial-data)
 - Fundamentals of Data Visualisation
