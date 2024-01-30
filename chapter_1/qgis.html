@@ -212,9 +212,10 @@ ul.task-list li input[type="checkbox"] {
   <ul>
   <li><a href="#intro-to-qgis" id="toc-intro-to-qgis" class="nav-link active" data-scroll-target="#intro-to-qgis">Intro to QGIS</a>
   <ul class="collapse">
-  <li><a href="#datasets" id="toc-datasets" class="nav-link" data-scroll-target="#datasets">Datasets</a></li>
   <li><a href="#qgis-ui" id="toc-qgis-ui" class="nav-link" data-scroll-target="#qgis-ui">QGIS UI</a></li>
   <li><a href="#plugins" id="toc-plugins" class="nav-link" data-scroll-target="#plugins">Plugins</a></li>
+  <li><a href="#xyz-tiles" id="toc-xyz-tiles" class="nav-link" data-scroll-target="#xyz-tiles">XYZ Tiles</a></li>
+  <li><a href="#datasets" id="toc-datasets" class="nav-link" data-scroll-target="#datasets">Datasets</a></li>
   <li><a href="#coordinate-reference-systems" id="toc-coordinate-reference-systems" class="nav-link" data-scroll-target="#coordinate-reference-systems">Coordinate Reference Systems</a></li>
   <li><a href="#loading-data" id="toc-loading-data" class="nav-link" data-scroll-target="#loading-data">Loading Data</a></li>
   <li><a href="#saving-and-exporting-data" id="toc-saving-and-exporting-data" class="nav-link" data-scroll-target="#saving-and-exporting-data">Saving and exporting data</a></li>
@@ -222,8 +223,10 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#loading-csv-files" id="toc-loading-csv-files" class="nav-link" data-scroll-target="#loading-csv-files">Loading CSV files</a></li>
   <li><a href="#selecting-and-deleting-features" id="toc-selecting-and-deleting-features" class="nav-link" data-scroll-target="#selecting-and-deleting-features">Selecting and deleting features</a></li>
   <li><a href="#joins" id="toc-joins" class="nav-link" data-scroll-target="#joins">Joins</a></li>
-  <li><a href="#visulation" id="toc-visulation" class="nav-link" data-scroll-target="#visulation">Visulation</a></li>
-  <li><a href="#resources-lab-work" id="toc-resources-lab-work" class="nav-link" data-scroll-target="#resources-lab-work">Resources &amp; Lab Work</a></li>
+  <li><a href="#visualisation" id="toc-visualisation" class="nav-link" data-scroll-target="#visualisation">Visualisation</a></li>
+  <li><a href="#connecting-to-db" id="toc-connecting-to-db" class="nav-link" data-scroll-target="#connecting-to-db">Connecting to DB</a></li>
+  <li><a href="#mapping-vector-data" id="toc-mapping-vector-data" class="nav-link" data-scroll-target="#mapping-vector-data">Mapping Vector Data</a></li>
+  <li><a href="#resources" id="toc-resources" class="nav-link" data-scroll-target="#resources">Resources</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -236,13 +239,6 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="intro-to-qgis" class="level1">
 <h1>Intro to QGIS</h1>
-<section id="datasets" class="level2">
-<h2 class="anchored" data-anchor-id="datasets">Datasets</h2>
-<ul>
-<li><p>Download the municipal neighbourhoods as a SHP file: <a href="https://datos.madrid.es/portal/site/egob/menuitem.c05c1f754a33a9fbe4b2e4b284f1a5a0/?vgnextoid=760e5eb0d73a7710VgnVCM2000001f4a900aRCRD&amp;vgnextchannel=374512b9ace9f310VgnVCM100000171f5a0aRCRD&amp;vgnextfmt=default">Barrios municipales de Madrid</a></p></li>
-<li><p>Download the population by district and neighbourhood dataset as a CSV file: <a href="https://datos.madrid.es/portal/site/egob/menuitem.c05c1f754a33a9fbe4b2e4b284f1a5a0/?vgnextoid=0cccaebc07c1f710VgnVCM2000001f4a900aRCRD&amp;vgnextchannel=374512b9ace9f310VgnVCM100000171f5a0aRCRD&amp;vgnextfmt=default">Población por distrito y barrio a 1 de enero</a></p></li>
-</ul>
-</section>
 <section id="qgis-ui" class="level2">
 <h2 class="anchored" data-anchor-id="qgis-ui">QGIS UI</h2>
 <p>We’ll first explore the QGIS user interface, taking some time to explore:</p>
@@ -270,6 +266,16 @@ ul.task-list li input[type="checkbox"] {
 <ul>
 <li>From the <code>Web</code> menu, select <code>QuickMapServices</code>, then <code>OSM</code> and <code>OSM Standard</code>.</li>
 <li>This will add a map to your map view.</li>
+</ul>
+</section>
+<section id="xyz-tiles" class="level2">
+<h2 class="anchored" data-anchor-id="xyz-tiles">XYZ Tiles</h2>
+</section>
+<section id="datasets" class="level2">
+<h2 class="anchored" data-anchor-id="datasets">Datasets</h2>
+<ul>
+<li><p>Download the municipal neighbourhoods as a SHP file: <a href="https://datos.madrid.es/portal/site/egob/menuitem.c05c1f754a33a9fbe4b2e4b284f1a5a0/?vgnextoid=760e5eb0d73a7710VgnVCM2000001f4a900aRCRD&amp;vgnextchannel=374512b9ace9f310VgnVCM100000171f5a0aRCRD&amp;vgnextfmt=default">Barrios municipales de Madrid</a></p></li>
+<li><p>Download the population by district and neighbourhood dataset as a CSV file: <a href="https://datos.madrid.es/portal/site/egob/menuitem.c05c1f754a33a9fbe4b2e4b284f1a5a0/?vgnextoid=0cccaebc07c1f710VgnVCM2000001f4a900aRCRD&amp;vgnextchannel=374512b9ace9f310VgnVCM100000171f5a0aRCRD&amp;vgnextfmt=default">Población por distrito y barrio a 1 de enero</a></p></li>
 </ul>
 </section>
 <section id="coordinate-reference-systems" class="level2">
@@ -380,16 +386,35 @@ ul.task-list li input[type="checkbox"] {
 <li>Remove <code>my_csv</code> and <code>my_gpkg</code> from the Layers Panel.</li>
 </ul>
 </section>
-<section id="visulation" class="level2">
-<h2 class="anchored" data-anchor-id="visulation">Visulation</h2>
+<section id="visualisation" class="level2">
+<h2 class="anchored" data-anchor-id="visualisation">Visualisation</h2>
 <ul>
 <li>Open the <code>my_joined_gpkg</code> layer properties by double clicking on the layer name in the Layers Panel.</li>
 <li>Select <code>Labels</code> in the left pane, select <code>Single Labels</code>, then select the <code>BARRIO_MT</code> column, then apply. This will add the Barrio names to the map. You can format labels to your heart’s content.</li>
 <li>Select <code>Symbology</code> in the left pane. In class, we will walk through a variety of options for map styling. There are almost limitless options so feel free to be creative.</li>
 </ul>
 </section>
-<section id="resources-lab-work" class="level2">
-<h2 class="anchored" data-anchor-id="resources-lab-work">Resources &amp; Lab Work</h2>
+<section id="connecting-to-db" class="level2">
+<h2 class="anchored" data-anchor-id="connecting-to-db">Connecting to DB</h2>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Connection details will be provided during class. Note that all connections to the database are IP protected.</p>
+</div>
+</div>
+</section>
+<section id="mapping-vector-data" class="level2">
+<h2 class="anchored" data-anchor-id="mapping-vector-data">Mapping Vector Data</h2>
+</section>
+<section id="resources" class="level2">
+<h2 class="anchored" data-anchor-id="resources">Resources</h2>
 <p>There is a lot that can be done with QGIS and we have just skimmed the surface!</p>
 <p>The <a href="https://www.qgistutorials.com/en/index.html">QGIS Tutorials and Tips</a> is a great resource for QGIS.</p>
 <p>For lab-work, please do the following tutorials from <a href="https://www.qgistutorials.com/en/docs/introduction.html">QGIS Tutorials and Tips</a> in your own time to build some general familiarity with QGIS:</p>
