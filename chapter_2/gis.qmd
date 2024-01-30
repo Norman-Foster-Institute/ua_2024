@@ -14,7 +14,7 @@ Vector data types are primarily categorized into Points, Lines, and Polygons, ea
 - **Lines**: Lines are sequences of points connected by straight segments. They are used to represent linear features such as roads, rivers, or utility lines. Lines are characterized by length and direction and can also include attributes like road type or river name.
 - **Polygons**: Polygons are closed shapes formed by a series of connected line segments. They are used to represent areas such as city boundaries, land parcels, or lakes. Polygons have attributes such as area and perimeter and can include additional information like population density or land use type.
 
-![Geometry types](chapter_2/images/pts_lns_pols.jpg)
+![Geometry types](./images/pts_lns_pols.jpg)
 
 - **Multi-Geometry Versions**:
   - **Multi-Points**: This type represents a collection of points as a single entity. For instance, a Multi-Point could represent a chain of islands or a group of dispersed historical sites.
@@ -45,7 +45,7 @@ GeoJSON encodes geographic data structures using JSON. Common in online mapping 
 
 Rasters contain a grid of pixels, where the value used for each grid cell can represent a characteristic such as temperature or landcover. Geographic rasters typically include Geospatial information necessary to correctly project and locate the information in GIS software.
 
-![Raster image grid cells](chapter_2/images/raster_grid.png)
+![Raster image grid cells](./images/raster_grid.png)
 ---
 
 #### Formats
@@ -69,7 +69,7 @@ Geographic CRSs use a three-dimensional spherical surface to define locations on
 
 Projected CRSs translate the earth's three-dimensional surface onto a two-dimensional plane, making it easier to analyze and visualize spatial data. They use a mathematical projection to flatten the curved surface of the earth, which can lead to distortions in shape, area, distance, or direction. Different types of projections are designed to minimize these distortions for specific regions or purposes. For example, some are optimized for preserving area (equal-area projections), while others preserve distances or shapes.
 
-![Dimaxion Fuller projection. NFF image rights.](chapter_2/images/fuller_nff.png)
+![Dimaxion Fuller projection. NFF image rights.](./images/fuller_nff.png)
 
 ::: {.callout-tip}
 A useful reference website for different CRS is [EPSG.io: Coordinate Systems Worldwide](https://epsg.io/)
@@ -164,9 +164,7 @@ The **Modifiable Areal Unit Problem (MAUP)** is a common issue in geography and 
 
 **Crime Rates**: Imagine you have crime data recorded at the neighborhoud level. If you aggregate the data into larger units, such as police precincts, the crime rates may appear different due to the varying sizes and characteristics of neighborhouds within each precinct. This can result in different spatial patterns and potentially lead to incorrect conclusions about crime rates at different scales or units of analysis.
 
-```{=html}
-<iframe width="780" height="400" src="https://www.youtube.com/watch?v=7NTw1v7DuAA" title="MAUP Crime Data example"></iframe>
-```
+{{< video https://www.youtube.com/watch?v=7NTw1v7DuAA >}}
 
 These examples demonstrate how the choice of spatial unit can significantly impact the analysis and interpretation of geographic data, highlighting the need to use consistency with the scale, units, and boundaries of spatial analysis.
 ---
