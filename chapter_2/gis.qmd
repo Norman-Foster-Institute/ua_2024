@@ -13,6 +13,7 @@ Vector data types are primarily categorized into Points, Lines, and Polygons, ea
 - **Points**: In vector GIS, Points are used to represent discrete locations on the earth's surface. Each point is defined by a pair of coordinates (e.g. latitude and longitude) and can represent features like the location of a city, a well, or a landmark.
 - **Lines**: Lines are sequences of points connected by straight segments. They are used to represent linear features such as roads, rivers, or utility lines. Lines are characterized by length and direction and can also include attributes like road type or river name.
 - **Polygons**: Polygons are closed shapes formed by a series of connected line segments. They are used to represent areas such as city boundaries, land parcels, or lakes. Polygons have attributes such as area and perimeter and can include additional information like population density or land use type.
+
 ![Geometry types](chapter_2/images/pts_lns_pols.jpg)
 
 - **Multi-Geometry Versions**:
@@ -24,21 +25,28 @@ Vector data types are primarily categorized into Points, Lines, and Polygons, ea
 
 **Esri Shapefile**
 
-Shapefile is a prevalent geospatial file type in GIS software, requiring three mandatory files: `SHP` (feature geometry), `SHX` (shape index position), and `DBF` (attribute data). Optional files like `PRJ` (coordinate reference system) are also common.
+Shapefile is a prevalent geospatial file type in GIS software, requiring three mandatory files: 
+- `SHP` (feature geometry)
+- `SHX` (shape index position)
+- `DBF` (attribute data)
+- Optional files like `PRJ` (coordinate reference system) are also common.
 
 **GeoPackage**
 
-GeoPackage, a portable and compact format, is ideal for transferring geospatial information. Based on SQLite, it supports vector data, tile matrix sets, and extensions. It's efficient for storing multiple data layers and a popular alternative to shapefiles for handling larger datasets.
+GeoPackage, a portable and compact format, is ideal for transferring geospatial information. Based on SQLite, it supports vector data, tile matrix sets, and extensions. It's efficient for storing **multiple data layers** and a popular alternative to shapefiles for handling larger datasets.
 
 **GeoJSON**
 
 GeoJSON encodes geographic data structures using JSON. Common in online mapping applications, it represents geographic features like points, lines, and polygons in an open-standard format. |
 
-Reference: [https://gisgeography.com/gis-formats/](https://gisgeography.com/gis-formats/)
+> Reference: [https://gisgeography.com/gis-formats/](https://gisgeography.com/gis-formats/)
 
 ### Raster
 
 Rasters contain a grid of pixels, where the value used for each grid cell can represent a characteristic such as temperature or landcover. Geographic rasters typically include Geospatial information necessary to correctly project and locate the information in GIS software.
+
+![Raster image grid cells](chapter_2/images/raster_grid.png)
+---
 
 #### Formats
 
@@ -50,7 +58,8 @@ ASCII Grid files (`ASC`) store raster data as text in a grid format. Each cell i
 
 GeoTIFF is a widely used file format in GIS and remote sensing applications, known for its ability to embed georeferencing information within a standard TIFF (Tagged Image File Format). It stores raster images and allows embedding of metadata such as map projections, coordinate systems, ellipsoids, and datums. This embedded geospatial data enables the precise positioning of the image in the correct geographic space. GeoTIFFs are commonly used for storing satellite imagery, aerial photography, and GIS data.
 
-Reference: [https://gisgeography.com/gis-formats/](https://gisgeography.com/gis-formats/)
+> Reference: [https://gisgeography.com/gis-formats/](https://gisgeography.com/gis-formats/)
+---
 
 ## Coordinate Reference Systems
 
@@ -59,6 +68,8 @@ Geographic data is intrinsically tied to the earth's surface and is represented 
 Geographic CRSs use a three-dimensional spherical surface to define locations on the earth. They are based on latitude and longitude measurements and are most commonly referenced to the WGS84 datum. While they accurately represent the earth's curved surface and preserve the true shape and angular relationships of features, distances and areas may not be as accurate, especially over larger areas.
 
 Projected CRSs translate the earth's three-dimensional surface onto a two-dimensional plane, making it easier to analyze and visualize spatial data. They use a mathematical projection to flatten the curved surface of the earth, which can lead to distortions in shape, area, distance, or direction. Different types of projections are designed to minimize these distortions for specific regions or purposes. For example, some are optimized for preserving area (equal-area projections), while others preserve distances or shapes.
+
+![Dimaxion Fuller projection. NFF image rights.](chapter_2/images/fuller_nff.png)
 
 ::: {.callout-tip}
 A useful reference website for different CRS is [EPSG.io: Coordinate Systems Worldwide](https://epsg.io/)
@@ -86,7 +97,10 @@ Projected _Coordinate Reference Systems_ (CRS) use a two-dimensional Cartesian c
 
 ### Some visual examples
 
-[https://gisgeography.com/map-projection-types/](https://gisgeography.com/map-projection-types/)
+```{=html}
+<iframe width="780" height="500" src="https://gisgeography.com/map-projection-types/" title="Webpage example"></iframe>
+```
+---
 
 ## GIS Data
 
@@ -108,6 +122,7 @@ Purposely collected data is gathered specifically to address a certain research 
 ### Adapted Data
 
 On the other hand, adapted data refers to information originally collected for different purposes, but later used for new research needs. It includes data from various sources such as public databases, previous studies, or web scraping. This data is characterized by its broad range of collection goals and the diverse methods used in its initial gathering. Its versatility lies in the ability to repurpose existing data for new or unrelated research questions, making it a flexible resource in research contexts.
+---
 
 ## Attribution
 
@@ -126,6 +141,7 @@ Examples:
 - **GNU General Public License (GPL)**: This is a copyleft license for open-source software. It permits users to modify and distribute the software, but any modifications or derivative works must also be licensed under the GPL. This license is popular for promoting open-source principles and collaborative software development.
 
 - **MIT / Apache / BSD Licenses**: Permissive open-source software licenses. These may allow great flexibility such as using, copying, modifying, and distributing derivative work, even for commercial purposes. The primary requirement is to include the original copyright and license notice in any significant portions of the software.
+---
 
 ## Privacy
 
@@ -134,20 +150,26 @@ Privacy considerations are important when working with data, especially if the d
 ::: {.callout-note}
 Please avoid using any and all data containing private or sensitive data unless you first review this and seek approval from faculty. Handling these forms of data comes with numerous steps and safeguards and will generally be strongly discouraged.
 :::
+---
 
 ## Quirks (Part 1)
 
 ### MAUP
 
-The **Modifiable Areal Unit Problem (MAUP)** is a common issue in geography and maps. It refers to the fact that the results of statistical analysis or visual representation can be influenced by the **choice of spatial unit or scale used to aggregate data**. The MAUP arises because geographic phenomena can be measured and analysed at different levels of spatial granularity, such as census tracts, counties, or regions. When data is aggregated into different spatial units, it can lead to different patterns, relationships, and **interpretations**. 
+The **Modifiable Areal Unit Problem (MAUP)** is a common issue in geography and maps. It refers to the fact that the results of statistical analysis or visual representation can be influenced by the **choice of spatial unit or scale used to aggregate data**. The MAUP arises because geographic phenomena can be measured and analysed at different levels of spatial granularity, such as census tracts, counties, or regions. When data is aggregated into different spatial units, it can lead to different patterns, relationships, and **interpretations**.
 
-[https://gisgeography.com/maup-modifiable-areal-unit-problem/](https://gisgeography.com/maup-modifiable-areal-unit-problem/)
+```{=html}
+<iframe width="780" height="600" src="https://gisgeography.com/maup-modifiable-areal-unit-problem/" title="Webpage example"></iframe>
+```
 
 **Crime Rates**: Imagine you have crime data recorded at the neighborhoud level. If you aggregate the data into larger units, such as police precincts, the crime rates may appear different due to the varying sizes and characteristics of neighborhouds within each precinct. This can result in different spatial patterns and potentially lead to incorrect conclusions about crime rates at different scales or units of analysis.
 
-[https://www.youtube.com/watch?v=7NTw1v7DuAA&t=115s](https://www.youtube.com/watch?v=7NTw1v7DuAA&t=115s)
+```{=html}
+<iframe width="780" height="400" src="https://www.youtube.com/watch?v=7NTw1v7DuAA" title="MAUP Crime Data example"></iframe>
+```
 
 These examples demonstrate how the choice of spatial unit can significantly impact the analysis and interpretation of geographic data, highlighting the need to use consistency with the scale, units, and boundaries of spatial analysis.
+---
 
 ## Resources & Lab Work
 
