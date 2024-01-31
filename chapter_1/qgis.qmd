@@ -29,6 +29,26 @@ This plugin will add a new menu entry under the `Web` menu.
 
 ## XYZ Tiles
 
+XYZ tiles are a popular way to represent map tile data in a simple and standardized format, allowing for efficient storage, retrieval, and display of map imagery at various scales. The "XYZ" refers to the coordinate system used to locate the tiles. "X" and "Y" represent the tile's column and row, respectively, in a grid layout, with the origin typically at the top-left corner of the map. The "Z" parameter stands for zoom level, where higher zoom levels correspond to more detailed views (i.e., a higher resolution). This system enables GIS applications to quickly load the appropriate level of detail for a given view, making it a cornerstone of web mapping services like Google Maps and OpenStreetMap. It allows for seamless and efficient navigation across various scales and locations on a digital map.
+
+To establish a new connection:
+
+- On the Browser panel, right-click on `XYZ Tiles` -> `New Connection...`
+- Asign a name to the connection (eg. _OpenStreetMap_)
+- Paste the respective `URL`
+
+Depending on the connection, some of other connection attributes might be required (eg. Authentication details)
+
+> We reccomend you establish at least the following connections:
+> - **OpenStreetMap** : https://tile.openstreetmap.org/{z}/{x}/{y}.png
+> - **Google Imagery Hybrid** : http://mt0.google.com/vt/lyrs=y&hl=en&x={x}&y={y}&z={z}&s=Ga
+
+::: {.callout-tip}
+Useful list of many others Tiles. 
+[https://qms.nextgis.com/#](https://tile.openstreetmap.org/{z}/{x}/{y}.png)
+Note, make sure you navigate to the TMS section and the reported status = `works` (symbolised with the green dot).
+:::
+
 ## Datasets
 
 - Download the municipal neighbourhoods as a SHP file: [Barrios municipales de Madrid](https://datos.madrid.es/portal/site/egob/menuitem.c05c1f754a33a9fbe4b2e4b284f1a5a0/?vgnextoid=760e5eb0d73a7710VgnVCM2000001f4a900aRCRD&vgnextchannel=374512b9ace9f310VgnVCM100000171f5a0aRCRD&vgnextfmt=default)
@@ -149,6 +169,28 @@ Connection details will be provided during class. Note that all connections to t
 
 ## Mapping Vector Data
 
+For this excercise we are going to use the historic center of San Marino. The idea is to familiarize yourself with inputing geometry, first. Attributes will be added at later stages.
+Each scholar, must produce two individual GeoPackage Layers (locally): 
+
+- **Buildings layer**: (Polygons, `CRS: 3035`) representing all the buildings within the tiles assigned.
+    - suggested name : *buildings_[scholarname]*
+- **Street Network layer**: (Linestring, `CRS: 3035`) representing the pedestrian routes through the tiles assigned. 
+    - suggested name : *network_[scholarname]*
+
+Each scholar has been assigned with different areas of the republic that can be found in the following path of `nfi` database:
+ - `nfi.sanmarino.base_mapping`
+
+ Explore the attributes `buildings` and `street_network` to see your areas and collaborate with the neighbour tiles.
+
+::: {.callout-tip}
+Make sure you activate the `Snapping Toolbar` by right-clicking on any empty space of the toolbar. 
+Explore different pixel tolerance values as well as options like the `Topological Editing` and the `Intersection Snapping`.
+:::
+
+### Optional 
+If you're feeling like doing the extra mile, you can start combining the tiles from your adjacent neighbours and/or adding attributes to your current layers.
+
+When merging files, one must make sure that all the Linestrings (from the Network layer) and Polygon edges are approprietly snappped.
 
 ## Resources
 

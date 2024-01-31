@@ -27,6 +27,7 @@ Vector data types are primarily categorized into Points, Linestrings, and Polygo
 **Esri Shapefile**
 
 Shapefile is a prevalent geospatial file type in GIS software, requiring three mandatory files: 
+
 - `SHP` (feature geometry)
 - `SHX` (shape index position)
 - `DBF` (attribute data)
