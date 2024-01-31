@@ -1,5 +1,192 @@
 [
   {
+    "objectID": "chapter_1/cloud.html",
+    "href": "chapter_1/cloud.html",
+    "title": "Cloud GIS",
+    "section": "",
+    "text": "Cloud GIS\nThis will be an in-class hands-on session providing an introduction to the use of CARTO for publishing and styling interactive maps.",
+    "crumbs": [
+      "GIS Tools",
+      "Cloud GIS"
+    ]
+  },
+  {
+    "objectID": "chapter_1/qgis.html",
+    "href": "chapter_1/qgis.html",
+    "title": "Intro to QGIS",
+    "section": "",
+    "text": "We’ll first explore the QGIS user interface, taking some time to explore:\n\nMain Interface: The map area, toolbars, layers panel, status bar, dock panels.\nToolbars: These are collections of icons and tools that provide quick access to commonly used features and functions in QGIS. These can be customised based on your preferences. Some of the common toolbars provide functionality such as zooming, panning, selecting features, and editing features.\nMap View: This is the central area where your maps and layers are displayed. We’ll explore how to navigate the map view, including zooming, panning, and identifying features.\nBrowser Panel: For browsing and loading data from your file system, databases, and web services.\nLayers Panel: Here, you can see a list of all the layers loaded in your project. Layers can be organised, styled, and otherwise configured.\nAttribute Table: This panel lets you view and edit the attribute data associated with your vector layers.\nStatus Bar: Located at the bottom, the status bar shows information about the map and your project, such as the current map scale, the coordinate reference system, and messaging about ongoing processes.\nPlugins: QGIS can be extended with plugins. We’ll briefly touch on how to find, install, and use plugins to enhance the functionality of QGIS.\n\n\n\n\nInstall the Quick Map Services (QMS) Plugin:\n\nFrom the Plugins menu, select Manage and Install Plugins\nSearch for QMS\nInstall QuickMapServices\nInstall and Close the window.\n\nThis plugin will add a new menu entry under the Web menu.\n\nFrom the Web menu, select QuickMapServices, then OSM and OSM Standard.\nThis will add a map to your map view.\n\n\n\n\nXYZ tiles are a popular way to represent map tile data in a simple and standardized format, allowing for efficient storage, retrieval, and display of map imagery at various scales. The “XYZ” refers to the coordinate system used to locate the tiles. “X” and “Y” represent the tile’s column and row, respectively, in a grid layout, with the origin typically at the top-left corner of the map. The “Z” parameter stands for zoom level, where higher zoom levels correspond to more detailed views (i.e., a higher resolution). This system enables GIS applications to quickly load the appropriate level of detail for a given view, making it a cornerstone of web mapping services like Google Maps and OpenStreetMap. It allows for seamless and efficient navigation across various scales and locations on a digital map.\nTo establish a new connection:\n\nOn the Browser panel, right-click on XYZ Tiles -&gt; New Connection...\nAsign a name to the connection (eg. OpenStreetMap)\nPaste the respective URL\n\nDepending on the connection, some of other connection attributes might be required (eg. Authentication details)\n\nWe reccomend you establish at least the following connections: - OpenStreetMap : https://tile.openstreetmap.org/{z}/{x}/{y}.png - Google Imagery Hybrid : http://mt0.google.com/vt/lyrs=y&hl=en&x={x}&y={y}&z={z}&s=Ga\n\n\n\n\n\n\n\nTip\n\n\n\nUseful list of many others Tiles. https://qms.nextgis.com/# Note, make sure you navigate to the TMS section and the reported status = works (symbolised with the green dot).\n\n\n\n\n\n\nDownload the municipal neighbourhoods as a SHP file: Barrios municipales de Madrid\nDownload the population by district and neighbourhood dataset as a CSV file: Población por distrito y barrio a 1 de enero\n\n\n\n\nGeospatial data is represented using a coordinate reference system (CRS). QGIS will ordinarily detect this information automatically. However, it can display information in any selected CRS, so you can open multiple files in different CRSs and these will display correctly. This is because QGIS will reproject each respective file into the map’s currently selected CRS system.\nIn the lower right corner of the status bar at the bottom of the screen:\n\nSelect the CRS button to open the project’s CRS configuration.\nSearch for CRS code 3857, then select it, Apply, and OK.\n\n\nHint: When using OSM base maps, the base maps will render more performantly in the Web Mercator projection (3857). This is because QGIS then doesn’t need to dynamically reproject the map tiles out of their native 3857 projection.\n\n\n\n\nLoad your first dataset by dragging and dropping the shapefile (the downloaded file ending with .shp) into your map view.\n\nYou can toggle layer visibility and order using the Layers Panel.\nUse the Select Features button to select a feature and see it highlighted.\nClick the Pan Map to Selection button to see the map zoom to the currently selected feature\nClick the Zoom Full button to return to a view of the full dataset.\nUse the Identify Features button to see attribute information for a particular feature.\nClick the Toggle Editing button -&gt; this will let you delete existing features or add new features - use with caution! Don’t make any changes for now, just click the Toggle Editing button again to exit edit mode.\n\n\n\n\nWe don’t want to edit the original dataset, so let’s make a copy and work with that instead:\n\nRight click the layer in the Layer Panel and select export -&gt; Save Features as\nSelect the GeoPackage format.\nSelect a file location on disk and give it a distinctive name such as my_gpkg.\nSelect 3857 for the CRS projection\nCheck that Add saved file to map at the bottom of the window is selected\nSelect OK\nThe file will be saved and will automatically load into your map.\nRemove the original SHP file from your Layers Panel since it is no longer needed. This can be done with the Remove Layer button.\n\n\n\n\nAttributes in GIS layers provide additional information about the spatial features in the data. They include text, numbers, dates, or images. Attributes help add context to the geographic elements, enabling better analysis and visualization. They can be used to filter, classify, and symbolize features based on their characteristics. Attributes play a crucial role in data analysis, allowing us to gain insights, make comparisons, and create meaningful visual representations.\nUsing the Municipal Boundaries my_gpkg dataset:\n\nOpen the attribute table for the neighbourhood boundaries by right clicking on the layer in the Layers Panel and selecting Attribute Table. From the Attribute table you can try the same steps you tried for the map view (selecting, zooming to, editing).\nToggle Editing Mode by pressing the Toggle Editing Mode button.\nClick on the New Field button in the toolbar\nSet the Name as area and the type as Decimal number, then OK.\nCheck that no rows are selected (otherwise the calculation only applies to the selected rows).\nOpen the Field Calculator by clicking its icon (abacus symbol) in the toolbar.\nSelect Update existing field and select the area column.\nIn the Expression pane, enter $area, then press the blue forward button below to preview the results of the calculation.\nPress OK and check that your area column has been updated.\nPress the Save edits button to save your calculation.\nTurn off editing mode.\n\nWe’ll now add another column, this time we’ll use another column as input and we will transform the data from a text to an integer.\n\nTurn editing mode on\nOpen the Field Calculator\nThis time select Create a new field and call it cod_barrio\nCheck that it is an Integer type\nIn the expression, enter to_int(COD_BAR) -&gt; this will take the text from the COD_BAR column and will cast this to an integer. In the process, the data will drop the leading zero.\nApply the change, save to disk, and toggle editing to off.\n\n\n\n\n\nTo load the CSV file we’ll go to the Layer menu bar, Add Layer, then Add Delimited Text Layer.\nFor File name, navigate to your CSV file\nThis file uses semi-colon delimeters, so select Custom delimiters and check that Semicolon is selected\nCheck that the option for First record has field names is selected. This will automatically use the first line of the CSV to set the attribute names.\nSelect No geometry. This will load the dataset without visual geometric information. Note that if you have longitude and latitude information in CSV columns (or Eastings and Northings for projected CRS), then you can specify these columns and QGIS will generate the point geometries accordingly.\nSelect Add then Close.\nNote that this layer looks different in the Layers Panel because it doesn’t have associated geometry. However, you can still view the Attribute Table.\nRight click on the layer and select export -&gt; Save Features as. Then save the layer as a new CSV file called my_csv. As before, select the option to add the layer to the map, save, then remove the original input CSV from the Layers Panel.\n\n\n\n\n\nOpen the attribute table for the my_csv layer by right clicking on the data table in the Layers Panel and selecting Attribute Table.\nOrder the data by clicking the fecha column header, order in descending order by clicking again.\nClick on the first entry then hold down shift and click on the last entry with a fecha value of 1 de enero de 2023\nClick the Invert selection button.\nToggle editing.\nClick the Delete selected features button.\nSave and turn off editing.\n\n\n\n\n\nOpen the Attribute Panels for both the my_gpkg and the my_csv layers.\nWe want to “Join” information from the CSV dataset to the neighbourhood boundaries using the matching identifiers in the respective cod_barrio / cod_barrio columns.\nClose the Attribute Panels.\nDouble click on the my_gpkg layer to open the properties panel.\nClick Joins in the left sidebar.\nClick the plus button to create a new join.\nSelect the my_csv table for the Join layer -&gt; the layer from which attributes will be joined to my_gpkg.\nSelect the cod_barrio column for the Join field\nSelect the cod_barrio column for the Target field\nClick OK and close the layer properties.\nReopen the Attribute Panel for the my_gpkg dataset, you’ll see extra columns which have now joined the data from the my_csv table into their corresponding boundaries based on the matching identifiers.\nLet’s export this to a new file to my_joined_gpkg, which will now include the joined data.\nRemove my_csv and my_gpkg from the Layers Panel.\n\n\n\n\n\nOpen the my_joined_gpkg layer properties by double clicking on the layer name in the Layers Panel.\nSelect Labels in the left pane, select Single Labels, then select the BARRIO_MT column, then apply. This will add the Barrio names to the map. You can format labels to your heart’s content.\nSelect Symbology in the left pane. In class, we will walk through a variety of options for map styling. There are almost limitless options so feel free to be creative.\n\n\n\n\n\n\n\n\n\n\nTip\n\n\n\nConnection details will be provided during class. Note that all connections to the database are IP protected.\n\n\n\n\n\nFor this excercise we are going to use the historic center of San Marino. The idea is to familiarize yourself with inputing geometry, first. Attributes will be added at later stages. Each scholar, must produce two individual GeoPackage Layers (locally):\n\nBuildings layer: (Polygons, CRS: 3035) representing all the buildings within the tiles assigned.\n\nsuggested name : buildings_[scholarname]\n\nStreet Network layer: (Linestring, CRS: 3035) representing the pedestrian routes through the tiles assigned.\n\nsuggested name : network_[scholarname]\n\n\nEach scholar has been assigned with different areas of the republic that can be found in the following path of nfi database: - nfi.sanmarino.base_mapping\nExplore the attributes buildings and street_network to see your areas and collaborate with the neighbour tiles.\n\n\n\n\n\n\nTip\n\n\n\nMake sure you activate the Snapping Toolbar by right-clicking on any empty space of the toolbar. Explore different pixel tolerance values as well as options like the Topological Editing and the Intersection Snapping.\n\n\n\n\nIf you’re feeling like doing the extra mile, you can start combining the tiles from your adjacent neighbours and/or adding attributes to your current layers.\nWhen merging files, one must make sure that all the Linestrings (from the Network layer) and Polygon edges are approprietly snappped.\n\n\n\n\nThere is a lot that can be done with QGIS and we have just skimmed the surface!\nThe QGIS Tutorials and Tips is a great resource for QGIS.\nFor lab-work, please do the following tutorials from QGIS Tutorials and Tips in your own time to build some general familiarity with QGIS:\n\nMaking a Map\nBasic Vector Styling\nDigitizing Map Data\nWorking with Projections\nCreating Heatmaps",
+    "crumbs": [
+      "GIS Tools",
+      "Intro to QGIS"
+    ]
+  },
+  {
+    "objectID": "chapter_1/qgis.html#qgis-ui",
+    "href": "chapter_1/qgis.html#qgis-ui",
+    "title": "Intro to QGIS",
+    "section": "",
+    "text": "We’ll first explore the QGIS user interface, taking some time to explore:\n\nMain Interface: The map area, toolbars, layers panel, status bar, dock panels.\nToolbars: These are collections of icons and tools that provide quick access to commonly used features and functions in QGIS. These can be customised based on your preferences. Some of the common toolbars provide functionality such as zooming, panning, selecting features, and editing features.\nMap View: This is the central area where your maps and layers are displayed. We’ll explore how to navigate the map view, including zooming, panning, and identifying features.\nBrowser Panel: For browsing and loading data from your file system, databases, and web services.\nLayers Panel: Here, you can see a list of all the layers loaded in your project. Layers can be organised, styled, and otherwise configured.\nAttribute Table: This panel lets you view and edit the attribute data associated with your vector layers.\nStatus Bar: Located at the bottom, the status bar shows information about the map and your project, such as the current map scale, the coordinate reference system, and messaging about ongoing processes.\nPlugins: QGIS can be extended with plugins. We’ll briefly touch on how to find, install, and use plugins to enhance the functionality of QGIS.",
+    "crumbs": [
+      "GIS Tools",
+      "Intro to QGIS"
+    ]
+  },
+  {
+    "objectID": "chapter_1/qgis.html#plugins",
+    "href": "chapter_1/qgis.html#plugins",
+    "title": "Intro to QGIS",
+    "section": "",
+    "text": "Install the Quick Map Services (QMS) Plugin:\n\nFrom the Plugins menu, select Manage and Install Plugins\nSearch for QMS\nInstall QuickMapServices\nInstall and Close the window.\n\nThis plugin will add a new menu entry under the Web menu.\n\nFrom the Web menu, select QuickMapServices, then OSM and OSM Standard.\nThis will add a map to your map view.",
+    "crumbs": [
+      "GIS Tools",
+      "Intro to QGIS"
+    ]
+  },
+  {
+    "objectID": "chapter_1/qgis.html#xyz-tiles",
+    "href": "chapter_1/qgis.html#xyz-tiles",
+    "title": "Intro to QGIS",
+    "section": "",
+    "text": "XYZ tiles are a popular way to represent map tile data in a simple and standardized format, allowing for efficient storage, retrieval, and display of map imagery at various scales. The “XYZ” refers to the coordinate system used to locate the tiles. “X” and “Y” represent the tile’s column and row, respectively, in a grid layout, with the origin typically at the top-left corner of the map. The “Z” parameter stands for zoom level, where higher zoom levels correspond to more detailed views (i.e., a higher resolution). This system enables GIS applications to quickly load the appropriate level of detail for a given view, making it a cornerstone of web mapping services like Google Maps and OpenStreetMap. It allows for seamless and efficient navigation across various scales and locations on a digital map.\nTo establish a new connection:\n\nOn the Browser panel, right-click on XYZ Tiles -&gt; New Connection...\nAsign a name to the connection (eg. OpenStreetMap)\nPaste the respective URL\n\nDepending on the connection, some of other connection attributes might be required (eg. Authentication details)\n\nWe reccomend you establish at least the following connections: - OpenStreetMap : https://tile.openstreetmap.org/{z}/{x}/{y}.png - Google Imagery Hybrid : http://mt0.google.com/vt/lyrs=y&hl=en&x={x}&y={y}&z={z}&s=Ga\n\n\n\n\n\n\n\nTip\n\n\n\nUseful list of many others Tiles. https://qms.nextgis.com/# Note, make sure you navigate to the TMS section and the reported status = works (symbolised with the green dot).",
+    "crumbs": [
+      "GIS Tools",
+      "Intro to QGIS"
+    ]
+  },
+  {
+    "objectID": "chapter_1/qgis.html#datasets",
+    "href": "chapter_1/qgis.html#datasets",
+    "title": "Intro to QGIS",
+    "section": "",
+    "text": "Download the municipal neighbourhoods as a SHP file: Barrios municipales de Madrid\nDownload the population by district and neighbourhood dataset as a CSV file: Población por distrito y barrio a 1 de enero",
+    "crumbs": [
+      "GIS Tools",
+      "Intro to QGIS"
+    ]
+  },
+  {
+    "objectID": "chapter_1/qgis.html#coordinate-reference-systems",
+    "href": "chapter_1/qgis.html#coordinate-reference-systems",
+    "title": "Intro to QGIS",
+    "section": "",
+    "text": "Geospatial data is represented using a coordinate reference system (CRS). QGIS will ordinarily detect this information automatically. However, it can display information in any selected CRS, so you can open multiple files in different CRSs and these will display correctly. This is because QGIS will reproject each respective file into the map’s currently selected CRS system.\nIn the lower right corner of the status bar at the bottom of the screen:\n\nSelect the CRS button to open the project’s CRS configuration.\nSearch for CRS code 3857, then select it, Apply, and OK.\n\n\nHint: When using OSM base maps, the base maps will render more performantly in the Web Mercator projection (3857). This is because QGIS then doesn’t need to dynamically reproject the map tiles out of their native 3857 projection.",
+    "crumbs": [
+      "GIS Tools",
+      "Intro to QGIS"
+    ]
+  },
+  {
+    "objectID": "chapter_1/qgis.html#loading-data",
+    "href": "chapter_1/qgis.html#loading-data",
+    "title": "Intro to QGIS",
+    "section": "",
+    "text": "Load your first dataset by dragging and dropping the shapefile (the downloaded file ending with .shp) into your map view.\n\nYou can toggle layer visibility and order using the Layers Panel.\nUse the Select Features button to select a feature and see it highlighted.\nClick the Pan Map to Selection button to see the map zoom to the currently selected feature\nClick the Zoom Full button to return to a view of the full dataset.\nUse the Identify Features button to see attribute information for a particular feature.\nClick the Toggle Editing button -&gt; this will let you delete existing features or add new features - use with caution! Don’t make any changes for now, just click the Toggle Editing button again to exit edit mode.",
+    "crumbs": [
+      "GIS Tools",
+      "Intro to QGIS"
+    ]
+  },
+  {
+    "objectID": "chapter_1/qgis.html#saving-and-exporting-data",
+    "href": "chapter_1/qgis.html#saving-and-exporting-data",
+    "title": "Intro to QGIS",
+    "section": "",
+    "text": "We don’t want to edit the original dataset, so let’s make a copy and work with that instead:\n\nRight click the layer in the Layer Panel and select export -&gt; Save Features as\nSelect the GeoPackage format.\nSelect a file location on disk and give it a distinctive name such as my_gpkg.\nSelect 3857 for the CRS projection\nCheck that Add saved file to map at the bottom of the window is selected\nSelect OK\nThe file will be saved and will automatically load into your map.\nRemove the original SHP file from your Layers Panel since it is no longer needed. This can be done with the Remove Layer button.",
+    "crumbs": [
+      "GIS Tools",
+      "Intro to QGIS"
+    ]
+  },
+  {
+    "objectID": "chapter_1/qgis.html#attributes",
+    "href": "chapter_1/qgis.html#attributes",
+    "title": "Intro to QGIS",
+    "section": "",
+    "text": "Attributes in GIS layers provide additional information about the spatial features in the data. They include text, numbers, dates, or images. Attributes help add context to the geographic elements, enabling better analysis and visualization. They can be used to filter, classify, and symbolize features based on their characteristics. Attributes play a crucial role in data analysis, allowing us to gain insights, make comparisons, and create meaningful visual representations.\nUsing the Municipal Boundaries my_gpkg dataset:\n\nOpen the attribute table for the neighbourhood boundaries by right clicking on the layer in the Layers Panel and selecting Attribute Table. From the Attribute table you can try the same steps you tried for the map view (selecting, zooming to, editing).\nToggle Editing Mode by pressing the Toggle Editing Mode button.\nClick on the New Field button in the toolbar\nSet the Name as area and the type as Decimal number, then OK.\nCheck that no rows are selected (otherwise the calculation only applies to the selected rows).\nOpen the Field Calculator by clicking its icon (abacus symbol) in the toolbar.\nSelect Update existing field and select the area column.\nIn the Expression pane, enter $area, then press the blue forward button below to preview the results of the calculation.\nPress OK and check that your area column has been updated.\nPress the Save edits button to save your calculation.\nTurn off editing mode.\n\nWe’ll now add another column, this time we’ll use another column as input and we will transform the data from a text to an integer.\n\nTurn editing mode on\nOpen the Field Calculator\nThis time select Create a new field and call it cod_barrio\nCheck that it is an Integer type\nIn the expression, enter to_int(COD_BAR) -&gt; this will take the text from the COD_BAR column and will cast this to an integer. In the process, the data will drop the leading zero.\nApply the change, save to disk, and toggle editing to off.",
+    "crumbs": [
+      "GIS Tools",
+      "Intro to QGIS"
+    ]
+  },
+  {
+    "objectID": "chapter_1/qgis.html#loading-csv-files",
+    "href": "chapter_1/qgis.html#loading-csv-files",
+    "title": "Intro to QGIS",
+    "section": "",
+    "text": "To load the CSV file we’ll go to the Layer menu bar, Add Layer, then Add Delimited Text Layer.\nFor File name, navigate to your CSV file\nThis file uses semi-colon delimeters, so select Custom delimiters and check that Semicolon is selected\nCheck that the option for First record has field names is selected. This will automatically use the first line of the CSV to set the attribute names.\nSelect No geometry. This will load the dataset without visual geometric information. Note that if you have longitude and latitude information in CSV columns (or Eastings and Northings for projected CRS), then you can specify these columns and QGIS will generate the point geometries accordingly.\nSelect Add then Close.\nNote that this layer looks different in the Layers Panel because it doesn’t have associated geometry. However, you can still view the Attribute Table.\nRight click on the layer and select export -&gt; Save Features as. Then save the layer as a new CSV file called my_csv. As before, select the option to add the layer to the map, save, then remove the original input CSV from the Layers Panel.",
+    "crumbs": [
+      "GIS Tools",
+      "Intro to QGIS"
+    ]
+  },
+  {
+    "objectID": "chapter_1/qgis.html#selecting-and-deleting-features",
+    "href": "chapter_1/qgis.html#selecting-and-deleting-features",
+    "title": "Intro to QGIS",
+    "section": "",
+    "text": "Open the attribute table for the my_csv layer by right clicking on the data table in the Layers Panel and selecting Attribute Table.\nOrder the data by clicking the fecha column header, order in descending order by clicking again.\nClick on the first entry then hold down shift and click on the last entry with a fecha value of 1 de enero de 2023\nClick the Invert selection button.\nToggle editing.\nClick the Delete selected features button.\nSave and turn off editing.",
+    "crumbs": [
+      "GIS Tools",
+      "Intro to QGIS"
+    ]
+  },
+  {
+    "objectID": "chapter_1/qgis.html#joins",
+    "href": "chapter_1/qgis.html#joins",
+    "title": "Intro to QGIS",
+    "section": "",
+    "text": "Open the Attribute Panels for both the my_gpkg and the my_csv layers.\nWe want to “Join” information from the CSV dataset to the neighbourhood boundaries using the matching identifiers in the respective cod_barrio / cod_barrio columns.\nClose the Attribute Panels.\nDouble click on the my_gpkg layer to open the properties panel.\nClick Joins in the left sidebar.\nClick the plus button to create a new join.\nSelect the my_csv table for the Join layer -&gt; the layer from which attributes will be joined to my_gpkg.\nSelect the cod_barrio column for the Join field\nSelect the cod_barrio column for the Target field\nClick OK and close the layer properties.\nReopen the Attribute Panel for the my_gpkg dataset, you’ll see extra columns which have now joined the data from the my_csv table into their corresponding boundaries based on the matching identifiers.\nLet’s export this to a new file to my_joined_gpkg, which will now include the joined data.\nRemove my_csv and my_gpkg from the Layers Panel.",
+    "crumbs": [
+      "GIS Tools",
+      "Intro to QGIS"
+    ]
+  },
+  {
+    "objectID": "chapter_1/qgis.html#visualisation",
+    "href": "chapter_1/qgis.html#visualisation",
+    "title": "Intro to QGIS",
+    "section": "",
+    "text": "Open the my_joined_gpkg layer properties by double clicking on the layer name in the Layers Panel.\nSelect Labels in the left pane, select Single Labels, then select the BARRIO_MT column, then apply. This will add the Barrio names to the map. You can format labels to your heart’s content.\nSelect Symbology in the left pane. In class, we will walk through a variety of options for map styling. There are almost limitless options so feel free to be creative.",
+    "crumbs": [
+      "GIS Tools",
+      "Intro to QGIS"
+    ]
+  },
+  {
+    "objectID": "chapter_1/qgis.html#connecting-to-db",
+    "href": "chapter_1/qgis.html#connecting-to-db",
+    "title": "Intro to QGIS",
+    "section": "",
+    "text": "Tip\n\n\n\nConnection details will be provided during class. Note that all connections to the database are IP protected.",
+    "crumbs": [
+      "GIS Tools",
+      "Intro to QGIS"
+    ]
+  },
+  {
+    "objectID": "chapter_1/qgis.html#mapping-vector-data",
+    "href": "chapter_1/qgis.html#mapping-vector-data",
+    "title": "Intro to QGIS",
+    "section": "",
+    "text": "For this excercise we are going to use the historic center of San Marino. The idea is to familiarize yourself with inputing geometry, first. Attributes will be added at later stages. Each scholar, must produce two individual GeoPackage Layers (locally):\n\nBuildings layer: (Polygons, CRS: 3035) representing all the buildings within the tiles assigned.\n\nsuggested name : buildings_[scholarname]\n\nStreet Network layer: (Linestring, CRS: 3035) representing the pedestrian routes through the tiles assigned.\n\nsuggested name : network_[scholarname]\n\n\nEach scholar has been assigned with different areas of the republic that can be found in the following path of nfi database: - nfi.sanmarino.base_mapping\nExplore the attributes buildings and street_network to see your areas and collaborate with the neighbour tiles.\n\n\n\n\n\n\nTip\n\n\n\nMake sure you activate the Snapping Toolbar by right-clicking on any empty space of the toolbar. Explore different pixel tolerance values as well as options like the Topological Editing and the Intersection Snapping.\n\n\n\n\nIf you’re feeling like doing the extra mile, you can start combining the tiles from your adjacent neighbours and/or adding attributes to your current layers.\nWhen merging files, one must make sure that all the Linestrings (from the Network layer) and Polygon edges are approprietly snappped.",
+    "crumbs": [
+      "GIS Tools",
+      "Intro to QGIS"
+    ]
+  },
+  {
+    "objectID": "chapter_1/qgis.html#resources",
+    "href": "chapter_1/qgis.html#resources",
+    "title": "Intro to QGIS",
+    "section": "",
+    "text": "There is a lot that can be done with QGIS and we have just skimmed the surface!\nThe QGIS Tutorials and Tips is a great resource for QGIS.\nFor lab-work, please do the following tutorials from QGIS Tutorials and Tips in your own time to build some general familiarity with QGIS:\n\nMaking a Map\nBasic Vector Styling\nDigitizing Map Data\nWorking with Projections\nCreating Heatmaps",
+    "crumbs": [
+      "GIS Tools",
+      "Intro to QGIS"
+    ]
+  },
+  {
     "objectID": "chapter_0/installation.html",
     "href": "chapter_0/installation.html",
     "title": "Software & Accounts",
@@ -143,248 +330,6 @@
     ]
   },
   {
-    "objectID": "chapter_1/qgis.html",
-    "href": "chapter_1/qgis.html",
-    "title": "Intro to QGIS",
-    "section": "",
-    "text": "We’ll first explore the QGIS user interface, taking some time to explore:\n\nMain Interface: The map area, toolbars, layers panel, status bar, dock panels.\nToolbars: These are collections of icons and tools that provide quick access to commonly used features and functions in QGIS. These can be customised based on your preferences. Some of the common toolbars provide functionality such as zooming, panning, selecting features, and editing features.\nMap View: This is the central area where your maps and layers are displayed. We’ll explore how to navigate the map view, including zooming, panning, and identifying features.\nBrowser Panel: For browsing and loading data from your file system, databases, and web services.\nLayers Panel: Here, you can see a list of all the layers loaded in your project. Layers can be organised, styled, and otherwise configured.\nAttribute Table: This panel lets you view and edit the attribute data associated with your vector layers.\nStatus Bar: Located at the bottom, the status bar shows information about the map and your project, such as the current map scale, the coordinate reference system, and messaging about ongoing processes.\nPlugins: QGIS can be extended with plugins. We’ll briefly touch on how to find, install, and use plugins to enhance the functionality of QGIS.\n\n\n\n\nInstall the Quick Map Services (QMS) Plugin:\n\nFrom the Plugins menu, select Manage and Install Plugins\nSearch for QMS\nInstall QuickMapServices\nInstall and Close the window.\n\nThis plugin will add a new menu entry under the Web menu.\n\nFrom the Web menu, select QuickMapServices, then OSM and OSM Standard.\nThis will add a map to your map view.\n\n\n\n\n\n\n\n\nDownload the municipal neighbourhoods as a SHP file: Barrios municipales de Madrid\nDownload the population by district and neighbourhood dataset as a CSV file: Población por distrito y barrio a 1 de enero\n\n\n\n\nGeospatial data is represented using a coordinate reference system (CRS). QGIS will ordinarily detect this information automatically. However, it can display information in any selected CRS, so you can open multiple files in different CRSs and these will display correctly. This is because QGIS will reproject each respective file into the map’s currently selected CRS system.\nIn the lower right corner of the status bar at the bottom of the screen:\n\nSelect the CRS button to open the project’s CRS configuration.\nSearch for CRS code 3857, then select it, Apply, and OK.\n\n\nHint: When using OSM base maps, the base maps will render more performantly in the Web Mercator projection (3857). This is because QGIS then doesn’t need to dynamically reproject the map tiles out of their native 3857 projection.\n\n\n\n\nLoad your first dataset by dragging and dropping the shapefile (the downloaded file ending with .shp) into your map view.\n\nYou can toggle layer visibility and order using the Layers Panel.\nUse the Select Features button to select a feature and see it highlighted.\nClick the Pan Map to Selection button to see the map zoom to the currently selected feature\nClick the Zoom Full button to return to a view of the full dataset.\nUse the Identify Features button to see attribute information for a particular feature.\nClick the Toggle Editing button -&gt; this will let you delete existing features or add new features - use with caution! Don’t make any changes for now, just click the Toggle Editing button again to exit edit mode.\n\n\n\n\nWe don’t want to edit the original dataset, so let’s make a copy and work with that instead:\n\nRight click the layer in the Layer Panel and select export -&gt; Save Features as\nSelect the GeoPackage format.\nSelect a file location on disk and give it a distinctive name such as my_gpkg.\nSelect 3857 for the CRS projection\nCheck that Add saved file to map at the bottom of the window is selected\nSelect OK\nThe file will be saved and will automatically load into your map.\nRemove the original SHP file from your Layers Panel since it is no longer needed. This can be done with the Remove Layer button.\n\n\n\n\nAttributes in GIS layers provide additional information about the spatial features in the data. They include text, numbers, dates, or images. Attributes help add context to the geographic elements, enabling better analysis and visualization. They can be used to filter, classify, and symbolize features based on their characteristics. Attributes play a crucial role in data analysis, allowing us to gain insights, make comparisons, and create meaningful visual representations.\nUsing the Municipal Boundaries my_gpkg dataset:\n\nOpen the attribute table for the neighbourhood boundaries by right clicking on the layer in the Layers Panel and selecting Attribute Table. From the Attribute table you can try the same steps you tried for the map view (selecting, zooming to, editing).\nToggle Editing Mode by pressing the Toggle Editing Mode button.\nClick on the New Field button in the toolbar\nSet the Name as area and the type as Decimal number, then OK.\nCheck that no rows are selected (otherwise the calculation only applies to the selected rows).\nOpen the Field Calculator by clicking its icon (abacus symbol) in the toolbar.\nSelect Update existing field and select the area column.\nIn the Expression pane, enter $area, then press the blue forward button below to preview the results of the calculation.\nPress OK and check that your area column has been updated.\nPress the Save edits button to save your calculation.\nTurn off editing mode.\n\nWe’ll now add another column, this time we’ll use another column as input and we will transform the data from a text to an integer.\n\nTurn editing mode on\nOpen the Field Calculator\nThis time select Create a new field and call it cod_barrio\nCheck that it is an Integer type\nIn the expression, enter to_int(COD_BAR) -&gt; this will take the text from the COD_BAR column and will cast this to an integer. In the process, the data will drop the leading zero.\nApply the change, save to disk, and toggle editing to off.\n\n\n\n\n\nTo load the CSV file we’ll go to the Layer menu bar, Add Layer, then Add Delimited Text Layer.\nFor File name, navigate to your CSV file\nThis file uses semi-colon delimeters, so select Custom delimiters and check that Semicolon is selected\nCheck that the option for First record has field names is selected. This will automatically use the first line of the CSV to set the attribute names.\nSelect No geometry. This will load the dataset without visual geometric information. Note that if you have longitude and latitude information in CSV columns (or Eastings and Northings for projected CRS), then you can specify these columns and QGIS will generate the point geometries accordingly.\nSelect Add then Close.\nNote that this layer looks different in the Layers Panel because it doesn’t have associated geometry. However, you can still view the Attribute Table.\nRight click on the layer and select export -&gt; Save Features as. Then save the layer as a new CSV file called my_csv. As before, select the option to add the layer to the map, save, then remove the original input CSV from the Layers Panel.\n\n\n\n\n\nOpen the attribute table for the my_csv layer by right clicking on the data table in the Layers Panel and selecting Attribute Table.\nOrder the data by clicking the fecha column header, order in descending order by clicking again.\nClick on the first entry then hold down shift and click on the last entry with a fecha value of 1 de enero de 2023\nClick the Invert selection button.\nToggle editing.\nClick the Delete selected features button.\nSave and turn off editing.\n\n\n\n\n\nOpen the Attribute Panels for both the my_gpkg and the my_csv layers.\nWe want to “Join” information from the CSV dataset to the neighbourhood boundaries using the matching identifiers in the respective cod_barrio / cod_barrio columns.\nClose the Attribute Panels.\nDouble click on the my_gpkg layer to open the properties panel.\nClick Joins in the left sidebar.\nClick the plus button to create a new join.\nSelect the my_csv table for the Join layer -&gt; the layer from which attributes will be joined to my_gpkg.\nSelect the cod_barrio column for the Join field\nSelect the cod_barrio column for the Target field\nClick OK and close the layer properties.\nReopen the Attribute Panel for the my_gpkg dataset, you’ll see extra columns which have now joined the data from the my_csv table into their corresponding boundaries based on the matching identifiers.\nLet’s export this to a new file to my_joined_gpkg, which will now include the joined data.\nRemove my_csv and my_gpkg from the Layers Panel.\n\n\n\n\n\nOpen the my_joined_gpkg layer properties by double clicking on the layer name in the Layers Panel.\nSelect Labels in the left pane, select Single Labels, then select the BARRIO_MT column, then apply. This will add the Barrio names to the map. You can format labels to your heart’s content.\nSelect Symbology in the left pane. In class, we will walk through a variety of options for map styling. There are almost limitless options so feel free to be creative.\n\n\n\n\n\n\n\n\n\n\nTip\n\n\n\nConnection details will be provided during class. Note that all connections to the database are IP protected.\n\n\n\n\n\n\n\n\nThere is a lot that can be done with QGIS and we have just skimmed the surface!\nThe QGIS Tutorials and Tips is a great resource for QGIS.\nFor lab-work, please do the following tutorials from QGIS Tutorials and Tips in your own time to build some general familiarity with QGIS:\n\nMaking a Map\nBasic Vector Styling\nDigitizing Map Data\nWorking with Projections\nCreating Heatmaps",
-    "crumbs": [
-      "GIS Tools",
-      "Intro to QGIS"
-    ]
-  },
-  {
-    "objectID": "chapter_1/qgis.html#qgis-ui",
-    "href": "chapter_1/qgis.html#qgis-ui",
-    "title": "Intro to QGIS",
-    "section": "",
-    "text": "We’ll first explore the QGIS user interface, taking some time to explore:\n\nMain Interface: The map area, toolbars, layers panel, status bar, dock panels.\nToolbars: These are collections of icons and tools that provide quick access to commonly used features and functions in QGIS. These can be customised based on your preferences. Some of the common toolbars provide functionality such as zooming, panning, selecting features, and editing features.\nMap View: This is the central area where your maps and layers are displayed. We’ll explore how to navigate the map view, including zooming, panning, and identifying features.\nBrowser Panel: For browsing and loading data from your file system, databases, and web services.\nLayers Panel: Here, you can see a list of all the layers loaded in your project. Layers can be organised, styled, and otherwise configured.\nAttribute Table: This panel lets you view and edit the attribute data associated with your vector layers.\nStatus Bar: Located at the bottom, the status bar shows information about the map and your project, such as the current map scale, the coordinate reference system, and messaging about ongoing processes.\nPlugins: QGIS can be extended with plugins. We’ll briefly touch on how to find, install, and use plugins to enhance the functionality of QGIS.",
-    "crumbs": [
-      "GIS Tools",
-      "Intro to QGIS"
-    ]
-  },
-  {
-    "objectID": "chapter_1/qgis.html#plugins",
-    "href": "chapter_1/qgis.html#plugins",
-    "title": "Intro to QGIS",
-    "section": "",
-    "text": "Install the Quick Map Services (QMS) Plugin:\n\nFrom the Plugins menu, select Manage and Install Plugins\nSearch for QMS\nInstall QuickMapServices\nInstall and Close the window.\n\nThis plugin will add a new menu entry under the Web menu.\n\nFrom the Web menu, select QuickMapServices, then OSM and OSM Standard.\nThis will add a map to your map view.",
-    "crumbs": [
-      "GIS Tools",
-      "Intro to QGIS"
-    ]
-  },
-  {
-    "objectID": "chapter_1/qgis.html#datasets",
-    "href": "chapter_1/qgis.html#datasets",
-    "title": "Intro to QGIS",
-    "section": "",
-    "text": "Download the municipal neighbourhoods as a SHP file: Barrios municipales de Madrid\nDownload the population by district and neighbourhood dataset as a CSV file: Población por distrito y barrio a 1 de enero",
-    "crumbs": [
-      "GIS Tools",
-      "Intro to QGIS"
-    ]
-  },
-  {
-    "objectID": "chapter_1/qgis.html#coordinate-reference-systems",
-    "href": "chapter_1/qgis.html#coordinate-reference-systems",
-    "title": "Intro to QGIS",
-    "section": "",
-    "text": "Geospatial data is represented using a coordinate reference system (CRS). QGIS will ordinarily detect this information automatically. However, it can display information in any selected CRS, so you can open multiple files in different CRSs and these will display correctly. This is because QGIS will reproject each respective file into the map’s currently selected CRS system.\nIn the lower right corner of the status bar at the bottom of the screen:\n\nSelect the CRS button to open the project’s CRS configuration.\nSearch for CRS code 3857, then select it, Apply, and OK.\n\n\nHint: When using OSM base maps, the base maps will render more performantly in the Web Mercator projection (3857). This is because QGIS then doesn’t need to dynamically reproject the map tiles out of their native 3857 projection.",
-    "crumbs": [
-      "GIS Tools",
-      "Intro to QGIS"
-    ]
-  },
-  {
-    "objectID": "chapter_1/qgis.html#loading-data",
-    "href": "chapter_1/qgis.html#loading-data",
-    "title": "Intro to QGIS",
-    "section": "",
-    "text": "Load your first dataset by dragging and dropping the shapefile (the downloaded file ending with .shp) into your map view.\n\nYou can toggle layer visibility and order using the Layers Panel.\nUse the Select Features button to select a feature and see it highlighted.\nClick the Pan Map to Selection button to see the map zoom to the currently selected feature\nClick the Zoom Full button to return to a view of the full dataset.\nUse the Identify Features button to see attribute information for a particular feature.\nClick the Toggle Editing button -&gt; this will let you delete existing features or add new features - use with caution! Don’t make any changes for now, just click the Toggle Editing button again to exit edit mode.",
-    "crumbs": [
-      "GIS Tools",
-      "Intro to QGIS"
-    ]
-  },
-  {
-    "objectID": "chapter_1/qgis.html#saving-and-exporting-data",
-    "href": "chapter_1/qgis.html#saving-and-exporting-data",
-    "title": "Intro to QGIS",
-    "section": "",
-    "text": "We don’t want to edit the original dataset, so let’s make a copy and work with that instead:\n\nRight click the layer in the Layer Panel and select export -&gt; Save Features as\nSelect the GeoPackage format.\nSelect a file location on disk and give it a distinctive name such as my_gpkg.\nSelect 3857 for the CRS projection\nCheck that Add saved file to map at the bottom of the window is selected\nSelect OK\nThe file will be saved and will automatically load into your map.\nRemove the original SHP file from your Layers Panel since it is no longer needed. This can be done with the Remove Layer button.",
-    "crumbs": [
-      "GIS Tools",
-      "Intro to QGIS"
-    ]
-  },
-  {
-    "objectID": "chapter_1/qgis.html#attributes",
-    "href": "chapter_1/qgis.html#attributes",
-    "title": "Intro to QGIS",
-    "section": "",
-    "text": "Attributes in GIS layers provide additional information about the spatial features in the data. They include text, numbers, dates, or images. Attributes help add context to the geographic elements, enabling better analysis and visualization. They can be used to filter, classify, and symbolize features based on their characteristics. Attributes play a crucial role in data analysis, allowing us to gain insights, make comparisons, and create meaningful visual representations.\nUsing the Municipal Boundaries my_gpkg dataset:\n\nOpen the attribute table for the neighbourhood boundaries by right clicking on the layer in the Layers Panel and selecting Attribute Table. From the Attribute table you can try the same steps you tried for the map view (selecting, zooming to, editing).\nToggle Editing Mode by pressing the Toggle Editing Mode button.\nClick on the New Field button in the toolbar\nSet the Name as area and the type as Decimal number, then OK.\nCheck that no rows are selected (otherwise the calculation only applies to the selected rows).\nOpen the Field Calculator by clicking its icon (abacus symbol) in the toolbar.\nSelect Update existing field and select the area column.\nIn the Expression pane, enter $area, then press the blue forward button below to preview the results of the calculation.\nPress OK and check that your area column has been updated.\nPress the Save edits button to save your calculation.\nTurn off editing mode.\n\nWe’ll now add another column, this time we’ll use another column as input and we will transform the data from a text to an integer.\n\nTurn editing mode on\nOpen the Field Calculator\nThis time select Create a new field and call it cod_barrio\nCheck that it is an Integer type\nIn the expression, enter to_int(COD_BAR) -&gt; this will take the text from the COD_BAR column and will cast this to an integer. In the process, the data will drop the leading zero.\nApply the change, save to disk, and toggle editing to off.",
-    "crumbs": [
-      "GIS Tools",
-      "Intro to QGIS"
-    ]
-  },
-  {
-    "objectID": "chapter_1/qgis.html#loading-csv-files",
-    "href": "chapter_1/qgis.html#loading-csv-files",
-    "title": "Intro to QGIS",
-    "section": "",
-    "text": "To load the CSV file we’ll go to the Layer menu bar, Add Layer, then Add Delimited Text Layer.\nFor File name, navigate to your CSV file\nThis file uses semi-colon delimeters, so select Custom delimiters and check that Semicolon is selected\nCheck that the option for First record has field names is selected. This will automatically use the first line of the CSV to set the attribute names.\nSelect No geometry. This will load the dataset without visual geometric information. Note that if you have longitude and latitude information in CSV columns (or Eastings and Northings for projected CRS), then you can specify these columns and QGIS will generate the point geometries accordingly.\nSelect Add then Close.\nNote that this layer looks different in the Layers Panel because it doesn’t have associated geometry. However, you can still view the Attribute Table.\nRight click on the layer and select export -&gt; Save Features as. Then save the layer as a new CSV file called my_csv. As before, select the option to add the layer to the map, save, then remove the original input CSV from the Layers Panel.",
-    "crumbs": [
-      "GIS Tools",
-      "Intro to QGIS"
-    ]
-  },
-  {
-    "objectID": "chapter_1/qgis.html#selecting-and-deleting-features",
-    "href": "chapter_1/qgis.html#selecting-and-deleting-features",
-    "title": "Intro to QGIS",
-    "section": "",
-    "text": "Open the attribute table for the my_csv layer by right clicking on the data table in the Layers Panel and selecting Attribute Table.\nOrder the data by clicking the fecha column header, order in descending order by clicking again.\nClick on the first entry then hold down shift and click on the last entry with a fecha value of 1 de enero de 2023\nClick the Invert selection button.\nToggle editing.\nClick the Delete selected features button.\nSave and turn off editing.",
-    "crumbs": [
-      "GIS Tools",
-      "Intro to QGIS"
-    ]
-  },
-  {
-    "objectID": "chapter_1/qgis.html#joins",
-    "href": "chapter_1/qgis.html#joins",
-    "title": "Intro to QGIS",
-    "section": "",
-    "text": "Open the Attribute Panels for both the my_gpkg and the my_csv layers.\nWe want to “Join” information from the CSV dataset to the neighbourhood boundaries using the matching identifiers in the respective cod_barrio / cod_barrio columns.\nClose the Attribute Panels.\nDouble click on the my_gpkg layer to open the properties panel.\nClick Joins in the left sidebar.\nClick the plus button to create a new join.\nSelect the my_csv table for the Join layer -&gt; the layer from which attributes will be joined to my_gpkg.\nSelect the cod_barrio column for the Join field\nSelect the cod_barrio column for the Target field\nClick OK and close the layer properties.\nReopen the Attribute Panel for the my_gpkg dataset, you’ll see extra columns which have now joined the data from the my_csv table into their corresponding boundaries based on the matching identifiers.\nLet’s export this to a new file to my_joined_gpkg, which will now include the joined data.\nRemove my_csv and my_gpkg from the Layers Panel.",
-    "crumbs": [
-      "GIS Tools",
-      "Intro to QGIS"
-    ]
-  },
-  {
-    "objectID": "chapter_1/qgis.html#visualisation",
-    "href": "chapter_1/qgis.html#visualisation",
-    "title": "Intro to QGIS",
-    "section": "",
-    "text": "Open the my_joined_gpkg layer properties by double clicking on the layer name in the Layers Panel.\nSelect Labels in the left pane, select Single Labels, then select the BARRIO_MT column, then apply. This will add the Barrio names to the map. You can format labels to your heart’s content.\nSelect Symbology in the left pane. In class, we will walk through a variety of options for map styling. There are almost limitless options so feel free to be creative.",
-    "crumbs": [
-      "GIS Tools",
-      "Intro to QGIS"
-    ]
-  },
-  {
-    "objectID": "chapter_1/qgis.html#connecting-to-db",
-    "href": "chapter_1/qgis.html#connecting-to-db",
-    "title": "Intro to QGIS",
-    "section": "",
-    "text": "Tip\n\n\n\nConnection details will be provided during class. Note that all connections to the database are IP protected.",
-    "crumbs": [
-      "GIS Tools",
-      "Intro to QGIS"
-    ]
-  },
-  {
-    "objectID": "chapter_1/qgis.html#resources",
-    "href": "chapter_1/qgis.html#resources",
-    "title": "Intro to QGIS",
-    "section": "",
-    "text": "There is a lot that can be done with QGIS and we have just skimmed the surface!\nThe QGIS Tutorials and Tips is a great resource for QGIS.\nFor lab-work, please do the following tutorials from QGIS Tutorials and Tips in your own time to build some general familiarity with QGIS:\n\nMaking a Map\nBasic Vector Styling\nDigitizing Map Data\nWorking with Projections\nCreating Heatmaps",
-    "crumbs": [
-      "GIS Tools",
-      "Intro to QGIS"
-    ]
-  },
-  {
-    "objectID": "chapter_1/gis.html",
-    "href": "chapter_1/gis.html",
-    "title": "Intro to GIS",
-    "section": "",
-    "text": "Vector and raster data are two fundamental types of spatial data used in Geographic Information Systems (GIS). Vector data represents geographical features as distinct shapes using points, lines, and polygons, each of which can carry detailed attribute information, making it ideal for precise mapping applications like boundaries, roads, and infrastructure networks. It excels in accuracy and detail for discrete data. In contrast, raster data consists of a grid of pixels, each holding a value, effectively representing continuous data. This format is well-suited for environmental analysis, land cover studies, and satellite imagery, as it captures variations over a wide area, such as elevation, temperature, or vegetation. While vector data is preferred for its precision in depicting specific geographic entities and managing related data, raster data is favored for its ability to represent complex, continuous phenomena over large spatial scales.\n\n\n\n\nVector data types are primarily categorized into Points, Linestrings, and Polygons, each with distinct characteristics and uses. Additionally, there are multi-geometry versions of these types, such as MultiPoints, MultiLinestrings, and MultiPolygons, which offer more complex feature groupings.\n\nPoints: Points are used to represent discrete locations on the earth’s surface. Each point is defined by a pair of coordinates (e.g. latitude and longitude, or an easting and northing) and can represent features such as the location of a tree or a landmark. They can have attributes further describing characteristics of interest, such as tree species or landmark name.\nLinestring: Lines connect a series of points to describe linear features such as roads or rivers. Linestring geometries inherently have length and may include attributes such as road type or river name.\nPolygons: Polygons are closed shapes used to represent areas such as city boundaries or land parcels. Polygon geometries inherently have an area and perimeter and may have attributes such as population counts or land use types.\n\n\n\n\nGeometry types\n\n\n\nMulti-Geometry Versions: Multi geometries provide a way to associated a grouping of Features which can share the same feature attributes.\n\nMultiPoint: For example, a grouping of trees.\nMultiLinestring: For example, a grouping of related segments describing a long-distance hiking trail.\nMultiPolygon: For example, a grouping of buildings which together represent a larger entity such as a hospital or university.\n\n\n\n\n\nEsri Shapefile\nShapefile is a prevalent geospatial file type in GIS software, requiring three mandatory files: - SHP (feature geometry) - SHX (shape index position) - DBF (attribute data) - Shapefiles often also include optional files such as PRJ (coordinate reference system).\nGeoPackage\nGeoPackage provides a modern and simpler alternative to shapefiles and is rapidly gaining acceptance. It can store multiple data layers and it’s use of SQLite means that you can use SQL query data from the file.\nGeoJSON\nGeoJSON encodes geographic data structures using JSON, a format commonly used for web development.\n\nReference: https://gisgeography.com/gis-formats/\n\n\n\n\n\nRasters contain a grid of pixels, where the value used for each grid cell can represent a characteristic such as temperature or landcover. Geographic rasters typically include Geospatial information necessary to correctly project and locate the information in GIS software.\n\n\n\nRaster image grid cells\n\n\n\n\n\nASCII Grid\nASCII Grid files (ASC) store raster data as text in a grid format. Each cell in the grid is represented by a numeric value corresponding to the geographic attribute being mapped, such as elevation. ASCII Grid files include a header specifying metadata like cell size, number of rows and columns, and coordinates of the lower left corner. The format is simple and can be generated or edited with a text editor, and may use space, comma, or tab-delimiters.\nGeoTIFF\nGeoTIFF is widely becoming the defacto raster format in GIS. It embeds coordinate reference system information within a TIFF (Tagged Image File Format) file. GeoTIFFs are commonly used for storing satellite imagery, elevation data, and land surface temperatures.\n\nReference: https://gisgeography.com/gis-formats/\n\n\n\n\n\n\n\nGeographic data is intrinsically tied to the earth’s surface and is represented using coordinates within defined Coordinate Reference Systems (CRS). Broadly, these systems fall into two categories: Geographic Coordinate Systems and Projected Coordinate Systems.\nGeographic CRSs use a spherical surface to define locations on the earth’s surface. They are based on degrees in latitude and longitude and are most commonly referenced to the WGS84 datum. While they accurately represent the earth’s curved surface and preserve the true shape and angular relationships of features, distances and areas may not be as accurate, especially over larger distances.\nProjected CRSs translate the earth’s three-dimensional surface onto a two-dimensional plane, making it easier to analyze and visualize spatial data. They use a mathematical projection to flatten the curved surface of the earth, which can lead to distortions in shape, area, distance, or direction. Different types of projections are designed to minimize these distortions for specific regions or purposes. For example, projections can be optimized for preserving areas (equal-area projections), angles and shapes (conformal), or distances (equidistant).\n\n\n\nDymaxion Fuller projection. NFF image rights.\n\n\n\n\n\n\n\n\nTip\n\n\n\nA useful reference website for different CRS is EPSG.io: Coordinate Systems Worldwide\n\n\n\n\nGeographic Coordinate Reference Systems (CRS) use a spherical or ellipsoidal surface to represent locations on the Earth’s curved surface. Geographic CRSs are based on latitude and longitude coordinates and are useful for global or regional mapping.\n\nUnits: Degrees\nCommon Examples:\n\nWGS 84 (World Geodetic System 1984) EPSG:4326: A widely used CRS for global mapping and GPS navigation.\nNAD83 (North American Datum 1983) EPSG:4269: A CRS commonly used in North America.\n\n\n\n\n\nProjected Coordinate Reference Systems (CRS) use a Cartesian coordinate system to represent locations on a flat surface. These CRSs are created by “projecting” the curved Earth onto a flat surface, which introduces distortions. This inevitably requires tradeoffs in distances, areas, or shapes, with different projection systems involving different trade-offs. Projected CRSs are commonly used for local or small-scale mapping appropriate to specific countries or regions of the globe, where locally accurate measurements and comparisons are required.\n\nUnits: Meters (most commonly)\nCommon Examples:\n\nLAEA (Lambert Azimuthal Equal Area) Europe projection EPSG:3035: This CRS is commonly used for Europe, though note that countries will typically also have even more localised projected CRS.\nBritish National Grid (BNG) EPSG:27700: This CRS is commonly used in the United Kingdom.\nState Plane Coordinate System (SPCS): This CRS is widely used in the United States, and divides the country into zones, each with their own projection.\n\n\n\n\n\n\n\nhttps://gisgeography.com\n\n\n\n\n\n\n\n\nDiscovering sources for GIS (Geographic Information System) data is a handy skill for spatial analysis and mapping! There are various official and non-official sources, each offering different types of data suited to specific needs and applications. When searching for and using different data sources, try to remain cognisant of the merits and limitations of different sources, which may impact considerations such as data accuracy or bias.\n\nGovernment Agencies: National agencies often provide official and reliable forms of GIS data. However, these datasets may reflect governmental priorities and perspectives or they may be reluctant to make these datasets openly available.\nInternational Organizations: Organizations such as the United Nations (UN) and the World Bank offer global GIS datasets, but these may have limited local detail due to their broad scope.\nLocal Authorities: City and regional councils often create and maintain local GIS datasets, often tailored to specific local government projects and priorities. Their local specificity may make it tricky to compare to different datasets sourced from other cities.\nPrivate Sector: There are many private sector organisations which generate, curate, or distribute data, however, these datasets are less likely to be openly available and may incur substantial monetary cost.\nOpen Data Platforms: Platforms such as OpenStreetMap offer freely accessible GIS data, contributed by a community of users. These datasets may require additional validation if used for mission-critical purposes, though can otherwise be extremely useful, allowing for generalisable workflows and providing coverage in some instances where no other options exist.\nAPIs and Web Scraping: Involves the automated collection of data from online APIs or websites. The quality of data can vary but may otherwise be useful for obtaining interesting data. These techniques may involve significant technical skills for data extraction and processing. Legal and ethical considerations are important, as scraping can sometimes violate terms of service or data privacy laws.\n\n\n\n\nPurposely collected data is gathered specifically to address a certain research question or project goal, using structured approaches such as surveys, experiments, or observations. It’s tailored to meet the specific needs of a study, with careful control over variables to ensure the data’s relevance and accuracy. This type of data is highly pertinent to the project it’s collected for, due to its focused nature and methodical collection process.\n\n\n\nOn the other hand, data can also be adapted to new research needs from information originally collected for different purposes. This may include repurposing data from various sources such as public databases, existing research studies, or web scraping.\n\n\n\n\n\nAttribution or citation refers to giving proper credit to the original source or creator of the data. Just as with citing sources in academic papers, it’s important to acknowledge the origin of the data you are using. This helps provide transparency, accountability, and recognition to the creators of the dataset.\n\n\nWhen dealing with data, licenses refer to legal agreements or permissions that determine how the data can be used, distributed, or modified. Different datasets may have different licensing requirements, so it’s important to understand and comply with the specific license terms associated with the data you are using.\nExamples:\n\nCreative Commons (CC) licenses: These are standardized licenses that allow creators to specify permissions for their work. They are commonly used for a variety of creative works, including images, music, videos, and written content.\nOpen Government Licenses: These licenses have been adopted by governments and may allow individuals and organizations permissive use, reuse, and sharing of information.\nGNU General Public License (GPL): This is a copyleft license for open-source software. It permits users to modify and distribute the software, but any modifications or derivative works must also be licensed under the GPL. This license is popular for promoting open-source principles and collaborative software development.\nMIT / Apache / BSD Licenses: Permissive open-source software licenses. These may allow great flexibility such as using, copying, modifying, and distributing derivative work, even for commercial purposes. The primary requirement is to include the original copyright and license notice in any significant portions of the software.\n\n\n\n\n\n\nPrivacy considerations are important when working with data, especially if the data contains personally identifiable information or sensitive information. It’s very important to handle and store data in a way that respects privacy laws and regulations. This may involve anonymizing or de-identifying data, implementing security measures, and obtaining consent from individuals whose data is being used.\n\n\n\n\n\n\nNote\n\n\n\nPlease avoid using any and all data containing private or sensitive data unless you first review this and seek approval from faculty. Handling these forms of data comes with numerous steps and safeguards and will generally be strongly discouraged.\n\n\n\n\n\n\n\n\nThe Modifiable Areal Unit Problem (MAUP) is encountered when using different scales or zones of analysis to group data. This can cause significant changes in the balance and aggregation of data purely based on how it is grouped. This can have a potentially significant impact on visualisation or analysis. MAUP is exploited for political purposes through the process of gerrymandering.\n\nhttps://gisgeography.com\n\n\n\nYouTube\n\n\n\n\n\n\nThe following resources provide further information on common types of map visualisations and best practices:\n\nCARTO - 5 Popular Thematic map Types\nFundamentals of Data Visualisation\n\nColor scales\nVisualizing geospatial data\nCommon pitfalls of color use\n\nColor Brewer",
-    "crumbs": [
-      "GIS Tools",
-      "Intro to GIS"
-    ]
-  },
-  {
-    "objectID": "chapter_1/gis.html#file-types",
-    "href": "chapter_1/gis.html#file-types",
-    "title": "Intro to GIS",
-    "section": "",
-    "text": "Vector and raster data are two fundamental types of spatial data used in Geographic Information Systems (GIS). Vector data represents geographical features as distinct shapes using points, lines, and polygons, each of which can carry detailed attribute information, making it ideal for precise mapping applications like boundaries, roads, and infrastructure networks. It excels in accuracy and detail for discrete data. In contrast, raster data consists of a grid of pixels, each holding a value, effectively representing continuous data. This format is well-suited for environmental analysis, land cover studies, and satellite imagery, as it captures variations over a wide area, such as elevation, temperature, or vegetation. While vector data is preferred for its precision in depicting specific geographic entities and managing related data, raster data is favored for its ability to represent complex, continuous phenomena over large spatial scales.\n\n\n\n\nVector data types are primarily categorized into Points, Linestrings, and Polygons, each with distinct characteristics and uses. Additionally, there are multi-geometry versions of these types, such as MultiPoints, MultiLinestrings, and MultiPolygons, which offer more complex feature groupings.\n\nPoints: Points are used to represent discrete locations on the earth’s surface. Each point is defined by a pair of coordinates (e.g. latitude and longitude, or an easting and northing) and can represent features such as the location of a tree or a landmark. They can have attributes further describing characteristics of interest, such as tree species or landmark name.\nLinestring: Lines connect a series of points to describe linear features such as roads or rivers. Linestring geometries inherently have length and may include attributes such as road type or river name.\nPolygons: Polygons are closed shapes used to represent areas such as city boundaries or land parcels. Polygon geometries inherently have an area and perimeter and may have attributes such as population counts or land use types.\n\n\n\n\nGeometry types\n\n\n\nMulti-Geometry Versions: Multi geometries provide a way to associated a grouping of Features which can share the same feature attributes.\n\nMultiPoint: For example, a grouping of trees.\nMultiLinestring: For example, a grouping of related segments describing a long-distance hiking trail.\nMultiPolygon: For example, a grouping of buildings which together represent a larger entity such as a hospital or university.\n\n\n\n\n\nEsri Shapefile\nShapefile is a prevalent geospatial file type in GIS software, requiring three mandatory files: - SHP (feature geometry) - SHX (shape index position) - DBF (attribute data) - Shapefiles often also include optional files such as PRJ (coordinate reference system).\nGeoPackage\nGeoPackage provides a modern and simpler alternative to shapefiles and is rapidly gaining acceptance. It can store multiple data layers and it’s use of SQLite means that you can use SQL query data from the file.\nGeoJSON\nGeoJSON encodes geographic data structures using JSON, a format commonly used for web development.\n\nReference: https://gisgeography.com/gis-formats/\n\n\n\n\n\nRasters contain a grid of pixels, where the value used for each grid cell can represent a characteristic such as temperature or landcover. Geographic rasters typically include Geospatial information necessary to correctly project and locate the information in GIS software.\n\n\n\nRaster image grid cells\n\n\n\n\n\nASCII Grid\nASCII Grid files (ASC) store raster data as text in a grid format. Each cell in the grid is represented by a numeric value corresponding to the geographic attribute being mapped, such as elevation. ASCII Grid files include a header specifying metadata like cell size, number of rows and columns, and coordinates of the lower left corner. The format is simple and can be generated or edited with a text editor, and may use space, comma, or tab-delimiters.\nGeoTIFF\nGeoTIFF is widely becoming the defacto raster format in GIS. It embeds coordinate reference system information within a TIFF (Tagged Image File Format) file. GeoTIFFs are commonly used for storing satellite imagery, elevation data, and land surface temperatures.\n\nReference: https://gisgeography.com/gis-formats/",
-    "crumbs": [
-      "GIS Tools",
-      "Intro to GIS"
-    ]
-  },
-  {
-    "objectID": "chapter_1/gis.html#coordinate-reference-systems",
-    "href": "chapter_1/gis.html#coordinate-reference-systems",
-    "title": "Intro to GIS",
-    "section": "",
-    "text": "Geographic data is intrinsically tied to the earth’s surface and is represented using coordinates within defined Coordinate Reference Systems (CRS). Broadly, these systems fall into two categories: Geographic Coordinate Systems and Projected Coordinate Systems.\nGeographic CRSs use a spherical surface to define locations on the earth’s surface. They are based on degrees in latitude and longitude and are most commonly referenced to the WGS84 datum. While they accurately represent the earth’s curved surface and preserve the true shape and angular relationships of features, distances and areas may not be as accurate, especially over larger distances.\nProjected CRSs translate the earth’s three-dimensional surface onto a two-dimensional plane, making it easier to analyze and visualize spatial data. They use a mathematical projection to flatten the curved surface of the earth, which can lead to distortions in shape, area, distance, or direction. Different types of projections are designed to minimize these distortions for specific regions or purposes. For example, projections can be optimized for preserving areas (equal-area projections), angles and shapes (conformal), or distances (equidistant).\n\n\n\nDymaxion Fuller projection. NFF image rights.\n\n\n\n\n\n\n\n\nTip\n\n\n\nA useful reference website for different CRS is EPSG.io: Coordinate Systems Worldwide\n\n\n\n\nGeographic Coordinate Reference Systems (CRS) use a spherical or ellipsoidal surface to represent locations on the Earth’s curved surface. Geographic CRSs are based on latitude and longitude coordinates and are useful for global or regional mapping.\n\nUnits: Degrees\nCommon Examples:\n\nWGS 84 (World Geodetic System 1984) EPSG:4326: A widely used CRS for global mapping and GPS navigation.\nNAD83 (North American Datum 1983) EPSG:4269: A CRS commonly used in North America.\n\n\n\n\n\nProjected Coordinate Reference Systems (CRS) use a Cartesian coordinate system to represent locations on a flat surface. These CRSs are created by “projecting” the curved Earth onto a flat surface, which introduces distortions. This inevitably requires tradeoffs in distances, areas, or shapes, with different projection systems involving different trade-offs. Projected CRSs are commonly used for local or small-scale mapping appropriate to specific countries or regions of the globe, where locally accurate measurements and comparisons are required.\n\nUnits: Meters (most commonly)\nCommon Examples:\n\nLAEA (Lambert Azimuthal Equal Area) Europe projection EPSG:3035: This CRS is commonly used for Europe, though note that countries will typically also have even more localised projected CRS.\nBritish National Grid (BNG) EPSG:27700: This CRS is commonly used in the United Kingdom.\nState Plane Coordinate System (SPCS): This CRS is widely used in the United States, and divides the country into zones, each with their own projection.\n\n\n\n\n\n\n\nhttps://gisgeography.com",
-    "crumbs": [
-      "GIS Tools",
-      "Intro to GIS"
-    ]
-  },
-  {
-    "objectID": "chapter_1/gis.html#gis-data",
-    "href": "chapter_1/gis.html#gis-data",
-    "title": "Intro to GIS",
-    "section": "",
-    "text": "Discovering sources for GIS (Geographic Information System) data is a handy skill for spatial analysis and mapping! There are various official and non-official sources, each offering different types of data suited to specific needs and applications. When searching for and using different data sources, try to remain cognisant of the merits and limitations of different sources, which may impact considerations such as data accuracy or bias.\n\nGovernment Agencies: National agencies often provide official and reliable forms of GIS data. However, these datasets may reflect governmental priorities and perspectives or they may be reluctant to make these datasets openly available.\nInternational Organizations: Organizations such as the United Nations (UN) and the World Bank offer global GIS datasets, but these may have limited local detail due to their broad scope.\nLocal Authorities: City and regional councils often create and maintain local GIS datasets, often tailored to specific local government projects and priorities. Their local specificity may make it tricky to compare to different datasets sourced from other cities.\nPrivate Sector: There are many private sector organisations which generate, curate, or distribute data, however, these datasets are less likely to be openly available and may incur substantial monetary cost.\nOpen Data Platforms: Platforms such as OpenStreetMap offer freely accessible GIS data, contributed by a community of users. These datasets may require additional validation if used for mission-critical purposes, though can otherwise be extremely useful, allowing for generalisable workflows and providing coverage in some instances where no other options exist.\nAPIs and Web Scraping: Involves the automated collection of data from online APIs or websites. The quality of data can vary but may otherwise be useful for obtaining interesting data. These techniques may involve significant technical skills for data extraction and processing. Legal and ethical considerations are important, as scraping can sometimes violate terms of service or data privacy laws.\n\n\n\n\nPurposely collected data is gathered specifically to address a certain research question or project goal, using structured approaches such as surveys, experiments, or observations. It’s tailored to meet the specific needs of a study, with careful control over variables to ensure the data’s relevance and accuracy. This type of data is highly pertinent to the project it’s collected for, due to its focused nature and methodical collection process.\n\n\n\nOn the other hand, data can also be adapted to new research needs from information originally collected for different purposes. This may include repurposing data from various sources such as public databases, existing research studies, or web scraping.",
-    "crumbs": [
-      "GIS Tools",
-      "Intro to GIS"
-    ]
-  },
-  {
-    "objectID": "chapter_1/gis.html#attribution",
-    "href": "chapter_1/gis.html#attribution",
-    "title": "Intro to GIS",
-    "section": "",
-    "text": "Attribution or citation refers to giving proper credit to the original source or creator of the data. Just as with citing sources in academic papers, it’s important to acknowledge the origin of the data you are using. This helps provide transparency, accountability, and recognition to the creators of the dataset.\n\n\nWhen dealing with data, licenses refer to legal agreements or permissions that determine how the data can be used, distributed, or modified. Different datasets may have different licensing requirements, so it’s important to understand and comply with the specific license terms associated with the data you are using.\nExamples:\n\nCreative Commons (CC) licenses: These are standardized licenses that allow creators to specify permissions for their work. They are commonly used for a variety of creative works, including images, music, videos, and written content.\nOpen Government Licenses: These licenses have been adopted by governments and may allow individuals and organizations permissive use, reuse, and sharing of information.\nGNU General Public License (GPL): This is a copyleft license for open-source software. It permits users to modify and distribute the software, but any modifications or derivative works must also be licensed under the GPL. This license is popular for promoting open-source principles and collaborative software development.\nMIT / Apache / BSD Licenses: Permissive open-source software licenses. These may allow great flexibility such as using, copying, modifying, and distributing derivative work, even for commercial purposes. The primary requirement is to include the original copyright and license notice in any significant portions of the software.",
-    "crumbs": [
-      "GIS Tools",
-      "Intro to GIS"
-    ]
-  },
-  {
-    "objectID": "chapter_1/gis.html#privacy",
-    "href": "chapter_1/gis.html#privacy",
-    "title": "Intro to GIS",
-    "section": "",
-    "text": "Privacy considerations are important when working with data, especially if the data contains personally identifiable information or sensitive information. It’s very important to handle and store data in a way that respects privacy laws and regulations. This may involve anonymizing or de-identifying data, implementing security measures, and obtaining consent from individuals whose data is being used.\n\n\n\n\n\n\nNote\n\n\n\nPlease avoid using any and all data containing private or sensitive data unless you first review this and seek approval from faculty. Handling these forms of data comes with numerous steps and safeguards and will generally be strongly discouraged.",
-    "crumbs": [
-      "GIS Tools",
-      "Intro to GIS"
-    ]
-  },
-  {
-    "objectID": "chapter_1/gis.html#quirks-part-1",
-    "href": "chapter_1/gis.html#quirks-part-1",
-    "title": "Intro to GIS",
-    "section": "",
-    "text": "The Modifiable Areal Unit Problem (MAUP) is encountered when using different scales or zones of analysis to group data. This can cause significant changes in the balance and aggregation of data purely based on how it is grouped. This can have a potentially significant impact on visualisation or analysis. MAUP is exploited for political purposes through the process of gerrymandering.\n\nhttps://gisgeography.com\n\n\n\nYouTube",
-    "crumbs": [
-      "GIS Tools",
-      "Intro to GIS"
-    ]
-  },
-  {
-    "objectID": "chapter_1/gis.html#resources",
-    "href": "chapter_1/gis.html#resources",
-    "title": "Intro to GIS",
-    "section": "",
-    "text": "The following resources provide further information on common types of map visualisations and best practices:\n\nCARTO - 5 Popular Thematic map Types\nFundamentals of Data Visualisation\n\nColor scales\nVisualizing geospatial data\nCommon pitfalls of color use\n\nColor Brewer",
-    "crumbs": [
-      "GIS Tools",
-      "Intro to GIS"
-    ]
-  },
-  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "NFI Urban Analytics 2024",
@@ -423,59 +368,6 @@
     "crumbs": [
       "Home"
     ]
-  },
-  {
-    "objectID": "chapter_1/cloud.html",
-    "href": "chapter_1/cloud.html",
-    "title": "Cloud GIS",
-    "section": "",
-    "text": "Cloud GIS\nThis will be an in-class hands-on session providing an introduction to the use of CARTO for publishing and styling interactive maps.",
-    "crumbs": [
-      "GIS Tools",
-      "Cloud GIS"
-    ]
-  },
-  {
-    "objectID": "chapter_1/sql.html",
-    "href": "chapter_1/sql.html",
-    "title": "SQL for GIS",
-    "section": "",
-    "text": "This is a draft outline and will be fleshed-out closer to class. To make visible, edit _quarto.yml to include in directory.\n\n\nSQL and PostgreSQL Basics:\n\n\nUnderstanding SQL (Structured Query Language)\nIntroduction to PostgreSQL as a Relational Database Management System (RDBMS)\nWorking with Schemas in PostgreSQL\n\n\nData Manipulation with SQL and PostgreSQL:\n\n\nCREATE, SELECT, INSERT, DELETE Statements\nPrimary Keys (PK) and Foreign Keys (FK)\nCreating and Managing Indexes for Performance Optimization\n\n\nSQL Concepts:\n\n\nAggregations: COUNT, SUM, AVG, MIN, MAX\nComplex Queries and Subqueries WITH, WHERE\nConditional Statements: CASE Statements\n\n\nIntroduction to GIS Integration with PostgreSQL:\n\n\nSpatial Data Types in PostgreSQL\nSpatial Indexing for Efficient Spatial Queries\nSpatial Functions and Operators in PostgreSQL\n\n\nSpatial and Non-Spatial Joins:\n\n\nPerforming Spatial Joins for GIS Analysis\nNon-Spatial Joins for Relational Data Analysis\nCombining Spatial and Non-Spatial Data in Queries\n\n\nHow to ask ChatGPT\n\n\nIterating query development\nDebugging"
-  },
-  {
-    "objectID": "chapter_1/sql.html#key-topics",
-    "href": "chapter_1/sql.html#key-topics",
-    "title": "SQL for GIS",
-    "section": "Key Topics",
-    "text": "Key Topics\n\nIntroduction to Data Analysis and Databases:\n\n\nImportance of Data Analysis in Decision Making\nOverview of Relational Databases\n\n\nConnecting to Google Cloud Platform (GCP):\n\n\nConnecting to NFI’s database(s)\nSetting Up a GCP Account\n\n\nSQL and PostgreSQL Basics:\n\n\nUnderstanding SQL (Structured Query Language)\nIntroduction to PostgreSQL as a Relational Database Management System (RDBMS)\nWorking with Schemas in PostgreSQL\n\n\nData Manipulation with SQL and PostgreSQL:\n\n\nCREATE, SELECT, INSERT, DELETE Statements\nPrimary Keys (PK) and Foreign Keys (FK)\nCreating and Managing Indexes for Performance Optimization\n\n\nSQL Concepts:\n\n\nAggregations: COUNT, SUM, AVG, MIN, MAX\nComplex Queries and Subqueries WITH, WHERE\nConditional Statements: CASE Statements\n\n\nIntroduction to GIS Integration with PostgreSQL:\n\n\nSpatial Data Types in PostgreSQL\nSpatial Indexing for Efficient Spatial Queries\nSpatial Functions and Operators in PostgreSQL\n\n\nSpatial and Non-Spatial Joins:\n\n\nPerforming Spatial Joins for GIS Analysis\nNon-Spatial Joins for Relational Data Analysis\nCombining Spatial and Non-Spatial Data in Queries"
-  },
-  {
-    "objectID": "chapter_1/sql.html#software-needed",
-    "href": "chapter_1/sql.html#software-needed",
-    "title": "SQL for GIS",
-    "section": "Software needed",
-    "text": "Software needed\n\nFor this session please make sure you have downloaded the following software(s):\n\nTablePlus | Modern, Native Tool for Database Management."
-  },
-  {
-    "objectID": "chapter_1/sql.html#connecting-to-data-on-postgis",
-    "href": "chapter_1/sql.html#connecting-to-data-on-postgis",
-    "title": "SQL for GIS",
-    "section": "Connecting to data on PostGIS 👨🏽‍💻",
-    "text": "Connecting to data on PostGIS 👨🏽‍💻\n\n\n\n⚙\nCONNECTION SETTINGS\n\n\n\n\nIP Address\n(will be provided during class)\n\n\nDatabase names\nnfi / urban_analytics\n\n\nPort\n5432\n\n\nUsername\nscholar\n\n\nPassword\n(will be provided during class)\n\n\n\n\n\n\n\n\n\nTip\n\n\n\nNote that the connections to the Databases are restricted by the source IP address."
-  },
-  {
-    "objectID": "chapter_1/sql.html#to-dos",
-    "href": "chapter_1/sql.html#to-dos",
-    "title": "SQL for GIS",
-    "section": "To-Dos",
-    "text": "To-Dos\n\nCreate a table with the following characteristics.\nUse schema. ua0\nTable name : [yourinitials] + “_prof_exp”\nFields required: (assign data types as you think would be best)\n\nid\nscholar_id\nindustry_id\ninstitution\nyears_of_experience\neducation\nlocation (crs: 4326)\nend_year\nnotes\n\n** If you think more fields are necessary, feel free to add them\nCreate a GitHub account\n\nadd link to public.scholars.github_link (varchar)\n\n\n\nOptional\nCreate a local instance of PostGIS for use in the upcoming months\nLearn PostgreSQL Tutorial - Full Course for Beginners"
-  },
-  {
-    "objectID": "chapter_1/sql.html#useful-resources",
-    "href": "chapter_1/sql.html#useful-resources",
-    "title": "SQL for GIS",
-    "section": "Useful Resources",
-    "text": "Useful Resources\n\nPOSTGRESQL & POSTGIS CHEATSHEETS\n\nPostgreSQL & PostGIS cheatsheet (a work in progress)\nPostgres Cheatsheet"
   },
   {
     "objectID": "chapter_2/pandas.html",
@@ -618,6 +510,136 @@
     "crumbs": [
       "Setup",
       "Python Notebooks"
+    ]
+  },
+  {
+    "objectID": "chapter_1/sql.html",
+    "href": "chapter_1/sql.html",
+    "title": "SQL for GIS",
+    "section": "",
+    "text": "This is a draft outline and will be fleshed-out closer to class. To make visible, edit _quarto.yml to include in directory.\n\n\nSQL and PostgreSQL Basics:\n\n\nUnderstanding SQL (Structured Query Language)\nIntroduction to PostgreSQL as a Relational Database Management System (RDBMS)\nWorking with Schemas in PostgreSQL\n\n\nData Manipulation with SQL and PostgreSQL:\n\n\nCREATE, SELECT, INSERT, DELETE Statements\nPrimary Keys (PK) and Foreign Keys (FK)\nCreating and Managing Indexes for Performance Optimization\n\n\nSQL Concepts:\n\n\nAggregations: COUNT, SUM, AVG, MIN, MAX\nComplex Queries and Subqueries WITH, WHERE\nConditional Statements: CASE Statements\n\n\nIntroduction to GIS Integration with PostgreSQL:\n\n\nSpatial Data Types in PostgreSQL\nSpatial Indexing for Efficient Spatial Queries\nSpatial Functions and Operators in PostgreSQL\n\n\nSpatial and Non-Spatial Joins:\n\n\nPerforming Spatial Joins for GIS Analysis\nNon-Spatial Joins for Relational Data Analysis\nCombining Spatial and Non-Spatial Data in Queries\n\n\nHow to ask ChatGPT\n\n\nIterating query development\nDebugging"
+  },
+  {
+    "objectID": "chapter_1/sql.html#key-topics",
+    "href": "chapter_1/sql.html#key-topics",
+    "title": "SQL for GIS",
+    "section": "Key Topics",
+    "text": "Key Topics\n\nIntroduction to Data Analysis and Databases:\n\n\nImportance of Data Analysis in Decision Making\nOverview of Relational Databases\n\n\nConnecting to Google Cloud Platform (GCP):\n\n\nConnecting to NFI’s database(s)\nSetting Up a GCP Account\n\n\nSQL and PostgreSQL Basics:\n\n\nUnderstanding SQL (Structured Query Language)\nIntroduction to PostgreSQL as a Relational Database Management System (RDBMS)\nWorking with Schemas in PostgreSQL\n\n\nData Manipulation with SQL and PostgreSQL:\n\n\nCREATE, SELECT, INSERT, DELETE Statements\nPrimary Keys (PK) and Foreign Keys (FK)\nCreating and Managing Indexes for Performance Optimization\n\n\nSQL Concepts:\n\n\nAggregations: COUNT, SUM, AVG, MIN, MAX\nComplex Queries and Subqueries WITH, WHERE\nConditional Statements: CASE Statements\n\n\nIntroduction to GIS Integration with PostgreSQL:\n\n\nSpatial Data Types in PostgreSQL\nSpatial Indexing for Efficient Spatial Queries\nSpatial Functions and Operators in PostgreSQL\n\n\nSpatial and Non-Spatial Joins:\n\n\nPerforming Spatial Joins for GIS Analysis\nNon-Spatial Joins for Relational Data Analysis\nCombining Spatial and Non-Spatial Data in Queries"
+  },
+  {
+    "objectID": "chapter_1/sql.html#software-needed",
+    "href": "chapter_1/sql.html#software-needed",
+    "title": "SQL for GIS",
+    "section": "Software needed",
+    "text": "Software needed\n\nFor this session please make sure you have downloaded the following software(s):\n\nTablePlus | Modern, Native Tool for Database Management."
+  },
+  {
+    "objectID": "chapter_1/sql.html#connecting-to-data-on-postgis",
+    "href": "chapter_1/sql.html#connecting-to-data-on-postgis",
+    "title": "SQL for GIS",
+    "section": "Connecting to data on PostGIS 👨🏽‍💻",
+    "text": "Connecting to data on PostGIS 👨🏽‍💻\n\n\n\n⚙\nCONNECTION SETTINGS\n\n\n\n\nIP Address\n(will be provided during class)\n\n\nDatabase names\nnfi / urban_analytics\n\n\nPort\n5432\n\n\nUsername\nscholar\n\n\nPassword\n(will be provided during class)\n\n\n\n\n\n\n\n\n\nTip\n\n\n\nNote that the connections to the Databases are restricted by the source IP address."
+  },
+  {
+    "objectID": "chapter_1/sql.html#to-dos",
+    "href": "chapter_1/sql.html#to-dos",
+    "title": "SQL for GIS",
+    "section": "To-Dos",
+    "text": "To-Dos\n\nCreate a table with the following characteristics.\nUse schema. ua0\nTable name : [yourinitials] + “_prof_exp”\nFields required: (assign data types as you think would be best)\n\nid\nscholar_id\nindustry_id\ninstitution\nyears_of_experience\neducation\nlocation (crs: 4326)\nend_year\nnotes\n\n** If you think more fields are necessary, feel free to add them\nCreate a GitHub account\n\nadd link to public.scholars.github_link (varchar)\n\n\n\nOptional\nCreate a local instance of PostGIS for use in the upcoming months\nLearn PostgreSQL Tutorial - Full Course for Beginners"
+  },
+  {
+    "objectID": "chapter_1/sql.html#useful-resources",
+    "href": "chapter_1/sql.html#useful-resources",
+    "title": "SQL for GIS",
+    "section": "Useful Resources",
+    "text": "Useful Resources\n\nPOSTGRESQL & POSTGIS CHEATSHEETS\n\nPostgreSQL & PostGIS cheatsheet (a work in progress)\nPostgres Cheatsheet"
+  },
+  {
+    "objectID": "chapter_1/gis.html",
+    "href": "chapter_1/gis.html",
+    "title": "Intro to GIS",
+    "section": "",
+    "text": "Vector and raster data are two fundamental types of spatial data used in Geographic Information Systems (GIS). Vector data represents geographical features as distinct shapes using points, lines, and polygons, each of which can carry detailed attribute information, making it ideal for precise mapping applications like boundaries, roads, and infrastructure networks. It excels in accuracy and detail for discrete data. In contrast, raster data consists of a grid of pixels, each holding a value, effectively representing continuous data. This format is well-suited for environmental analysis, land cover studies, and satellite imagery, as it captures variations over a wide area, such as elevation, temperature, or vegetation. While vector data is preferred for its precision in depicting specific geographic entities and managing related data, raster data is favored for its ability to represent complex, continuous phenomena over large spatial scales.\n\n\n\n\nVector data types are primarily categorized into Points, Linestrings, and Polygons, each with distinct characteristics and uses. Additionally, there are multi-geometry versions of these types, such as MultiPoints, MultiLinestrings, and MultiPolygons, which offer more complex feature groupings.\n\nPoints: Points are used to represent discrete locations on the earth’s surface. Each point is defined by a pair of coordinates (e.g. latitude and longitude, or an easting and northing) and can represent features such as the location of a tree or a landmark. They can have attributes further describing characteristics of interest, such as tree species or landmark name.\nLinestring: Lines connect a series of points to describe linear features such as roads or rivers. Linestring geometries inherently have length and may include attributes such as road type or river name.\nPolygons: Polygons are closed shapes used to represent areas such as city boundaries or land parcels. Polygon geometries inherently have an area and perimeter and may have attributes such as population counts or land use types.\n\n\n\n\nGeometry types\n\n\n\nMulti-Geometry Versions: Multi geometries provide a way to associated a grouping of Features which can share the same feature attributes.\n\nMultiPoint: For example, a grouping of trees.\nMultiLinestring: For example, a grouping of related segments describing a long-distance hiking trail.\nMultiPolygon: For example, a grouping of buildings which together represent a larger entity such as a hospital or university.\n\n\n\n\n\nEsri Shapefile\nShapefile is a prevalent geospatial file type in GIS software, requiring three mandatory files:\n\nSHP (feature geometry)\nSHX (shape index position)\nDBF (attribute data)\nShapefiles often also include optional files such as PRJ (coordinate reference system).\n\nGeoPackage\nGeoPackage provides a modern and simpler alternative to shapefiles and is rapidly gaining acceptance. It can store multiple data layers and it’s use of SQLite means that you can use SQL query data from the file.\nGeoJSON\nGeoJSON encodes geographic data structures using JSON, a format commonly used for web development.\n\nReference: https://gisgeography.com/gis-formats/\n\n\n\n\n\nRasters contain a grid of pixels, where the value used for each grid cell can represent a characteristic such as temperature or landcover. Geographic rasters typically include Geospatial information necessary to correctly project and locate the information in GIS software.\n\n\n\nRaster image grid cells\n\n\n\n\n\nASCII Grid\nASCII Grid files (ASC) store raster data as text in a grid format. Each cell in the grid is represented by a numeric value corresponding to the geographic attribute being mapped, such as elevation. ASCII Grid files include a header specifying metadata like cell size, number of rows and columns, and coordinates of the lower left corner. The format is simple and can be generated or edited with a text editor, and may use space, comma, or tab-delimiters.\nGeoTIFF\nGeoTIFF is widely becoming the defacto raster format in GIS. It embeds coordinate reference system information within a TIFF (Tagged Image File Format) file. GeoTIFFs are commonly used for storing satellite imagery, elevation data, and land surface temperatures.\n\nReference: https://gisgeography.com/gis-formats/\n\n\n\n\n\n\n\nGeographic data is intrinsically tied to the earth’s surface and is represented using coordinates within defined Coordinate Reference Systems (CRS). Broadly, these systems fall into two categories: Geographic Coordinate Systems and Projected Coordinate Systems.\nGeographic CRSs use a spherical surface to define locations on the earth’s surface. They are based on degrees in latitude and longitude and are most commonly referenced to the WGS84 datum. While they accurately represent the earth’s curved surface and preserve the true shape and angular relationships of features, distances and areas may not be as accurate, especially over larger distances.\nProjected CRSs translate the earth’s three-dimensional surface onto a two-dimensional plane, making it easier to analyze and visualize spatial data. They use a mathematical projection to flatten the curved surface of the earth, which can lead to distortions in shape, area, distance, or direction. Different types of projections are designed to minimize these distortions for specific regions or purposes. For example, projections can be optimized for preserving areas (equal-area projections), angles and shapes (conformal), or distances (equidistant).\n\n\n\nDymaxion Fuller projection. NFF image rights.\n\n\n\n\n\n\n\n\nTip\n\n\n\nA useful reference website for different CRS is EPSG.io: Coordinate Systems Worldwide\n\n\n\n\nGeographic Coordinate Reference Systems (CRS) use a spherical or ellipsoidal surface to represent locations on the Earth’s curved surface. Geographic CRSs are based on latitude and longitude coordinates and are useful for global or regional mapping.\n\nUnits: Degrees\nCommon Examples:\n\nWGS 84 (World Geodetic System 1984) EPSG:4326: A widely used CRS for global mapping and GPS navigation.\nNAD83 (North American Datum 1983) EPSG:4269: A CRS commonly used in North America.\n\n\n\n\n\nProjected Coordinate Reference Systems (CRS) use a Cartesian coordinate system to represent locations on a flat surface. These CRSs are created by “projecting” the curved Earth onto a flat surface, which introduces distortions. This inevitably requires tradeoffs in distances, areas, or shapes, with different projection systems involving different trade-offs. Projected CRSs are commonly used for local or small-scale mapping appropriate to specific countries or regions of the globe, where locally accurate measurements and comparisons are required.\n\nUnits: Meters (most commonly)\nCommon Examples:\n\nLAEA (Lambert Azimuthal Equal Area) Europe projection EPSG:3035: This CRS is commonly used for Europe, though note that countries will typically also have even more localised projected CRS.\nBritish National Grid (BNG) EPSG:27700: This CRS is commonly used in the United Kingdom.\nState Plane Coordinate System (SPCS): This CRS is widely used in the United States, and divides the country into zones, each with their own projection.\n\n\n\n\n\n\n\nhttps://gisgeography.com\n\n\n\n\n\n\n\n\nDiscovering sources for GIS (Geographic Information System) data is a handy skill for spatial analysis and mapping! There are various official and non-official sources, each offering different types of data suited to specific needs and applications. When searching for and using different data sources, try to remain cognisant of the merits and limitations of different sources, which may impact considerations such as data accuracy or bias.\n\nGovernment Agencies: National agencies often provide official and reliable forms of GIS data. However, these datasets may reflect governmental priorities and perspectives or they may be reluctant to make these datasets openly available.\nInternational Organizations: Organizations such as the United Nations (UN) and the World Bank offer global GIS datasets, but these may have limited local detail due to their broad scope.\nLocal Authorities: City and regional councils often create and maintain local GIS datasets, often tailored to specific local government projects and priorities. Their local specificity may make it tricky to compare to different datasets sourced from other cities.\nPrivate Sector: There are many private sector organisations which generate, curate, or distribute data, however, these datasets are less likely to be openly available and may incur substantial monetary cost.\nOpen Data Platforms: Platforms such as OpenStreetMap offer freely accessible GIS data, contributed by a community of users. These datasets may require additional validation if used for mission-critical purposes, though can otherwise be extremely useful, allowing for generalisable workflows and providing coverage in some instances where no other options exist.\nAPIs and Web Scraping: Involves the automated collection of data from online APIs or websites. The quality of data can vary but may otherwise be useful for obtaining interesting data. These techniques may involve significant technical skills for data extraction and processing. Legal and ethical considerations are important, as scraping can sometimes violate terms of service or data privacy laws.\n\n\n\n\nPurposely collected data is gathered specifically to address a certain research question or project goal, using structured approaches such as surveys, experiments, or observations. It’s tailored to meet the specific needs of a study, with careful control over variables to ensure the data’s relevance and accuracy. This type of data is highly pertinent to the project it’s collected for, due to its focused nature and methodical collection process.\n\n\n\nOn the other hand, data can also be adapted to new research needs from information originally collected for different purposes. This may include repurposing data from various sources such as public databases, existing research studies, or web scraping.\n\n\n\n\n\nAttribution or citation refers to giving proper credit to the original source or creator of the data. Just as with citing sources in academic papers, it’s important to acknowledge the origin of the data you are using. This helps provide transparency, accountability, and recognition to the creators of the dataset.\n\n\nWhen dealing with data, licenses refer to legal agreements or permissions that determine how the data can be used, distributed, or modified. Different datasets may have different licensing requirements, so it’s important to understand and comply with the specific license terms associated with the data you are using.\nExamples:\n\nCreative Commons (CC) licenses: These are standardized licenses that allow creators to specify permissions for their work. They are commonly used for a variety of creative works, including images, music, videos, and written content.\nOpen Government Licenses: These licenses have been adopted by governments and may allow individuals and organizations permissive use, reuse, and sharing of information.\nGNU General Public License (GPL): This is a copyleft license for open-source software. It permits users to modify and distribute the software, but any modifications or derivative works must also be licensed under the GPL. This license is popular for promoting open-source principles and collaborative software development.\nMIT / Apache / BSD Licenses: Permissive open-source software licenses. These may allow great flexibility such as using, copying, modifying, and distributing derivative work, even for commercial purposes. The primary requirement is to include the original copyright and license notice in any significant portions of the software.\n\n\n\n\n\n\nPrivacy considerations are important when working with data, especially if the data contains personally identifiable information or sensitive information. It’s very important to handle and store data in a way that respects privacy laws and regulations. This may involve anonymizing or de-identifying data, implementing security measures, and obtaining consent from individuals whose data is being used.\n\n\n\n\n\n\nNote\n\n\n\nPlease avoid using any and all data containing private or sensitive data unless you first review this and seek approval from faculty. Handling these forms of data comes with numerous steps and safeguards and will generally be strongly discouraged.\n\n\n\n\n\n\n\n\nThe Modifiable Areal Unit Problem (MAUP) is encountered when using different scales or zones of analysis to group data. This can cause significant changes in the balance and aggregation of data purely based on how it is grouped. This can have a potentially significant impact on visualisation or analysis. MAUP is exploited for political purposes through the process of gerrymandering.\n\nhttps://gisgeography.com\n\n\n\nYouTube\n\n\n\n\n\n\nThe following resources provide further information on common types of map visualisations and best practices:\n\nCARTO - 5 Popular Thematic map Types\nFundamentals of Data Visualisation\n\nColor scales\nVisualizing geospatial data\nCommon pitfalls of color use\n\nColor Brewer",
+    "crumbs": [
+      "GIS Tools",
+      "Intro to GIS"
+    ]
+  },
+  {
+    "objectID": "chapter_1/gis.html#file-types",
+    "href": "chapter_1/gis.html#file-types",
+    "title": "Intro to GIS",
+    "section": "",
+    "text": "Vector and raster data are two fundamental types of spatial data used in Geographic Information Systems (GIS). Vector data represents geographical features as distinct shapes using points, lines, and polygons, each of which can carry detailed attribute information, making it ideal for precise mapping applications like boundaries, roads, and infrastructure networks. It excels in accuracy and detail for discrete data. In contrast, raster data consists of a grid of pixels, each holding a value, effectively representing continuous data. This format is well-suited for environmental analysis, land cover studies, and satellite imagery, as it captures variations over a wide area, such as elevation, temperature, or vegetation. While vector data is preferred for its precision in depicting specific geographic entities and managing related data, raster data is favored for its ability to represent complex, continuous phenomena over large spatial scales.\n\n\n\n\nVector data types are primarily categorized into Points, Linestrings, and Polygons, each with distinct characteristics and uses. Additionally, there are multi-geometry versions of these types, such as MultiPoints, MultiLinestrings, and MultiPolygons, which offer more complex feature groupings.\n\nPoints: Points are used to represent discrete locations on the earth’s surface. Each point is defined by a pair of coordinates (e.g. latitude and longitude, or an easting and northing) and can represent features such as the location of a tree or a landmark. They can have attributes further describing characteristics of interest, such as tree species or landmark name.\nLinestring: Lines connect a series of points to describe linear features such as roads or rivers. Linestring geometries inherently have length and may include attributes such as road type or river name.\nPolygons: Polygons are closed shapes used to represent areas such as city boundaries or land parcels. Polygon geometries inherently have an area and perimeter and may have attributes such as population counts or land use types.\n\n\n\n\nGeometry types\n\n\n\nMulti-Geometry Versions: Multi geometries provide a way to associated a grouping of Features which can share the same feature attributes.\n\nMultiPoint: For example, a grouping of trees.\nMultiLinestring: For example, a grouping of related segments describing a long-distance hiking trail.\nMultiPolygon: For example, a grouping of buildings which together represent a larger entity such as a hospital or university.\n\n\n\n\n\nEsri Shapefile\nShapefile is a prevalent geospatial file type in GIS software, requiring three mandatory files:\n\nSHP (feature geometry)\nSHX (shape index position)\nDBF (attribute data)\nShapefiles often also include optional files such as PRJ (coordinate reference system).\n\nGeoPackage\nGeoPackage provides a modern and simpler alternative to shapefiles and is rapidly gaining acceptance. It can store multiple data layers and it’s use of SQLite means that you can use SQL query data from the file.\nGeoJSON\nGeoJSON encodes geographic data structures using JSON, a format commonly used for web development.\n\nReference: https://gisgeography.com/gis-formats/\n\n\n\n\n\nRasters contain a grid of pixels, where the value used for each grid cell can represent a characteristic such as temperature or landcover. Geographic rasters typically include Geospatial information necessary to correctly project and locate the information in GIS software.\n\n\n\nRaster image grid cells\n\n\n\n\n\nASCII Grid\nASCII Grid files (ASC) store raster data as text in a grid format. Each cell in the grid is represented by a numeric value corresponding to the geographic attribute being mapped, such as elevation. ASCII Grid files include a header specifying metadata like cell size, number of rows and columns, and coordinates of the lower left corner. The format is simple and can be generated or edited with a text editor, and may use space, comma, or tab-delimiters.\nGeoTIFF\nGeoTIFF is widely becoming the defacto raster format in GIS. It embeds coordinate reference system information within a TIFF (Tagged Image File Format) file. GeoTIFFs are commonly used for storing satellite imagery, elevation data, and land surface temperatures.\n\nReference: https://gisgeography.com/gis-formats/",
+    "crumbs": [
+      "GIS Tools",
+      "Intro to GIS"
+    ]
+  },
+  {
+    "objectID": "chapter_1/gis.html#coordinate-reference-systems",
+    "href": "chapter_1/gis.html#coordinate-reference-systems",
+    "title": "Intro to GIS",
+    "section": "",
+    "text": "Geographic data is intrinsically tied to the earth’s surface and is represented using coordinates within defined Coordinate Reference Systems (CRS). Broadly, these systems fall into two categories: Geographic Coordinate Systems and Projected Coordinate Systems.\nGeographic CRSs use a spherical surface to define locations on the earth’s surface. They are based on degrees in latitude and longitude and are most commonly referenced to the WGS84 datum. While they accurately represent the earth’s curved surface and preserve the true shape and angular relationships of features, distances and areas may not be as accurate, especially over larger distances.\nProjected CRSs translate the earth’s three-dimensional surface onto a two-dimensional plane, making it easier to analyze and visualize spatial data. They use a mathematical projection to flatten the curved surface of the earth, which can lead to distortions in shape, area, distance, or direction. Different types of projections are designed to minimize these distortions for specific regions or purposes. For example, projections can be optimized for preserving areas (equal-area projections), angles and shapes (conformal), or distances (equidistant).\n\n\n\nDymaxion Fuller projection. NFF image rights.\n\n\n\n\n\n\n\n\nTip\n\n\n\nA useful reference website for different CRS is EPSG.io: Coordinate Systems Worldwide\n\n\n\n\nGeographic Coordinate Reference Systems (CRS) use a spherical or ellipsoidal surface to represent locations on the Earth’s curved surface. Geographic CRSs are based on latitude and longitude coordinates and are useful for global or regional mapping.\n\nUnits: Degrees\nCommon Examples:\n\nWGS 84 (World Geodetic System 1984) EPSG:4326: A widely used CRS for global mapping and GPS navigation.\nNAD83 (North American Datum 1983) EPSG:4269: A CRS commonly used in North America.\n\n\n\n\n\nProjected Coordinate Reference Systems (CRS) use a Cartesian coordinate system to represent locations on a flat surface. These CRSs are created by “projecting” the curved Earth onto a flat surface, which introduces distortions. This inevitably requires tradeoffs in distances, areas, or shapes, with different projection systems involving different trade-offs. Projected CRSs are commonly used for local or small-scale mapping appropriate to specific countries or regions of the globe, where locally accurate measurements and comparisons are required.\n\nUnits: Meters (most commonly)\nCommon Examples:\n\nLAEA (Lambert Azimuthal Equal Area) Europe projection EPSG:3035: This CRS is commonly used for Europe, though note that countries will typically also have even more localised projected CRS.\nBritish National Grid (BNG) EPSG:27700: This CRS is commonly used in the United Kingdom.\nState Plane Coordinate System (SPCS): This CRS is widely used in the United States, and divides the country into zones, each with their own projection.\n\n\n\n\n\n\n\nhttps://gisgeography.com",
+    "crumbs": [
+      "GIS Tools",
+      "Intro to GIS"
+    ]
+  },
+  {
+    "objectID": "chapter_1/gis.html#gis-data",
+    "href": "chapter_1/gis.html#gis-data",
+    "title": "Intro to GIS",
+    "section": "",
+    "text": "Discovering sources for GIS (Geographic Information System) data is a handy skill for spatial analysis and mapping! There are various official and non-official sources, each offering different types of data suited to specific needs and applications. When searching for and using different data sources, try to remain cognisant of the merits and limitations of different sources, which may impact considerations such as data accuracy or bias.\n\nGovernment Agencies: National agencies often provide official and reliable forms of GIS data. However, these datasets may reflect governmental priorities and perspectives or they may be reluctant to make these datasets openly available.\nInternational Organizations: Organizations such as the United Nations (UN) and the World Bank offer global GIS datasets, but these may have limited local detail due to their broad scope.\nLocal Authorities: City and regional councils often create and maintain local GIS datasets, often tailored to specific local government projects and priorities. Their local specificity may make it tricky to compare to different datasets sourced from other cities.\nPrivate Sector: There are many private sector organisations which generate, curate, or distribute data, however, these datasets are less likely to be openly available and may incur substantial monetary cost.\nOpen Data Platforms: Platforms such as OpenStreetMap offer freely accessible GIS data, contributed by a community of users. These datasets may require additional validation if used for mission-critical purposes, though can otherwise be extremely useful, allowing for generalisable workflows and providing coverage in some instances where no other options exist.\nAPIs and Web Scraping: Involves the automated collection of data from online APIs or websites. The quality of data can vary but may otherwise be useful for obtaining interesting data. These techniques may involve significant technical skills for data extraction and processing. Legal and ethical considerations are important, as scraping can sometimes violate terms of service or data privacy laws.\n\n\n\n\nPurposely collected data is gathered specifically to address a certain research question or project goal, using structured approaches such as surveys, experiments, or observations. It’s tailored to meet the specific needs of a study, with careful control over variables to ensure the data’s relevance and accuracy. This type of data is highly pertinent to the project it’s collected for, due to its focused nature and methodical collection process.\n\n\n\nOn the other hand, data can also be adapted to new research needs from information originally collected for different purposes. This may include repurposing data from various sources such as public databases, existing research studies, or web scraping.",
+    "crumbs": [
+      "GIS Tools",
+      "Intro to GIS"
+    ]
+  },
+  {
+    "objectID": "chapter_1/gis.html#attribution",
+    "href": "chapter_1/gis.html#attribution",
+    "title": "Intro to GIS",
+    "section": "",
+    "text": "Attribution or citation refers to giving proper credit to the original source or creator of the data. Just as with citing sources in academic papers, it’s important to acknowledge the origin of the data you are using. This helps provide transparency, accountability, and recognition to the creators of the dataset.\n\n\nWhen dealing with data, licenses refer to legal agreements or permissions that determine how the data can be used, distributed, or modified. Different datasets may have different licensing requirements, so it’s important to understand and comply with the specific license terms associated with the data you are using.\nExamples:\n\nCreative Commons (CC) licenses: These are standardized licenses that allow creators to specify permissions for their work. They are commonly used for a variety of creative works, including images, music, videos, and written content.\nOpen Government Licenses: These licenses have been adopted by governments and may allow individuals and organizations permissive use, reuse, and sharing of information.\nGNU General Public License (GPL): This is a copyleft license for open-source software. It permits users to modify and distribute the software, but any modifications or derivative works must also be licensed under the GPL. This license is popular for promoting open-source principles and collaborative software development.\nMIT / Apache / BSD Licenses: Permissive open-source software licenses. These may allow great flexibility such as using, copying, modifying, and distributing derivative work, even for commercial purposes. The primary requirement is to include the original copyright and license notice in any significant portions of the software.",
+    "crumbs": [
+      "GIS Tools",
+      "Intro to GIS"
+    ]
+  },
+  {
+    "objectID": "chapter_1/gis.html#privacy",
+    "href": "chapter_1/gis.html#privacy",
+    "title": "Intro to GIS",
+    "section": "",
+    "text": "Privacy considerations are important when working with data, especially if the data contains personally identifiable information or sensitive information. It’s very important to handle and store data in a way that respects privacy laws and regulations. This may involve anonymizing or de-identifying data, implementing security measures, and obtaining consent from individuals whose data is being used.\n\n\n\n\n\n\nNote\n\n\n\nPlease avoid using any and all data containing private or sensitive data unless you first review this and seek approval from faculty. Handling these forms of data comes with numerous steps and safeguards and will generally be strongly discouraged.",
+    "crumbs": [
+      "GIS Tools",
+      "Intro to GIS"
+    ]
+  },
+  {
+    "objectID": "chapter_1/gis.html#quirks-part-1",
+    "href": "chapter_1/gis.html#quirks-part-1",
+    "title": "Intro to GIS",
+    "section": "",
+    "text": "The Modifiable Areal Unit Problem (MAUP) is encountered when using different scales or zones of analysis to group data. This can cause significant changes in the balance and aggregation of data purely based on how it is grouped. This can have a potentially significant impact on visualisation or analysis. MAUP is exploited for political purposes through the process of gerrymandering.\n\nhttps://gisgeography.com\n\n\n\nYouTube",
+    "crumbs": [
+      "GIS Tools",
+      "Intro to GIS"
+    ]
+  },
+  {
+    "objectID": "chapter_1/gis.html#resources",
+    "href": "chapter_1/gis.html#resources",
+    "title": "Intro to GIS",
+    "section": "",
+    "text": "The following resources provide further information on common types of map visualisations and best practices:\n\nCARTO - 5 Popular Thematic map Types\nFundamentals of Data Visualisation\n\nColor scales\nVisualizing geospatial data\nCommon pitfalls of color use\n\nColor Brewer",
+    "crumbs": [
+      "GIS Tools",
+      "Intro to GIS"
     ]
   }
 ]
