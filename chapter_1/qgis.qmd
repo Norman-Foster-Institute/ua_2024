@@ -45,7 +45,7 @@ Depending on the connection, some of other connection attributes might be requir
 
 ::: {.callout-tip}
 Useful list of many others Tiles. 
-[https://qms.nextgis.com/#](https://tile.openstreetmap.org/{z}/{x}/{y}.png)
+[https://qms.nextgis.com](https://tile.openstreetmap.org/{z}/{x}/{y}.png)
 Note, make sure you navigate to the TMS section and the reported status = `works` (symbolised with the green dot).
 :::
 
@@ -85,7 +85,7 @@ We don't want to edit the original dataset, so let's make a copy and work with t
 - Right click the layer in the Layer Panel and select `export` -> `Save Features as`
 - Select the `GeoPackage` format.
 - Select a file location on disk and give it a distinctive name such as `my_gpkg`.
-- Select `3857` for the CRS projection
+- Select `3035` for the CRS projection
 - Check that `Add saved file to map` at the bottom of the window is selected
 - Select `OK`
 - The file will be saved and will automatically load into your map.
