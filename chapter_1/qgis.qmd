@@ -161,6 +161,8 @@ Open the Field Calculator, and this time select to create a new field called `nu
 - Open the `my_joined_gpkg` layer properties by double clicking on the layer name in the Layers Panel.
 - Select `Labels` in the left pane, select `Single Labels`, then select the `NOMBRE` column, then apply. This will add the Barrio names to the map. You can format labels to your heart's content.
 - Select `Symbology` in the left pane. You can try use the "graduated" view option (select from the top drop-down) to view the `area` column information (select from the "Value" drop-down) or the `csv_num_people` column information on your map.
+- You can use different "Mode" options - press the `Classify` button to see how they detect different thresholds for the colour bands.
+- Press `Apply` to see the changes on the map.
 - There are almost limitless options so feel free to be creative.
 
 ![Madrid's 2023 population distribution - Greg Maya](./images/madrid_pop_labels.png)
