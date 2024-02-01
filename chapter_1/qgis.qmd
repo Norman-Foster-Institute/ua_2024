@@ -121,7 +121,7 @@ We'll now add another column, this time we'll use another column as input and we
 ## Loading CSV files
 
 - To load the CSV file we'll go to the `Layer` menu bar, `Add Layer`, then `Add Delimited Text Layer`.
-- For `File name`, navigate to your CSV file
+- For `File name`, navigate to your CSV file and open it. If the load window dissapears (on a Mac), it might be hiding behind the main application window.
 - This file uses semi-colon delimeters, so select `Custom delimiters` and check that `Semicolon` is selected
 - Check that the option for `First record has field names` is selected. This will automatically use the first line of the CSV to set the attribute names.
 - Select `No geometry`. This will load the dataset without visual geometric information. Note that if you have longitude and latitude information in CSV columns (or Eastings and Northings for projected CRS), then you can specify these columns and QGIS will generate the point geometries accordingly.
@@ -137,7 +137,7 @@ We'll now add another column, this time we'll use another column as input and we
 - Click the `Invert selection` button, this will invert the selection so you only have entries selected that are not `1 de enero de 2023`.
 - Click the `Delete selected features` button.
 - Manually select the row with a `cod_distrito` value of `Todos`, and delete it, since this is an aggregated row containing aggregated information for all districts.
-Open the Field Calculator, and this time select to create a new field called `num_people` as a `Decimal` type.
+- Open the Field Calculator, and this time select to create a new field called `num_people` as a `Decimal` type.
 - Use the following expression to populate the field: `to_real("num_personas")` - this will take the original `num_personas` column and will convert it from text format to numeric format, and writes it to a new column called `num_people`. We can then use this numeric column for map styling.
 - Save and turn off editing.
 
