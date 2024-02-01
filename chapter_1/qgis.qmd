@@ -133,26 +133,25 @@ We'll now add another column, this time we'll use another column as input and we
 
 - Open the attribute table for the `my_csv` layer by right clicking on the data table in the Layers Panel and selecting `Attribute Table`.
 - Order the data by clicking the `fecha` column header, order in descending order by clicking again.
-- Click on the first entry (where all data has been aggregated as `TODOS`, in several fields) then hold down shift and click on the last entry with a `fecha` value of `1 de enero de 2023`.
-- Click the `Invert selection` button.
-- Toggle editing.
+- Click on the first entry (which should be `1 de enero de 2023`) then hold down shift and click on the last entry with a `fecha` value of `1 de enero de 2023`.
+- Click the `Invert selection` button, this will invert the selection so you only have entries selected that are not `1 de enero de 2023`.
 - Click the `Delete selected features` button.
-- As before, create a new field using the Field Calculator: `num_pple` (as `Integer` type).
-- Use the following expression to populate the field : `to_real("num_personas")`
+- Manually select the row with a `cod_distrito` value of `Todos`, and delete it, since this is an aggregated row containing aggregated information for all districts.
+Open the Field Calculator, and this time select to create a new field called `num_people` as a `Decimal` type.
+- Use the following expression to populate the field: `to_real("num_personas")` - this will take the original `num_personas` column and will convert it from text format to numeric format, and writes it to a new column called `num_people`. We can then use this numeric column for map styling.
 - Save and turn off editing.
 
 ## Joins
 
 - Open the Attribute Panels for both the `my_gpkg` and the `my_csv` layers.
-- We want to "Join" information from the CSV dataset to the neighbourhood boundaries using the matching identifiers in the respective `cod_barrio` / `cod_barrio` columns.
-- Close the Attribute Panels.
+- We want to "Join" information from the CSV dataset to the neighbourhood boundaries using the matching identifiers in the respective `cod_barrio` / `cod_barrio` columns. We are now just visually inspecting the data, so you can go ahead and close the Attribute Panels when done.
 - Double click on the `my_gpkg` layer to open the properties panel.
 - Click `Joins` in the left sidebar.
 - Click the plus button to create a new join.
 - Select the `my_csv` table for the `Join layer` -> the layer from which attributes will be joined to `my_gpkg`.
-- Select the `cod_barrio` column for the `Join field`
-- Select the `cod_barrio` column for the `Target field`
-- Click `OK` and close the layer properties.
+- Select the `cod_barrio` column for the `Join field` - this refers to the `cod_barrio` column in the `my_csv` file.
+- Select the `cod_barrio` column for the `Target field` -- this refers to the `cod_barrio` column in the `my_gpkg` file.
+- Click `OK` and close the layer properties. This will "weld" the `my_csv` columns onto the matching `my_gpkg` geometries so that we can view the census information using their geographic boundaries.
 - Reopen the Attribute Panel for the `my_gpkg` dataset, you'll see extra columns which have now joined the data from the `my_csv` table into their corresponding boundaries based on the matching identifiers.
 - Let's export this to a new file to `my_joined_gpkg`, which will now include the joined data.
 - Remove `my_csv` and `my_gpkg` from the Layers Panel.
@@ -161,7 +160,8 @@ We'll now add another column, this time we'll use another column as input and we
 
 - Open the `my_joined_gpkg` layer properties by double clicking on the layer name in the Layers Panel.
 - Select `Labels` in the left pane, select `Single Labels`, then select the `NOMBRE` column, then apply. This will add the Barrio names to the map. You can format labels to your heart's content.
-- Select `Symbology` in the left pane. In class, we will walk through a variety of options for map styling. There are almost limitless options so feel free to be creative.
+- Select `Symbology` in the left pane. You can try use the "graduated" view option (select from the top drop-down) to view the `area` column information (select from the "Value" drop-down) or the `csv_num_people` column information on your map.
+- There are almost limitless options so feel free to be creative.
 
 ![Madrid's 2023 population distribution - Greg Maya](./images/madrid_pop_labels.png)
 
