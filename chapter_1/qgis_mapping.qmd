@@ -1,0 +1,44 @@
+# QGIS Mapping
+
+For those of you looking to dive deeper and challenge yourselves, we have an optional exercise that offers a unique opportunity to work with vector data mapping. This exercise revolves around the historic center of San Marino, aiming to enhance your skills in inputting geometry. You will be creating two GeoPackage Layers: a Buildings layer (Polygon) and a Street Network layer (Linestring).
+
+This is an excellent chance to not only apply your learning but also to contribute to a collaborative map of San Marino. While you will be assigned specific areas, feel free to select an area of personal interest if you haven't set up a connection to the database yet. For those eager to go the extra mile, there's an opportunity to merge tiles and add attributes, further refining your GIS skills. Remember, this is optional but highly beneficial for those interested in advanced mapping techniques.
+
+## Connecting to DB
+While the exercise is locally based, connecting to NFI's database is beneficial to access the reference grid and familiarize yourself with its structure. Rest assured, the database is read-only for scholars, ensuring no accidental modifications.
+
+::: {.callout-tip}
+Connection details will be provided on site. Note that all connections to the database are IP protected.
+:::
+
+## Mapping Vector Data
+
+For this excercise we are going to use the historic center of San Marino. The idea is to familiarize yourself with inputing geometry, first. Attributes will be added at later stages.
+Each scholar, can produce two individual GeoPackage Layers (locally): 
+
+- **Buildings layer**: (Polygons, `CRS: 3035`) representing all the buildings within the tiles assigned.
+    - suggested name : *buildings_[scholarname]*
+- **Street Network layer**: (Linestring, `CRS: 3035`) representing the pedestrian routes through the tiles assigned. 
+    - suggested name : *network_[scholarname]*
+
+Each scholar has been assigned with a number (in class) refering to different areas of the republic that can be found in the following path of `nfi` database:
+    - `nfi.sanmarino.base_mapping`
+
+Explore the attributes `buildings` and `street_network` to see your areas and collaborate with the neighbour tiles.
+
+::: {.callout-note}
+If you have not set up a connection to the DB, you can ask us. But alternatively you can just pick an area that you find interesting. If doing the latter, note that we might not end up with a full collaborative map of San Marino.
+:::
+
+## Contextual Resources for Mapping
+For a better understanding of your mapping area, utilize `OSM` or `Google` XYZ Tiles as detailed in our [previous lesson](chapter_1/qgis.qmd). Additionally, explore the [3D CESIUM Story](https://ion.cesium.com/stories/viewer/?id=0806b0b0-46ac-4a95-9410-92cac329574b) for an immersive 3D view of the 2D polygons you're mapping. These resources will enhance your perspective and accuracy in representing San Marino's historic center.
+
+::: {.callout-tip}
+Make sure you activate the `Snapping Toolbar` by right-clicking on any empty space of the toolbar. 
+Explore different pixel tolerance values as well as options like the `Topological Editing` and the `Intersection Snapping`.
+:::
+
+### Extra mile 
+If you're feeling like doing the extra mile, you can start combining the tiles from your adjacent neighbours and/or adding attributes to your current layers.
+
+When merging files, one must make sure that all the Linestrings (from the Network layer) and Polygon edges are approprietly snappped.

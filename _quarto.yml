@@ -30,6 +30,7 @@ website:
         contents:
           - chapter_1/gis.qmd
           - chapter_1/qgis.qmd
+          - chapter_1/qgis_mapping.qmd
           - chapter_1/cloud.qmd
       - section: Basic Coding
         contents:

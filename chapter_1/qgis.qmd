@@ -133,10 +133,12 @@ We'll now add another column, this time we'll use another column as input and we
 
 - Open the attribute table for the `my_csv` layer by right clicking on the data table in the Layers Panel and selecting `Attribute Table`.
 - Order the data by clicking the `fecha` column header, order in descending order by clicking again.
-- Click on the first entry then hold down shift and click on the last entry with a `fecha` value of `1 de enero de 2023`
+- Click on the first entry (where all data has been aggregated as `TODOS`, in several fields) then hold down shift and click on the last entry with a `fecha` value of `1 de enero de 2023`.
 - Click the `Invert selection` button.
 - Toggle editing.
 - Click the `Delete selected features` button.
+- As before, create a new field using the Field Calculator: `num_pple` (as `Integer` type).
+- Use the following expression to populate the field : `to_real("num_personas")`
 - Save and turn off editing.
 
 ## Joins
@@ -158,43 +160,14 @@ We'll now add another column, this time we'll use another column as input and we
 ## Visualisation
 
 - Open the `my_joined_gpkg` layer properties by double clicking on the layer name in the Layers Panel.
-- Select `Labels` in the left pane, select `Single Labels`, then select the `BARRIO_MT` column, then apply. This will add the Barrio names to the map. You can format labels to your heart's content.
+- Select `Labels` in the left pane, select `Single Labels`, then select the `NOMBRE` column, then apply. This will add the Barrio names to the map. You can format labels to your heart's content.
 - Select `Symbology` in the left pane. In class, we will walk through a variety of options for map styling. There are almost limitless options so feel free to be creative.
 
-## Connecting to DB
-
-::: {.callout-tip}
-Connection details will be provided during class. Note that all connections to the database are IP protected.
-:::
-
-## Mapping Vector Data
-
-For this excercise we are going to use the historic center of San Marino. The idea is to familiarize yourself with inputing geometry, first. Attributes will be added at later stages.
-Each scholar, must produce two individual GeoPackage Layers (locally): 
-
-- **Buildings layer**: (Polygons, `CRS: 3035`) representing all the buildings within the tiles assigned.
-    - suggested name : *buildings_[scholarname]*
-- **Street Network layer**: (Linestring, `CRS: 3035`) representing the pedestrian routes through the tiles assigned. 
-    - suggested name : *network_[scholarname]*
-
-Each scholar has been assigned with different areas of the republic that can be found in the following path of `nfi` database:
- - `nfi.sanmarino.base_mapping`
-
- Explore the attributes `buildings` and `street_network` to see your areas and collaborate with the neighbour tiles.
-
-::: {.callout-tip}
-Make sure you activate the `Snapping Toolbar` by right-clicking on any empty space of the toolbar. 
-Explore different pixel tolerance values as well as options like the `Topological Editing` and the `Intersection Snapping`.
-:::
-
-### Optional 
-If you're feeling like doing the extra mile, you can start combining the tiles from your adjacent neighbours and/or adding attributes to your current layers.
-
-When merging files, one must make sure that all the Linestrings (from the Network layer) and Polygon edges are approprietly snappped.
+![Madrid's 2023 population distribution - Greg Maya](./images/madrid_pop_labels.png)
 
 ## Resources
 
-There is a lot that can be done with QGIS and we have just skimmed the surface!
+ If you are feeling like doing a little more you can look at the [QGIS mapping section](./qgis_mapping.qmd) and/or any of the following online materials. There is a lot that can be done with QGIS and we have just skimmed the surface!
 
 The [QGIS Tutorials and Tips](https://www.qgistutorials.com/en/index.html) is a great resource for QGIS.
 
