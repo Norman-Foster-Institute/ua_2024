@@ -30,7 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../chapter_1/cloud.html" rel="next">
+<link href="../chapter_1/qgis_mapping.html" rel="next">
 <link href="../chapter_1/gis.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -165,6 +165,12 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../chapter_1/qgis_mapping.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">QGIS Mapping</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../chapter_1/cloud.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Cloud GIS</span></a>
   </div>
@@ -224,11 +230,6 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#selecting-and-deleting-features" id="toc-selecting-and-deleting-features" class="nav-link" data-scroll-target="#selecting-and-deleting-features">Selecting and deleting features</a></li>
   <li><a href="#joins" id="toc-joins" class="nav-link" data-scroll-target="#joins">Joins</a></li>
   <li><a href="#visualisation" id="toc-visualisation" class="nav-link" data-scroll-target="#visualisation">Visualisation</a></li>
-  <li><a href="#connecting-to-db" id="toc-connecting-to-db" class="nav-link" data-scroll-target="#connecting-to-db">Connecting to DB</a></li>
-  <li><a href="#mapping-vector-data" id="toc-mapping-vector-data" class="nav-link" data-scroll-target="#mapping-vector-data">Mapping Vector Data</a>
-  <ul class="collapse">
-  <li><a href="#optional" id="toc-optional" class="nav-link" data-scroll-target="#optional">Optional</a></li>
-  </ul></li>
   <li><a href="#resources" id="toc-resources" class="nav-link" data-scroll-target="#resources">Resources</a></li>
   </ul></li>
   </ul>
@@ -388,10 +389,12 @@ Tip
 <ul>
 <li>Open the attribute table for the <code>my_csv</code> layer by right clicking on the data table in the Layers Panel and selecting <code>Attribute Table</code>.</li>
 <li>Order the data by clicking the <code>fecha</code> column header, order in descending order by clicking again.</li>
-<li>Click on the first entry then hold down shift and click on the last entry with a <code>fecha</code> value of <code>1 de enero de 2023</code></li>
+<li>Click on the first entry (where all data has been aggregated as <code>TODOS</code>, in several fields) then hold down shift and click on the last entry with a <code>fecha</code> value of <code>1 de enero de 2023</code>.</li>
 <li>Click the <code>Invert selection</code> button.</li>
 <li>Toggle editing.</li>
 <li>Click the <code>Delete selected features</code> button.</li>
+<li>As before, create a new field using the Field Calculator: <code>num_pple</code> (as <code>Integer</code> type).</li>
+<li>Use the following expression to populate the field : <code>to_real("num_personas")</code></li>
 <li>Save and turn off editing.</li>
 </ul>
 </section>
@@ -417,63 +420,19 @@ Tip
 <h2 class="anchored" data-anchor-id="visualisation">Visualisation</h2>
 <ul>
 <li>Open the <code>my_joined_gpkg</code> layer properties by double clicking on the layer name in the Layers Panel.</li>
-<li>Select <code>Labels</code> in the left pane, select <code>Single Labels</code>, then select the <code>BARRIO_MT</code> column, then apply. This will add the Barrio names to the map. You can format labels to your heart’s content.</li>
+<li>Select <code>Labels</code> in the left pane, select <code>Single Labels</code>, then select the <code>NOMBRE</code> column, then apply. This will add the Barrio names to the map. You can format labels to your heart’s content.</li>
 <li>Select <code>Symbology</code> in the left pane. In class, we will walk through a variety of options for map styling. There are almost limitless options so feel free to be creative.</li>
 </ul>
-</section>
-<section id="connecting-to-db" class="level2">
-<h2 class="anchored" data-anchor-id="connecting-to-db">Connecting to DB</h2>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./images/madrid_pop_labels.png" class="img-fluid figure-img"></p>
+<figcaption>Madrid’s 2023 population distribution - Greg Maya</figcaption>
+</figure>
 </div>
-<div class="callout-title-container flex-fill">
-Tip
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Connection details will be provided during class. Note that all connections to the database are IP protected.</p>
-</div>
-</div>
-</section>
-<section id="mapping-vector-data" class="level2">
-<h2 class="anchored" data-anchor-id="mapping-vector-data">Mapping Vector Data</h2>
-<p>For this excercise we are going to use the historic center of San Marino. The idea is to familiarize yourself with inputing geometry, first. Attributes will be added at later stages. Each scholar, must produce two individual GeoPackage Layers (locally):</p>
-<ul>
-<li><strong>Buildings layer</strong>: (Polygons, <code>CRS: 3035</code>) representing all the buildings within the tiles assigned.
-<ul>
-<li>suggested name : <em>buildings_[scholarname]</em></li>
-</ul></li>
-<li><strong>Street Network layer</strong>: (Linestring, <code>CRS: 3035</code>) representing the pedestrian routes through the tiles assigned.
-<ul>
-<li>suggested name : <em>network_[scholarname]</em></li>
-</ul></li>
-</ul>
-<p>Each scholar has been assigned with different areas of the republic that can be found in the following path of <code>nfi</code> database: - <code>nfi.sanmarino.base_mapping</code></p>
-<p>Explore the attributes <code>buildings</code> and <code>street_network</code> to see your areas and collaborate with the neighbour tiles.</p>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Tip
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Make sure you activate the <code>Snapping Toolbar</code> by right-clicking on any empty space of the toolbar. Explore different pixel tolerance values as well as options like the <code>Topological Editing</code> and the <code>Intersection Snapping</code>.</p>
-</div>
-</div>
-<section id="optional" class="level3">
-<h3 class="anchored" data-anchor-id="optional">Optional</h3>
-<p>If you’re feeling like doing the extra mile, you can start combining the tiles from your adjacent neighbours and/or adding attributes to your current layers.</p>
-<p>When merging files, one must make sure that all the Linestrings (from the Network layer) and Polygon edges are approprietly snappped.</p>
-</section>
 </section>
 <section id="resources" class="level2">
 <h2 class="anchored" data-anchor-id="resources">Resources</h2>
-<p>There is a lot that can be done with QGIS and we have just skimmed the surface!</p>
+<p>If you are feeling like doing a little more you can look at the <a href="../chapter_1/qgis_mapping.html">QGIS mapping section</a> and/or any of the following online materials. There is a lot that can be done with QGIS and we have just skimmed the surface!</p>
 <p>The <a href="https://www.qgistutorials.com/en/index.html">QGIS Tutorials and Tips</a> is a great resource for QGIS.</p>
 <p>For lab-work, please do the following tutorials from <a href="https://www.qgistutorials.com/en/docs/introduction.html">QGIS Tutorials and Tips</a> in your own time to build some general familiarity with QGIS:</p>
 <ul>
@@ -883,8 +842,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../chapter_1/cloud.html" class="pagination-link" aria-label="Cloud GIS">
-        <span class="nav-page-text">Cloud GIS</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../chapter_1/qgis_mapping.html" class="pagination-link" aria-label="QGIS Mapping">
+        <span class="nav-page-text">QGIS Mapping</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
