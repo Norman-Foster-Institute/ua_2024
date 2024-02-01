@@ -375,7 +375,7 @@ Tip
 <h2 class="anchored" data-anchor-id="loading-csv-files">Loading CSV files</h2>
 <ul>
 <li>To load the CSV file we’ll go to the <code>Layer</code> menu bar, <code>Add Layer</code>, then <code>Add Delimited Text Layer</code>.</li>
-<li>For <code>File name</code>, navigate to your CSV file</li>
+<li>For <code>File name</code>, navigate to your CSV file and open it. If the load window dissapears (on a Mac), it might be hiding behind the main application window.</li>
 <li>This file uses semi-colon delimeters, so select <code>Custom delimiters</code> and check that <code>Semicolon</code> is selected</li>
 <li>Check that the option for <code>First record has field names</code> is selected. This will automatically use the first line of the CSV to set the attribute names.</li>
 <li>Select <code>No geometry</code>. This will load the dataset without visual geometric information. Note that if you have longitude and latitude information in CSV columns (or Eastings and Northings for projected CRS), then you can specify these columns and QGIS will generate the point geometries accordingly.</li>
@@ -392,7 +392,8 @@ Tip
 <li>Click on the first entry (which should be <code>1 de enero de 2023</code>) then hold down shift and click on the last entry with a <code>fecha</code> value of <code>1 de enero de 2023</code>.</li>
 <li>Click the <code>Invert selection</code> button, this will invert the selection so you only have entries selected that are not <code>1 de enero de 2023</code>.</li>
 <li>Click the <code>Delete selected features</code> button.</li>
-<li>Manually select the row with a <code>cod_distrito</code> value of <code>Todos</code>, and delete it, since this is an aggregated row containing aggregated information for all districts. Open the Field Calculator, and this time select to create a new field called <code>num_people</code> as a <code>Decimal</code> type.</li>
+<li>Manually select the row with a <code>cod_distrito</code> value of <code>Todos</code>, and delete it, since this is an aggregated row containing aggregated information for all districts.</li>
+<li>Open the Field Calculator, and this time select to create a new field called <code>num_people</code> as a <code>Decimal</code> type.</li>
 <li>Use the following expression to populate the field: <code>to_real("num_personas")</code> - this will take the original <code>num_personas</code> column and will convert it from text format to numeric format, and writes it to a new column called <code>num_people</code>. We can then use this numeric column for map styling.</li>
 <li>Save and turn off editing.</li>
 </ul>
