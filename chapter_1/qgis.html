@@ -389,12 +389,11 @@ Tip
 <ul>
 <li>Open the attribute table for the <code>my_csv</code> layer by right clicking on the data table in the Layers Panel and selecting <code>Attribute Table</code>.</li>
 <li>Order the data by clicking the <code>fecha</code> column header, order in descending order by clicking again.</li>
-<li>Click on the first entry (where all data has been aggregated as <code>TODOS</code>, in several fields) then hold down shift and click on the last entry with a <code>fecha</code> value of <code>1 de enero de 2023</code>.</li>
-<li>Click the <code>Invert selection</code> button.</li>
-<li>Toggle editing.</li>
+<li>Click on the first entry (which should be <code>1 de enero de 2023</code>) then hold down shift and click on the last entry with a <code>fecha</code> value of <code>1 de enero de 2023</code>.</li>
+<li>Click the <code>Invert selection</code> button, this will invert the selection so you only have entries selected that are not <code>1 de enero de 2023</code>.</li>
 <li>Click the <code>Delete selected features</code> button.</li>
-<li>As before, create a new field using the Field Calculator: <code>num_pple</code> (as <code>Integer</code> type).</li>
-<li>Use the following expression to populate the field : <code>to_real("num_personas")</code></li>
+<li>Manually select the row with a <code>cod_distrito</code> value of <code>Todos</code>, and delete it, since this is an aggregated row containing aggregated information for all districts. Open the Field Calculator, and this time select to create a new field called <code>num_people</code> as a <code>Decimal</code> type.</li>
+<li>Use the following expression to populate the field: <code>to_real("num_personas")</code> - this will take the original <code>num_personas</code> column and will convert it from text format to numeric format, and writes it to a new column called <code>num_people</code>. We can then use this numeric column for map styling.</li>
 <li>Save and turn off editing.</li>
 </ul>
 </section>
@@ -402,15 +401,14 @@ Tip
 <h2 class="anchored" data-anchor-id="joins">Joins</h2>
 <ul>
 <li>Open the Attribute Panels for both the <code>my_gpkg</code> and the <code>my_csv</code> layers.</li>
-<li>We want to “Join” information from the CSV dataset to the neighbourhood boundaries using the matching identifiers in the respective <code>cod_barrio</code> / <code>cod_barrio</code> columns.</li>
-<li>Close the Attribute Panels.</li>
+<li>We want to “Join” information from the CSV dataset to the neighbourhood boundaries using the matching identifiers in the respective <code>cod_barrio</code> / <code>cod_barrio</code> columns. We are now just visually inspecting the data, so you can go ahead and close the Attribute Panels when done.</li>
 <li>Double click on the <code>my_gpkg</code> layer to open the properties panel.</li>
 <li>Click <code>Joins</code> in the left sidebar.</li>
 <li>Click the plus button to create a new join.</li>
 <li>Select the <code>my_csv</code> table for the <code>Join layer</code> -&gt; the layer from which attributes will be joined to <code>my_gpkg</code>.</li>
-<li>Select the <code>cod_barrio</code> column for the <code>Join field</code></li>
-<li>Select the <code>cod_barrio</code> column for the <code>Target field</code></li>
-<li>Click <code>OK</code> and close the layer properties.</li>
+<li>Select the <code>cod_barrio</code> column for the <code>Join field</code> - this refers to the <code>cod_barrio</code> column in the <code>my_csv</code> file.</li>
+<li>Select the <code>cod_barrio</code> column for the <code>Target field</code> – this refers to the <code>cod_barrio</code> column in the <code>my_gpkg</code> file.</li>
+<li>Click <code>OK</code> and close the layer properties. This will “weld” the <code>my_csv</code> columns onto the matching <code>my_gpkg</code> geometries so that we can view the census information using their geographic boundaries.</li>
 <li>Reopen the Attribute Panel for the <code>my_gpkg</code> dataset, you’ll see extra columns which have now joined the data from the <code>my_csv</code> table into their corresponding boundaries based on the matching identifiers.</li>
 <li>Let’s export this to a new file to <code>my_joined_gpkg</code>, which will now include the joined data.</li>
 <li>Remove <code>my_csv</code> and <code>my_gpkg</code> from the Layers Panel.</li>
@@ -421,7 +419,8 @@ Tip
 <ul>
 <li>Open the <code>my_joined_gpkg</code> layer properties by double clicking on the layer name in the Layers Panel.</li>
 <li>Select <code>Labels</code> in the left pane, select <code>Single Labels</code>, then select the <code>NOMBRE</code> column, then apply. This will add the Barrio names to the map. You can format labels to your heart’s content.</li>
-<li>Select <code>Symbology</code> in the left pane. In class, we will walk through a variety of options for map styling. There are almost limitless options so feel free to be creative.</li>
+<li>Select <code>Symbology</code> in the left pane. You can try use the “graduated” view option (select from the top drop-down) to view the <code>area</code> column information (select from the “Value” drop-down) or the <code>csv_num_people</code> column information on your map.</li>
+<li>There are almost limitless options so feel free to be creative.</li>
 </ul>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
