@@ -216,7 +216,28 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#cloud-gis" id="toc-cloud-gis" class="nav-link active" data-scroll-target="#cloud-gis">Cloud GIS</a></li>
+  <li><a href="#cloud-gis" id="toc-cloud-gis" class="nav-link active" data-scroll-target="#cloud-gis">Cloud GIS</a>
+  <ul class="collapse">
+  <li><a href="#connecting-to-carto" id="toc-connecting-to-carto" class="nav-link" data-scroll-target="#connecting-to-carto">Connecting to CARTO</a></li>
+  </ul></li>
+  <li><a href="#part-1---madrids-cycling-infrastructure" id="toc-part-1---madrids-cycling-infrastructure" class="nav-link" data-scroll-target="#part-1---madrids-cycling-infrastructure">Part 1 - Madrid’s Cycling Infrastructure</a>
+  <ul class="collapse">
+  <li><a href="#datasets" id="toc-datasets" class="nav-link" data-scroll-target="#datasets">Datasets</a>
+  <ul class="collapse">
+  <li><a href="#loading-data" id="toc-loading-data" class="nav-link" data-scroll-target="#loading-data">Loading Data</a></li>
+  <li><a href="#add-style" id="toc-add-style" class="nav-link" data-scroll-target="#add-style">Add style</a></li>
+  <li><a href="#publish" id="toc-publish" class="nav-link" data-scroll-target="#publish">Publish</a></li>
+  <li><a href="#your-example" id="toc-your-example" class="nav-link" data-scroll-target="#your-example">Your example</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#part-2---madrids-yearly-population" id="toc-part-2---madrids-yearly-population" class="nav-link" data-scroll-target="#part-2---madrids-yearly-population">Part 2 - Madrid’s Yearly Population</a>
+  <ul class="collapse">
+  <li><a href="#datasets-1" id="toc-datasets-1" class="nav-link" data-scroll-target="#datasets-1">Datasets</a></li>
+  <li><a href="#workflows" id="toc-workflows" class="nav-link" data-scroll-target="#workflows">Workflows</a>
+  <ul class="collapse">
+  <li><a href="#output-example" id="toc-output-example" class="nav-link" data-scroll-target="#output-example">Output Example</a></li>
+  </ul></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -229,8 +250,145 @@ ul.task-list li input[type="checkbox"] {
 <section id="cloud-gis" class="level1">
 <h1>Cloud GIS</h1>
 <p>This will be an in-class hands-on session providing an introduction to the use of CARTO for publishing and styling interactive maps.</p>
+<p>The are two excercises that will help us explore different components of the platform:</p>
+<ol type="1">
+<li><strong>Madrid’s cycling infrastructure</strong> You will upload two <em>.gpkg</em> layers into the database and style as you think is best.</li>
+<li><strong>Madrid’s yearly population</strong> Building from last week’s excercise, we will use the full population dataset to explore the evolution in time of the spatial distribution of total residents.</li>
+</ol>
+<p>Each excersice will be lead by a live demo of the main steps to better control the visualization of the datasets. Then, each student will have time to explore on their own time the tool and come up with a shereable map.</p>
+<section id="connecting-to-carto" class="level2">
+<h2 class="anchored" data-anchor-id="connecting-to-carto">Connecting to CARTO</h2>
+<p>Because this will be the first time you log in, you will have to log in into <a href="https://carto.com/">www.carto.com</a> using your GitHub account (you will need the Student Development Pack approved - see the <a href="chapter_0/installation.qmd">Software &amp; Accounts section</a>).</p>
+<blockquote class="blockquote">
+<p>Search for <code>Are you a student?</code> and <code>Access using GitHub</code> <img src="./images/carto_login.png" class="img-fluid" style="width:60.0%" alt="Use GitHub login"></p>
+</blockquote>
+<p>Follow the stepts to create your account and <strong>note that each scholar will create a separate ‘organization’</strong>. This means all your files and maps will be yours and you will not be joining NFI’s organization. You can name ir however you like!</p>
+</section>
+</section>
+<section id="part-1---madrids-cycling-infrastructure" class="level1">
+<h1>Part 1 - Madrid’s Cycling Infrastructure</h1>
+<p>The main goal of this excercise is to get hands on with visualizing and publishing your data.</p>
+<section id="datasets" class="level2">
+<h2 class="anchored" data-anchor-id="datasets">Datasets</h2>
+<p>For this excercise we will use two official data sources. I</p>
+<ul>
+<li><strong>Cycling routes</strong> (LINESTRINGS, 4326):
+<ul>
+<li>Download <a href="./data/cycling_routes.gpkg">geopackage file</a></li>
+<li>Consult <a href="https://datos.madrid.es/portal/site/egob/menuitem.c05c1f754a33a9fbe4b2e4b284f1a5a0/?vgnextoid=325e827b864f4410VgnVCM2000000c205a0aRCRD&amp;vgnextchannel=374512b9ace9f310VgnVCM100000171f5a0aRCRD&amp;vgnextfmt=default">official source</a> : for references to the .gpkg file above</li>
+</ul></li>
+<li><strong>Cycling docks</strong> (POINTS, 4326):
+<ul>
+<li>Download <a href="./data/cycling_docks.gpkg">geopackage file</a></li>
+<li>Consult <a href="https://datos.madrid.es/portal/site/egob/menuitem.c05c1f754a33a9fbe4b2e4b284f1a5a0/?vgnextoid=e9b2a4059b4b7410VgnVCM2000000c205a0aRCRD&amp;vgnextchannel=374512b9ace9f310VgnVCM100000171f5a0aRCRD&amp;vgnextfmt=default">official source</a> : for references to the .gpkg file above</li>
+</ul></li>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Note that both file have been reprojected to <strong>EPSG: 4326</strong> as this is the prefered projection system for CARTO</p>
+</div>
+</div>
+<section id="loading-data" class="level3">
+<h3 class="anchored" data-anchor-id="loading-data">Loading Data</h3>
+<p>There are several ways to use the data in CARTO. But this time we are going to upload it directly from <strong>CARTO BUILDER</strong></p>
+<ul>
+<li>Using the main menu, navigate to <code>Maps</code> –&gt; <code>+ New map</code> button. This takes you to a new tab with an instance of CARTO’s Builder.</li>
+<li><code>Add source from...</code> and upload the <em>gpkg</em> in a folder of your preference.</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./images/carto_add_source.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:40.0%"></p>
+</figure>
+</div>
+<blockquote class="blockquote">
+<p>Note that multiple layers can be added from the same</p>
+</blockquote>
+</section>
+<section id="add-style" class="level3">
+<h3 class="anchored" data-anchor-id="add-style">Add style</h3>
+<p>Depending on the geometry types, you will have different option for styling your Points (docking stations) and the Linestrings (cycling routes).</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Always familirise yourself with the data before jumping into modifying its style <img src="./images/carto_shsow_table.png" class="img-fluid quarto-figure quarto-figure-center" style="width:40.0%" alt="Show data table"></p>
+</div>
+</div>
+<p>For now we encourage you to explore the following three tabs:</p>
+<ul>
+<li>Layers</li>
+<li>Legends</li>
+<li>Basemaps</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./images/carto_builder_tabs.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%"></p>
+</figure>
+</div>
+</section>
+<section id="publish" class="level3">
+<h3 class="anchored" data-anchor-id="publish">Publish</h3>
+<p>When you are happy with the results makesure you <code>SHARE</code> your results by publishing them to allow for <strong>public access</strong></p>
+<ul>
+<li>Add your resulting URL to <a href="https://www.notion.so/nff-nfi/UA0-9e4950732c1946cbbc7130ee4b853fef?pvs=4">this notion card</a></li>
+</ul>
+</section>
+<section id="your-example" class="level3">
+<h3 class="anchored" data-anchor-id="your-example">Your example</h3>
+<blockquote class="blockquote">
+<p>The best maps will be added to complete this section!</p>
+</blockquote>
+<hr>
+</section>
+</section>
+</section>
+<section id="part-2---madrids-yearly-population" class="level1">
+<h1>Part 2 - Madrid’s Yearly Population</h1>
+<section id="datasets-1" class="level2">
+<h2 class="anchored" data-anchor-id="datasets-1">Datasets</h2>
+<p>For this excercise we are going to use the same datasets than we did in our <a href="../chapter_1/qgis.html">previous session</a>. However, this time we are going to use the full dataset containing the population data.</p>
+<ul>
+<li><p>Download the municipal neighbourhoods as a SHP file: <a href="https://datos.madrid.es/portal/site/egob/menuitem.c05c1f754a33a9fbe4b2e4b284f1a5a0/?vgnextoid=760e5eb0d73a7710VgnVCM2000001f4a900aRCRD&amp;vgnextchannel=374512b9ace9f310VgnVCM100000171f5a0aRCRD&amp;vgnextfmt=default">Barrios municipales de Madrid</a></p></li>
+<li><p>Download the population by district and neighbourhood dataset as a CSV file: <a href="https://datos.madrid.es/portal/site/egob/menuitem.c05c1f754a33a9fbe4b2e4b284f1a5a0/?vgnextoid=0cccaebc07c1f710VgnVCM2000001f4a900aRCRD&amp;vgnextchannel=374512b9ace9f310VgnVCM100000171f5a0aRCRD&amp;vgnextfmt=default">Población por distrito y barrio a 1 de enero</a></p></li>
+</ul>
+</section>
+<section id="workflows" class="level2">
+<h2 class="anchored" data-anchor-id="workflows">Workflows</h2>
+<p>From our previous experience, we know that in order to join the datasets, we first had to clean and filter the data. This time we are going to make use of <strong>CARTO’s WORKFLOWS</strong>: a no-code visual interface for replicating processes like cleaning, filtering, joining (and much more). <a href="https://carto.com/workflows">Visit for more.</a></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./images/carto_workflow.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption>CARTO’s Workflow</figcaption>
+</figure>
+</div>
+<p>For this excerse, we just want you to <strong>import the file below</strong> and update the inputs and output parameters</p>
+<blockquote class="blockquote">
+<p>SQL Procedure for you to have a head start. <a href="./data/workflow_mad_population.sql">DOWNLOAD SQL</a></p>
+</blockquote>
+<section id="output-example" class="level3">
+<h3 class="anchored" data-anchor-id="output-example">Output Example</h3>
+    <iframe width="100%" height="500px" src="https://pinea.app.carto.com/map/3ba6d4dc-6dd2-4e69-a3fe-d2cbb4fdb2f1"></iframe>
+<blockquote class="blockquote">
+<p><a href="https://pinea.app.carto.com/map/3ba6d4dc-6dd2-4e69-a3fe-d2cbb4fdb2f1">Madrid’s Population Dashboard</a> - Greg Maya</p>
+</blockquote>
 
 
+</section>
+</section>
 </section>
 
 </main> <!-- /main -->
