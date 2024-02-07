@@ -1,3 +1,101 @@
 # Cloud GIS
 
 This will be an in-class hands-on session providing an introduction to the use of CARTO for publishing and styling interactive maps.
+
+The are two excercises that will help us explore different components of the platform:
+
+1. **Madrid's cycling infrastructure**
+    You will upload two _.gpkg_ layers into the database and style as you think is best.
+1. **Madrid's yearly population** 
+    Building from last week's excercise, we will use the full population dataset to explore the evolution in time of the spatial distribution of total residents. 
+
+Each excersice will be lead by a live demo of the main steps to better control the visualization of the datasets. Then, each student will have time to explore on their own time the tool and come up with a shereable map.
+
+## Connecting to CARTO
+Because this will be the first time you log in, you will have to log in into [www.carto.com](https://carto.com/) using your GitHub account (you will need the Student Development Pack approved - see the [Software & Accounts section](chapter_0/installation.qmd)).
+
+> Search for `Are you a student?` and `Access using GitHub`
+> ![Use GitHub login](./images/carto_login.png){width=60%}
+
+Follow the stepts to create your account and **note that each scholar will create a separate 'organization'**. This means all your files and maps will be yours and you will not be joining NFI's organization. You can name ir however you like!
+
+# Part 1 - Madrid's Cycling Infrastructure
+The main goal of this excercise is to get hands on with visualizing and publishing your data.
+
+## Datasets
+For this excercise we will use two official data sources. I
+
+- **Cycling routes** (LINESTRINGS, 4326): 
+    - Download [geopackage file](./data/cycling_routes.gpkg)
+    - Consult [official source](https://datos.madrid.es/portal/site/egob/menuitem.c05c1f754a33a9fbe4b2e4b284f1a5a0/?vgnextoid=325e827b864f4410VgnVCM2000000c205a0aRCRD&vgnextchannel=374512b9ace9f310VgnVCM100000171f5a0aRCRD&vgnextfmt=default) : for references to the .gpkg file above
+- **Cycling docks** (POINTS, 4326): 
+    - Download [geopackage file](./data/cycling_docks.gpkg)
+    - Consult [official source](https://datos.madrid.es/portal/site/egob/menuitem.c05c1f754a33a9fbe4b2e4b284f1a5a0/?vgnextoid=e9b2a4059b4b7410VgnVCM2000000c205a0aRCRD&vgnextchannel=374512b9ace9f310VgnVCM100000171f5a0aRCRD&vgnextfmt=default) : for references to the .gpkg file above
+
+::: {.callout-note}
+Note that both file have been reprojected to **EPSG: 4326** as this is the prefered projection system for CARTO
+:::
+
+### Loading Data
+There are several ways to use the data in CARTO. But this time we are going to upload it directly from **CARTO BUILDER** 
+
+- Using the main menu, navigate to `Maps` --> `+ New map` button. This takes you to a new tab with an instance of CARTO's Builder.
+- `Add source from...` and upload the _gpkg_ in a folder of your preference.
+
+![](./images/carto_add_source.png){fig-align="center" width="40%"}
+
+> Note that multiple layers can be added from the same
+
+### Add style
+Depending on the geometry types, you will have different option for styling your Points (docking stations) and the Linestrings (cycling routes).
+
+::: {.callout-note}
+Always familirise yourself with the data before jumping into modifying its style
+![Show data table](./images/carto_shsow_table.png){fig-align="center" width="40%"}
+:::
+
+For now we encourage you to explore the following three tabs:
+
+- Layers
+- Legends
+- Basemaps
+
+![](./images/carto_builder_tabs.png){fig-align="center" width="50%"}
+
+### Publish
+When you are happy with the results makesure you `SHARE` your results by publishing them to allow for **public access**
+
+- Add your resulting URL to [this notion card](https://www.notion.so/nff-nfi/UA0-9e4950732c1946cbbc7130ee4b853fef?pvs=4)
+
+### Your example
+
+> The best maps will be added to complete this section! 
+
+___
+# Part 2 - Madrid's Yearly Population
+
+## Datasets
+
+For this excercise we are going to use the same datasets than we did in our [previous session](./qgis.qmd). However, this time we are going to use the full dataset containing the population data. 
+
+- Download the municipal neighbourhoods as a SHP file: [Barrios municipales de Madrid](https://datos.madrid.es/portal/site/egob/menuitem.c05c1f754a33a9fbe4b2e4b284f1a5a0/?vgnextoid=760e5eb0d73a7710VgnVCM2000001f4a900aRCRD&vgnextchannel=374512b9ace9f310VgnVCM100000171f5a0aRCRD&vgnextfmt=default)
+
+- Download the population by district and neighbourhood dataset as a CSV file: [Población por distrito y barrio a 1 de enero](https://datos.madrid.es/portal/site/egob/menuitem.c05c1f754a33a9fbe4b2e4b284f1a5a0/?vgnextoid=0cccaebc07c1f710VgnVCM2000001f4a900aRCRD&vgnextchannel=374512b9ace9f310VgnVCM100000171f5a0aRCRD&vgnextfmt=default)
+
+
+##  Workflows
+From our previous experience, we know that in order to join the datasets, we first had to clean and filter the data. This time we are going to make use of **CARTO's WORKFLOWS**: a no-code visual interface for replicating processes like cleaning, filtering, joining (and much more). [Visit for more.](https://carto.com/workflows)
+
+![CARTO's Workflow](./images/carto_workflow.png){width=100%}
+
+For this excerse, we just want you to **import the file below** and update the inputs and output parameters
+
+> SQL Procedure for you to have a head start. [DOWNLOAD SQL](./data/workflow_mad_population.sql)
+
+
+
+### Output Example
+```{=html}
+    <iframe width="100%" height="500px" src="https://pinea.app.carto.com/map/3ba6d4dc-6dd2-4e69-a3fe-d2cbb4fdb2f1"></iframe>
+```
+> [Madrid's Population Dashboard](https://pinea.app.carto.com/map/3ba6d4dc-6dd2-4e69-a3fe-d2cbb4fdb2f1) - Greg Maya
