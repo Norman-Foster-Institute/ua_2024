@@ -239,8 +239,12 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#part-2---madrids-yearly-population" id="toc-part-2---madrids-yearly-population" class="nav-link" data-scroll-target="#part-2---madrids-yearly-population">Part 2 - Madrid’s Yearly Population</a>
   <ul class="collapse">
   <li><a href="#datasets-1" id="toc-datasets-1" class="nav-link" data-scroll-target="#datasets-1">Datasets</a></li>
-  <li><a href="#workflows" id="toc-workflows" class="nav-link" data-scroll-target="#workflows">Workflows</a>
+  <li><a href="#workflows" id="toc-workflows" class="nav-link" data-scroll-target="#workflows">Workflows</a></li>
+  <li><a href="#hands-on" id="toc-hands-on" class="nav-link" data-scroll-target="#hands-on">Hands-on</a>
   <ul class="collapse">
+  <li><a href="#data-prep" id="toc-data-prep" class="nav-link" data-scroll-target="#data-prep">Data prep</a></li>
+  <li><a href="#data-viz" id="toc-data-viz" class="nav-link" data-scroll-target="#data-viz">Data viz</a></li>
+  <li><a href="#publish-1" id="toc-publish-1" class="nav-link" data-scroll-target="#publish-1">Publish</a></li>
   <li><a href="#output-example" id="toc-output-example" class="nav-link" data-scroll-target="#output-example">Output Example</a></li>
   </ul></li>
   </ul></li>
@@ -348,7 +352,7 @@ Note
 </section>
 <section id="publish" class="level3">
 <h3 class="anchored" data-anchor-id="publish">Publish</h3>
-<p>When you are happy with the results makesure you <code>SHARE</code> your results by publishing them to allow for <strong>public access</strong></p>
+<p>When you are happy with the map make sure you <code>SHARE</code> your results by publishing them to allow for <strong>public access</strong></p>
 <ul>
 <li>Add your resulting URL to <a href="https://www.notion.so/nff-nfi/UA0-9e4950732c1946cbbc7130ee4b853fef?pvs=4">this notion card</a></li>
 </ul>
@@ -375,16 +379,53 @@ Note
 <section id="workflows" class="level2">
 <h2 class="anchored" data-anchor-id="workflows">Workflows</h2>
 <p>From our previous experience, we know that in order to join the datasets, we first had to clean and filter the data. This time we are going to make use of <strong>CARTO’s WORKFLOWS</strong>: a no-code visual interface for replicating processes like cleaning, filtering, joining (and much more). <a href="https://carto.com/workflows">Visit for more.</a></p>
+</section>
+<section id="hands-on" class="level2">
+<h2 class="anchored" data-anchor-id="hands-on">Hands-on</h2>
+<p>The following are the general steps we encourage you to follow to get familiar with other functions of CARTO.</p>
+<section id="data-prep" class="level3">
+<h3 class="anchored" data-anchor-id="data-prep">Data prep</h3>
+<p>For this excerse we just want you to <strong>import the file below</strong> and update the inputs and output parameters</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="./images/carto_workflow.png" class="img-fluid figure-img" style="width:100.0%"></p>
 <figcaption>CARTO’s Workflow</figcaption>
 </figure>
 </div>
-<p>For this excerse, we just want you to <strong>import the file below</strong> and update the inputs and output parameters</p>
-<blockquote class="blockquote">
-<p>SQL Procedure for you to have a head start. <a href="./data/workflow_mad_population.sql" title="download">DOWNLOAD SQL</a></p>
-</blockquote>
+<ul>
+<li>Under menu <code>Data Explorer</code> –&gt; Import both datasets (CSV and SHP)</li>
+<li>Under menu <code>Workflows</code> –&gt; <code>Import</code> <a href="./data/workflow_mad_population.sql" title="download">this SQL procedure</a> to give you a head start</li>
+<li>Update workflow :
+<ul>
+<li>Inputs: data sources according to the location and name of your files</li>
+<li>Output: select where you want to store the results</li>
+</ul></li>
+<li><code>Run</code> the workflow to identify potential issues
+<ul>
+<li>Rememeber to read the <code>Error messages</code> (if at all), to debug your workflow</li>
+</ul></li>
+</ul>
+</section>
+<section id="data-viz" class="level3">
+<h3 class="anchored" data-anchor-id="data-viz">Data viz</h3>
+<p>Now we are going to move into <strong>another builder</strong> instance and load the newly created table (from the steps above). This time we encourage you to look into the other two tabs :</p>
+<ul>
+<li><strong>Widgets</strong> : allow you to interact and filter the data plotted on the map</li>
+<li><strong>Interactions</strong> : helps you surface propreties of individual elements in the map</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./images/carto_builder_tabs2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="250"></p>
+</figure>
+</div>
+</section>
+<section id="publish-1" class="level3">
+<h3 class="anchored" data-anchor-id="publish-1">Publish</h3>
+<p>When you are happy with the map make sure you <code>SHARE</code> your results by publishing them to allow for <strong>public access</strong></p>
+<ul>
+<li>Add your resulting URL to <a href="https://www.notion.so/nff-nfi/UA0-9e4950732c1946cbbc7130ee4b853fef?pvs=4">this notion card</a></li>
+</ul>
+</section>
 <section id="output-example" class="level3">
 <h3 class="anchored" data-anchor-id="output-example">Output Example</h3>
     <iframe width="100%" height="500px" src="https://pinea.app.carto.com/map/3ba6d4dc-6dd2-4e69-a3fe-d2cbb4fdb2f1"></iframe>
