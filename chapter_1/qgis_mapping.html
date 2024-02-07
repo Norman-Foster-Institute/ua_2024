@@ -226,9 +226,11 @@ ul.task-list li input[type="checkbox"] {
   <ul class="collapse">
   <li><a href="#connecting-to-db" id="toc-connecting-to-db" class="nav-link" data-scroll-target="#connecting-to-db">Connecting to DB</a></li>
   <li><a href="#mapping-vector-data" id="toc-mapping-vector-data" class="nav-link" data-scroll-target="#mapping-vector-data">Mapping Vector Data</a></li>
-  <li><a href="#contextual-resources-for-mapping" id="toc-contextual-resources-for-mapping" class="nav-link" data-scroll-target="#contextual-resources-for-mapping">Contextual Resources for Mapping</a>
+  <li><a href="#contextual-resources-for-mapping" id="toc-contextual-resources-for-mapping" class="nav-link" data-scroll-target="#contextual-resources-for-mapping">Contextual Resources for Mapping</a></li>
+  <li><a href="#contextual-resources-for-mapping-1" id="toc-contextual-resources-for-mapping-1" class="nav-link" data-scroll-target="#contextual-resources-for-mapping-1">Contextual Resources for Mapping</a></li>
+  <li><a href="#rules-for-correctly-drawing-the-street-network" id="toc-rules-for-correctly-drawing-the-street-network" class="nav-link" data-scroll-target="#rules-for-correctly-drawing-the-street-network">Rules for Correctly Drawing the Street Network</a>
   <ul class="collapse">
-  <li><a href="#extra-mile" id="toc-extra-mile" class="nav-link" data-scroll-target="#extra-mile">Extra mile</a></li>
+  <li><a href="#extra-mile" id="toc-extra-mile" class="nav-link" data-scroll-target="#extra-mile">Extra Mile</a></li>
   </ul></li>
   </ul></li>
   </ul>
@@ -242,11 +244,18 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="qgis-mapping" class="level1">
 <h1>QGIS Mapping</h1>
-<p>For those of you looking to dive deeper and challenge yourselves, we have an optional exercise that offers a unique opportunity to work with vector data mapping. This exercise revolves around the historic center of San Marino, aiming to enhance your skills in inputting geometry. You will be creating two GeoPackage Layers: a Buildings layer (Polygon) and a Street Network layer (Linestring).</p>
-<p>This is an excellent chance to not only apply your learning but also to contribute to a collaborative map of San Marino. While you will be assigned specific areas, feel free to select an area of personal interest if you haven’t set up a connection to the database yet. For those eager to go the extra mile, there’s an opportunity to merge tiles and add attributes, further refining your GIS skills. Remember, this is optional but highly beneficial for those interested in advanced mapping techniques.</p>
+<p>As part of our practical exercises in class, we will focus on the essential skill of drawing street networks using vector data mapping. This exercise is centered on the historic center of San Marino and is designed to enhance your proficiency in inputting geometry. The main task will involve creating a GeoPackage Layer:</p>
+<ul>
+<li><strong>Street Network layer</strong>: representing the pedestrian routes through the assigned tiles.</li>
+</ul>
+<p>For those interested in exploring further and applying additional GIS skills, we offer the optional task of creating a Buildings layer:</p>
+<ul>
+<li><strong>Buildings layer</strong> (Optional): representing all the buildings within the assigned tiles.</li>
+</ul>
+<p>This approach allows you to focus on the critical aspect of mapping the street network, with the option to delve into building mapping as an additional challenge.</p>
 <section id="connecting-to-db" class="level2">
 <h2 class="anchored" data-anchor-id="connecting-to-db">Connecting to DB</h2>
-<p>While the exercise is locally based, connecting to NFI’s database is beneficial to access the reference grid and familiarize yourself with its structure. Rest assured, the database is read-only for scholars, ensuring no accidental modifications.</p>
+<p>Although the exercise is primarily based on local data manipulation, connecting to NFI’s database is recommended to access the reference grid and familiarize yourself with its structure. The database is read-only for scholars, ensuring no accidental modifications.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -257,42 +266,29 @@ Tip
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Connection details will be provided on site. Note that all connections to the database are IP protected.</p>
+<p>Connection details will be provided in class. All connections to the database are IP protected.</p>
 </div>
 </div>
 </section>
 <section id="mapping-vector-data" class="level2">
 <h2 class="anchored" data-anchor-id="mapping-vector-data">Mapping Vector Data</h2>
-<p>For this excercise we are going to use the historic center of San Marino. The idea is to familiarize yourself with inputing geometry, first. Attributes will be added at later stages. Each scholar, can produce two individual GeoPackage Layers (locally):</p>
+<p>We will use the historic center of San Marino for this exercise, aiming to familiarize you with inputting geometry. Attributes will be considered at later stages. Each scholar can produce individual GeoPackage Layers (locally):</p>
 <ul>
-<li><strong>Buildings layer</strong>: (Polygons, <code>CRS: 3035</code>) representing all the buildings within the tiles assigned.
+<li><strong>Street Network layer</strong> (Linestring, <code>CRS: 3035</code>) is the primary focus, emphasizing the mapping of pedestrian routes.
 <ul>
-<li>suggested name : <em>buildings_[scholarname]</em></li>
+<li>Suggested name: <em>network_[scholarname]</em></li>
 </ul></li>
-<li><strong>Street Network layer</strong>: (Linestring, <code>CRS: 3035</code>) representing the pedestrian routes through the tiles assigned.
+<li><strong>Buildings layer</strong> (Polygons, <code>CRS: 3035</code>) for those who wish to further challenge themselves by mapping the area’s buildings.
 <ul>
-<li>suggested name : <em>network_[scholarname]</em></li>
+<li>Suggested name: <em>buildings_[scholarname]</em></li>
 </ul></li>
 </ul>
-<p>Each scholar has been assigned with a number (in class) refering to different areas of the republic that can be found in the following path of <code>nfi</code> database: - <code>nfi.sanmarino.base_mapping</code></p>
-<p>Explore the attributes <code>buildings</code> and <code>street_network</code> to see your areas and collaborate with the neighbour tiles.</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>If you have not set up a connection to the DB, you can ask us. But alternatively you can just pick an area that you find interesting. If doing the latter, note that we might not end up with a full collaborative map of San Marino.</p>
-</div>
-</div>
+<p>Scholars will refer to specific areas of the republic found in the <code>nfi</code> database path: - <code>nfi.sanmarino.base_mapping</code></p>
+<p>Explore the <code>street_network</code> attribute to see your areas and collaborate with neighboring tiles.</p>
 </section>
 <section id="contextual-resources-for-mapping" class="level2">
 <h2 class="anchored" data-anchor-id="contextual-resources-for-mapping">Contextual Resources for Mapping</h2>
-<p>For a better understanding of your mapping area, utilize <code>OSM</code> or <code>Google</code> XYZ Tiles as detailed in our <a href="chapter_1/qgis.qmd">previous lesson</a>. Additionally, explore the <a href="https://ion.cesium.com/stories/viewer/?id=0806b0b0-46ac-4a95-9410-92cac329574b">3D CESIUM Story</a> for an immersive 3D view of the 2D polygons you’re mapping. These resources will enhance your perspective and accuracy in representing San Marino’s historic center.</p>
+<p>Use <code>OSM</code> or <code>Google</code> XYZ Tiles, as detailed in our previous lesson, for a better understanding of your mapping area. The <a href="https://ion.cesium.com/stories/viewer/?id=0806b0b0-46ac-4a95-9410-92cac329574b">3D CESIUM Story</a> offers a 3D view of the 2D polygons you’ll be mapping, enhancing your perspective and accuracy.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -303,13 +299,31 @@ Tip
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Make sure you activate the <code>Snapping Toolbar</code> by right-clicking on any empty space of the toolbar. Explore different pixel tolerance values as well as options like the <code>Topological Editing</code> and the <code>Intersection Snapping</code>.</p>
+<p>Activate the <code>Snapping Toolbar</code> for precision in mapping. Experiment with different pixel tolerance values and options like <code>Topological Editing</code> and <code>Intersection Snapping</code>.</p>
 </div>
 </div>
+</section>
+<section id="contextual-resources-for-mapping-1" class="level2">
+<h2 class="anchored" data-anchor-id="contextual-resources-for-mapping-1">Contextual Resources for Mapping</h2>
+<p>For a better understanding of your mapping area, utilize <code>OSM</code> or <code>Google</code> XYZ Tiles as detailed in our <a href="chapter_1/qgis.qmd">previous lesson</a>. Additionally, explore the <a href="https://ion.cesium.com/stories/viewer/?id=0806b0b0-46ac-4a95-9410-92cac329574b">3D CESIUM Story</a> for an immersive 3D view of the 2D polygons and lines you will be mapping. These resources will enhance your perspective and accuracy in representing San Marino’s historic center.</p>
+</section>
+<section id="rules-for-correctly-drawing-the-street-network" class="level2">
+<h2 class="anchored" data-anchor-id="rules-for-correctly-drawing-the-street-network">Rules for Correctly Drawing the Street Network</h2>
+<p>To ensure the accuracy and efficiency of the street network layer you create, follow these guidelines:</p>
+<ul>
+<li><strong>Intersection to Intersection</strong>: A ‘street’ should be mapped from one intersection to another. If the street continues beyond an intersection, it should be added as an additional feature. A single street can have several intermediate points, but the fewer, the better.</li>
+<li><strong>Snapping</strong>: All beginnings and ends of streets must be snapped to each other to enable correct analysis and connectivity within the network.</li>
+<li><strong>Boundary Responsibility</strong>: For the edges of your assigned tiles, you are responsible for mapping features that cross the bottom and right boundaries. This means if a street or building extends beyond these edges, you should include it in your drawing. Conversely, features that extend beyond the top or left boundaries of your tile are the responsibility of your neighboring scholars. Therefore, you can omit such streets or buildings, assuming they will be covered by your colleagues’ efforts.</li>
+<li><strong>Unique ID Column</strong>: Ideally, each table should have at least one ID column with no duplicates.
+<ul>
+<li>In QGIS, you can ensure uniqueness by using the “Field Calculator” to create a new field. Use an expression like <code>@row_number</code> to automatically assign a unique number to each feature.</li>
+</ul></li>
+<li><strong>Minimizing Elements</strong>: The most effective street network is one described using the fewest number of elements while still accurately representing all possible connections. Strive for simplicity and completeness in your mapping.</li>
+</ul>
 <section id="extra-mile" class="level3">
-<h3 class="anchored" data-anchor-id="extra-mile">Extra mile</h3>
-<p>If you’re feeling like doing the extra mile, you can start combining the tiles from your adjacent neighbours and/or adding attributes to your current layers.</p>
-<p>When merging files, one must make sure that all the Linestrings (from the Network layer) and Polygon edges are approprietly snappped.</p>
+<h3 class="anchored" data-anchor-id="extra-mile">Extra Mile</h3>
+<p>Engage further by combining tiles with your adjacent neighbors and/or adding attributes to your layers, especially if you choose to work on the optional Buildings layer.</p>
+<p>When merging files, ensure that all Linestrings (from the Network layer) and Polygon edges are appropriately snapped.</p>
 
 
 </section>
