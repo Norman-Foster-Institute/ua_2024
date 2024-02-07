@@ -15,7 +15,7 @@ Each excersice will be lead by a live demo of the main steps to better control t
 Because this will be the first time you log in, you will have to log in into [www.carto.com](https://carto.com/) using your GitHub account (you will need the Student Development Pack approved - see the [Software & Accounts section](chapter_0/installation.qmd)).
 
 > Search for `Are you a student?` and `Access using GitHub`
-> ![Use GitHub login](./images/carto_login.png){width=60%}
+> ![Use GitHub login](./images/carto_login.png){width=250}
 
 Follow the stepts to create your account and **note that each scholar will create a separate 'organization'**. This means all your files and maps will be yours and you will not be joining NFI's organization. You can name ir however you like!
 
@@ -51,14 +51,14 @@ Depending on the geometry types, you will have different option for styling your
 
 ::: {.callout-note}
 Always familirise yourself with the data before jumping into modifying its style
-![Show data table](./images/carto_shsow_table.png){fig-align="center" width="300"}
+![Show data table](./images/carto_shsow_table.png){fig-align="center" width="250"}
 :::
 
 For now we encourage you to explore the following three tabs:
 
-- Layers
-- Legends
-- Basemaps
+- **Layers**
+- **Legends**
+- **Basemaps**
 
 ![](./images/carto_builder_tabs.png){fig-align="center" width="250"}
 
