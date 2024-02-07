@@ -63,7 +63,7 @@ For now we encourage you to explore the following three tabs:
 ![](./images/carto_builder_tabs.png){fig-align="center" width="250"}
 
 ### Publish
-When you are happy with the results makesure you `SHARE` your results by publishing them to allow for **public access**
+When you are happy with the map make sure you `SHARE` your results by publishing them to allow for **public access**
 
 - Add your resulting URL to [this notion card](https://www.notion.so/nff-nfi/UA0-9e4950732c1946cbbc7130ee4b853fef?pvs=4)
 
@@ -86,11 +86,35 @@ For this excercise we are going to use the same datasets than we did in our [pre
 ##  Workflows
 From our previous experience, we know that in order to join the datasets, we first had to clean and filter the data. This time we are going to make use of **CARTO's WORKFLOWS**: a no-code visual interface for replicating processes like cleaning, filtering, joining (and much more). [Visit for more.](https://carto.com/workflows)
 
+## Hands-on
+The following are the general steps we encourage you to follow to get familiar with other functions of CARTO.
+
+### Data prep
+For this excerse we just want you to **import the file below** and update the inputs and output parameters
+
 ![CARTO's Workflow](./images/carto_workflow.png){width=100%}
 
-For this excerse, we just want you to **import the file below** and update the inputs and output parameters
+- Under menu `Data Explorer` --> Import both datasets (CSV and SHP) 
+- Under menu `Workflows` -->  `Import` [this SQL procedure](./data/workflow_mad_population.sql "download") to give you a head start
+- Update workflow :
+    - Inputs: data sources according to the location and name of your files
+    - Output: select where you want to store the results
+- `Run` the workflow to identify potential issues
+    - Rememeber to read the `Error messages` (if at all), to debug your workflow
 
-> SQL Procedure for you to have a head start. [DOWNLOAD SQL](./data/workflow_mad_population.sql "download")
+### Data viz
+Now we are going to move into **another builder** instance and load the newly created table (from the steps above).
+This time we encourage you to look into the other two tabs :
+
+- **Widgets** : allow you to interact and filter the data plotted on the map
+- **Interactions** : helps you surface propreties of individual elements in the map
+
+![](./images/carto_builder_tabs2.png){fig-align="center" width="250"}
+
+### Publish
+When you are happy with the map make sure you `SHARE` your results by publishing them to allow for **public access**
+
+- Add your resulting URL to [this notion card](https://www.notion.so/nff-nfi/UA0-9e4950732c1946cbbc7130ee4b853fef?pvs=4)
 
 
 ### Output Example
