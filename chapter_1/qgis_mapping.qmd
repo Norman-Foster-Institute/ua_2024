@@ -1,4 +1,13 @@
-# Hands on with QGIS
+---
+title: QGIS Mapping
+date: 02/08/2024
+date-format: long
+date-modified: last-modified
+lang: en
+language: 
+  title-block-published: "Lecture date"
+  title-block-modified: "Last update"
+---
 
 ## Quirks - Part 2
 
