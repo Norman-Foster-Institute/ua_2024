@@ -572,7 +572,7 @@
     "href": "chapter_1/qgis_mapping.html",
     "title": "QGIS Mapping",
     "section": "",
-    "text": "A common mistake in geospatial statistical analysis is when group-level (aggregated) observations are applied to individuals. Correlations can be different, and may even flip, when calculated\n\nhttps://gisgeography.com",
+    "text": "We’ll first start with another statistical quirk!\n\n\nAn interesting conundrum arises in statistical analysis when relationships between variables for grouped data are assumed to be valid for the individuals within those groupings. Individual level information is lost in the process of grouping information into larger aggregations, and statistical observations computed for these larger groupings may therefore be different, or potentially misleading. As a general rule, use individual level (unaggregated) data where available.\nHere is some background reading:\n\nWikipedia: Ecological Correlations\nBritannica: Ecological Fallacy &gt; The ecological correlations fallacy",
     "crumbs": [
       "GIS Tools",
       "QGIS Mapping"
@@ -583,7 +583,7 @@
     "href": "chapter_1/qgis_mapping.html#quirks---part-2",
     "title": "QGIS Mapping",
     "section": "",
-    "text": "A common mistake in geospatial statistical analysis is when group-level (aggregated) observations are applied to individuals. Correlations can be different, and may even flip, when calculated\n\nhttps://gisgeography.com",
+    "text": "We’ll first start with another statistical quirk!\n\n\nAn interesting conundrum arises in statistical analysis when relationships between variables for grouped data are assumed to be valid for the individuals within those groupings. Individual level information is lost in the process of grouping information into larger aggregations, and statistical observations computed for these larger groupings may therefore be different, or potentially misleading. As a general rule, use individual level (unaggregated) data where available.\nHere is some background reading:\n\nWikipedia: Ecological Correlations\nBritannica: Ecological Fallacy &gt; The ecological correlations fallacy",
     "crumbs": [
       "GIS Tools",
       "QGIS Mapping"
