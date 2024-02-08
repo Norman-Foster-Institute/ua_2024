@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="dcterms.date" content="2024-02-08">
 
-<title>NFI Urban Analytics 2024 - Part 1</title>
+<title>NFI Urban Analytics 2024 - Part 1 - QGIS Mapping</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -93,7 +94,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapter_1/gis.html">GIS Tools</a></li><li class="breadcrumb-item"><a href="../chapter_1/qgis_mapping.html">Hands on with QGIS</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapter_1/gis.html">GIS Tools</a></li><li class="breadcrumb-item"><a href="../chapter_1/qgis_mapping.html">QGIS Mapping</a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -172,7 +173,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapter_1/qgis_mapping.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Hands on with QGIS</span></a>
+ <span class="menu-text">QGIS Mapping</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -222,9 +223,7 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#hands-on-with-qgis" id="toc-hands-on-with-qgis" class="nav-link active" data-scroll-target="#hands-on-with-qgis">Hands on with QGIS</a>
-  <ul class="collapse">
-  <li><a href="#quirks---part-2" id="toc-quirks---part-2" class="nav-link" data-scroll-target="#quirks---part-2">Quirks - Part 2</a>
+  <li><a href="#quirks---part-2" id="toc-quirks---part-2" class="nav-link active" data-scroll-target="#quirks---part-2">Quirks - Part 2</a>
   <ul class="collapse">
   <li><a href="#ecological-fallacy" id="toc-ecological-fallacy" class="nav-link" data-scroll-target="#ecological-fallacy">Ecological Fallacy</a></li>
   </ul></li>
@@ -237,18 +236,43 @@ ul.task-list li input[type="checkbox"] {
   <ul class="collapse">
   <li><a href="#extra-mile" id="toc-extra-mile" class="nav-link" data-scroll-target="#extra-mile">Extra Mile</a></li>
   </ul></li>
-  </ul></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapter_1/gis.html">GIS Tools</a></li><li class="breadcrumb-item"><a href="../chapter_1/qgis_mapping.html">QGIS Mapping</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">QGIS Mapping</h1>
+</div>
 
 
 
-<section id="hands-on-with-qgis" class="level1">
-<h1>Hands on with QGIS</h1>
+<div class="quarto-title-meta">
+
+    
+    <div>
+    <div class="quarto-title-meta-heading">Lecture date</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">February 8, 2024</p>
+    </div>
+  </div>
+  
+    <div>
+    <div class="quarto-title-meta-heading">Last update</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">February 8, 2024</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+
+</header>
+
+
 <section id="quirks---part-2" class="level2">
 <h2 class="anchored" data-anchor-id="quirks---part-2">Quirks - Part 2</h2>
 <section id="ecological-fallacy" class="level3">
@@ -348,7 +372,6 @@ Tip
 <p>When merging files, ensure that all Linestrings (from the Network layer) and Polygon edges are appropriately snapped.</p>
 
 
-</section>
 </section>
 </section>
 
