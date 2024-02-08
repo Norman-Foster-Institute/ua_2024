@@ -164,11 +164,11 @@ Please avoid using any and all data containing private or sensitive data unless 
 :::
 ---
 
-## Quirks (Part 1)
+## Quirks - Part 1
 
 ### MAUP
 
-The **Modifiable Areal Unit Problem (MAUP)** is encountered when using different scales or zones of analysis to group data. This can cause significant changes in the balance and aggregation of data purely based on how it is grouped. This can have a potentially significant impact on visualisation or analysis. MAUP is exploited for political purposes through the process of gerrymandering.
+The **Modifiable Areal Unit Problem (MAUP)** is encountered when using different scales or zones of analysis to group data. This can cause significant changes in the balance and aggregation of data based on how it is grouped. This can have a potentially significant impact on visualisation or analysis. MAUP is exploited for political purposes through the process of gerrymandering.
 
 > [https://gisgeography.com](https://gisgeography.com/maup-modifiable-areal-unit-problem)
 

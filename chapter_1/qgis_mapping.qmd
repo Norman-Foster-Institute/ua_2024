@@ -1,5 +1,14 @@
-# QGIS Mapping
+# Hands on with QGIS
 
+## Quirks - Part 2
+
+### Ecological Fallacy
+
+A common mistake in geospatial statistical analysis is when group-level (aggregated) observations are applied to individuals. Correlations can be different, and may even flip, when calculated 
+
+> [https://gisgeography.com](https://gisgeography.com/maup-modifiable-areal-unit-problem)
+
+## Mapping
 As part of our practical exercises in class, we will focus on the essential skill of drawing street networks using vector data mapping. This exercise is centered on the historic center of San Marino and is designed to enhance your proficiency in inputting geometry. The main task will involve creating a GeoPackage Layer:
 
 - **Street Network layer**: representing the pedestrian routes through the assigned tiles. 
@@ -42,7 +51,7 @@ Activate the `Snapping Toolbar` for precision in mapping. Experiment with differ
 :::
 
 ## Contextual Resources for Mapping
-For a better understanding of your mapping area, utilize `OSM` or `Bing maps` XYZ Tiles as detailed in our [previous lesson](chapter_1/qgis.qmd). Additionally, explore the [3D CESIUM Story](https://ion.cesium.com/stories/viewer/?id=0806b0b0-46ac-4a95-9410-92cac329574b) for an immersive 3D view of the 2D polygons and lines you will be mapping. These resources will enhance your perspective and accuracy in representing San Marino's historic center.
+For a better understanding of your mapping area, utilize `OSM` or `Bing maps` XYZ Tiles as detailed in our [previous lesson](./qgis.qmd). Additionally, explore the [3D CESIUM Story](https://ion.cesium.com/stories/viewer/?id=0806b0b0-46ac-4a95-9410-92cac329574b) for an immersive 3D view of the 2D polygons and lines you will be mapping. These resources will enhance your perspective and accuracy in representing San Marino's historic center.
 
 ## Rules for Correctly Drawing the Street Network
 

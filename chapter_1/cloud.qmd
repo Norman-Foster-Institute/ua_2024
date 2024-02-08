@@ -12,7 +12,7 @@ The are two excercises that will help us explore different components of the pla
 Each excersice will be lead by a live demo of the main steps to better control the visualization of the datasets. Then, each student will have time to explore on their own time the tool and come up with a shereable map.
 
 ## Connecting to CARTO
-Because this will be the first time you log in, you will have to log in into [www.carto.com](https://carto.com/) using your GitHub account (you will need the Student Development Pack approved - see the [Software & Accounts section](chapter_0/installation.qmd)).
+Because this will be the first time you log in, you will have to log in into [www.carto.com](https://carto.com/) using your GitHub account (you will need the Student Development Pack approved - see the [Software & Accounts section](../chapter_0/installation.qmd)).
 
 > Search for `Are you a student?` and `Access using GitHub`
 > 
