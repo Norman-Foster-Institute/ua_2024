@@ -21,7 +21,7 @@ Here is some background reading:
 
 - [Wikipedia: Ecological Correlations](https://en.wikipedia.org/wiki/Ecological_correlation)
 - [Britannica: Ecological Fallacy](https://www.britannica.com/science/ecological-fallacy)
-> [The ecological correlations fallacy](https://simplexct.com/the-ecological-correlations-fallacy)
+- [The ecological correlations fallacy](https://simplexct.com/the-ecological-correlations-fallacy)
 
 ## Mapping
 As part of our practical exercises in class, we will focus on the essential skill of drawing street networks using vector data mapping. This exercise is centered on the historic center of San Marino and is designed to enhance your proficiency in inputting geometry. The main task will involve creating a GeoPackage Layer:
