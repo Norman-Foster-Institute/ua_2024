@@ -11,11 +11,17 @@ language:
 
 ## Quirks - Part 2
 
+We'll first start with another statistical quirk!
+
 ### Ecological Fallacy
 
-A common mistake in geospatial statistical analysis is when group-level (aggregated) observations are applied to individuals. Correlations can be different, and may even flip, when calculated 
+An interesting conundrum arises in statistical analysis when relationships between variables for grouped data are assumed to be valid for the individuals within those groupings. Individual level information is lost in the process of grouping information into larger aggregations, and statistical observations computed for these larger groupings may therefore be different, or potentially misleading. As a general rule, use individual level (unaggregated) data where available.
 
-> [https://gisgeography.com](https://gisgeography.com/maup-modifiable-areal-unit-problem)
+Here is some background reading:
+
+- [Wikipedia: Ecological Correlations](https://en.wikipedia.org/wiki/Ecological_correlation)
+- [Britannica: Ecological Fallacy](https://www.britannica.com/science/ecological-fallacy)
+> [The ecological correlations fallacy](https://simplexct.com/the-ecological-correlations-fallacy)
 
 ## Mapping
 As part of our practical exercises in class, we will focus on the essential skill of drawing street networks using vector data mapping. This exercise is centered on the historic center of San Marino and is designed to enhance your proficiency in inputting geometry. The main task will involve creating a GeoPackage Layer:
