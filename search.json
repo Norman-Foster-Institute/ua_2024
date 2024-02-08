@@ -572,7 +572,7 @@
     "href": "chapter_1/qgis_mapping.html",
     "title": "QGIS Mapping",
     "section": "",
-    "text": "We’ll first start with another statistical quirk!\n\n\nAn interesting conundrum arises in statistical analysis when relationships between variables for grouped data are assumed to be valid for the individuals within those groupings. Individual level information is lost in the process of grouping information into larger aggregations, and statistical observations computed for these larger groupings may therefore be different, or potentially misleading. As a general rule, use individual level (unaggregated) data where available.\nHere is some background reading:\n\nWikipedia: Ecological Correlations\nBritannica: Ecological Fallacy\nThe ecological correlations fallacy",
+    "text": "We’ll first start with another statistical quirk!\n\n\nAn interesting conundrum arises in statistical analysis when relationships between variables for grouped data are assumed to be valid for the individuals within those groupings. Individual level information is lost in the process of grouping information into larger aggregations, and statistical observations computed for these larger groupings may therefore be different, or potentially misleading in the context of individuals. As a general rule, use individual level (unaggregated) data or the smallest groupings of data (e.g. census statistics) available.\nHere is some background reading, with some examples:\n\nWikipedia: Ecological Correlations\nBritannica: Ecological Fallacy\nThe ecological correlations fallacy",
     "crumbs": [
       "GIS Tools",
       "QGIS Mapping"
@@ -583,7 +583,7 @@
     "href": "chapter_1/qgis_mapping.html#quirks---part-2",
     "title": "QGIS Mapping",
     "section": "",
-    "text": "We’ll first start with another statistical quirk!\n\n\nAn interesting conundrum arises in statistical analysis when relationships between variables for grouped data are assumed to be valid for the individuals within those groupings. Individual level information is lost in the process of grouping information into larger aggregations, and statistical observations computed for these larger groupings may therefore be different, or potentially misleading. As a general rule, use individual level (unaggregated) data where available.\nHere is some background reading:\n\nWikipedia: Ecological Correlations\nBritannica: Ecological Fallacy\nThe ecological correlations fallacy",
+    "text": "We’ll first start with another statistical quirk!\n\n\nAn interesting conundrum arises in statistical analysis when relationships between variables for grouped data are assumed to be valid for the individuals within those groupings. Individual level information is lost in the process of grouping information into larger aggregations, and statistical observations computed for these larger groupings may therefore be different, or potentially misleading in the context of individuals. As a general rule, use individual level (unaggregated) data or the smallest groupings of data (e.g. census statistics) available.\nHere is some background reading, with some examples:\n\nWikipedia: Ecological Correlations\nBritannica: Ecological Fallacy\nThe ecological correlations fallacy",
     "crumbs": [
       "GIS Tools",
       "QGIS Mapping"
