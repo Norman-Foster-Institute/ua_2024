@@ -15,9 +15,9 @@ We'll first start with another statistical quirk!
 
 ### Ecological Fallacy
 
-An interesting conundrum arises in statistical analysis when relationships between variables for grouped data are assumed to be valid for the individuals within those groupings. Individual level information is lost in the process of grouping information into larger aggregations, and statistical observations computed for these larger groupings may therefore be different, or potentially misleading. As a general rule, use individual level (unaggregated) data where available.
+An interesting conundrum arises in statistical analysis when relationships between variables for grouped data are assumed to be valid for the individuals within those groupings. Individual level information is lost in the process of grouping information into larger aggregations, and statistical observations computed for these larger groupings may therefore be different, or potentially misleading in the context of individuals. As a general rule, use individual level (unaggregated) data or the smallest groupings of data (e.g. census statistics) available.
 
-Here is some background reading:
+Here is some background reading, with some examples:
 
 - [Wikipedia: Ecological Correlations](https://en.wikipedia.org/wiki/Ecological_correlation)
 - [Britannica: Ecological Fallacy](https://www.britannica.com/science/ecological-fallacy)
