@@ -1,4 +1,13 @@
-# Intro to QGIS
+---
+title: Intro to QGIS
+date: 01/31/2024
+date-format: long
+date-modified: last-modified
+lang: en
+language: 
+  title-block-published: "Lecture date"
+  title-block-modified: "Last update"
+---
 
 ## QGIS UI
 

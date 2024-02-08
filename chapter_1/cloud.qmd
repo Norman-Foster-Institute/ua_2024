@@ -1,4 +1,13 @@
-# Cloud GIS
+---
+title: Cloud GIS
+date: 02/08/2024
+date-format: long
+date-modified: last-modified
+lang: en
+language: 
+  title-block-published: "Lecture date"
+  title-block-modified: "Last update"
+---
 
 This will be an in-class hands-on session providing an introduction to the use of CARTO for publishing and styling interactive maps.
 
