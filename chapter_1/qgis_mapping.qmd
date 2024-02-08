@@ -32,14 +32,17 @@ Scholars will refer to specific areas of the republic found in the `nfi` databas
 Explore the `street_network` attribute to see your areas and collaborate with neighboring tiles.
 
 ## Contextual Resources for Mapping
-Use `OSM` or `Google` XYZ Tiles, as detailed in our previous lesson, for a better understanding of your mapping area. The [3D CESIUM Story](https://ion.cesium.com/stories/viewer/?id=0806b0b0-46ac-4a95-9410-92cac329574b) offers a 3D view of the 2D polygons you'll be mapping, enhancing your perspective and accuracy.
+Use `OSM` or `Bing maps` XYZ Tiles, as detailed in our previous lesson, for a better understanding of your mapping area. The [3D CESIUM Story](https://ion.cesium.com/stories/viewer/?id=0806b0b0-46ac-4a95-9410-92cac329574b) offers a 3D view of the 2D polygons you'll be mapping, enhancing your perspective and accuracy.
+
+- OSM tile: https://tile.openstreetmap.org/{z}/{x}/{y}.png
+- Bing tile URL : https://t0.tiles.virtualearth.net/tiles/a{q}.jpeg?g=685&mkt=en-us&n=z
 
 ::: {.callout-tip}
 Activate the `Snapping Toolbar` for precision in mapping. Experiment with different pixel tolerance values and options like `Topological Editing` and `Intersection Snapping`.
 :::
 
 ## Contextual Resources for Mapping
-For a better understanding of your mapping area, utilize `OSM` or `Google` XYZ Tiles as detailed in our [previous lesson](chapter_1/qgis.qmd). Additionally, explore the [3D CESIUM Story](https://ion.cesium.com/stories/viewer/?id=0806b0b0-46ac-4a95-9410-92cac329574b) for an immersive 3D view of the 2D polygons and lines you will be mapping. These resources will enhance your perspective and accuracy in representing San Marino's historic center.
+For a better understanding of your mapping area, utilize `OSM` or `Bing maps` XYZ Tiles as detailed in our [previous lesson](chapter_1/qgis.qmd). Additionally, explore the [3D CESIUM Story](https://ion.cesium.com/stories/viewer/?id=0806b0b0-46ac-4a95-9410-92cac329574b) for an immersive 3D view of the 2D polygons and lines you will be mapping. These resources will enhance your perspective and accuracy in representing San Marino's historic center.
 
 ## Rules for Correctly Drawing the Street Network
 
