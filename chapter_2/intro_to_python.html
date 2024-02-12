@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2024-02-08">
+<meta name="dcterms.date" content="2024-02-12">
 
-<title>NFI Urban Analytics 2024 - Part 1 - QGIS Mapping</title>
+<title>NFI Urban Analytics 2024 - Part 1 - Welcome to Python</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,6 +21,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -31,8 +65,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../chapter_1/cloud.html" rel="next">
-<link href="../chapter_1/qgis.html" rel="prev">
 <link href=".././assets/nfi_logo.png" rel="icon" type="image/png">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -94,7 +126,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapter_1/gis.html">GIS Tools</a></li><li class="breadcrumb-item"><a href="../chapter_1/qgis_mapping.html">QGIS Mapping</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Welcome to Python</li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -151,13 +183,13 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
  <span class="menu-text">GIS Tools</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapter_1/gis.html" class="sidebar-item-text sidebar-link">
@@ -172,7 +204,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapter_1/qgis_mapping.html" class="sidebar-item-text sidebar-link active">
+  <a href="../chapter_1/qgis_mapping.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">QGIS Mapping</span></a>
   </div>
 </li>
@@ -223,28 +255,17 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#quirks---part-2" id="toc-quirks---part-2" class="nav-link active" data-scroll-target="#quirks---part-2">Quirks - Part 2</a>
-  <ul class="collapse">
-  <li><a href="#ecological-fallacy" id="toc-ecological-fallacy" class="nav-link" data-scroll-target="#ecological-fallacy">Ecological Fallacy</a></li>
-  </ul></li>
-  <li><a href="#mapping" id="toc-mapping" class="nav-link" data-scroll-target="#mapping">Mapping</a></li>
-  <li><a href="#connecting-to-db" id="toc-connecting-to-db" class="nav-link" data-scroll-target="#connecting-to-db">Connecting to DB</a></li>
-  <li><a href="#mapping-vector-data" id="toc-mapping-vector-data" class="nav-link" data-scroll-target="#mapping-vector-data">Mapping Vector Data</a></li>
-  <li><a href="#contextual-resources-for-mapping" id="toc-contextual-resources-for-mapping" class="nav-link" data-scroll-target="#contextual-resources-for-mapping">Contextual Resources for Mapping</a></li>
-  <li><a href="#contextual-resources-for-mapping-1" id="toc-contextual-resources-for-mapping-1" class="nav-link" data-scroll-target="#contextual-resources-for-mapping-1">Contextual Resources for Mapping</a></li>
-  <li><a href="#rules-for-correctly-drawing-the-street-network" id="toc-rules-for-correctly-drawing-the-street-network" class="nav-link" data-scroll-target="#rules-for-correctly-drawing-the-street-network">Rules for Correctly Drawing the Street Network</a>
-  <ul class="collapse">
-  <li><a href="#extra-mile" id="toc-extra-mile" class="nav-link" data-scroll-target="#extra-mile">Extra Mile</a></li>
-  </ul></li>
+  <li><a href="#some-basics" id="toc-some-basics" class="nav-link active" data-scroll-target="#some-basics">Some basics</a></li>
+  <li><a href="#importing-packages" id="toc-importing-packages" class="nav-link" data-scroll-target="#importing-packages">Importing packages</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapter_1/gis.html">GIS Tools</a></li><li class="breadcrumb-item"><a href="../chapter_1/qgis_mapping.html">QGIS Mapping</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">QGIS Mapping</h1>
+<h1 class="title">Welcome to Python</h1>
 </div>
 
 
@@ -255,7 +276,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Lecture date</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">February 8, 2024</p>
+      <p class="date">February 12, 2024</p>
     </div>
   </div>
   
@@ -273,110 +294,168 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="quirks---part-2" class="level2">
-<h2 class="anchored" data-anchor-id="quirks---part-2">Quirks - Part 2</h2>
-<p>We’ll first start with another statistical quirk!</p>
-<section id="ecological-fallacy" class="level3">
-<h3 class="anchored" data-anchor-id="ecological-fallacy">Ecological Fallacy</h3>
-<p>An interesting conundrum arises in statistical analysis when relationships between variables for grouped data are assumed to be valid for the individuals within those groupings. Individual level information is lost in the process of grouping information into larger aggregations, and statistical observations computed for these larger groupings may therefore be different, or potentially misleading in the context of individuals. As a general rule, use individual level (unaggregated) data or the smallest groupings of data (e.g.&nbsp;census statistics) available.</p>
-<p>Here is some background reading, with some examples:</p>
-<ul>
-<li><a href="https://en.wikipedia.org/wiki/Ecological_correlation">Wikipedia: Ecological Correlations</a></li>
-<li><a href="https://www.britannica.com/science/ecological-fallacy">Britannica: Ecological Fallacy</a></li>
-<li><a href="https://simplexct.com/the-ecological-correlations-fallacy">The ecological correlations fallacy</a></li>
-</ul>
+<p>Python is a great language for general purpose data wrangling. If you’re working with geospatial data and general data science then it is arguably THE language. (Though “R” fans will probably debate this!)</p>
+<blockquote class="blockquote">
+<p>If you get stuck, remember that ChatGPT is really good at debugging code! Also remember that there is a treasure trove of online documentation describing APIs and thousands of community-supported questions on forums such as Stack Overflow for finding solutions to common questions.</p>
+</blockquote>
+<section id="some-basics" class="level2">
+<h2 class="anchored" data-anchor-id="some-basics">Some basics</h2>
+<p>Fire up your JupyterLab and follow along by typing and executing these examples.</p>
+<div id="a549e66a" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>a_variable <span class="op">=</span> <span class="st">'boo'</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(a_variable)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>boo</code></pre>
+</div>
+</div>
+<p>Python works with variables which store references to information. These variables can be named so that they are easy to remember and should be descriptive so that they make their purpose clear. By convention, variables in Python use lower caps with underscores and should not start with a number.</p>
+<p>Notice that these variable names don’t tell us very much:</p>
+<div id="30739489" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="dv">21</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> <span class="dv">34</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>d <span class="op">=</span> b <span class="op">-</span> a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>But these ones do:</p>
+<div id="0d24d903" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>temp_day_1 <span class="op">=</span> <span class="dv">21</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>temp_day_2 <span class="op">=</span> <span class="dv">34</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>temp_diff <span class="op">=</span> temp_day_2 <span class="op">-</span> temp_day_1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>You should also use comments to explain your code, this becomes important as the code grows in complexity. Use a hash symbol for a line comment and triple quotes for block comments.</p>
+<div id="c7797c33" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">"""</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co">The following lines detail the procedure for</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co">computing a temperature difference from day 1 to 2.</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co">"""</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co"># the temperature on day 1</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>temp_day_1 <span class="op">=</span> <span class="dv">21</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co"># the temperature on day 2</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>temp_day_2 <span class="op">=</span> <span class="dv">34</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="co"># the temperature difference from day 1 to 2</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>temp_diff <span class="op">=</span> temp_day_2 <span class="op">-</span> temp_day_1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>As above, variables can store different kinds of data, including <code>str</code>, <code>int</code>, <code>float</code> (decimal), and other types such as “booleans” (<code>True</code> and <code>False</code>) and <code>None</code> types. If you want to find out what <code>type</code> a variable is, you can use the built-in <code>type()</code> method.</p>
+<div id="221c88b5" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(a_variable))</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(temp_diff))</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(<span class="dv">1</span>))</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(<span class="fl">1.0</span>))</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(<span class="va">True</span>))</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(<span class="va">None</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;class 'str'&gt;
+&lt;class 'int'&gt;
+&lt;class 'int'&gt;
+&lt;class 'float'&gt;
+&lt;class 'bool'&gt;
+&lt;class 'NoneType'&gt;</code></pre>
+</div>
+</div>
+<p>Once you’ve assigned a value to a variable, you can use this variable to do things like maths.</p>
+<div id="10d0cceb" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>temp_day_1 <span class="op">=</span> <span class="dv">21</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>temp_day_2 <span class="op">=</span> <span class="dv">34</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'add'</span>, temp_day_1 <span class="op">+</span> temp_day_2)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'subtract'</span>, temp_day_2 <span class="op">-</span> temp_day_1)</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'divide'</span>, temp_day_2 <span class="op">/</span> <span class="dv">2</span>)</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="co"># modulo gives the remainder after division</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'modulo'</span>, temp_day_2 <span class="op">%</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>add 55
+subtract 13
+divide 17.0
+modulo 0</code></pre>
+</div>
+</div>
+<p>You can do surprising things with strings as well.</p>
+<div id="0e11753f" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>part_1 <span class="op">=</span> <span class="st">'Hello'</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>part_2 <span class="op">=</span> <span class="st">'there!'</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co"># here we'll combine the parts using an empty space</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>together <span class="op">=</span> part_1 <span class="op">+</span> <span class="st">' '</span> <span class="op">+</span> part_2</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(together)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Hello there!</code></pre>
+</div>
+</div>
+<p>Python has some other types that can be useful. One of these is lists, which use square brackets to collect several items into the same variable.</p>
+<div id="12d50513" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>my_list <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>]</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="co"># gets the length of a list</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">len</span>(my_list))</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="co"># indexes into the first item in a list</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="co"># in Python, lists are zero indexed</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>get_something <span class="op">=</span> my_list[<span class="dv">0</span>]</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'first item:'</span>, get_something)</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="co"># gets the last item</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>get_something_else <span class="op">=</span> my_list[<span class="op">-</span><span class="dv">1</span>]</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'last item:'</span>, get_something_else)</span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a><span class="co"># gets list entries from index 0 to before index 2</span></span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>get_several_things <span class="op">=</span> my_list[<span class="dv">0</span>:<span class="dv">2</span>]</span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'several items:'</span>, get_several_things)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>4
+first item: 1
+last item: 4
+several items: [1, 2]</code></pre>
+</div>
+</div>
+<p>Note that you can iterate over lists using <code>for</code> and <code>in</code> syntax.</p>
+<div id="04f4d9ff" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># this will print each number in my_list</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> num <span class="kw">in</span> my_list:</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># indentation has to be used consistently</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(num)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>1
+2
+3
+4</code></pre>
+</div>
+</div>
+<p>Python has a number of built-in convenience methods:</p>
+<div id="1cef4bc6" class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'min'</span>, <span class="bu">min</span>(my_list))</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'max'</span>, <span class="bu">max</span>(my_list))</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'reversed'</span>, <span class="bu">list</span>(<span class="bu">reversed</span>(my_list)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>min 1
+max 4
+reversed [4, 3, 2, 1]</code></pre>
+</div>
+</div>
 </section>
-</section>
-<section id="mapping" class="level2">
-<h2 class="anchored" data-anchor-id="mapping">Mapping</h2>
-<p>As part of our practical exercises in class, we will focus on the essential skill of drawing street networks using vector data mapping. This exercise is centered on the historic center of San Marino and is designed to enhance your proficiency in inputting geometry. The main task will involve creating a GeoPackage Layer:</p>
-<ul>
-<li><strong>Street Network layer</strong>: representing the pedestrian routes through the assigned tiles.</li>
-</ul>
-<p>For those interested in exploring further and applying additional GIS skills, we offer the optional task of creating a Buildings layer:</p>
-<ul>
-<li><strong>Buildings layer</strong> (Optional): representing all the buildings within the assigned tiles.</li>
-</ul>
-<p>This approach allows you to focus on the critical aspect of mapping the street network, with the option to delve into building mapping as an additional challenge.</p>
-</section>
-<section id="connecting-to-db" class="level2">
-<h2 class="anchored" data-anchor-id="connecting-to-db">Connecting to DB</h2>
-<p>Although the exercise is primarily based on local data manipulation, connecting to NFI’s database is recommended to access the reference grid and familiarize yourself with its structure. The database is read-only for scholars, ensuring no accidental modifications.</p>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Tip
+<section id="importing-packages" class="level2">
+<h2 class="anchored" data-anchor-id="importing-packages">Importing packages</h2>
+<p>Python can import packages which contain reusable methods.</p>
+<p>Packages have to be installed before they are used, unless they are part of the default Python library. Let’s install the <code>shapely</code> package. Note that this method of installing a package is particular to JupyterLab Notebooks, and only has to be done if the package is not yet installed.</p>
+<div id="f95676ca" class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># checks that the shapely package</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="co"># is installed for this notebook</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install shapely</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Requirement already satisfied: shapely in /opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages (2.0.2)
+Requirement already satisfied: numpy&gt;=1.14 in /opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages (from shapely) (1.26.3)
+
+[notice] A new release of pip is available: 23.2.1 -&gt; 24.0
+[notice] To update, run: pip install --upgrade pip</code></pre>
 </div>
 </div>
-<div class="callout-body-container callout-body">
-<p>Connection details will be provided in class. All connections to the database are IP protected.</p>
+<p>Once installed and available, we can use modules provided by the package. Here we are using the <code>from</code> and <code>import</code> syntax to import the <code>geometry</code> module which is available from the <code>shapely</code> package.</p>
+<div id="e2bb521c" class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> shapely <span class="im">import</span> geometry</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><code>shapely</code> let’s us do some neat things with spatial information. Let’s define a point.</p>
+<div id="4d85067f" class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>point_a <span class="op">=</span> geometry.Point(<span class="dv">0</span>, <span class="dv">0</span>)</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(point_a)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>POINT (0 0)</code></pre>
 </div>
 </div>
-</section>
-<section id="mapping-vector-data" class="level2">
-<h2 class="anchored" data-anchor-id="mapping-vector-data">Mapping Vector Data</h2>
-<p>We will use the historic center of San Marino for this exercise, aiming to familiarize you with inputting geometry. Attributes will be considered at later stages. Each scholar can produce individual GeoPackage Layers (locally):</p>
-<ul>
-<li><strong>Street Network layer</strong> (Linestring, <code>CRS: 3035</code>) is the primary focus, emphasizing the mapping of pedestrian routes.
-<ul>
-<li>Suggested name: <em>network_[scholarname]</em></li>
-</ul></li>
-<li><strong>Buildings layer</strong> (Polygons, <code>CRS: 3035</code>) for those who wish to further challenge themselves by mapping the area’s buildings.
-<ul>
-<li>Suggested name: <em>buildings_[scholarname]</em></li>
-</ul></li>
-</ul>
-<p>Scholars will refer to specific areas of the republic found in the <code>nfi</code> database path: - <code>nfi.sanmarino.base_mapping</code></p>
-<p>Explore the <code>street_network</code> attribute to see your areas and collaborate with neighboring tiles.</p>
-</section>
-<section id="contextual-resources-for-mapping" class="level2">
-<h2 class="anchored" data-anchor-id="contextual-resources-for-mapping">Contextual Resources for Mapping</h2>
-<p>Use <code>OSM</code> or <code>Bing maps</code> XYZ Tiles, as detailed in our previous lesson, for a better understanding of your mapping area. The <a href="https://ion.cesium.com/stories/viewer/?id=0806b0b0-46ac-4a95-9410-92cac329574b">3D CESIUM Story</a> offers a 3D view of the 2D polygons you’ll be mapping, enhancing your perspective and accuracy.</p>
-<ul>
-<li>OSM tile: https://tile.openstreetmap.org/{z}/{x}/{y}.png</li>
-<li>Bing tile URL : https://t0.tiles.virtualearth.net/tiles/a{q}.jpeg?g=685&amp;mkt=en-us&amp;n=z</li>
-</ul>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Tip
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Activate the <code>Snapping Toolbar</code> for precision in mapping. Experiment with different pixel tolerance values and options like <code>Topological Editing</code> and <code>Intersection Snapping</code>.</p>
-</div>
-</div>
-</section>
-<section id="contextual-resources-for-mapping-1" class="level2">
-<h2 class="anchored" data-anchor-id="contextual-resources-for-mapping-1">Contextual Resources for Mapping</h2>
-<p>For a better understanding of your mapping area, utilize <code>OSM</code> or <code>Bing maps</code> XYZ Tiles as detailed in our <a href="../chapter_1/qgis.html">previous lesson</a>. Additionally, explore the <a href="https://ion.cesium.com/stories/viewer/?id=0806b0b0-46ac-4a95-9410-92cac329574b">3D CESIUM Story</a> for an immersive 3D view of the 2D polygons and lines you will be mapping. These resources will enhance your perspective and accuracy in representing San Marino’s historic center.</p>
-</section>
-<section id="rules-for-correctly-drawing-the-street-network" class="level2">
-<h2 class="anchored" data-anchor-id="rules-for-correctly-drawing-the-street-network">Rules for Correctly Drawing the Street Network</h2>
-<p>To ensure the accuracy and efficiency of the street network layer you create, follow these guidelines:</p>
-<ul>
-<li><strong>Intersection to Intersection</strong>: A ‘street’ should be mapped from one intersection to another. If the street continues beyond an intersection, it should be added as an additional feature. A single street can have several intermediate points, but the fewer, the better.</li>
-<li><strong>Snapping</strong>: All beginnings and ends of streets must be snapped to each other to enable correct analysis and connectivity within the network.</li>
-<li><strong>Boundary Responsibility</strong>: For the edges of your assigned tiles, you are responsible for mapping features that cross the bottom and right boundaries. This means if a street or building extends beyond these edges, you should include it in your drawing. Conversely, features that extend beyond the top or left boundaries of your tile are the responsibility of your neighboring scholars. Therefore, you can omit such streets or buildings, assuming they will be covered by your colleagues’ efforts.</li>
-<li><strong>Unique ID Column</strong>: Ideally, each table should have at least one ID column with no duplicates.
-<ul>
-<li>In QGIS, you can ensure uniqueness by using the “Field Calculator” to create a new field. Use an expression like <code>@row_number</code> to automatically assign a unique number to each feature.</li>
-</ul></li>
-<li><strong>Minimizing Elements</strong>: The most effective street network is one described using the fewest number of elements while still accurately representing all possible connections. Strive for simplicity and completeness in your mapping.</li>
-</ul>
-<section id="extra-mile" class="level3">
-<h3 class="anchored" data-anchor-id="extra-mile">Extra Mile</h3>
-<p>Engage further by combining tiles with your adjacent neighbors and/or adding attributes to your layers, especially if you choose to work on the optional Buildings layer.</p>
-<p>When merging files, ensure that all Linestrings (from the Network layer) and Polygon edges are appropriately snapped.</p>
+<p>To find</p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -767,18 +846,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-      <a href="../chapter_1/qgis.html" class="pagination-link  aria-label=" intro="" to="" qgis"="">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Intro to QGIS</span>
-      </a>          
-  </div>
-  <div class="nav-page nav-page-next">
-      <a href="../chapter_1/cloud.html" class="pagination-link" aria-label="Cloud GIS">
-        <span class="nav-page-text">Cloud GIS</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
-  </div>
-</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">

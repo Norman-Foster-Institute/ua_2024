@@ -2,50 +2,54 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://Norman-Foster-Institute.github.io/ua_2024/chapter_2/open_source.html</loc>
-    <lastmod>2024-02-08T11:23:50.062Z</lastmod>
+    <lastmod>2024-02-12T19:43:34.968Z</lastmod>
   </url>
   <url>
-    <loc>https://Norman-Foster-Institute.github.io/ua_2024/chapter_2/pandas.html</loc>
-    <lastmod>2024-02-08T11:23:50.062Z</lastmod>
-  </url>
-  <url>
-    <loc>https://Norman-Foster-Institute.github.io/ua_2024/chapter_1/gis.html</loc>
-    <lastmod>2024-02-08T11:23:50.046Z</lastmod>
-  </url>
-  <url>
-    <loc>https://Norman-Foster-Institute.github.io/ua_2024/chapter_1/cloud.html</loc>
-    <lastmod>2024-02-08T11:23:50.038Z</lastmod>
-  </url>
-  <url>
-    <loc>https://Norman-Foster-Institute.github.io/ua_2024/chapter_0/installation.html</loc>
-    <lastmod>2024-02-08T11:23:50.038Z</lastmod>
-  </url>
-  <url>
-    <loc>https://Norman-Foster-Institute.github.io/ua_2024/chapter_0/anaconda.html</loc>
-    <lastmod>2024-02-08T11:23:50.034Z</lastmod>
-  </url>
-  <url>
-    <loc>https://Norman-Foster-Institute.github.io/ua_2024/index.html</loc>
-    <lastmod>2024-02-08T11:23:50.066Z</lastmod>
-  </url>
-  <url>
-    <loc>https://Norman-Foster-Institute.github.io/ua_2024/chapter_0/index.html</loc>
-    <lastmod>2024-02-08T11:23:50.038Z</lastmod>
-  </url>
-  <url>
-    <loc>https://Norman-Foster-Institute.github.io/ua_2024/chapter_1/qgis.html</loc>
-    <lastmod>2024-02-08T11:23:50.062Z</lastmod>
-  </url>
-  <url>
-    <loc>https://Norman-Foster-Institute.github.io/ua_2024/chapter_1/qgis_mapping.html</loc>
-    <lastmod>2024-02-08T11:23:50.062Z</lastmod>
+    <loc>https://Norman-Foster-Institute.github.io/ua_2024/chapter_2/intro_to_python.html</loc>
+    <lastmod>2024-02-12T19:43:34.968Z</lastmod>
   </url>
   <url>
     <loc>https://Norman-Foster-Institute.github.io/ua_2024/chapter_1/sql.html</loc>
-    <lastmod>2024-02-08T11:23:50.062Z</lastmod>
+    <lastmod>2024-02-12T19:43:34.968Z</lastmod>
+  </url>
+  <url>
+    <loc>https://Norman-Foster-Institute.github.io/ua_2024/chapter_1/qgis_mapping.html</loc>
+    <lastmod>2024-02-12T19:43:34.968Z</lastmod>
+  </url>
+  <url>
+    <loc>https://Norman-Foster-Institute.github.io/ua_2024/chapter_1/qgis.html</loc>
+    <lastmod>2024-02-12T19:43:34.968Z</lastmod>
+  </url>
+  <url>
+    <loc>https://Norman-Foster-Institute.github.io/ua_2024/chapter_0/index.html</loc>
+    <lastmod>2024-02-12T19:43:34.944Z</lastmod>
+  </url>
+  <url>
+    <loc>https://Norman-Foster-Institute.github.io/ua_2024/index.html</loc>
+    <lastmod>2024-02-12T19:43:34.968Z</lastmod>
+  </url>
+  <url>
+    <loc>https://Norman-Foster-Institute.github.io/ua_2024/chapter_0/anaconda.html</loc>
+    <lastmod>2024-02-12T19:43:34.944Z</lastmod>
+  </url>
+  <url>
+    <loc>https://Norman-Foster-Institute.github.io/ua_2024/chapter_0/installation.html</loc>
+    <lastmod>2024-02-12T19:43:34.944Z</lastmod>
+  </url>
+  <url>
+    <loc>https://Norman-Foster-Institute.github.io/ua_2024/chapter_1/cloud.html</loc>
+    <lastmod>2024-02-12T19:43:34.944Z</lastmod>
+  </url>
+  <url>
+    <loc>https://Norman-Foster-Institute.github.io/ua_2024/chapter_1/gis.html</loc>
+    <lastmod>2024-02-12T19:43:34.952Z</lastmod>
+  </url>
+  <url>
+    <loc>https://Norman-Foster-Institute.github.io/ua_2024/chapter_2/pandas.html</loc>
+    <lastmod>2024-02-12T19:43:34.968Z</lastmod>
   </url>
   <url>
     <loc>https://Norman-Foster-Institute.github.io/ua_2024/chapter_2/python.html</loc>
-    <lastmod>2024-02-08T11:23:50.062Z</lastmod>
+    <lastmod>2024-02-12T19:43:34.968Z</lastmod>
   </url>
 </urlset>
