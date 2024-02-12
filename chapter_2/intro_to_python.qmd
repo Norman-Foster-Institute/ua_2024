@@ -1,0 +1,146 @@
+---
+title: Welcome to Python
+date: 02/12/2024
+date-format: long
+date-modified: last-modified
+lang: en
+language: 
+  title-block-published: "Lecture date"
+  title-block-modified: "Last update"
+---
+Python is a great language for general purpose data wrangling. If you're working with geospatial data and general data science then it is arguably THE language. (Though "R" fans will probably debate this!)
+
+> If you get stuck, remember that ChatGPT is really good at debugging code! Also remember that there is a treasure trove of online documentation describing APIs and thousands of community-supported questions on forums such as Stack Overflow for finding solutions to common questions.
+
+## Some basics
+
+Fire up your JupyterLab and follow along by typing and executing these examples.
+
+```{python}
+a_variable = 'boo'
+print(a_variable)
+```
+
+Python works with variables which store references to information. These variables can be named so that they are easy to remember and should be descriptive so that they make their purpose clear. By convention, variables in Python use lower caps with underscores and should not start with a number. 
+
+Notice that these variable names don't tell us very much:
+
+```{python}
+a = 21
+b = 34
+d = b - a
+```
+
+But these ones do:
+```{python}
+temp_day_1 = 21
+temp_day_2 = 34
+temp_diff = temp_day_2 - temp_day_1
+```
+
+You should also use comments to explain your code, this becomes important as the code grows in complexity. Use a hash symbol for a line comment and triple quotes for block comments.
+
+```{python}
+"""
+The following lines detail the procedure for
+computing a temperature difference from day 1 to 2.
+"""
+# the temperature on day 1
+temp_day_1 = 21
+# the temperature on day 2
+temp_day_2 = 34
+# the temperature difference from day 1 to 2
+temp_diff = temp_day_2 - temp_day_1
+```
+
+As above, variables can store different kinds of data, including `str`, `int`, `float` (decimal), and other types such as "booleans" (`True` and `False`) and `None` types. If you want to find out what `type` a variable is, you can use the built-in `type()` method.
+
+```{python}
+print(type(a_variable))
+print(type(temp_diff))
+print(type(1))
+print(type(1.0))
+print(type(True))
+print(type(None))
+```
+
+Once you've assigned a value to a variable, you can use this variable to do things like maths.
+
+```{python}
+temp_day_1 = 21
+temp_day_2 = 34
+print('add', temp_day_1 + temp_day_2)
+print('subtract', temp_day_2 - temp_day_1)
+print('divide', temp_day_2 / 2)
+# modulo gives the remainder after division
+print('modulo', temp_day_2 % 1)
+```
+
+You can do surprising things with strings as well.
+
+```{python}
+part_1 = 'Hello'
+part_2 = 'there!'
+# here we'll combine the parts using an empty space
+together = part_1 + ' ' + part_2
+print(together)
+```
+
+Python has some other types that can be useful. One of these is lists, which use square brackets to collect several items into the same variable.
+```{python}
+my_list = [1, 2, 3, 4]
+# gets the length of a list
+print(len(my_list))
+# indexes into the first item in a list
+# in Python, lists are zero indexed
+get_something = my_list[0]
+print('first item:', get_something)
+# gets the last item
+get_something_else = my_list[-1]
+print('last item:', get_something_else)
+# gets list entries from index 0 to before index 2
+get_several_things = my_list[0:2]
+print('several items:', get_several_things)
+```
+
+Note that you can iterate over lists using `for` and `in` syntax.
+```{python}
+# this will print each number in my_list
+for num in my_list:
+    # indentation has to be used consistently
+    print(num)
+```
+
+Python has a number of built-in convenience methods:
+```{python}
+print('min', min(my_list))
+print('max', max(my_list))
+print('reversed', list(reversed(my_list)))
+```
+
+## Importing packages
+
+Python can import packages which contain reusable methods.
+
+Packages have to be installed before they are used, unless they are part of the default Python library. Let's install the `shapely` package. Note that this method of installing a package is particular to JupyterLab Notebooks, and only has to be done if the package is not yet installed.
+
+```{python}
+# checks that the shapely package
+# is installed for this notebook
+!pip install shapely
+```
+
+Once installed and available, we can use modules provided by the package. Here we are using the `from` and `import` syntax to import the `geometry` module which is available from the `shapely` package.
+
+```{python}
+from shapely import geometry
+```
+
+`shapely` let's us do some neat things with spatial information. Let's define a point.
+
+```{python}
+point_a = geometry.Point(0, 0)
+print(point_a)
+```
+
+To find
