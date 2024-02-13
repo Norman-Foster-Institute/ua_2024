@@ -362,20 +362,6 @@ Important
 <li><code>Equals</code>: Checks if two geometries are exactly the same in terms of spatial coordinates.</li>
 <li><code>Overlaps</code>: Determines if two geometries overlap, meaning they share some but not all points, and the intersection has the same dimension as the geometries themselves.</li>
 </ul>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Tip
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Depending on the nature of your origin tables you might need to create a sequence of <strong>spatial transformations</strong> in order to approprietly join your dataset. A good practice is to outline a sequence of logical steps and then proceed to excecute them one at the time</p>
-<p>eg. If you want to join a Linestring layer with a Poligon layer, some of the Linestrings might need to be <em>sliced</em> before joining. This will ensure a that your joined linestrings won’t be duplicated because they originally crossed/touched two or more of your Polygons.</p>
-</div>
-</div>
 <div class="callout callout-style-default callout-caution callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -395,7 +381,11 @@ Caution
 <section id="saving-styles" class="level1">
 <h1>Saving Styles</h1>
 <p>In QGIS a <em>style</em> actually refers to several categories such as : symbology, labels, table attributes settings, 3D views, etc. It is important to remember that all of this metadata does not affect the underlying values of the layers. This gives a lot of flexibility which, if set correctly, can help to speed up visualisation processes as you move with larger and more diverse datasets.</p>
-<p>There are different ways to save you map styles: - As <strong>default</strong> for the layer. - As a separate ‘QML’ <strong>file</strong>.</p>
+<p>There are different ways to save you map styles:</p>
+<ul>
+<li>As <strong>default</strong> for the layer.</li>
+<li>As a separate ‘QML’ <strong>file</strong>.</li>
+</ul>
 <p>Within one QGIS proyect, one layer can have multiple styles. This helps to keep each project with a minimum number of layers, which in turn helps overall performance.</p>
 </section>
 <section id="georeferencing-images" class="level1">
