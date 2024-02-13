@@ -65,7 +65,32 @@ print(temp_diff)
 print('The temp diff is: ', temp_diff)
 ```
 
-As above, variables can store different kinds of data, including `str`, `int`, `float` (decimal), and other types such as "booleans" (`True` and `False`) and `None` types. If you want to find out what `type` a variable is, you can use the built-in `type()` method, which will tell you what `type` a given variable is.
+You can define a function using the `def` keyword. Let's define a function which takes a number and multiplies it by a specified multiplier.
+
+```{python}
+# you must use "def"
+# define your parameters
+def num_multiply(a_number, multiple):
+  # note the use of indented lines
+  multiplied_number = a_number * multiple
+  # you must return a value if you want to use
+  # it outside of the function
+  return multiplied_number
+
+# let's try it out
+# assign the returned value to a variable
+out_num_a = num_multiply(2, 2)
+print('2x2=', out_num_a)
+# functions save us from rewriting the
+# same bits of code over and over...
+# we can use the same logic with new arguments
+out_num_b = num_multiply(3, 10)
+print('3x10=', out_num_b)
+```
+
+> If you find yourself writing bits of code which seem repetitive, then you probably want to be using functions...!
+
+Variables can store different kinds of data, including `str`, `int`, `float` (decimal), and other types such as "booleans" (`True` and `False`) and `None` types. If you want to find out what `type` a variable is, you can use the built-in `type()` method, which will tell you what `type` a given variable is.
 
 ```{python}
 # here we are nesting methods
@@ -84,11 +109,11 @@ Once you've assigned a value to a variable, you can use this variable to do thin
 ```{python}
 temp_day_1 = 21
 temp_day_2 = 34
-print('add', temp_day_1 + temp_day_2)
-print('subtract', temp_day_2 - temp_day_1)
-print('divide', temp_day_2 / 2)
+print('added:', temp_day_1 + temp_day_2)
+print('subtracted:', temp_day_2 - temp_day_1)
+print('divided:', temp_day_2 / 2)
 # modulo gives the remainder after division
-print('modulo', temp_day_2 % 1)
+print('modulo:', temp_day_1 % 2)
 ```
 
 You can do surprising things with strings as well.
@@ -105,9 +130,10 @@ Python has some other types that can be useful. One of these is lists, which use
 ```{python}
 my_list = [1, 2, 3, 4]
 # gets the length of a list
-print(len(my_list))
+print('number of items:', len(my_list))
 # indexes into the first item in a list
 # in Python, lists are zero indexed
+# note the use of square brackets for indexing
 get_something = my_list[0]
 print('first item:', get_something)
 # gets the last item
@@ -125,15 +151,17 @@ Note that you can iterate over lists using `for` and `in` syntax. We use a varia
 for num in my_list:
     # note the indented line
     # indentation has to be used consistently
-    print('num is currently', num)
+    print('num is currently:', num)
 ```
 
 Python has a number of built-in convenience methods, which can simplify common tasks:
 ```{python}
-print('min', min(my_list))
-print('max', max(my_list))
-print('reversed', list(reversed(my_list)))
-print('absolute', abs(-100))
+print('min:', min(my_list))
+print('max:', max(my_list))
+# note the extra step to casts the output
+# from reversed to a list type
+print('reversed:', list(reversed(my_list)))
+print('absolute:', abs(-100))
 ```
 
 ## Importing packages
@@ -217,7 +245,7 @@ for x in x_coords:
         # this adds the p variable
         # to the collect_points list
         collect_points.append(p)
-print('num points', len(collect_points))
+print('num points:', len(collect_points))
 # let's turn the list of points into a MultiPoint
 multi_point = geometry.MultiPoint(collect_points)
 print(type(multi_point))
@@ -239,6 +267,54 @@ Let's create a GeoPandas DataFrame from our collected points
 # and we'll give it a shorter alias using "as"
 import geopandas as gpd
 # let's create a dataframe from the points
-df = gpd.GeoDataFrame(collect_points)
-print(df)
+df = gpd.GeoDataFrame(geometry=collect_points, crs=None)
+# the head() method returns the first (typically 5) rows
+print(df.head())
 ```
+
+There we go, that's a lot neater. You can add columns to DataFrames and you can also export (or import) from common geospatial file types such as `gpkg`. GeoDataFrames are also much easier to visualise.
+
+```{python}
+df.plot()
+```
+
+You can run the typical `shapely` operations on a GeoDataFrame's geometry column. Let's see what happens if we buffer the GeoDataFrame.
+
+```{python}
+buff_series = df.buffer(0.6)
+# this returns a GeoSeries
+# essentially a single column of a DataFrame
+print(type(buff_series))
+# the geometry type is now POLYGON
+print(buff_series.head())
+buff_series.plot()
+```
+
+DataFrames are really useful for handling data. Let's add a column called area and assign it the area value for the geometry.
+
+```{python}
+# create a new GeoDataFrame from the polygon GeoSeries column
+df_buff = gpd.GeoDataFrame(geometry=buff_series, crs=None)
+# adds a new column called area
+# sets it to the value of the respective geometry areas
+df_buff['area'] = df_buff.geometry.area
+# let's do the same for x and y
+df_buff['x'] = df_buff.geometry.centroid.x
+df_buff['y'] = df_buff.geometry.centroid.y
+# and let's filter the columns for printing
+# we can do this by passing a list of column names
+# to GeoPandas indexer - which uses square brackets
+print(df_buff[['area', 'x', 'y']].head())
+```
+
+DataFrames are useful for filtering data.
+
+```{python}
+# here we are filtering rows based on their x values
+# we are then assigning this to a new variable
+# the part "df_buff.x < 2" is what does the magic
+filtered_df_buff = df_buff[df_buff.x < 2]
+filtered_df_buff.plot()
+```
+
+There are almost limitless ways to manipulate data in DataFrames and these are well documented on the web. If you're ever stuck, remember that ChatGPT is quite good at finding bugs and tends to have an intuitive grasp of what you're trying to do if you explain your objective well.
