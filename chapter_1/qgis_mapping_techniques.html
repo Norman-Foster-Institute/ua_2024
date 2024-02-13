@@ -8,7 +8,7 @@
 
 <meta name="dcterms.date" content="2024-02-15">
 
-<title>NFI Urban Analytics 2024 - Part 1 - QGIS Mapping Techniques</title>
+<title>NFI Urban Analytics 2024 - Part 1 - QGIS Mapping Fundamentals</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -92,7 +92,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">QGIS Mapping Techniques</li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">QGIS Mapping Fundamentals</li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -230,18 +230,13 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#spatial-predicates" id="toc-spatial-predicates" class="nav-link" data-scroll-target="#spatial-predicates">Spatial predicates</a></li>
   </ul></li>
   </ul></li>
-  <li><a href="#saving-styles" id="toc-saving-styles" class="nav-link" data-scroll-target="#saving-styles">Saving Styles</a>
-  <ul class="collapse">
-  <li><a href="#what-is-a-style" id="toc-what-is-a-style" class="nav-link" data-scroll-target="#what-is-a-style">What is a style?</a></li>
-  </ul></li>
+  <li><a href="#saving-styles" id="toc-saving-styles" class="nav-link" data-scroll-target="#saving-styles">Saving Styles</a></li>
   <li><a href="#georeferencing-images" id="toc-georeferencing-images" class="nav-link" data-scroll-target="#georeferencing-images">Georeferencing Images</a>
   <ul class="collapse">
-  <li><a href="#use-cases-of-georeferenced-images." id="toc-use-cases-of-georeferenced-images." class="nav-link" data-scroll-target="#use-cases-of-georeferenced-images.">Use cases of georeferenced images.</a></li>
+  <li><a href="#tools-and-plugins" id="toc-tools-and-plugins" class="nav-link" data-scroll-target="#tools-and-plugins">Tools and plugins</a></li>
+  <li><a href="#use-cases-of-georeferenced-images" id="toc-use-cases-of-georeferenced-images" class="nav-link" data-scroll-target="#use-cases-of-georeferenced-images">Use cases of georeferenced images</a></li>
   </ul></li>
-  <li><a href="#exporting-images" id="toc-exporting-images" class="nav-link" data-scroll-target="#exporting-images">Exporting Images</a>
-  <ul class="collapse">
-  <li><a href="#demo" id="toc-demo" class="nav-link" data-scroll-target="#demo">Demo</a></li>
-  </ul></li>
+  <li><a href="#exporting-images" id="toc-exporting-images" class="nav-link" data-scroll-target="#exporting-images">Exporting Images</a></li>
   </ul>
 </nav>
     </div>
@@ -250,7 +245,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">QGIS Mapping Techniques</h1>
+<h1 class="title">QGIS Mapping Fundamentals</h1>
 </div>
 
 
@@ -399,38 +394,63 @@ Caution
 </section>
 <section id="saving-styles" class="level1">
 <h1>Saving Styles</h1>
-<section id="what-is-a-style" class="level3">
-<h3 class="anchored" data-anchor-id="what-is-a-style">What is a style?</h3>
-<p>In **</p>
-<p>There are different ways to save you map styles: - As default for the layer. - As a separate ‘QML’ file.</p>
-<p>It is important to remember that within one QGIS proyect, one layer can have multiple styles. This helps to keep each project with a minimum number of layers, which in turn helps overall performance.</p>
-</section>
+<p>In QGIS a <em>style</em> actually refers to several categories such as : symbology, labels, table attributes settings, 3D views, etc. It is important to remember that all of this metadata does not affect the underlying values of the layers. This gives a lot of flexibility which, if set correctly, can help to speed up visualisation processes as you move with larger and more diverse datasets.</p>
+<p>There are different ways to save you map styles: - As <strong>default</strong> for the layer. - As a separate ‘QML’ <strong>file</strong>.</p>
+<p>Within one QGIS proyect, one layer can have multiple styles. This helps to keep each project with a minimum number of layers, which in turn helps overall performance.</p>
 </section>
 <section id="georeferencing-images" class="level1">
 <h1>Georeferencing Images</h1>
-<p>What is georeferencing? ## Tools and plugins</p>
-<section id="use-cases-of-georeferenced-images." class="level2">
-<h2 class="anchored" data-anchor-id="use-cases-of-georeferenced-images.">Use cases of georeferenced images.</h2>
+<p>Georeferencing is the process of assigning real-world coordinates to each pixel of the digital image or map. This crucial step makes it possible for geospatial data to be accurately placed on the earth’s surface in its correct geographical location. By doing so, georeferenced images (rasters) can be used in conjunction with other spatial data (vector) within GIS software like QGIS, allowing for a wide range of analysis and mapping applications.</p>
+<section id="tools-and-plugins" class="level2">
+<h2 class="anchored" data-anchor-id="tools-and-plugins">Tools and plugins</h2>
+<p>In QGIS, georeferencing can be carried out using the built-in <code>Georeferencer</code> tool, which can be found under the menu <code>Layer</code> -&gt; <code>Georeferencer...</code>. This tool allows you to manually add control points that link the location on the image with geographic coordinates on the map, adjusting the image to fit the spatial data.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The mode nodes you add and the further away from each other, the more refences the algorithm has to accomodate the original file. <strong>Minimum of 5 points</strong> should be considered to have an descent baseline.</p>
+</div>
+</div>
+<ul>
+<li><strong>Plugins</strong>: For more advanced or specific georeferencing needs, there are additional plugins like <code>Freehand Raster Georeferencer</code>, allowing for more flexible manipulation of images directly within the map canvas.</li>
+</ul>
+</section>
+<section id="use-cases-of-georeferenced-images" class="level2">
+<h2 class="anchored" data-anchor-id="use-cases-of-georeferenced-images">Use cases of georeferenced images</h2>
+<ul>
+<li><strong>Historical Maps</strong>: Bringing old maps into modern GIS projects, helping to study changes over time.</li>
+<li><strong>Tracing Exercises</strong>: Overlaying aerial or satellite imagery to digitize features such as roads, buildings, or land use.</li>
+<li><strong>Reshaping sketches</strong>: Planning and ideation sketches usually are our of scale and conveniently reshaping elements of the enrionment. Georefereincing them helps to better transition ideas into reality.</li>
+</ul>
+<div class="callout callout-style-simple callout-none no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>It’s important to consider <strong>potential distortions</strong> when georeferencing images, as the process involves stretching or rotating the image to align with real-world coordinates. Understanding and managing these distortions is key to ensuring the accuracy of the geospatial analysis.</p>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="exporting-images" class="level1">
 <h1>Exporting Images</h1>
+<p>Exporting images and maps from QGIS allows you to share GIS projects and findings in a variety of formats suitable for reports, presentations, or online publication.</p>
 <ul>
-<li>Setting resolution, scale, and dimensions.</li>
-<li>Creating print layouts with multiple elements (maps, legends, text).</li>
+<li><p><strong>Quick export</strong> Under the menu <code>Project</code> you can directly see the <code>Import/Export</code> function that let’s you export to different image formats and PDFs. Some features need attention (<strong>resolution</strong>, <strong>scale</strong>, and <strong>dimensions</strong>) but the interface should be self explanatory.</p></li>
+<li><p><strong>Print layouts</strong> This option is more advanced and allows you to set up multiple <em>print layouts</em> (even it they are just for exporting as images).</p></li>
 </ul>
-<hr>
-<section id="demo" class="level2">
-<h2 class="anchored" data-anchor-id="demo">Demo</h2>
-<p>During the demo we will use the following tools from the <code>toolbox</code></p>
-<ul>
-<li>XXX</li>
-<li>XXX</li>
-</ul>
-<hr>
+<p>With this option you can add elements such as legends, scale bars, texts and even images that help contextualize your maps. This feature is especially useful for creating professional-quality map presentations and detailed spatial analysis reports.</p>
+<p>These functionalities in QGIS enhance the ability to <strong>communicate spatial information</strong>, making it accessible to a wider audience, regardless of their GIS expertise.</p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->

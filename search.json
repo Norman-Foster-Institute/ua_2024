@@ -590,44 +590,44 @@
   {
     "objectID": "chapter_1/qgis_mapping_techniques.html",
     "href": "chapter_1/qgis_mapping_techniques.html",
-    "title": "QGIS Mapping Techniques",
+    "title": "QGIS Mapping Fundamentals",
     "section": "",
     "text": "In multiple scenarios you will find information in one table/layer that you want to tranfer into another. JOINS are the best way to do that; all you need is a common attribute. When two tables share one attribute (including data types), you can expand the attributes in one of the tables and use it for further analysis and/or visualision purposes.\n\n\n\n\n\nInner Join: Returns rows with matching attributes.\nLeft (Outer) Join: Returns all rows from the left table, and the matched attributes from the right table.\nRight (Outer) Join: Returns all rows from the right table, and the matched attributes from the left table.\n\n\n\nFull (Outer) Join: Returns rows from both tables even when there is no matching attributes.\nCross Join: Returns a Cartesian product of the two tables.\nSelf Join: A table can be joined with itself.\n\n\n\n\n\n\nJoin types\n\n\n\n\n\n\n\n\n\nOccurs when each record in one table corresponds to exactly one record in another table.\n\n\n\n\n\n\n\nOccurs when a single record in one table can be associated with one or more records in another table.\n\n\n\n\n\n\n\nOccurrs when multiple records from one table correspond with one or more in another table.\n\n\n\n\n\n\n\n\n\n\nImportant\n\n\n\n\nWhen using joins you are not modifying the original tables.\nYour resulting table can be much smaller or (exponentially) larger than any of the original tables.\n\n\n\n\n\n\nSimilar to joining tables based on their attributes, one can join them based on their location (ultimately the location is nothing more than a ‘fancy’ attribute).\nTo achieve the expected results, make sure that both origin tables are in the same CRS.\n\n\nIn order to establish the relationship between the origin tables one can use a series of spatial predicates. The most common ones are:\n\nContains: Determines if one geometry contains another.\nWithin: Checks if one geometry is within another geometry.\nIntersects: Tests if two geometries intersect at any point.\nDisjoint: Determines if two geometries do not intersect.\nTouches: Checks if two geometries have at least one point in common but their interiors do not intersect.\nCrosses: Determines if the geometries have some, but not all, interior points in common.\nEquals: Checks if two geometries are exactly the same in terms of spatial coordinates.\nOverlaps: Determines if two geometries overlap, meaning they share some but not all points, and the intersection has the same dimension as the geometries themselves.\n\n\n\n\n\n\n\nTip\n\n\n\nDepending on the nature of your origin tables you might need to create a sequence of spatial transformations in order to approprietly join your dataset. A good practice is to outline a sequence of logical steps and then proceed to excecute them one at the time\neg. If you want to join a Linestring layer with a Poligon layer, some of the Linestrings might need to be sliced before joining. This will ensure a that your joined linestrings won’t be duplicated because they originally crossed/touched two or more of your Polygons.\n\n\n\n\n\n\n\n\nCaution\n\n\n\nPlease note that depending on the size and complexity of your joins some operations can be computationally expensive and some advanced techniques might need to be implemented to achieve best performance."
   },
   {
     "objectID": "chapter_1/qgis_mapping_techniques.html#join-types",
     "href": "chapter_1/qgis_mapping_techniques.html#join-types",
-    "title": "QGIS Mapping Techniques",
+    "title": "QGIS Mapping Fundamentals",
     "section": "",
     "text": "Inner Join: Returns rows with matching attributes.\nLeft (Outer) Join: Returns all rows from the left table, and the matched attributes from the right table.\nRight (Outer) Join: Returns all rows from the right table, and the matched attributes from the left table.\n\n\n\nFull (Outer) Join: Returns rows from both tables even when there is no matching attributes.\nCross Join: Returns a Cartesian product of the two tables.\nSelf Join: A table can be joined with itself.\n\n\n\n\n\n\nJoin types"
   },
   {
     "objectID": "chapter_1/qgis_mapping_techniques.html#cardinality",
     "href": "chapter_1/qgis_mapping_techniques.html#cardinality",
-    "title": "QGIS Mapping Techniques",
+    "title": "QGIS Mapping Fundamentals",
     "section": "",
     "text": "Occurs when each record in one table corresponds to exactly one record in another table.\n\n\n\n\n\n\n\nOccurs when a single record in one table can be associated with one or more records in another table.\n\n\n\n\n\n\n\nOccurrs when multiple records from one table correspond with one or more in another table.\n\n\n\n\n\n\n\n\n\n\nImportant\n\n\n\n\nWhen using joins you are not modifying the original tables.\nYour resulting table can be much smaller or (exponentially) larger than any of the original tables."
   },
   {
     "objectID": "chapter_1/qgis_mapping_techniques.html#introduction-to-spatial-joins",
     "href": "chapter_1/qgis_mapping_techniques.html#introduction-to-spatial-joins",
-    "title": "QGIS Mapping Techniques",
+    "title": "QGIS Mapping Fundamentals",
     "section": "",
     "text": "Similar to joining tables based on their attributes, one can join them based on their location (ultimately the location is nothing more than a ‘fancy’ attribute).\nTo achieve the expected results, make sure that both origin tables are in the same CRS.\n\n\nIn order to establish the relationship between the origin tables one can use a series of spatial predicates. The most common ones are:\n\nContains: Determines if one geometry contains another.\nWithin: Checks if one geometry is within another geometry.\nIntersects: Tests if two geometries intersect at any point.\nDisjoint: Determines if two geometries do not intersect.\nTouches: Checks if two geometries have at least one point in common but their interiors do not intersect.\nCrosses: Determines if the geometries have some, but not all, interior points in common.\nEquals: Checks if two geometries are exactly the same in terms of spatial coordinates.\nOverlaps: Determines if two geometries overlap, meaning they share some but not all points, and the intersection has the same dimension as the geometries themselves.\n\n\n\n\n\n\n\nTip\n\n\n\nDepending on the nature of your origin tables you might need to create a sequence of spatial transformations in order to approprietly join your dataset. A good practice is to outline a sequence of logical steps and then proceed to excecute them one at the time\neg. If you want to join a Linestring layer with a Poligon layer, some of the Linestrings might need to be sliced before joining. This will ensure a that your joined linestrings won’t be duplicated because they originally crossed/touched two or more of your Polygons.\n\n\n\n\n\n\n\n\nCaution\n\n\n\nPlease note that depending on the size and complexity of your joins some operations can be computationally expensive and some advanced techniques might need to be implemented to achieve best performance."
   },
   {
-    "objectID": "chapter_1/qgis_mapping_techniques.html#use-cases-of-georeferenced-images.",
-    "href": "chapter_1/qgis_mapping_techniques.html#use-cases-of-georeferenced-images.",
-    "title": "QGIS Mapping Techniques",
-    "section": "Use cases of georeferenced images.",
-    "text": "Use cases of georeferenced images."
+    "objectID": "chapter_1/qgis_mapping_techniques.html#tools-and-plugins",
+    "href": "chapter_1/qgis_mapping_techniques.html#tools-and-plugins",
+    "title": "QGIS Mapping Fundamentals",
+    "section": "Tools and plugins",
+    "text": "Tools and plugins\nIn QGIS, georeferencing can be carried out using the built-in Georeferencer tool, which can be found under the menu Layer -&gt; Georeferencer.... This tool allows you to manually add control points that link the location on the image with geographic coordinates on the map, adjusting the image to fit the spatial data.\n\n\n\n\n\n\nTip\n\n\n\nThe mode nodes you add and the further away from each other, the more refences the algorithm has to accomodate the original file. Minimum of 5 points should be considered to have an descent baseline.\n\n\n\nPlugins: For more advanced or specific georeferencing needs, there are additional plugins like Freehand Raster Georeferencer, allowing for more flexible manipulation of images directly within the map canvas."
   },
   {
-    "objectID": "chapter_1/qgis_mapping_techniques.html#demo",
-    "href": "chapter_1/qgis_mapping_techniques.html#demo",
-    "title": "QGIS Mapping Techniques",
-    "section": "Demo",
-    "text": "Demo\nDuring the demo we will use the following tools from the toolbox\n\nXXX\nXXX"
+    "objectID": "chapter_1/qgis_mapping_techniques.html#use-cases-of-georeferenced-images",
+    "href": "chapter_1/qgis_mapping_techniques.html#use-cases-of-georeferenced-images",
+    "title": "QGIS Mapping Fundamentals",
+    "section": "Use cases of georeferenced images",
+    "text": "Use cases of georeferenced images\n\nHistorical Maps: Bringing old maps into modern GIS projects, helping to study changes over time.\nTracing Exercises: Overlaying aerial or satellite imagery to digitize features such as roads, buildings, or land use.\nReshaping sketches: Planning and ideation sketches usually are our of scale and conveniently reshaping elements of the enrionment. Georefereincing them helps to better transition ideas into reality.\n\n\n\n\n\n\n\nIt’s important to consider potential distortions when georeferencing images, as the process involves stretching or rotating the image to align with real-world coordinates. Understanding and managing these distortions is key to ensuring the accuracy of the geospatial analysis."
   },
   {
     "objectID": "chapter_2/intro_to_python.html",
