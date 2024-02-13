@@ -104,6 +104,31 @@ eg. If you want to join a Linestring layer with a Poligon layer, some of the Lin
 Please note that depending on the size and complexity of your joins some operations can be **computationally expensive** and some advanced techniques might need to be implemented to achieve best performance. 
 :::
 
+# Saving Styles
+
+### What is a style?
+In **
+
+There are different ways to save you map styles:
+- As default for the layer.
+- As a separate 'QML' file.
+
+It is important to remember that within one QGIS proyect, one layer can have multiple styles. This helps to keep each project with a minimum number of layers, which in turn helps overall performance.
+
+# Georeferencing Images
+
+What is georeferencing? 
+## Tools and plugins
+
+## Use cases of georeferenced images.
+
+# Exporting Images
+- Setting resolution, scale, and dimensions.
+- Creating print layouts with multiple elements (maps, legends, text).
+
+
+---
+
 ## Demo
 During the demo we will use the following tools from the `toolbox`
 
@@ -111,16 +136,3 @@ During the demo we will use the following tools from the `toolbox`
 - XXX 
 
 --- 
-
-# Saving Styles
-
-# Georeferencing Images
-
-## Introduction to Georeferencing
-What is georeferencing? 
-Tools and plugins for georeferencing.
-Real-world examples of georeferenced maps and images.
-
-# Exporting Images
-- Setting resolution, scale, and dimensions.
-- Creating print layouts with multiple elements (maps, legends, text).
