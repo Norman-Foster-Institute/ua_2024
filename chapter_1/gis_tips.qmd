@@ -1,5 +1,5 @@
 ---
-title: QGIS Mapping Fundamentals
+title: Tips
 date: 02/15/2024
 date-format: long
 date-modified: last-modified
@@ -11,25 +11,16 @@ language:
 
 # Joins and Spatial Joins
 
-In multiple scenarios you will find information in one table/layer that you want to tranfer into another. **JOINS** are the best way to do that; all you need is a common _attribute_. When two tables share one attribute (including _data types_), you can expand the attributes in one of the tables and use it for further analysis and/or visualision purposes.
+In multiple scenarios you may find information in one table/layer that you might want to connect to information from another. **JOINS** are the way to do this, and work by connecting two different datasources based on a shared _attribute_. So doing, the attributes from one table can be connected to another for analysis or visualision purposes.
 
 ## Join Types 
 
 :::: {.columns}
-::: {.column width="50%"}
-- **Inner Join**: Returns rows with matching attributes.
-- **Left (Outer) Join**: Returns all rows from the left table, and the matched attributes from the right table.
-- **Right (Outer) Join**: Returns all rows from the right table, and the matched attributes from the left table.
-
-:::
-
-::: {.column width="50%"}
-- **Full (Outer) Join**: Returns rows from both tables even when there is no matching attributes.
-- **Cross Join**: Returns a Cartesian product of the two tables.
-- **Self Join**: A table can be joined with itself.
-
-:::
-
+- **Inner Join**: Returns only rows that have been matched across both tables.
+- **Left (Outer) Join**: Returns all rows from the left table, and matched rows from the right table where found.
+- **Right (Outer) Join**: Returns all rows from the right table, and matched rows from the left table where found.
+- **Full (Outer) Join**: Returns all rows from both tables, regardless of whether matches were found in the other table.
+- **Cross Join**: Returns a Cartesian product of the two tables, i.e. each row connected to each other row from the other table. Use with caution!
 ::::
 
 ![Join types](./images/join_types.png){width="100%"}
@@ -77,12 +68,12 @@ Occurrs when multiple records from one table correspond with one or more in anot
 
 ## Introduction to Spatial Joins
 
-Similar to joining tables based on their attributes, one can **join them based on their location** (_ultimately the location is nothing more than a 'fancy' attribute_).
+Similar to joining tables based on their attributes, it is possible to **join them based on their location**. This is a very common technique in spatial databases (e.g. PostGIS) where you'll commonly use a feature such as a city boundary to filter and join data from another table (e.g. streets).
 
 To achieve the expected results, **make sure that both origin tables are in the same CRS**.
 
 ### Spatial predicates
-In order to establish the relationship between the origin tables one can use a series of **spatial predicates**. The most common ones are:
+In QGIS and spatial databases, **spatial predicates** are used to define spatial relationships between features. These are used for joining or selecting data based on the relationships between the features. Some of the common predicates are:
 
 - `Contains`: Determines if one geometry contains another.
 - `Within`: Checks if one geometry is within another geometry.
@@ -108,7 +99,6 @@ There are different ways to save you map styles:
 - As a separate 'QML' **file**.
 
 Within one QGIS proyect, one layer can have multiple styles. This helps to keep each project with a minimum number of layers, which in turn helps overall performance.
-
 
 # Georeferencing Images
 
