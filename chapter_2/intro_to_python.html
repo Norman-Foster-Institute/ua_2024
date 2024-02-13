@@ -257,6 +257,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
   <li><a href="#some-basics" id="toc-some-basics" class="nav-link active" data-scroll-target="#some-basics">Some basics</a></li>
   <li><a href="#importing-packages" id="toc-importing-packages" class="nav-link" data-scroll-target="#importing-packages">Importing packages</a></li>
+  <li><a href="#shapely" id="toc-shapely" class="nav-link" data-scroll-target="#shapely">Shapely</a></li>
   </ul>
 </nav>
     </div>
@@ -283,7 +284,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Last update</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">February 12, 2024</p>
+      <p class="date-modified">February 13, 2024</p>
     </div>
   </div>
     
@@ -301,7 +302,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="some-basics" class="level2">
 <h2 class="anchored" data-anchor-id="some-basics">Some basics</h2>
 <p>Fire up your JupyterLab and follow along by typing and executing these examples.</p>
-<div id="a549e66a" class="cell" data-execution_count="1">
+<div id="17f057bf" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>a_variable <span class="op">=</span> <span class="st">'boo'</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(a_variable)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -310,19 +311,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>Python works with variables which store references to information. These variables can be named so that they are easy to remember and should be descriptive so that they make their purpose clear. By convention, variables in Python use lower caps with underscores and should not start with a number.</p>
 <p>Notice that these variable names don’t tell us very much:</p>
-<div id="30739489" class="cell" data-execution_count="2">
+<div id="56e73e2e" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="dv">21</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> <span class="dv">34</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>d <span class="op">=</span> b <span class="op">-</span> a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>But these ones do:</p>
-<div id="0d24d903" class="cell" data-execution_count="3">
+<div id="37db3579" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>temp_day_1 <span class="op">=</span> <span class="dv">21</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>temp_day_2 <span class="op">=</span> <span class="dv">34</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>temp_diff <span class="op">=</span> temp_day_2 <span class="op">-</span> temp_day_1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>You should also use comments to explain your code, this becomes important as the code grows in complexity. Use a hash symbol for a line comment and triple quotes for block comments.</p>
-<div id="c7797c33" class="cell" data-execution_count="4">
+<div id="bce9488b" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">"""</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co">The following lines detail the procedure for</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co">computing a temperature difference from day 1 to 2.</span></span>
@@ -334,14 +335,34 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="co"># the temperature difference from day 1 to 2</span></span>
 <span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>temp_diff <span class="op">=</span> temp_day_2 <span class="op">-</span> temp_day_1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>As above, variables can store different kinds of data, including <code>str</code>, <code>int</code>, <code>float</code> (decimal), and other types such as “booleans” (<code>True</code> and <code>False</code>) and <code>None</code> types. If you want to find out what <code>type</code> a variable is, you can use the built-in <code>type()</code> method.</p>
-<div id="221c88b5" class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(a_variable))</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(temp_diff))</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(<span class="dv">1</span>))</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(<span class="fl">1.0</span>))</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(<span class="va">True</span>))</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(<span class="va">None</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Another concept is the use of functions. Functions take parameters (arguments) and return a result according to a defined sequence of steps. In certain contexts they are also referred to as “methods”, but don’t worry too much about that for now. A commonly used function in Python is the <code>print()</code> method. Notice that a function has parenthesis, and this is where you pass your function arguments.</p>
+<div id="02b567da" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># you can pass a parameter to print()</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co"># it will then take the parameter and print it to the screen</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'This will print boo!'</span>)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># the same for a variable</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(temp_diff)</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="co"># and in the case of the print() method</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co"># multiple arguments can be passed at once</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="co"># function arguments are separated with commas</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'The temp diff is: '</span>, temp_diff)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>This will print boo!
+13
+The temp diff is:  13</code></pre>
+</div>
+</div>
+<p>As above, variables can store different kinds of data, including <code>str</code>, <code>int</code>, <code>float</code> (decimal), and other types such as “booleans” (<code>True</code> and <code>False</code>) and <code>None</code> types. If you want to find out what <code>type</code> a variable is, you can use the built-in <code>type()</code> method, which will tell you what <code>type</code> a given variable is.</p>
+<div id="92771df7" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># here we are nesting methods</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co"># the type() method will run first and returns a result</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co"># this result is then passed to the print() method</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(a_variable))</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(temp_diff))</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(<span class="dv">1</span>))</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(<span class="fl">1.0</span>))</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(<span class="va">True</span>))</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(<span class="va">None</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>&lt;class 'str'&gt;
 &lt;class 'int'&gt;
@@ -351,15 +372,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 &lt;class 'NoneType'&gt;</code></pre>
 </div>
 </div>
-<p>Once you’ve assigned a value to a variable, you can use this variable to do things like maths.</p>
-<div id="10d0cceb" class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>temp_day_1 <span class="op">=</span> <span class="dv">21</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>temp_day_2 <span class="op">=</span> <span class="dv">34</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'add'</span>, temp_day_1 <span class="op">+</span> temp_day_2)</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'subtract'</span>, temp_day_2 <span class="op">-</span> temp_day_1)</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'divide'</span>, temp_day_2 <span class="op">/</span> <span class="dv">2</span>)</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="co"># modulo gives the remainder after division</span></span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'modulo'</span>, temp_day_2 <span class="op">%</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Once you’ve assigned a value to a variable, you can use this variable to do things like maths (in the case of <code>int</code> or <code>float</code> types).</p>
+<div id="8399a97d" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>temp_day_1 <span class="op">=</span> <span class="dv">21</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>temp_day_2 <span class="op">=</span> <span class="dv">34</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'add'</span>, temp_day_1 <span class="op">+</span> temp_day_2)</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'subtract'</span>, temp_day_2 <span class="op">-</span> temp_day_1)</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'divide'</span>, temp_day_2 <span class="op">/</span> <span class="dv">2</span>)</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="co"># modulo gives the remainder after division</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'modulo'</span>, temp_day_2 <span class="op">%</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>add 55
 subtract 13
@@ -368,31 +389,31 @@ modulo 0</code></pre>
 </div>
 </div>
 <p>You can do surprising things with strings as well.</p>
-<div id="0e11753f" class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>part_1 <span class="op">=</span> <span class="st">'Hello'</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>part_2 <span class="op">=</span> <span class="st">'there!'</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co"># here we'll combine the parts using an empty space</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>together <span class="op">=</span> part_1 <span class="op">+</span> <span class="st">' '</span> <span class="op">+</span> part_2</span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(together)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="2ba18133" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>part_1 <span class="op">=</span> <span class="st">'Hello'</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>part_2 <span class="op">=</span> <span class="st">'there!'</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co"># here we'll combine the parts using an empty space</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>together <span class="op">=</span> part_1 <span class="op">+</span> <span class="st">' '</span> <span class="op">+</span> part_2</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(together)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Hello there!</code></pre>
 </div>
 </div>
 <p>Python has some other types that can be useful. One of these is lists, which use square brackets to collect several items into the same variable.</p>
-<div id="12d50513" class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>my_list <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>]</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="co"># gets the length of a list</span></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">len</span>(my_list))</span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="co"># indexes into the first item in a list</span></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="co"># in Python, lists are zero indexed</span></span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>get_something <span class="op">=</span> my_list[<span class="dv">0</span>]</span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'first item:'</span>, get_something)</span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="co"># gets the last item</span></span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>get_something_else <span class="op">=</span> my_list[<span class="op">-</span><span class="dv">1</span>]</span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'last item:'</span>, get_something_else)</span>
-<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a><span class="co"># gets list entries from index 0 to before index 2</span></span>
-<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>get_several_things <span class="op">=</span> my_list[<span class="dv">0</span>:<span class="dv">2</span>]</span>
-<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'several items:'</span>, get_several_things)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="371b61c4" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>my_list <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>]</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co"># gets the length of a list</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">len</span>(my_list))</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co"># indexes into the first item in a list</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="co"># in Python, lists are zero indexed</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>get_something <span class="op">=</span> my_list[<span class="dv">0</span>]</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'first item:'</span>, get_something)</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="co"># gets the last item</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>get_something_else <span class="op">=</span> my_list[<span class="op">-</span><span class="dv">1</span>]</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'last item:'</span>, get_something_else)</span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a><span class="co"># gets list entries from index 0 to before index 2</span></span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>get_several_things <span class="op">=</span> my_list[<span class="dv">0</span>:<span class="dv">2</span>]</span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'several items:'</span>, get_several_things)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>4
 first item: 1
@@ -401,11 +422,12 @@ several items: [1, 2]</code></pre>
 </div>
 </div>
 <p>Note that you can iterate over lists using <code>for</code> and <code>in</code> syntax.</p>
-<div id="04f4d9ff" class="cell" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># this will print each number in my_list</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> num <span class="kw">in</span> my_list:</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># indentation has to be used consistently</span></span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(num)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="7972cac2" class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># this will print each number in my_list</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> num <span class="kw">in</span> my_list:</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># note the indented line</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># indentation has to be used consistently</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(num)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>1
 2
@@ -413,47 +435,91 @@ several items: [1, 2]</code></pre>
 4</code></pre>
 </div>
 </div>
-<p>Python has a number of built-in convenience methods:</p>
-<div id="1cef4bc6" class="cell" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'min'</span>, <span class="bu">min</span>(my_list))</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'max'</span>, <span class="bu">max</span>(my_list))</span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'reversed'</span>, <span class="bu">list</span>(<span class="bu">reversed</span>(my_list)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Python has a number of built-in convenience methods, which can simplify common tasks:</p>
+<div id="d422a8e4" class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'min'</span>, <span class="bu">min</span>(my_list))</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'max'</span>, <span class="bu">max</span>(my_list))</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'reversed'</span>, <span class="bu">list</span>(<span class="bu">reversed</span>(my_list)))</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'absolute'</span>, <span class="bu">abs</span>(<span class="op">-</span><span class="dv">100</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>min 1
 max 4
-reversed [4, 3, 2, 1]</code></pre>
+reversed [4, 3, 2, 1]
+absolute 100</code></pre>
 </div>
 </div>
 </section>
 <section id="importing-packages" class="level2">
 <h2 class="anchored" data-anchor-id="importing-packages">Importing packages</h2>
-<p>Python can import packages which contain reusable methods.</p>
-<p>Packages have to be installed before they are used, unless they are part of the default Python library. Let’s install the <code>shapely</code> package. Note that this method of installing a package is particular to JupyterLab Notebooks, and only has to be done if the package is not yet installed.</p>
-<div id="f95676ca" class="cell" data-execution_count="11">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># checks that the shapely package</span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="co"># is installed for this notebook</span></span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install shapely</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Requirement already satisfied: shapely in /opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages (2.0.2)
-Requirement already satisfied: numpy&gt;=1.14 in /opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages (from shapely) (1.26.3)
-
-[notice] A new release of pip is available: 23.2.1 -&gt; 24.0
-[notice] To update, run: pip install --upgrade pip</code></pre>
-</div>
+<p>Python can import packages which contain reusable code.</p>
+<p>Packages have to be installed before they are used, unless they are part of the default Python library. Let’s install the <code>shapely</code> package. Note that this method of installing a package with a leading exclamation mark is particular to JupyterLab Notebooks, and only has to be done if the package is not yet installed.</p>
+<div id="e4c11d8e" class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># checks that the shapely package</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="co"># is installed for this notebook</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="co"># uncomment the next line to run</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="co"># !pip install shapely</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Once installed and available, we can use modules provided by the package. Here we are using the <code>from</code> and <code>import</code> syntax to import the <code>geometry</code> module which is available from the <code>shapely</code> package.</p>
-<div id="e2bb521c" class="cell" data-execution_count="12">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> shapely <span class="im">import</span> geometry</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="ff0f2932" class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> shapely <span class="im">import</span> geometry</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><code>shapely</code> let’s us do some neat things with spatial information. Let’s define a point.</p>
-<div id="4d85067f" class="cell" data-execution_count="13">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>point_a <span class="op">=</span> geometry.Point(<span class="dv">0</span>, <span class="dv">0</span>)</span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(point_a)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="shapely" class="level2">
+<h2 class="anchored" data-anchor-id="shapely">Shapely</h2>
+<p><code>shapely</code> let’s us do some neat things with spatial information. Let’s define a <code>Point</code> type using the <code>geometry</code> module. The <code>geometry</code> module has some already defined methods which we can call. Let’s use the <code>Point</code> method to create a new point. Note the use of dot-notation.</p>
+<div id="50f6b5d4" class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># this creates a point using the Point constructor</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="co"># defined by the geometry module</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>point_a <span class="op">=</span> geometry.Point(<span class="dv">0</span>, <span class="dv">0</span>)</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(point_a)</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(point_a))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>POINT (0 0)</code></pre>
+<pre><code>POINT (0 0)
+&lt;class 'shapely.geometry.point.Point'&gt;</code></pre>
 </div>
 </div>
-<p>To find</p>
+<p>Different packages and modules define set patterns of behaviour. To understand what these are and what you can do with them, refer to the package documentation and ask ChatGPT to help you along the way.</p>
+<p>For example, a <code>shapely</code> <code>Point</code> type has built-in methods which allow you to easily produce certain forms of behaviour. You can access these using dot-notation. Let’s buffer the point object using the pre-defined <code>buffer()</code> method.</p>
+<div id="e4b5069c" class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>buff <span class="op">=</span> point_a.<span class="bu">buffer</span>(<span class="dv">10</span>)</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(buff)</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(buff))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>POLYGON ((10 0, 9.95184726672197 -0.980171403295606, 9.807852804032304 -1.9509032201612824, 9.569403357322088 -2.902846772544623, 9.238795325112868 -3.826834323650898, 8.819212643483551 -4.7139673682599765, 8.314696123025453 -5.555702330196022, 7.73010453362737 -6.343932841636455, 7.0710678118654755 -7.071067811865475, 6.343932841636455 -7.73010453362737, 5.555702330196023 -8.314696123025453, 4.713967368259978 -8.81921264348355, 3.8268343236508984 -9.238795325112868, 2.902846772544623 -9.56940335732209, 1.9509032201612833 -9.807852804032304, 0.9801714032956077 -9.951847266721968, 0.0000000000000006 -10, -0.9801714032956065 -9.95184726672197, -1.950903220161282 -9.807852804032304, -2.9028467725446214 -9.56940335732209, -3.826834323650897 -9.238795325112868, -4.713967368259977 -8.819212643483551, -5.55570233019602 -8.314696123025454, -6.3439328416364535 -7.730104533627371, -7.071067811865475 -7.0710678118654755, -7.73010453362737 -6.343932841636455, -8.314696123025453 -5.555702330196022, -8.81921264348355 -4.713967368259978, -9.238795325112868 -3.826834323650899, -9.569403357322088 -2.902846772544624, -9.807852804032304 -1.9509032201612861, -9.951847266721968 -0.9801714032956083, -10 -0.0000000000000012, -9.95184726672197 0.9801714032956059, -9.807852804032304 1.9509032201612837, -9.56940335732209 2.902846772544621, -9.238795325112868 3.8268343236508966, -8.819212643483551 4.7139673682599765, -8.314696123025454 5.55570233019602, -7.730104533627371 6.343932841636453, -7.071067811865477 7.071067811865475, -6.343932841636459 7.730104533627367, -5.555702330196022 8.314696123025453, -4.713967368259978 8.81921264348355, -3.8268343236509033 9.238795325112864, -2.9028467725446245 9.569403357322088, -1.9509032201612866 9.807852804032303, -0.9801714032956045 9.95184726672197, -0.0000000000000018 10, 0.9801714032956009 9.95184726672197, 1.950903220161283 9.807852804032304, 2.9028467725446205 9.56940335732209, 3.8268343236509 9.238795325112866, 4.713967368259976 8.819212643483551, 5.555702330196018 8.314696123025454, 6.343932841636456 7.730104533627369, 7.071067811865474 7.071067811865477, 7.730104533627367 6.343932841636459, 8.314696123025453 5.555702330196022, 8.819212643483548 4.713967368259979, 9.238795325112864 3.826834323650904, 9.569403357322088 2.902846772544625, 9.807852804032303 1.9509032201612873, 9.95184726672197 0.980171403295605, 10 0))
+&lt;class 'shapely.geometry.polygon.Polygon'&gt;</code></pre>
+</div>
+</div>
+<p>Notice that we now have a <code>Polygon</code> type. Types (or a Python <code>class</code>) can have properties which are accessed using dot-notation, but unlike methods, properties do not require parenthesis because they do not accept arguments.</p>
+<div id="b63710cc" class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># here we are using the area property to retrieve the area</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Point area:'</span>, point_a.area)</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Polygon area:'</span>, buff.area)</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="co"># properties can be nested via dot-notation</span></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a><span class="co"># for example, polygons have an exterior property</span></span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a><span class="co"># which returns a LinearRing</span></span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a><span class="co"># let's get the LinearRing's length property</span></span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(buff.exterior))</span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Polygon circumference:'</span>, buff.exterior.length)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Point area: 0.0
+Polygon area: 313.6548490545941
+&lt;class 'shapely.geometry.polygon.LinearRing'&gt;
+Polygon circumference: 62.80662313909506</code></pre>
+</div>
+</div>
+<p>Let’s create a line. The line constructor requires a list of points.</p>
+<div id="cc20a25c" class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>point_b <span class="op">=</span> geometry.Point(<span class="dv">1</span>, <span class="dv">1</span>)</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>line <span class="op">=</span> geometry.LineString([point_a, point_b])</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(line)</span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">list</span>(line.coords))</span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(line.length)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>LINESTRING (0 0, 1 1)
+[(0.0, 0.0), (1.0, 1.0)]
+1.4142135623730951</code></pre>
+</div>
+</div>
 
 
 </section>
