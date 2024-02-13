@@ -81,7 +81,7 @@
     "href": "chapter_2/open_source.html",
     "title": "Open Source",
     "section": "",
-    "text": "Use open-source code wherever possible! Open source code consists of a dynamic ecosystem of constantly co-evolving code packages. This collaborative development has permitted a remarkable progression in the capabilities and sophistication of freely accessible code. This has benefitted geospatial and urban analysis immensely, making these tools more widely accessible to those who wish to use them.\nTo further cement some basic Python skills, we’ll be making use of the open-source learn-python3 repository, created and maintained by Github user jerry-git.\n\n\n\n\n\n\nTip\n\n\n\nWe will be using open-source packages extensively throughout this course. To show your appreciation for online open-source code, please click the “Star” button in the respective Github repositories! If the repository provides a citation or publication reference, please be sure to cite these clearly in any derivative work. If you continue to develop your Python skills you may one day be able to become an active contributor to the ongoing development of open-source projects.\n\n\n\n\n\nGo to the learn-python3 repository.\nBefore using code from online code repositories, double-check the license type. In this case, it is MIT licensed which is an open-source license.\nDownload the repository to a local folder by clicking on the green “code” dropdown button, and select “Download ZIP”.\nUnzip if necessary and move the folder to a working location of your choosing.\n\n\n\n\n\nOpen your Anaconda Navigator and launch Jupyter Lab as previously.\nOnce Jupyter Lab has launched, navigate to the downloaded folder and open the notebooks &gt; beginner &gt; notebooks folder.\nSequentially work through notebooks from 1 to 7. Feel free to experiment with the notebook content.\nEmerging AI tools such as ChatGPT are incredibly useful for understanding and adapting code. These tools are largely replacing previously used online resources such as Stack Overflow (though these can still be useful).",
+    "text": "Use open-source code wherever possible! Open source code consists of a dynamic ecosystem of constantly co-evolving code packages. This collaborative development has permitted a remarkable progression in the capabilities and sophistication of freely accessible code. This has benefitted geospatial and urban analysis immensely, making these tools more widely accessible to those who wish to use them.\nTo further cement some basic Python skills, we’ll be making use of the open-source learn-python3 repository, created and maintained by Github user jerry-git.",
     "crumbs": [
       "Basic Coding",
       "Open Source"
@@ -91,8 +91,8 @@
     "objectID": "chapter_2/open_source.html#fetching-the-notebooks",
     "href": "chapter_2/open_source.html#fetching-the-notebooks",
     "title": "Open Source",
-    "section": "",
-    "text": "Go to the learn-python3 repository.\nBefore using code from online code repositories, double-check the license type. In this case, it is MIT licensed which is an open-source license.\nDownload the repository to a local folder by clicking on the green “code” dropdown button, and select “Download ZIP”.\nUnzip if necessary and move the folder to a working location of your choosing.",
+    "section": "Fetching the notebooks",
+    "text": "Fetching the notebooks\n\nGo to the learn-python3 repository.\nBefore using code from online code repositories, double-check the license type. In this case, it is MIT licensed which is an open-source license.\nDownload the repository to a local folder by clicking on the green “code” dropdown button, and select “Download ZIP”.\nUnzip if necessary and move the folder to a working location of your choosing.",
     "crumbs": [
       "Basic Coding",
       "Open Source"
@@ -102,8 +102,8 @@
     "objectID": "chapter_2/open_source.html#using-the-notebooks",
     "href": "chapter_2/open_source.html#using-the-notebooks",
     "title": "Open Source",
-    "section": "",
-    "text": "Open your Anaconda Navigator and launch Jupyter Lab as previously.\nOnce Jupyter Lab has launched, navigate to the downloaded folder and open the notebooks &gt; beginner &gt; notebooks folder.\nSequentially work through notebooks from 1 to 7. Feel free to experiment with the notebook content.\nEmerging AI tools such as ChatGPT are incredibly useful for understanding and adapting code. These tools are largely replacing previously used online resources such as Stack Overflow (though these can still be useful).",
+    "section": "Using the notebooks",
+    "text": "Using the notebooks\n\nOpen your Anaconda Navigator and launch Jupyter Lab as previously.\nOnce Jupyter Lab has launched, navigate to the downloaded folder and open the notebooks &gt; beginner &gt; notebooks folder.\nSequentially work through notebooks from 1 to 7. Feel free to experiment with the notebook content.\nEmerging AI tools such as ChatGPT are incredibly useful for understanding and adapting code. These tools are largely replacing previously used online resources such as Stack Overflow (though these can still be useful).",
     "crumbs": [
       "Basic Coding",
       "Open Source"
