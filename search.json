@@ -110,6 +110,72 @@
     ]
   },
   {
+    "objectID": "chapter_1/gis_tips.html",
+    "href": "chapter_1/gis_tips.html",
+    "title": "Tips",
+    "section": "",
+    "text": "In multiple scenarios you may find information in one table/layer that you might want to connect to information from another. JOINS are the way to do this, and work by connecting two different datasources based on a shared attribute. So doing, the attributes from one table can be connected to another for analysis or visualision purposes.\n\n\n\n\nInner Join: Returns only rows that have been matched across both tables.\nLeft (Outer) Join: Returns all rows from the left table, and matched rows from the right table where found.\nRight (Outer) Join: Returns all rows from the right table, and matched rows from the left table where found.\nFull (Outer) Join: Returns all rows from both tables, regardless of whether matches were found in the other table.\nCross Join: Returns a Cartesian product of the two tables, i.e. each row connected to each other row from the other table. Use with caution!\n\n\n\n\n\nJoin types\n\n\n\n\n\n\n\n\n\nOccurs when each record in one table corresponds to exactly one record in another table.\n\n\n\n\n\n\n\nOccurs when a single record in one table can be associated with one or more records in another table.\n\n\n\n\n\n\n\nOccurrs when multiple records from one table correspond with one or more in another table.\n\n\n\n\n\n\n\n\n\n\nImportant\n\n\n\n\nWhen using joins you are not modifying the original tables.\nYour resulting table can be much smaller or (exponentially) larger than any of the original tables.\n\n\n\n\n\n\nSimilar to joining tables based on their attributes, it is possible to join them based on their location. This is a very common technique in spatial databases (e.g. PostGIS) where you’ll commonly use a feature such as a city boundary to filter and join data from another table (e.g. streets).\nTo achieve the expected results, make sure that both origin tables are in the same CRS.\n\n\nIn QGIS and spatial databases, spatial predicates are used to define spatial relationships between features. These are used for joining or selecting data based on the relationships between the features. Some of the common predicates are:\n\nContains: Determines if one geometry contains another.\nWithin: Checks if one geometry is within another geometry.\nIntersects: Tests if two geometries intersect at any point.\nDisjoint: Determines if two geometries do not intersect.\nTouches: Checks if two geometries have at least one point in common but their interiors do not intersect.\nCrosses: Determines if the geometries have some, but not all, interior points in common.\nEquals: Checks if two geometries are exactly the same in terms of spatial coordinates.\nOverlaps: Determines if two geometries overlap, meaning they share some but not all points, and the intersection has the same dimension as the geometries themselves.\n\n\n\n\n\n\n\nCaution\n\n\n\nPlease note that depending on the size and complexity of your joins some operations can be computationally expensive and some advanced techniques might need to be implemented to achieve best performance.",
+    "crumbs": [
+      "GIS Tools",
+      "Tips"
+    ]
+  },
+  {
+    "objectID": "chapter_1/gis_tips.html#join-types",
+    "href": "chapter_1/gis_tips.html#join-types",
+    "title": "Tips",
+    "section": "",
+    "text": "Inner Join: Returns only rows that have been matched across both tables.\nLeft (Outer) Join: Returns all rows from the left table, and matched rows from the right table where found.\nRight (Outer) Join: Returns all rows from the right table, and matched rows from the left table where found.\nFull (Outer) Join: Returns all rows from both tables, regardless of whether matches were found in the other table.\nCross Join: Returns a Cartesian product of the two tables, i.e. each row connected to each other row from the other table. Use with caution!\n\n\n\n\n\nJoin types",
+    "crumbs": [
+      "GIS Tools",
+      "Tips"
+    ]
+  },
+  {
+    "objectID": "chapter_1/gis_tips.html#cardinality",
+    "href": "chapter_1/gis_tips.html#cardinality",
+    "title": "Tips",
+    "section": "",
+    "text": "Occurs when each record in one table corresponds to exactly one record in another table.\n\n\n\n\n\n\n\nOccurs when a single record in one table can be associated with one or more records in another table.\n\n\n\n\n\n\n\nOccurrs when multiple records from one table correspond with one or more in another table.\n\n\n\n\n\n\n\n\n\n\nImportant\n\n\n\n\nWhen using joins you are not modifying the original tables.\nYour resulting table can be much smaller or (exponentially) larger than any of the original tables.",
+    "crumbs": [
+      "GIS Tools",
+      "Tips"
+    ]
+  },
+  {
+    "objectID": "chapter_1/gis_tips.html#introduction-to-spatial-joins",
+    "href": "chapter_1/gis_tips.html#introduction-to-spatial-joins",
+    "title": "Tips",
+    "section": "",
+    "text": "Similar to joining tables based on their attributes, it is possible to join them based on their location. This is a very common technique in spatial databases (e.g. PostGIS) where you’ll commonly use a feature such as a city boundary to filter and join data from another table (e.g. streets).\nTo achieve the expected results, make sure that both origin tables are in the same CRS.\n\n\nIn QGIS and spatial databases, spatial predicates are used to define spatial relationships between features. These are used for joining or selecting data based on the relationships between the features. Some of the common predicates are:\n\nContains: Determines if one geometry contains another.\nWithin: Checks if one geometry is within another geometry.\nIntersects: Tests if two geometries intersect at any point.\nDisjoint: Determines if two geometries do not intersect.\nTouches: Checks if two geometries have at least one point in common but their interiors do not intersect.\nCrosses: Determines if the geometries have some, but not all, interior points in common.\nEquals: Checks if two geometries are exactly the same in terms of spatial coordinates.\nOverlaps: Determines if two geometries overlap, meaning they share some but not all points, and the intersection has the same dimension as the geometries themselves.\n\n\n\n\n\n\n\nCaution\n\n\n\nPlease note that depending on the size and complexity of your joins some operations can be computationally expensive and some advanced techniques might need to be implemented to achieve best performance.",
+    "crumbs": [
+      "GIS Tools",
+      "Tips"
+    ]
+  },
+  {
+    "objectID": "chapter_1/gis_tips.html#tools-and-plugins",
+    "href": "chapter_1/gis_tips.html#tools-and-plugins",
+    "title": "Tips",
+    "section": "Tools and plugins",
+    "text": "Tools and plugins\nIn QGIS, georeferencing can be carried out using the built-in Georeferencer tool, which can be found under the menu Layer -&gt; Georeferencer.... This tool allows you to manually add control points that link the location on the image with geographic coordinates on the map, adjusting the image to fit the spatial data.\n\n\n\n\n\n\nTip\n\n\n\nThe mode nodes you add and the further away from each other, the more refences the algorithm has to accomodate the original file. Minimum of 5 points should be considered to have an descent baseline.\n\n\n\nPlugins: For more advanced or specific georeferencing needs, there are additional plugins like Freehand Raster Georeferencer, allowing for more flexible manipulation of images directly within the map canvas.",
+    "crumbs": [
+      "GIS Tools",
+      "Tips"
+    ]
+  },
+  {
+    "objectID": "chapter_1/gis_tips.html#use-cases-of-georeferenced-images",
+    "href": "chapter_1/gis_tips.html#use-cases-of-georeferenced-images",
+    "title": "Tips",
+    "section": "Use cases of georeferenced images",
+    "text": "Use cases of georeferenced images\n\nHistorical Maps: Bringing old maps into modern GIS projects, helping to study changes over time.\nTracing Exercises: Overlaying aerial or satellite imagery to digitize features such as roads, buildings, or land use.\nReshaping sketches: Planning and ideation sketches usually are our of scale and conveniently reshaping elements of the enrionment. Georefereincing them helps to better transition ideas into reality.\n\n\n\n\n\n\n\nIt’s important to consider potential distortions when georeferencing images, as the process involves stretching or rotating the image to align with real-world coordinates. Understanding and managing these distortions is key to ensuring the accuracy of the geospatial analysis.",
+    "crumbs": [
+      "GIS Tools",
+      "Tips"
+    ]
+  },
+  {
     "objectID": "chapter_1/sql.html",
     "href": "chapter_1/sql.html",
     "title": "SQL for GIS",
@@ -150,72 +216,6 @@
     "title": "SQL for GIS",
     "section": "Useful Resources",
     "text": "Useful Resources\n\nPOSTGRESQL & POSTGIS CHEATSHEETS\n\nPostgreSQL & PostGIS cheatsheet (a work in progress)\nPostgres Cheatsheet"
-  },
-  {
-    "objectID": "chapter_1/cloud.html",
-    "href": "chapter_1/cloud.html",
-    "title": "Cloud GIS",
-    "section": "",
-    "text": "This will be an in-class hands-on session providing an introduction to the use of CARTO for publishing and styling interactive maps.\nThe are two excercises that will help us explore different components of the platform:\nEach excersice will be lead by a live demo of the main steps to better control the visualization of the datasets. Then, each student will have time to explore on their own time the tool and come up with a shereable map.",
-    "crumbs": [
-      "GIS Tools",
-      "Cloud GIS"
-    ]
-  },
-  {
-    "objectID": "chapter_1/cloud.html#connecting-to-carto",
-    "href": "chapter_1/cloud.html#connecting-to-carto",
-    "title": "Cloud GIS",
-    "section": "Connecting to CARTO",
-    "text": "Connecting to CARTO\nBecause this will be the first time you log in, you will have to log in into www.carto.com using your GitHub account (you will need the Student Development Pack approved - see the Software & Accounts section).\n\nSearch for Are you a student? and Access using GitHub\n\n\n\nUse GitHub login\n\n\n\nFollow the stepts to create your account and note that each scholar will create a separate ‘organization’. This means all your files and maps will be yours and you will not be joining NFI’s organization. You can name ir however you like!",
-    "crumbs": [
-      "GIS Tools",
-      "Cloud GIS"
-    ]
-  },
-  {
-    "objectID": "chapter_1/cloud.html#datasets",
-    "href": "chapter_1/cloud.html#datasets",
-    "title": "Cloud GIS",
-    "section": "Datasets",
-    "text": "Datasets\nFor this excercise we will use two official data sources. I\n\nCycling routes (LINESTRINGS, 4326):\n\nDownload geopackage file\nConsult official source : for references to the .gpkg file above\n\nCycling docks (POINTS, 4326):\n\nDownload geopackage file\nConsult official source : for references to the .gpkg file above\n\n\n\n\n\n\n\n\nNote\n\n\n\nNote that both file have been reprojected to EPSG: 4326 as this is the prefered projection system for CARTO\n\n\n\nLoading Data\nThere are several ways to use the data in CARTO. But this time we are going to upload it directly from CARTO BUILDER\n\nUsing the main menu, navigate to Maps –&gt; + New map button. This takes you to a new tab with an instance of CARTO’s Builder.\nAdd source from... and upload the gpkg in a folder of your preference.\n\n\n\n\n\n\n\nNote that multiple layers can be added from the same\n\n\n\nAdd style\nDepending on the geometry types, you will have different option for styling your Points (docking stations) and the Linestrings (cycling routes).\n\n\n\n\n\n\nNote\n\n\n\nAlways familirise yourself with the data before jumping into modifying its style \n\n\nFor now we encourage you to explore the following three tabs:\n\nLayers\nLegends\nBasemaps\n\n\n\n\n\n\n\n\nPublish\nWhen you are happy with the map make sure you SHARE your results by publishing them to allow for public access\n\nAdd your resulting URL to this notion card\n\n\n\nYour example\n\nThe best maps will be added to complete this section!",
-    "crumbs": [
-      "GIS Tools",
-      "Cloud GIS"
-    ]
-  },
-  {
-    "objectID": "chapter_1/cloud.html#datasets-1",
-    "href": "chapter_1/cloud.html#datasets-1",
-    "title": "Cloud GIS",
-    "section": "Datasets",
-    "text": "Datasets\nFor this excercise we are going to use the same datasets than we did in our previous session. However, this time we are going to use the full dataset containing the population data.\n\nDownload the municipal neighbourhoods as a SHP file: Barrios municipales de Madrid\nDownload the population by district and neighbourhood dataset as a CSV file: Población por distrito y barrio a 1 de enero",
-    "crumbs": [
-      "GIS Tools",
-      "Cloud GIS"
-    ]
-  },
-  {
-    "objectID": "chapter_1/cloud.html#workflows",
-    "href": "chapter_1/cloud.html#workflows",
-    "title": "Cloud GIS",
-    "section": "Workflows",
-    "text": "Workflows\nFrom our previous experience, we know that in order to join the datasets, we first had to clean and filter the data. This time we are going to make use of CARTO’s WORKFLOWS: a no-code visual interface for replicating processes like cleaning, filtering, joining (and much more). Visit for more.",
-    "crumbs": [
-      "GIS Tools",
-      "Cloud GIS"
-    ]
-  },
-  {
-    "objectID": "chapter_1/cloud.html#hands-on",
-    "href": "chapter_1/cloud.html#hands-on",
-    "title": "Cloud GIS",
-    "section": "Hands-on",
-    "text": "Hands-on\nThe following are the general steps we encourage you to follow to get familiar with other functions of CARTO.\n\nData prep\nFor this excerse we just want you to import the file below and update the inputs and output parameters\n\n\n\nCARTO’s Workflow\n\n\n\nUnder menu Data Explorer –&gt; Import both datasets (CSV and SHP)\nUnder menu Workflows –&gt; Import this SQL procedure to give you a head start\nUpdate workflow :\n\nInputs: data sources according to the location and name of your files\nOutput: select where you want to store the results\n\nRun the workflow to identify potential issues\n\nRememeber to read the Error messages (if at all), to debug your workflow\n\n\n\n\nData viz\nNow we are going to move into another builder instance and load the newly created table (from the steps above). This time we encourage you to look into the other two tabs :\n\nWidgets : allow you to interact and filter the data plotted on the map\nInteractions : helps you surface propreties of individual elements in the map\n\n\n\n\n\n\n\n\nPublish\nWhen you are happy with the map make sure you SHARE your results by publishing them to allow for public access\n\nAdd your resulting URL to this notion card\n\n\n\nOutput Example\n    \n\nMadrid’s Population Dashboard - Greg Maya",
-    "crumbs": [
-      "GIS Tools",
-      "Cloud GIS"
-    ]
   },
   {
     "objectID": "chapter_1/gis.html",
@@ -588,46 +588,70 @@
     ]
   },
   {
-    "objectID": "chapter_1/qgis_mapping_techniques.html",
-    "href": "chapter_1/qgis_mapping_techniques.html",
-    "title": "QGIS Mapping Fundamentals",
+    "objectID": "chapter_1/cloud_gis.html",
+    "href": "chapter_1/cloud_gis.html",
+    "title": "Cloud GIS",
     "section": "",
-    "text": "In multiple scenarios you will find information in one table/layer that you want to tranfer into another. JOINS are the best way to do that; all you need is a common attribute. When two tables share one attribute (including data types), you can expand the attributes in one of the tables and use it for further analysis and/or visualision purposes.\n\n\n\n\n\nInner Join: Returns rows with matching attributes.\nLeft (Outer) Join: Returns all rows from the left table, and the matched attributes from the right table.\nRight (Outer) Join: Returns all rows from the right table, and the matched attributes from the left table.\n\n\n\nFull (Outer) Join: Returns rows from both tables even when there is no matching attributes.\nCross Join: Returns a Cartesian product of the two tables.\nSelf Join: A table can be joined with itself.\n\n\n\n\n\n\nJoin types\n\n\n\n\n\n\n\n\n\nOccurs when each record in one table corresponds to exactly one record in another table.\n\n\n\n\n\n\n\nOccurs when a single record in one table can be associated with one or more records in another table.\n\n\n\n\n\n\n\nOccurrs when multiple records from one table correspond with one or more in another table.\n\n\n\n\n\n\n\n\n\n\nImportant\n\n\n\n\nWhen using joins you are not modifying the original tables.\nYour resulting table can be much smaller or (exponentially) larger than any of the original tables.\n\n\n\n\n\n\nSimilar to joining tables based on their attributes, one can join them based on their location (ultimately the location is nothing more than a ‘fancy’ attribute).\nTo achieve the expected results, make sure that both origin tables are in the same CRS.\n\n\nIn order to establish the relationship between the origin tables one can use a series of spatial predicates. The most common ones are:\n\nContains: Determines if one geometry contains another.\nWithin: Checks if one geometry is within another geometry.\nIntersects: Tests if two geometries intersect at any point.\nDisjoint: Determines if two geometries do not intersect.\nTouches: Checks if two geometries have at least one point in common but their interiors do not intersect.\nCrosses: Determines if the geometries have some, but not all, interior points in common.\nEquals: Checks if two geometries are exactly the same in terms of spatial coordinates.\nOverlaps: Determines if two geometries overlap, meaning they share some but not all points, and the intersection has the same dimension as the geometries themselves.\n\n\n\n\n\n\n\nCaution\n\n\n\nPlease note that depending on the size and complexity of your joins some operations can be computationally expensive and some advanced techniques might need to be implemented to achieve best performance."
+    "text": "This will be an in-class hands-on session providing an introduction to the use of CARTO for publishing and styling interactive maps.\nThe are two excercises that will help us explore different components of the platform:\nEach excersice will be lead by a live demo of the main steps to better control the visualization of the datasets. Then, each student will have time to explore on their own time the tool and come up with a shereable map.",
+    "crumbs": [
+      "GIS Tools",
+      "Cloud GIS"
+    ]
   },
   {
-    "objectID": "chapter_1/qgis_mapping_techniques.html#join-types",
-    "href": "chapter_1/qgis_mapping_techniques.html#join-types",
-    "title": "QGIS Mapping Fundamentals",
-    "section": "",
-    "text": "Inner Join: Returns rows with matching attributes.\nLeft (Outer) Join: Returns all rows from the left table, and the matched attributes from the right table.\nRight (Outer) Join: Returns all rows from the right table, and the matched attributes from the left table.\n\n\n\nFull (Outer) Join: Returns rows from both tables even when there is no matching attributes.\nCross Join: Returns a Cartesian product of the two tables.\nSelf Join: A table can be joined with itself.\n\n\n\n\n\n\nJoin types"
+    "objectID": "chapter_1/cloud_gis.html#connecting-to-carto",
+    "href": "chapter_1/cloud_gis.html#connecting-to-carto",
+    "title": "Cloud GIS",
+    "section": "Connecting to CARTO",
+    "text": "Connecting to CARTO\nBecause this will be the first time you log in, you will have to log in into www.carto.com using your GitHub account (you will need the Student Development Pack approved - see the Software & Accounts section).\n\nSearch for Are you a student? and Access using GitHub\n\n\n\nUse GitHub login\n\n\n\nFollow the stepts to create your account and note that each scholar will create a separate ‘organization’. This means all your files and maps will be yours and you will not be joining NFI’s organization. You can name ir however you like!",
+    "crumbs": [
+      "GIS Tools",
+      "Cloud GIS"
+    ]
   },
   {
-    "objectID": "chapter_1/qgis_mapping_techniques.html#cardinality",
-    "href": "chapter_1/qgis_mapping_techniques.html#cardinality",
-    "title": "QGIS Mapping Fundamentals",
-    "section": "",
-    "text": "Occurs when each record in one table corresponds to exactly one record in another table.\n\n\n\n\n\n\n\nOccurs when a single record in one table can be associated with one or more records in another table.\n\n\n\n\n\n\n\nOccurrs when multiple records from one table correspond with one or more in another table.\n\n\n\n\n\n\n\n\n\n\nImportant\n\n\n\n\nWhen using joins you are not modifying the original tables.\nYour resulting table can be much smaller or (exponentially) larger than any of the original tables."
+    "objectID": "chapter_1/cloud_gis.html#datasets",
+    "href": "chapter_1/cloud_gis.html#datasets",
+    "title": "Cloud GIS",
+    "section": "Datasets",
+    "text": "Datasets\nFor this excercise we will use two official data sources. I\n\nCycling routes (LINESTRINGS, 4326):\n\nDownload geopackage file\nConsult official source : for references to the .gpkg file above\n\nCycling docks (POINTS, 4326):\n\nDownload geopackage file\nConsult official source : for references to the .gpkg file above\n\n\n\n\n\n\n\n\nNote\n\n\n\nNote that both file have been reprojected to EPSG: 4326 as this is the prefered projection system for CARTO\n\n\n\nLoading Data\nThere are several ways to use the data in CARTO. But this time we are going to upload it directly from CARTO BUILDER\n\nUsing the main menu, navigate to Maps –&gt; + New map button. This takes you to a new tab with an instance of CARTO’s Builder.\nAdd source from... and upload the gpkg in a folder of your preference.\n\n\n\n\n\n\n\nNote that multiple layers can be added from the same\n\n\n\nAdd style\nDepending on the geometry types, you will have different option for styling your Points (docking stations) and the Linestrings (cycling routes).\n\n\n\n\n\n\nNote\n\n\n\nAlways familirise yourself with the data before jumping into modifying its style \n\n\nFor now we encourage you to explore the following three tabs:\n\nLayers\nLegends\nBasemaps\n\n\n\n\n\n\n\n\nPublish\nWhen you are happy with the map make sure you SHARE your results by publishing them to allow for public access\n\nAdd your resulting URL to this notion card\n\n\n\nYour example\n\nThe best maps will be added to complete this section!",
+    "crumbs": [
+      "GIS Tools",
+      "Cloud GIS"
+    ]
   },
   {
-    "objectID": "chapter_1/qgis_mapping_techniques.html#introduction-to-spatial-joins",
-    "href": "chapter_1/qgis_mapping_techniques.html#introduction-to-spatial-joins",
-    "title": "QGIS Mapping Fundamentals",
-    "section": "",
-    "text": "Similar to joining tables based on their attributes, one can join them based on their location (ultimately the location is nothing more than a ‘fancy’ attribute).\nTo achieve the expected results, make sure that both origin tables are in the same CRS.\n\n\nIn order to establish the relationship between the origin tables one can use a series of spatial predicates. The most common ones are:\n\nContains: Determines if one geometry contains another.\nWithin: Checks if one geometry is within another geometry.\nIntersects: Tests if two geometries intersect at any point.\nDisjoint: Determines if two geometries do not intersect.\nTouches: Checks if two geometries have at least one point in common but their interiors do not intersect.\nCrosses: Determines if the geometries have some, but not all, interior points in common.\nEquals: Checks if two geometries are exactly the same in terms of spatial coordinates.\nOverlaps: Determines if two geometries overlap, meaning they share some but not all points, and the intersection has the same dimension as the geometries themselves.\n\n\n\n\n\n\n\nCaution\n\n\n\nPlease note that depending on the size and complexity of your joins some operations can be computationally expensive and some advanced techniques might need to be implemented to achieve best performance."
+    "objectID": "chapter_1/cloud_gis.html#datasets-1",
+    "href": "chapter_1/cloud_gis.html#datasets-1",
+    "title": "Cloud GIS",
+    "section": "Datasets",
+    "text": "Datasets\nFor this excercise we are going to use the same datasets than we did in our previous session. However, this time we are going to use the full dataset containing the population data.\n\nDownload the municipal neighbourhoods as a SHP file: Barrios municipales de Madrid\nDownload the population by district and neighbourhood dataset as a CSV file: Población por distrito y barrio a 1 de enero",
+    "crumbs": [
+      "GIS Tools",
+      "Cloud GIS"
+    ]
   },
   {
-    "objectID": "chapter_1/qgis_mapping_techniques.html#tools-and-plugins",
-    "href": "chapter_1/qgis_mapping_techniques.html#tools-and-plugins",
-    "title": "QGIS Mapping Fundamentals",
-    "section": "Tools and plugins",
-    "text": "Tools and plugins\nIn QGIS, georeferencing can be carried out using the built-in Georeferencer tool, which can be found under the menu Layer -&gt; Georeferencer.... This tool allows you to manually add control points that link the location on the image with geographic coordinates on the map, adjusting the image to fit the spatial data.\n\n\n\n\n\n\nTip\n\n\n\nThe mode nodes you add and the further away from each other, the more refences the algorithm has to accomodate the original file. Minimum of 5 points should be considered to have an descent baseline.\n\n\n\nPlugins: For more advanced or specific georeferencing needs, there are additional plugins like Freehand Raster Georeferencer, allowing for more flexible manipulation of images directly within the map canvas."
+    "objectID": "chapter_1/cloud_gis.html#workflows",
+    "href": "chapter_1/cloud_gis.html#workflows",
+    "title": "Cloud GIS",
+    "section": "Workflows",
+    "text": "Workflows\nFrom our previous experience, we know that in order to join the datasets, we first had to clean and filter the data. This time we are going to make use of CARTO’s WORKFLOWS: a no-code visual interface for replicating processes like cleaning, filtering, joining (and much more). Visit for more.",
+    "crumbs": [
+      "GIS Tools",
+      "Cloud GIS"
+    ]
   },
   {
-    "objectID": "chapter_1/qgis_mapping_techniques.html#use-cases-of-georeferenced-images",
-    "href": "chapter_1/qgis_mapping_techniques.html#use-cases-of-georeferenced-images",
-    "title": "QGIS Mapping Fundamentals",
-    "section": "Use cases of georeferenced images",
-    "text": "Use cases of georeferenced images\n\nHistorical Maps: Bringing old maps into modern GIS projects, helping to study changes over time.\nTracing Exercises: Overlaying aerial or satellite imagery to digitize features such as roads, buildings, or land use.\nReshaping sketches: Planning and ideation sketches usually are our of scale and conveniently reshaping elements of the enrionment. Georefereincing them helps to better transition ideas into reality.\n\n\n\n\n\n\n\nIt’s important to consider potential distortions when georeferencing images, as the process involves stretching or rotating the image to align with real-world coordinates. Understanding and managing these distortions is key to ensuring the accuracy of the geospatial analysis."
+    "objectID": "chapter_1/cloud_gis.html#hands-on",
+    "href": "chapter_1/cloud_gis.html#hands-on",
+    "title": "Cloud GIS",
+    "section": "Hands-on",
+    "text": "Hands-on\nThe following are the general steps we encourage you to follow to get familiar with other functions of CARTO.\n\nData prep\nFor this excerse we just want you to import the file below and update the inputs and output parameters\n\n\n\nCARTO’s Workflow\n\n\n\nUnder menu Data Explorer –&gt; Import both datasets (CSV and SHP)\nUnder menu Workflows –&gt; Import this SQL procedure to give you a head start\nUpdate workflow :\n\nInputs: data sources according to the location and name of your files\nOutput: select where you want to store the results\n\nRun the workflow to identify potential issues\n\nRememeber to read the Error messages (if at all), to debug your workflow\n\n\n\n\nData viz\nNow we are going to move into another builder instance and load the newly created table (from the steps above). This time we encourage you to look into the other two tabs :\n\nWidgets : allow you to interact and filter the data plotted on the map\nInteractions : helps you surface propreties of individual elements in the map\n\n\n\n\n\n\n\n\nPublish\nWhen you are happy with the map make sure you SHARE your results by publishing them to allow for public access\n\nAdd your resulting URL to this notion card\n\n\n\nOutput Example\n    \n\nMadrid’s Population Dashboard - Greg Maya",
+    "crumbs": [
+      "GIS Tools",
+      "Cloud GIS"
+    ]
   },
   {
     "objectID": "chapter_2/intro_to_python.html",

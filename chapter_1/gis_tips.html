@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2024-02-08">
+<meta name="dcterms.date" content="2024-02-15">
 
-<title>NFI Urban Analytics 2024 - Part 1 - Cloud GIS</title>
+<title>NFI Urban Analytics 2024 - Part 1 - Tips</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -31,7 +31,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../chapter_2/intro_to_python.html" rel="next">
+<link href="../chapter_1/cloud_gis.html" rel="next">
 <link href="../chapter_1/qgis_mapping.html" rel="prev">
 <link href=".././assets/nfi_logo.png" rel="icon" type="image/png">
 <script src="../site_libs/quarto-html/quarto.js"></script>
@@ -94,7 +94,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapter_1/gis.html">GIS Tools</a></li><li class="breadcrumb-item"><a href="../chapter_1/cloud.html">Cloud GIS</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapter_1/gis.html">GIS Tools</a></li><li class="breadcrumb-item"><a href="../chapter_1/gis_tips.html">Tips</a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -178,7 +178,13 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapter_1/cloud.html" class="sidebar-item-text sidebar-link active">
+  <a href="../chapter_1/gis_tips.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Tips</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapter_1/cloud_gis.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Cloud GIS</span></a>
   </div>
 </li>
@@ -223,38 +229,31 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#connecting-to-carto" id="toc-connecting-to-carto" class="nav-link active" data-scroll-target="#connecting-to-carto">Connecting to CARTO</a></li>
-  <li><a href="#part-1---madrids-cycling-infrastructure" id="toc-part-1---madrids-cycling-infrastructure" class="nav-link" data-scroll-target="#part-1---madrids-cycling-infrastructure">Part 1 - Madrid’s Cycling Infrastructure</a>
+  <li><a href="#joins-and-spatial-joins" id="toc-joins-and-spatial-joins" class="nav-link active" data-scroll-target="#joins-and-spatial-joins">Joins and Spatial Joins</a>
   <ul class="collapse">
-  <li><a href="#datasets" id="toc-datasets" class="nav-link" data-scroll-target="#datasets">Datasets</a>
+  <li><a href="#join-types" id="toc-join-types" class="nav-link" data-scroll-target="#join-types">Join Types</a></li>
+  <li><a href="#cardinality" id="toc-cardinality" class="nav-link" data-scroll-target="#cardinality">Cardinality</a></li>
+  <li><a href="#introduction-to-spatial-joins" id="toc-introduction-to-spatial-joins" class="nav-link" data-scroll-target="#introduction-to-spatial-joins">Introduction to Spatial Joins</a>
   <ul class="collapse">
-  <li><a href="#loading-data" id="toc-loading-data" class="nav-link" data-scroll-target="#loading-data">Loading Data</a></li>
-  <li><a href="#add-style" id="toc-add-style" class="nav-link" data-scroll-target="#add-style">Add style</a></li>
-  <li><a href="#publish" id="toc-publish" class="nav-link" data-scroll-target="#publish">Publish</a></li>
-  <li><a href="#your-example" id="toc-your-example" class="nav-link" data-scroll-target="#your-example">Your example</a></li>
+  <li><a href="#spatial-predicates" id="toc-spatial-predicates" class="nav-link" data-scroll-target="#spatial-predicates">Spatial predicates</a></li>
   </ul></li>
   </ul></li>
-  <li><a href="#part-2---madrids-yearly-population" id="toc-part-2---madrids-yearly-population" class="nav-link" data-scroll-target="#part-2---madrids-yearly-population">Part 2 - Madrid’s Yearly Population</a>
+  <li><a href="#saving-styles" id="toc-saving-styles" class="nav-link" data-scroll-target="#saving-styles">Saving Styles</a></li>
+  <li><a href="#georeferencing-images" id="toc-georeferencing-images" class="nav-link" data-scroll-target="#georeferencing-images">Georeferencing Images</a>
   <ul class="collapse">
-  <li><a href="#datasets-1" id="toc-datasets-1" class="nav-link" data-scroll-target="#datasets-1">Datasets</a></li>
-  <li><a href="#workflows" id="toc-workflows" class="nav-link" data-scroll-target="#workflows">Workflows</a></li>
-  <li><a href="#hands-on" id="toc-hands-on" class="nav-link" data-scroll-target="#hands-on">Hands-on</a>
-  <ul class="collapse">
-  <li><a href="#data-prep" id="toc-data-prep" class="nav-link" data-scroll-target="#data-prep">Data prep</a></li>
-  <li><a href="#data-viz" id="toc-data-viz" class="nav-link" data-scroll-target="#data-viz">Data viz</a></li>
-  <li><a href="#publish-1" id="toc-publish-1" class="nav-link" data-scroll-target="#publish-1">Publish</a></li>
-  <li><a href="#output-example" id="toc-output-example" class="nav-link" data-scroll-target="#output-example">Output Example</a></li>
+  <li><a href="#tools-and-plugins" id="toc-tools-and-plugins" class="nav-link" data-scroll-target="#tools-and-plugins">Tools and plugins</a></li>
+  <li><a href="#use-cases-of-georeferenced-images" id="toc-use-cases-of-georeferenced-images" class="nav-link" data-scroll-target="#use-cases-of-georeferenced-images">Use cases of georeferenced images</a></li>
   </ul></li>
-  </ul></li>
+  <li><a href="#exporting-images" id="toc-exporting-images" class="nav-link" data-scroll-target="#exporting-images">Exporting Images</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapter_1/gis.html">GIS Tools</a></li><li class="breadcrumb-item"><a href="../chapter_1/cloud.html">Cloud GIS</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapter_1/gis.html">GIS Tools</a></li><li class="breadcrumb-item"><a href="../chapter_1/gis_tips.html">Tips</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Cloud GIS</h1>
+<h1 class="title">Tips</h1>
 </div>
 
 
@@ -265,7 +264,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Lecture date</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">February 8, 2024</p>
+      <p class="date">February 15, 2024</p>
     </div>
   </div>
   
@@ -283,188 +282,167 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>This will be an in-class hands-on session providing an introduction to the use of CARTO for publishing and styling interactive maps.</p>
-<p>The are two excercises that will help us explore different components of the platform:</p>
-<ol type="1">
-<li><strong>Madrid’s cycling infrastructure</strong> You will upload two <em>.gpkg</em> layers into the database and style as you think is best.</li>
-<li><strong>Madrid’s yearly population</strong> Building from last week’s excercise, we will use the full population dataset to explore the evolution in time of the spatial distribution of total residents.</li>
-</ol>
-<p>Each excersice will be lead by a live demo of the main steps to better control the visualization of the datasets. Then, each student will have time to explore on their own time the tool and come up with a shereable map.</p>
-<section id="connecting-to-carto" class="level2">
-<h2 class="anchored" data-anchor-id="connecting-to-carto">Connecting to CARTO</h2>
-<p>Because this will be the first time you log in, you will have to log in into <a href="https://carto.com/">www.carto.com</a> using your GitHub account (you will need the Student Development Pack approved - see the <a href="../chapter_0/installation.html">Software &amp; Accounts section</a>).</p>
-<blockquote class="blockquote">
-<p>Search for <code>Are you a student?</code> and <code>Access using GitHub</code></p>
+<section id="joins-and-spatial-joins" class="level1">
+<h1>Joins and Spatial Joins</h1>
+<p>In multiple scenarios you may find information in one table/layer that you might want to connect to information from another. <strong>JOINS</strong> are the way to do this, and work by connecting two different datasources based on a shared <em>attribute</em>. So doing, the attributes from one table can be connected to another for analysis or visualision purposes.</p>
+<section id="join-types" class="level2">
+<h2 class="anchored" data-anchor-id="join-types">Join Types</h2>
+<div class="columns">
+<ul>
+<li><strong>Inner Join</strong>: Returns only rows that have been matched across both tables.</li>
+<li><strong>Left (Outer) Join</strong>: Returns all rows from the left table, and matched rows from the right table where found.</li>
+<li><strong>Right (Outer) Join</strong>: Returns all rows from the right table, and matched rows from the left table where found.</li>
+<li><strong>Full (Outer) Join</strong>: Returns all rows from both tables, regardless of whether matches were found in the other table.</li>
+<li><strong>Cross Join</strong>: Returns a Cartesian product of the two tables, i.e.&nbsp;each row connected to each other row from the other table. Use with caution!</li>
+</ul>
+</div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="./images/carto_login.png" class="img-fluid figure-img" width="250"></p>
-<figcaption>Use GitHub login</figcaption>
+<p><img src="./images/join_types.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption>Join types</figcaption>
 </figure>
 </div>
-</blockquote>
-<p>Follow the stepts to create your account and <strong>note that each scholar will create a separate ‘organization’</strong>. This means all your files and maps will be yours and you will not be joining NFI’s organization. You can name ir however you like!</p>
 </section>
-<section id="part-1---madrids-cycling-infrastructure" class="level1">
-<h1>Part 1 - Madrid’s Cycling Infrastructure</h1>
-<p>The main goal of this excercise is to get hands on with visualizing and publishing your data.</p>
-<section id="datasets" class="level2">
-<h2 class="anchored" data-anchor-id="datasets">Datasets</h2>
-<p>For this excercise we will use two official data sources. I</p>
-<ul>
-<li><strong>Cycling routes</strong> (LINESTRINGS, 4326):
-<ul>
-<li>Download <a href="./data/cycling_routes.gpkg">geopackage file</a></li>
-<li>Consult <a href="https://datos.madrid.es/portal/site/egob/menuitem.c05c1f754a33a9fbe4b2e4b284f1a5a0/?vgnextoid=325e827b864f4410VgnVCM2000000c205a0aRCRD&amp;vgnextchannel=374512b9ace9f310VgnVCM100000171f5a0aRCRD&amp;vgnextfmt=default">official source</a> : for references to the .gpkg file above</li>
-</ul></li>
-<li><strong>Cycling docks</strong> (POINTS, 4326):
-<ul>
-<li>Download <a href="./data/cycling_docks.gpkg">geopackage file</a></li>
-<li>Consult <a href="https://datos.madrid.es/portal/site/egob/menuitem.c05c1f754a33a9fbe4b2e4b284f1a5a0/?vgnextoid=e9b2a4059b4b7410VgnVCM2000000c205a0aRCRD&amp;vgnextchannel=374512b9ace9f310VgnVCM100000171f5a0aRCRD&amp;vgnextfmt=default">official source</a> : for references to the .gpkg file above</li>
-</ul></li>
-</ul>
-<div class="callout callout-style-default callout-note callout-titled">
+<section id="cardinality" class="level2">
+<h2 class="anchored" data-anchor-id="cardinality">Cardinality</h2>
+<div class="columns">
+<div class="column" style="width:32%;">
+<section id="one-to-one" class="level3">
+<h3 class="anchored" data-anchor-id="one-to-one">One-to-One</h3>
+<p>Occurs when each record in one table corresponds to exactly one record in another table.</p>
+<p><img src="./images/one_one.png" class="img-fluid"></p>
+</section>
+</div><div class="column" style="width:2%;">
+
+</div><div class="column" style="width:32%;">
+<section id="one-to-many" class="level3">
+<h3 class="anchored" data-anchor-id="one-to-many">One-to-Many</h3>
+<p>Occurs when a single record in one table can be associated with one or more records in another table.</p>
+<p><img src="./images/one_many.png" class="img-fluid"></p>
+</section>
+</div><div class="column" style="width:2%;">
+
+</div><div class="column" style="width:32%;">
+<section id="many-to-many" class="level3">
+<h3 class="anchored" data-anchor-id="many-to-many">Many-to-Many</h3>
+<p>Occurrs when multiple records from one table correspond with one or more in another table.</p>
+<p><img src="./images/many_many.png" class="img-fluid"></p>
+</section>
+</div>
+</div>
+<div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Note
+Important
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Note that both file have been reprojected to <strong>EPSG: 4326</strong> as this is the prefered projection system for CARTO</p>
-</div>
-</div>
-<section id="loading-data" class="level3">
-<h3 class="anchored" data-anchor-id="loading-data">Loading Data</h3>
-<p>There are several ways to use the data in CARTO. But this time we are going to upload it directly from <strong>CARTO BUILDER</strong></p>
 <ul>
-<li>Using the main menu, navigate to <code>Maps</code> –&gt; <code>+ New map</code> button. This takes you to a new tab with an instance of CARTO’s Builder.</li>
-<li><code>Add source from...</code> and upload the <em>gpkg</em> in a folder of your preference.</li>
+<li>When using joins you are not modifying the original tables.</li>
+<li>Your resulting table can be much smaller or (exponentially) larger than any of the original tables.</li>
 </ul>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="./images/carto_add_source.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="250"></p>
-</figure>
 </div>
-<blockquote class="blockquote">
-<p>Note that multiple layers can be added from the same</p>
-</blockquote>
+</div>
 </section>
-<section id="add-style" class="level3">
-<h3 class="anchored" data-anchor-id="add-style">Add style</h3>
-<p>Depending on the geometry types, you will have different option for styling your Points (docking stations) and the Linestrings (cycling routes).</p>
-<div class="callout callout-style-default callout-note callout-titled">
+<section id="introduction-to-spatial-joins" class="level2">
+<h2 class="anchored" data-anchor-id="introduction-to-spatial-joins">Introduction to Spatial Joins</h2>
+<p>Similar to joining tables based on their attributes, it is possible to <strong>join them based on their location</strong>. This is a very common technique in spatial databases (e.g.&nbsp;PostGIS) where you’ll commonly use a feature such as a city boundary to filter and join data from another table (e.g.&nbsp;streets).</p>
+<p>To achieve the expected results, <strong>make sure that both origin tables are in the same CRS</strong>.</p>
+<section id="spatial-predicates" class="level3">
+<h3 class="anchored" data-anchor-id="spatial-predicates">Spatial predicates</h3>
+<p>In QGIS and spatial databases, <strong>spatial predicates</strong> are used to define spatial relationships between features. These are used for joining or selecting data based on the relationships between the features. Some of the common predicates are:</p>
+<ul>
+<li><code>Contains</code>: Determines if one geometry contains another.</li>
+<li><code>Within</code>: Checks if one geometry is within another geometry.</li>
+<li><code>Intersects</code>: Tests if two geometries intersect at any point.</li>
+<li><code>Disjoint</code>: Determines if two geometries do not intersect.</li>
+<li><code>Touches</code>: Checks if two geometries have at least one point in common but their interiors do not intersect.</li>
+<li><code>Crosses</code>: Determines if the geometries have some, but not all, interior points in common.</li>
+<li><code>Equals</code>: Checks if two geometries are exactly the same in terms of spatial coordinates.</li>
+<li><code>Overlaps</code>: Determines if two geometries overlap, meaning they share some but not all points, and the intersection has the same dimension as the geometries themselves.</li>
+</ul>
+<div class="callout callout-style-default callout-caution callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Note
+Caution
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Always familirise yourself with the data before jumping into modifying its style <img src="./images/carto_shsow_table.png" class="img-fluid quarto-figure quarto-figure-center" width="200" alt="Show data table"></p>
+<p>Please note that depending on the size and complexity of your joins some operations can be <strong>computationally expensive</strong> and some advanced techniques might need to be implemented to achieve best performance.</p>
 </div>
 </div>
-<p>For now we encourage you to explore the following three tabs:</p>
+</section>
+</section>
+</section>
+<section id="saving-styles" class="level1">
+<h1>Saving Styles</h1>
+<p>In QGIS a <em>style</em> actually refers to several categories such as : symbology, labels, table attributes settings, 3D views, etc. It is important to remember that all of this metadata does not affect the underlying values of the layers. This gives a lot of flexibility which, if set correctly, can help to speed up visualisation processes as you move with larger and more diverse datasets.</p>
+<p>There are different ways to save you map styles:</p>
 <ul>
-<li><strong>Layers</strong></li>
-<li><strong>Legends</strong></li>
-<li><strong>Basemaps</strong></li>
+<li>As <strong>default</strong> for the layer.</li>
+<li>As a separate ‘QML’ <strong>file</strong>.</li>
 </ul>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="./images/carto_builder_tabs.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="250"></p>
-</figure>
+<p>Within one QGIS proyect, one layer can have multiple styles. This helps to keep each project with a minimum number of layers, which in turn helps overall performance.</p>
+</section>
+<section id="georeferencing-images" class="level1">
+<h1>Georeferencing Images</h1>
+<p>Georeferencing is the process of assigning real-world coordinates to each pixel of the digital image or map. This crucial step makes it possible for geospatial data to be accurately placed on the earth’s surface in its correct geographical location. By doing so, georeferenced images (rasters) can be used in conjunction with other spatial data (vector) within GIS software like QGIS, allowing for a wide range of analysis and mapping applications.</p>
+<section id="tools-and-plugins" class="level2">
+<h2 class="anchored" data-anchor-id="tools-and-plugins">Tools and plugins</h2>
+<p>In QGIS, georeferencing can be carried out using the built-in <code>Georeferencer</code> tool, which can be found under the menu <code>Layer</code> -&gt; <code>Georeferencer...</code>. This tool allows you to manually add control points that link the location on the image with geographic coordinates on the map, adjusting the image to fit the spatial data.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
 </div>
-</section>
-<section id="publish" class="level3">
-<h3 class="anchored" data-anchor-id="publish">Publish</h3>
-<p>When you are happy with the map make sure you <code>SHARE</code> your results by publishing them to allow for <strong>public access</strong></p>
-<ul>
-<li>Add your resulting URL to <a href="https://www.notion.so/nff-nfi/UA0-9e4950732c1946cbbc7130ee4b853fef?pvs=4">this notion card</a></li>
-</ul>
-</section>
-<section id="your-example" class="level3">
-<h3 class="anchored" data-anchor-id="your-example">Your example</h3>
-<blockquote class="blockquote">
-<p>The best maps will be added to complete this section!</p>
-</blockquote>
-<hr>
-</section>
-</section>
-</section>
-<section id="part-2---madrids-yearly-population" class="level1">
-<h1>Part 2 - Madrid’s Yearly Population</h1>
-<section id="datasets-1" class="level2">
-<h2 class="anchored" data-anchor-id="datasets-1">Datasets</h2>
-<p>For this excercise we are going to use the same datasets than we did in our <a href="../chapter_1/qgis.html">previous session</a>. However, this time we are going to use the full dataset containing the population data.</p>
-<ul>
-<li><p>Download the municipal neighbourhoods as a SHP file: <a href="https://datos.madrid.es/portal/site/egob/menuitem.c05c1f754a33a9fbe4b2e4b284f1a5a0/?vgnextoid=760e5eb0d73a7710VgnVCM2000001f4a900aRCRD&amp;vgnextchannel=374512b9ace9f310VgnVCM100000171f5a0aRCRD&amp;vgnextfmt=default">Barrios municipales de Madrid</a></p></li>
-<li><p>Download the population by district and neighbourhood dataset as a CSV file: <a href="https://datos.madrid.es/portal/site/egob/menuitem.c05c1f754a33a9fbe4b2e4b284f1a5a0/?vgnextoid=0cccaebc07c1f710VgnVCM2000001f4a900aRCRD&amp;vgnextchannel=374512b9ace9f310VgnVCM100000171f5a0aRCRD&amp;vgnextfmt=default">Población por distrito y barrio a 1 de enero</a></p></li>
-</ul>
-</section>
-<section id="workflows" class="level2">
-<h2 class="anchored" data-anchor-id="workflows">Workflows</h2>
-<p>From our previous experience, we know that in order to join the datasets, we first had to clean and filter the data. This time we are going to make use of <strong>CARTO’s WORKFLOWS</strong>: a no-code visual interface for replicating processes like cleaning, filtering, joining (and much more). <a href="https://carto.com/workflows">Visit for more.</a></p>
-</section>
-<section id="hands-on" class="level2">
-<h2 class="anchored" data-anchor-id="hands-on">Hands-on</h2>
-<p>The following are the general steps we encourage you to follow to get familiar with other functions of CARTO.</p>
-<section id="data-prep" class="level3">
-<h3 class="anchored" data-anchor-id="data-prep">Data prep</h3>
-<p>For this excerse we just want you to <strong>import the file below</strong> and update the inputs and output parameters</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="./images/carto_workflow.png" class="img-fluid figure-img" style="width:100.0%"></p>
-<figcaption>CARTO’s Workflow</figcaption>
-</figure>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The mode nodes you add and the further away from each other, the more refences the algorithm has to accomodate the original file. <strong>Minimum of 5 points</strong> should be considered to have an descent baseline.</p>
+</div>
 </div>
 <ul>
-<li>Under menu <code>Data Explorer</code> –&gt; Import both datasets (CSV and SHP)</li>
-<li>Under menu <code>Workflows</code> –&gt; <code>Import</code> <a href="./data/workflow_mad_population.sql" title="download">this SQL procedure</a> to give you a head start</li>
-<li>Update workflow :
-<ul>
-<li>Inputs: data sources according to the location and name of your files</li>
-<li>Output: select where you want to store the results</li>
-</ul></li>
-<li><code>Run</code> the workflow to identify potential issues
-<ul>
-<li>Rememeber to read the <code>Error messages</code> (if at all), to debug your workflow</li>
-</ul></li>
+<li><strong>Plugins</strong>: For more advanced or specific georeferencing needs, there are additional plugins like <code>Freehand Raster Georeferencer</code>, allowing for more flexible manipulation of images directly within the map canvas.</li>
 </ul>
 </section>
-<section id="data-viz" class="level3">
-<h3 class="anchored" data-anchor-id="data-viz">Data viz</h3>
-<p>Now we are going to move into <strong>another builder</strong> instance and load the newly created table (from the steps above). This time we encourage you to look into the other two tabs :</p>
+<section id="use-cases-of-georeferenced-images" class="level2">
+<h2 class="anchored" data-anchor-id="use-cases-of-georeferenced-images">Use cases of georeferenced images</h2>
 <ul>
-<li><strong>Widgets</strong> : allow you to interact and filter the data plotted on the map</li>
-<li><strong>Interactions</strong> : helps you surface propreties of individual elements in the map</li>
+<li><strong>Historical Maps</strong>: Bringing old maps into modern GIS projects, helping to study changes over time.</li>
+<li><strong>Tracing Exercises</strong>: Overlaying aerial or satellite imagery to digitize features such as roads, buildings, or land use.</li>
+<li><strong>Reshaping sketches</strong>: Planning and ideation sketches usually are our of scale and conveniently reshaping elements of the enrionment. Georefereincing them helps to better transition ideas into reality.</li>
 </ul>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="./images/carto_builder_tabs2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="250"></p>
-</figure>
+<div class="callout callout-style-simple callout-none no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>It’s important to consider <strong>potential distortions</strong> when georeferencing images, as the process involves stretching or rotating the image to align with real-world coordinates. Understanding and managing these distortions is key to ensuring the accuracy of the geospatial analysis.</p>
+</div>
+</div>
 </div>
 </section>
-<section id="publish-1" class="level3">
-<h3 class="anchored" data-anchor-id="publish-1">Publish</h3>
-<p>When you are happy with the map make sure you <code>SHARE</code> your results by publishing them to allow for <strong>public access</strong></p>
-<ul>
-<li>Add your resulting URL to <a href="https://www.notion.so/nff-nfi/UA0-9e4950732c1946cbbc7130ee4b853fef?pvs=4">this notion card</a></li>
-</ul>
 </section>
-<section id="output-example" class="level3">
-<h3 class="anchored" data-anchor-id="output-example">Output Example</h3>
-    <iframe width="100%" height="500px" src="https://pinea.app.carto.com/map/3ba6d4dc-6dd2-4e69-a3fe-d2cbb4fdb2f1"></iframe>
-<blockquote class="blockquote">
-<p><a href="https://pinea.app.carto.com/map/3ba6d4dc-6dd2-4e69-a3fe-d2cbb4fdb2f1">Madrid’s Population Dashboard</a> - Greg Maya</p>
-</blockquote>
+<section id="exporting-images" class="level1">
+<h1>Exporting Images</h1>
+<p>Exporting images and maps from QGIS allows you to share GIS projects and findings in a variety of formats suitable for reports, presentations, or online publication.</p>
+<ul>
+<li><p><strong>Quick export</strong> Under the menu <code>Project</code> you can directly see the <code>Import/Export</code> function that let’s you export to different image formats and PDFs. Some features need attention (<strong>resolution</strong>, <strong>scale</strong>, and <strong>dimensions</strong>) but the interface should be self explanatory.</p></li>
+<li><p><strong>Print layouts</strong> This option is more advanced and allows you to set up multiple <em>print layouts</em> (even it they are just for exporting as images).</p></li>
+</ul>
+<p>With this option you can add elements such as legends, scale bars, texts and even images that help contextualize your maps. This feature is especially useful for creating professional-quality map presentations and detailed spatial analysis reports.</p>
+<p>These functionalities in QGIS enhance the ability to <strong>communicate spatial information</strong>, making it accessible to a wider audience, regardless of their GIS expertise.</p>
 
 
-</section>
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -862,8 +840,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../chapter_2/intro_to_python.html" class="pagination-link" aria-label="Welcome to Python">
-        <span class="nav-page-text">Welcome to Python</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../chapter_1/cloud_gis.html" class="pagination-link" aria-label="Cloud GIS">
+        <span class="nav-page-text">Cloud GIS</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
