@@ -1,0 +1,128 @@
+---
+title: QGIS Mapping Techniques
+date: 02/15/2024
+date-format: long
+date-modified: last-modified
+lang: en
+language: 
+  title-block-published: "Lecture date"
+  title-block-modified: "Last update"
+---
+
+# Joins and Spatial Joins
+
+In multiple scenarios you will find information in one table/layer that you want to tranfer into another. **JOINS** are the best way to do that; all you need is a common _attribute_. When two tables share one attribute (including _data types_), you can expand the attributes in one of the tables and use it for further analysis and/or visualision purposes.
+
+## Join Types 
+
+:::: {.columns}
+::: {.column width="50%"}
+- **Inner Join**: Returns rows with matching attributes.
+- **Left (Outer) Join**: Returns all rows from the left table, and the matched attributes from the right table.
+- **Right (Outer) Join**: Returns all rows from the right table, and the matched attributes from the left table.
+
+:::
+
+::: {.column width="50%"}
+- **Full (Outer) Join**: Returns rows from both tables even when there is no matching attributes.
+- **Cross Join**: Returns a Cartesian product of the two tables.
+- **Self Join**: A table can be joined with itself.
+
+:::
+
+::::
+
+![Join types](./images/join_types.png){width="100%"}
+
+:::: {.columns}
+::: {.column width="48%"}
+### One-to-One
+Occurs when each record in one table corresponds to exactly one record in another table.
+
+![](./images/one_one.png)
+:::
+
+::: {.column width="4%"}
+
+:::
+::: {.column width="48%"}
+###  One-to-Many
+Occurs when a single record in one table can be associated with one or more records in another table.
+
+![](./images/one_many.png)
+
+:::
+
+::::
+
+::: {.callout-important}
+- When using joins you are not modifying the original tables.
+- Your resulting table can be much smaller or (exponentially) larger than any of the original tables.
+:::
+
+## Introduction to Spatial Joins
+- Understanding spatial joins: combining spatial data based on their location.
+Types of spatial joins: intersect, within, contain, etc.
+
+### Spatial conditions
+
+
+
+## DEMO 
+
+During the demo we will use 
+### Common errors
+
+### Advanced Techniques
+- Performance optimization for large datasets.
+- Custom SQL queries for complex joins.
+
+## Saving Styles
+
+### QGIS Style Basics
+- Overview of QGIS styling capabilities: symbology, labeling, etc.
+- Introduction to QML (QGIS Markup Language) and SLD (Styled Layer Descriptor).
+
+#### Saving and Managing Styles
+- How to save layer styles in QGIS.
+- Sharing styles among projects or with other users.
+
+#### Advanced Styling
+- Creating and applying custom styles.
+- Utilizing style libraries and online resources.
+
+### 3. Georeferencing Images
+
+#### Introduction to Georeferencing
+- What is georeferencing? Importance in GIS.
+- Types of images and maps that can be georeferenced.
+
+#### The Georeferencing Process
+- Step-by-step guide to georeferencing in QGIS.
+- Tools and plugins for georeferencing.
+
+#### Accuracy and Error Correction
+- Techniques to improve georeferencing accuracy.
+- How to identify and correct common errors.
+
+#### Practical Applications
+- Real-world examples of georeferenced maps and images.
+- Case studies or exercises for students to practice.
+
+### 4. Exporting Images
+
+#### Basics of Exporting
+- Different formats for exporting images and maps (e.g., PNG, JPEG, PDF).
+- Setting resolution, scale, and dimensions.
+
+#### Advanced Export Options
+- Creating print layouts with multiple elements (maps, legends, text).
+- Automating exports using the QGIS Python console (PyQGIS).
+
+#### Troubleshooting and Optimization
+- Common issues during export and how to solve them.
+- Tips for optimizing output quality and file size.
+
+#### Real-World Applications
+- Use cases for exported maps and images.
+- Best practices for sharing and publishing GIS data.
