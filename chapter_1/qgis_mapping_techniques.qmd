@@ -34,22 +34,37 @@ In multiple scenarios you will find information in one table/layer that you want
 
 ![Join types](./images/join_types.png){width="100%"}
 
+
+## Cardinality
+
 :::: {.columns}
-::: {.column width="48%"}
+::: {.column width="32%"}
 ### One-to-One
 Occurs when each record in one table corresponds to exactly one record in another table.
 
 ![](./images/one_one.png)
-:::
-
-::: {.column width="4%"}
 
 :::
-::: {.column width="48%"}
+
+::: {.column width="2%"}
+:::
+
+::: {.column width="32%"}
 ###  One-to-Many
 Occurs when a single record in one table can be associated with one or more records in another table.
 
 ![](./images/one_many.png)
+
+:::
+::: {.column width="2%"}
+:::
+
+::: {.column width="32%"}
+
+### Many-to-Many
+Occurrs when multiple records from one table correspond with one or more in another table.
+
+![](./images/many_many.png)
 
 :::
 
@@ -61,68 +76,51 @@ Occurs when a single record in one table can be associated with one or more reco
 :::
 
 ## Introduction to Spatial Joins
-- Understanding spatial joins: combining spatial data based on their location.
-Types of spatial joins: intersect, within, contain, etc.
 
-### Spatial conditions
+Similar to joining tables based on their attributes, one can **join them based on their location** (_ultimately the location is nothing more than a 'fancy' attribute_).
+
+To achieve the expected results, **make sure that both origin tables are in the same CRS**.
+
+### Spatial predicates
+In order to establish the relationship between the origin tables one can use a series of **spatial predicates**. The most common ones are:
+
+- `Contains`: Determines if one geometry contains another.
+- `Within`: Checks if one geometry is within another geometry.
+- `Intersects`: Tests if two geometries intersect at any point.
+- `Disjoint`: Determines if two geometries do not intersect.
+- `Touches`: Checks if two geometries have at least one point in common but their interiors do not intersect.
+- `Crosses`: Determines if the geometries have some, but not all, interior points in common.
+- `Equals`: Checks if two geometries are exactly the same in terms of spatial coordinates.
+- `Overlaps`: Determines if two geometries overlap, meaning they share some but not all points, and the intersection has the same dimension as the geometries themselves.
 
 
+::: {.callout-tip}
+Depending on the nature of your origin tables you might need to create a sequence of **spatial transformations** in order to approprietly join your dataset. A good practice is to outline a sequence of logical steps and then proceed to excecute them one at the time
 
-## DEMO 
+eg. If you want to join a Linestring layer with a Poligon layer, some of the Linestrings might need to be _sliced_ before joining. This will ensure a that your joined linestrings won't be duplicated because they originally crossed/touched two or more of your Polygons.
+:::
 
-During the demo we will use 
-### Common errors
+:::{.callout-caution}
+Please note that depending on the size and complexity of your joins some operations can be **computationally expensive** and some advanced techniques might need to be implemented to achieve best performance. 
+:::
 
-### Advanced Techniques
-- Performance optimization for large datasets.
-- Custom SQL queries for complex joins.
+## Demo
+During the demo we will use the following tools from the `toolbox`
 
-## Saving Styles
+- XXX
+- XXX 
 
-### QGIS Style Basics
-- Overview of QGIS styling capabilities: symbology, labeling, etc.
-- Introduction to QML (QGIS Markup Language) and SLD (Styled Layer Descriptor).
+--- 
 
-#### Saving and Managing Styles
-- How to save layer styles in QGIS.
-- Sharing styles among projects or with other users.
+# Saving Styles
 
-#### Advanced Styling
-- Creating and applying custom styles.
-- Utilizing style libraries and online resources.
+# Georeferencing Images
 
-### 3. Georeferencing Images
+## Introduction to Georeferencing
+What is georeferencing? 
+Tools and plugins for georeferencing.
+Real-world examples of georeferenced maps and images.
 
-#### Introduction to Georeferencing
-- What is georeferencing? Importance in GIS.
-- Types of images and maps that can be georeferenced.
-
-#### The Georeferencing Process
-- Step-by-step guide to georeferencing in QGIS.
-- Tools and plugins for georeferencing.
-
-#### Accuracy and Error Correction
-- Techniques to improve georeferencing accuracy.
-- How to identify and correct common errors.
-
-#### Practical Applications
-- Real-world examples of georeferenced maps and images.
-- Case studies or exercises for students to practice.
-
-### 4. Exporting Images
-
-#### Basics of Exporting
-- Different formats for exporting images and maps (e.g., PNG, JPEG, PDF).
+# Exporting Images
 - Setting resolution, scale, and dimensions.
-
-#### Advanced Export Options
 - Creating print layouts with multiple elements (maps, legends, text).
-- Automating exports using the QGIS Python console (PyQGIS).
-
-#### Troubleshooting and Optimization
-- Common issues during export and how to solve them.
-- Tips for optimizing output quality and file size.
-
-#### Real-World Applications
-- Use cases for exported maps and images.
-- Best practices for sharing and publishing GIS data.
