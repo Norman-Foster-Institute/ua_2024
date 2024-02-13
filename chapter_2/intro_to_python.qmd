@@ -1,11 +1,9 @@
 ---
 title: Welcome to Python
-date: 02/12/2024
 date-format: long
 date-modified: last-modified
 lang: en
 language: 
-  title-block-published: "Lecture date"
   title-block-modified: "Last update"
 ---
 Python is a great language for general purpose data wrangling. If you're working with geospatial data and general data science then it is arguably THE language. (Though "R" fans will probably debate this!)
@@ -53,7 +51,7 @@ temp_day_2 = 34
 temp_diff = temp_day_2 - temp_day_1
 ```
 
-Another concept is the use of functions. Functions take parameters (arguments) and return a result according to a defined sequence of steps. In certain contexts they are also referred to as "methods", but don't worry too much about that for now. A commonly used function in Python is the `print()` method. Notice that a function has parenthesis, and this is where you pass your function arguments.
+Another concept is the use of functions. Functions take parameters (arguments) and return a result according to a defined sequence of steps. In certain contexts they are also referred to as "methods", but don't worry too much about that for now. A commonly used function in Python is the `print()` method. Notice that a function has parentheses, and this is where you pass your function arguments.
 
 ```{python}
 # you can pass a parameter to print()
@@ -120,13 +118,14 @@ get_several_things = my_list[0:2]
 print('several items:', get_several_things)
 ```
 
-Note that you can iterate over lists using `for` and `in` syntax.
+Note that you can iterate over lists using `for` and `in` syntax. We use a variable, which we are here calling `num`, to store the current result from iterating over the list. We can then use that variable to do something.
+
 ```{python}
 # this will print each number in my_list
 for num in my_list:
     # note the indented line
     # indentation has to be used consistently
-    print(num)
+    print('num is currently', num)
 ```
 
 Python has a number of built-in convenience methods, which can simplify common tasks:
@@ -158,7 +157,7 @@ from shapely import geometry
 
 ## Shapely
 
-`shapely` let's us do some neat things with spatial information. Let's define a `Point` type using the `geometry` module. The `geometry` module has some already defined methods which we can call. Let's use the `Point` method to create a new point. Note the use of dot-notation.
+`shapely` let's us do some neat things with spatial information. Let's define a `Point` type using the `geometry` module. The `geometry` module has some already defined methods which we can call. Let's use the `Point` constructor to generate a new point. Note the use of dot-notation.
 
 ```{python}
 # this creates a point using the Point constructor
@@ -170,7 +169,7 @@ print(type(point_a))
 
 Different packages and modules define set patterns of behaviour. To understand what these are and what you can do with them, refer to the package documentation and ask ChatGPT to help you along the way.
 
-For example, a `shapely` `Point` type has built-in methods which allow you to easily produce certain forms of behaviour. You can access these using dot-notation. Let's buffer the point object using the pre-defined `buffer()` method.
+For example, a `shapely` `Point` type has built-in methods which allow you to easily produce certain forms of behaviour. You can access these using dot-notation. Let's buffer the point object using the provided `buffer()` method.
 
 ```{python}
 buff = point_a.buffer(10)
@@ -178,7 +177,7 @@ print(buff)
 print(type(buff))
 ```
 
-Notice that we now have a `Polygon` type. Types (or a Python `class`) can have properties which are accessed using dot-notation, but unlike methods, properties do not require parenthesis because they do not accept arguments.
+Notice that we now have a `Polygon` type since the returned type is no longer a `Point`. Types (which are a form of Python `class`) can have properties which are accessed using dot-notation. Unlike methods, properties do not require parentheses because they do not accept arguments.
 
 ```{python}
 # here we are using the area property to retrieve the area
@@ -192,7 +191,7 @@ print(type(buff.exterior))
 print('Polygon circumference:', buff.exterior.length)
 ```
 
-Let's create a line. The line constructor requires a list of points.
+Let's create a line. The `LineString` constructor requires a list of points.
 
 ```{python}
 point_b = geometry.Point(1, 1)
@@ -200,4 +199,46 @@ line = geometry.LineString([point_a, point_b])
 print(line)
 print(list(line.coords))
 print(line.length)
+```
+
+## Putting things together
+
+Let's try putting some things together. If you're wondering what a certain line is doing, then try pasting the code block into ChatGPT, which will typically provide a detailed description.
+
+```{python}
+x_coords = [0, 1, 2, 3]
+y_coords = [0, 1, 2, 3]
+# this is where we'll store the points
+collect_points = []
+# let's do a nested iteration over the 
+for x in x_coords:
+    for y in y_coords:
+        p = geometry.Point(x, y)
+        # this adds the p variable
+        # to the collect_points list
+        collect_points.append(p)
+print('num points', len(collect_points))
+# let's turn the list of points into a MultiPoint
+multi_point = geometry.MultiPoint(collect_points)
+print(type(multi_point))
+```
+
+## GeoPandas
+
+There is an easier way to keep track of multiple geometries: GeoPandas! GeoPandas is a geospatial enabled version of Pandas DataFrames. Think of it as a CSV spreadsheet with the ability to handle geometry data types.
+
+```{python}
+# install if necessary by uncommenting the next line
+# !pip install geopandas
+```
+
+Let's create a GeoPandas DataFrame from our collected points
+
+```{python}
+# we'll import the whole geoopandas package
+# and we'll give it a shorter alias using "as"
+import geopandas as gpd
+# let's create a dataframe from the points
+df = gpd.GeoDataFrame(collect_points)
+print(df)
 ```
