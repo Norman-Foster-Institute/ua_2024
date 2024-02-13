@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="dcterms.date" content="2024-02-15">
 
-<title>NFI Urban Analytics 2024 - Part 1 - Python Notebooks</title>
+<title>NFI Urban Analytics 2024 - Part 1 - QGIS Mapping Techniques</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,40 +21,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -64,8 +31,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../chapter_1/gis.html" rel="next">
-<link href="../chapter_0/installation.html" rel="prev">
 <link href=".././assets/nfi_logo.png" rel="icon" type="image/png">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -127,7 +92,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapter_0/index.html">Setup</a></li><li class="breadcrumb-item"><a href="../chapter_0/anaconda.html">Python Notebooks</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">QGIS Mapping Techniques</li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -155,13 +120,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false">
  <span class="menu-text">Setup</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapter_0/index.html" class="sidebar-item-text sidebar-link">
@@ -176,7 +141,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapter_0/anaconda.html" class="sidebar-item-text sidebar-link active">
+  <a href="../chapter_0/anaconda.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Python Notebooks</span></a>
   </div>
 </li>
@@ -256,24 +221,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a>
+  <li><a href="#joins-and-spatial-joins" id="toc-joins-and-spatial-joins" class="nav-link active" data-scroll-target="#joins-and-spatial-joins">Joins and Spatial Joins</a>
   <ul class="collapse">
-  <li><a href="#creating-an-environment" id="toc-creating-an-environment" class="nav-link" data-scroll-target="#creating-an-environment">Creating an Environment</a></li>
-  <li><a href="#launching-jupyter-lab" id="toc-launching-jupyter-lab" class="nav-link" data-scroll-target="#launching-jupyter-lab">Launching Jupyter Lab</a></li>
-  <li><a href="#opening-a-python-notebook" id="toc-opening-a-python-notebook" class="nav-link" data-scroll-target="#opening-a-python-notebook">Opening a Python Notebook</a></li>
-  <li><a href="#closing-jupyter-lab" id="toc-closing-jupyter-lab" class="nav-link" data-scroll-target="#closing-jupyter-lab">Closing Jupyter Lab</a></li>
-  <li><a href="#alternative-b-google-colab" id="toc-alternative-b-google-colab" class="nav-link" data-scroll-target="#alternative-b-google-colab">Alternative B: Google Colab</a></li>
-  <li><a href="#alternative-c-the-command-line" id="toc-alternative-c-the-command-line" class="nav-link" data-scroll-target="#alternative-c-the-command-line">Alternative C: The command line</a></li>
+  <li><a href="#join-types" id="toc-join-types" class="nav-link" data-scroll-target="#join-types">Join Types</a></li>
+  <li><a href="#cardinality" id="toc-cardinality" class="nav-link" data-scroll-target="#cardinality">Cardinality</a></li>
+  <li><a href="#introduction-to-spatial-joins" id="toc-introduction-to-spatial-joins" class="nav-link" data-scroll-target="#introduction-to-spatial-joins">Introduction to Spatial Joins</a>
+  <ul class="collapse">
+  <li><a href="#spatial-predicates" id="toc-spatial-predicates" class="nav-link" data-scroll-target="#spatial-predicates">Spatial predicates</a></li>
   </ul></li>
+  <li><a href="#demo" id="toc-demo" class="nav-link" data-scroll-target="#demo">Demo</a></li>
+  </ul></li>
+  <li><a href="#saving-styles" id="toc-saving-styles" class="nav-link" data-scroll-target="#saving-styles">Saving Styles</a></li>
+  <li><a href="#georeferencing-images" id="toc-georeferencing-images" class="nav-link" data-scroll-target="#georeferencing-images">Georeferencing Images</a>
+  <ul class="collapse">
+  <li><a href="#introduction-to-georeferencing" id="toc-introduction-to-georeferencing" class="nav-link" data-scroll-target="#introduction-to-georeferencing">Introduction to Georeferencing</a></li>
+  </ul></li>
+  <li><a href="#exporting-images" id="toc-exporting-images" class="nav-link" data-scroll-target="#exporting-images">Exporting Images</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapter_0/index.html">Setup</a></li><li class="breadcrumb-item"><a href="../chapter_0/anaconda.html">Python Notebooks</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Python Notebooks</h1>
+<h1 class="title">QGIS Mapping Techniques</h1>
 </div>
 
 
@@ -281,7 +253,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="quarto-title-meta">
 
     
+    <div>
+    <div class="quarto-title-meta-heading">Lecture date</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">February 15, 2024</p>
+    </div>
+  </div>
   
+    <div>
+    <div class="quarto-title-meta-heading">Last update</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">February 13, 2024</p>
+    </div>
+  </div>
     
   </div>
   
@@ -290,31 +274,93 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="overview" class="level2">
-<h2 class="anchored" data-anchor-id="overview">Overview</h2>
-<p>Welcome to the first <strong>hands-on</strong> section of the course where you will familiarise yourself with Jupyter Lab for running Python ‘Notebooks’.</p>
-<p>This guide assumes the prior installation of Anaconda as detailed previously.</p>
-<section id="creating-an-environment" class="level3">
-<h3 class="anchored" data-anchor-id="creating-an-environment">Creating an Environment</h3>
-<p>Create a new “environment” the first time you use Anaconda. Environments ensure that packages remain self-contained and make it easier to synchronise packages without unnecessary contamination from unrelated projects.</p>
+<section id="joins-and-spatial-joins" class="level1">
+<h1>Joins and Spatial Joins</h1>
+<p>In multiple scenarios you will find information in one table/layer that you want to tranfer into another. <strong>JOINS</strong> are the best way to do that; all you need is a common <em>attribute</em>. When two tables share one attribute (including <em>data types</em>), you can expand the attributes in one of the tables and use it for further analysis and/or visualision purposes.</p>
+<section id="join-types" class="level2">
+<h2 class="anchored" data-anchor-id="join-types">Join Types</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
 <ul>
-<li>Open Anaconda Navigator.</li>
-<li>Click on Environments</li>
-<li>Click to create a new environment called <code>nfi</code>.</li>
-<li>Select the newly created <code>nfi</code> environment from the list of environments.</li>
-<li>In the right pane, change the dropdown view mode to “Not Installed”.</li>
-<li>Search for <code>jupyterlab</code>, then select it and click to install.</li>
-<li>Select the Home button to return to the main view.</li>
+<li><strong>Inner Join</strong>: Returns rows with matching attributes.</li>
+<li><strong>Left (Outer) Join</strong>: Returns all rows from the left table, and the matched attributes from the right table.</li>
+<li><strong>Right (Outer) Join</strong>: Returns all rows from the right table, and the matched attributes from the left table.</li>
 </ul>
-</section>
-<section id="launching-jupyter-lab" class="level3">
-<h3 class="anchored" data-anchor-id="launching-jupyter-lab">Launching Jupyter Lab</h3>
-<p>To launch Juptyer Lab:</p>
+</div><div class="column" style="width:50%;">
 <ul>
-<li>Open Anaconda Navigator.</li>
-<li>Using the top dropdown menus, select “All applications” and select the newly created “nfi” environment.</li>
-<li>Click to launch “Jupyter Lab” from the list of applications. This will launch a new Jupyter Lab instance in a web browser.</li>
-<li>Use the “Python 3” kernel if prompted.</li>
+<li><strong>Full (Outer) Join</strong>: Returns rows from both tables even when there is no matching attributes.</li>
+<li><strong>Cross Join</strong>: Returns a Cartesian product of the two tables.</li>
+<li><strong>Self Join</strong>: A table can be joined with itself.</li>
+</ul>
+</div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./images/join_types.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption>Join types</figcaption>
+</figure>
+</div>
+</section>
+<section id="cardinality" class="level2">
+<h2 class="anchored" data-anchor-id="cardinality">Cardinality</h2>
+<div class="columns">
+<div class="column" style="width:32%;">
+<section id="one-to-one" class="level3">
+<h3 class="anchored" data-anchor-id="one-to-one">One-to-One</h3>
+<p>Occurs when each record in one table corresponds to exactly one record in another table.</p>
+<p><img src="./images/one_one.png" class="img-fluid"></p>
+</section>
+</div><div class="column" style="width:2%;">
+
+</div><div class="column" style="width:32%;">
+<section id="one-to-many" class="level3">
+<h3 class="anchored" data-anchor-id="one-to-many">One-to-Many</h3>
+<p>Occurs when a single record in one table can be associated with one or more records in another table.</p>
+<p><img src="./images/one_many.png" class="img-fluid"></p>
+</section>
+</div><div class="column" style="width:2%;">
+
+</div><div class="column" style="width:32%;">
+<section id="many-to-many" class="level3">
+<h3 class="anchored" data-anchor-id="many-to-many">Many-to-Many</h3>
+<p>Occurrs when multiple records from one table correspond with one or more in another table.</p>
+<p><img src="./images/many_many.png" class="img-fluid"></p>
+</section>
+</div>
+</div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>When using joins you are not modifying the original tables.</li>
+<li>Your resulting table can be much smaller or (exponentially) larger than any of the original tables.</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="introduction-to-spatial-joins" class="level2">
+<h2 class="anchored" data-anchor-id="introduction-to-spatial-joins">Introduction to Spatial Joins</h2>
+<p>Similar to joining tables based on their attributes, one can <strong>join them based on their location</strong> (<em>ultimately the location is nothing more than a ‘fancy’ attribute</em>).</p>
+<p>To achieve the expected results, <strong>make sure that both origin tables are in the same CRS</strong>.</p>
+<section id="spatial-predicates" class="level3">
+<h3 class="anchored" data-anchor-id="spatial-predicates">Spatial predicates</h3>
+<p>In order to establish the relationship between the origin tables one can use a series of <strong>spatial predicates</strong>. The most common ones are:</p>
+<ul>
+<li><code>Contains</code>: Determines if one geometry contains another.</li>
+<li><code>Within</code>: Checks if one geometry is within another geometry.</li>
+<li><code>Intersects</code>: Tests if two geometries intersect at any point.</li>
+<li><code>Disjoint</code>: Determines if two geometries do not intersect.</li>
+<li><code>Touches</code>: Checks if two geometries have at least one point in common but their interiors do not intersect.</li>
+<li><code>Crosses</code>: Determines if the geometries have some, but not all, interior points in common.</li>
+<li><code>Equals</code>: Checks if two geometries are exactly the same in terms of spatial coordinates.</li>
+<li><code>Overlaps</code>: Determines if two geometries overlap, meaning they share some but not all points, and the intersection has the same dimension as the geometries themselves.</li>
 </ul>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -326,62 +372,53 @@ Tip
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Don’t confuse the “Jupyer Lab” with the “Jupyter Notebook” apps. The former is a newer replacement for the latter.</p>
+<p>Depending on the nature of your origin tables you might need to create a sequence of <strong>spatial transformations</strong> in order to approprietly join your dataset. A good practice is to outline a sequence of logical steps and then proceed to excecute them one at the time</p>
+<p>eg. If you want to join a Linestring layer with a Poligon layer, some of the Linestrings might need to be <em>sliced</em> before joining. This will ensure a that your joined linestrings won’t be duplicated because they originally crossed/touched two or more of your Polygons.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Caution
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Please note that depending on the size and complexity of your joins some operations can be <strong>computationally expensive</strong> and some advanced techniques might need to be implemented to achieve best performance.</p>
 </div>
 </div>
 </section>
-<section id="opening-a-python-notebook" class="level3">
-<h3 class="anchored" data-anchor-id="opening-a-python-notebook">Opening a Python Notebook</h3>
-<p>You can now create a new Notebook or, otherwise, open an existing Python Notebook. Notebooks are composed of cells.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="./images/jupyter-cell.png" class="img-fluid figure-img"></p>
-<figcaption>Jupyter Notebook cell</figcaption>
-</figure>
-</div>
-<p>Cells can either consist of code or <code>Markdown</code> formatted text. A typical notebook consists of a series of cells; some would include text with explanations or background information, while others would contain the executable code. The code in the cells has to be “executed” by ppressing the play button. Once executed, the code will generate outputs showing the results of the computation.</p>
-<p>You can try creating your own cell content and experimenting with running the cells. Remember that the cells are only aware of previously executed cells. We can start with simple math that Python can do natively. Run the following code cell in your notebook. After inserting the text, you can either click the “play” button or press the <span class="keystroke">Shift</span> + <span class="keystroke">Enter</span> keys.</p>
-<div id="0a0baa48" class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># this will display the number "2" once the cell is executed</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="op">+</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="1">
-<pre><code>2</code></pre>
-</div>
-</div>
-<p>You can also try using variables and printing:</p>
-<div id="c112d2fd" class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># this stores the calculation in "my_variable"</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>my_variable <span class="op">=</span> <span class="dv">2</span> <span class="op">*</span> <span class="dv">10</span> <span class="op">/</span> <span class="dv">3</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># this prints the variable using "f-string" interpolation</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'The calculation result is: </span><span class="sc">{</span>my_variable<span class="sc">}</span><span class="ss">'</span>)</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># let's round the number to two decimal places</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'The rounded result is: </span><span class="sc">{</span><span class="bu">round</span>(my_variable, <span class="dv">2</span>)<span class="sc">}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>The calculation result is: 6.666666666666667
-The rounded result is: 6.67</code></pre>
-</div>
-</div>
 </section>
-<section id="closing-jupyter-lab" class="level3">
-<h3 class="anchored" data-anchor-id="closing-jupyter-lab">Closing Jupyter Lab</h3>
-<p>Shut down Jupyter Lab from the menubar in the web interface using <span class="keystroke">File</span> &gt; <span class="keystroke">Shut Down</span>.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="./images/jupyter-shut-down.png" class="img-fluid figure-img" width="300"></p>
-<figcaption>Shut down Jupyter Lab</figcaption>
-</figure>
-</div>
+<section id="demo" class="level2">
+<h2 class="anchored" data-anchor-id="demo">Demo</h2>
+<p>During the demo we will use the following tools from the <code>toolbox</code></p>
+<ul>
+<li>XXX</li>
+<li>XXX</li>
+</ul>
+<hr>
 </section>
-<section id="alternative-b-google-colab" class="level3">
-<h3 class="anchored" data-anchor-id="alternative-b-google-colab">Alternative B: Google Colab</h3>
-<p>If you are unable to install an environment using the instructions above, you can follow the course using <a href="https://colab.research.google.com">Google Colab</a>. You will need to install any required packages to your Colab environment. Reach out in class if you need help getting set up.</p>
 </section>
-<section id="alternative-c-the-command-line" class="level3">
-<h3 class="anchored" data-anchor-id="alternative-c-the-command-line">Alternative C: The command line</h3>
-<p>If you already have experience with Python, IDEs, and the command line, feel free to setup your development environment accordingly. The method for doing so will depend on your operating system and your preference for IDEs. We recommend <em>VSCode</em> as an IDE.</p>
+<section id="saving-styles" class="level1">
+<h1>Saving Styles</h1>
+</section>
+<section id="georeferencing-images" class="level1">
+<h1>Georeferencing Images</h1>
+<section id="introduction-to-georeferencing" class="level2">
+<h2 class="anchored" data-anchor-id="introduction-to-georeferencing">Introduction to Georeferencing</h2>
+<p>What is georeferencing? Tools and plugins for georeferencing. Real-world examples of georeferenced maps and images.</p>
+</section>
+</section>
+<section id="exporting-images" class="level1">
+<h1>Exporting Images</h1>
+<ul>
+<li>Setting resolution, scale, and dimensions.</li>
+<li>Creating print layouts with multiple elements (maps, legends, text).</li>
+</ul>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -772,18 +809,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-      <a href="../chapter_0/installation.html" class="pagination-link  aria-label=" software="" &amp;="" accounts"="">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Software &amp; Accounts</span>
-      </a>          
-  </div>
-  <div class="nav-page nav-page-next">
-      <a href="../chapter_1/gis.html" class="pagination-link" aria-label="Intro to GIS">
-        <span class="nav-page-text">Intro to GIS</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
-  </div>
-</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
