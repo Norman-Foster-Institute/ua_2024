@@ -53,9 +53,26 @@ temp_day_2 = 34
 temp_diff = temp_day_2 - temp_day_1
 ```
 
-As above, variables can store different kinds of data, including `str`, `int`, `float` (decimal), and other types such as "booleans" (`True` and `False`) and `None` types. If you want to find out what `type` a variable is, you can use the built-in `type()` method.
+Another concept is the use of functions. Functions take parameters (arguments) and return a result according to a defined sequence of steps. In certain contexts they are also referred to as "methods", but don't worry too much about that for now. A commonly used function in Python is the `print()` method. Notice that a function has parenthesis, and this is where you pass your function arguments.
 
 ```{python}
+# you can pass a parameter to print()
+# it will then take the parameter and print it to the screen
+print('This will print boo!')
+# the same for a variable
+print(temp_diff)
+# and in the case of the print() method
+# multiple arguments can be passed at once
+# function arguments are separated with commas
+print('The temp diff is: ', temp_diff)
+```
+
+As above, variables can store different kinds of data, including `str`, `int`, `float` (decimal), and other types such as "booleans" (`True` and `False`) and `None` types. If you want to find out what `type` a variable is, you can use the built-in `type()` method, which will tell you what `type` a given variable is.
+
+```{python}
+# here we are nesting methods
+# the type() method will run first and returns a result
+# this result is then passed to the print() method
 print(type(a_variable))
 print(type(temp_diff))
 print(type(1))
@@ -64,7 +81,7 @@ print(type(True))
 print(type(None))
 ```
 
-Once you've assigned a value to a variable, you can use this variable to do things like maths.
+Once you've assigned a value to a variable, you can use this variable to do things like maths (in the case of `int` or `float` types).
 
 ```{python}
 temp_day_1 = 21
@@ -107,27 +124,30 @@ Note that you can iterate over lists using `for` and `in` syntax.
 ```{python}
 # this will print each number in my_list
 for num in my_list:
+    # note the indented line
     # indentation has to be used consistently
     print(num)
 ```
 
-Python has a number of built-in convenience methods:
+Python has a number of built-in convenience methods, which can simplify common tasks:
 ```{python}
 print('min', min(my_list))
 print('max', max(my_list))
 print('reversed', list(reversed(my_list)))
+print('absolute', abs(-100))
 ```
 
 ## Importing packages
 
-Python can import packages which contain reusable methods.
+Python can import packages which contain reusable code.
 
-Packages have to be installed before they are used, unless they are part of the default Python library. Let's install the `shapely` package. Note that this method of installing a package is particular to JupyterLab Notebooks, and only has to be done if the package is not yet installed.
+Packages have to be installed before they are used, unless they are part of the default Python library. Let's install the `shapely` package. Note that this method of installing a package with a leading exclamation mark is particular to JupyterLab Notebooks, and only has to be done if the package is not yet installed.
 
 ```{python}
 # checks that the shapely package
 # is installed for this notebook
-!pip install shapely
+# uncomment the next line to run
+# !pip install shapely
 ```
 
 Once installed and available, we can use modules provided by the package. Here we are using the `from` and `import` syntax to import the `geometry` module which is available from the `shapely` package.
@@ -136,11 +156,48 @@ Once installed and available, we can use modules provided by the package. Here w
 from shapely import geometry
 ```
 
-`shapely` let's us do some neat things with spatial information. Let's define a point.
+## Shapely
+
+`shapely` let's us do some neat things with spatial information. Let's define a `Point` type using the `geometry` module. The `geometry` module has some already defined methods which we can call. Let's use the `Point` method to create a new point. Note the use of dot-notation.
 
 ```{python}
+# this creates a point using the Point constructor
+# defined by the geometry module
 point_a = geometry.Point(0, 0)
 print(point_a)
+print(type(point_a))
 ```
 
-To find
+Different packages and modules define set patterns of behaviour. To understand what these are and what you can do with them, refer to the package documentation and ask ChatGPT to help you along the way.
+
+For example, a `shapely` `Point` type has built-in methods which allow you to easily produce certain forms of behaviour. You can access these using dot-notation. Let's buffer the point object using the pre-defined `buffer()` method.
+
+```{python}
+buff = point_a.buffer(10)
+print(buff)
+print(type(buff))
+```
+
+Notice that we now have a `Polygon` type. Types (or a Python `class`) can have properties which are accessed using dot-notation, but unlike methods, properties do not require parenthesis because they do not accept arguments.
+
+```{python}
+# here we are using the area property to retrieve the area
+print('Point area:', point_a.area)
+print('Polygon area:', buff.area)
+# properties can be nested via dot-notation
+# for example, polygons have an exterior property
+# which returns a LinearRing
+# let's get the LinearRing's length property
+print(type(buff.exterior))
+print('Polygon circumference:', buff.exterior.length)
+```
+
+Let's create a line. The line constructor requires a list of points.
+
+```{python}
+point_b = geometry.Point(1, 1)
+line = geometry.LineString([point_a, point_b])
+print(line)
+print(list(line.coords))
+print(line.length)
+```
