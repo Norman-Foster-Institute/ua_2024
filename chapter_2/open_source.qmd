@@ -1,5 +1,11 @@
-# Open Source
-
+---
+title: Open Source
+date-format: long
+date-modified: last-modified
+lang: en
+language: 
+  title-block-modified: "Last update"
+---
 Use open-source code wherever possible! Open source code consists of a dynamic ecosystem of constantly co-evolving code packages. This collaborative development has permitted a remarkable progression in the capabilities and sophistication of freely accessible code. This has benefitted geospatial and urban analysis immensely, making these tools more widely accessible to those who wish to use them.
 
 To further cement some basic Python skills, we'll be making use of the open-source [learn-python3](https://github.com/jerry-git/learn-python3) repository, created and maintained by Github user `jerry-git`.

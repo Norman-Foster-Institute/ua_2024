@@ -13,7 +13,7 @@ website:
     location: navbar
     type: overlay
   sidebar:
-    logo: ./assets/nfi_logo_txt.png 
+    logo: ./assets/nfi_logo_txt.png
     style: "docked"
     collapse-level: 1
     tools:
@@ -35,7 +35,7 @@ website:
           - chapter_1/cloud.qmd
       - section: Basic Coding
         contents:
-          - chapter_2/python.ipynb
+          - chapter_2/intro_to_python.qmd
           - chapter_2/open_source.qmd
           - chapter_2/pandas.ipynb
   favicon: ./assets/nfi_logo.png
