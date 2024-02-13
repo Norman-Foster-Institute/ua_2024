@@ -93,13 +93,6 @@ In order to establish the relationship between the origin tables one can use a s
 - `Equals`: Checks if two geometries are exactly the same in terms of spatial coordinates.
 - `Overlaps`: Determines if two geometries overlap, meaning they share some but not all points, and the intersection has the same dimension as the geometries themselves.
 
-
-::: {.callout-tip}
-Depending on the nature of your origin tables you might need to create a sequence of **spatial transformations** in order to approprietly join your dataset. A good practice is to outline a sequence of logical steps and then proceed to excecute them one at the time
-
-eg. If you want to join a Linestring layer with a Poligon layer, some of the Linestrings might need to be _sliced_ before joining. This will ensure a that your joined linestrings won't be duplicated because they originally crossed/touched two or more of your Polygons.
-:::
-
 :::{.callout-caution}
 Please note that depending on the size and complexity of your joins some operations can be **computationally expensive** and some advanced techniques might need to be implemented to achieve best performance. 
 :::
@@ -110,6 +103,7 @@ In QGIS a _style_ actually refers to several categories such as : symbology, lab
 It is important to remember that all of this metadata does not affect the underlying values of the layers. This gives a lot of flexibility which, if set correctly, can help to speed up visualisation processes as you move with larger and more diverse datasets.
 
 There are different ways to save you map styles:
+
 - As **default** for the layer.
 - As a separate 'QML' **file**.
 
