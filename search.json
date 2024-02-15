@@ -4,7 +4,7 @@
     "href": "chapter_0/installation.html",
     "title": "Software & Accounts",
     "section": "",
-    "text": "Instructions for how to setup your Github account and how to sign-up for the Github Student Developer Pack will be given in class. Please don’t try to activate the Student Developer Pack ahead of class. This is so that it can be configured with the correct accounts and procedure.\n\n\n\nSetup for the CARTO account will be detailed in class after activating the Github Student Developer Pack.\n\n\n\nDownload and install QGIS form the official download links.\n\n\n\nDownload and install Anaconda from the official download links.\n\n\n\nDownload and install TablePlus.. This is a tool for interacting with databases.",
+    "text": "Instructions for how to setup your Github account and how to sign-up for the Github Student Developer Pack will be given in class. Please don’t try to activate the Student Developer Pack ahead of class. This is so that it can be configured with the correct accounts and procedure.\n\n\n\nSetup for the CARTO account will be detailed in class after activating the Github Student Developer Pack.\n\n\n\nDownload and install QGIS form the official download links.\n\n\n\nDownload and install Anaconda from the official download links.\n\n\n\nDownload and install TablePlus.. This is a tool for interacting with databases.\n\n\n\nDownload and install Tableau Desktop using you UAM email address and credentials. This same credentials will serve you for Tableau Prep if you want to make use of it. See Intro to Tableau for more.",
     "crumbs": [
       "Setup",
       "Software & Accounts"
@@ -66,6 +66,17 @@
     ]
   },
   {
+    "objectID": "chapter_0/installation.html#tableau",
+    "href": "chapter_0/installation.html#tableau",
+    "title": "Software & Accounts",
+    "section": "",
+    "text": "Download and install Tableau Desktop using you UAM email address and credentials. This same credentials will serve you for Tableau Prep if you want to make use of it. See Intro to Tableau for more.",
+    "crumbs": [
+      "Setup",
+      "Software & Accounts"
+    ]
+  },
+  {
     "objectID": "chapter_0/index.html",
     "href": "chapter_0/index.html",
     "title": "Overview",
@@ -110,250 +121,213 @@
     ]
   },
   {
-    "objectID": "chapter_1/gis_tips.html",
-    "href": "chapter_1/gis_tips.html",
-    "title": "Tips",
+    "objectID": "chapter_2/intro_to_tableau.html",
+    "href": "chapter_2/intro_to_tableau.html",
+    "title": "Intro to Tableau",
     "section": "",
-    "text": "In multiple scenarios you may find information in one table/layer that you might want to connect to information from another. JOINS are the way to do this, and work by connecting two different datasources based on a shared attribute. So doing, the attributes from one table can be connected to another for analysis or visualision purposes.\n\n\n\n\nInner Join: Returns only rows that have been matched across both tables.\nLeft (Outer) Join: Returns all rows from the left table, and matched rows from the right table where found.\nRight (Outer) Join: Returns all rows from the right table, and matched rows from the left table where found.\nFull (Outer) Join: Returns all rows from both tables, regardless of whether matches were found in the other table.\nCross Join: Returns a Cartesian product of the two tables, i.e. each row connected to each other row from the other table. Use with caution!\n\n\n\n\n\nJoin types\n\n\n\n\n\n\n\n\n\nOccurs when each record in one table corresponds to exactly one record in another table.\n\n\n\n\n\n\n\nOccurs when a single record in one table can be associated with one or more records in another table.\n\n\n\n\n\n\n\nOccurrs when multiple records from one table correspond with one or more in another table.\n\n\n\n\n\n\n\n\n\n\nImportant\n\n\n\n\nWhen using joins you are not modifying the original tables.\nYour resulting table can be much smaller or (exponentially) larger than any of the original tables.\n\n\n\n\n\n\nSimilar to joining tables based on their attributes, it is possible to join them based on their location. This is a very common technique in spatial databases (e.g. PostGIS) where you’ll commonly use a feature such as a city boundary to filter and join data from another table (e.g. streets).\nTo achieve the expected results, make sure that both origin tables are in the same CRS.\n\n\nIn QGIS and spatial databases, spatial predicates are used to define spatial relationships between features. These are used for joining or selecting data based on the relationships between the features. Some of the common predicates are:\n\nContains: Determines if one geometry contains another.\nWithin: Checks if one geometry is within another geometry.\nIntersects: Tests if two geometries intersect at any point.\nDisjoint: Determines if two geometries do not intersect.\nTouches: Checks if two geometries have at least one point in common but their interiors do not intersect.\nCrosses: Determines if the geometries have some, but not all, interior points in common.\nEquals: Checks if two geometries are exactly the same in terms of spatial coordinates.\nOverlaps: Determines if two geometries overlap, meaning they share some but not all points, and the intersection has the same dimension as the geometries themselves.\n\n\n\n\n\n\n\nCaution\n\n\n\nPlease note that depending on the size and complexity of your joins some operations can be computationally expensive and some advanced techniques might need to be implemented to achieve best performance.",
-    "crumbs": [
-      "GIS Tools",
-      "Tips"
-    ]
+    "text": "Make sure you have downloaded the software using the instructions in Software & Accounts\nTableau is a leading data visualization tool that simplifies the process of converting complex data into interactive and visually appealing dashboards and reports. It is highly regarded in the business intelligence (BI) community for its ability to facilitate data-driven decision-making through an intuitive interface that accommodates users of all skill levels. By supporting a wide variety of data sources (including some spatial formats like shapefiles)) and enabling quick identification of data trends and patterns."
   },
   {
-    "objectID": "chapter_1/gis_tips.html#join-types",
-    "href": "chapter_1/gis_tips.html#join-types",
-    "title": "Tips",
+    "objectID": "chapter_2/intro_to_tableau.html#tableau-desktop-structure",
+    "href": "chapter_2/intro_to_tableau.html#tableau-desktop-structure",
+    "title": "Intro to Tableau",
+    "section": "Tableau Desktop Structure",
+    "text": "Tableau Desktop Structure\n\n\n\n\n\nflowchart LR\n    subgraph Datasources\n    A[(D 1)]\n    a[(DB 2)]\n    end \n\n    subgraph Views\n    B[Linechart]\n    C[Map]\n    D[Barchart]\n    end\n\n    subgraph Dashboards\n    E{{Dashboard 1}}\n    F{{Dashboard 2}}\n    end \n\n    subgraph Stories\n    S{Story}\n    end \n\n    A --&gt; B\n    A --&gt; C\n    A --&gt; D\n    a --&gt; D\n\n    B --&gt; E\n    C --&gt; E\n    D --&gt; F\n    i(((images))) -.- E\n    t(((texts))) -.- F \n\n    E --&gt; S\n    F --&gt; S\n    i -.- S\n    t -.- S\n\n\n\n\n\n\n\nData Sources: Connecting to data\nThe overall structure\n\n\nViews: Creating visualizations\n\n\nDashboards: Interacting and Enhancing views\n\n\nStories: Data based narratives"
+  },
+  {
+    "objectID": "chapter_2/intro_to_tableau.html#documentation",
+    "href": "chapter_2/intro_to_tableau.html#documentation",
+    "title": "Intro to Tableau",
+    "section": "Documentation",
+    "text": "Documentation\n\nInterface Overview: Introduction to the main parts of the Tableau Desktop interface, including the start page, data pane, analytics pane, and workspace.\nConcepts of Data Visualization: Importance of data visualization and the role of Tableau in data-driven decision-making."
+  },
+  {
+    "objectID": "chapter_2/intro_to_tableau.html#connecting-to-data-10-minutes",
+    "href": "chapter_2/intro_to_tableau.html#connecting-to-data-10-minutes",
+    "title": "Intro to Tableau",
+    "section": "2. Connecting to Data (10 minutes)",
+    "text": "2. Connecting to Data (10 minutes)\n\nData Sources: How to connect Tableau to various data sources like Excel, SQL databases, and cloud data.\nData Pane: Exploring the data pane to view fields and understand the differences between dimensions and measures.\nJoining and Blending Data: Basics of combining multiple data sources in Tableau."
+  },
+  {
+    "objectID": "chapter_2/intro_to_tableau.html#creating-basic-visualizations-15-minutes",
+    "href": "chapter_2/intro_to_tableau.html#creating-basic-visualizations-15-minutes",
+    "title": "Intro to Tableau",
+    "section": "3. Creating Basic Visualizations (15 minutes)",
+    "text": "3. Creating Basic Visualizations (15 minutes)\n\nBuilding Views: Creating basic charts (bar, line, pie) by dragging and dropping fields.\nShelves and Cards: Utilizing shelves (Columns, Rows) and cards (Marks, Filters) to customize visualizations.\nSorting and Filtering: Applying sorting and filters to views."
+  },
+  {
+    "objectID": "chapter_2/intro_to_tableau.html#dashboards-and-stories-10-minutes",
+    "href": "chapter_2/intro_to_tableau.html#dashboards-and-stories-10-minutes",
+    "title": "Intro to Tableau",
+    "section": "4. Dashboards and Stories (10 minutes)",
+    "text": "4. Dashboards and Stories (10 minutes)\n\nCreating a Dashboard: Steps to create a dashboard by combining different visualizations.\nInteractive Dashboards: Making dashboards interactive with actions like filters, highlights, and URL actions.\nIntroduction to Stories: Overview of stories for narrating data visualizations."
+  },
+  {
+    "objectID": "chapter_2/intro_to_tableau.html#sharing-and-publishing-5-minutes",
+    "href": "chapter_2/intro_to_tableau.html#sharing-and-publishing-5-minutes",
+    "title": "Intro to Tableau",
+    "section": "5. Sharing and Publishing (5 minutes)",
+    "text": "5. Sharing and Publishing (5 minutes)\n\nExport Options: How to export visualizations and dashboards as images, PDFs, or Tableau Workbook files.\nPublishing to Tableau Public/Server: Basic steps for publishing work to Tableau Public or a Tableau Server."
+  },
+  {
+    "objectID": "chapter_2/intro_to_tableau.html#qa-and-practice-time-10-minutes",
+    "href": "chapter_2/intro_to_tableau.html#qa-and-practice-time-10-minutes",
+    "title": "Intro to Tableau",
+    "section": "6. Q&A and Practice Time (10 minutes)",
+    "text": "6. Q&A and Practice Time (10 minutes)\n\nOpen Floor for Questions: Allowing participants to ask questions.\nHands-On Practice: Encouraging participants to create a basic visualization or dashboard with a provided dataset.\n\n\nAdditional Tips\n\nHands-On Examples: Use real-life datasets for demonstrations to enhance engagement and understanding.\nResources for Further Learning: Provide links to Tableau’s online tutorials, forums, and communities for continued learning."
+  },
+  {
+    "objectID": "chapter_1/cloud_gis.html",
+    "href": "chapter_1/cloud_gis.html",
+    "title": "Cloud GIS",
     "section": "",
-    "text": "Inner Join: Returns only rows that have been matched across both tables.\nLeft (Outer) Join: Returns all rows from the left table, and matched rows from the right table where found.\nRight (Outer) Join: Returns all rows from the right table, and matched rows from the left table where found.\nFull (Outer) Join: Returns all rows from both tables, regardless of whether matches were found in the other table.\nCross Join: Returns a Cartesian product of the two tables, i.e. each row connected to each other row from the other table. Use with caution!\n\n\n\n\n\nJoin types",
+    "text": "This will be an in-class hands-on session providing an introduction to the use of CARTO for publishing and styling interactive maps.\nThe are two excercises that will help us explore different components of the platform:\nEach excersice will be lead by a live demo of the main steps to better control the visualization of the datasets. Then, each student will have time to explore on their own time the tool and come up with a shereable map.",
     "crumbs": [
       "GIS Tools",
-      "Tips"
+      "Cloud GIS"
     ]
   },
   {
-    "objectID": "chapter_1/gis_tips.html#cardinality",
-    "href": "chapter_1/gis_tips.html#cardinality",
-    "title": "Tips",
+    "objectID": "chapter_1/cloud_gis.html#connecting-to-carto",
+    "href": "chapter_1/cloud_gis.html#connecting-to-carto",
+    "title": "Cloud GIS",
+    "section": "Connecting to CARTO",
+    "text": "Connecting to CARTO\nBecause this will be the first time you log in, you will have to log in into www.carto.com using your GitHub account (you will need the Student Development Pack approved - see the Software & Accounts section).\n\nSearch for Are you a student? and Access using GitHub\n\n\n\nUse GitHub login\n\n\n\nFollow the stepts to create your account and note that each scholar will create a separate ‘organization’. This means all your files and maps will be yours and you will not be joining NFI’s organization. You can name ir however you like!",
+    "crumbs": [
+      "GIS Tools",
+      "Cloud GIS"
+    ]
+  },
+  {
+    "objectID": "chapter_1/cloud_gis.html#datasets",
+    "href": "chapter_1/cloud_gis.html#datasets",
+    "title": "Cloud GIS",
+    "section": "Datasets",
+    "text": "Datasets\nFor this excercise we will use two official data sources. I\n\nCycling routes (LINESTRINGS, 4326):\n\nDownload geopackage file\nConsult official source : for references to the .gpkg file above\n\nCycling docks (POINTS, 4326):\n\nDownload geopackage file\nConsult official source : for references to the .gpkg file above\n\n\n\n\n\n\n\n\nNote\n\n\n\nNote that both file have been reprojected to EPSG: 4326 as this is the prefered projection system for CARTO\n\n\n\nLoading Data\nThere are several ways to use the data in CARTO. But this time we are going to upload it directly from CARTO BUILDER\n\nUsing the main menu, navigate to Maps –&gt; + New map button. This takes you to a new tab with an instance of CARTO’s Builder.\nAdd source from... and upload the gpkg in a folder of your preference.\n\n\n\n\n\n\n\nNote that multiple layers can be added from the same\n\n\n\nAdd style\nDepending on the geometry types, you will have different option for styling your Points (docking stations) and the Linestrings (cycling routes).\n\n\n\n\n\n\nNote\n\n\n\nAlways familirise yourself with the data before jumping into modifying its style \n\n\nFor now we encourage you to explore the following three tabs:\n\nLayers\nLegends\nBasemaps\n\n\n\n\n\n\n\n\nPublish\nWhen you are happy with the map make sure you SHARE your results by publishing them to allow for public access\n\nAdd your resulting URL to this notion card\n\n\n\nYour example\n\nThe best maps will be added to complete this section!",
+    "crumbs": [
+      "GIS Tools",
+      "Cloud GIS"
+    ]
+  },
+  {
+    "objectID": "chapter_1/cloud_gis.html#datasets-1",
+    "href": "chapter_1/cloud_gis.html#datasets-1",
+    "title": "Cloud GIS",
+    "section": "Datasets",
+    "text": "Datasets\nFor this excercise we are going to use the same datasets than we did in our previous session. However, this time we are going to use the full dataset containing the population data.\n\nDownload the municipal neighbourhoods as a SHP file: Barrios municipales de Madrid\nDownload the population by district and neighbourhood dataset as a CSV file: Población por distrito y barrio a 1 de enero",
+    "crumbs": [
+      "GIS Tools",
+      "Cloud GIS"
+    ]
+  },
+  {
+    "objectID": "chapter_1/cloud_gis.html#workflows",
+    "href": "chapter_1/cloud_gis.html#workflows",
+    "title": "Cloud GIS",
+    "section": "Workflows",
+    "text": "Workflows\nFrom our previous experience, we know that in order to join the datasets, we first had to clean and filter the data. This time we are going to make use of CARTO’s WORKFLOWS: a no-code visual interface for replicating processes like cleaning, filtering, joining (and much more). Visit for more.",
+    "crumbs": [
+      "GIS Tools",
+      "Cloud GIS"
+    ]
+  },
+  {
+    "objectID": "chapter_1/cloud_gis.html#hands-on",
+    "href": "chapter_1/cloud_gis.html#hands-on",
+    "title": "Cloud GIS",
+    "section": "Hands-on",
+    "text": "Hands-on\nThe following are the general steps we encourage you to follow to get familiar with other functions of CARTO.\n\nData prep\nFor this excerse we just want you to import the file below and update the inputs and output parameters\n\n\n\nCARTO’s Workflow\n\n\n\nUnder menu Data Explorer –&gt; Import both datasets (CSV and SHP)\nUnder menu Workflows –&gt; Import this SQL procedure to give you a head start\nUpdate workflow :\n\nInputs: data sources according to the location and name of your files\nOutput: select where you want to store the results\n\nRun the workflow to identify potential issues\n\nRememeber to read the Error messages (if at all), to debug your workflow\n\n\n\n\nData viz\nNow we are going to move into another builder instance and load the newly created table (from the steps above). This time we encourage you to look into the other two tabs :\n\nWidgets : allow you to interact and filter the data plotted on the map\nInteractions : helps you surface propreties of individual elements in the map\n\n\n\n\n\n\n\n\nPublish\nWhen you are happy with the map make sure you SHARE your results by publishing them to allow for public access\n\nAdd your resulting URL to this notion card\n\n\n\nOutput Example\n    \n\nMadrid’s Population Dashboard - Greg Maya",
+    "crumbs": [
+      "GIS Tools",
+      "Cloud GIS"
+    ]
+  },
+  {
+    "objectID": "chapter_1/qgis_mapping.html",
+    "href": "chapter_1/qgis_mapping.html",
+    "title": "QGIS Mapping",
     "section": "",
-    "text": "Occurs when each record in one table corresponds to exactly one record in another table.\n\n\n\n\n\n\n\nOccurs when a single record in one table can be associated with one or more records in another table.\n\n\n\n\n\n\n\nOccurrs when multiple records from one table correspond with one or more in another table.\n\n\n\n\n\n\n\n\n\n\nImportant\n\n\n\n\nWhen using joins you are not modifying the original tables.\nYour resulting table can be much smaller or (exponentially) larger than any of the original tables.",
+    "text": "We’ll first start with another statistical quirk!\n\n\nAn interesting conundrum arises in statistical analysis when relationships between variables for grouped data are assumed to be valid for the individuals within those groupings. Individual level information is lost in the process of grouping information into larger aggregations, and statistical observations computed for these larger groupings may therefore be different, or potentially misleading in the context of individuals. As a general rule, use individual level (unaggregated) data or the smallest groupings of data (e.g. census statistics) available.\nHere is some background reading, with some examples:\n\nWikipedia: Ecological Correlations\nBritannica: Ecological Fallacy\nThe ecological correlations fallacy",
     "crumbs": [
       "GIS Tools",
-      "Tips"
+      "QGIS Mapping"
     ]
   },
   {
-    "objectID": "chapter_1/gis_tips.html#introduction-to-spatial-joins",
-    "href": "chapter_1/gis_tips.html#introduction-to-spatial-joins",
-    "title": "Tips",
+    "objectID": "chapter_1/qgis_mapping.html#quirks---part-2",
+    "href": "chapter_1/qgis_mapping.html#quirks---part-2",
+    "title": "QGIS Mapping",
     "section": "",
-    "text": "Similar to joining tables based on their attributes, it is possible to join them based on their location. This is a very common technique in spatial databases (e.g. PostGIS) where you’ll commonly use a feature such as a city boundary to filter and join data from another table (e.g. streets).\nTo achieve the expected results, make sure that both origin tables are in the same CRS.\n\n\nIn QGIS and spatial databases, spatial predicates are used to define spatial relationships between features. These are used for joining or selecting data based on the relationships between the features. Some of the common predicates are:\n\nContains: Determines if one geometry contains another.\nWithin: Checks if one geometry is within another geometry.\nIntersects: Tests if two geometries intersect at any point.\nDisjoint: Determines if two geometries do not intersect.\nTouches: Checks if two geometries have at least one point in common but their interiors do not intersect.\nCrosses: Determines if the geometries have some, but not all, interior points in common.\nEquals: Checks if two geometries are exactly the same in terms of spatial coordinates.\nOverlaps: Determines if two geometries overlap, meaning they share some but not all points, and the intersection has the same dimension as the geometries themselves.\n\n\n\n\n\n\n\nCaution\n\n\n\nPlease note that depending on the size and complexity of your joins some operations can be computationally expensive and some advanced techniques might need to be implemented to achieve best performance.",
+    "text": "We’ll first start with another statistical quirk!\n\n\nAn interesting conundrum arises in statistical analysis when relationships between variables for grouped data are assumed to be valid for the individuals within those groupings. Individual level information is lost in the process of grouping information into larger aggregations, and statistical observations computed for these larger groupings may therefore be different, or potentially misleading in the context of individuals. As a general rule, use individual level (unaggregated) data or the smallest groupings of data (e.g. census statistics) available.\nHere is some background reading, with some examples:\n\nWikipedia: Ecological Correlations\nBritannica: Ecological Fallacy\nThe ecological correlations fallacy",
     "crumbs": [
       "GIS Tools",
-      "Tips"
+      "QGIS Mapping"
     ]
   },
   {
-    "objectID": "chapter_1/gis_tips.html#tools-and-plugins",
-    "href": "chapter_1/gis_tips.html#tools-and-plugins",
-    "title": "Tips",
-    "section": "Tools and plugins",
-    "text": "Tools and plugins\nIn QGIS, georeferencing can be carried out using the built-in Georeferencer tool, which can be found under the menu Layer -&gt; Georeferencer.... This tool allows you to manually add control points that link the location on the image with geographic coordinates on the map, adjusting the image to fit the spatial data.\n\n\n\n\n\n\nTip\n\n\n\nThe more nodes you add and the further away from each other, the more refences the algorithm has to accomodate the original file. Minimum of 5 points should be considered to have an descent baseline.\n\n\n\nPlugins: For more advanced or specific georeferencing needs, there are additional plugins like Freehand Raster Georeferencer, allowing for more flexible manipulation of images directly within the map canvas.",
+    "objectID": "chapter_1/qgis_mapping.html#mapping",
+    "href": "chapter_1/qgis_mapping.html#mapping",
+    "title": "QGIS Mapping",
+    "section": "Mapping",
+    "text": "Mapping\nAs part of our practical exercises in class, we will focus on the essential skill of drawing street networks using vector data mapping. This exercise is centered on the historic center of San Marino and is designed to enhance your proficiency in inputting geometry. The main task will involve creating a GeoPackage Layer:\n\nStreet Network layer: representing the pedestrian routes through the assigned tiles.\n\nFor those interested in exploring further and applying additional GIS skills, we offer the optional task of creating a Buildings layer:\n\nBuildings layer (Optional): representing all the buildings within the assigned tiles.\n\nThis approach allows you to focus on the critical aspect of mapping the street network, with the option to delve into building mapping as an additional challenge.",
     "crumbs": [
       "GIS Tools",
-      "Tips"
+      "QGIS Mapping"
     ]
   },
   {
-    "objectID": "chapter_1/gis_tips.html#use-cases-of-georeferenced-images",
-    "href": "chapter_1/gis_tips.html#use-cases-of-georeferenced-images",
-    "title": "Tips",
-    "section": "Use cases of georeferenced images",
-    "text": "Use cases of georeferenced images\n\nHistorical Maps: Bringing old maps into modern GIS projects, helping to study changes over time.\nTracing Exercises: Overlaying aerial or satellite imagery to digitize features such as roads, buildings, or land use.\nReshaping sketches: Planning and ideation sketches usually are our of scale and conveniently reshaping elements of the environment. Georefereincing them helps to better transition ideas into reality.\n\n\n\n\n\n\n\nIt’s important to consider potential distortions when georeferencing images, as the process involves stretching or rotating the image to align with real-world coordinates. Understanding and managing these distortions is key to ensuring the accuracy of the geospatial analysis.",
+    "objectID": "chapter_1/qgis_mapping.html#connecting-to-db",
+    "href": "chapter_1/qgis_mapping.html#connecting-to-db",
+    "title": "QGIS Mapping",
+    "section": "Connecting to DB",
+    "text": "Connecting to DB\nAlthough the exercise is primarily based on local data manipulation, connecting to NFI’s database is recommended to access the reference grid and familiarize yourself with its structure. The database is read-only for scholars, ensuring no accidental modifications.\n\n\n\n\n\n\nTip\n\n\n\nConnection details will be provided in class. All connections to the database are IP protected.",
     "crumbs": [
       "GIS Tools",
-      "Tips"
+      "QGIS Mapping"
     ]
   },
   {
-    "objectID": "chapter_1/gis_tips.html#demo",
-    "href": "chapter_1/gis_tips.html#demo",
-    "title": "Tips",
-    "section": "Demo …",
-    "text": "Demo …",
+    "objectID": "chapter_1/qgis_mapping.html#mapping-vector-data",
+    "href": "chapter_1/qgis_mapping.html#mapping-vector-data",
+    "title": "QGIS Mapping",
+    "section": "Mapping Vector Data",
+    "text": "Mapping Vector Data\nWe will use the historic center of San Marino for this exercise, aiming to familiarize you with inputting geometry. Attributes will be considered at later stages. Each scholar can produce individual GeoPackage Layers (locally):\n\nStreet Network layer (Linestring, CRS: 3035) is the primary focus, emphasizing the mapping of pedestrian routes.\n\nSuggested name: network_[scholarname]\n\nBuildings layer (Polygons, CRS: 3035) for those who wish to further challenge themselves by mapping the area’s buildings.\n\nSuggested name: buildings_[scholarname]\n\n\nScholars will refer to specific areas of the republic found in the nfi database path: - nfi.sanmarino.base_mapping\nExplore the street_network attribute to see your areas and collaborate with neighboring tiles.",
     "crumbs": [
       "GIS Tools",
-      "Tips"
+      "QGIS Mapping"
     ]
   },
   {
-    "objectID": "chapter_1/sql.html",
-    "href": "chapter_1/sql.html",
-    "title": "SQL for GIS",
-    "section": "",
-    "text": "This is a draft outline and will be fleshed-out closer to class. To make visible, edit _quarto.yml to include in directory.\n\n\nSQL and PostgreSQL Basics:\n\n\nUnderstanding SQL (Structured Query Language)\nIntroduction to PostgreSQL as a Relational Database Management System (RDBMS)\nWorking with Schemas in PostgreSQL\n\n\nData Manipulation with SQL and PostgreSQL:\n\n\nCREATE, SELECT, INSERT, DELETE Statements\nPrimary Keys (PK) and Foreign Keys (FK)\nCreating and Managing Indexes for Performance Optimization\n\n\nSQL Concepts:\n\n\nAggregations: COUNT, SUM, AVG, MIN, MAX\nComplex Queries and Subqueries WITH, WHERE\nConditional Statements: CASE Statements\n\n\nIntroduction to GIS Integration with PostgreSQL:\n\n\nSpatial Data Types in PostgreSQL\nSpatial Indexing for Efficient Spatial Queries\nSpatial Functions and Operators in PostgreSQL\n\n\nSpatial and Non-Spatial Joins:\n\n\nPerforming Spatial Joins for GIS Analysis\nNon-Spatial Joins for Relational Data Analysis\nCombining Spatial and Non-Spatial Data in Queries\n\n\nHow to ask ChatGPT\n\n\nIterating query development\nDebugging"
-  },
-  {
-    "objectID": "chapter_1/sql.html#key-topics",
-    "href": "chapter_1/sql.html#key-topics",
-    "title": "SQL for GIS",
-    "section": "Key Topics",
-    "text": "Key Topics\n\nIntroduction to Data Analysis and Databases:\n\n\nImportance of Data Analysis in Decision Making\nOverview of Relational Databases\n\n\nConnecting to Google Cloud Platform (GCP):\n\n\nConnecting to NFI’s database(s)\nSetting Up a GCP Account\n\n\nSQL and PostgreSQL Basics:\n\n\nUnderstanding SQL (Structured Query Language)\nIntroduction to PostgreSQL as a Relational Database Management System (RDBMS)\nWorking with Schemas in PostgreSQL\n\n\nData Manipulation with SQL and PostgreSQL:\n\n\nCREATE, SELECT, INSERT, DELETE Statements\nPrimary Keys (PK) and Foreign Keys (FK)\nCreating and Managing Indexes for Performance Optimization\n\n\nSQL Concepts:\n\n\nAggregations: COUNT, SUM, AVG, MIN, MAX\nComplex Queries and Subqueries WITH, WHERE\nConditional Statements: CASE Statements\n\n\nIntroduction to GIS Integration with PostgreSQL:\n\n\nSpatial Data Types in PostgreSQL\nSpatial Indexing for Efficient Spatial Queries\nSpatial Functions and Operators in PostgreSQL\n\n\nSpatial and Non-Spatial Joins:\n\n\nPerforming Spatial Joins for GIS Analysis\nNon-Spatial Joins for Relational Data Analysis\nCombining Spatial and Non-Spatial Data in Queries"
-  },
-  {
-    "objectID": "chapter_1/sql.html#software-needed",
-    "href": "chapter_1/sql.html#software-needed",
-    "title": "SQL for GIS",
-    "section": "Software needed",
-    "text": "Software needed\n\nFor this session please make sure you have downloaded the following software(s):\n\nTablePlus | Modern, Native Tool for Database Management."
-  },
-  {
-    "objectID": "chapter_1/sql.html#connecting-to-data-on-postgis",
-    "href": "chapter_1/sql.html#connecting-to-data-on-postgis",
-    "title": "SQL for GIS",
-    "section": "Connecting to data on PostGIS 👨🏽‍💻",
-    "text": "Connecting to data on PostGIS 👨🏽‍💻\n\n\n\n⚙\nCONNECTION SETTINGS\n\n\n\n\nIP Address\n(will be provided during class)\n\n\nDatabase names\nnfi / urban_analytics\n\n\nPort\n5432\n\n\nUsername\nscholar\n\n\nPassword\n(will be provided during class)\n\n\n\n\n\n\n\n\n\nTip\n\n\n\nNote that the connections to the Databases are restricted by the source IP address."
-  },
-  {
-    "objectID": "chapter_1/sql.html#to-dos",
-    "href": "chapter_1/sql.html#to-dos",
-    "title": "SQL for GIS",
-    "section": "To-Dos",
-    "text": "To-Dos\n\nCreate a table with the following characteristics.\nUse schema. ua0\nTable name : [yourinitials] + “_prof_exp”\nFields required: (assign data types as you think would be best)\n\nid\nscholar_id\nindustry_id\ninstitution\nyears_of_experience\neducation\nlocation (crs: 4326)\nend_year\nnotes\n\n** If you think more fields are necessary, feel free to add them\nCreate a GitHub account\n\nadd link to public.scholars.github_link (varchar)\n\n\n\nOptional\nCreate a local instance of PostGIS for use in the upcoming months\nLearn PostgreSQL Tutorial - Full Course for Beginners"
-  },
-  {
-    "objectID": "chapter_1/sql.html#useful-resources",
-    "href": "chapter_1/sql.html#useful-resources",
-    "title": "SQL for GIS",
-    "section": "Useful Resources",
-    "text": "Useful Resources\n\nPOSTGRESQL & POSTGIS CHEATSHEETS\n\nPostgreSQL & PostGIS cheatsheet (a work in progress)\nPostgres Cheatsheet"
-  },
-  {
-    "objectID": "chapter_1/gis.html",
-    "href": "chapter_1/gis.html",
-    "title": "Intro to GIS",
-    "section": "",
-    "text": "Vector and raster data are two fundamental types of spatial data used in Geographic Information Systems (GIS). Vector data represents geographical features as distinct shapes using points, lines, and polygons, each of which can carry detailed attribute information, making it ideal for precise mapping applications like boundaries, roads, and infrastructure networks. It excels in accuracy and detail for discrete data. In contrast, raster data consists of a grid of pixels, each holding a value, effectively representing continuous data. This format is well-suited for environmental analysis, land cover studies, and satellite imagery, as it captures variations over a wide area, such as elevation, temperature, or vegetation. While vector data is preferred for its precision in depicting specific geographic entities and managing related data, raster data is favored for its ability to represent complex, continuous phenomena over large spatial scales.\n\n\n\n\nVector data types are primarily categorized into Points, Linestrings, and Polygons, each with distinct characteristics and uses. Additionally, there are multi-geometry versions of these types, such as MultiPoints, MultiLinestrings, and MultiPolygons, which offer more complex feature groupings.\n\nPoints: Points are used to represent discrete locations on the earth’s surface. Each point is defined by a pair of coordinates (e.g. latitude and longitude, or an easting and northing) and can represent features such as the location of a tree or a landmark. They can have attributes further describing characteristics of interest, such as tree species or landmark name.\nLinestring: Lines connect a series of points to describe linear features such as roads or rivers. Linestring geometries inherently have length and may include attributes such as road type or river name.\nPolygons: Polygons are closed shapes used to represent areas such as city boundaries or land parcels. Polygon geometries inherently have an area and perimeter and may have attributes such as population counts or land use types.\n\n\n\n\nGeometry types\n\n\n\nMulti-Geometry Versions: Multi geometries provide a way to associated a grouping of Features which can share the same feature attributes.\n\nMultiPoint: For example, a grouping of trees.\nMultiLinestring: For example, a grouping of related segments describing a long-distance hiking trail.\nMultiPolygon: For example, a grouping of buildings which together represent a larger entity such as a hospital or university.\n\n\n\n\n\nEsri Shapefile\nShapefile is a prevalent geospatial file type in GIS software, requiring three mandatory files:\n\nSHP (feature geometry)\nSHX (shape index position)\nDBF (attribute data)\nShapefiles often also include optional files such as PRJ (coordinate reference system).\n\nGeoPackage\nGeoPackage provides a modern and simpler alternative to shapefiles and is rapidly gaining acceptance. It can store multiple data layers and it’s use of SQLite means that you can use SQL query data from the file.\nGeoJSON\nGeoJSON encodes geographic data structures using JSON, a format commonly used for web development.\n\nReference: https://gisgeography.com/gis-formats/\n\n\n\n\n\nRasters contain a grid of pixels, where the value used for each grid cell can represent a characteristic such as temperature or landcover. Geographic rasters typically include Geospatial information necessary to correctly project and locate the information in GIS software.\n\n\n\nRaster image grid cells\n\n\n\n\n\nASCII Grid\nASCII Grid files (ASC) store raster data as text in a grid format. Each cell in the grid is represented by a numeric value corresponding to the geographic attribute being mapped, such as elevation. ASCII Grid files include a header specifying metadata like cell size, number of rows and columns, and coordinates of the lower left corner. The format is simple and can be generated or edited with a text editor, and may use space, comma, or tab-delimiters.\nGeoTIFF\nGeoTIFF is widely becoming the defacto raster format in GIS. It embeds coordinate reference system information within a TIFF (Tagged Image File Format) file. GeoTIFFs are commonly used for storing satellite imagery, elevation data, and land surface temperatures.\n\nReference: https://gisgeography.com/gis-formats/",
+    "objectID": "chapter_1/qgis_mapping.html#contextual-resources-for-mapping",
+    "href": "chapter_1/qgis_mapping.html#contextual-resources-for-mapping",
+    "title": "QGIS Mapping",
+    "section": "Contextual Resources for Mapping",
+    "text": "Contextual Resources for Mapping\nUse OSM or Bing maps XYZ Tiles, as detailed in our previous lesson, for a better understanding of your mapping area. The 3D CESIUM Story offers a 3D view of the 2D polygons you’ll be mapping, enhancing your perspective and accuracy.\n\nOSM tile: https://tile.openstreetmap.org/{z}/{x}/{y}.png\nBing tile URL : https://t0.tiles.virtualearth.net/tiles/a{q}.jpeg?g=685&mkt=en-us&n=z\n\n\n\n\n\n\n\nTip\n\n\n\nActivate the Snapping Toolbar for precision in mapping. Experiment with different pixel tolerance values and options like Topological Editing and Intersection Snapping.",
     "crumbs": [
       "GIS Tools",
-      "Intro to GIS"
+      "QGIS Mapping"
     ]
   },
   {
-    "objectID": "chapter_1/gis.html#file-types",
-    "href": "chapter_1/gis.html#file-types",
-    "title": "Intro to GIS",
-    "section": "",
-    "text": "Vector and raster data are two fundamental types of spatial data used in Geographic Information Systems (GIS). Vector data represents geographical features as distinct shapes using points, lines, and polygons, each of which can carry detailed attribute information, making it ideal for precise mapping applications like boundaries, roads, and infrastructure networks. It excels in accuracy and detail for discrete data. In contrast, raster data consists of a grid of pixels, each holding a value, effectively representing continuous data. This format is well-suited for environmental analysis, land cover studies, and satellite imagery, as it captures variations over a wide area, such as elevation, temperature, or vegetation. While vector data is preferred for its precision in depicting specific geographic entities and managing related data, raster data is favored for its ability to represent complex, continuous phenomena over large spatial scales.\n\n\n\n\nVector data types are primarily categorized into Points, Linestrings, and Polygons, each with distinct characteristics and uses. Additionally, there are multi-geometry versions of these types, such as MultiPoints, MultiLinestrings, and MultiPolygons, which offer more complex feature groupings.\n\nPoints: Points are used to represent discrete locations on the earth’s surface. Each point is defined by a pair of coordinates (e.g. latitude and longitude, or an easting and northing) and can represent features such as the location of a tree or a landmark. They can have attributes further describing characteristics of interest, such as tree species or landmark name.\nLinestring: Lines connect a series of points to describe linear features such as roads or rivers. Linestring geometries inherently have length and may include attributes such as road type or river name.\nPolygons: Polygons are closed shapes used to represent areas such as city boundaries or land parcels. Polygon geometries inherently have an area and perimeter and may have attributes such as population counts or land use types.\n\n\n\n\nGeometry types\n\n\n\nMulti-Geometry Versions: Multi geometries provide a way to associated a grouping of Features which can share the same feature attributes.\n\nMultiPoint: For example, a grouping of trees.\nMultiLinestring: For example, a grouping of related segments describing a long-distance hiking trail.\nMultiPolygon: For example, a grouping of buildings which together represent a larger entity such as a hospital or university.\n\n\n\n\n\nEsri Shapefile\nShapefile is a prevalent geospatial file type in GIS software, requiring three mandatory files:\n\nSHP (feature geometry)\nSHX (shape index position)\nDBF (attribute data)\nShapefiles often also include optional files such as PRJ (coordinate reference system).\n\nGeoPackage\nGeoPackage provides a modern and simpler alternative to shapefiles and is rapidly gaining acceptance. It can store multiple data layers and it’s use of SQLite means that you can use SQL query data from the file.\nGeoJSON\nGeoJSON encodes geographic data structures using JSON, a format commonly used for web development.\n\nReference: https://gisgeography.com/gis-formats/\n\n\n\n\n\nRasters contain a grid of pixels, where the value used for each grid cell can represent a characteristic such as temperature or landcover. Geographic rasters typically include Geospatial information necessary to correctly project and locate the information in GIS software.\n\n\n\nRaster image grid cells\n\n\n\n\n\nASCII Grid\nASCII Grid files (ASC) store raster data as text in a grid format. Each cell in the grid is represented by a numeric value corresponding to the geographic attribute being mapped, such as elevation. ASCII Grid files include a header specifying metadata like cell size, number of rows and columns, and coordinates of the lower left corner. The format is simple and can be generated or edited with a text editor, and may use space, comma, or tab-delimiters.\nGeoTIFF\nGeoTIFF is widely becoming the defacto raster format in GIS. It embeds coordinate reference system information within a TIFF (Tagged Image File Format) file. GeoTIFFs are commonly used for storing satellite imagery, elevation data, and land surface temperatures.\n\nReference: https://gisgeography.com/gis-formats/",
+    "objectID": "chapter_1/qgis_mapping.html#contextual-resources-for-mapping-1",
+    "href": "chapter_1/qgis_mapping.html#contextual-resources-for-mapping-1",
+    "title": "QGIS Mapping",
+    "section": "Contextual Resources for Mapping",
+    "text": "Contextual Resources for Mapping\nFor a better understanding of your mapping area, utilize OSM or Bing maps XYZ Tiles as detailed in our previous lesson. Additionally, explore the 3D CESIUM Story for an immersive 3D view of the 2D polygons and lines you will be mapping. These resources will enhance your perspective and accuracy in representing San Marino’s historic center.",
     "crumbs": [
       "GIS Tools",
-      "Intro to GIS"
+      "QGIS Mapping"
     ]
   },
   {
-    "objectID": "chapter_1/gis.html#coordinate-reference-systems",
-    "href": "chapter_1/gis.html#coordinate-reference-systems",
-    "title": "Intro to GIS",
-    "section": "Coordinate Reference Systems",
-    "text": "Coordinate Reference Systems\nGeographic data is intrinsically tied to the earth’s surface and is represented using coordinates within defined Coordinate Reference Systems (CRS). Broadly, these systems fall into two categories: Geographic Coordinate Systems and Projected Coordinate Systems.\nGeographic CRSs use a spherical surface to define locations on the earth’s surface. They are based on degrees in latitude and longitude and are most commonly referenced to the WGS84 datum. While they accurately represent the earth’s curved surface and preserve the true shape and angular relationships of features, distances and areas may not be as accurate, especially over larger distances.\nProjected CRSs translate the earth’s three-dimensional surface onto a two-dimensional plane, making it easier to analyze and visualize spatial data. They use a mathematical projection to flatten the curved surface of the earth, which can lead to distortions in shape, area, distance, or direction. Different types of projections are designed to minimize these distortions for specific regions or purposes. For example, projections can be optimized for preserving areas (equal-area projections), angles and shapes (conformal), or distances (equidistant).\n\n\n\nDymaxion Fuller projection. NFF image rights.\n\n\n\n\n\n\n\n\nTip\n\n\n\nA useful reference website for different CRS is EPSG.io: Coordinate Systems Worldwide\n\n\n\nGeographic\nGeographic Coordinate Reference Systems (CRS) use a spherical or ellipsoidal surface to represent locations on the Earth’s curved surface. Geographic CRSs are based on latitude and longitude coordinates and are useful for global or regional mapping.\n\nUnits: Degrees\nCommon Examples:\n\nWGS 84 (World Geodetic System 1984) EPSG:4326: A widely used CRS for global mapping and GPS navigation.\nNAD83 (North American Datum 1983) EPSG:4269: A CRS commonly used in North America.\n\n\n\n\nProjected\nProjected Coordinate Reference Systems (CRS) use a Cartesian coordinate system to represent locations on a flat surface. These CRSs are created by “projecting” the curved Earth onto a flat surface, which introduces distortions. This inevitably requires tradeoffs in distances, areas, or shapes, with different projection systems involving different trade-offs. Projected CRSs are commonly used for local or small-scale mapping appropriate to specific countries or regions of the globe, where locally accurate measurements and comparisons are required.\n\nUnits: Meters (most commonly)\nCommon Examples:\n\nLAEA (Lambert Azimuthal Equal Area) Europe projection EPSG:3035: This CRS is commonly used for Europe, though note that countries will typically also have even more localised projected CRS.\nBritish National Grid (BNG) EPSG:27700: This CRS is commonly used in the United Kingdom.\nState Plane Coordinate System (SPCS): This CRS is widely used in the United States, and divides the country into zones, each with their own projection.\n\n\n\n\nSome visual examples\n\n\nhttps://gisgeography.com",
+    "objectID": "chapter_1/qgis_mapping.html#rules-for-correctly-drawing-the-street-network",
+    "href": "chapter_1/qgis_mapping.html#rules-for-correctly-drawing-the-street-network",
+    "title": "QGIS Mapping",
+    "section": "Rules for Correctly Drawing the Street Network",
+    "text": "Rules for Correctly Drawing the Street Network\nTo ensure the accuracy and efficiency of the street network layer you create, follow these guidelines:\n\nIntersection to Intersection: A ‘street’ should be mapped from one intersection to another. If the street continues beyond an intersection, it should be added as an additional feature. A single street can have several intermediate points, but the fewer, the better.\nSnapping: All beginnings and ends of streets must be snapped to each other to enable correct analysis and connectivity within the network.\nBoundary Responsibility: For the edges of your assigned tiles, you are responsible for mapping features that cross the bottom and right boundaries. This means if a street or building extends beyond these edges, you should include it in your drawing. Conversely, features that extend beyond the top or left boundaries of your tile are the responsibility of your neighboring scholars. Therefore, you can omit such streets or buildings, assuming they will be covered by your colleagues’ efforts.\nUnique ID Column: Ideally, each table should have at least one ID column with no duplicates.\n\nIn QGIS, you can ensure uniqueness by using the “Field Calculator” to create a new field. Use an expression like @row_number to automatically assign a unique number to each feature.\n\nMinimizing Elements: The most effective street network is one described using the fewest number of elements while still accurately representing all possible connections. Strive for simplicity and completeness in your mapping.\n\n\nExtra Mile\nEngage further by combining tiles with your adjacent neighbors and/or adding attributes to your layers, especially if you choose to work on the optional Buildings layer.\nWhen merging files, ensure that all Linestrings (from the Network layer) and Polygon edges are appropriately snapped.",
     "crumbs": [
       "GIS Tools",
-      "Intro to GIS"
-    ]
-  },
-  {
-    "objectID": "chapter_1/gis.html#gis-data",
-    "href": "chapter_1/gis.html#gis-data",
-    "title": "Intro to GIS",
-    "section": "GIS Data",
-    "text": "GIS Data\n\nSources\nDiscovering sources for GIS (Geographic Information System) data is a handy skill for spatial analysis and mapping! There are various official and non-official sources, each offering different types of data suited to specific needs and applications. When searching for and using different data sources, try to remain cognisant of the merits and limitations of different sources, which may impact considerations such as data accuracy or bias.\n\nGovernment Agencies: National agencies often provide official and reliable forms of GIS data. However, these datasets may reflect governmental priorities and perspectives or they may be reluctant to make these datasets openly available.\nInternational Organizations: Organizations such as the United Nations (UN) and the World Bank offer global GIS datasets, but these may have limited local detail due to their broad scope.\nLocal Authorities: City and regional councils often create and maintain local GIS datasets, often tailored to specific local government projects and priorities. Their local specificity may make it tricky to compare to different datasets sourced from other cities.\nPrivate Sector: There are many private sector organisations which generate, curate, or distribute data, however, these datasets are less likely to be openly available and may incur substantial monetary cost.\nOpen Data Platforms: Platforms such as OpenStreetMap offer freely accessible GIS data, contributed by a community of users. These datasets may require additional validation if used for mission-critical purposes, though can otherwise be extremely useful, allowing for generalisable workflows and providing coverage in some instances where no other options exist.\nAPIs and Web Scraping: Involves the automated collection of data from online APIs or websites. The quality of data can vary but may otherwise be useful for obtaining interesting data. These techniques may involve significant technical skills for data extraction and processing. Legal and ethical considerations are important, as scraping can sometimes violate terms of service or data privacy laws.\n\n\n\nPurposely Collected Data\nPurposely collected data is gathered specifically to address a certain research question or project goal, using structured approaches such as surveys, experiments, or observations. It’s tailored to meet the specific needs of a study, with careful control over variables to ensure the data’s relevance and accuracy. This type of data is highly pertinent to the project it’s collected for, due to its focused nature and methodical collection process.\n\n\nAdapted Data\nOn the other hand, data can also be adapted to new research needs from information originally collected for different purposes. This may include repurposing data from various sources such as public databases, existing research studies, or web scraping.",
-    "crumbs": [
-      "GIS Tools",
-      "Intro to GIS"
-    ]
-  },
-  {
-    "objectID": "chapter_1/gis.html#attribution",
-    "href": "chapter_1/gis.html#attribution",
-    "title": "Intro to GIS",
-    "section": "Attribution",
-    "text": "Attribution\nAttribution or citation refers to giving proper credit to the original source or creator of the data. Just as with citing sources in academic papers, it’s important to acknowledge the origin of the data you are using. This helps provide transparency, accountability, and recognition to the creators of the dataset.\n\nLicenses:\nWhen dealing with data, licenses refer to legal agreements or permissions that determine how the data can be used, distributed, or modified. Different datasets may have different licensing requirements, so it’s important to understand and comply with the specific license terms associated with the data you are using.\nExamples:\n\nCreative Commons (CC) licenses: These are standardized licenses that allow creators to specify permissions for their work. They are commonly used for a variety of creative works, including images, music, videos, and written content.\nOpen Government Licenses: These licenses have been adopted by governments and may allow individuals and organizations permissive use, reuse, and sharing of information.\nGNU General Public License (GPL): This is a copyleft license for open-source software. It permits users to modify and distribute the software, but any modifications or derivative works must also be licensed under the GPL. This license is popular for promoting open-source principles and collaborative software development.\nMIT / Apache / BSD Licenses: Permissive open-source software licenses. These may allow great flexibility such as using, copying, modifying, and distributing derivative work, even for commercial purposes. The primary requirement is to include the original copyright and license notice in any significant portions of the software.",
-    "crumbs": [
-      "GIS Tools",
-      "Intro to GIS"
-    ]
-  },
-  {
-    "objectID": "chapter_1/gis.html#privacy",
-    "href": "chapter_1/gis.html#privacy",
-    "title": "Intro to GIS",
-    "section": "Privacy",
-    "text": "Privacy\nPrivacy considerations are important when working with data, especially if the data contains personally identifiable information or sensitive information. It’s very important to handle and store data in a way that respects privacy laws and regulations. This may involve anonymizing or de-identifying data, implementing security measures, and obtaining consent from individuals whose data is being used.\n\n\n\n\n\n\nNote\n\n\n\nPlease avoid using any and all data containing private or sensitive data unless you first review this and seek approval from faculty. Handling these forms of data comes with numerous steps and safeguards and will generally be strongly discouraged.",
-    "crumbs": [
-      "GIS Tools",
-      "Intro to GIS"
-    ]
-  },
-  {
-    "objectID": "chapter_1/gis.html#quirks---part-1",
-    "href": "chapter_1/gis.html#quirks---part-1",
-    "title": "Intro to GIS",
-    "section": "Quirks - Part 1",
-    "text": "Quirks - Part 1\n\nMAUP\nThe Modifiable Areal Unit Problem (MAUP) is encountered when using different scales or zones of analysis to group data. This can cause significant changes in the balance and aggregation of data based on how it is grouped. This can have a potentially significant impact on visualisation or analysis. MAUP is exploited for political purposes through the process of gerrymandering.\n\nhttps://gisgeography.com\n\n\n\nYouTube",
-    "crumbs": [
-      "GIS Tools",
-      "Intro to GIS"
-    ]
-  },
-  {
-    "objectID": "chapter_1/gis.html#resources",
-    "href": "chapter_1/gis.html#resources",
-    "title": "Intro to GIS",
-    "section": "Resources",
-    "text": "Resources\nThe following resources provide further information on common types of map visualisations and best practices:\n\nCARTO - 5 Popular Thematic map Types\nFundamentals of Data Visualisation\n\nColor scales\nVisualizing geospatial data\nCommon pitfalls of color use\n\nColor Brewer",
-    "crumbs": [
-      "GIS Tools",
-      "Intro to GIS"
-    ]
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "NFI Urban Analytics 2024",
-    "section": "",
-    "text": "Welcome to Part 1 of the Urban Analytics course at NFI. This course is designed to empower scholars with the skills and knowledge to harness the power of urban analytics for analyzing and interpreting urban data.\nThis is a practical course and is best approached with a hands-on and explorative mindset. It consists of three parts:\n\nPart 1 includes information on general setup and provides an introduction to basic concepts. See the sidebar for the Sections.\nPart 2 will be released separately and delves into targeted themes and skills development.\nPart 3 will be framed around pilot cities specific workflows.\n\nWe hope you enjoy the course!\n\n\n\nThis course is will touch on a number of broad topics. High-level guidance will be provided and scholars will then be encouraged to further explore these approaches and develop their skillsets based on methods of interest or relevance to their work:\n\nSpatial Analysis: Exploring Geographic Information Systems, spatial data handling, and mapping urban data.\nPython: Introduction to Python and its usage for geospatial analysis.\nData Handling: Techniques for handling datasets and an introduction to data science methods.\nProject Work: Lab work tasks and workflows.\n\n\n\n\nYou have been added to a Google Spaces for online discussions. This platform is your primary hub for:\n\nSeeking peer assistance.\nDiscussing course materials and urban analytics topics.\nCollaborating on projects and assignments.\nAnnouncements and updates from the course team.",
-    "crumbs": [
-      "Home"
-    ]
-  },
-  {
-    "objectID": "index.html#ua-part-1",
-    "href": "index.html#ua-part-1",
-    "title": "NFI Urban Analytics 2024",
-    "section": "",
-    "text": "Welcome to Part 1 of the Urban Analytics course at NFI. This course is designed to empower scholars with the skills and knowledge to harness the power of urban analytics for analyzing and interpreting urban data.\nThis is a practical course and is best approached with a hands-on and explorative mindset. It consists of three parts:\n\nPart 1 includes information on general setup and provides an introduction to basic concepts. See the sidebar for the Sections.\nPart 2 will be released separately and delves into targeted themes and skills development.\nPart 3 will be framed around pilot cities specific workflows.\n\nWe hope you enjoy the course!",
-    "crumbs": [
-      "Home"
-    ]
-  },
-  {
-    "objectID": "index.html#topics",
-    "href": "index.html#topics",
-    "title": "NFI Urban Analytics 2024",
-    "section": "",
-    "text": "This course is will touch on a number of broad topics. High-level guidance will be provided and scholars will then be encouraged to further explore these approaches and develop their skillsets based on methods of interest or relevance to their work:\n\nSpatial Analysis: Exploring Geographic Information Systems, spatial data handling, and mapping urban data.\nPython: Introduction to Python and its usage for geospatial analysis.\nData Handling: Techniques for handling datasets and an introduction to data science methods.\nProject Work: Lab work tasks and workflows.",
-    "crumbs": [
-      "Home"
-    ]
-  },
-  {
-    "objectID": "index.html#communication",
-    "href": "index.html#communication",
-    "title": "NFI Urban Analytics 2024",
-    "section": "",
-    "text": "You have been added to a Google Spaces for online discussions. This platform is your primary hub for:\n\nSeeking peer assistance.\nDiscussing course materials and urban analytics topics.\nCollaborating on projects and assignments.\nAnnouncements and updates from the course team.",
-    "crumbs": [
-      "Home"
+      "QGIS Mapping"
     ]
   },
   {
@@ -511,157 +485,250 @@
     ]
   },
   {
-    "objectID": "chapter_1/qgis_mapping.html",
-    "href": "chapter_1/qgis_mapping.html",
-    "title": "QGIS Mapping",
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "NFI Urban Analytics 2024",
     "section": "",
-    "text": "We’ll first start with another statistical quirk!\n\n\nAn interesting conundrum arises in statistical analysis when relationships between variables for grouped data are assumed to be valid for the individuals within those groupings. Individual level information is lost in the process of grouping information into larger aggregations, and statistical observations computed for these larger groupings may therefore be different, or potentially misleading in the context of individuals. As a general rule, use individual level (unaggregated) data or the smallest groupings of data (e.g. census statistics) available.\nHere is some background reading, with some examples:\n\nWikipedia: Ecological Correlations\nBritannica: Ecological Fallacy\nThe ecological correlations fallacy",
+    "text": "Welcome to Part 1 of the Urban Analytics course at NFI. This course is designed to empower scholars with the skills and knowledge to harness the power of urban analytics for analyzing and interpreting urban data.\nThis is a practical course and is best approached with a hands-on and explorative mindset. It consists of three parts:\n\nPart 1 includes information on general setup and provides an introduction to basic concepts. See the sidebar for the Sections.\nPart 2 will be released separately and delves into targeted themes and skills development.\nPart 3 will be framed around pilot cities specific workflows.\n\nWe hope you enjoy the course!\n\n\n\nThis course is will touch on a number of broad topics. High-level guidance will be provided and scholars will then be encouraged to further explore these approaches and develop their skillsets based on methods of interest or relevance to their work:\n\nSpatial Analysis: Exploring Geographic Information Systems, spatial data handling, and mapping urban data.\nPython: Introduction to Python and its usage for geospatial analysis.\nData Handling: Techniques for handling datasets and an introduction to data science methods.\nProject Work: Lab work tasks and workflows.\n\n\n\n\nYou have been added to a Google Spaces for online discussions. This platform is your primary hub for:\n\nSeeking peer assistance.\nDiscussing course materials and urban analytics topics.\nCollaborating on projects and assignments.\nAnnouncements and updates from the course team.",
     "crumbs": [
-      "GIS Tools",
-      "QGIS Mapping"
+      "Home"
     ]
   },
   {
-    "objectID": "chapter_1/qgis_mapping.html#quirks---part-2",
-    "href": "chapter_1/qgis_mapping.html#quirks---part-2",
-    "title": "QGIS Mapping",
+    "objectID": "index.html#ua-part-1",
+    "href": "index.html#ua-part-1",
+    "title": "NFI Urban Analytics 2024",
     "section": "",
-    "text": "We’ll first start with another statistical quirk!\n\n\nAn interesting conundrum arises in statistical analysis when relationships between variables for grouped data are assumed to be valid for the individuals within those groupings. Individual level information is lost in the process of grouping information into larger aggregations, and statistical observations computed for these larger groupings may therefore be different, or potentially misleading in the context of individuals. As a general rule, use individual level (unaggregated) data or the smallest groupings of data (e.g. census statistics) available.\nHere is some background reading, with some examples:\n\nWikipedia: Ecological Correlations\nBritannica: Ecological Fallacy\nThe ecological correlations fallacy",
+    "text": "Welcome to Part 1 of the Urban Analytics course at NFI. This course is designed to empower scholars with the skills and knowledge to harness the power of urban analytics for analyzing and interpreting urban data.\nThis is a practical course and is best approached with a hands-on and explorative mindset. It consists of three parts:\n\nPart 1 includes information on general setup and provides an introduction to basic concepts. See the sidebar for the Sections.\nPart 2 will be released separately and delves into targeted themes and skills development.\nPart 3 will be framed around pilot cities specific workflows.\n\nWe hope you enjoy the course!",
     "crumbs": [
-      "GIS Tools",
-      "QGIS Mapping"
+      "Home"
     ]
   },
   {
-    "objectID": "chapter_1/qgis_mapping.html#mapping",
-    "href": "chapter_1/qgis_mapping.html#mapping",
-    "title": "QGIS Mapping",
-    "section": "Mapping",
-    "text": "Mapping\nAs part of our practical exercises in class, we will focus on the essential skill of drawing street networks using vector data mapping. This exercise is centered on the historic center of San Marino and is designed to enhance your proficiency in inputting geometry. The main task will involve creating a GeoPackage Layer:\n\nStreet Network layer: representing the pedestrian routes through the assigned tiles.\n\nFor those interested in exploring further and applying additional GIS skills, we offer the optional task of creating a Buildings layer:\n\nBuildings layer (Optional): representing all the buildings within the assigned tiles.\n\nThis approach allows you to focus on the critical aspect of mapping the street network, with the option to delve into building mapping as an additional challenge.",
-    "crumbs": [
-      "GIS Tools",
-      "QGIS Mapping"
-    ]
-  },
-  {
-    "objectID": "chapter_1/qgis_mapping.html#connecting-to-db",
-    "href": "chapter_1/qgis_mapping.html#connecting-to-db",
-    "title": "QGIS Mapping",
-    "section": "Connecting to DB",
-    "text": "Connecting to DB\nAlthough the exercise is primarily based on local data manipulation, connecting to NFI’s database is recommended to access the reference grid and familiarize yourself with its structure. The database is read-only for scholars, ensuring no accidental modifications.\n\n\n\n\n\n\nTip\n\n\n\nConnection details will be provided in class. All connections to the database are IP protected.",
-    "crumbs": [
-      "GIS Tools",
-      "QGIS Mapping"
-    ]
-  },
-  {
-    "objectID": "chapter_1/qgis_mapping.html#mapping-vector-data",
-    "href": "chapter_1/qgis_mapping.html#mapping-vector-data",
-    "title": "QGIS Mapping",
-    "section": "Mapping Vector Data",
-    "text": "Mapping Vector Data\nWe will use the historic center of San Marino for this exercise, aiming to familiarize you with inputting geometry. Attributes will be considered at later stages. Each scholar can produce individual GeoPackage Layers (locally):\n\nStreet Network layer (Linestring, CRS: 3035) is the primary focus, emphasizing the mapping of pedestrian routes.\n\nSuggested name: network_[scholarname]\n\nBuildings layer (Polygons, CRS: 3035) for those who wish to further challenge themselves by mapping the area’s buildings.\n\nSuggested name: buildings_[scholarname]\n\n\nScholars will refer to specific areas of the republic found in the nfi database path: - nfi.sanmarino.base_mapping\nExplore the street_network attribute to see your areas and collaborate with neighboring tiles.",
-    "crumbs": [
-      "GIS Tools",
-      "QGIS Mapping"
-    ]
-  },
-  {
-    "objectID": "chapter_1/qgis_mapping.html#contextual-resources-for-mapping",
-    "href": "chapter_1/qgis_mapping.html#contextual-resources-for-mapping",
-    "title": "QGIS Mapping",
-    "section": "Contextual Resources for Mapping",
-    "text": "Contextual Resources for Mapping\nUse OSM or Bing maps XYZ Tiles, as detailed in our previous lesson, for a better understanding of your mapping area. The 3D CESIUM Story offers a 3D view of the 2D polygons you’ll be mapping, enhancing your perspective and accuracy.\n\nOSM tile: https://tile.openstreetmap.org/{z}/{x}/{y}.png\nBing tile URL : https://t0.tiles.virtualearth.net/tiles/a{q}.jpeg?g=685&mkt=en-us&n=z\n\n\n\n\n\n\n\nTip\n\n\n\nActivate the Snapping Toolbar for precision in mapping. Experiment with different pixel tolerance values and options like Topological Editing and Intersection Snapping.",
-    "crumbs": [
-      "GIS Tools",
-      "QGIS Mapping"
-    ]
-  },
-  {
-    "objectID": "chapter_1/qgis_mapping.html#contextual-resources-for-mapping-1",
-    "href": "chapter_1/qgis_mapping.html#contextual-resources-for-mapping-1",
-    "title": "QGIS Mapping",
-    "section": "Contextual Resources for Mapping",
-    "text": "Contextual Resources for Mapping\nFor a better understanding of your mapping area, utilize OSM or Bing maps XYZ Tiles as detailed in our previous lesson. Additionally, explore the 3D CESIUM Story for an immersive 3D view of the 2D polygons and lines you will be mapping. These resources will enhance your perspective and accuracy in representing San Marino’s historic center.",
-    "crumbs": [
-      "GIS Tools",
-      "QGIS Mapping"
-    ]
-  },
-  {
-    "objectID": "chapter_1/qgis_mapping.html#rules-for-correctly-drawing-the-street-network",
-    "href": "chapter_1/qgis_mapping.html#rules-for-correctly-drawing-the-street-network",
-    "title": "QGIS Mapping",
-    "section": "Rules for Correctly Drawing the Street Network",
-    "text": "Rules for Correctly Drawing the Street Network\nTo ensure the accuracy and efficiency of the street network layer you create, follow these guidelines:\n\nIntersection to Intersection: A ‘street’ should be mapped from one intersection to another. If the street continues beyond an intersection, it should be added as an additional feature. A single street can have several intermediate points, but the fewer, the better.\nSnapping: All beginnings and ends of streets must be snapped to each other to enable correct analysis and connectivity within the network.\nBoundary Responsibility: For the edges of your assigned tiles, you are responsible for mapping features that cross the bottom and right boundaries. This means if a street or building extends beyond these edges, you should include it in your drawing. Conversely, features that extend beyond the top or left boundaries of your tile are the responsibility of your neighboring scholars. Therefore, you can omit such streets or buildings, assuming they will be covered by your colleagues’ efforts.\nUnique ID Column: Ideally, each table should have at least one ID column with no duplicates.\n\nIn QGIS, you can ensure uniqueness by using the “Field Calculator” to create a new field. Use an expression like @row_number to automatically assign a unique number to each feature.\n\nMinimizing Elements: The most effective street network is one described using the fewest number of elements while still accurately representing all possible connections. Strive for simplicity and completeness in your mapping.\n\n\nExtra Mile\nEngage further by combining tiles with your adjacent neighbors and/or adding attributes to your layers, especially if you choose to work on the optional Buildings layer.\nWhen merging files, ensure that all Linestrings (from the Network layer) and Polygon edges are appropriately snapped.",
-    "crumbs": [
-      "GIS Tools",
-      "QGIS Mapping"
-    ]
-  },
-  {
-    "objectID": "chapter_1/cloud_gis.html",
-    "href": "chapter_1/cloud_gis.html",
-    "title": "Cloud GIS",
+    "objectID": "index.html#topics",
+    "href": "index.html#topics",
+    "title": "NFI Urban Analytics 2024",
     "section": "",
-    "text": "This will be an in-class hands-on session providing an introduction to the use of CARTO for publishing and styling interactive maps.\nThe are two excercises that will help us explore different components of the platform:\nEach excersice will be lead by a live demo of the main steps to better control the visualization of the datasets. Then, each student will have time to explore on their own time the tool and come up with a shereable map.",
+    "text": "This course is will touch on a number of broad topics. High-level guidance will be provided and scholars will then be encouraged to further explore these approaches and develop their skillsets based on methods of interest or relevance to their work:\n\nSpatial Analysis: Exploring Geographic Information Systems, spatial data handling, and mapping urban data.\nPython: Introduction to Python and its usage for geospatial analysis.\nData Handling: Techniques for handling datasets and an introduction to data science methods.\nProject Work: Lab work tasks and workflows.",
     "crumbs": [
-      "GIS Tools",
-      "Cloud GIS"
+      "Home"
     ]
   },
   {
-    "objectID": "chapter_1/cloud_gis.html#connecting-to-carto",
-    "href": "chapter_1/cloud_gis.html#connecting-to-carto",
-    "title": "Cloud GIS",
-    "section": "Connecting to CARTO",
-    "text": "Connecting to CARTO\nBecause this will be the first time you log in, you will have to log in into www.carto.com using your GitHub account (you will need the Student Development Pack approved - see the Software & Accounts section).\n\nSearch for Are you a student? and Access using GitHub\n\n\n\nUse GitHub login\n\n\n\nFollow the stepts to create your account and note that each scholar will create a separate ‘organization’. This means all your files and maps will be yours and you will not be joining NFI’s organization. You can name ir however you like!",
+    "objectID": "index.html#communication",
+    "href": "index.html#communication",
+    "title": "NFI Urban Analytics 2024",
+    "section": "",
+    "text": "You have been added to a Google Spaces for online discussions. This platform is your primary hub for:\n\nSeeking peer assistance.\nDiscussing course materials and urban analytics topics.\nCollaborating on projects and assignments.\nAnnouncements and updates from the course team.",
     "crumbs": [
-      "GIS Tools",
-      "Cloud GIS"
+      "Home"
     ]
   },
   {
-    "objectID": "chapter_1/cloud_gis.html#datasets",
-    "href": "chapter_1/cloud_gis.html#datasets",
-    "title": "Cloud GIS",
-    "section": "Datasets",
-    "text": "Datasets\nFor this excercise we will use two official data sources. I\n\nCycling routes (LINESTRINGS, 4326):\n\nDownload geopackage file\nConsult official source : for references to the .gpkg file above\n\nCycling docks (POINTS, 4326):\n\nDownload geopackage file\nConsult official source : for references to the .gpkg file above\n\n\n\n\n\n\n\n\nNote\n\n\n\nNote that both file have been reprojected to EPSG: 4326 as this is the prefered projection system for CARTO\n\n\n\nLoading Data\nThere are several ways to use the data in CARTO. But this time we are going to upload it directly from CARTO BUILDER\n\nUsing the main menu, navigate to Maps –&gt; + New map button. This takes you to a new tab with an instance of CARTO’s Builder.\nAdd source from... and upload the gpkg in a folder of your preference.\n\n\n\n\n\n\n\nNote that multiple layers can be added from the same\n\n\n\nAdd style\nDepending on the geometry types, you will have different option for styling your Points (docking stations) and the Linestrings (cycling routes).\n\n\n\n\n\n\nNote\n\n\n\nAlways familirise yourself with the data before jumping into modifying its style \n\n\nFor now we encourage you to explore the following three tabs:\n\nLayers\nLegends\nBasemaps\n\n\n\n\n\n\n\n\nPublish\nWhen you are happy with the map make sure you SHARE your results by publishing them to allow for public access\n\nAdd your resulting URL to this notion card\n\n\n\nYour example\n\nThe best maps will be added to complete this section!",
+    "objectID": "chapter_1/gis.html",
+    "href": "chapter_1/gis.html",
+    "title": "Intro to GIS",
+    "section": "",
+    "text": "Vector and raster data are two fundamental types of spatial data used in Geographic Information Systems (GIS). Vector data represents geographical features as distinct shapes using points, lines, and polygons, each of which can carry detailed attribute information, making it ideal for precise mapping applications like boundaries, roads, and infrastructure networks. It excels in accuracy and detail for discrete data. In contrast, raster data consists of a grid of pixels, each holding a value, effectively representing continuous data. This format is well-suited for environmental analysis, land cover studies, and satellite imagery, as it captures variations over a wide area, such as elevation, temperature, or vegetation. While vector data is preferred for its precision in depicting specific geographic entities and managing related data, raster data is favored for its ability to represent complex, continuous phenomena over large spatial scales.\n\n\n\n\nVector data types are primarily categorized into Points, Linestrings, and Polygons, each with distinct characteristics and uses. Additionally, there are multi-geometry versions of these types, such as MultiPoints, MultiLinestrings, and MultiPolygons, which offer more complex feature groupings.\n\nPoints: Points are used to represent discrete locations on the earth’s surface. Each point is defined by a pair of coordinates (e.g. latitude and longitude, or an easting and northing) and can represent features such as the location of a tree or a landmark. They can have attributes further describing characteristics of interest, such as tree species or landmark name.\nLinestring: Lines connect a series of points to describe linear features such as roads or rivers. Linestring geometries inherently have length and may include attributes such as road type or river name.\nPolygons: Polygons are closed shapes used to represent areas such as city boundaries or land parcels. Polygon geometries inherently have an area and perimeter and may have attributes such as population counts or land use types.\n\n\n\n\nGeometry types\n\n\n\nMulti-Geometry Versions: Multi geometries provide a way to associated a grouping of Features which can share the same feature attributes.\n\nMultiPoint: For example, a grouping of trees.\nMultiLinestring: For example, a grouping of related segments describing a long-distance hiking trail.\nMultiPolygon: For example, a grouping of buildings which together represent a larger entity such as a hospital or university.\n\n\n\n\n\nEsri Shapefile\nShapefile is a prevalent geospatial file type in GIS software, requiring three mandatory files:\n\nSHP (feature geometry)\nSHX (shape index position)\nDBF (attribute data)\nShapefiles often also include optional files such as PRJ (coordinate reference system).\n\nGeoPackage\nGeoPackage provides a modern and simpler alternative to shapefiles and is rapidly gaining acceptance. It can store multiple data layers and it’s use of SQLite means that you can use SQL query data from the file.\nGeoJSON\nGeoJSON encodes geographic data structures using JSON, a format commonly used for web development.\n\nReference: https://gisgeography.com/gis-formats/\n\n\n\n\n\nRasters contain a grid of pixels, where the value used for each grid cell can represent a characteristic such as temperature or landcover. Geographic rasters typically include Geospatial information necessary to correctly project and locate the information in GIS software.\n\n\n\nRaster image grid cells\n\n\n\n\n\nASCII Grid\nASCII Grid files (ASC) store raster data as text in a grid format. Each cell in the grid is represented by a numeric value corresponding to the geographic attribute being mapped, such as elevation. ASCII Grid files include a header specifying metadata like cell size, number of rows and columns, and coordinates of the lower left corner. The format is simple and can be generated or edited with a text editor, and may use space, comma, or tab-delimiters.\nGeoTIFF\nGeoTIFF is widely becoming the defacto raster format in GIS. It embeds coordinate reference system information within a TIFF (Tagged Image File Format) file. GeoTIFFs are commonly used for storing satellite imagery, elevation data, and land surface temperatures.\n\nReference: https://gisgeography.com/gis-formats/",
     "crumbs": [
       "GIS Tools",
-      "Cloud GIS"
+      "Intro to GIS"
     ]
   },
   {
-    "objectID": "chapter_1/cloud_gis.html#datasets-1",
-    "href": "chapter_1/cloud_gis.html#datasets-1",
-    "title": "Cloud GIS",
-    "section": "Datasets",
-    "text": "Datasets\nFor this excercise we are going to use the same datasets than we did in our previous session. However, this time we are going to use the full dataset containing the population data.\n\nDownload the municipal neighbourhoods as a SHP file: Barrios municipales de Madrid\nDownload the population by district and neighbourhood dataset as a CSV file: Población por distrito y barrio a 1 de enero",
+    "objectID": "chapter_1/gis.html#file-types",
+    "href": "chapter_1/gis.html#file-types",
+    "title": "Intro to GIS",
+    "section": "",
+    "text": "Vector and raster data are two fundamental types of spatial data used in Geographic Information Systems (GIS). Vector data represents geographical features as distinct shapes using points, lines, and polygons, each of which can carry detailed attribute information, making it ideal for precise mapping applications like boundaries, roads, and infrastructure networks. It excels in accuracy and detail for discrete data. In contrast, raster data consists of a grid of pixels, each holding a value, effectively representing continuous data. This format is well-suited for environmental analysis, land cover studies, and satellite imagery, as it captures variations over a wide area, such as elevation, temperature, or vegetation. While vector data is preferred for its precision in depicting specific geographic entities and managing related data, raster data is favored for its ability to represent complex, continuous phenomena over large spatial scales.\n\n\n\n\nVector data types are primarily categorized into Points, Linestrings, and Polygons, each with distinct characteristics and uses. Additionally, there are multi-geometry versions of these types, such as MultiPoints, MultiLinestrings, and MultiPolygons, which offer more complex feature groupings.\n\nPoints: Points are used to represent discrete locations on the earth’s surface. Each point is defined by a pair of coordinates (e.g. latitude and longitude, or an easting and northing) and can represent features such as the location of a tree or a landmark. They can have attributes further describing characteristics of interest, such as tree species or landmark name.\nLinestring: Lines connect a series of points to describe linear features such as roads or rivers. Linestring geometries inherently have length and may include attributes such as road type or river name.\nPolygons: Polygons are closed shapes used to represent areas such as city boundaries or land parcels. Polygon geometries inherently have an area and perimeter and may have attributes such as population counts or land use types.\n\n\n\n\nGeometry types\n\n\n\nMulti-Geometry Versions: Multi geometries provide a way to associated a grouping of Features which can share the same feature attributes.\n\nMultiPoint: For example, a grouping of trees.\nMultiLinestring: For example, a grouping of related segments describing a long-distance hiking trail.\nMultiPolygon: For example, a grouping of buildings which together represent a larger entity such as a hospital or university.\n\n\n\n\n\nEsri Shapefile\nShapefile is a prevalent geospatial file type in GIS software, requiring three mandatory files:\n\nSHP (feature geometry)\nSHX (shape index position)\nDBF (attribute data)\nShapefiles often also include optional files such as PRJ (coordinate reference system).\n\nGeoPackage\nGeoPackage provides a modern and simpler alternative to shapefiles and is rapidly gaining acceptance. It can store multiple data layers and it’s use of SQLite means that you can use SQL query data from the file.\nGeoJSON\nGeoJSON encodes geographic data structures using JSON, a format commonly used for web development.\n\nReference: https://gisgeography.com/gis-formats/\n\n\n\n\n\nRasters contain a grid of pixels, where the value used for each grid cell can represent a characteristic such as temperature or landcover. Geographic rasters typically include Geospatial information necessary to correctly project and locate the information in GIS software.\n\n\n\nRaster image grid cells\n\n\n\n\n\nASCII Grid\nASCII Grid files (ASC) store raster data as text in a grid format. Each cell in the grid is represented by a numeric value corresponding to the geographic attribute being mapped, such as elevation. ASCII Grid files include a header specifying metadata like cell size, number of rows and columns, and coordinates of the lower left corner. The format is simple and can be generated or edited with a text editor, and may use space, comma, or tab-delimiters.\nGeoTIFF\nGeoTIFF is widely becoming the defacto raster format in GIS. It embeds coordinate reference system information within a TIFF (Tagged Image File Format) file. GeoTIFFs are commonly used for storing satellite imagery, elevation data, and land surface temperatures.\n\nReference: https://gisgeography.com/gis-formats/",
     "crumbs": [
       "GIS Tools",
-      "Cloud GIS"
+      "Intro to GIS"
     ]
   },
   {
-    "objectID": "chapter_1/cloud_gis.html#workflows",
-    "href": "chapter_1/cloud_gis.html#workflows",
-    "title": "Cloud GIS",
-    "section": "Workflows",
-    "text": "Workflows\nFrom our previous experience, we know that in order to join the datasets, we first had to clean and filter the data. This time we are going to make use of CARTO’s WORKFLOWS: a no-code visual interface for replicating processes like cleaning, filtering, joining (and much more). Visit for more.",
+    "objectID": "chapter_1/gis.html#coordinate-reference-systems",
+    "href": "chapter_1/gis.html#coordinate-reference-systems",
+    "title": "Intro to GIS",
+    "section": "Coordinate Reference Systems",
+    "text": "Coordinate Reference Systems\nGeographic data is intrinsically tied to the earth’s surface and is represented using coordinates within defined Coordinate Reference Systems (CRS). Broadly, these systems fall into two categories: Geographic Coordinate Systems and Projected Coordinate Systems.\nGeographic CRSs use a spherical surface to define locations on the earth’s surface. They are based on degrees in latitude and longitude and are most commonly referenced to the WGS84 datum. While they accurately represent the earth’s curved surface and preserve the true shape and angular relationships of features, distances and areas may not be as accurate, especially over larger distances.\nProjected CRSs translate the earth’s three-dimensional surface onto a two-dimensional plane, making it easier to analyze and visualize spatial data. They use a mathematical projection to flatten the curved surface of the earth, which can lead to distortions in shape, area, distance, or direction. Different types of projections are designed to minimize these distortions for specific regions or purposes. For example, projections can be optimized for preserving areas (equal-area projections), angles and shapes (conformal), or distances (equidistant).\n\n\n\nDymaxion Fuller projection. NFF image rights.\n\n\n\n\n\n\n\n\nTip\n\n\n\nA useful reference website for different CRS is EPSG.io: Coordinate Systems Worldwide\n\n\n\nGeographic\nGeographic Coordinate Reference Systems (CRS) use a spherical or ellipsoidal surface to represent locations on the Earth’s curved surface. Geographic CRSs are based on latitude and longitude coordinates and are useful for global or regional mapping.\n\nUnits: Degrees\nCommon Examples:\n\nWGS 84 (World Geodetic System 1984) EPSG:4326: A widely used CRS for global mapping and GPS navigation.\nNAD83 (North American Datum 1983) EPSG:4269: A CRS commonly used in North America.\n\n\n\n\nProjected\nProjected Coordinate Reference Systems (CRS) use a Cartesian coordinate system to represent locations on a flat surface. These CRSs are created by “projecting” the curved Earth onto a flat surface, which introduces distortions. This inevitably requires tradeoffs in distances, areas, or shapes, with different projection systems involving different trade-offs. Projected CRSs are commonly used for local or small-scale mapping appropriate to specific countries or regions of the globe, where locally accurate measurements and comparisons are required.\n\nUnits: Meters (most commonly)\nCommon Examples:\n\nLAEA (Lambert Azimuthal Equal Area) Europe projection EPSG:3035: This CRS is commonly used for Europe, though note that countries will typically also have even more localised projected CRS.\nBritish National Grid (BNG) EPSG:27700: This CRS is commonly used in the United Kingdom.\nState Plane Coordinate System (SPCS): This CRS is widely used in the United States, and divides the country into zones, each with their own projection.\n\n\n\n\nSome visual examples\n\n\nhttps://gisgeography.com",
     "crumbs": [
       "GIS Tools",
-      "Cloud GIS"
+      "Intro to GIS"
     ]
   },
   {
-    "objectID": "chapter_1/cloud_gis.html#hands-on",
-    "href": "chapter_1/cloud_gis.html#hands-on",
-    "title": "Cloud GIS",
-    "section": "Hands-on",
-    "text": "Hands-on\nThe following are the general steps we encourage you to follow to get familiar with other functions of CARTO.\n\nData prep\nFor this excerse we just want you to import the file below and update the inputs and output parameters\n\n\n\nCARTO’s Workflow\n\n\n\nUnder menu Data Explorer –&gt; Import both datasets (CSV and SHP)\nUnder menu Workflows –&gt; Import this SQL procedure to give you a head start\nUpdate workflow :\n\nInputs: data sources according to the location and name of your files\nOutput: select where you want to store the results\n\nRun the workflow to identify potential issues\n\nRememeber to read the Error messages (if at all), to debug your workflow\n\n\n\n\nData viz\nNow we are going to move into another builder instance and load the newly created table (from the steps above). This time we encourage you to look into the other two tabs :\n\nWidgets : allow you to interact and filter the data plotted on the map\nInteractions : helps you surface propreties of individual elements in the map\n\n\n\n\n\n\n\n\nPublish\nWhen you are happy with the map make sure you SHARE your results by publishing them to allow for public access\n\nAdd your resulting URL to this notion card\n\n\n\nOutput Example\n    \n\nMadrid’s Population Dashboard - Greg Maya",
+    "objectID": "chapter_1/gis.html#gis-data",
+    "href": "chapter_1/gis.html#gis-data",
+    "title": "Intro to GIS",
+    "section": "GIS Data",
+    "text": "GIS Data\n\nSources\nDiscovering sources for GIS (Geographic Information System) data is a handy skill for spatial analysis and mapping! There are various official and non-official sources, each offering different types of data suited to specific needs and applications. When searching for and using different data sources, try to remain cognisant of the merits and limitations of different sources, which may impact considerations such as data accuracy or bias.\n\nGovernment Agencies: National agencies often provide official and reliable forms of GIS data. However, these datasets may reflect governmental priorities and perspectives or they may be reluctant to make these datasets openly available.\nInternational Organizations: Organizations such as the United Nations (UN) and the World Bank offer global GIS datasets, but these may have limited local detail due to their broad scope.\nLocal Authorities: City and regional councils often create and maintain local GIS datasets, often tailored to specific local government projects and priorities. Their local specificity may make it tricky to compare to different datasets sourced from other cities.\nPrivate Sector: There are many private sector organisations which generate, curate, or distribute data, however, these datasets are less likely to be openly available and may incur substantial monetary cost.\nOpen Data Platforms: Platforms such as OpenStreetMap offer freely accessible GIS data, contributed by a community of users. These datasets may require additional validation if used for mission-critical purposes, though can otherwise be extremely useful, allowing for generalisable workflows and providing coverage in some instances where no other options exist.\nAPIs and Web Scraping: Involves the automated collection of data from online APIs or websites. The quality of data can vary but may otherwise be useful for obtaining interesting data. These techniques may involve significant technical skills for data extraction and processing. Legal and ethical considerations are important, as scraping can sometimes violate terms of service or data privacy laws.\n\n\n\nPurposely Collected Data\nPurposely collected data is gathered specifically to address a certain research question or project goal, using structured approaches such as surveys, experiments, or observations. It’s tailored to meet the specific needs of a study, with careful control over variables to ensure the data’s relevance and accuracy. This type of data is highly pertinent to the project it’s collected for, due to its focused nature and methodical collection process.\n\n\nAdapted Data\nOn the other hand, data can also be adapted to new research needs from information originally collected for different purposes. This may include repurposing data from various sources such as public databases, existing research studies, or web scraping.",
     "crumbs": [
       "GIS Tools",
-      "Cloud GIS"
+      "Intro to GIS"
+    ]
+  },
+  {
+    "objectID": "chapter_1/gis.html#attribution",
+    "href": "chapter_1/gis.html#attribution",
+    "title": "Intro to GIS",
+    "section": "Attribution",
+    "text": "Attribution\nAttribution or citation refers to giving proper credit to the original source or creator of the data. Just as with citing sources in academic papers, it’s important to acknowledge the origin of the data you are using. This helps provide transparency, accountability, and recognition to the creators of the dataset.\n\nLicenses:\nWhen dealing with data, licenses refer to legal agreements or permissions that determine how the data can be used, distributed, or modified. Different datasets may have different licensing requirements, so it’s important to understand and comply with the specific license terms associated with the data you are using.\nExamples:\n\nCreative Commons (CC) licenses: These are standardized licenses that allow creators to specify permissions for their work. They are commonly used for a variety of creative works, including images, music, videos, and written content.\nOpen Government Licenses: These licenses have been adopted by governments and may allow individuals and organizations permissive use, reuse, and sharing of information.\nGNU General Public License (GPL): This is a copyleft license for open-source software. It permits users to modify and distribute the software, but any modifications or derivative works must also be licensed under the GPL. This license is popular for promoting open-source principles and collaborative software development.\nMIT / Apache / BSD Licenses: Permissive open-source software licenses. These may allow great flexibility such as using, copying, modifying, and distributing derivative work, even for commercial purposes. The primary requirement is to include the original copyright and license notice in any significant portions of the software.",
+    "crumbs": [
+      "GIS Tools",
+      "Intro to GIS"
+    ]
+  },
+  {
+    "objectID": "chapter_1/gis.html#privacy",
+    "href": "chapter_1/gis.html#privacy",
+    "title": "Intro to GIS",
+    "section": "Privacy",
+    "text": "Privacy\nPrivacy considerations are important when working with data, especially if the data contains personally identifiable information or sensitive information. It’s very important to handle and store data in a way that respects privacy laws and regulations. This may involve anonymizing or de-identifying data, implementing security measures, and obtaining consent from individuals whose data is being used.\n\n\n\n\n\n\nNote\n\n\n\nPlease avoid using any and all data containing private or sensitive data unless you first review this and seek approval from faculty. Handling these forms of data comes with numerous steps and safeguards and will generally be strongly discouraged.",
+    "crumbs": [
+      "GIS Tools",
+      "Intro to GIS"
+    ]
+  },
+  {
+    "objectID": "chapter_1/gis.html#quirks---part-1",
+    "href": "chapter_1/gis.html#quirks---part-1",
+    "title": "Intro to GIS",
+    "section": "Quirks - Part 1",
+    "text": "Quirks - Part 1\n\nMAUP\nThe Modifiable Areal Unit Problem (MAUP) is encountered when using different scales or zones of analysis to group data. This can cause significant changes in the balance and aggregation of data based on how it is grouped. This can have a potentially significant impact on visualisation or analysis. MAUP is exploited for political purposes through the process of gerrymandering.\n\nhttps://gisgeography.com\n\n\n\nYouTube",
+    "crumbs": [
+      "GIS Tools",
+      "Intro to GIS"
+    ]
+  },
+  {
+    "objectID": "chapter_1/gis.html#resources",
+    "href": "chapter_1/gis.html#resources",
+    "title": "Intro to GIS",
+    "section": "Resources",
+    "text": "Resources\nThe following resources provide further information on common types of map visualisations and best practices:\n\nCARTO - 5 Popular Thematic map Types\nFundamentals of Data Visualisation\n\nColor scales\nVisualizing geospatial data\nCommon pitfalls of color use\n\nColor Brewer",
+    "crumbs": [
+      "GIS Tools",
+      "Intro to GIS"
+    ]
+  },
+  {
+    "objectID": "chapter_1/sql.html",
+    "href": "chapter_1/sql.html",
+    "title": "SQL for GIS",
+    "section": "",
+    "text": "This is a draft outline and will be fleshed-out closer to class. To make visible, edit _quarto.yml to include in directory.\n\n\nSQL and PostgreSQL Basics:\n\n\nUnderstanding SQL (Structured Query Language)\nIntroduction to PostgreSQL as a Relational Database Management System (RDBMS)\nWorking with Schemas in PostgreSQL\n\n\nData Manipulation with SQL and PostgreSQL:\n\n\nCREATE, SELECT, INSERT, DELETE Statements\nPrimary Keys (PK) and Foreign Keys (FK)\nCreating and Managing Indexes for Performance Optimization\n\n\nSQL Concepts:\n\n\nAggregations: COUNT, SUM, AVG, MIN, MAX\nComplex Queries and Subqueries WITH, WHERE\nConditional Statements: CASE Statements\n\n\nIntroduction to GIS Integration with PostgreSQL:\n\n\nSpatial Data Types in PostgreSQL\nSpatial Indexing for Efficient Spatial Queries\nSpatial Functions and Operators in PostgreSQL\n\n\nSpatial and Non-Spatial Joins:\n\n\nPerforming Spatial Joins for GIS Analysis\nNon-Spatial Joins for Relational Data Analysis\nCombining Spatial and Non-Spatial Data in Queries\n\n\nHow to ask ChatGPT\n\n\nIterating query development\nDebugging"
+  },
+  {
+    "objectID": "chapter_1/sql.html#key-topics",
+    "href": "chapter_1/sql.html#key-topics",
+    "title": "SQL for GIS",
+    "section": "Key Topics",
+    "text": "Key Topics\n\nIntroduction to Data Analysis and Databases:\n\n\nImportance of Data Analysis in Decision Making\nOverview of Relational Databases\n\n\nConnecting to Google Cloud Platform (GCP):\n\n\nConnecting to NFI’s database(s)\nSetting Up a GCP Account\n\n\nSQL and PostgreSQL Basics:\n\n\nUnderstanding SQL (Structured Query Language)\nIntroduction to PostgreSQL as a Relational Database Management System (RDBMS)\nWorking with Schemas in PostgreSQL\n\n\nData Manipulation with SQL and PostgreSQL:\n\n\nCREATE, SELECT, INSERT, DELETE Statements\nPrimary Keys (PK) and Foreign Keys (FK)\nCreating and Managing Indexes for Performance Optimization\n\n\nSQL Concepts:\n\n\nAggregations: COUNT, SUM, AVG, MIN, MAX\nComplex Queries and Subqueries WITH, WHERE\nConditional Statements: CASE Statements\n\n\nIntroduction to GIS Integration with PostgreSQL:\n\n\nSpatial Data Types in PostgreSQL\nSpatial Indexing for Efficient Spatial Queries\nSpatial Functions and Operators in PostgreSQL\n\n\nSpatial and Non-Spatial Joins:\n\n\nPerforming Spatial Joins for GIS Analysis\nNon-Spatial Joins for Relational Data Analysis\nCombining Spatial and Non-Spatial Data in Queries"
+  },
+  {
+    "objectID": "chapter_1/sql.html#software-needed",
+    "href": "chapter_1/sql.html#software-needed",
+    "title": "SQL for GIS",
+    "section": "Software needed",
+    "text": "Software needed\n\nFor this session please make sure you have downloaded the following software(s):\n\nTablePlus | Modern, Native Tool for Database Management."
+  },
+  {
+    "objectID": "chapter_1/sql.html#connecting-to-data-on-postgis",
+    "href": "chapter_1/sql.html#connecting-to-data-on-postgis",
+    "title": "SQL for GIS",
+    "section": "Connecting to data on PostGIS 👨🏽‍💻",
+    "text": "Connecting to data on PostGIS 👨🏽‍💻\n\n\n\n⚙\nCONNECTION SETTINGS\n\n\n\n\nIP Address\n(will be provided during class)\n\n\nDatabase names\nnfi / urban_analytics\n\n\nPort\n5432\n\n\nUsername\nscholar\n\n\nPassword\n(will be provided during class)\n\n\n\n\n\n\n\n\n\nTip\n\n\n\nNote that the connections to the Databases are restricted by the source IP address."
+  },
+  {
+    "objectID": "chapter_1/sql.html#to-dos",
+    "href": "chapter_1/sql.html#to-dos",
+    "title": "SQL for GIS",
+    "section": "To-Dos",
+    "text": "To-Dos\n\nCreate a table with the following characteristics.\nUse schema. ua0\nTable name : [yourinitials] + “_prof_exp”\nFields required: (assign data types as you think would be best)\n\nid\nscholar_id\nindustry_id\ninstitution\nyears_of_experience\neducation\nlocation (crs: 4326)\nend_year\nnotes\n\n** If you think more fields are necessary, feel free to add them\nCreate a GitHub account\n\nadd link to public.scholars.github_link (varchar)\n\n\n\nOptional\nCreate a local instance of PostGIS for use in the upcoming months\nLearn PostgreSQL Tutorial - Full Course for Beginners"
+  },
+  {
+    "objectID": "chapter_1/sql.html#useful-resources",
+    "href": "chapter_1/sql.html#useful-resources",
+    "title": "SQL for GIS",
+    "section": "Useful Resources",
+    "text": "Useful Resources\n\nPOSTGRESQL & POSTGIS CHEATSHEETS\n\nPostgreSQL & PostGIS cheatsheet (a work in progress)\nPostgres Cheatsheet"
+  },
+  {
+    "objectID": "chapter_1/gis_tips.html",
+    "href": "chapter_1/gis_tips.html",
+    "title": "Tips",
+    "section": "",
+    "text": "In multiple scenarios you may find information in one table/layer that you might want to connect to information from another. JOINS are the way to do this, and work by connecting two different datasources based on a shared attribute. So doing, the attributes from one table can be connected to another for analysis or visualision purposes.\n\n\n\n\nInner Join: Returns only rows that have been matched across both tables.\nLeft (Outer) Join: Returns all rows from the left table, and matched rows from the right table where found.\nRight (Outer) Join: Returns all rows from the right table, and matched rows from the left table where found.\nFull (Outer) Join: Returns all rows from both tables, regardless of whether matches were found in the other table.\nCross Join: Returns a Cartesian product of the two tables, i.e. each row connected to each other row from the other table. Use with caution!\n\n\n\n\n\nJoin types\n\n\n\n\n\n\n\n\n\nOccurs when each record in one table corresponds to exactly one record in another table.\n\n\n\n\n\n\n\nOccurs when a single record in one table can be associated with one or more records in another table.\n\n\n\n\n\n\n\nOccurrs when multiple records from one table correspond with one or more in another table.\n\n\n\n\n\n\n\n\n\n\nImportant\n\n\n\n\nWhen using joins you are not modifying the original tables.\nYour resulting table can be much smaller or (exponentially) larger than any of the original tables.\n\n\n\n\n\n\nSimilar to joining tables based on their attributes, it is possible to join them based on their location. This is a very common technique in spatial databases (e.g. PostGIS) where you’ll commonly use a feature such as a city boundary to filter and join data from another table (e.g. streets).\nTo achieve the expected results, make sure that both origin tables are in the same CRS.\n\n\nIn QGIS and spatial databases, spatial predicates are used to define spatial relationships between features. These are used for joining or selecting data based on the relationships between the features. Some of the common predicates are:\n\nContains: Determines if one geometry contains another.\nWithin: Checks if one geometry is within another geometry.\nIntersects: Tests if two geometries intersect at any point.\nDisjoint: Determines if two geometries do not intersect.\nTouches: Checks if two geometries have at least one point in common but their interiors do not intersect.\nCrosses: Determines if the geometries have some, but not all, interior points in common.\nEquals: Checks if two geometries are exactly the same in terms of spatial coordinates.\nOverlaps: Determines if two geometries overlap, meaning they share some but not all points, and the intersection has the same dimension as the geometries themselves.\n\n\n\n\n\n\n\nCaution\n\n\n\nPlease note that depending on the size and complexity of your joins some operations can be computationally expensive and some advanced techniques might need to be implemented to achieve best performance.",
+    "crumbs": [
+      "GIS Tools",
+      "Tips"
+    ]
+  },
+  {
+    "objectID": "chapter_1/gis_tips.html#join-types",
+    "href": "chapter_1/gis_tips.html#join-types",
+    "title": "Tips",
+    "section": "",
+    "text": "Inner Join: Returns only rows that have been matched across both tables.\nLeft (Outer) Join: Returns all rows from the left table, and matched rows from the right table where found.\nRight (Outer) Join: Returns all rows from the right table, and matched rows from the left table where found.\nFull (Outer) Join: Returns all rows from both tables, regardless of whether matches were found in the other table.\nCross Join: Returns a Cartesian product of the two tables, i.e. each row connected to each other row from the other table. Use with caution!\n\n\n\n\n\nJoin types",
+    "crumbs": [
+      "GIS Tools",
+      "Tips"
+    ]
+  },
+  {
+    "objectID": "chapter_1/gis_tips.html#cardinality",
+    "href": "chapter_1/gis_tips.html#cardinality",
+    "title": "Tips",
+    "section": "",
+    "text": "Occurs when each record in one table corresponds to exactly one record in another table.\n\n\n\n\n\n\n\nOccurs when a single record in one table can be associated with one or more records in another table.\n\n\n\n\n\n\n\nOccurrs when multiple records from one table correspond with one or more in another table.\n\n\n\n\n\n\n\n\n\n\nImportant\n\n\n\n\nWhen using joins you are not modifying the original tables.\nYour resulting table can be much smaller or (exponentially) larger than any of the original tables.",
+    "crumbs": [
+      "GIS Tools",
+      "Tips"
+    ]
+  },
+  {
+    "objectID": "chapter_1/gis_tips.html#introduction-to-spatial-joins",
+    "href": "chapter_1/gis_tips.html#introduction-to-spatial-joins",
+    "title": "Tips",
+    "section": "",
+    "text": "Similar to joining tables based on their attributes, it is possible to join them based on their location. This is a very common technique in spatial databases (e.g. PostGIS) where you’ll commonly use a feature such as a city boundary to filter and join data from another table (e.g. streets).\nTo achieve the expected results, make sure that both origin tables are in the same CRS.\n\n\nIn QGIS and spatial databases, spatial predicates are used to define spatial relationships between features. These are used for joining or selecting data based on the relationships between the features. Some of the common predicates are:\n\nContains: Determines if one geometry contains another.\nWithin: Checks if one geometry is within another geometry.\nIntersects: Tests if two geometries intersect at any point.\nDisjoint: Determines if two geometries do not intersect.\nTouches: Checks if two geometries have at least one point in common but their interiors do not intersect.\nCrosses: Determines if the geometries have some, but not all, interior points in common.\nEquals: Checks if two geometries are exactly the same in terms of spatial coordinates.\nOverlaps: Determines if two geometries overlap, meaning they share some but not all points, and the intersection has the same dimension as the geometries themselves.\n\n\n\n\n\n\n\nCaution\n\n\n\nPlease note that depending on the size and complexity of your joins some operations can be computationally expensive and some advanced techniques might need to be implemented to achieve best performance.",
+    "crumbs": [
+      "GIS Tools",
+      "Tips"
+    ]
+  },
+  {
+    "objectID": "chapter_1/gis_tips.html#tools-and-plugins",
+    "href": "chapter_1/gis_tips.html#tools-and-plugins",
+    "title": "Tips",
+    "section": "Tools and plugins",
+    "text": "Tools and plugins\nIn QGIS, georeferencing can be carried out using the built-in Georeferencer tool, which can be found under the menu Layer -&gt; Georeferencer.... This tool allows you to manually add control points that link the location on the image with geographic coordinates on the map, adjusting the image to fit the spatial data.\n\n\n\n\n\n\nTip\n\n\n\nThe more nodes you add and the further away from each other, the more refences the algorithm has to accomodate the original file. Minimum of 5 points should be considered to have an descent baseline.\n\n\n\nPlugins: For more advanced or specific georeferencing needs, there are additional plugins like Freehand Raster Georeferencer, allowing for more flexible manipulation of images directly within the map canvas.",
+    "crumbs": [
+      "GIS Tools",
+      "Tips"
+    ]
+  },
+  {
+    "objectID": "chapter_1/gis_tips.html#use-cases-of-georeferenced-images",
+    "href": "chapter_1/gis_tips.html#use-cases-of-georeferenced-images",
+    "title": "Tips",
+    "section": "Use cases of georeferenced images",
+    "text": "Use cases of georeferenced images\n\nHistorical Maps: Bringing old maps into modern GIS projects, helping to study changes over time.\nTracing Exercises: Overlaying aerial or satellite imagery to digitize features such as roads, buildings, or land use.\nReshaping sketches: Planning and ideation sketches usually are our of scale and conveniently reshaping elements of the environment. Georefereincing them helps to better transition ideas into reality.\n\n\n\n\n\n\n\nIt’s important to consider potential distortions when georeferencing images, as the process involves stretching or rotating the image to align with real-world coordinates. Understanding and managing these distortions is key to ensuring the accuracy of the geospatial analysis.",
+    "crumbs": [
+      "GIS Tools",
+      "Tips"
+    ]
+  },
+  {
+    "objectID": "chapter_1/gis_tips.html#demo",
+    "href": "chapter_1/gis_tips.html#demo",
+    "title": "Tips",
+    "section": "Demo …",
+    "text": "Demo …",
+    "crumbs": [
+      "GIS Tools",
+      "Tips"
     ]
   },
   {

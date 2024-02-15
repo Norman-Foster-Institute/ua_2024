@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>NFI Urban Analytics 2024 - Part 1 - Python Notebooks</title>
+<title>NFI Urban Analytics 2024 - Part 1 - Intro to Tableau</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,40 +20,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -64,8 +30,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../chapter_1/gis.html" rel="next">
-<link href="../chapter_0/installation.html" rel="prev">
 <link href=".././assets/nfi_logo.png" rel="icon" type="image/png">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -102,6 +66,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<meta name="mermaid-theme" content="neutral">
+<script src="../site_libs/quarto-diagram/mermaid.min.js"></script>
+<script src="../site_libs/quarto-diagram/mermaid-init.js"></script>
+<link href="../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 
 
 </head>
@@ -127,7 +95,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapter_0/index.html">Setup</a></li><li class="breadcrumb-item"><a href="../chapter_0/anaconda.html">Python Notebooks</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Intro to Tableau</li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -155,13 +123,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false">
  <span class="menu-text">Setup</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapter_0/index.html" class="sidebar-item-text sidebar-link">
@@ -176,7 +144,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapter_0/anaconda.html" class="sidebar-item-text sidebar-link active">
+  <a href="../chapter_0/anaconda.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Python Notebooks</span></a>
   </div>
 </li>
@@ -262,14 +230,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a>
+  <li><a href="#tableau-desktop-structure" id="toc-tableau-desktop-structure" class="nav-link active" data-scroll-target="#tableau-desktop-structure">Tableau Desktop Structure</a>
   <ul class="collapse">
-  <li><a href="#creating-an-environment" id="toc-creating-an-environment" class="nav-link" data-scroll-target="#creating-an-environment">Creating an Environment</a></li>
-  <li><a href="#launching-jupyter-lab" id="toc-launching-jupyter-lab" class="nav-link" data-scroll-target="#launching-jupyter-lab">Launching Jupyter Lab</a></li>
-  <li><a href="#opening-a-python-notebook" id="toc-opening-a-python-notebook" class="nav-link" data-scroll-target="#opening-a-python-notebook">Opening a Python Notebook</a></li>
-  <li><a href="#closing-jupyter-lab" id="toc-closing-jupyter-lab" class="nav-link" data-scroll-target="#closing-jupyter-lab">Closing Jupyter Lab</a></li>
-  <li><a href="#alternative-b-google-colab" id="toc-alternative-b-google-colab" class="nav-link" data-scroll-target="#alternative-b-google-colab">Alternative B: Google Colab</a></li>
-  <li><a href="#alternative-c-the-command-line" id="toc-alternative-c-the-command-line" class="nav-link" data-scroll-target="#alternative-c-the-command-line">Alternative C: The command line</a></li>
+  <li><a href="#data-sources-connecting-to-data" id="toc-data-sources-connecting-to-data" class="nav-link" data-scroll-target="#data-sources-connecting-to-data">Data Sources: Connecting to data</a></li>
+  <li><a href="#views-creating-visualizations" id="toc-views-creating-visualizations" class="nav-link" data-scroll-target="#views-creating-visualizations">Views: Creating visualizations</a></li>
+  <li><a href="#dashboards-interacting-and-enhancing-views" id="toc-dashboards-interacting-and-enhancing-views" class="nav-link" data-scroll-target="#dashboards-interacting-and-enhancing-views">Dashboards: Interacting and Enhancing views</a></li>
+  <li><a href="#stories-data-based-narratives" id="toc-stories-data-based-narratives" class="nav-link" data-scroll-target="#stories-data-based-narratives">Stories: Data based narratives</a></li>
+  </ul></li>
+  <li><a href="#documentation" id="toc-documentation" class="nav-link" data-scroll-target="#documentation">Documentation</a></li>
+  <li><a href="#connecting-to-data-10-minutes" id="toc-connecting-to-data-10-minutes" class="nav-link" data-scroll-target="#connecting-to-data-10-minutes">2. Connecting to Data (10 minutes)</a></li>
+  <li><a href="#creating-basic-visualizations-15-minutes" id="toc-creating-basic-visualizations-15-minutes" class="nav-link" data-scroll-target="#creating-basic-visualizations-15-minutes">3. Creating Basic Visualizations (15 minutes)</a></li>
+  <li><a href="#dashboards-and-stories-10-minutes" id="toc-dashboards-and-stories-10-minutes" class="nav-link" data-scroll-target="#dashboards-and-stories-10-minutes">4. Dashboards and Stories (10 minutes)</a></li>
+  <li><a href="#sharing-and-publishing-5-minutes" id="toc-sharing-and-publishing-5-minutes" class="nav-link" data-scroll-target="#sharing-and-publishing-5-minutes">5. Sharing and Publishing (5 minutes)</a></li>
+  <li><a href="#qa-and-practice-time-10-minutes" id="toc-qa-and-practice-time-10-minutes" class="nav-link" data-scroll-target="#qa-and-practice-time-10-minutes">6. Q&amp;A and Practice Time (10 minutes)</a>
+  <ul class="collapse">
+  <li><a href="#additional-tips" id="toc-additional-tips" class="nav-link" data-scroll-target="#additional-tips">Additional Tips</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -277,9 +252,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapter_0/index.html">Setup</a></li><li class="breadcrumb-item"><a href="../chapter_0/anaconda.html">Python Notebooks</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Python Notebooks</h1>
+<h1 class="title">Intro to Tableau</h1>
 </div>
 
 
@@ -288,6 +263,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
     
   
+    <div>
+    <div class="quarto-title-meta-heading">Last update</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">February 15, 2024</p>
+    </div>
+  </div>
     
   </div>
   
@@ -296,95 +277,130 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="overview" class="level2">
-<h2 class="anchored" data-anchor-id="overview">Overview</h2>
-<p>Welcome to the first <strong>hands-on</strong> section of the course where you will familiarise yourself with Jupyter Lab for running Python ‘Notebooks’.</p>
-<p>This guide assumes the prior installation of Anaconda as detailed previously.</p>
-<section id="creating-an-environment" class="level3">
-<h3 class="anchored" data-anchor-id="creating-an-environment">Creating an Environment</h3>
-<p>Create a new “environment” the first time you use Anaconda. Environments ensure that packages remain self-contained and make it easier to synchronise packages without unnecessary contamination from unrelated projects.</p>
-<ul>
-<li>Open Anaconda Navigator.</li>
-<li>Click on Environments</li>
-<li>Click to create a new environment called <code>nfi</code>.</li>
-<li>Select the newly created <code>nfi</code> environment from the list of environments.</li>
-<li>In the right pane, change the dropdown view mode to “Not Installed”.</li>
-<li>Search for <code>jupyterlab</code>, then select it and click to install.</li>
-<li>Select the Home button to return to the main view.</li>
-</ul>
-</section>
-<section id="launching-jupyter-lab" class="level3">
-<h3 class="anchored" data-anchor-id="launching-jupyter-lab">Launching Jupyter Lab</h3>
-<p>To launch Juptyer Lab:</p>
-<ul>
-<li>Open Anaconda Navigator.</li>
-<li>Using the top dropdown menus, select “All applications” and select the newly created “nfi” environment.</li>
-<li>Click to launch “Jupyter Lab” from the list of applications. This will launch a new Jupyter Lab instance in a web browser.</li>
-<li>Use the “Python 3” kernel if prompted.</li>
-</ul>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
+<div class="callout callout-style-simple callout-none no-icon">
+<div class="callout-body d-flex">
 <div class="callout-icon-container">
-<i class="callout-icon"></i>
+<i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-title-container flex-fill">
-Tip
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Don’t confuse the “Jupyer Lab” with the “Jupyter Notebook” apps. The former is a newer replacement for the latter.</p>
+<div class="callout-body-container">
+<p>Make sure you have downloaded the software using the instructions in <a href="../chapter_0/installation.html">Software &amp; Accounts</a></p>
 </div>
 </div>
+</div>
+<p>Tableau is a leading data visualization tool that simplifies the process of converting complex data into interactive and visually appealing dashboards and reports. It is highly regarded in the business intelligence (BI) community for its ability to facilitate data-driven decision-making through an intuitive interface that accommodates users of all skill levels. By supporting a wide variety of data sources (including some spatial formats like <em>shapefiles</em>)) and enabling quick identification of data trends and patterns.</p>
+<section id="tableau-desktop-structure" class="level2">
+<h2 class="anchored" data-anchor-id="tableau-desktop-structure">Tableau Desktop Structure</h2>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">flowchart LR
+    subgraph Datasources
+    A[(D 1)]
+    a[(DB 2)]
+    end 
+
+    subgraph Views
+    B[Linechart]
+    C[Map]
+    D[Barchart]
+    end
+
+    subgraph Dashboards
+    E{{Dashboard 1}}
+    F{{Dashboard 2}}
+    end 
+
+    subgraph Stories
+    S{Story}
+    end 
+
+    A --&gt; B
+    A --&gt; C
+    A --&gt; D
+    a --&gt; D
+
+    B --&gt; E
+    C --&gt; E
+    D --&gt; F
+    i(((images))) -.- E
+    t(((texts))) -.- F 
+
+    E --&gt; S
+    F --&gt; S
+    i -.- S
+    t -.- S
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<section id="data-sources-connecting-to-data" class="level3">
+<h3 class="anchored" data-anchor-id="data-sources-connecting-to-data">Data Sources: Connecting to data</h3>
+<p>The overall structure</p>
 </section>
-<section id="opening-a-python-notebook" class="level3">
-<h3 class="anchored" data-anchor-id="opening-a-python-notebook">Opening a Python Notebook</h3>
-<p>You can now create a new Notebook or, otherwise, open an existing Python Notebook. Notebooks are composed of cells.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="./images/jupyter-cell.png" class="img-fluid figure-img"></p>
-<figcaption>Jupyter Notebook cell</figcaption>
-</figure>
-</div>
-<p>Cells can either consist of code or <code>Markdown</code> formatted text. A typical notebook consists of a series of cells; some would include text with explanations or background information, while others would contain the executable code. The code in the cells has to be “executed” by ppressing the play button. Once executed, the code will generate outputs showing the results of the computation.</p>
-<p>You can try creating your own cell content and experimenting with running the cells. Remember that the cells are only aware of previously executed cells. We can start with simple math that Python can do natively. Run the following code cell in your notebook. After inserting the text, you can either click the “play” button or press the <span class="keystroke">Shift</span> + <span class="keystroke">Enter</span> keys.</p>
-<div id="003ef2c8" class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># this will display the number "2" once the cell is executed</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="op">+</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="1">
-<pre><code>2</code></pre>
-</div>
-</div>
-<p>You can also try using variables and printing:</p>
-<div id="918294cb" class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># this stores the calculation in "my_variable"</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>my_variable <span class="op">=</span> <span class="dv">2</span> <span class="op">*</span> <span class="dv">10</span> <span class="op">/</span> <span class="dv">3</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># this prints the variable using "f-string" interpolation</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'The calculation result is: </span><span class="sc">{</span>my_variable<span class="sc">}</span><span class="ss">'</span>)</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># let's round the number to two decimal places</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'The rounded result is: </span><span class="sc">{</span><span class="bu">round</span>(my_variable, <span class="dv">2</span>)<span class="sc">}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>The calculation result is: 6.666666666666667
-The rounded result is: 6.67</code></pre>
-</div>
-</div>
+<section id="views-creating-visualizations" class="level3">
+<h3 class="anchored" data-anchor-id="views-creating-visualizations">Views: Creating visualizations</h3>
 </section>
-<section id="closing-jupyter-lab" class="level3">
-<h3 class="anchored" data-anchor-id="closing-jupyter-lab">Closing Jupyter Lab</h3>
-<p>Shut down Jupyter Lab from the menubar in the web interface using <span class="keystroke">File</span> &gt; <span class="keystroke">Shut Down</span>.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="./images/jupyter-shut-down.png" class="img-fluid figure-img" width="300"></p>
-<figcaption>Shut down Jupyter Lab</figcaption>
-</figure>
-</div>
+<section id="dashboards-interacting-and-enhancing-views" class="level3">
+<h3 class="anchored" data-anchor-id="dashboards-interacting-and-enhancing-views">Dashboards: Interacting and Enhancing views</h3>
 </section>
-<section id="alternative-b-google-colab" class="level3">
-<h3 class="anchored" data-anchor-id="alternative-b-google-colab">Alternative B: Google Colab</h3>
-<p>If you are unable to install an environment using the instructions above, you can follow the course using <a href="https://colab.research.google.com">Google Colab</a>. You will need to install any required packages to your Colab environment. Reach out in class if you need help getting set up.</p>
+<section id="stories-data-based-narratives" class="level3">
+<h3 class="anchored" data-anchor-id="stories-data-based-narratives">Stories: Data based narratives</h3>
 </section>
-<section id="alternative-c-the-command-line" class="level3">
-<h3 class="anchored" data-anchor-id="alternative-c-the-command-line">Alternative C: The command line</h3>
-<p>If you already have experience with Python, IDEs, and the command line, feel free to setup your development environment accordingly. The method for doing so will depend on your operating system and your preference for IDEs. We recommend <em>VSCode</em> as an IDE.</p>
+</section>
+<section id="documentation" class="level2">
+<h2 class="anchored" data-anchor-id="documentation">Documentation</h2>
+<ul>
+<li><strong>Interface Overview:</strong> Introduction to the main parts of the Tableau Desktop interface, including the start page, data pane, analytics pane, and workspace.</li>
+<li><strong>Concepts of Data Visualization:</strong> Importance of data visualization and the role of Tableau in data-driven decision-making.</li>
+</ul>
+</section>
+<section id="connecting-to-data-10-minutes" class="level2">
+<h2 class="anchored" data-anchor-id="connecting-to-data-10-minutes">2. Connecting to Data (10 minutes)</h2>
+<ul>
+<li><strong>Data Sources:</strong> How to connect Tableau to various data sources like Excel, SQL databases, and cloud data.</li>
+<li><strong>Data Pane:</strong> Exploring the data pane to view fields and understand the differences between dimensions and measures.</li>
+<li><strong>Joining and Blending Data:</strong> Basics of combining multiple data sources in Tableau.</li>
+</ul>
+</section>
+<section id="creating-basic-visualizations-15-minutes" class="level2">
+<h2 class="anchored" data-anchor-id="creating-basic-visualizations-15-minutes">3. Creating Basic Visualizations (15 minutes)</h2>
+<ul>
+<li><strong>Building Views:</strong> Creating basic charts (bar, line, pie) by dragging and dropping fields.</li>
+<li><strong>Shelves and Cards:</strong> Utilizing shelves (Columns, Rows) and cards (Marks, Filters) to customize visualizations.</li>
+<li><strong>Sorting and Filtering:</strong> Applying sorting and filters to views.</li>
+</ul>
+</section>
+<section id="dashboards-and-stories-10-minutes" class="level2">
+<h2 class="anchored" data-anchor-id="dashboards-and-stories-10-minutes">4. Dashboards and Stories (10 minutes)</h2>
+<ul>
+<li><strong>Creating a Dashboard:</strong> Steps to create a dashboard by combining different visualizations.</li>
+<li><strong>Interactive Dashboards:</strong> Making dashboards interactive with actions like filters, highlights, and URL actions.</li>
+<li><strong>Introduction to Stories:</strong> Overview of stories for narrating data visualizations.</li>
+</ul>
+</section>
+<section id="sharing-and-publishing-5-minutes" class="level2">
+<h2 class="anchored" data-anchor-id="sharing-and-publishing-5-minutes">5. Sharing and Publishing (5 minutes)</h2>
+<ul>
+<li><strong>Export Options:</strong> How to export visualizations and dashboards as images, PDFs, or Tableau Workbook files.</li>
+<li><strong>Publishing to Tableau Public/Server:</strong> Basic steps for publishing work to Tableau Public or a Tableau Server.</li>
+</ul>
+</section>
+<section id="qa-and-practice-time-10-minutes" class="level2">
+<h2 class="anchored" data-anchor-id="qa-and-practice-time-10-minutes">6. Q&amp;A and Practice Time (10 minutes)</h2>
+<ul>
+<li><strong>Open Floor for Questions:</strong> Allowing participants to ask questions.</li>
+<li><strong>Hands-On Practice:</strong> Encouraging participants to create a basic visualization or dashboard with a provided dataset.</li>
+</ul>
+<section id="additional-tips" class="level3">
+<h3 class="anchored" data-anchor-id="additional-tips">Additional Tips</h3>
+<ul>
+<li><strong>Hands-On Examples:</strong> Use real-life datasets for demonstrations to enhance engagement and understanding.</li>
+<li><strong>Resources for Further Learning:</strong> Provide links to Tableau’s online tutorials, forums, and communities for continued learning.</li>
+</ul>
 
 
 </section>
@@ -778,18 +794,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-      <a href="../chapter_0/installation.html" class="pagination-link  aria-label=" software="" &amp;="" accounts"="">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Software &amp; Accounts</span>
-      </a>          
-  </div>
-  <div class="nav-page nav-page-next">
-      <a href="../chapter_1/gis.html" class="pagination-link" aria-label="Intro to GIS">
-        <span class="nav-page-text">Intro to GIS</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
-  </div>
-</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
