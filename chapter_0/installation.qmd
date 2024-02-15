@@ -19,3 +19,8 @@ Download and install Anaconda from the official [download links](https://www.ana
 ## Table Plus
 
 Download and install [TablePlus.](https://tableplus.com/). This is a tool for interacting with databases.
+
+## Tableau
+
+Download and install [Tableau Desktop](https://www.tableau.com/academic/students#form) using you **UAM** email address and credentials. This same credentials will serve you for **Tableau Prep** if you want to make use of it.
+See [Intro to Tableau](../chapter_2/intro_to_tableau.qmd) for more.

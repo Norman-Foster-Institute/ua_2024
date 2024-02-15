@@ -48,3 +48,5 @@ format:
   html:
     theme: cosmo
     toc: true
+    mermaid:
+      theme: neutral
