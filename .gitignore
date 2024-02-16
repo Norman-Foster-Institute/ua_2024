@@ -1,3 +1,7 @@
+# Data to ignore #
+##################
+chapter_2/data/joined_gpd.*
+
 # Compiled source #
 ###################
 *.com
