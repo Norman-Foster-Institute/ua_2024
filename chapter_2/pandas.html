@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.549">
+<meta name="generator" content="quarto-1.4.550">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -64,7 +64,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../chapter_2/open_source.html" rel="prev">
 <link href=".././assets/nfi_logo.png" rel="icon" type="image/png">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -106,6 +105,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
+<link rel="stylesheet" href="../custom-style.css">
 </head>
 
 <body class="nav-sidebar docked nav-fixed">
@@ -129,7 +129,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapter_2/intro_to_python.html">Basic Coding</a></li><li class="breadcrumb-item"><a href="../chapter_2/pandas.html">Pandas &amp; Data</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Pandas &amp; Data</li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -227,13 +227,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
  <span class="menu-text">Basic Coding</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapter_2/intro_to_python.html" class="sidebar-item-text sidebar-link">
@@ -248,8 +248,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapter_2/pandas.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Pandas &amp; Data</span></a>
+  <a href="../chapter_2/intro_to_geopandas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Welcome to GeoPandas</span></a>
   </div>
 </li>
       </ul>
@@ -294,7 +294,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapter_2/intro_to_python.html">Basic Coding</a></li><li class="breadcrumb-item"><a href="../chapter_2/pandas.html">Pandas &amp; Data</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title">Pandas &amp; Data</h1>
 </div>
@@ -375,6 +375,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="870dd8a8" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>madrid_pop</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
+<div>
 <div>
 
 
@@ -545,6 +546,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
+</div>
 <p>As you can expect, the dataset was provided in the original local language, so to make things a little easier, we are going to translate the column names using one list of texts. for this we will reassign the column names corresponding to their English equivalents.</p>
 <blockquote class="blockquote">
 <p><em>Note that there are multiple ways of arriving at the same output, the below is just one of them</em></p>
@@ -565,6 +567,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>madrid_pop.columns <span class="op">=</span> en_cols</span>
 <span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>madrid_pop</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
+<div>
 <div>
 
 
@@ -735,6 +738,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
+</div>
 <p>The default printing is truncated to keep a compact view, but is enough to convey its structure. <code>DataFrame</code> objects have two dimensions: rows and columns. Rows are typically identified with an index column and columns are typically identified with names describing their content. The above example shows how the column names were automatically lifted from the <code>csv</code> file’s column headers.</p>
 <p>We can set the row index using the <code>set_index()</code> method. Let’s set the index to use the <code>district</code> column.</p>
 <div id="1e296855" class="cell" data-execution_count="6">
@@ -772,6 +776,7 @@ Name: num_people_women, Length: 918, dtype: object</code></pre>
 <div id="1c13eeff" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>madrid_pop.head(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="8">
+<div>
 <div>
 
 
@@ -845,9 +850,11 @@ Name: num_people_women, Length: 918, dtype: object</code></pre>
 </div>
 </div>
 </div>
+</div>
 <div id="a00b0027" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>madrid_pop.tail(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="9">
+<div>
 <div>
 
 
@@ -921,11 +928,13 @@ Name: num_people_women, Length: 918, dtype: object</code></pre>
 </div>
 </div>
 </div>
+</div>
 <p>Inspecting datasets is vital to find errors that might skew your analysis. The last row of the dataset contains the sums of other column values ( Spanish: <em><code>Todos</code></em> -&gt; English: <em><code>All</code></em> ).</p>
 <p>Before continuing, let’s fix this by removing these columns from the dataset. First, let’s check if we have any more occurrences of <em><code>Todos</code></em>. We can use Pandas’ <code>loc</code> indexer to fetch rows where the index column contains the text string <code>Todos</code>.</p>
 <div id="cell-22" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>madrid_pop.loc[<span class="st">"Todos"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="10">
+<div>
 <div>
 
 
@@ -1035,6 +1044,7 @@ Name: num_people_women, Length: 918, dtype: object</code></pre>
 </div>
 </div>
 </div>
+</div>
 <p>Now that we know that for every year the data has been aggregated and added back as a new row, we know that removing the last row would not be enough to correct our DataFrame.</p>
 <p>We will make use of the <code>drop</code> function in combination with the native <code>loc</code> function of DataFrames.</p>
 <div id="cell-24" class="cell" data-execution_count="11">
@@ -1116,6 +1126,7 @@ memory usage: 71.2+ KB</code></pre>
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>madrid_pop.describe()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="14">
 <div>
+<div>
 
 
 <table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
@@ -1191,11 +1202,13 @@ memory usage: 71.2+ KB</code></pre>
 </div>
 </div>
 </div>
+</div>
 <p>Note how the output is also a <code>DataFrame</code> object, so you can manipulate it the same way that you would with the original table (e.g.&nbsp;writing it to a file).</p>
 <p>In this case, the summary might be better presented if the table is “transposed”:</p>
 <div id="0ecae769" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>madrid_pop[columns_to_process].describe().T</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="15">
+<div>
 <div>
 
 
@@ -1253,6 +1266,7 @@ memory usage: 71.2+ KB</code></pre>
 </div>
 </div>
 </div>
+</div>
 <p>Equally, common descriptive statistics are also available. To obtain minimum values for each column, you can use <code>.min()</code>.</p>
 <div id="e8106890" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>madrid_pop.<span class="bu">min</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1298,6 +1312,7 @@ dtype: object</code></pre>
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># we can use comparators to index into the DataFrame where a specific column equals a specific value</span></span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>madrid_pop[madrid_pop[<span class="st">"num_people_women"</span>] <span class="op">==</span> <span class="dv">3529</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="19">
+<div>
 <div>
 
 
@@ -1347,6 +1362,7 @@ dtype: object</code></pre>
 </div>
 </div>
 </div>
+</div>
 </section>
 <section id="create-new-columns" class="level3">
 <h3 class="anchored" data-anchor-id="create-new-columns">Create new columns</h3>
@@ -1369,6 +1385,7 @@ dtype: float64</code></pre>
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>madrid_pop[<span class="st">"ratio_women"</span>] <span class="op">=</span> ratio_women</span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>madrid_pop.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="21">
+<div>
 <div>
 
 
@@ -1473,6 +1490,7 @@ dtype: float64</code></pre>
 </div>
 </div>
 </div>
+</div>
 </section>
 <section id="index-based-queries" class="level3">
 <h3 class="anchored" data-anchor-id="index-based-queries">Index-based queries</h3>
@@ -1485,6 +1503,7 @@ dtype: float64</code></pre>
 <span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>]</span>
 <span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>women_ratio_2districts</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="22">
+<div>
 <div>
 
 
@@ -1577,6 +1596,7 @@ dtype: float64</code></pre>
 </div>
 </div>
 </div>
+</div>
 <p>You can see how you can create a list with the names (index IDs) along each of the two dimensions of a <code>DataFrame</code> (rows and columns), and <code>loc</code> will return a subset of the original table only with the elements queried for.</p>
 <p>An alternative to list-based queries is what is called “range-based” queries. These work on the indices of the table, but instead of requiring the ID of each item you want to retrieve, they operate by requiring only two IDs: the first and last element in a range of items. Range queries are expressed with a colon (<code>:</code>). However, to perform this operation Index IDs need to be unique. Since this is not our case we will first create a new index composed the year and the <code>code_neighbourhood</code> as a new index to our DataFrame.</p>
 <div id="cell-48" class="cell" data-execution_count="23">
@@ -1590,6 +1610,7 @@ dtype: float64</code></pre>
 <span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>madrid_pop.set_index(<span class="st">"new_index"</span>, inplace<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a>madrid_pop.head(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="23">
+<div>
 <div>
 
 
@@ -1678,6 +1699,7 @@ dtype: float64</code></pre>
 </div>
 </div>
 </div>
+</div>
 <p>Look at the order of the row and column indexes. This is important becuase “range-based” queries assume you understand the order and arrangement.</p>
 <div id="5e25b1fb" class="cell" data-execution_count="24">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># return all content between rows "2019_1":"2018_1" and columns "num_people":"num_people_women"</span></span>
@@ -1685,6 +1707,7 @@ dtype: float64</code></pre>
 <span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>range_query</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="24">
+<div>
 <div>
 
 
@@ -1777,6 +1800,7 @@ dtype: float64</code></pre>
 </div>
 </div>
 </div>
+</div>
 <p>The range query picks up all the elements between the specified IDs. Note that for this to work, the first ID in the range needs to be placed before the second one in the table’s index.</p>
 <p>Once you know about list and range-based queries, you can combine them!</p>
 </section>
@@ -1788,6 +1812,7 @@ dtype: float64</code></pre>
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>fewer_women <span class="op">=</span> madrid_pop[madrid_pop[<span class="st">"ratio_women"</span>] <span class="op">&lt;</span> <span class="fl">0.5</span>]</span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>fewer_women</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="25">
+<div>
 <div>
 
 
@@ -2476,12 +2501,14 @@ dtype: float64</code></pre>
 </div>
 </div>
 </div>
+</div>
 <p><em>… most populated area across all years:</em></p>
 <div id="cell-55" class="cell" data-execution_count="26">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>largest_hood_num <span class="op">=</span> madrid_pop[<span class="st">"num_people"</span>].<span class="bu">max</span>()</span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>largest_hood <span class="op">=</span> madrid_pop[madrid_pop[<span class="st">"num_people"</span>] <span class="op">==</span> largest_hood_num]</span>
 <span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>largest_hood</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="26">
+<div>
 <div>
 
 
@@ -2540,6 +2567,7 @@ dtype: float64</code></pre>
 </div>
 </div>
 </div>
+</div>
 <p>If you are interested, more detail about <code>query</code> is available in the <a href="https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#the-query-method">pandas documentation</a>. This is another way of slicing Dataframes, but for now we will stay with the <code>loc</code> function.</p>
 </section>
 <section id="combining-queries" class="level3">
@@ -2555,6 +2583,7 @@ dtype: float64</code></pre>
 <span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a>]</span>
 <span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a>women_power</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="27">
+<div>
 <div>
 
 
@@ -3108,6 +3137,7 @@ dtype: float64</code></pre>
 </div>
 </div>
 </div>
+</div>
 </section>
 <section id="sorting" class="level3">
 <h3 class="anchored" data-anchor-id="sorting">Sorting</h3>
@@ -3116,6 +3146,7 @@ dtype: float64</code></pre>
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>madrid_sorted <span class="op">=</span> madrid_pop.sort_values(<span class="st">"ratio_women"</span>, ascending<span class="op">=</span><span class="va">False</span>)</span>
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>madrid_sorted</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="28">
+<div>
 <div>
 
 
@@ -3325,12 +3356,14 @@ dtype: float64</code></pre>
 </div>
 </div>
 </div>
+</div>
 <p>Given the rates differ, it may be better to sort by neighbourhood and then by year.</p>
 <div id="cell-62" class="cell" data-execution_count="29">
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>sort_ls <span class="op">=</span> [<span class="st">"code_neighbourhood"</span>, <span class="st">"year"</span>]</span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>madrid_sorted <span class="op">=</span> madrid_pop.sort_values(sort_ls, ascending<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>madrid_sorted</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="29">
+<div>
 <div>
 
 
@@ -3540,6 +3573,7 @@ dtype: float64</code></pre>
 </div>
 </div>
 </div>
+</div>
 <p>This allows you to do so-called hierarchical sorting: sort first based on one column then based on another.</p>
 </section>
 </section>
@@ -3666,6 +3700,7 @@ dtype: float64</code></pre>
 <div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>mad_grouped.<span class="bu">sum</span>(numeric_only<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="39">
 <div>
+<div>
 
 
 <table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
@@ -3742,10 +3777,12 @@ dtype: float64</code></pre>
 </div>
 </div>
 </div>
+</div>
 <p>Similarly, we can also obtain a summary of each group:</p>
 <div id="c79783a2" class="cell" data-execution_count="40">
 <div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>mad_grouped.describe()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="40">
+<div>
 <div>
 
 
@@ -3957,6 +3994,7 @@ dtype: float64</code></pre>
 </table>
 
 <p>6 rows × 40 columns</p>
+</div>
 </div>
 </div>
 </div>
@@ -4360,15 +4398,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-      <a href="../chapter_2/open_source.html" class="pagination-link  aria-label=" open="" source"="">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Open Source</span>
-      </a>          
-  </div>
-  <div class="nav-page nav-page-next">
-  </div>
-</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
