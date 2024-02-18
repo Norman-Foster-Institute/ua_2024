@@ -318,17 +318,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="opening-files" class="level2">
 <h2 class="anchored" data-anchor-id="opening-files">Opening files</h2>
 <p>Install <code>pandas</code> if necessary, and, since we need to read excel files, we’ll also need to check that <code>openpyxl</code> is installed.</p>
-<div id="3bbf1a95" class="cell" data-execution_count="1">
+<div id="17eb71f0" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># uncomment to install</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># !pip install pandas openpyxl</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Let’s import GeoPandas into our working notebook.</p>
-<div id="ced3bf4a" class="cell" data-execution_count="2">
+<div id="8f7f43b6" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> geopandas <span class="im">as</span> gpd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>You’ll need to update the filepath to point to your data file location.</p>
-<div id="3b78d669" class="cell" data-execution_count="3">
+<div id="ce9fd609" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>df_excel <span class="op">=</span> pd.read_excel(<span class="st">'./data/xls0011435_c.xlsx'</span>)</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df_excel.head(<span class="dv">10</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -369,7 +369,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 9           15.384615  59.728507   24.886878         2.624434    8.868778  </code></pre>
 </div>
 </div>
-<div id="a74ad960" class="cell" data-execution_count="4">
+<div id="84975fa2" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>df_clipped <span class="op">=</span> df_excel[<span class="dv">6</span>:]</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>df_clipped <span class="op">=</span> df_clipped.reset_index(drop<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df_clipped.head())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -396,7 +396,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 4    3.709056  </code></pre>
 </div>
 </div>
-<div id="e625be02" class="cell" data-execution_count="5">
+<div id="fc76efdb" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>df_ff <span class="op">=</span> df_clipped.fillna(method<span class="op">=</span><span class="st">'ffill'</span>)</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df_ff.head())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -422,13 +422,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 4     3.709056  </code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>/tmp/ipykernel_2582/2998331537.py:1: FutureWarning: DataFrame.fillna with 'method' is deprecated and will raise in a future version. Use obj.ffill() or obj.bfill() instead.
+<pre><code>/tmp/ipykernel_2561/2998331537.py:1: FutureWarning: DataFrame.fillna with 'method' is deprecated and will raise in a future version. Use obj.ffill() or obj.bfill() instead.
   df_ff = df_clipped.fillna(method='ffill')
-/tmp/ipykernel_2582/2998331537.py:1: FutureWarning: Downcasting object dtype arrays on .fillna, .ffill, .bfill is deprecated and will change in a future version. Call result.infer_objects(copy=False) instead. To opt-in to the future behavior, set `pd.set_option('future.no_silent_downcasting', True)`
+/tmp/ipykernel_2561/2998331537.py:1: FutureWarning: Downcasting object dtype arrays on .fillna, .ffill, .bfill is deprecated and will change in a future version. Call result.infer_objects(copy=False) instead. To opt-in to the future behavior, set `pd.set_option('future.no_silent_downcasting', True)`
   df_ff = df_clipped.fillna(method='ffill')</code></pre>
 </div>
 </div>
-<div id="e7579ddb" class="cell" data-execution_count="6">
+<div id="febd5da2" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>df_ff.columns <span class="op">=</span> [<span class="st">'Cod'</span>, <span class="st">'Municipio'</span>,<span class="st">'Dist'</span>, <span class="st">'Secc'</span>, <span class="st">'Total'</span>, <span class="st">'Hombres'</span>, <span class="st">'Mujeres'</span>, <span class="st">'Sex ratio'</span>, <span class="st">'0-19'</span>, <span class="st">'20-64'</span>, <span class="st">'&gt;=65'</span>, <span class="st">'UE-27'</span>, <span class="st">'Resto'</span>]</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df_ff.head())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -450,7 +450,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="opening-geospatial-files" class="level2">
 <h2 class="anchored" data-anchor-id="opening-geospatial-files">Opening geospatial files</h2>
-<div id="750aec8f" class="cell" data-execution_count="7">
+<div id="710c604a" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>gdf_geoms <span class="op">=</span> gpd.read_file(<span class="st">'./data/bilbao_census_geoms.gpkg'</span>)</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(gdf_geoms.head())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -479,7 +479,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="linkages" class="level2">
 <h2 class="anchored" data-anchor-id="linkages">Linkages</h2>
-<div id="823e75f3" class="cell" data-execution_count="8">
+<div id="232ca630" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>df_ff[<span class="st">'link_code'</span>] <span class="op">=</span> df_ff[<span class="st">'Cod'</span>] <span class="op">+</span> df_ff[<span class="st">'Dist'</span>] <span class="op">+</span> df_ff[<span class="st">'Secc'</span>]</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df_ff.head())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -498,7 +498,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 4  62.331407  13.005780  1.830443  3.709056  00101004  </code></pre>
 </div>
 </div>
-<div id="d6e3f862" class="cell" data-execution_count="9">
+<div id="809c0ac3" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>gdf_geoms[<span class="st">'link_code'</span>] <span class="op">=</span> gdf_geoms[<span class="st">'cmun'</span>] <span class="op">+</span> gdf_geoms[<span class="st">'cdis'</span>] <span class="op">+</span> gdf_geoms[<span class="st">'csec'</span>]</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(gdf_geoms.head())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -524,7 +524,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 4  MULTIPOLYGON (((3264736.159 2307779.458, 32646...  00201003  </code></pre>
 </div>
 </div>
-<div id="fa10eab0" class="cell" data-execution_count="10">
+<div id="5a044314" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>merged_data <span class="op">=</span> gdf_geoms.merge(df_ff, on<span class="op">=</span><span class="st">'link_code'</span>, how<span class="op">=</span><span class="st">'outer'</span>)</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(merged_data.head())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -552,7 +552,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 [5 rows x 32 columns]</code></pre>
 </div>
 </div>
-<div id="368d8f1b" class="cell" data-execution_count="11">
+<div id="85c21c57" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>merged_data.to_file(<span class="st">'./data/joined_gpd.gpkg'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 

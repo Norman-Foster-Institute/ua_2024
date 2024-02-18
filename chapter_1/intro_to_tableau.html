@@ -302,7 +302,7 @@ ul.task-list li input[type="checkbox"] {
 <div>
 <pre class="mermaid mermaid-js">flowchart LR
     subgraph Datasources
-    A[(D 1)]
+    A[(DB 1)]
     a[(DB 2)]
     end 
 
@@ -345,18 +345,19 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="data-sources-connecting-to-data" class="level2">
 <h2 class="anchored" data-anchor-id="data-sources-connecting-to-data">Data Sources: Connecting to data</h2>
-<p>In tableau you can connect simultaneously to multiple data sources, including Postgres and/or individual <em>shapefiles</em> and .CSV (‘text files’).</p>
+<p>In tableau you can connect simultaneously to multiple data sources (including Postgres) and/or individual <em>shapefiles</em> and .CSV (‘text files’).</p>
 <p>When you connect to more than one dataset you can establish three possible scenarios:</p>
 <ul>
 <li><strong>Create a <code>logical table</code></strong>: Tableau’s lingo for the result from joining <code>physical</code> tables together</li>
-<li><strong>Create a relationship</strong>: In this case your tables won’t be joined if the specific chart you’re building does not require to do so.</li>
+<li><strong>Create a relationship</strong>: In this case your tables will not be joined if the specific chart you are building does not require to do so.</li>
 <li><strong>Create an independent data source</strong>: In this case you limit the potential to use measures from multiple datasources.</li>
 </ul>
-<p>Depending on your use case you might want to use different techniques.</p>
+<p>Depending on your use case you might want to use different techniques. But note that only the fields that you bring into the view are considered for the construction of the queries (behind the scenes).</p>
 <section id="live-vs-extract" class="level3">
 <h3 class="anchored" data-anchor-id="live-vs-extract">Live vs Extract</h3>
+<p>Once the tables have been brought in and your initial filters have been set you can choose one of two options on how you are going to operate with the data in the next steps.</p>
 <ul>
-<li><strong>Live</strong> : when your establish just the relationships described above but the actual queries happen as you build your charts (and maps). Heavier on performance.</li>
+<li><strong>Live</strong> : when your establish just the relationships described above but the actual queries happen as you build your charts (and maps) are directed to your connections in each modification. Heavier on performance.</li>
 <li><strong>Extract</strong> : when you create a resulting file (called Tableau extract) which is optimized to speed up performance and incoportates the resultiong joined tables and relatioships you have established. This is the reccomended approach.</li>
 </ul>
 <p>Note that Extracts can always be refreshed if your input data changes or you want to make adjustment to your joins / relations.</p>
@@ -370,7 +371,7 @@ Datasets
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>For this excercise we are going to use Spanish Census data at the ‘census section’ level (the lowest level of annonimised data). Both datasets come from the <a href="https://www.ine.es/">INE</a> - National Institute of Statitics.</p>
+<p>For this excercise we are going to use Spanish Census data at the ‘census section’ level (the lowest level of annonimised data). Both datasets come from the <a href="https://www.ine.es/">INE</a> - National Institute of Statitics in Spanish.</p>
 <ul>
 <li><strong>Population by gender and origin</strong> in <em>.CSV</em> format : <a href="https://ine.es/buscar/searchResults.do?Menu_botonBuscador=&amp;searchType=DEF_SEARCH&amp;startat=0&amp;L=0&amp;searchString=poblacion%20seccion%20censal">here</a></li>
 <li><strong>Census Sections</strong> in <em>.SHP</em> format : <a href="https://www.ine.es/ss/Satellite?L=es_ES&amp;c=Page&amp;cid=1259952026632&amp;p=1259952026632&amp;pagename=ProductosYServicios/PYSLayout">here</a></li>
@@ -381,7 +382,7 @@ Datasets
 </section>
 <section id="views-creating-visualizations" class="level2">
 <h2 class="anchored" data-anchor-id="views-creating-visualizations">Views: Creating visualizations</h2>
-<p>This is where you are going to create all of your individual charts and graphs. Two important field types area automatically created to help you set up your visualizations:</p>
+<p>This is where you are going to create all of your individual charts and graphs. Two important field types are automatically created (based on the data types) to help you set up your visualisations:</p>
 <ul>
 <li><strong>Dimensions</strong> (blue): All qualitative and categorical fields in your dataset. eg. ‘nationality’, ‘gender’, etc…</li>
 <li><strong>Measures</strong> (green): Continuous fields where you can apply <code>SUM</code>, <code>AVG</code>, <code>MIN</code>, <code>MAX</code> calculations. eg. ‘population’, ‘age’, etc..
@@ -389,7 +390,7 @@ Datasets
 <li>Note that <code>geometries</code> are considered measures but deconstructed automatically into Longitude and Latitude when brought to the view.</li>
 </ul></li>
 </ul>
-<p><strong>To create new fields</strong> right click next to your fields ans select <code>Create Calculated Field...</code></p>
+<p><strong>To create new fields</strong> right click next to your fields ans select <code>Create Calculated Field...</code> &gt; Tableau uses a SQL based syntax but to discover more see <a href="https://help.tableau.com/current/pro/desktop/en-us/functions_operators.htm">documentation</a></p>
 <p>To build your charts <strong>3 things</strong> need careful attention:</p>
 <ul>
 <li><strong>MARKS CARD</strong>: Establishes the type of graph you want to build. eg: lineschart, barchart, map, piechart. etc..</li>
@@ -434,9 +435,8 @@ Exercise
 </section>
 <section id="dashboards-stories-interacting-and-enhancing-views" class="level2">
 <h2 class="anchored" data-anchor-id="dashboards-stories-interacting-and-enhancing-views">Dashboards (&amp; Stories): Interacting and Enhancing views</h2>
-<p>In this step is where you put your pieces together. If the visualizations you have made share the same datasource, you can use the different views to to <strong>filter or highlight</strong> parts of the other views.</p>
-<p>The recomendation is to create dashboards with no more than 3 or 4 components. When trying to tell a story with data you want to eliminate all possible distractions.</p>
-<p>Note that to your dashboards you can</p>
+<p>In this step is where you put your pieces together. If the visualizations you have made share the same datasource, you can use the different views to <strong>filter or highlight</strong> parts of other views.</p>
+<p>The recomendation is to create dashboards with no more than 3 or 4 components (views, text blocks, images). When trying to tell a story with data you want to eliminate all possible distractions.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
