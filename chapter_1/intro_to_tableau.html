@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>NFI Urban Analytics 2024 - Part 1 - Intro to Tableau</title>
+<title>NFI Urban Analytics 2024 - Part 1 - Bonus: Tableau</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,6 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
+<link href="../chapter_2/intro_to_python.html" rel="next">
+<link href="../chapter_1/cloud_gis.html" rel="prev">
 <link href=".././assets/nfi_logo.png" rel="icon" type="image/png">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -96,7 +98,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Intro to Tableau</li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapter_1/gis.html">GIS Tools</a></li><li class="breadcrumb-item"><a href="../chapter_1/intro_to_tableau.html">Bonus: Tableau</a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -153,13 +155,13 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
  <span class="menu-text">GIS Tools</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapter_1/gis.html" class="sidebar-item-text sidebar-link">
@@ -188,6 +190,12 @@ ul.task-list li input[type="checkbox"] {
   <div class="sidebar-item-container"> 
   <a href="../chapter_1/cloud_gis.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Cloud GIS</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapter_1/intro_to_tableau.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Bonus: Tableau</span></a>
   </div>
 </li>
       </ul>
@@ -235,29 +243,20 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#data-sources-connecting-to-data" id="toc-data-sources-connecting-to-data" class="nav-link" data-scroll-target="#data-sources-connecting-to-data">Data Sources: Connecting to data</a>
   <ul class="collapse">
   <li><a href="#live-vs-extract" id="toc-live-vs-extract" class="nav-link" data-scroll-target="#live-vs-extract">Live vs Extract</a></li>
-  <li><a href="#datasets" id="toc-datasets" class="nav-link" data-scroll-target="#datasets">Datasets</a></li>
   </ul></li>
-  <li><a href="#views-creating-visualizations" id="toc-views-creating-visualizations" class="nav-link" data-scroll-target="#views-creating-visualizations">Views: Creating visualizations</a>
-  <ul class="collapse">
-  <li><a href="#exercise" id="toc-exercise" class="nav-link" data-scroll-target="#exercise">Exercise</a></li>
-  </ul></li>
+  <li><a href="#views-creating-visualizations" id="toc-views-creating-visualizations" class="nav-link" data-scroll-target="#views-creating-visualizations">Views: Creating visualizations</a></li>
   <li><a href="#dashboards-stories-interacting-and-enhancing-views" id="toc-dashboards-stories-interacting-and-enhancing-views" class="nav-link" data-scroll-target="#dashboards-stories-interacting-and-enhancing-views">Dashboards (&amp; Stories): Interacting and Enhancing views</a></li>
   <li><a href="#sharing-and-publishing" id="toc-sharing-and-publishing" class="nav-link" data-scroll-target="#sharing-and-publishing">Sharing and Publishing</a></li>
-  <li><a href="#documentation" id="toc-documentation" class="nav-link" data-scroll-target="#documentation">Documentation</a></li>
-  <li><a href="#sharing-and-publishing-5-minutes" id="toc-sharing-and-publishing-5-minutes" class="nav-link" data-scroll-target="#sharing-and-publishing-5-minutes">5. Sharing and Publishing (5 minutes)</a></li>
-  <li><a href="#qa-and-practice-time-10-minutes" id="toc-qa-and-practice-time-10-minutes" class="nav-link" data-scroll-target="#qa-and-practice-time-10-minutes">6. Q&amp;A and Practice Time (10 minutes)</a>
-  <ul class="collapse">
-  <li><a href="#additional-tips" id="toc-additional-tips" class="nav-link" data-scroll-target="#additional-tips">Additional Tips</a></li>
-  </ul></li>
+  <li><a href="#resources-for-further-learning" id="toc-resources-for-further-learning" class="nav-link" data-scroll-target="#resources-for-further-learning">Resources for Further Learning</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapter_1/gis.html">GIS Tools</a></li><li class="breadcrumb-item"><a href="../chapter_1/intro_to_tableau.html">Bonus: Tableau</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Intro to Tableau</h1>
+<h1 class="title">Bonus: Tableau</h1>
 </div>
 
 
@@ -291,6 +290,9 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 <p>Tableau is a leading data visualization tool that simplifies the process of converting complex data into interactive and visually appealing dashboards and reports. It is highly regarded in the business intelligence (BI) community for its ability to facilitate data-driven decision-making through an intuitive interface that accommodates users of all skill levels. By supporting a wide variety of data sources (including some spatial formats like <em>shapefiles</em>)) and enabling quick identification of data trends and patterns.</p>
+<blockquote class="blockquote">
+<p>With your student account you also have full access to <strong>Tableau Prep</strong>, a visual tool for data cleaning.</p>
+</blockquote>
 <section id="tableau-desktop-structure" class="level2">
 <h2 class="anchored" data-anchor-id="tableau-desktop-structure">Tableau Desktop Structure</h2>
 <div class="cell" data-layout-align="default">
@@ -358,14 +360,23 @@ ul.task-list li input[type="checkbox"] {
 <li><strong>Extract</strong> : when you create a resulting file (called Tableau extract) which is optimized to speed up performance and incoportates the resultiong joined tables and relatioships you have established. This is the reccomended approach.</li>
 </ul>
 <p>Note that Extracts can always be refreshed if your input data changes or you want to make adjustment to your joins / relations.</p>
-</section>
-<section id="datasets" class="level3">
-<h3 class="anchored" data-anchor-id="datasets">Datasets</h3>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Datasets
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>For this excercise we are going to use Spanish Census data at the ‘census section’ level (the lowest level of annonimised data). Both datasets come from the <a href="https://www.ine.es/">INE</a> - National Institute of Statitics.</p>
 <ul>
 <li><strong>Population by gender and origin</strong> in <em>.CSV</em> format : <a href="https://ine.es/buscar/searchResults.do?Menu_botonBuscador=&amp;searchType=DEF_SEARCH&amp;startat=0&amp;L=0&amp;searchString=poblacion%20seccion%20censal">here</a></li>
 <li><strong>Census Sections</strong> in <em>.SHP</em> format : <a href="https://www.ine.es/ss/Satellite?L=es_ES&amp;c=Page&amp;cid=1259952026632&amp;p=1259952026632&amp;pagename=ProductosYServicios/PYSLayout">here</a></li>
 </ul>
+</div>
+</div>
 </section>
 </section>
 <section id="views-creating-visualizations" class="level2">
@@ -379,7 +390,12 @@ ul.task-list li input[type="checkbox"] {
 </ul></li>
 </ul>
 <p><strong>To create new fields</strong> right click next to your fields ans select <code>Create Calculated Field...</code></p>
-<p>To build your charts <strong>3 things</strong> need careful attention: - <strong>MARKS CARD</strong>: Establishes the type of graph you want to build. eg: lineschart, barchart, map, piechart. etc.. - <strong>COLUMNS and ROWS</strong> shelves: Determine what happend in your vertical and horizontal axis. - <strong>FILTERS CARD</strong>: The place to customized what gets filtered for the current chart.</p>
+<p>To build your charts <strong>3 things</strong> need careful attention:</p>
+<ul>
+<li><strong>MARKS CARD</strong>: Establishes the type of graph you want to build. eg: lineschart, barchart, map, piechart. etc..</li>
+<li><strong>COLUMNS and ROWS</strong> shelves: Determine what happend in your vertical and horizontal axis.</li>
+<li><strong>FILTERS CARD</strong>: The place to customized what gets filtered for the current chart.</li>
+</ul>
 <div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -393,8 +409,16 @@ Warning
 <p>Be extra critical about the numbers! Tableau is really good at generating outputs but the results should make sense to you and if possible, always try to sense check with other sources.</p>
 </div>
 </div>
-<section id="exercise" class="level3">
-<h3 class="anchored" data-anchor-id="exercise">Exercise</h3>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exercise
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>Drag and drop fields to create the following charts:</p>
 <ul>
 <li><strong>Map</strong>: Displaying the total population per ‘census section’ in the ‘Vasque Country’ (<code>Pais Vasco</code>)</li>
@@ -405,44 +429,47 @@ Warning
 </ul></li>
 <li><strong>Others</strong>: try to come up with new fields that could enrich the analysis.</li>
 </ul>
-</section>
+</div>
+</div>
 </section>
 <section id="dashboards-stories-interacting-and-enhancing-views" class="level2">
 <h2 class="anchored" data-anchor-id="dashboards-stories-interacting-and-enhancing-views">Dashboards (&amp; Stories): Interacting and Enhancing views</h2>
-<p>In this step is where you put your pieces together.</p>
+<p>In this step is where you put your pieces together. If the visualizations you have made share the same datasource, you can use the different views to to <strong>filter or highlight</strong> parts of the other views.</p>
+<p>The recomendation is to create dashboards with no more than 3 or 4 components. When trying to tell a story with data you want to eliminate all possible distractions.</p>
+<p>Note that to your dashboards you can</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Visual guide to selecting the right type of chart. The Financial Times Visual Vocabulary:</p>
 <ul>
-<li><strong>Creating a Dashboard:</strong> Steps to create a dashboard by combining different visualizations.</li>
-<li><strong>Interactive Dashboards:</strong> Making dashboards interactive with actions like filters, highlights, and URL actions.</li>
+<li><a href="https://ft-interactive.github.io/visual-vocabulary/">Web version</a></li>
+<li><a href="https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary">Poster version(s)</a> in multiple languages.</li>
+<li><a href="https://public.tableau.com/app/profile/andy.kriebel/viz/VisualVocabulary/VisualVocabulary">Tableau Public</a></li>
 </ul>
+</div>
+</div>
 </section>
 <section id="sharing-and-publishing" class="level2">
 <h2 class="anchored" data-anchor-id="sharing-and-publishing">Sharing and Publishing</h2>
+<p>Dashboards, Stories and Views can be exported as images (PDF, JPEG, etc..), as PowerPoint presentations but you can Publish your results to Tableau Public - a free and open server where dashboards remain interactive.</p>
+<p>Like other softwares you can share your work as Tableau workbook packaged (.twbx), which contains all the data, or as a visualization tool only (.twb) if you know that the other person will have access to the same data connections you used.</p>
 </section>
-<section id="documentation" class="level2">
-<h2 class="anchored" data-anchor-id="documentation">Documentation</h2>
-</section>
-<section id="sharing-and-publishing-5-minutes" class="level2">
-<h2 class="anchored" data-anchor-id="sharing-and-publishing-5-minutes">5. Sharing and Publishing (5 minutes)</h2>
+<section id="resources-for-further-learning" class="level2">
+<h2 class="anchored" data-anchor-id="resources-for-further-learning">Resources for Further Learning</h2>
 <ul>
-<li><strong>Export Options:</strong> How to export visualizations and dashboards as images, PDFs, or Tableau Workbook files.</li>
-<li><strong>Publishing to Tableau Public/Server:</strong> Basic steps for publishing work to Tableau Public or a Tableau Server.</li>
-</ul>
-</section>
-<section id="qa-and-practice-time-10-minutes" class="level2">
-<h2 class="anchored" data-anchor-id="qa-and-practice-time-10-minutes">6. Q&amp;A and Practice Time (10 minutes)</h2>
-<ul>
-<li><strong>Open Floor for Questions:</strong> Allowing participants to ask questions.</li>
-<li><strong>Hands-On Practice:</strong> Encouraging participants to create a basic visualization or dashboard with a provided dataset.</li>
-</ul>
-<section id="additional-tips" class="level3">
-<h3 class="anchored" data-anchor-id="additional-tips">Additional Tips</h3>
-<ul>
-<li><strong>Hands-On Examples:</strong> Use real-life datasets for demonstrations to enhance engagement and understanding.</li>
-<li><strong>Resources for Further Learning:</strong> Provide links to Tableau’s online tutorials, forums, and communities for continued learning.</li>
+<li><a href="https://public.tableau.com/app/discover">Tableau Public</a></li>
+<li><a href="https://www.tableau.com/learn/training">Official videos</a></li>
+<li><a href="https://www.vizwiz.com/">VizWiz</a> one of the best teaching resouces out there. #MakeOverMondays are great excercises.</li>
 </ul>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -833,6 +860,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../chapter_1/cloud_gis.html" class="pagination-link" aria-label="Cloud GIS">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Cloud GIS</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../chapter_2/intro_to_python.html" class="pagination-link" aria-label="Welcome to Python">
+        <span class="nav-page-text">Welcome to Python</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
