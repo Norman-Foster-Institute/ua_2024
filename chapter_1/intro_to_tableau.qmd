@@ -19,7 +19,7 @@ Tableau is a leading data visualization tool that simplifies the process of conv
 ```{mermaid}
 flowchart LR
     subgraph Datasources
-    A[(D 1)]
+    A[(DB 1)]
     a[(DB 2)]
     end 
 
@@ -57,19 +57,21 @@ flowchart LR
 
 ## Data Sources: Connecting to data
 
-In tableau you can connect simultaneously to multiple data sources, including Postgres and/or individual _shapefiles_ and .CSV ('text files'). 
+In tableau you can connect simultaneously to multiple data sources (including Postgres) and/or individual _shapefiles_ and .CSV ('text files'). 
 
 When you connect to more than one dataset you can establish three possible scenarios:
 
 - **Create a `logical table`**: Tableau's lingo for the result from joining `physical` tables together
-- **Create a relationship**: In this case your tables won't be joined if the specific chart you're building does not require to do so. 
+- **Create a relationship**: In this case your tables will not be joined if the specific chart you are building does not require to do so.
 - **Create an independent data source**: In this case you limit the potential to use measures from multiple datasources.
 
-Depending on your use case you might want to use different techniques. 
+Depending on your use case you might want to use different techniques. But note that only the fields that you bring into the view are considered for the construction of the queries (behind the scenes).
 
 ### Live vs Extract
 
-- **Live** : when your establish just the relationships described above but the actual queries happen as you build your charts (and maps). Heavier on performance.
+Once the tables have been brought in and your initial filters have been set you can choose one of two options on how you are going to operate with the data in the next steps. 
+
+- **Live** : when your establish just the relationships described above but the actual queries happen as you build your charts (and maps) are directed to your connections in each modification. Heavier on performance.
 - **Extract** : when you create a resulting file (called Tableau extract) which is optimized to speed up performance and incoportates the resultiong joined tables and relatioships you have established. This is the reccomended approach. 
 
 Note that Extracts can always be refreshed if your input data changes or you want to make adjustment to your joins / relations. 
@@ -77,7 +79,7 @@ Note that Extracts can always be refreshed if your input data changes or you wan
 :::{.callout-important}
 ### Datasets 
 
-For this excercise we are going to use Spanish Census data at the 'census section' level (the lowest level of annonimised data). Both datasets come from the [INE](https://www.ine.es/) - National Institute of Statitics. 
+For this excercise we are going to use Spanish Census data at the 'census section' level (the lowest level of annonimised data). Both datasets come from the [INE](https://www.ine.es/) - National Institute of Statitics in Spanish. 
 
 - **Population by gender and origin** in _.CSV_ format : [here](https://ine.es/buscar/searchResults.do?Menu_botonBuscador=&searchType=DEF_SEARCH&startat=0&L=0&searchString=poblacion%20seccion%20censal)
 - **Census Sections** in _.SHP_ format : [here](https://www.ine.es/ss/Satellite?L=es_ES&c=Page&cid=1259952026632&p=1259952026632&pagename=ProductosYServicios/PYSLayout)
@@ -85,13 +87,14 @@ For this excercise we are going to use Spanish Census data at the 'census sectio
 
 ## Views: Creating visualizations
 
-This is where you are going to create all of your individual charts and graphs. Two important field types area automatically created to help you set up your visualizations:
+This is where you are going to create all of your individual charts and graphs. Two important field types are automatically created (based on the data types) to help you set up your visualisations:
 
 - **Dimensions** (blue): All qualitative and categorical fields in your dataset. eg. 'nationality', 'gender', etc...
 - **Measures** (green): Continuous fields where you can apply `SUM`, `AVG`, `MIN`, `MAX` calculations. eg. 'population', 'age', etc..
   - Note that `geometries` are considered measures but deconstructed automatically into Longitude and Latitude when brought to the view. 
 
 **To create new fields** right click next to your fields ans select `Create Calculated Field...`
+> Tableau uses a SQL based syntax but to discover more see [documentation](https://help.tableau.com/current/pro/desktop/en-us/functions_operators.htm)
 
 To build your charts **3 things** need careful attention:
 
@@ -118,11 +121,9 @@ Drag and drop fields to create the following charts:
 ## Dashboards (& Stories): Interacting and Enhancing views
 
 In this step is where you put your pieces together. 
-If the visualizations you have made share the same datasource, you can use the different views to to **filter or highlight** parts of the other views.
+If the visualizations you have made share the same datasource, you can use the different views to **filter or highlight** parts of other views.
 
-The recomendation is to create dashboards with no more than 3 or 4 components. When trying to tell a story with data you want to eliminate all possible distractions. 
-
-Note that to your dashboards you can 
+The recomendation is to create dashboards with no more than 3 or 4 components (views, text blocks, images). When trying to tell a story with data you want to eliminate all possible distractions.
 
 :::{.callout-tip}
 Visual guide to selecting the right type of chart.
