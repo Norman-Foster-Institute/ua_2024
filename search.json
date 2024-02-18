@@ -121,179 +121,188 @@
     ]
   },
   {
-    "objectID": "chapter_2/intro_to_tableau.html",
-    "href": "chapter_2/intro_to_tableau.html",
+    "objectID": "chapter_2/intro_to_geopandas.html",
+    "href": "chapter_2/intro_to_geopandas.html",
+    "title": "Welcome to GeoPandas",
+    "section": "",
+    "text": "NOTE: this lesson is under development, please check back later!\nIn the Intro to Python lesson (do that lesson first if you haven’t already) we provided a high level introduction to GeoPandas. GeoPandas builds on underlying functionality provided by a library called “Pandas”. Put differently, GeoPandas bolts geospatial capabilities onto the underlying Pandas library.",
+    "crumbs": [
+      "Basic Coding",
+      "Welcome to GeoPandas"
+    ]
+  },
+  {
+    "objectID": "chapter_2/intro_to_geopandas.html#data",
+    "href": "chapter_2/intro_to_geopandas.html#data",
+    "title": "Welcome to GeoPandas",
+    "section": "Data",
+    "text": "Data\nWe’ll be using demo census data from Eustat-Basque Institute of Statistics, accessed from here: Population by districts and census sections of Bizkaia, according to sex, age groups and nationality. This workflow should work for other files downloaded from this source.\nOrdinarily, we’d like to use csv data. However, if you download and inspect the csv file’s contents then you’d notice that something seems off. csv files need consistently formatted cell delimitations to work as intended, yet this file seems to have multiple header lines with different hierarchies of delimitation. You’ll also notice that every few lines seems to have a different structure. Let’s download the xlsx instead. If we inspect the file, we can now see that this is a hierarchically organised tabular structure.\n\nThe census boundaries are the standard census statistical units for the region.",
+    "crumbs": [
+      "Basic Coding",
+      "Welcome to GeoPandas"
+    ]
+  },
+  {
+    "objectID": "chapter_2/intro_to_geopandas.html#opening-files",
+    "href": "chapter_2/intro_to_geopandas.html#opening-files",
+    "title": "Welcome to GeoPandas",
+    "section": "Opening files",
+    "text": "Opening files\nInstall pandas if necessary, and, since we need to read excel files, we’ll also need to check that openpyxl is installed.\n\n# uncomment to install\n# !pip install pandas openpyxl\n\nLet’s import GeoPandas into our working notebook.\n\nimport pandas as pd\nimport geopandas as gpd\n\nYou’ll need to update the filepath to point to your data file location.\n\ndf_excel = pd.read_excel('./data/xls0011435_c.xlsx')\nprint(df_excel.head(10))\n\n                                          Unnamed: 0 Unnamed: 1 Unnamed: 2  \\\n0  Población por distritos y secciones censales d...        NaN        NaN   \n1                                                NaN        NaN        NaN   \n2                                                NaN        NaN        NaN   \n3                                                NaN        NaN        NaN   \n4                                                NaN        NaN        NaN   \n5                                                Cod  Municipio       Dist   \n6                                                001    Abadiño         01   \n7                                                NaN        NaN        NaN   \n8                                                NaN        NaN        NaN   \n9                                                NaN        NaN        NaN   \n\n  Unnamed: 3               Unnamed: 4 Unnamed: 5 Unnamed: 6 Unnamed: 7  \\\n0        NaN                      NaN        NaN        NaN        NaN   \n1        NaN                      NaN        NaN        NaN        NaN   \n2        NaN                      NaN        NaN        NaN        NaN   \n3        NaN  Población según el sexo        NaN        NaN        NaN   \n4        NaN                    Total    Hombres    Mujeres  Sex ratio   \n5       Secc                      NaN        NaN        NaN        NaN   \n6        000                     7745       3831       3914   0.978794   \n7        001                     1564        761        803   0.947696   \n8        002                     1235        626        609   1.027915   \n9        003                     1105        524        581   0.901893   \n\n           Unnamed: 8 Unnamed: 9 Unnamed: 10      Unnamed: 11 Unnamed: 12  \n0                 NaN        NaN         NaN              NaN         NaN  \n1                 NaN        NaN         NaN              NaN         NaN  \n2                 NaN        NaN         NaN              NaN         NaN  \n3  Grupos de edad (%)        NaN         NaN  Extranjeros (%)         NaN  \n4                0-19      20-64        &gt;=65            UE-27       Resto  \n5                 NaN        NaN         NaN              NaN         NaN  \n6           20.309877  58.218205   21.471917         1.781795    5.293738  \n7           25.831202  59.143223   15.025575         1.534527    4.987212  \n8           15.708502  52.307692   31.983806         1.133603    5.425101  \n9           15.384615  59.728507   24.886878         2.624434    8.868778  \n\n\n\ndf_clipped = df_excel[6:]\ndf_clipped = df_clipped.reset_index(drop=True)\nprint(df_clipped.head())\n\n  Unnamed: 0 Unnamed: 1 Unnamed: 2 Unnamed: 3 Unnamed: 4 Unnamed: 5  \\\n0        001    Abadiño         01        000       7745       3831   \n1        NaN        NaN        NaN        001       1564        761   \n2        NaN        NaN        NaN        002       1235        626   \n3        NaN        NaN        NaN        003       1105        524   \n4        NaN        NaN        NaN        004       2076       1051   \n\n  Unnamed: 6 Unnamed: 7 Unnamed: 8 Unnamed: 9 Unnamed: 10 Unnamed: 11  \\\n0       3914   0.978794  20.309877  58.218205   21.471917    1.781795   \n1        803   0.947696  25.831202  59.143223   15.025575    1.534527   \n2        609   1.027915  15.708502  52.307692   31.983806    1.133603   \n3        581   0.901893  15.384615  59.728507   24.886878    2.624434   \n4       1025   1.025366  24.662813  62.331407    13.00578    1.830443   \n\n  Unnamed: 12  \n0    5.293738  \n1    4.987212  \n2    5.425101  \n3    8.868778  \n4    3.709056  \n\n\n\ndf_ff = df_clipped.fillna(method='ffill')\nprint(df_ff.head())\n\n  Unnamed: 0 Unnamed: 1 Unnamed: 2 Unnamed: 3  Unnamed: 4  Unnamed: 5  \\\n0        001    Abadiño         01        000        7745        3831   \n1        001    Abadiño         01        001        1564         761   \n2        001    Abadiño         01        002        1235         626   \n3        001    Abadiño         01        003        1105         524   \n4        001    Abadiño         01        004        2076        1051   \n\n   Unnamed: 6  Unnamed: 7  Unnamed: 8  Unnamed: 9  Unnamed: 10  Unnamed: 11  \\\n0        3914    0.978794   20.309877   58.218205    21.471917     1.781795   \n1         803    0.947696   25.831202   59.143223    15.025575     1.534527   \n2         609    1.027915   15.708502   52.307692    31.983806     1.133603   \n3         581    0.901893   15.384615   59.728507    24.886878     2.624434   \n4        1025    1.025366   24.662813   62.331407    13.005780     1.830443   \n\n   Unnamed: 12  \n0     5.293738  \n1     4.987212  \n2     5.425101  \n3     8.868778  \n4     3.709056  \n\n\n/tmp/ipykernel_2613/2998331537.py:1: FutureWarning: DataFrame.fillna with 'method' is deprecated and will raise in a future version. Use obj.ffill() or obj.bfill() instead.\n  df_ff = df_clipped.fillna(method='ffill')\n/tmp/ipykernel_2613/2998331537.py:1: FutureWarning: Downcasting object dtype arrays on .fillna, .ffill, .bfill is deprecated and will change in a future version. Call result.infer_objects(copy=False) instead. To opt-in to the future behavior, set `pd.set_option('future.no_silent_downcasting', True)`\n  df_ff = df_clipped.fillna(method='ffill')\n\n\n\ndf_ff.columns = ['Cod', 'Municipio','Dist', 'Secc', 'Total', 'Hombres', 'Mujeres', 'Sex ratio', '0-19', '20-64', '&gt;=65', 'UE-27', 'Resto']\nprint(df_ff.head())\n\n   Cod Municipio Dist Secc  Total  Hombres  Mujeres  Sex ratio       0-19  \\\n0  001   Abadiño   01  000   7745     3831     3914   0.978794  20.309877   \n1  001   Abadiño   01  001   1564      761      803   0.947696  25.831202   \n2  001   Abadiño   01  002   1235      626      609   1.027915  15.708502   \n3  001   Abadiño   01  003   1105      524      581   0.901893  15.384615   \n4  001   Abadiño   01  004   2076     1051     1025   1.025366  24.662813   \n\n       20-64       &gt;=65     UE-27     Resto  \n0  58.218205  21.471917  1.781795  5.293738  \n1  59.143223  15.025575  1.534527  4.987212  \n2  52.307692  31.983806  1.133603  5.425101  \n3  59.728507  24.886878  2.624434  8.868778  \n4  62.331407  13.005780  1.830443  3.709056",
+    "crumbs": [
+      "Basic Coding",
+      "Welcome to GeoPandas"
+    ]
+  },
+  {
+    "objectID": "chapter_2/intro_to_geopandas.html#opening-geospatial-files",
+    "href": "chapter_2/intro_to_geopandas.html#opening-geospatial-files",
+    "title": "Welcome to GeoPandas",
+    "section": "Opening geospatial files",
+    "text": "Opening geospatial files\n\ngdf_geoms = gpd.read_file('./data/bilbao_census_geoms.gpkg')\nprint(gdf_geoms.head())\n\n   id       cusec  cumun csec cdis cmun cpro cca    cudis  clau2         npro  \\\n0   1  0100101001  01001  001   01  001   01  16  0100101  01001  Araba/Álava   \n1   2  0100101002  01001  002   01  001   01  16  0100101  01001  Araba/Álava   \n2   3  0100201001  01002  001   01  002   01  16  0100201  01002  Araba/Álava   \n3   4  0100201002  01002  002   01  002   01  16  0100201  01002  Araba/Álava   \n4   5  0100201003  01002  003   01  002   01  16  0100201  01002  Araba/Álava   \n\n          nca cnut0 cnut1 cnut2 cnut3              nmun  \\\n0  País Vasco    ES     2     1     1  Alegría-Dulantzi   \n1  País Vasco    ES     2     1     1  Alegría-Dulantzi   \n2  País Vasco    ES     2     1     1           Amurrio   \n3  País Vasco    ES     2     1     1           Amurrio   \n4  País Vasco    ES     2     1     1           Amurrio   \n\n                                            geometry  \n0  MULTIPOLYGON (((3300285.483 2277950.003, 33003...  \n1  MULTIPOLYGON (((3300455.616 2280198.743, 33004...  \n2  MULTIPOLYGON (((3267249.273 2300194.927, 32672...  \n3  MULTIPOLYGON (((3270958.603 2308427.228, 32713...  \n4  MULTIPOLYGON (((3264736.159 2307779.458, 32646...",
+    "crumbs": [
+      "Basic Coding",
+      "Welcome to GeoPandas"
+    ]
+  },
+  {
+    "objectID": "chapter_2/intro_to_geopandas.html#linkages",
+    "href": "chapter_2/intro_to_geopandas.html#linkages",
+    "title": "Welcome to GeoPandas",
+    "section": "Linkages",
+    "text": "Linkages\n\ndf_ff['link_code'] = df_ff['Cod'] + df_ff['Dist'] + df_ff['Secc']\nprint(df_ff.head())\n\n   Cod Municipio Dist Secc  Total  Hombres  Mujeres  Sex ratio       0-19  \\\n0  001   Abadiño   01  000   7745     3831     3914   0.978794  20.309877   \n1  001   Abadiño   01  001   1564      761      803   0.947696  25.831202   \n2  001   Abadiño   01  002   1235      626      609   1.027915  15.708502   \n3  001   Abadiño   01  003   1105      524      581   0.901893  15.384615   \n4  001   Abadiño   01  004   2076     1051     1025   1.025366  24.662813   \n\n       20-64       &gt;=65     UE-27     Resto link_code  \n0  58.218205  21.471917  1.781795  5.293738  00101000  \n1  59.143223  15.025575  1.534527  4.987212  00101001  \n2  52.307692  31.983806  1.133603  5.425101  00101002  \n3  59.728507  24.886878  2.624434  8.868778  00101003  \n4  62.331407  13.005780  1.830443  3.709056  00101004  \n\n\n\ngdf_geoms['link_code'] = gdf_geoms['cmun'] + gdf_geoms['cdis'] + gdf_geoms['csec']\nprint(gdf_geoms.head())\n\n   id       cusec  cumun csec cdis cmun cpro cca    cudis  clau2         npro  \\\n0   1  0100101001  01001  001   01  001   01  16  0100101  01001  Araba/Álava   \n1   2  0100101002  01001  002   01  001   01  16  0100101  01001  Araba/Álava   \n2   3  0100201001  01002  001   01  002   01  16  0100201  01002  Araba/Álava   \n3   4  0100201002  01002  002   01  002   01  16  0100201  01002  Araba/Álava   \n4   5  0100201003  01002  003   01  002   01  16  0100201  01002  Araba/Álava   \n\n          nca cnut0 cnut1 cnut2 cnut3              nmun  \\\n0  País Vasco    ES     2     1     1  Alegría-Dulantzi   \n1  País Vasco    ES     2     1     1  Alegría-Dulantzi   \n2  País Vasco    ES     2     1     1           Amurrio   \n3  País Vasco    ES     2     1     1           Amurrio   \n4  País Vasco    ES     2     1     1           Amurrio   \n\n                                            geometry link_code  \n0  MULTIPOLYGON (((3300285.483 2277950.003, 33003...  00101001  \n1  MULTIPOLYGON (((3300455.616 2280198.743, 33004...  00101002  \n2  MULTIPOLYGON (((3267249.273 2300194.927, 32672...  00201001  \n3  MULTIPOLYGON (((3270958.603 2308427.228, 32713...  00201002  \n4  MULTIPOLYGON (((3264736.159 2307779.458, 32646...  00201003  \n\n\n\nmerged_data = gdf_geoms.merge(df_ff, on='link_code', how='outer')\nprint(merged_data.head())\n\n      id       cusec  cumun csec cdis cmun cpro  cca    cudis  clau2  ...  \\\n0    NaN         NaN    NaN  NaN  NaN  NaN  NaN  NaN      NaN    NaN  ...   \n1    1.0  0100101001  01001  001   01  001   01   16  0100101  01001  ...   \n2  241.0  2000101001  20001  001   01  001   20   16  2000101  20001  ...   \n3  779.0  4800101001  48001  001   01  001   48   16  4800101  48001  ...   \n4    2.0  0100101002  01001  002   01  001   01   16  0100101  01001  ...   \n\n  Secc   Total Hombres Mujeres Sex ratio       0-19      20-64       &gt;=65  \\\n0  000  7745.0  3831.0  3914.0  0.978794  20.309877  58.218205  21.471917   \n1  001  1564.0   761.0   803.0  0.947696  25.831202  59.143223  15.025575   \n2  001  1564.0   761.0   803.0  0.947696  25.831202  59.143223  15.025575   \n3  001  1564.0   761.0   803.0  0.947696  25.831202  59.143223  15.025575   \n4  002  1235.0   626.0   609.0  1.027915  15.708502  52.307692  31.983806   \n\n      UE-27     Resto  \n0  1.781795  5.293738  \n1  1.534527  4.987212  \n2  1.534527  4.987212  \n3  1.534527  4.987212  \n4  1.133603  5.425101  \n\n[5 rows x 32 columns]\n\n\n\nmerged_data.to_file('./data/joined_gpd.gpkg')",
+    "crumbs": [
+      "Basic Coding",
+      "Welcome to GeoPandas"
+    ]
+  },
+  {
+    "objectID": "chapter_1/cloud_gis.html",
+    "href": "chapter_1/cloud_gis.html",
+    "title": "Cloud GIS",
+    "section": "",
+    "text": "This will be an in-class hands-on session providing an introduction to the use of CARTO for publishing and styling interactive maps.\nThe are two excercises that will help us explore different components of the platform:\nEach excersice will be lead by a live demo of the main steps to better control the visualization of the datasets. Then, each student will have time to explore on their own time the tool and come up with a shereable map.",
+    "crumbs": [
+      "GIS Tools",
+      "Cloud GIS"
+    ]
+  },
+  {
+    "objectID": "chapter_1/cloud_gis.html#connecting-to-carto",
+    "href": "chapter_1/cloud_gis.html#connecting-to-carto",
+    "title": "Cloud GIS",
+    "section": "Connecting to CARTO",
+    "text": "Connecting to CARTO\nBecause this will be the first time you log in, you will have to log in into www.carto.com using your GitHub account (you will need the Student Development Pack approved - see the Software & Accounts section).\n\nSearch for Are you a student? and Access using GitHub\n\n\n\nUse GitHub login\n\n\n\nFollow the stepts to create your account and note that each scholar will create a separate ‘organization’. This means all your files and maps will be yours and you will not be joining NFI’s organization. You can name ir however you like!",
+    "crumbs": [
+      "GIS Tools",
+      "Cloud GIS"
+    ]
+  },
+  {
+    "objectID": "chapter_1/cloud_gis.html#datasets",
+    "href": "chapter_1/cloud_gis.html#datasets",
+    "title": "Cloud GIS",
+    "section": "Datasets",
+    "text": "Datasets\nFor this excercise we will use two official data sources. I\n\nCycling routes (LINESTRINGS, 4326):\n\nDownload geopackage file\nConsult official source : for references to the .gpkg file above\n\nCycling docks (POINTS, 4326):\n\nDownload geopackage file\nConsult official source : for references to the .gpkg file above\n\n\n\n\n\n\n\n\nNote\n\n\n\nNote that both file have been reprojected to EPSG: 4326 as this is the prefered projection system for CARTO\n\n\n\nLoading Data\nThere are several ways to use the data in CARTO. But this time we are going to upload it directly from CARTO BUILDER\n\nUsing the main menu, navigate to Maps –&gt; + New map button. This takes you to a new tab with an instance of CARTO’s Builder.\nAdd source from... and upload the gpkg in a folder of your preference.\n\n\n\n\n\n\n\nNote that multiple layers can be added from the same\n\n\n\nAdd style\nDepending on the geometry types, you will have different option for styling your Points (docking stations) and the Linestrings (cycling routes).\n\n\n\n\n\n\nNote\n\n\n\nAlways familirise yourself with the data before jumping into modifying its style \n\n\nFor now we encourage you to explore the following three tabs:\n\nLayers\nLegends\nBasemaps\n\n\n\n\n\n\n\n\nPublish\nWhen you are happy with the map make sure you SHARE your results by publishing them to allow for public access\n\nAdd your resulting URL to this notion card\n\n\n\nYour example\n\nThe best maps will be added to complete this section!",
+    "crumbs": [
+      "GIS Tools",
+      "Cloud GIS"
+    ]
+  },
+  {
+    "objectID": "chapter_1/cloud_gis.html#datasets-1",
+    "href": "chapter_1/cloud_gis.html#datasets-1",
+    "title": "Cloud GIS",
+    "section": "Datasets",
+    "text": "Datasets\nFor this excercise we are going to use the same datasets than we did in our previous session. However, this time we are going to use the full dataset containing the population data.\n\nDownload the municipal neighbourhoods as a SHP file: Barrios municipales de Madrid\nDownload the population by district and neighbourhood dataset as a CSV file: Población por distrito y barrio a 1 de enero",
+    "crumbs": [
+      "GIS Tools",
+      "Cloud GIS"
+    ]
+  },
+  {
+    "objectID": "chapter_1/cloud_gis.html#workflows",
+    "href": "chapter_1/cloud_gis.html#workflows",
+    "title": "Cloud GIS",
+    "section": "Workflows",
+    "text": "Workflows\nFrom our previous experience, we know that in order to join the datasets, we first had to clean and filter the data. This time we are going to make use of CARTO’s WORKFLOWS: a no-code visual interface for replicating processes like cleaning, filtering, joining (and much more). Visit for more.",
+    "crumbs": [
+      "GIS Tools",
+      "Cloud GIS"
+    ]
+  },
+  {
+    "objectID": "chapter_1/cloud_gis.html#hands-on",
+    "href": "chapter_1/cloud_gis.html#hands-on",
+    "title": "Cloud GIS",
+    "section": "Hands-on",
+    "text": "Hands-on\nThe following are the general steps we encourage you to follow to get familiar with other functions of CARTO.\n\nData prep\nFor this excerse we just want you to import the file below and update the inputs and output parameters\n\n\n\nCARTO’s Workflow\n\n\n\nUnder menu Data Explorer –&gt; Import both datasets (CSV and SHP)\nUnder menu Workflows –&gt; Import this SQL procedure to give you a head start\nUpdate workflow :\n\nInputs: data sources according to the location and name of your files\nOutput: select where you want to store the results\n\nRun the workflow to identify potential issues\n\nRememeber to read the Error messages (if at all), to debug your workflow\n\n\n\n\nData viz\nNow we are going to move into another builder instance and load the newly created table (from the steps above). This time we encourage you to look into the other two tabs :\n\nWidgets : allow you to interact and filter the data plotted on the map\nInteractions : helps you surface propreties of individual elements in the map\n\n\n\n\n\n\n\n\nPublish\nWhen you are happy with the map make sure you SHARE your results by publishing them to allow for public access\n\nAdd your resulting URL to this notion card\n\n\n\nOutput Example\n    \n\nMadrid’s Population Dashboard - Greg Maya",
+    "crumbs": [
+      "GIS Tools",
+      "Cloud GIS"
+    ]
+  },
+  {
+    "objectID": "chapter_1/intro_to_tableau.html",
+    "href": "chapter_1/intro_to_tableau.html",
     "title": "Intro to Tableau",
     "section": "",
     "text": "Make sure you have downloaded the software using the instructions in Software & Accounts\nTableau is a leading data visualization tool that simplifies the process of converting complex data into interactive and visually appealing dashboards and reports. It is highly regarded in the business intelligence (BI) community for its ability to facilitate data-driven decision-making through an intuitive interface that accommodates users of all skill levels. By supporting a wide variety of data sources (including some spatial formats like shapefiles)) and enabling quick identification of data trends and patterns."
   },
   {
-    "objectID": "chapter_2/intro_to_tableau.html#tableau-desktop-structure",
-    "href": "chapter_2/intro_to_tableau.html#tableau-desktop-structure",
+    "objectID": "chapter_1/intro_to_tableau.html#tableau-desktop-structure",
+    "href": "chapter_1/intro_to_tableau.html#tableau-desktop-structure",
     "title": "Intro to Tableau",
     "section": "Tableau Desktop Structure",
-    "text": "Tableau Desktop Structure\n\n\n\n\n\nflowchart LR\n    subgraph Datasources\n    A[(D 1)]\n    a[(DB 2)]\n    end \n\n    subgraph Views\n    B[Linechart]\n    C[Map]\n    D[Barchart]\n    end\n\n    subgraph Dashboards\n    E{{Dashboard 1}}\n    F{{Dashboard 2}}\n    end \n\n    subgraph Stories\n    S{Story}\n    end \n\n    A --&gt; B\n    A --&gt; C\n    A --&gt; D\n    a --&gt; D\n\n    B --&gt; E\n    C --&gt; E\n    D --&gt; F\n    i(((images))) -.- E\n    t(((texts))) -.- F \n\n    E --&gt; S\n    F --&gt; S\n    i -.- S\n    t -.- S\n\n\n\n\n\n\n\nData Sources: Connecting to data\nThe overall structure\n\n\nViews: Creating visualizations\n\n\nDashboards: Interacting and Enhancing views\n\n\nStories: Data based narratives"
+    "text": "Tableau Desktop Structure\n\n\n\n\n\nflowchart LR\n    subgraph Datasources\n    A[(D 1)]\n    a[(DB 2)]\n    end \n\n    subgraph Views\n    B[Linechart]\n    C[Map]\n    D[Barchart]\n    end\n\n    subgraph Dashboards\n    E{{Dashboard 1}}\n    F{{Dashboard 2}}\n    end \n\n    subgraph Stories\n    S{Story}\n    end \n\n    A --&gt; B\n    A --&gt; C\n    A --&gt; D\n    a --&gt; D\n\n    B --&gt; E\n    C --&gt; E\n    D --&gt; F\n    i(((images))) -.- E\n    t(((texts))) -.- F \n\n    E --&gt; S\n    F --&gt; S\n    i -.- S\n    t -.- S"
   },
   {
-    "objectID": "chapter_2/intro_to_tableau.html#documentation",
-    "href": "chapter_2/intro_to_tableau.html#documentation",
+    "objectID": "chapter_1/intro_to_tableau.html#data-sources-connecting-to-data",
+    "href": "chapter_1/intro_to_tableau.html#data-sources-connecting-to-data",
+    "title": "Intro to Tableau",
+    "section": "Data Sources: Connecting to data",
+    "text": "Data Sources: Connecting to data\nIn tableau you can connect simultaneously to multiple data sources, including Postgres and/or individual shapefiles and .CSV (‘text files’).\nWhen you connect to more than one dataset you can establish three possible scenarios:\n\nCreate a logical table: Tableau’s lingo for the result from joining physical tables together\nCreate a relationship: In this case your tables won’t be joined if the specific chart you’re building does not require to do so.\nCreate an independent data source: In this case you limit the potential to use measures from multiple datasources.\n\nDepending on your use case you might want to use different techniques.\n\nLive vs Extract\n\nLive : when your establish just the relationships described above but the actual queries happen as you build your charts (and maps). Heavier on performance.\nExtract : when you create a resulting file (called Tableau extract) which is optimized to speed up performance and incoportates the resultiong joined tables and relatioships you have established. This is the reccomended approach.\n\nNote that Extracts can always be refreshed if your input data changes or you want to make adjustment to your joins / relations.\n\n\nDatasets\nFor this excercise we are going to use Spanish Census data at the ‘census section’ level (the lowest level of annonimised data). Both datasets come from the INE - National Institute of Statitics.\n\nPopulation by gender and origin in .CSV format : here\nCensus Sections in .SHP format : here"
+  },
+  {
+    "objectID": "chapter_1/intro_to_tableau.html#views-creating-visualizations",
+    "href": "chapter_1/intro_to_tableau.html#views-creating-visualizations",
+    "title": "Intro to Tableau",
+    "section": "Views: Creating visualizations",
+    "text": "Views: Creating visualizations\nThis is where you are going to create all of your individual charts and graphs. Two important field types area automatically created to help you set up your visualizations:\n\nDimensions (blue): All qualitative and categorical fields in your dataset. eg. ‘nationality’, ‘gender’, etc…\nMeasures (green): Continuous fields where you can apply SUM, AVG, MIN, MAX calculations. eg. ‘population’, ‘age’, etc..\n\nNote that geometries are considered measures but deconstructed automatically into Longitude and Latitude when brought to the view.\n\n\nTo create new fields right click next to your fields ans select Create Calculated Field...\nTo build your charts 3 things need careful attention: - MARKS CARD: Establishes the type of graph you want to build. eg: lineschart, barchart, map, piechart. etc.. - COLUMNS and ROWS shelves: Determine what happend in your vertical and horizontal axis. - FILTERS CARD: The place to customized what gets filtered for the current chart.\n\n\n\n\n\n\nWarning\n\n\n\nBe extra critical about the numbers! Tableau is really good at generating outputs but the results should make sense to you and if possible, always try to sense check with other sources.\n\n\n\nExercise\nDrag and drop fields to create the following charts:\n\nMap: Displaying the total population per ‘census section’ in the ‘Vasque Country’ (Pais Vasco)\nBar graph: Number of people per province splitted by gender.\nBig Numbers: Three big numbers: Total Population, % Nacionals, % Foreigns.\n\nThese will serve us to sense check the values on our Dashboard\n\nOthers: try to come up with new fields that could enrich the analysis."
+  },
+  {
+    "objectID": "chapter_1/intro_to_tableau.html#dashboards-stories-interacting-and-enhancing-views",
+    "href": "chapter_1/intro_to_tableau.html#dashboards-stories-interacting-and-enhancing-views",
+    "title": "Intro to Tableau",
+    "section": "Dashboards (& Stories): Interacting and Enhancing views",
+    "text": "Dashboards (& Stories): Interacting and Enhancing views\nIn this step is where you put your pieces together.\n\nCreating a Dashboard: Steps to create a dashboard by combining different visualizations.\nInteractive Dashboards: Making dashboards interactive with actions like filters, highlights, and URL actions."
+  },
+  {
+    "objectID": "chapter_1/intro_to_tableau.html#sharing-and-publishing",
+    "href": "chapter_1/intro_to_tableau.html#sharing-and-publishing",
+    "title": "Intro to Tableau",
+    "section": "Sharing and Publishing",
+    "text": "Sharing and Publishing"
+  },
+  {
+    "objectID": "chapter_1/intro_to_tableau.html#documentation",
+    "href": "chapter_1/intro_to_tableau.html#documentation",
     "title": "Intro to Tableau",
     "section": "Documentation",
-    "text": "Documentation\n\nInterface Overview: Introduction to the main parts of the Tableau Desktop interface, including the start page, data pane, analytics pane, and workspace.\nConcepts of Data Visualization: Importance of data visualization and the role of Tableau in data-driven decision-making."
+    "text": "Documentation"
   },
   {
-    "objectID": "chapter_2/intro_to_tableau.html#connecting-to-data-10-minutes",
-    "href": "chapter_2/intro_to_tableau.html#connecting-to-data-10-minutes",
-    "title": "Intro to Tableau",
-    "section": "2. Connecting to Data (10 minutes)",
-    "text": "2. Connecting to Data (10 minutes)\n\nData Sources: How to connect Tableau to various data sources like Excel, SQL databases, and cloud data.\nData Pane: Exploring the data pane to view fields and understand the differences between dimensions and measures.\nJoining and Blending Data: Basics of combining multiple data sources in Tableau."
-  },
-  {
-    "objectID": "chapter_2/intro_to_tableau.html#creating-basic-visualizations-15-minutes",
-    "href": "chapter_2/intro_to_tableau.html#creating-basic-visualizations-15-minutes",
-    "title": "Intro to Tableau",
-    "section": "3. Creating Basic Visualizations (15 minutes)",
-    "text": "3. Creating Basic Visualizations (15 minutes)\n\nBuilding Views: Creating basic charts (bar, line, pie) by dragging and dropping fields.\nShelves and Cards: Utilizing shelves (Columns, Rows) and cards (Marks, Filters) to customize visualizations.\nSorting and Filtering: Applying sorting and filters to views."
-  },
-  {
-    "objectID": "chapter_2/intro_to_tableau.html#dashboards-and-stories-10-minutes",
-    "href": "chapter_2/intro_to_tableau.html#dashboards-and-stories-10-minutes",
-    "title": "Intro to Tableau",
-    "section": "4. Dashboards and Stories (10 minutes)",
-    "text": "4. Dashboards and Stories (10 minutes)\n\nCreating a Dashboard: Steps to create a dashboard by combining different visualizations.\nInteractive Dashboards: Making dashboards interactive with actions like filters, highlights, and URL actions.\nIntroduction to Stories: Overview of stories for narrating data visualizations."
-  },
-  {
-    "objectID": "chapter_2/intro_to_tableau.html#sharing-and-publishing-5-minutes",
-    "href": "chapter_2/intro_to_tableau.html#sharing-and-publishing-5-minutes",
+    "objectID": "chapter_1/intro_to_tableau.html#sharing-and-publishing-5-minutes",
+    "href": "chapter_1/intro_to_tableau.html#sharing-and-publishing-5-minutes",
     "title": "Intro to Tableau",
     "section": "5. Sharing and Publishing (5 minutes)",
     "text": "5. Sharing and Publishing (5 minutes)\n\nExport Options: How to export visualizations and dashboards as images, PDFs, or Tableau Workbook files.\nPublishing to Tableau Public/Server: Basic steps for publishing work to Tableau Public or a Tableau Server."
   },
   {
-    "objectID": "chapter_2/intro_to_tableau.html#qa-and-practice-time-10-minutes",
-    "href": "chapter_2/intro_to_tableau.html#qa-and-practice-time-10-minutes",
+    "objectID": "chapter_1/intro_to_tableau.html#qa-and-practice-time-10-minutes",
+    "href": "chapter_1/intro_to_tableau.html#qa-and-practice-time-10-minutes",
     "title": "Intro to Tableau",
     "section": "6. Q&A and Practice Time (10 minutes)",
     "text": "6. Q&A and Practice Time (10 minutes)\n\nOpen Floor for Questions: Allowing participants to ask questions.\nHands-On Practice: Encouraging participants to create a basic visualization or dashboard with a provided dataset.\n\n\nAdditional Tips\n\nHands-On Examples: Use real-life datasets for demonstrations to enhance engagement and understanding.\nResources for Further Learning: Provide links to Tableau’s online tutorials, forums, and communities for continued learning."
-  },
-  {
-    "objectID": "chapter_1/gis_tips.html",
-    "href": "chapter_1/gis_tips.html",
-    "title": "Tips",
-    "section": "",
-    "text": "In multiple scenarios you may find information in one table/layer that you might want to connect to information from another. JOINS are the way to do this, and work by connecting two different datasources based on a shared attribute. So doing, the attributes from one table can be connected to another for analysis or visualision purposes.\n\n\n\n\nInner Join: Returns only rows that have been matched across both tables.\nLeft (Outer) Join: Returns all rows from the left table, and matched rows from the right table where found.\nRight (Outer) Join: Returns all rows from the right table, and matched rows from the left table where found.\nFull (Outer) Join: Returns all rows from both tables, regardless of whether matches were found in the other table.\nCross Join: Returns a Cartesian product of the two tables, i.e. each row connected to each other row from the other table. Use with caution!\n\n\n\n\n\nJoin types\n\n\n\n\n\n\n\n\n\nOccurs when each record in one table corresponds to exactly one record in another table.\n\n\n\n\n\n\n\nOccurs when a single record in one table can be associated with one or more records in another table.\n\n\n\n\n\n\n\nOccurrs when multiple records from one table correspond with one or more in another table.\n\n\n\n\n\n\n\n\n\n\nImportant\n\n\n\n\nWhen using joins you are not modifying the original tables.\nYour resulting table can be much smaller or (exponentially) larger than any of the original tables.\n\n\n\n\n\n\nSimilar to joining tables based on their attributes, it is possible to join them based on their location. This is a very common technique in spatial databases (e.g. PostGIS) where you’ll commonly use a feature such as a city boundary to filter and join data from another table (e.g. streets).\nTo achieve the expected results, make sure that both origin tables are in the same CRS.\n\n\nIn QGIS and spatial databases, spatial predicates are used to define spatial relationships between features. These are used for joining or selecting data based on the relationships between the features. Some of the common predicates are:\n\nContains: Determines if one geometry contains another.\nWithin: Checks if one geometry is within another geometry.\nIntersects: Tests if two geometries intersect at any point.\nDisjoint: Determines if two geometries do not intersect.\nTouches: Checks if two geometries have at least one point in common but their interiors do not intersect.\nCrosses: Determines if the geometries have some, but not all, interior points in common.\nEquals: Checks if two geometries are exactly the same in terms of spatial coordinates.\nOverlaps: Determines if two geometries overlap, meaning they share some but not all points, and the intersection has the same dimension as the geometries themselves.\n\n\n\n\n\n\n\nCaution\n\n\n\nPlease note that depending on the size and complexity of your joins some operations can be computationally expensive and some advanced techniques might need to be implemented to achieve best performance.",
-    "crumbs": [
-      "GIS Tools",
-      "Tips"
-    ]
-  },
-  {
-    "objectID": "chapter_1/gis_tips.html#join-types",
-    "href": "chapter_1/gis_tips.html#join-types",
-    "title": "Tips",
-    "section": "",
-    "text": "Inner Join: Returns only rows that have been matched across both tables.\nLeft (Outer) Join: Returns all rows from the left table, and matched rows from the right table where found.\nRight (Outer) Join: Returns all rows from the right table, and matched rows from the left table where found.\nFull (Outer) Join: Returns all rows from both tables, regardless of whether matches were found in the other table.\nCross Join: Returns a Cartesian product of the two tables, i.e. each row connected to each other row from the other table. Use with caution!\n\n\n\n\n\nJoin types",
-    "crumbs": [
-      "GIS Tools",
-      "Tips"
-    ]
-  },
-  {
-    "objectID": "chapter_1/gis_tips.html#cardinality",
-    "href": "chapter_1/gis_tips.html#cardinality",
-    "title": "Tips",
-    "section": "",
-    "text": "Occurs when each record in one table corresponds to exactly one record in another table.\n\n\n\n\n\n\n\nOccurs when a single record in one table can be associated with one or more records in another table.\n\n\n\n\n\n\n\nOccurrs when multiple records from one table correspond with one or more in another table.\n\n\n\n\n\n\n\n\n\n\nImportant\n\n\n\n\nWhen using joins you are not modifying the original tables.\nYour resulting table can be much smaller or (exponentially) larger than any of the original tables.",
-    "crumbs": [
-      "GIS Tools",
-      "Tips"
-    ]
-  },
-  {
-    "objectID": "chapter_1/gis_tips.html#introduction-to-spatial-joins",
-    "href": "chapter_1/gis_tips.html#introduction-to-spatial-joins",
-    "title": "Tips",
-    "section": "",
-    "text": "Similar to joining tables based on their attributes, it is possible to join them based on their location. This is a very common technique in spatial databases (e.g. PostGIS) where you’ll commonly use a feature such as a city boundary to filter and join data from another table (e.g. streets).\nTo achieve the expected results, make sure that both origin tables are in the same CRS.\n\n\nIn QGIS and spatial databases, spatial predicates are used to define spatial relationships between features. These are used for joining or selecting data based on the relationships between the features. Some of the common predicates are:\n\nContains: Determines if one geometry contains another.\nWithin: Checks if one geometry is within another geometry.\nIntersects: Tests if two geometries intersect at any point.\nDisjoint: Determines if two geometries do not intersect.\nTouches: Checks if two geometries have at least one point in common but their interiors do not intersect.\nCrosses: Determines if the geometries have some, but not all, interior points in common.\nEquals: Checks if two geometries are exactly the same in terms of spatial coordinates.\nOverlaps: Determines if two geometries overlap, meaning they share some but not all points, and the intersection has the same dimension as the geometries themselves.\n\n\n\n\n\n\n\nCaution\n\n\n\nPlease note that depending on the size and complexity of your joins some operations can be computationally expensive and some advanced techniques might need to be implemented to achieve best performance.",
-    "crumbs": [
-      "GIS Tools",
-      "Tips"
-    ]
-  },
-  {
-    "objectID": "chapter_1/gis_tips.html#tools-and-plugins",
-    "href": "chapter_1/gis_tips.html#tools-and-plugins",
-    "title": "Tips",
-    "section": "Tools and plugins",
-    "text": "Tools and plugins\nIn QGIS, georeferencing can be carried out using the built-in Georeferencer tool, which can be found under the menu Layer -&gt; Georeferencer.... This tool allows you to manually add control points that link the location on the image with geographic coordinates on the map, adjusting the image to fit the spatial data.\n\n\n\n\n\n\nTip\n\n\n\nThe more nodes you add and the further away from each other, the more refences the algorithm has to accomodate the original file. Minimum of 5 points should be considered to have an descent baseline.\n\n\n\nPlugins: For more advanced or specific georeferencing needs, there are additional plugins like Freehand Raster Georeferencer, allowing for more flexible manipulation of images directly within the map canvas.",
-    "crumbs": [
-      "GIS Tools",
-      "Tips"
-    ]
-  },
-  {
-    "objectID": "chapter_1/gis_tips.html#use-cases-of-georeferenced-images",
-    "href": "chapter_1/gis_tips.html#use-cases-of-georeferenced-images",
-    "title": "Tips",
-    "section": "Use cases of georeferenced images",
-    "text": "Use cases of georeferenced images\n\nHistorical Maps: Bringing old maps into modern GIS projects, helping to study changes over time.\nTracing Exercises: Overlaying aerial or satellite imagery to digitize features such as roads, buildings, or land use.\nReshaping sketches: Planning and ideation sketches usually are our of scale and conveniently reshaping elements of the environment. Georefereincing them helps to better transition ideas into reality.\n\n\n\n\n\n\n\nIt’s important to consider potential distortions when georeferencing images, as the process involves stretching or rotating the image to align with real-world coordinates. Understanding and managing these distortions is key to ensuring the accuracy of the geospatial analysis.",
-    "crumbs": [
-      "GIS Tools",
-      "Tips"
-    ]
-  },
-  {
-    "objectID": "chapter_1/gis_tips.html#demo",
-    "href": "chapter_1/gis_tips.html#demo",
-    "title": "Tips",
-    "section": "Demo …",
-    "text": "Demo …",
-    "crumbs": [
-      "GIS Tools",
-      "Tips"
-    ]
-  },
-  {
-    "objectID": "chapter_1/sql.html",
-    "href": "chapter_1/sql.html",
-    "title": "SQL for GIS",
-    "section": "",
-    "text": "This is a draft outline and will be fleshed-out closer to class. To make visible, edit _quarto.yml to include in directory.\n\n\nSQL and PostgreSQL Basics:\n\n\nUnderstanding SQL (Structured Query Language)\nIntroduction to PostgreSQL as a Relational Database Management System (RDBMS)\nWorking with Schemas in PostgreSQL\n\n\nData Manipulation with SQL and PostgreSQL:\n\n\nCREATE, SELECT, INSERT, DELETE Statements\nPrimary Keys (PK) and Foreign Keys (FK)\nCreating and Managing Indexes for Performance Optimization\n\n\nSQL Concepts:\n\n\nAggregations: COUNT, SUM, AVG, MIN, MAX\nComplex Queries and Subqueries WITH, WHERE\nConditional Statements: CASE Statements\n\n\nIntroduction to GIS Integration with PostgreSQL:\n\n\nSpatial Data Types in PostgreSQL\nSpatial Indexing for Efficient Spatial Queries\nSpatial Functions and Operators in PostgreSQL\n\n\nSpatial and Non-Spatial Joins:\n\n\nPerforming Spatial Joins for GIS Analysis\nNon-Spatial Joins for Relational Data Analysis\nCombining Spatial and Non-Spatial Data in Queries\n\n\nHow to ask ChatGPT\n\n\nIterating query development\nDebugging"
-  },
-  {
-    "objectID": "chapter_1/sql.html#key-topics",
-    "href": "chapter_1/sql.html#key-topics",
-    "title": "SQL for GIS",
-    "section": "Key Topics",
-    "text": "Key Topics\n\nIntroduction to Data Analysis and Databases:\n\n\nImportance of Data Analysis in Decision Making\nOverview of Relational Databases\n\n\nConnecting to Google Cloud Platform (GCP):\n\n\nConnecting to NFI’s database(s)\nSetting Up a GCP Account\n\n\nSQL and PostgreSQL Basics:\n\n\nUnderstanding SQL (Structured Query Language)\nIntroduction to PostgreSQL as a Relational Database Management System (RDBMS)\nWorking with Schemas in PostgreSQL\n\n\nData Manipulation with SQL and PostgreSQL:\n\n\nCREATE, SELECT, INSERT, DELETE Statements\nPrimary Keys (PK) and Foreign Keys (FK)\nCreating and Managing Indexes for Performance Optimization\n\n\nSQL Concepts:\n\n\nAggregations: COUNT, SUM, AVG, MIN, MAX\nComplex Queries and Subqueries WITH, WHERE\nConditional Statements: CASE Statements\n\n\nIntroduction to GIS Integration with PostgreSQL:\n\n\nSpatial Data Types in PostgreSQL\nSpatial Indexing for Efficient Spatial Queries\nSpatial Functions and Operators in PostgreSQL\n\n\nSpatial and Non-Spatial Joins:\n\n\nPerforming Spatial Joins for GIS Analysis\nNon-Spatial Joins for Relational Data Analysis\nCombining Spatial and Non-Spatial Data in Queries"
-  },
-  {
-    "objectID": "chapter_1/sql.html#software-needed",
-    "href": "chapter_1/sql.html#software-needed",
-    "title": "SQL for GIS",
-    "section": "Software needed",
-    "text": "Software needed\n\nFor this session please make sure you have downloaded the following software(s):\n\nTablePlus | Modern, Native Tool for Database Management."
-  },
-  {
-    "objectID": "chapter_1/sql.html#connecting-to-data-on-postgis",
-    "href": "chapter_1/sql.html#connecting-to-data-on-postgis",
-    "title": "SQL for GIS",
-    "section": "Connecting to data on PostGIS 👨🏽‍💻",
-    "text": "Connecting to data on PostGIS 👨🏽‍💻\n\n\n\n⚙\nCONNECTION SETTINGS\n\n\n\n\nIP Address\n(will be provided during class)\n\n\nDatabase names\nnfi / urban_analytics\n\n\nPort\n5432\n\n\nUsername\nscholar\n\n\nPassword\n(will be provided during class)\n\n\n\n\n\n\n\n\n\nTip\n\n\n\nNote that the connections to the Databases are restricted by the source IP address."
-  },
-  {
-    "objectID": "chapter_1/sql.html#to-dos",
-    "href": "chapter_1/sql.html#to-dos",
-    "title": "SQL for GIS",
-    "section": "To-Dos",
-    "text": "To-Dos\n\nCreate a table with the following characteristics.\nUse schema. ua0\nTable name : [yourinitials] + “_prof_exp”\nFields required: (assign data types as you think would be best)\n\nid\nscholar_id\nindustry_id\ninstitution\nyears_of_experience\neducation\nlocation (crs: 4326)\nend_year\nnotes\n\n** If you think more fields are necessary, feel free to add them\nCreate a GitHub account\n\nadd link to public.scholars.github_link (varchar)\n\n\n\nOptional\nCreate a local instance of PostGIS for use in the upcoming months\nLearn PostgreSQL Tutorial - Full Course for Beginners"
-  },
-  {
-    "objectID": "chapter_1/sql.html#useful-resources",
-    "href": "chapter_1/sql.html#useful-resources",
-    "title": "SQL for GIS",
-    "section": "Useful Resources",
-    "text": "Useful Resources\n\nPOSTGRESQL & POSTGIS CHEATSHEETS\n\nPostgreSQL & PostGIS cheatsheet (a work in progress)\nPostgres Cheatsheet"
   },
   {
     "objectID": "chapter_1/gis.html",
@@ -666,124 +675,122 @@
     ]
   },
   {
-    "objectID": "chapter_1/cloud_gis.html",
-    "href": "chapter_1/cloud_gis.html",
-    "title": "Cloud GIS",
+    "objectID": "chapter_1/sql.html",
+    "href": "chapter_1/sql.html",
+    "title": "SQL for GIS",
     "section": "",
-    "text": "This will be an in-class hands-on session providing an introduction to the use of CARTO for publishing and styling interactive maps.\nThe are two excercises that will help us explore different components of the platform:\nEach excersice will be lead by a live demo of the main steps to better control the visualization of the datasets. Then, each student will have time to explore on their own time the tool and come up with a shereable map.",
-    "crumbs": [
-      "GIS Tools",
-      "Cloud GIS"
-    ]
+    "text": "This is a draft outline and will be fleshed-out closer to class. To make visible, edit _quarto.yml to include in directory.\n\n\nSQL and PostgreSQL Basics:\n\n\nUnderstanding SQL (Structured Query Language)\nIntroduction to PostgreSQL as a Relational Database Management System (RDBMS)\nWorking with Schemas in PostgreSQL\n\n\nData Manipulation with SQL and PostgreSQL:\n\n\nCREATE, SELECT, INSERT, DELETE Statements\nPrimary Keys (PK) and Foreign Keys (FK)\nCreating and Managing Indexes for Performance Optimization\n\n\nSQL Concepts:\n\n\nAggregations: COUNT, SUM, AVG, MIN, MAX\nComplex Queries and Subqueries WITH, WHERE\nConditional Statements: CASE Statements\n\n\nIntroduction to GIS Integration with PostgreSQL:\n\n\nSpatial Data Types in PostgreSQL\nSpatial Indexing for Efficient Spatial Queries\nSpatial Functions and Operators in PostgreSQL\n\n\nSpatial and Non-Spatial Joins:\n\n\nPerforming Spatial Joins for GIS Analysis\nNon-Spatial Joins for Relational Data Analysis\nCombining Spatial and Non-Spatial Data in Queries\n\n\nHow to ask ChatGPT\n\n\nIterating query development\nDebugging"
   },
   {
-    "objectID": "chapter_1/cloud_gis.html#connecting-to-carto",
-    "href": "chapter_1/cloud_gis.html#connecting-to-carto",
-    "title": "Cloud GIS",
-    "section": "Connecting to CARTO",
-    "text": "Connecting to CARTO\nBecause this will be the first time you log in, you will have to log in into www.carto.com using your GitHub account (you will need the Student Development Pack approved - see the Software & Accounts section).\n\nSearch for Are you a student? and Access using GitHub\n\n\n\nUse GitHub login\n\n\n\nFollow the stepts to create your account and note that each scholar will create a separate ‘organization’. This means all your files and maps will be yours and you will not be joining NFI’s organization. You can name ir however you like!",
-    "crumbs": [
-      "GIS Tools",
-      "Cloud GIS"
-    ]
+    "objectID": "chapter_1/sql.html#key-topics",
+    "href": "chapter_1/sql.html#key-topics",
+    "title": "SQL for GIS",
+    "section": "Key Topics",
+    "text": "Key Topics\n\nIntroduction to Data Analysis and Databases:\n\n\nImportance of Data Analysis in Decision Making\nOverview of Relational Databases\n\n\nConnecting to Google Cloud Platform (GCP):\n\n\nConnecting to NFI’s database(s)\nSetting Up a GCP Account\n\n\nSQL and PostgreSQL Basics:\n\n\nUnderstanding SQL (Structured Query Language)\nIntroduction to PostgreSQL as a Relational Database Management System (RDBMS)\nWorking with Schemas in PostgreSQL\n\n\nData Manipulation with SQL and PostgreSQL:\n\n\nCREATE, SELECT, INSERT, DELETE Statements\nPrimary Keys (PK) and Foreign Keys (FK)\nCreating and Managing Indexes for Performance Optimization\n\n\nSQL Concepts:\n\n\nAggregations: COUNT, SUM, AVG, MIN, MAX\nComplex Queries and Subqueries WITH, WHERE\nConditional Statements: CASE Statements\n\n\nIntroduction to GIS Integration with PostgreSQL:\n\n\nSpatial Data Types in PostgreSQL\nSpatial Indexing for Efficient Spatial Queries\nSpatial Functions and Operators in PostgreSQL\n\n\nSpatial and Non-Spatial Joins:\n\n\nPerforming Spatial Joins for GIS Analysis\nNon-Spatial Joins for Relational Data Analysis\nCombining Spatial and Non-Spatial Data in Queries"
   },
   {
-    "objectID": "chapter_1/cloud_gis.html#datasets",
-    "href": "chapter_1/cloud_gis.html#datasets",
-    "title": "Cloud GIS",
-    "section": "Datasets",
-    "text": "Datasets\nFor this excercise we will use two official data sources. I\n\nCycling routes (LINESTRINGS, 4326):\n\nDownload geopackage file\nConsult official source : for references to the .gpkg file above\n\nCycling docks (POINTS, 4326):\n\nDownload geopackage file\nConsult official source : for references to the .gpkg file above\n\n\n\n\n\n\n\n\nNote\n\n\n\nNote that both file have been reprojected to EPSG: 4326 as this is the prefered projection system for CARTO\n\n\n\nLoading Data\nThere are several ways to use the data in CARTO. But this time we are going to upload it directly from CARTO BUILDER\n\nUsing the main menu, navigate to Maps –&gt; + New map button. This takes you to a new tab with an instance of CARTO’s Builder.\nAdd source from... and upload the gpkg in a folder of your preference.\n\n\n\n\n\n\n\nNote that multiple layers can be added from the same\n\n\n\nAdd style\nDepending on the geometry types, you will have different option for styling your Points (docking stations) and the Linestrings (cycling routes).\n\n\n\n\n\n\nNote\n\n\n\nAlways familirise yourself with the data before jumping into modifying its style \n\n\nFor now we encourage you to explore the following three tabs:\n\nLayers\nLegends\nBasemaps\n\n\n\n\n\n\n\n\nPublish\nWhen you are happy with the map make sure you SHARE your results by publishing them to allow for public access\n\nAdd your resulting URL to this notion card\n\n\n\nYour example\n\nThe best maps will be added to complete this section!",
-    "crumbs": [
-      "GIS Tools",
-      "Cloud GIS"
-    ]
+    "objectID": "chapter_1/sql.html#software-needed",
+    "href": "chapter_1/sql.html#software-needed",
+    "title": "SQL for GIS",
+    "section": "Software needed",
+    "text": "Software needed\n\nFor this session please make sure you have downloaded the following software(s):\n\nTablePlus | Modern, Native Tool for Database Management."
   },
   {
-    "objectID": "chapter_1/cloud_gis.html#datasets-1",
-    "href": "chapter_1/cloud_gis.html#datasets-1",
-    "title": "Cloud GIS",
-    "section": "Datasets",
-    "text": "Datasets\nFor this excercise we are going to use the same datasets than we did in our previous session. However, this time we are going to use the full dataset containing the population data.\n\nDownload the municipal neighbourhoods as a SHP file: Barrios municipales de Madrid\nDownload the population by district and neighbourhood dataset as a CSV file: Población por distrito y barrio a 1 de enero",
-    "crumbs": [
-      "GIS Tools",
-      "Cloud GIS"
-    ]
+    "objectID": "chapter_1/sql.html#connecting-to-data-on-postgis",
+    "href": "chapter_1/sql.html#connecting-to-data-on-postgis",
+    "title": "SQL for GIS",
+    "section": "Connecting to data on PostGIS 👨🏽‍💻",
+    "text": "Connecting to data on PostGIS 👨🏽‍💻\n\n\n\n⚙\nCONNECTION SETTINGS\n\n\n\n\nIP Address\n(will be provided during class)\n\n\nDatabase names\nnfi / urban_analytics\n\n\nPort\n5432\n\n\nUsername\nscholar\n\n\nPassword\n(will be provided during class)\n\n\n\n\n\n\n\n\n\nTip\n\n\n\nNote that the connections to the Databases are restricted by the source IP address."
   },
   {
-    "objectID": "chapter_1/cloud_gis.html#workflows",
-    "href": "chapter_1/cloud_gis.html#workflows",
-    "title": "Cloud GIS",
-    "section": "Workflows",
-    "text": "Workflows\nFrom our previous experience, we know that in order to join the datasets, we first had to clean and filter the data. This time we are going to make use of CARTO’s WORKFLOWS: a no-code visual interface for replicating processes like cleaning, filtering, joining (and much more). Visit for more.",
-    "crumbs": [
-      "GIS Tools",
-      "Cloud GIS"
-    ]
+    "objectID": "chapter_1/sql.html#to-dos",
+    "href": "chapter_1/sql.html#to-dos",
+    "title": "SQL for GIS",
+    "section": "To-Dos",
+    "text": "To-Dos\n\nCreate a table with the following characteristics.\nUse schema. ua0\nTable name : [yourinitials] + “_prof_exp”\nFields required: (assign data types as you think would be best)\n\nid\nscholar_id\nindustry_id\ninstitution\nyears_of_experience\neducation\nlocation (crs: 4326)\nend_year\nnotes\n\n** If you think more fields are necessary, feel free to add them\nCreate a GitHub account\n\nadd link to public.scholars.github_link (varchar)\n\n\n\nOptional\nCreate a local instance of PostGIS for use in the upcoming months\nLearn PostgreSQL Tutorial - Full Course for Beginners"
   },
   {
-    "objectID": "chapter_1/cloud_gis.html#hands-on",
-    "href": "chapter_1/cloud_gis.html#hands-on",
-    "title": "Cloud GIS",
-    "section": "Hands-on",
-    "text": "Hands-on\nThe following are the general steps we encourage you to follow to get familiar with other functions of CARTO.\n\nData prep\nFor this excerse we just want you to import the file below and update the inputs and output parameters\n\n\n\nCARTO’s Workflow\n\n\n\nUnder menu Data Explorer –&gt; Import both datasets (CSV and SHP)\nUnder menu Workflows –&gt; Import this SQL procedure to give you a head start\nUpdate workflow :\n\nInputs: data sources according to the location and name of your files\nOutput: select where you want to store the results\n\nRun the workflow to identify potential issues\n\nRememeber to read the Error messages (if at all), to debug your workflow\n\n\n\n\nData viz\nNow we are going to move into another builder instance and load the newly created table (from the steps above). This time we encourage you to look into the other two tabs :\n\nWidgets : allow you to interact and filter the data plotted on the map\nInteractions : helps you surface propreties of individual elements in the map\n\n\n\n\n\n\n\n\nPublish\nWhen you are happy with the map make sure you SHARE your results by publishing them to allow for public access\n\nAdd your resulting URL to this notion card\n\n\n\nOutput Example\n    \n\nMadrid’s Population Dashboard - Greg Maya",
-    "crumbs": [
-      "GIS Tools",
-      "Cloud GIS"
-    ]
+    "objectID": "chapter_1/sql.html#useful-resources",
+    "href": "chapter_1/sql.html#useful-resources",
+    "title": "SQL for GIS",
+    "section": "Useful Resources",
+    "text": "Useful Resources\n\nPOSTGRESQL & POSTGIS CHEATSHEETS\n\nPostgreSQL & PostGIS cheatsheet (a work in progress)\nPostgres Cheatsheet"
   },
   {
-    "objectID": "chapter_2/intro_to_geopandas.html",
-    "href": "chapter_2/intro_to_geopandas.html",
-    "title": "Welcome to GeoPandas",
+    "objectID": "chapter_1/gis_tips.html",
+    "href": "chapter_1/gis_tips.html",
+    "title": "Tips",
     "section": "",
-    "text": "NOTE: this lesson is under development, please check back later!\nIn the Intro to Python lesson (do that lesson first if you haven’t already) we provided a high level introduction to GeoPandas. GeoPandas builds on underlying functionality provided by a library called “Pandas”. Put differently, GeoPandas bolts geospatial capabilities onto the underlying Pandas library.",
+    "text": "In multiple scenarios you may find information in one table/layer that you might want to connect to information from another. JOINS are the way to do this, and work by connecting two different datasources based on a shared attribute. So doing, the attributes from one table can be connected to another for analysis or visualision purposes.\n\n\n\n\nInner Join: Returns only rows that have been matched across both tables.\nLeft (Outer) Join: Returns all rows from the left table, and matched rows from the right table where found.\nRight (Outer) Join: Returns all rows from the right table, and matched rows from the left table where found.\nFull (Outer) Join: Returns all rows from both tables, regardless of whether matches were found in the other table.\nCross Join: Returns a Cartesian product of the two tables, i.e. each row connected to each other row from the other table. Use with caution!\n\n\n\n\n\nJoin types\n\n\n\n\n\n\n\n\n\nOccurs when each record in one table corresponds to exactly one record in another table.\n\n\n\n\n\n\n\nOccurs when a single record in one table can be associated with one or more records in another table.\n\n\n\n\n\n\n\nOccurrs when multiple records from one table correspond with one or more in another table.\n\n\n\n\n\n\n\n\n\n\nImportant\n\n\n\n\nWhen using joins you are not modifying the original tables.\nYour resulting table can be much smaller or (exponentially) larger than any of the original tables.\n\n\n\n\n\n\nSimilar to joining tables based on their attributes, it is possible to join them based on their location. This is a very common technique in spatial databases (e.g. PostGIS) where you’ll commonly use a feature such as a city boundary to filter and join data from another table (e.g. streets).\nTo achieve the expected results, make sure that both origin tables are in the same CRS.\n\n\nIn QGIS and spatial databases, spatial predicates are used to define spatial relationships between features. These are used for joining or selecting data based on the relationships between the features. Some of the common predicates are:\n\nContains: Determines if one geometry contains another.\nWithin: Checks if one geometry is within another geometry.\nIntersects: Tests if two geometries intersect at any point.\nDisjoint: Determines if two geometries do not intersect.\nTouches: Checks if two geometries have at least one point in common but their interiors do not intersect.\nCrosses: Determines if the geometries have some, but not all, interior points in common.\nEquals: Checks if two geometries are exactly the same in terms of spatial coordinates.\nOverlaps: Determines if two geometries overlap, meaning they share some but not all points, and the intersection has the same dimension as the geometries themselves.\n\n\n\n\n\n\n\nCaution\n\n\n\nPlease note that depending on the size and complexity of your joins some operations can be computationally expensive and some advanced techniques might need to be implemented to achieve best performance.",
     "crumbs": [
-      "Basic Coding",
-      "Welcome to GeoPandas"
+      "GIS Tools",
+      "Tips"
     ]
   },
   {
-    "objectID": "chapter_2/intro_to_geopandas.html#data",
-    "href": "chapter_2/intro_to_geopandas.html#data",
-    "title": "Welcome to GeoPandas",
-    "section": "Data",
-    "text": "Data\nWe’ll be using demo census data from Eustat-Basque Institute of Statistics, accessed from here: Population by districts and census sections of Bizkaia, according to sex, age groups and nationality. This workflow should work for other files downloaded from this source.\nOrdinarily, we’d like to use csv data. However, if you download and inspect the csv file’s contents then you’d notice that something seems off. csv files need consistently formatted cell delimitations to work as intended, yet this file seems to have multiple header lines with different hierarchies of delimitation. You’ll also notice that every few lines seems to have a different structure. Let’s download the xlsx instead. If we inspect the file, we can now see that this is a hierarchically organised tabular structure.\n\nThe census boundaries are the standard census statistical units for the region.",
+    "objectID": "chapter_1/gis_tips.html#join-types",
+    "href": "chapter_1/gis_tips.html#join-types",
+    "title": "Tips",
+    "section": "",
+    "text": "Inner Join: Returns only rows that have been matched across both tables.\nLeft (Outer) Join: Returns all rows from the left table, and matched rows from the right table where found.\nRight (Outer) Join: Returns all rows from the right table, and matched rows from the left table where found.\nFull (Outer) Join: Returns all rows from both tables, regardless of whether matches were found in the other table.\nCross Join: Returns a Cartesian product of the two tables, i.e. each row connected to each other row from the other table. Use with caution!\n\n\n\n\n\nJoin types",
     "crumbs": [
-      "Basic Coding",
-      "Welcome to GeoPandas"
+      "GIS Tools",
+      "Tips"
     ]
   },
   {
-    "objectID": "chapter_2/intro_to_geopandas.html#opening-files",
-    "href": "chapter_2/intro_to_geopandas.html#opening-files",
-    "title": "Welcome to GeoPandas",
-    "section": "Opening files",
-    "text": "Opening files\nInstall pandas if necessary, and, since we need to read excel files, we’ll also need to check that openpyxl is installed.\n\n# uncomment to install\n# !pip install pandas openpyxl\n\nLet’s import GeoPandas into our working notebook.\n\nimport pandas as pd\nimport geopandas as gpd\n\nYou’ll need to update the filepath to point to your data file location.\n\ndf_excel = pd.read_excel('./data/xls0011435_c.xlsx')\nprint(df_excel.head(10))\n\n                                          Unnamed: 0 Unnamed: 1 Unnamed: 2  \\\n0  Población por distritos y secciones censales d...        NaN        NaN   \n1                                                NaN        NaN        NaN   \n2                                                NaN        NaN        NaN   \n3                                                NaN        NaN        NaN   \n4                                                NaN        NaN        NaN   \n5                                                Cod  Municipio       Dist   \n6                                                001    Abadiño         01   \n7                                                NaN        NaN        NaN   \n8                                                NaN        NaN        NaN   \n9                                                NaN        NaN        NaN   \n\n  Unnamed: 3               Unnamed: 4 Unnamed: 5 Unnamed: 6 Unnamed: 7  \\\n0        NaN                      NaN        NaN        NaN        NaN   \n1        NaN                      NaN        NaN        NaN        NaN   \n2        NaN                      NaN        NaN        NaN        NaN   \n3        NaN  Población según el sexo        NaN        NaN        NaN   \n4        NaN                    Total    Hombres    Mujeres  Sex ratio   \n5       Secc                      NaN        NaN        NaN        NaN   \n6        000                     7745       3831       3914   0.978794   \n7        001                     1564        761        803   0.947696   \n8        002                     1235        626        609   1.027915   \n9        003                     1105        524        581   0.901893   \n\n           Unnamed: 8 Unnamed: 9 Unnamed: 10      Unnamed: 11 Unnamed: 12  \n0                 NaN        NaN         NaN              NaN         NaN  \n1                 NaN        NaN         NaN              NaN         NaN  \n2                 NaN        NaN         NaN              NaN         NaN  \n3  Grupos de edad (%)        NaN         NaN  Extranjeros (%)         NaN  \n4                0-19      20-64        &gt;=65            UE-27       Resto  \n5                 NaN        NaN         NaN              NaN         NaN  \n6           20.309877  58.218205   21.471917         1.781795    5.293738  \n7           25.831202  59.143223   15.025575         1.534527    4.987212  \n8           15.708502  52.307692   31.983806         1.133603    5.425101  \n9           15.384615  59.728507   24.886878         2.624434    8.868778  \n\n\n\ndf_clipped = df_excel[6:]\ndf_clipped = df_clipped.reset_index(drop=True)\nprint(df_clipped.head())\n\n  Unnamed: 0 Unnamed: 1 Unnamed: 2 Unnamed: 3 Unnamed: 4 Unnamed: 5  \\\n0        001    Abadiño         01        000       7745       3831   \n1        NaN        NaN        NaN        001       1564        761   \n2        NaN        NaN        NaN        002       1235        626   \n3        NaN        NaN        NaN        003       1105        524   \n4        NaN        NaN        NaN        004       2076       1051   \n\n  Unnamed: 6 Unnamed: 7 Unnamed: 8 Unnamed: 9 Unnamed: 10 Unnamed: 11  \\\n0       3914   0.978794  20.309877  58.218205   21.471917    1.781795   \n1        803   0.947696  25.831202  59.143223   15.025575    1.534527   \n2        609   1.027915  15.708502  52.307692   31.983806    1.133603   \n3        581   0.901893  15.384615  59.728507   24.886878    2.624434   \n4       1025   1.025366  24.662813  62.331407    13.00578    1.830443   \n\n  Unnamed: 12  \n0    5.293738  \n1    4.987212  \n2    5.425101  \n3    8.868778  \n4    3.709056  \n\n\n\ndf_ff = df_clipped.fillna(method='ffill')\nprint(df_ff.head())\n\n  Unnamed: 0 Unnamed: 1 Unnamed: 2 Unnamed: 3  Unnamed: 4  Unnamed: 5  \\\n0        001    Abadiño         01        000        7745        3831   \n1        001    Abadiño         01        001        1564         761   \n2        001    Abadiño         01        002        1235         626   \n3        001    Abadiño         01        003        1105         524   \n4        001    Abadiño         01        004        2076        1051   \n\n   Unnamed: 6  Unnamed: 7  Unnamed: 8  Unnamed: 9  Unnamed: 10  Unnamed: 11  \\\n0        3914    0.978794   20.309877   58.218205    21.471917     1.781795   \n1         803    0.947696   25.831202   59.143223    15.025575     1.534527   \n2         609    1.027915   15.708502   52.307692    31.983806     1.133603   \n3         581    0.901893   15.384615   59.728507    24.886878     2.624434   \n4        1025    1.025366   24.662813   62.331407    13.005780     1.830443   \n\n   Unnamed: 12  \n0     5.293738  \n1     4.987212  \n2     5.425101  \n3     8.868778  \n4     3.709056  \n\n\n/tmp/ipykernel_2550/2998331537.py:1: FutureWarning: DataFrame.fillna with 'method' is deprecated and will raise in a future version. Use obj.ffill() or obj.bfill() instead.\n  df_ff = df_clipped.fillna(method='ffill')\n/tmp/ipykernel_2550/2998331537.py:1: FutureWarning: Downcasting object dtype arrays on .fillna, .ffill, .bfill is deprecated and will change in a future version. Call result.infer_objects(copy=False) instead. To opt-in to the future behavior, set `pd.set_option('future.no_silent_downcasting', True)`\n  df_ff = df_clipped.fillna(method='ffill')\n\n\n\ndf_ff.columns = ['Cod', 'Municipio','Dist', 'Secc', 'Total', 'Hombres', 'Mujeres', 'Sex ratio', '0-19', '20-64', '&gt;=65', 'UE-27', 'Resto']\nprint(df_ff.head())\n\n   Cod Municipio Dist Secc  Total  Hombres  Mujeres  Sex ratio       0-19  \\\n0  001   Abadiño   01  000   7745     3831     3914   0.978794  20.309877   \n1  001   Abadiño   01  001   1564      761      803   0.947696  25.831202   \n2  001   Abadiño   01  002   1235      626      609   1.027915  15.708502   \n3  001   Abadiño   01  003   1105      524      581   0.901893  15.384615   \n4  001   Abadiño   01  004   2076     1051     1025   1.025366  24.662813   \n\n       20-64       &gt;=65     UE-27     Resto  \n0  58.218205  21.471917  1.781795  5.293738  \n1  59.143223  15.025575  1.534527  4.987212  \n2  52.307692  31.983806  1.133603  5.425101  \n3  59.728507  24.886878  2.624434  8.868778  \n4  62.331407  13.005780  1.830443  3.709056",
+    "objectID": "chapter_1/gis_tips.html#cardinality",
+    "href": "chapter_1/gis_tips.html#cardinality",
+    "title": "Tips",
+    "section": "",
+    "text": "Occurs when each record in one table corresponds to exactly one record in another table.\n\n\n\n\n\n\n\nOccurs when a single record in one table can be associated with one or more records in another table.\n\n\n\n\n\n\n\nOccurrs when multiple records from one table correspond with one or more in another table.\n\n\n\n\n\n\n\n\n\n\nImportant\n\n\n\n\nWhen using joins you are not modifying the original tables.\nYour resulting table can be much smaller or (exponentially) larger than any of the original tables.",
     "crumbs": [
-      "Basic Coding",
-      "Welcome to GeoPandas"
+      "GIS Tools",
+      "Tips"
     ]
   },
   {
-    "objectID": "chapter_2/intro_to_geopandas.html#opening-geospatial-files",
-    "href": "chapter_2/intro_to_geopandas.html#opening-geospatial-files",
-    "title": "Welcome to GeoPandas",
-    "section": "Opening geospatial files",
-    "text": "Opening geospatial files\n\ngdf_geoms = gpd.read_file('./data/bilbao_census_geoms.gpkg')\nprint(gdf_geoms.head())\n\n   id       cusec  cumun csec cdis cmun cpro cca    cudis  clau2         npro  \\\n0   1  0100101001  01001  001   01  001   01  16  0100101  01001  Araba/Álava   \n1   2  0100101002  01001  002   01  001   01  16  0100101  01001  Araba/Álava   \n2   3  0100201001  01002  001   01  002   01  16  0100201  01002  Araba/Álava   \n3   4  0100201002  01002  002   01  002   01  16  0100201  01002  Araba/Álava   \n4   5  0100201003  01002  003   01  002   01  16  0100201  01002  Araba/Álava   \n\n          nca cnut0 cnut1 cnut2 cnut3              nmun  \\\n0  País Vasco    ES     2     1     1  Alegría-Dulantzi   \n1  País Vasco    ES     2     1     1  Alegría-Dulantzi   \n2  País Vasco    ES     2     1     1           Amurrio   \n3  País Vasco    ES     2     1     1           Amurrio   \n4  País Vasco    ES     2     1     1           Amurrio   \n\n                                            geometry  \n0  MULTIPOLYGON (((3300285.483 2277950.003, 33003...  \n1  MULTIPOLYGON (((3300455.616 2280198.743, 33004...  \n2  MULTIPOLYGON (((3267249.273 2300194.927, 32672...  \n3  MULTIPOLYGON (((3270958.603 2308427.228, 32713...  \n4  MULTIPOLYGON (((3264736.159 2307779.458, 32646...",
+    "objectID": "chapter_1/gis_tips.html#introduction-to-spatial-joins",
+    "href": "chapter_1/gis_tips.html#introduction-to-spatial-joins",
+    "title": "Tips",
+    "section": "",
+    "text": "Similar to joining tables based on their attributes, it is possible to join them based on their location. This is a very common technique in spatial databases (e.g. PostGIS) where you’ll commonly use a feature such as a city boundary to filter and join data from another table (e.g. streets).\nTo achieve the expected results, make sure that both origin tables are in the same CRS.\n\n\nIn QGIS and spatial databases, spatial predicates are used to define spatial relationships between features. These are used for joining or selecting data based on the relationships between the features. Some of the common predicates are:\n\nContains: Determines if one geometry contains another.\nWithin: Checks if one geometry is within another geometry.\nIntersects: Tests if two geometries intersect at any point.\nDisjoint: Determines if two geometries do not intersect.\nTouches: Checks if two geometries have at least one point in common but their interiors do not intersect.\nCrosses: Determines if the geometries have some, but not all, interior points in common.\nEquals: Checks if two geometries are exactly the same in terms of spatial coordinates.\nOverlaps: Determines if two geometries overlap, meaning they share some but not all points, and the intersection has the same dimension as the geometries themselves.\n\n\n\n\n\n\n\nCaution\n\n\n\nPlease note that depending on the size and complexity of your joins some operations can be computationally expensive and some advanced techniques might need to be implemented to achieve best performance.",
     "crumbs": [
-      "Basic Coding",
-      "Welcome to GeoPandas"
+      "GIS Tools",
+      "Tips"
     ]
   },
   {
-    "objectID": "chapter_2/intro_to_geopandas.html#linkages",
-    "href": "chapter_2/intro_to_geopandas.html#linkages",
-    "title": "Welcome to GeoPandas",
-    "section": "Linkages",
-    "text": "Linkages\n\ndf_ff['link_code'] = df_ff['Cod'] + df_ff['Dist'] + df_ff['Secc']\nprint(df_ff.head())\n\n   Cod Municipio Dist Secc  Total  Hombres  Mujeres  Sex ratio       0-19  \\\n0  001   Abadiño   01  000   7745     3831     3914   0.978794  20.309877   \n1  001   Abadiño   01  001   1564      761      803   0.947696  25.831202   \n2  001   Abadiño   01  002   1235      626      609   1.027915  15.708502   \n3  001   Abadiño   01  003   1105      524      581   0.901893  15.384615   \n4  001   Abadiño   01  004   2076     1051     1025   1.025366  24.662813   \n\n       20-64       &gt;=65     UE-27     Resto link_code  \n0  58.218205  21.471917  1.781795  5.293738  00101000  \n1  59.143223  15.025575  1.534527  4.987212  00101001  \n2  52.307692  31.983806  1.133603  5.425101  00101002  \n3  59.728507  24.886878  2.624434  8.868778  00101003  \n4  62.331407  13.005780  1.830443  3.709056  00101004  \n\n\n\ngdf_geoms['link_code'] = gdf_geoms['cmun'] + gdf_geoms['cdis'] + gdf_geoms['csec']\nprint(gdf_geoms.head())\n\n   id       cusec  cumun csec cdis cmun cpro cca    cudis  clau2         npro  \\\n0   1  0100101001  01001  001   01  001   01  16  0100101  01001  Araba/Álava   \n1   2  0100101002  01001  002   01  001   01  16  0100101  01001  Araba/Álava   \n2   3  0100201001  01002  001   01  002   01  16  0100201  01002  Araba/Álava   \n3   4  0100201002  01002  002   01  002   01  16  0100201  01002  Araba/Álava   \n4   5  0100201003  01002  003   01  002   01  16  0100201  01002  Araba/Álava   \n\n          nca cnut0 cnut1 cnut2 cnut3              nmun  \\\n0  País Vasco    ES     2     1     1  Alegría-Dulantzi   \n1  País Vasco    ES     2     1     1  Alegría-Dulantzi   \n2  País Vasco    ES     2     1     1           Amurrio   \n3  País Vasco    ES     2     1     1           Amurrio   \n4  País Vasco    ES     2     1     1           Amurrio   \n\n                                            geometry link_code  \n0  MULTIPOLYGON (((3300285.483 2277950.003, 33003...  00101001  \n1  MULTIPOLYGON (((3300455.616 2280198.743, 33004...  00101002  \n2  MULTIPOLYGON (((3267249.273 2300194.927, 32672...  00201001  \n3  MULTIPOLYGON (((3270958.603 2308427.228, 32713...  00201002  \n4  MULTIPOLYGON (((3264736.159 2307779.458, 32646...  00201003  \n\n\n\nmerged_data = gdf_geoms.merge(df_ff, on='link_code', how='outer')\nprint(merged_data.head())\n\n      id       cusec  cumun csec cdis cmun cpro  cca    cudis  clau2  ...  \\\n0    NaN         NaN    NaN  NaN  NaN  NaN  NaN  NaN      NaN    NaN  ...   \n1    1.0  0100101001  01001  001   01  001   01   16  0100101  01001  ...   \n2  241.0  2000101001  20001  001   01  001   20   16  2000101  20001  ...   \n3  779.0  4800101001  48001  001   01  001   48   16  4800101  48001  ...   \n4    2.0  0100101002  01001  002   01  001   01   16  0100101  01001  ...   \n\n  Secc   Total Hombres Mujeres Sex ratio       0-19      20-64       &gt;=65  \\\n0  000  7745.0  3831.0  3914.0  0.978794  20.309877  58.218205  21.471917   \n1  001  1564.0   761.0   803.0  0.947696  25.831202  59.143223  15.025575   \n2  001  1564.0   761.0   803.0  0.947696  25.831202  59.143223  15.025575   \n3  001  1564.0   761.0   803.0  0.947696  25.831202  59.143223  15.025575   \n4  002  1235.0   626.0   609.0  1.027915  15.708502  52.307692  31.983806   \n\n      UE-27     Resto  \n0  1.781795  5.293738  \n1  1.534527  4.987212  \n2  1.534527  4.987212  \n3  1.534527  4.987212  \n4  1.133603  5.425101  \n\n[5 rows x 32 columns]\n\n\n\nmerged_data.to_file('./data/joined_gpd.gpkg')",
+    "objectID": "chapter_1/gis_tips.html#tools-and-plugins",
+    "href": "chapter_1/gis_tips.html#tools-and-plugins",
+    "title": "Tips",
+    "section": "Tools and plugins",
+    "text": "Tools and plugins\nIn QGIS, georeferencing can be carried out using the built-in Georeferencer tool, which can be found under the menu Layer -&gt; Georeferencer.... This tool allows you to manually add control points that link the location on the image with geographic coordinates on the map, adjusting the image to fit the spatial data.\n\n\n\n\n\n\nTip\n\n\n\nThe more nodes you add and the further away from each other, the more refences the algorithm has to accomodate the original file. Minimum of 5 points should be considered to have an descent baseline.\n\n\n\nPlugins: For more advanced or specific georeferencing needs, there are additional plugins like Freehand Raster Georeferencer, allowing for more flexible manipulation of images directly within the map canvas.",
     "crumbs": [
-      "Basic Coding",
-      "Welcome to GeoPandas"
+      "GIS Tools",
+      "Tips"
+    ]
+  },
+  {
+    "objectID": "chapter_1/gis_tips.html#use-cases-of-georeferenced-images",
+    "href": "chapter_1/gis_tips.html#use-cases-of-georeferenced-images",
+    "title": "Tips",
+    "section": "Use cases of georeferenced images",
+    "text": "Use cases of georeferenced images\n\nHistorical Maps: Bringing old maps into modern GIS projects, helping to study changes over time.\nTracing Exercises: Overlaying aerial or satellite imagery to digitize features such as roads, buildings, or land use.\nReshaping sketches: Planning and ideation sketches usually are our of scale and conveniently reshaping elements of the environment. Georefereincing them helps to better transition ideas into reality.\n\n\n\n\n\n\n\nIt’s important to consider potential distortions when georeferencing images, as the process involves stretching or rotating the image to align with real-world coordinates. Understanding and managing these distortions is key to ensuring the accuracy of the geospatial analysis.",
+    "crumbs": [
+      "GIS Tools",
+      "Tips"
+    ]
+  },
+  {
+    "objectID": "chapter_1/gis_tips.html#demo",
+    "href": "chapter_1/gis_tips.html#demo",
+    "title": "Tips",
+    "section": "Demo …",
+    "text": "Demo …",
+    "crumbs": [
+      "GIS Tools",
+      "Tips"
     ]
   },
   {

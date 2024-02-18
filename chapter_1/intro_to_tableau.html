@@ -231,17 +231,19 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#tableau-desktop-structure" id="toc-tableau-desktop-structure" class="nav-link active" data-scroll-target="#tableau-desktop-structure">Tableau Desktop Structure</a>
+  <li><a href="#tableau-desktop-structure" id="toc-tableau-desktop-structure" class="nav-link active" data-scroll-target="#tableau-desktop-structure">Tableau Desktop Structure</a></li>
+  <li><a href="#data-sources-connecting-to-data" id="toc-data-sources-connecting-to-data" class="nav-link" data-scroll-target="#data-sources-connecting-to-data">Data Sources: Connecting to data</a>
   <ul class="collapse">
-  <li><a href="#data-sources-connecting-to-data" id="toc-data-sources-connecting-to-data" class="nav-link" data-scroll-target="#data-sources-connecting-to-data">Data Sources: Connecting to data</a></li>
-  <li><a href="#views-creating-visualizations" id="toc-views-creating-visualizations" class="nav-link" data-scroll-target="#views-creating-visualizations">Views: Creating visualizations</a></li>
-  <li><a href="#dashboards-interacting-and-enhancing-views" id="toc-dashboards-interacting-and-enhancing-views" class="nav-link" data-scroll-target="#dashboards-interacting-and-enhancing-views">Dashboards: Interacting and Enhancing views</a></li>
-  <li><a href="#stories-data-based-narratives" id="toc-stories-data-based-narratives" class="nav-link" data-scroll-target="#stories-data-based-narratives">Stories: Data based narratives</a></li>
+  <li><a href="#live-vs-extract" id="toc-live-vs-extract" class="nav-link" data-scroll-target="#live-vs-extract">Live vs Extract</a></li>
+  <li><a href="#datasets" id="toc-datasets" class="nav-link" data-scroll-target="#datasets">Datasets</a></li>
   </ul></li>
+  <li><a href="#views-creating-visualizations" id="toc-views-creating-visualizations" class="nav-link" data-scroll-target="#views-creating-visualizations">Views: Creating visualizations</a>
+  <ul class="collapse">
+  <li><a href="#exercise" id="toc-exercise" class="nav-link" data-scroll-target="#exercise">Exercise</a></li>
+  </ul></li>
+  <li><a href="#dashboards-stories-interacting-and-enhancing-views" id="toc-dashboards-stories-interacting-and-enhancing-views" class="nav-link" data-scroll-target="#dashboards-stories-interacting-and-enhancing-views">Dashboards (&amp; Stories): Interacting and Enhancing views</a></li>
+  <li><a href="#sharing-and-publishing" id="toc-sharing-and-publishing" class="nav-link" data-scroll-target="#sharing-and-publishing">Sharing and Publishing</a></li>
   <li><a href="#documentation" id="toc-documentation" class="nav-link" data-scroll-target="#documentation">Documentation</a></li>
-  <li><a href="#connecting-to-data-10-minutes" id="toc-connecting-to-data-10-minutes" class="nav-link" data-scroll-target="#connecting-to-data-10-minutes">2. Connecting to Data (10 minutes)</a></li>
-  <li><a href="#creating-basic-visualizations-15-minutes" id="toc-creating-basic-visualizations-15-minutes" class="nav-link" data-scroll-target="#creating-basic-visualizations-15-minutes">3. Creating Basic Visualizations (15 minutes)</a></li>
-  <li><a href="#dashboards-and-stories-10-minutes" id="toc-dashboards-and-stories-10-minutes" class="nav-link" data-scroll-target="#dashboards-and-stories-10-minutes">4. Dashboards and Stories (10 minutes)</a></li>
   <li><a href="#sharing-and-publishing-5-minutes" id="toc-sharing-and-publishing-5-minutes" class="nav-link" data-scroll-target="#sharing-and-publishing-5-minutes">5. Sharing and Publishing (5 minutes)</a></li>
   <li><a href="#qa-and-practice-time-10-minutes" id="toc-qa-and-practice-time-10-minutes" class="nav-link" data-scroll-target="#qa-and-practice-time-10-minutes">6. Q&amp;A and Practice Time (10 minutes)</a>
   <ul class="collapse">
@@ -267,7 +269,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Last update</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">February 16, 2024</p>
+      <p class="date-modified">February 18, 2024</p>
     </div>
   </div>
     
@@ -338,50 +340,86 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
-<section id="data-sources-connecting-to-data" class="level3">
-<h3 class="anchored" data-anchor-id="data-sources-connecting-to-data">Data Sources: Connecting to data</h3>
-<p>The overall structure</p>
 </section>
-<section id="views-creating-visualizations" class="level3">
-<h3 class="anchored" data-anchor-id="views-creating-visualizations">Views: Creating visualizations</h3>
-</section>
-<section id="dashboards-interacting-and-enhancing-views" class="level3">
-<h3 class="anchored" data-anchor-id="dashboards-interacting-and-enhancing-views">Dashboards: Interacting and Enhancing views</h3>
-</section>
-<section id="stories-data-based-narratives" class="level3">
-<h3 class="anchored" data-anchor-id="stories-data-based-narratives">Stories: Data based narratives</h3>
-</section>
-</section>
-<section id="documentation" class="level2">
-<h2 class="anchored" data-anchor-id="documentation">Documentation</h2>
+<section id="data-sources-connecting-to-data" class="level2">
+<h2 class="anchored" data-anchor-id="data-sources-connecting-to-data">Data Sources: Connecting to data</h2>
+<p>In tableau you can connect simultaneously to multiple data sources, including Postgres and/or individual <em>shapefiles</em> and .CSV (‘text files’).</p>
+<p>When you connect to more than one dataset you can establish three possible scenarios:</p>
 <ul>
-<li><strong>Interface Overview:</strong> Introduction to the main parts of the Tableau Desktop interface, including the start page, data pane, analytics pane, and workspace.</li>
-<li><strong>Concepts of Data Visualization:</strong> Importance of data visualization and the role of Tableau in data-driven decision-making.</li>
+<li><strong>Create a <code>logical table</code></strong>: Tableau’s lingo for the result from joining <code>physical</code> tables together</li>
+<li><strong>Create a relationship</strong>: In this case your tables won’t be joined if the specific chart you’re building does not require to do so.</li>
+<li><strong>Create an independent data source</strong>: In this case you limit the potential to use measures from multiple datasources.</li>
+</ul>
+<p>Depending on your use case you might want to use different techniques.</p>
+<section id="live-vs-extract" class="level3">
+<h3 class="anchored" data-anchor-id="live-vs-extract">Live vs Extract</h3>
+<ul>
+<li><strong>Live</strong> : when your establish just the relationships described above but the actual queries happen as you build your charts (and maps). Heavier on performance.</li>
+<li><strong>Extract</strong> : when you create a resulting file (called Tableau extract) which is optimized to speed up performance and incoportates the resultiong joined tables and relatioships you have established. This is the reccomended approach.</li>
+</ul>
+<p>Note that Extracts can always be refreshed if your input data changes or you want to make adjustment to your joins / relations.</p>
+</section>
+<section id="datasets" class="level3">
+<h3 class="anchored" data-anchor-id="datasets">Datasets</h3>
+<p>For this excercise we are going to use Spanish Census data at the ‘census section’ level (the lowest level of annonimised data). Both datasets come from the <a href="https://www.ine.es/">INE</a> - National Institute of Statitics.</p>
+<ul>
+<li><strong>Population by gender and origin</strong> in <em>.CSV</em> format : <a href="https://ine.es/buscar/searchResults.do?Menu_botonBuscador=&amp;searchType=DEF_SEARCH&amp;startat=0&amp;L=0&amp;searchString=poblacion%20seccion%20censal">here</a></li>
+<li><strong>Census Sections</strong> in <em>.SHP</em> format : <a href="https://www.ine.es/ss/Satellite?L=es_ES&amp;c=Page&amp;cid=1259952026632&amp;p=1259952026632&amp;pagename=ProductosYServicios/PYSLayout">here</a></li>
 </ul>
 </section>
-<section id="connecting-to-data-10-minutes" class="level2">
-<h2 class="anchored" data-anchor-id="connecting-to-data-10-minutes">2. Connecting to Data (10 minutes)</h2>
+</section>
+<section id="views-creating-visualizations" class="level2">
+<h2 class="anchored" data-anchor-id="views-creating-visualizations">Views: Creating visualizations</h2>
+<p>This is where you are going to create all of your individual charts and graphs. Two important field types area automatically created to help you set up your visualizations:</p>
 <ul>
-<li><strong>Data Sources:</strong> How to connect Tableau to various data sources like Excel, SQL databases, and cloud data.</li>
-<li><strong>Data Pane:</strong> Exploring the data pane to view fields and understand the differences between dimensions and measures.</li>
-<li><strong>Joining and Blending Data:</strong> Basics of combining multiple data sources in Tableau.</li>
+<li><strong>Dimensions</strong> (blue): All qualitative and categorical fields in your dataset. eg. ‘nationality’, ‘gender’, etc…</li>
+<li><strong>Measures</strong> (green): Continuous fields where you can apply <code>SUM</code>, <code>AVG</code>, <code>MIN</code>, <code>MAX</code> calculations. eg. ‘population’, ‘age’, etc..
+<ul>
+<li>Note that <code>geometries</code> are considered measures but deconstructed automatically into Longitude and Latitude when brought to the view.</li>
+</ul></li>
+</ul>
+<p><strong>To create new fields</strong> right click next to your fields ans select <code>Create Calculated Field...</code></p>
+<p>To build your charts <strong>3 things</strong> need careful attention: - <strong>MARKS CARD</strong>: Establishes the type of graph you want to build. eg: lineschart, barchart, map, piechart. etc.. - <strong>COLUMNS and ROWS</strong> shelves: Determine what happend in your vertical and horizontal axis. - <strong>FILTERS CARD</strong>: The place to customized what gets filtered for the current chart.</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Be extra critical about the numbers! Tableau is really good at generating outputs but the results should make sense to you and if possible, always try to sense check with other sources.</p>
+</div>
+</div>
+<section id="exercise" class="level3">
+<h3 class="anchored" data-anchor-id="exercise">Exercise</h3>
+<p>Drag and drop fields to create the following charts:</p>
+<ul>
+<li><strong>Map</strong>: Displaying the total population per ‘census section’ in the ‘Vasque Country’ (<code>Pais Vasco</code>)</li>
+<li><strong>Bar graph</strong>: Number of people per province splitted by <code>gender</code>.</li>
+<li><strong>Big Numbers</strong>: Three big numbers: <code>Total Population</code>, <code>% Nacionals</code>, <code>% Foreigns</code>.
+<ul>
+<li>These will serve us to sense check the values on our Dashboard</li>
+</ul></li>
+<li><strong>Others</strong>: try to come up with new fields that could enrich the analysis.</li>
 </ul>
 </section>
-<section id="creating-basic-visualizations-15-minutes" class="level2">
-<h2 class="anchored" data-anchor-id="creating-basic-visualizations-15-minutes">3. Creating Basic Visualizations (15 minutes)</h2>
-<ul>
-<li><strong>Building Views:</strong> Creating basic charts (bar, line, pie) by dragging and dropping fields.</li>
-<li><strong>Shelves and Cards:</strong> Utilizing shelves (Columns, Rows) and cards (Marks, Filters) to customize visualizations.</li>
-<li><strong>Sorting and Filtering:</strong> Applying sorting and filters to views.</li>
-</ul>
 </section>
-<section id="dashboards-and-stories-10-minutes" class="level2">
-<h2 class="anchored" data-anchor-id="dashboards-and-stories-10-minutes">4. Dashboards and Stories (10 minutes)</h2>
+<section id="dashboards-stories-interacting-and-enhancing-views" class="level2">
+<h2 class="anchored" data-anchor-id="dashboards-stories-interacting-and-enhancing-views">Dashboards (&amp; Stories): Interacting and Enhancing views</h2>
+<p>In this step is where you put your pieces together.</p>
 <ul>
 <li><strong>Creating a Dashboard:</strong> Steps to create a dashboard by combining different visualizations.</li>
 <li><strong>Interactive Dashboards:</strong> Making dashboards interactive with actions like filters, highlights, and URL actions.</li>
-<li><strong>Introduction to Stories:</strong> Overview of stories for narrating data visualizations.</li>
 </ul>
+</section>
+<section id="sharing-and-publishing" class="level2">
+<h2 class="anchored" data-anchor-id="sharing-and-publishing">Sharing and Publishing</h2>
+</section>
+<section id="documentation" class="level2">
+<h2 class="anchored" data-anchor-id="documentation">Documentation</h2>
 </section>
 <section id="sharing-and-publishing-5-minutes" class="level2">
 <h2 class="anchored" data-anchor-id="sharing-and-publishing-5-minutes">5. Sharing and Publishing (5 minutes)</h2>
