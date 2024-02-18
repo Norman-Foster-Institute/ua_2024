@@ -1,0 +1,136 @@
+---
+title: Intro to Tableau
+date-format: long
+date-modified: last-modified
+lang: en
+language: 
+  title-block-modified: "Last update"
+---
+
+::: {.callout}
+Make sure you have downloaded the software using the instructions in [Software & Accounts](../chapter_0/installation.qmd)
+:::
+
+Tableau is a leading data visualization tool that simplifies the process of converting complex data into interactive and visually appealing dashboards and reports. It is highly regarded in the business intelligence (BI) community for its ability to facilitate data-driven decision-making through an intuitive interface that accommodates users of all skill levels. By supporting a wide variety of data sources (including some spatial formats like _shapefiles_)) and enabling quick identification of data trends and patterns.
+
+## Tableau Desktop Structure
+```{mermaid}
+flowchart LR
+    subgraph Datasources
+    A[(D 1)]
+    a[(DB 2)]
+    end 
+
+    subgraph Views
+    B[Linechart]
+    C[Map]
+    D[Barchart]
+    end
+
+    subgraph Dashboards
+    E{{Dashboard 1}}
+    F{{Dashboard 2}}
+    end 
+
+    subgraph Stories
+    S{Story}
+    end 
+
+    A --> B
+    A --> C
+    A --> D
+    a --> D
+
+    B --> E
+    C --> E
+    D --> F
+    i(((images))) -.- E
+    t(((texts))) -.- F 
+
+    E --> S
+    F --> S
+    i -.- S
+    t -.- S
+```
+
+## Data Sources: Connecting to data
+
+In tableau you can connect simultaneously to multiple data sources, including Postgres and/or individual _shapefiles_ and .CSV ('text files'). 
+
+When you connect to more than one dataset you can establish three possible scenarios:
+
+- **Create a `logical table`**: Tableau's lingo for the result from joining `physical` tables together
+- **Create a relationship**: In this case your tables won't be joined if the specific chart you're building does not require to do so. 
+- **Create an independent data source**: In this case you limit the potential to use measures from multiple datasources.
+
+Depending on your use case you might want to use different techniques. 
+
+### Live vs Extract
+
+- **Live** : when your establish just the relationships described above but the actual queries happen as you build your charts (and maps). Heavier on performance.
+- **Extract** : when you create a resulting file (called Tableau extract) which is optimized to speed up performance and incoportates the resultiong joined tables and relatioships you have established. This is the reccomended approach. 
+
+Note that Extracts can always be refreshed if your input data changes or you want to make adjustment to your joins / relations. 
+
+### Datasets 
+
+For this excercise we are going to use Spanish Census data at the 'census section' level (the lowest level of annonimised data). Both datasets come from the [INE](https://www.ine.es/) - National Institute of Statitics. 
+
+- **Population by gender and origin** in _.CSV_ format : [here](https://ine.es/buscar/searchResults.do?Menu_botonBuscador=&searchType=DEF_SEARCH&startat=0&L=0&searchString=poblacion%20seccion%20censal)
+- **Census Sections** in _.SHP_ format : [here](https://www.ine.es/ss/Satellite?L=es_ES&c=Page&cid=1259952026632&p=1259952026632&pagename=ProductosYServicios/PYSLayout)
+
+## Views: Creating visualizations
+
+This is where you are going to create all of your individual charts and graphs. Two important field types area automatically created to help you set up your visualizations:
+
+- **Dimensions** (blue): All qualitative and categorical fields in your dataset. eg. 'nationality', 'gender', etc...
+- **Measures** (green): Continuous fields where you can apply `SUM`, `AVG`, `MIN`, `MAX` calculations. eg. 'population', 'age', etc..
+  - Note that `geometries` are considered measures but deconstructed automatically into Longitude and Latitude when brought to the view. 
+
+**To create new fields** right click next to your fields ans select `Create Calculated Field...`
+
+To build your charts **3 things** need careful attention:
+- **MARKS CARD**: Establishes the type of graph you want to build. eg: lineschart, barchart, map, piechart. etc..
+- **COLUMNS and ROWS** shelves: Determine what happend in your vertical and horizontal axis.
+- **FILTERS CARD**: The place to customized what gets filtered for the current chart. 
+
+::: {.callout-warning}
+Be extra critical about the numbers!
+Tableau is really good at generating outputs but the results should make sense to you and if possible, always try to sense check with other sources. 
+:::
+
+### Exercise
+Drag and drop fields to create the following charts:
+
+- **Map**: Displaying the total population per 'census section' in the 'Vasque Country' (`Pais Vasco`)
+- **Bar graph**: Number of people per province splitted by `gender`.
+- **Big Numbers**: Three big numbers: `Total Population`, `% Nacionals`, `% Foreigns`. 
+  - These will serve us to sense check the values on our Dashboard
+- **Others**: try to come up with new fields that could enrich the analysis. 
+
+## Dashboards (& Stories): Interacting and Enhancing views
+
+In this step is where you put your pieces together. 
+
+- **Creating a Dashboard:** Steps to create a dashboard by combining different visualizations.
+- **Interactive Dashboards:** Making dashboards interactive with actions like filters, highlights, and URL actions.
+
+## Sharing and Publishing
+
+
+## Documentation
+ 
+
+
+
+## 5. Sharing and Publishing (5 minutes)
+- **Export Options:** How to export visualizations and dashboards as images, PDFs, or Tableau Workbook files.
+- **Publishing to Tableau Public/Server:** Basic steps for publishing work to Tableau Public or a Tableau Server.
+
+## 6. Q&A and Practice Time (10 minutes)
+- **Open Floor for Questions:** Allowing participants to ask questions.
+- **Hands-On Practice:** Encouraging participants to create a basic visualization or dashboard with a provided dataset.
+
+### Additional Tips
+- **Hands-On Examples:** Use real-life datasets for demonstrations to enhance engagement and understanding.
+- **Resources for Further Learning:** Provide links to Tableau's online tutorials, forums, and communities for continued learning.
