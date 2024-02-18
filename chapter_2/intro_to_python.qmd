@@ -12,7 +12,7 @@ Python is a great language for general purpose data wrangling. If you're working
 
 ## Some basics
 
-Fire up your JupyterLab and follow along by typing and executing these examples.
+Fire up your JupyterLab and follow along by typing and executing these examples. You can hover over a cell and click the copy icon to copy the code.
 
 ```{python}
 a_variable = 'boo'
@@ -318,3 +318,5 @@ filtered_df_buff.plot()
 ```
 
 There are almost limitless ways to manipulate data in DataFrames and these are well documented on the web. If you're ever stuck, remember that ChatGPT is quite good at finding bugs and tends to have an intuitive grasp of what you're trying to do if you explain your objective well.
+
+The [Intro to GeoPandas](./intro_to_geopandas.qmd) lesson will demonstrate some of GeoPandas data handling capabilities in more depth.

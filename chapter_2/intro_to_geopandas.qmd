@@ -1,0 +1,86 @@
+---
+title: Welcome to GeoPandas
+date-format: long
+date-modified: last-modified
+lang: en
+language: 
+  title-block-modified: "Last update"
+---
+> NOTE: this lesson is under development, please check back later!
+
+In the [Intro to Python](./intro_to_python.qmd) lesson (do that lesson first if you haven't already) we provided a high level introduction to GeoPandas. GeoPandas builds on underlying functionality provided by a library called "Pandas". Put differently, GeoPandas bolts geospatial capabilities onto the underlying Pandas library.
+
+## Data
+
+We'll be using demo census data from Eustat-Basque Institute of Statistics, [accessed from here](https://www.eustat.eus/elementos/tbl0011435_c.html): Population by districts and census sections of Bizkaia, according to sex, age groups and nationality. This workflow should work for other files downloaded from this source.
+
+Ordinarily, we'd like to use `csv` data. However, if you download and inspect the `csv` file's contents then you'd notice that something seems off. `csv` files need consistently formatted cell delimitations to work as intended, yet this file seems to have multiple header lines with different hierarchies of delimitation. You'll also notice that every few lines seems to have a different structure. Let's download the `xlsx` instead. If we inspect the file, we can now see that this is a hierarchically organised tabular structure.
+
+- The [census boundaries](./data/bilbao_census_geoms.gpkg) are the standard census statistical units for the region.
+
+## Opening files
+
+Install `pandas` if necessary, and, since we need to read excel files, we'll also need to check that `openpyxl` is installed.
+
+```{python}
+# uncomment to install
+# !pip install pandas openpyxl
+```
+
+Let's import GeoPandas into our working notebook.
+
+```{python}
+import pandas as pd
+import geopandas as gpd
+```
+
+You'll need to update the filepath to point to your data file location.
+
+```{python}
+df_excel = pd.read_excel('./data/xls0011435_c.xlsx')
+print(df_excel.head(10))
+```
+
+```{python}
+df_clipped = df_excel[6:]
+df_clipped = df_clipped.reset_index(drop=True)
+print(df_clipped.head())
+```
+
+```{python}
+df_ff = df_clipped.fillna(method='ffill')
+print(df_ff.head())
+```
+
+```{python}
+df_ff.columns = ['Cod', 'Municipio','Dist', 'Secc', 'Total', 'Hombres', 'Mujeres', 'Sex ratio', '0-19', '20-64', '>=65', 'UE-27', 'Resto']
+print(df_ff.head())
+```
+
+## Opening geospatial files
+
+```{python}
+gdf_geoms = gpd.read_file('./data/bilbao_census_geoms.gpkg')
+print(gdf_geoms.head())
+```
+
+## Linkages
+
+```{python}
+df_ff['link_code'] = df_ff['Cod'] + df_ff['Dist'] + df_ff['Secc']
+print(df_ff.head())
+```
+
+```{python}
+gdf_geoms['link_code'] = gdf_geoms['cmun'] + gdf_geoms['cdis'] + gdf_geoms['csec']
+print(gdf_geoms.head())
+```
+
+```{python}
+merged_data = gdf_geoms.merge(df_ff, on='link_code', how='outer')
+print(merged_data.head())
+```
+
+```{python}
+merged_data.to_file('./data/joined_gpd.gpkg')
+```

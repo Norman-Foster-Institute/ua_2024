@@ -38,7 +38,7 @@ website:
         contents:
           - chapter_2/intro_to_python.qmd
           - chapter_2/open_source.qmd
-          - chapter_2/pandas.ipynb
+          - chapter_2/intro_to_geopandas.qmd
   favicon: ./assets/nfi_logo.png
   page-footer:
     center:
@@ -50,3 +50,5 @@ format:
     toc: true
     mermaid:
       theme: neutral
+    highlight-style: github
+    css: ./custom-style.css
