@@ -34,6 +34,7 @@ website:
           - chapter_1/qgis_mapping.qmd
           - chapter_1/gis_tips.qmd
           - chapter_1/cloud_gis.qmd
+          - chapter_1/intro_to_tableau.qmd
       - section: Basic Coding
         contents:
           - chapter_2/intro_to_python.qmd

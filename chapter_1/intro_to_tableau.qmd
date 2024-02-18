@@ -1,5 +1,5 @@
 ---
-title: Intro to Tableau
+title: "Bonus: Tableau"
 date-format: long
 date-modified: last-modified
 lang: en
@@ -12,6 +12,8 @@ Make sure you have downloaded the software using the instructions in [Software &
 :::
 
 Tableau is a leading data visualization tool that simplifies the process of converting complex data into interactive and visually appealing dashboards and reports. It is highly regarded in the business intelligence (BI) community for its ability to facilitate data-driven decision-making through an intuitive interface that accommodates users of all skill levels. By supporting a wide variety of data sources (including some spatial formats like _shapefiles_)) and enabling quick identification of data trends and patterns.
+
+>With your student account you also have full access to **Tableau Prep**, a visual tool for data cleaning.
 
 ## Tableau Desktop Structure
 ```{mermaid}
@@ -72,12 +74,14 @@ Depending on your use case you might want to use different techniques.
 
 Note that Extracts can always be refreshed if your input data changes or you want to make adjustment to your joins / relations. 
 
+:::{.callout-important}
 ### Datasets 
 
 For this excercise we are going to use Spanish Census data at the 'census section' level (the lowest level of annonimised data). Both datasets come from the [INE](https://www.ine.es/) - National Institute of Statitics. 
 
 - **Population by gender and origin** in _.CSV_ format : [here](https://ine.es/buscar/searchResults.do?Menu_botonBuscador=&searchType=DEF_SEARCH&startat=0&L=0&searchString=poblacion%20seccion%20censal)
 - **Census Sections** in _.SHP_ format : [here](https://www.ine.es/ss/Satellite?L=es_ES&c=Page&cid=1259952026632&p=1259952026632&pagename=ProductosYServicios/PYSLayout)
+:::
 
 ## Views: Creating visualizations
 
@@ -90,6 +94,7 @@ This is where you are going to create all of your individual charts and graphs. 
 **To create new fields** right click next to your fields ans select `Create Calculated Field...`
 
 To build your charts **3 things** need careful attention:
+
 - **MARKS CARD**: Establishes the type of graph you want to build. eg: lineschart, barchart, map, piechart. etc..
 - **COLUMNS and ROWS** shelves: Determine what happend in your vertical and horizontal axis.
 - **FILTERS CARD**: The place to customized what gets filtered for the current chart. 
@@ -99,6 +104,7 @@ Be extra critical about the numbers!
 Tableau is really good at generating outputs but the results should make sense to you and if possible, always try to sense check with other sources. 
 :::
 
+::: {.callout-important}
 ### Exercise
 Drag and drop fields to create the following charts:
 
@@ -107,30 +113,35 @@ Drag and drop fields to create the following charts:
 - **Big Numbers**: Three big numbers: `Total Population`, `% Nacionals`, `% Foreigns`. 
   - These will serve us to sense check the values on our Dashboard
 - **Others**: try to come up with new fields that could enrich the analysis. 
+:::
 
 ## Dashboards (& Stories): Interacting and Enhancing views
 
 In this step is where you put your pieces together. 
+If the visualizations you have made share the same datasource, you can use the different views to to **filter or highlight** parts of the other views.
 
-- **Creating a Dashboard:** Steps to create a dashboard by combining different visualizations.
-- **Interactive Dashboards:** Making dashboards interactive with actions like filters, highlights, and URL actions.
+The recomendation is to create dashboards with no more than 3 or 4 components. When trying to tell a story with data you want to eliminate all possible distractions. 
+
+Note that to your dashboards you can 
+
+:::{.callout-tip}
+Visual guide to selecting the right type of chart.
+The Financial Times Visual Vocabulary:
+
+ - [Web version](https://ft-interactive.github.io/visual-vocabulary/)
+ - [Poster version(s)](https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary) in multiple languages.
+ - [Tableau Public](https://public.tableau.com/app/profile/andy.kriebel/viz/VisualVocabulary/VisualVocabulary)
+
+:::
 
 ## Sharing and Publishing
 
+Dashboards, Stories and Views can be exported as images (PDF, JPEG, etc..), as PowerPoint presentations but you can Publish your results to Tableau Public - a free and open server where dashboards remain interactive. 
 
-## Documentation
- 
+Like other softwares you can share your work as Tableau workbook packaged (.twbx), which contains all the data, or as a visualization tool only (.twb) if you know that the other person will have access to the same data connections you used. 
 
+## Resources for Further Learning
 
-
-## 5. Sharing and Publishing (5 minutes)
-- **Export Options:** How to export visualizations and dashboards as images, PDFs, or Tableau Workbook files.
-- **Publishing to Tableau Public/Server:** Basic steps for publishing work to Tableau Public or a Tableau Server.
-
-## 6. Q&A and Practice Time (10 minutes)
-- **Open Floor for Questions:** Allowing participants to ask questions.
-- **Hands-On Practice:** Encouraging participants to create a basic visualization or dashboard with a provided dataset.
-
-### Additional Tips
-- **Hands-On Examples:** Use real-life datasets for demonstrations to enhance engagement and understanding.
-- **Resources for Further Learning:** Provide links to Tableau's online tutorials, forums, and communities for continued learning.
+- [Tableau Public](https://public.tableau.com/app/discover)
+- [Official videos](https://www.tableau.com/learn/training)
+- [VizWiz](https://www.vizwiz.com/) one of the best teaching resouces out there. #MakeOverMondays are great excercises.
