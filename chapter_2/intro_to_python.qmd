@@ -62,7 +62,7 @@ print(temp_diff)
 # and in the case of the print() method
 # multiple arguments can be passed at once
 # function arguments are separated with commas
-print('The temp diff is: ', temp_diff)
+print('The temp diff is:', temp_diff)
 ```
 
 You can define a function using the `def` keyword. Let's define a function which takes a number and multiplies it by a specified multiplier.
@@ -116,6 +116,25 @@ print('divided:', temp_day_2 / 2)
 print('modulo:', temp_day_1 % 2)
 ```
 
+It is a good idea to become familiar with [Python Operators](https://www.w3schools.com/python/python_operators.asp): these will become second nature over time. Here are some examples:
+
+```{python}
+my_var1 = 5
+my_var1 = my_var1 + 10
+print(my_var1)
+# assignment operators can be combined with arithmetic
+my_var2 = 5
+my_var2 += 10
+print(my_var2)
+# checking for equality is done with double equal signs
+print('equal?:', my_var1 == my_var2)
+print('equal?:', my_var1 == 'boo')
+# pay attention to operator precedence
+# use brackets to make intention explicit
+print('precedence a:', 5 * 10 + 2)
+print('precedence b:', 5 * (10 + 2))
+```
+
 You can do surprising things with strings as well.
 
 ```{python}
@@ -141,10 +160,28 @@ get_something_else = my_list[-1]
 print('last item:', get_something_else)
 # gets list entries from index 0 to before index 2
 get_several_things = my_list[0:2]
-print('several items:', get_several_things)
+print('several items A:', get_several_things)
+# which happens to be the same as this
+get_several_things = my_list[0:-2]
+print('several items B:', get_several_things)
+# and this
+get_several_things = my_list[-4:-2]
+print('several items C:', get_several_things)
 ```
 
-Note that you can iterate over lists using `for` and `in` syntax. We use a variable, which we are here calling `num`, to store the current result from iterating over the list. We can then use that variable to do something.
+You can use `in` and `not in` syntax to check if something is inside a list. This will return a `bool`, and if this evaluates to `True` then it will execute the indented code.
+
+```{python}
+# you can check if things are in a list
+if 2 in my_list:
+  print('yes, 2 is in my_list')
+if 5 in my_list:
+  print('not gonna see this!')
+if 5 not in my_list:
+  print('you will see this!!')
+```
+
+Note that you can iterate over lists using `for` and `in` syntax. For each loop of the iteration, the value at that iteration is assigned to a variable, which we are here calling `num`. We can then use that variable to do something.
 
 ```{python}
 # this will print each number in my_list
@@ -195,7 +232,15 @@ print(point_a)
 print(type(point_a))
 ```
 
-Different packages and modules define set patterns of behaviour. To understand what these are and what you can do with them, refer to the package documentation and ask ChatGPT to help you along the way.
+Different packages and modules define set patterns of behaviour. To understand what these are and what you can do with them, refer to the package documentation and ask ChatGPT to help you along the way. Some packages are better documented than others. In the case of `shapely`, here is a link to the [official documents](https://shapely.readthedocs.io/en/stable/).
+
+Alternatively, you can use the built-in `help()` method which will tell you more about a module or class' functionality.
+
+```{python}
+# this will return a lot of text
+# uncomment to run
+# help(point_a)
+```
 
 For example, a `shapely` `Point` type has built-in methods which allow you to easily produce certain forms of behaviour. You can access these using dot-notation. Let's buffer the point object using the provided `buffer()` method.
 
