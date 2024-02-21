@@ -510,10 +510,10 @@ print(gdf_geoms.head())
 gdf_geoms.plot()
 ```
 
-Let's do an attribute join to connect the population data to the spatial data. Notice that we have to specify the type of join method in the "how" parameter, as well as the columns to use for matching the left and right datasets. In this case, let's look through the outputs from previous cells to identify the column names. We'll then do a "left" join, which means we'll only keep the columns from the 'left' dataset.
+Let's do an attribute join to connect the population data to the spatial data. Notice that we have to specify the type of join method in the "how" parameter, as well as the columns to use for matching the left and right datasets. In this case, let's look through the outputs from previous cells to identify the column names. We'll then do a "inner" join, which means we'll only keep the matched rows, i.e. we don't want random unmatched census data for the rest of Spain since our geometries are for the Bizkaia region onnly!
 
 ```{python}
-merged_data = gdf_geoms.merge(df_clipped, left_on='CUSEC', right_on='regions', how='left')
+merged_data = gdf_geoms.merge(df_clipped, left_on='CUSEC', right_on='regions', how='inner')
 print(merged_data.head())
 ```
 
