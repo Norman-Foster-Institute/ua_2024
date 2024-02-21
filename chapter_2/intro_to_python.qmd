@@ -29,7 +29,7 @@ Some tips:
 
 - Don't get distracted by arguments of performance. People will sometimes talk about how one language outperforms another, but in reality the most important aspect is the usability, versatility, and speed of development. It's like saying you want to use a formula 1 car on an offroad course. Python itself is a so-called "slow" language but it wraps highly optimised and performant packages under-the-hood, so it can offer the best of both worlds: usability where it matters and performance where it counts.
 
-- Python is more verstaile than the `R` language, which is sometimes popular with dedicated academics, statisticians, or geographers. You are free to learn `R` and other languages, but please don't get caught up in needless comparisonsn or distractions.
+- Python is more verstaile than the `R` language, which is sometimes popular with dedicated academics, statisticians, or geographers. You are free to learn `R` and other languages, but please don't get caught up in endless comparisons.
 
 ## Setup
 
