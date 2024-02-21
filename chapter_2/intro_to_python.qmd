@@ -240,9 +240,9 @@ You can use `in` and `not in` syntax to check if something is inside a list. Thi
 # you can check if things are in a list
 if 2 in my_list:
   print('yes, 2 is in my_list')
-if 5 in my_list:
+if 6 in my_list:
   print('not gonna see this!')
-if 5 not in my_list:
+if 6 not in my_list:
   print('you will see this!!')
 ```
 
