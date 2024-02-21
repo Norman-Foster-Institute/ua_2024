@@ -450,7 +450,7 @@ filtered_df_buff.plot()
 
 There are almost limitless ways to manipulate data in DataFrames and these are well documented on the web. If you're ever stuck, remember that ChatGPT is quite good at finding bugs and tends to have an intuitive grasp of what you're trying to do if you explain your objective well.
 
-## Census Data
+## Census Data Demo
 
 In future lessons we will demonstrate some of GeoPandas data handling capabilities in more depth. For now, let's take a lightning-tour look at the census data you've been using for Bilbao.
 
@@ -465,7 +465,7 @@ In future lessons we will demonstrate some of GeoPandas data handling capabiliti
 
 ```{python}
 # uncomment to install (if necessary)
-# !pip install pandas geopandas openpyxl
+# !pip install pandas geopandas openpyxl matplotlib
 ```
 
 Let's import Pandas and GeoPandas into our working notebook.
