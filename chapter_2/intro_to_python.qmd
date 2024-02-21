@@ -524,6 +524,12 @@ Let's plot again, this time using a column for setting the colour intensity. We'
 ```{python}
 merged_data.plot(column='all_total', cmap='viridis')
 ```
+What if we wanted to plot density instead of the simple totals? We can use the row geometries to divide the totals by the geometry areas. This will give a more realistic sense of population intensities.
+
+```{python}
+merged_data['density'] = merged_data['all_total'] / merged_data.geometry.area
+merged_data.plot(column='density', cmap='plasma')
+```
 
 Remember that DataFrames can be filtered. Let's filter out locations where there are more men than women, then we'll plot the filtered data using the `Reds` colormap.
 
