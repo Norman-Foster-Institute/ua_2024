@@ -459,7 +459,7 @@ In future lessons we will demonstrate some of GeoPandas data handling capabiliti
   - Local link: [Census Geoms Bizkaia](./data/census_geoms_bizkaia.gpkg)
 - The population census data by sex and birth.
   - Original Source: [ine.es file code 61438](https://ine.es/buscar/searchResults.do?searchString=61438&Menu_botonBuscador=&searchType=DEF_SEARCH&startat=0&L=0)
-  - Local link: [61438.xls](./data/61438.xls)
+  - Local link: [61438.xls](./data/61438.xlsx)
 
 ### Opening a spreadsheet
 
