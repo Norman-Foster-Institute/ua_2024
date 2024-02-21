@@ -1,6 +1,6 @@
 # Data to ignore #
 ##################
-chapter_2/data/joined_gpd.*
+chapter_2/data/bizkaia_pop_census.*
 
 # Compiled source #
 ###################

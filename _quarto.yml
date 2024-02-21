@@ -39,7 +39,6 @@ website:
         contents:
           - chapter_2/intro_to_python.qmd
           - chapter_2/open_source.qmd
-          - chapter_2/intro_to_geopandas.qmd
   favicon: ./assets/nfi_logo.png
   page-footer:
     center:
