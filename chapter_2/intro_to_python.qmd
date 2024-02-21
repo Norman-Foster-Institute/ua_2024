@@ -15,7 +15,7 @@ Two pivotal figures in the history of computation are [Alan Turing](https://en.w
 
 Alan Turing introduced the concept of the Turing machine in 1936. This is an abstract device conceived to encapsulate the underlying essence of computation. Turing's machine can, in theory, simulate any other machine's computation process, thus providing a universal model for computing. Turing's work during World War II on breaking the Enigma code is also celebrated for its profound impact on the outcome of the war and the field of cryptography.
 
-John von Neumann, contributed significantly to the development of the architecture of modern computers and was instrumental in the realisation of some of the earliest computing devices. He had a prodigious output and dabbled with fascinating ideas along the way, such as Cellular Automata. An engaging review of this early history can be found in the book [Turing's Cathedral](https://www.theguardian.com/books/2012/mar/25/turings-cathedral-george-dyson-review).
+John von Neumann contributed significantly to the development of the architecture of modern computers and was instrumental in the realisation of some of the earliest computing devices. He had a prodigious output and dabbled with fascinating ideas along the way, such as Cellular Automata. An engaging review of this early history can be found in the book [Turing's Cathedral](https://www.theguardian.com/books/2012/mar/25/turings-cathedral-george-dyson-review).
 
 ## Why Python?
 
