@@ -527,16 +527,18 @@ merged_data.plot(column='all_total', cmap='viridis')
 What if we wanted to plot density instead of the simple totals? We can use the row geometries to divide the totals by the geometry areas. This will give a more realistic sense of population intensities.
 
 ```{python}
-merged_data['density'] = merged_data['all_total'] / merged_data.geometry.area
+# let's divide by area and convert to square km
+# the ** symbol will take the exponent (square in this case)
+# use brackets for operator order!!
+merged_data['density'] = merged_data['all_total'] / (merged_data.geometry.area / 1000**2)
 merged_data.plot(column='density', cmap='plasma')
 ```
 
-Remember that DataFrames can be filtered. Let's filter out locations where there are more men than women, then we'll plot the filtered data using the `Reds` colormap.
+Remember that DataFrames can be filtered. Let's filter out locations where the density is lower than 5k per km2.
 
 ```{python}
-# let's plot just locations where there are more women than men
-filtered_data = merged_data[merged_data.male_total > merged_data.female_total]
-filtered_data.plot(column='male_total', cmap='Reds')
+filtered_data = merged_data[merged_data.density > 5000]
+filtered_data.plot(column='density', cmap='Reds')
 ```
 
 ### Saving a GeoPandas file
@@ -544,6 +546,13 @@ filtered_data.plot(column='male_total', cmap='Reds')
 We can now save the GeoPandas DataFrame as a file which you can then open from other locations, such as QGIS.
 
 ```{python}
+merged_data.to_file('./data/bizkaia_pop_census.gpkg')
+```
+
+But, wait a minute, we've noticed that the output data is written as text instead of number types, so let's fix that for our `density` column and then we'll rewrite the file.
+
+```{python}
+merged_data['density'] = merged_data['density'].astype(float)
 merged_data.to_file('./data/bizkaia_pop_census.gpkg')
 ```
 
