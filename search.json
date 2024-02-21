@@ -121,329 +121,210 @@
     ]
   },
   {
-    "objectID": "chapter_2/intro_to_geopandas.html",
-    "href": "chapter_2/intro_to_geopandas.html",
-    "title": "Welcome to GeoPandas",
+    "objectID": "chapter_1/gis_tips.html",
+    "href": "chapter_1/gis_tips.html",
+    "title": "Tips",
     "section": "",
-    "text": "NOTE: this lesson is under development, please check back later!\nIn the Intro to Python lesson (do that lesson first if you haven’t already) we provided a high level introduction to GeoPandas. GeoPandas builds on underlying functionality provided by a library called “Pandas”. Put differently, GeoPandas bolts geospatial capabilities onto the underlying Pandas library.",
+    "text": "In multiple scenarios you may find information in one table/layer that you might want to connect to information from another. JOINS are the way to do this, and work by connecting two different datasources based on a shared attribute. So doing, the attributes from one table can be connected to another for analysis or visualision purposes.\n\n\n\n\nInner Join: Returns only rows that have been matched across both tables.\nLeft (Outer) Join: Returns all rows from the left table, and matched rows from the right table where found.\nRight (Outer) Join: Returns all rows from the right table, and matched rows from the left table where found.\nFull (Outer) Join: Returns all rows from both tables, regardless of whether matches were found in the other table.\nCross Join: Returns a Cartesian product of the two tables, i.e. each row connected to each other row from the other table. Use with caution!\n\n\n\n\n\nJoin types\n\n\n\n\n\n\n\n\n\nOccurs when each record in one table corresponds to exactly one record in another table.\n\n\n\n\n\n\n\nOccurs when a single record in one table can be associated with one or more records in another table.\n\n\n\n\n\n\n\nOccurrs when multiple records from one table correspond with one or more in another table.\n\n\n\n\n\n\n\n\n\n\nImportant\n\n\n\n\nWhen using joins you are not modifying the original tables.\nYour resulting table can be much smaller or (exponentially) larger than any of the original tables.\n\n\n\n\n\n\nSimilar to joining tables based on their attributes, it is possible to join them based on their location. This is a very common technique in spatial databases (e.g. PostGIS) where you’ll commonly use a feature such as a city boundary to filter and join data from another table (e.g. streets).\nTo achieve the expected results, make sure that both origin tables are in the same CRS.\n\n\nIn QGIS and spatial databases, spatial predicates are used to define spatial relationships between features. These are used for joining or selecting data based on the relationships between the features. Some of the common predicates are:\n\nContains: Determines if one geometry contains another.\nWithin: Checks if one geometry is within another geometry.\nIntersects: Tests if two geometries intersect at any point.\nDisjoint: Determines if two geometries do not intersect.\nTouches: Checks if two geometries have at least one point in common but their interiors do not intersect.\nCrosses: Determines if the geometries have some, but not all, interior points in common.\nEquals: Checks if two geometries are exactly the same in terms of spatial coordinates.\nOverlaps: Determines if two geometries overlap, meaning they share some but not all points, and the intersection has the same dimension as the geometries themselves.\n\n\n\n\n\n\n\nCaution\n\n\n\nPlease note that depending on the size and complexity of your joins some operations can be computationally expensive and some advanced techniques might need to be implemented to achieve best performance.",
     "crumbs": [
-      "Basic Coding",
-      "Welcome to GeoPandas"
+      "GIS Tools",
+      "Tips"
     ]
   },
   {
-    "objectID": "chapter_2/intro_to_geopandas.html#data",
-    "href": "chapter_2/intro_to_geopandas.html#data",
-    "title": "Welcome to GeoPandas",
-    "section": "Data",
-    "text": "Data\nWe’ll be using demo census data from Eustat-Basque Institute of Statistics, accessed from here: Population by districts and census sections of Bizkaia, according to sex, age groups and nationality. This workflow should work for other files downloaded from this source.\nOrdinarily, we’d like to use csv data. However, if you download and inspect the csv file’s contents then you’d notice that something seems off. csv files need consistently formatted cell delimitations to work as intended, yet this file seems to have multiple header lines with different hierarchies of delimitation. You’ll also notice that every few lines seems to have a different structure. Let’s download the xlsx instead. If we inspect the file, we can now see that this is a hierarchically organised tabular structure.\n\nThe census boundaries are the standard census statistical units for the region.",
-    "crumbs": [
-      "Basic Coding",
-      "Welcome to GeoPandas"
-    ]
-  },
-  {
-    "objectID": "chapter_2/intro_to_geopandas.html#opening-files",
-    "href": "chapter_2/intro_to_geopandas.html#opening-files",
-    "title": "Welcome to GeoPandas",
-    "section": "Opening files",
-    "text": "Opening files\nInstall pandas if necessary, and, since we need to read excel files, we’ll also need to check that openpyxl is installed.\n\n# uncomment to install\n# !pip install pandas openpyxl\n\nLet’s import GeoPandas into our working notebook.\n\nimport pandas as pd\nimport geopandas as gpd\n\nYou’ll need to update the filepath to point to your data file location.\n\ndf_excel = pd.read_excel('./data/xls0011435_c.xlsx')\nprint(df_excel.head(10))\n\n                                          Unnamed: 0 Unnamed: 1 Unnamed: 2  \\\n0  Población por distritos y secciones censales d...        NaN        NaN   \n1                                                NaN        NaN        NaN   \n2                                                NaN        NaN        NaN   \n3                                                NaN        NaN        NaN   \n4                                                NaN        NaN        NaN   \n5                                                Cod  Municipio       Dist   \n6                                                001    Abadiño         01   \n7                                                NaN        NaN        NaN   \n8                                                NaN        NaN        NaN   \n9                                                NaN        NaN        NaN   \n\n  Unnamed: 3               Unnamed: 4 Unnamed: 5 Unnamed: 6 Unnamed: 7  \\\n0        NaN                      NaN        NaN        NaN        NaN   \n1        NaN                      NaN        NaN        NaN        NaN   \n2        NaN                      NaN        NaN        NaN        NaN   \n3        NaN  Población según el sexo        NaN        NaN        NaN   \n4        NaN                    Total    Hombres    Mujeres  Sex ratio   \n5       Secc                      NaN        NaN        NaN        NaN   \n6        000                     7745       3831       3914   0.978794   \n7        001                     1564        761        803   0.947696   \n8        002                     1235        626        609   1.027915   \n9        003                     1105        524        581   0.901893   \n\n           Unnamed: 8 Unnamed: 9 Unnamed: 10      Unnamed: 11 Unnamed: 12  \n0                 NaN        NaN         NaN              NaN         NaN  \n1                 NaN        NaN         NaN              NaN         NaN  \n2                 NaN        NaN         NaN              NaN         NaN  \n3  Grupos de edad (%)        NaN         NaN  Extranjeros (%)         NaN  \n4                0-19      20-64        &gt;=65            UE-27       Resto  \n5                 NaN        NaN         NaN              NaN         NaN  \n6           20.309877  58.218205   21.471917         1.781795    5.293738  \n7           25.831202  59.143223   15.025575         1.534527    4.987212  \n8           15.708502  52.307692   31.983806         1.133603    5.425101  \n9           15.384615  59.728507   24.886878         2.624434    8.868778  \n\n\n\ndf_clipped = df_excel[6:]\ndf_clipped = df_clipped.reset_index(drop=True)\nprint(df_clipped.head())\n\n  Unnamed: 0 Unnamed: 1 Unnamed: 2 Unnamed: 3 Unnamed: 4 Unnamed: 5  \\\n0        001    Abadiño         01        000       7745       3831   \n1        NaN        NaN        NaN        001       1564        761   \n2        NaN        NaN        NaN        002       1235        626   \n3        NaN        NaN        NaN        003       1105        524   \n4        NaN        NaN        NaN        004       2076       1051   \n\n  Unnamed: 6 Unnamed: 7 Unnamed: 8 Unnamed: 9 Unnamed: 10 Unnamed: 11  \\\n0       3914   0.978794  20.309877  58.218205   21.471917    1.781795   \n1        803   0.947696  25.831202  59.143223   15.025575    1.534527   \n2        609   1.027915  15.708502  52.307692   31.983806    1.133603   \n3        581   0.901893  15.384615  59.728507   24.886878    2.624434   \n4       1025   1.025366  24.662813  62.331407    13.00578    1.830443   \n\n  Unnamed: 12  \n0    5.293738  \n1    4.987212  \n2    5.425101  \n3    8.868778  \n4    3.709056  \n\n\n\ndf_ff = df_clipped.fillna(method='ffill')\nprint(df_ff.head())\n\n  Unnamed: 0 Unnamed: 1 Unnamed: 2 Unnamed: 3  Unnamed: 4  Unnamed: 5  \\\n0        001    Abadiño         01        000        7745        3831   \n1        001    Abadiño         01        001        1564         761   \n2        001    Abadiño         01        002        1235         626   \n3        001    Abadiño         01        003        1105         524   \n4        001    Abadiño         01        004        2076        1051   \n\n   Unnamed: 6  Unnamed: 7  Unnamed: 8  Unnamed: 9  Unnamed: 10  Unnamed: 11  \\\n0        3914    0.978794   20.309877   58.218205    21.471917     1.781795   \n1         803    0.947696   25.831202   59.143223    15.025575     1.534527   \n2         609    1.027915   15.708502   52.307692    31.983806     1.133603   \n3         581    0.901893   15.384615   59.728507    24.886878     2.624434   \n4        1025    1.025366   24.662813   62.331407    13.005780     1.830443   \n\n   Unnamed: 12  \n0     5.293738  \n1     4.987212  \n2     5.425101  \n3     8.868778  \n4     3.709056  \n\n\n/tmp/ipykernel_2598/2998331537.py:1: FutureWarning: DataFrame.fillna with 'method' is deprecated and will raise in a future version. Use obj.ffill() or obj.bfill() instead.\n  df_ff = df_clipped.fillna(method='ffill')\n/tmp/ipykernel_2598/2998331537.py:1: FutureWarning: Downcasting object dtype arrays on .fillna, .ffill, .bfill is deprecated and will change in a future version. Call result.infer_objects(copy=False) instead. To opt-in to the future behavior, set `pd.set_option('future.no_silent_downcasting', True)`\n  df_ff = df_clipped.fillna(method='ffill')\n\n\n\ndf_ff.columns = ['Cod', 'Municipio','Dist', 'Secc', 'Total', 'Hombres', 'Mujeres', 'Sex ratio', '0-19', '20-64', '&gt;=65', 'UE-27', 'Resto']\nprint(df_ff.head())\n\n   Cod Municipio Dist Secc  Total  Hombres  Mujeres  Sex ratio       0-19  \\\n0  001   Abadiño   01  000   7745     3831     3914   0.978794  20.309877   \n1  001   Abadiño   01  001   1564      761      803   0.947696  25.831202   \n2  001   Abadiño   01  002   1235      626      609   1.027915  15.708502   \n3  001   Abadiño   01  003   1105      524      581   0.901893  15.384615   \n4  001   Abadiño   01  004   2076     1051     1025   1.025366  24.662813   \n\n       20-64       &gt;=65     UE-27     Resto  \n0  58.218205  21.471917  1.781795  5.293738  \n1  59.143223  15.025575  1.534527  4.987212  \n2  52.307692  31.983806  1.133603  5.425101  \n3  59.728507  24.886878  2.624434  8.868778  \n4  62.331407  13.005780  1.830443  3.709056",
-    "crumbs": [
-      "Basic Coding",
-      "Welcome to GeoPandas"
-    ]
-  },
-  {
-    "objectID": "chapter_2/intro_to_geopandas.html#opening-geospatial-files",
-    "href": "chapter_2/intro_to_geopandas.html#opening-geospatial-files",
-    "title": "Welcome to GeoPandas",
-    "section": "Opening geospatial files",
-    "text": "Opening geospatial files\n\ngdf_geoms = gpd.read_file('./data/bilbao_census_geoms.gpkg')\nprint(gdf_geoms.head())\n\n   id       cusec  cumun csec cdis cmun cpro cca    cudis  clau2         npro  \\\n0   1  0100101001  01001  001   01  001   01  16  0100101  01001  Araba/Álava   \n1   2  0100101002  01001  002   01  001   01  16  0100101  01001  Araba/Álava   \n2   3  0100201001  01002  001   01  002   01  16  0100201  01002  Araba/Álava   \n3   4  0100201002  01002  002   01  002   01  16  0100201  01002  Araba/Álava   \n4   5  0100201003  01002  003   01  002   01  16  0100201  01002  Araba/Álava   \n\n          nca cnut0 cnut1 cnut2 cnut3              nmun  \\\n0  País Vasco    ES     2     1     1  Alegría-Dulantzi   \n1  País Vasco    ES     2     1     1  Alegría-Dulantzi   \n2  País Vasco    ES     2     1     1           Amurrio   \n3  País Vasco    ES     2     1     1           Amurrio   \n4  País Vasco    ES     2     1     1           Amurrio   \n\n                                            geometry  \n0  MULTIPOLYGON (((3300285.483 2277950.003, 33003...  \n1  MULTIPOLYGON (((3300455.616 2280198.743, 33004...  \n2  MULTIPOLYGON (((3267249.273 2300194.927, 32672...  \n3  MULTIPOLYGON (((3270958.603 2308427.228, 32713...  \n4  MULTIPOLYGON (((3264736.159 2307779.458, 32646...",
-    "crumbs": [
-      "Basic Coding",
-      "Welcome to GeoPandas"
-    ]
-  },
-  {
-    "objectID": "chapter_2/intro_to_geopandas.html#linkages",
-    "href": "chapter_2/intro_to_geopandas.html#linkages",
-    "title": "Welcome to GeoPandas",
-    "section": "Linkages",
-    "text": "Linkages\n\ndf_ff['link_code'] = df_ff['Cod'] + df_ff['Dist'] + df_ff['Secc']\nprint(df_ff.head())\n\n   Cod Municipio Dist Secc  Total  Hombres  Mujeres  Sex ratio       0-19  \\\n0  001   Abadiño   01  000   7745     3831     3914   0.978794  20.309877   \n1  001   Abadiño   01  001   1564      761      803   0.947696  25.831202   \n2  001   Abadiño   01  002   1235      626      609   1.027915  15.708502   \n3  001   Abadiño   01  003   1105      524      581   0.901893  15.384615   \n4  001   Abadiño   01  004   2076     1051     1025   1.025366  24.662813   \n\n       20-64       &gt;=65     UE-27     Resto link_code  \n0  58.218205  21.471917  1.781795  5.293738  00101000  \n1  59.143223  15.025575  1.534527  4.987212  00101001  \n2  52.307692  31.983806  1.133603  5.425101  00101002  \n3  59.728507  24.886878  2.624434  8.868778  00101003  \n4  62.331407  13.005780  1.830443  3.709056  00101004  \n\n\n\ngdf_geoms['link_code'] = gdf_geoms['cmun'] + gdf_geoms['cdis'] + gdf_geoms['csec']\nprint(gdf_geoms.head())\n\n   id       cusec  cumun csec cdis cmun cpro cca    cudis  clau2         npro  \\\n0   1  0100101001  01001  001   01  001   01  16  0100101  01001  Araba/Álava   \n1   2  0100101002  01001  002   01  001   01  16  0100101  01001  Araba/Álava   \n2   3  0100201001  01002  001   01  002   01  16  0100201  01002  Araba/Álava   \n3   4  0100201002  01002  002   01  002   01  16  0100201  01002  Araba/Álava   \n4   5  0100201003  01002  003   01  002   01  16  0100201  01002  Araba/Álava   \n\n          nca cnut0 cnut1 cnut2 cnut3              nmun  \\\n0  País Vasco    ES     2     1     1  Alegría-Dulantzi   \n1  País Vasco    ES     2     1     1  Alegría-Dulantzi   \n2  País Vasco    ES     2     1     1           Amurrio   \n3  País Vasco    ES     2     1     1           Amurrio   \n4  País Vasco    ES     2     1     1           Amurrio   \n\n                                            geometry link_code  \n0  MULTIPOLYGON (((3300285.483 2277950.003, 33003...  00101001  \n1  MULTIPOLYGON (((3300455.616 2280198.743, 33004...  00101002  \n2  MULTIPOLYGON (((3267249.273 2300194.927, 32672...  00201001  \n3  MULTIPOLYGON (((3270958.603 2308427.228, 32713...  00201002  \n4  MULTIPOLYGON (((3264736.159 2307779.458, 32646...  00201003  \n\n\n\nmerged_data = gdf_geoms.merge(df_ff, on='link_code', how='outer')\nprint(merged_data.head())\n\n      id       cusec  cumun csec cdis cmun cpro  cca    cudis  clau2  ...  \\\n0    NaN         NaN    NaN  NaN  NaN  NaN  NaN  NaN      NaN    NaN  ...   \n1    1.0  0100101001  01001  001   01  001   01   16  0100101  01001  ...   \n2  241.0  2000101001  20001  001   01  001   20   16  2000101  20001  ...   \n3  779.0  4800101001  48001  001   01  001   48   16  4800101  48001  ...   \n4    2.0  0100101002  01001  002   01  001   01   16  0100101  01001  ...   \n\n  Secc   Total Hombres Mujeres Sex ratio       0-19      20-64       &gt;=65  \\\n0  000  7745.0  3831.0  3914.0  0.978794  20.309877  58.218205  21.471917   \n1  001  1564.0   761.0   803.0  0.947696  25.831202  59.143223  15.025575   \n2  001  1564.0   761.0   803.0  0.947696  25.831202  59.143223  15.025575   \n3  001  1564.0   761.0   803.0  0.947696  25.831202  59.143223  15.025575   \n4  002  1235.0   626.0   609.0  1.027915  15.708502  52.307692  31.983806   \n\n      UE-27     Resto  \n0  1.781795  5.293738  \n1  1.534527  4.987212  \n2  1.534527  4.987212  \n3  1.534527  4.987212  \n4  1.133603  5.425101  \n\n[5 rows x 32 columns]\n\n\n\nmerged_data.to_file('./data/joined_gpd.gpkg')",
-    "crumbs": [
-      "Basic Coding",
-      "Welcome to GeoPandas"
-    ]
-  },
-  {
-    "objectID": "chapter_1/cloud_gis.html",
-    "href": "chapter_1/cloud_gis.html",
-    "title": "Cloud GIS",
+    "objectID": "chapter_1/gis_tips.html#join-types",
+    "href": "chapter_1/gis_tips.html#join-types",
+    "title": "Tips",
     "section": "",
-    "text": "This will be an in-class hands-on session providing an introduction to the use of CARTO for publishing and styling interactive maps.\nThe are two excercises that will help us explore different components of the platform:\nEach excersice will be lead by a live demo of the main steps to better control the visualization of the datasets. Then, each student will have time to explore on their own time the tool and come up with a shereable map.",
+    "text": "Inner Join: Returns only rows that have been matched across both tables.\nLeft (Outer) Join: Returns all rows from the left table, and matched rows from the right table where found.\nRight (Outer) Join: Returns all rows from the right table, and matched rows from the left table where found.\nFull (Outer) Join: Returns all rows from both tables, regardless of whether matches were found in the other table.\nCross Join: Returns a Cartesian product of the two tables, i.e. each row connected to each other row from the other table. Use with caution!\n\n\n\n\n\nJoin types",
     "crumbs": [
       "GIS Tools",
-      "Cloud GIS"
+      "Tips"
     ]
   },
   {
-    "objectID": "chapter_1/cloud_gis.html#connecting-to-carto",
-    "href": "chapter_1/cloud_gis.html#connecting-to-carto",
-    "title": "Cloud GIS",
-    "section": "Connecting to CARTO",
-    "text": "Connecting to CARTO\nBecause this will be the first time you log in, you will have to log in into www.carto.com using your GitHub account (you will need the Student Development Pack approved - see the Software & Accounts section).\n\nSearch for Are you a student? and Access using GitHub\n\n\n\nUse GitHub login\n\n\n\nFollow the stepts to create your account and note that each scholar will create a separate ‘organization’. This means all your files and maps will be yours and you will not be joining NFI’s organization. You can name ir however you like!",
-    "crumbs": [
-      "GIS Tools",
-      "Cloud GIS"
-    ]
-  },
-  {
-    "objectID": "chapter_1/cloud_gis.html#datasets",
-    "href": "chapter_1/cloud_gis.html#datasets",
-    "title": "Cloud GIS",
-    "section": "Datasets",
-    "text": "Datasets\nFor this excercise we will use two official data sources. I\n\nCycling routes (LINESTRINGS, 4326):\n\nDownload geopackage file\nConsult official source : for references to the .gpkg file above\n\nCycling docks (POINTS, 4326):\n\nDownload geopackage file\nConsult official source : for references to the .gpkg file above\n\n\n\n\n\n\n\n\nNote\n\n\n\nNote that both file have been reprojected to EPSG: 4326 as this is the prefered projection system for CARTO\n\n\n\nLoading Data\nThere are several ways to use the data in CARTO. But this time we are going to upload it directly from CARTO BUILDER\n\nUsing the main menu, navigate to Maps –&gt; + New map button. This takes you to a new tab with an instance of CARTO’s Builder.\nAdd source from... and upload the gpkg in a folder of your preference.\n\n\n\n\n\n\n\nNote that multiple layers can be added from the same\n\n\n\nAdd style\nDepending on the geometry types, you will have different option for styling your Points (docking stations) and the Linestrings (cycling routes).\n\n\n\n\n\n\nNote\n\n\n\nAlways familirise yourself with the data before jumping into modifying its style \n\n\nFor now we encourage you to explore the following three tabs:\n\nLayers\nLegends\nBasemaps\n\n\n\n\n\n\n\n\nPublish\nWhen you are happy with the map make sure you SHARE your results by publishing them to allow for public access\n\nAdd your resulting URL to this notion card\n\n\n\nYour example\n\nThe best maps will be added to complete this section!",
-    "crumbs": [
-      "GIS Tools",
-      "Cloud GIS"
-    ]
-  },
-  {
-    "objectID": "chapter_1/cloud_gis.html#datasets-1",
-    "href": "chapter_1/cloud_gis.html#datasets-1",
-    "title": "Cloud GIS",
-    "section": "Datasets",
-    "text": "Datasets\nFor this excercise we are going to use the same datasets than we did in our previous session. However, this time we are going to use the full dataset containing the population data.\n\nDownload the municipal neighbourhoods as a SHP file: Barrios municipales de Madrid\nDownload the population by district and neighbourhood dataset as a CSV file: Población por distrito y barrio a 1 de enero",
-    "crumbs": [
-      "GIS Tools",
-      "Cloud GIS"
-    ]
-  },
-  {
-    "objectID": "chapter_1/cloud_gis.html#workflows",
-    "href": "chapter_1/cloud_gis.html#workflows",
-    "title": "Cloud GIS",
-    "section": "Workflows",
-    "text": "Workflows\nFrom our previous experience, we know that in order to join the datasets, we first had to clean and filter the data. This time we are going to make use of CARTO’s WORKFLOWS: a no-code visual interface for replicating processes like cleaning, filtering, joining (and much more). Visit for more.",
-    "crumbs": [
-      "GIS Tools",
-      "Cloud GIS"
-    ]
-  },
-  {
-    "objectID": "chapter_1/cloud_gis.html#hands-on",
-    "href": "chapter_1/cloud_gis.html#hands-on",
-    "title": "Cloud GIS",
-    "section": "Hands-on",
-    "text": "Hands-on\nThe following are the general steps we encourage you to follow to get familiar with other functions of CARTO.\n\nData prep\nFor this excerse we just want you to import the file below and update the inputs and output parameters\n\n\n\nCARTO’s Workflow\n\n\n\nUnder menu Data Explorer –&gt; Import both datasets (CSV and SHP)\nUnder menu Workflows –&gt; Import this SQL procedure to give you a head start\nUpdate workflow :\n\nInputs: data sources according to the location and name of your files\nOutput: select where you want to store the results\n\nRun the workflow to identify potential issues\n\nRememeber to read the Error messages (if at all), to debug your workflow\n\n\n\n\nData viz\nNow we are going to move into another builder instance and load the newly created table (from the steps above). This time we encourage you to look into the other two tabs :\n\nWidgets : allow you to interact and filter the data plotted on the map\nInteractions : helps you surface propreties of individual elements in the map\n\n\n\n\n\n\n\n\nPublish\nWhen you are happy with the map make sure you SHARE your results by publishing them to allow for public access\n\nAdd your resulting URL to this notion card\n\n\n\nOutput Example\n    \n\nMadrid’s Population Dashboard - Greg Maya",
-    "crumbs": [
-      "GIS Tools",
-      "Cloud GIS"
-    ]
-  },
-  {
-    "objectID": "chapter_1/intro_to_tableau.html",
-    "href": "chapter_1/intro_to_tableau.html",
-    "title": "Bonus: Tableau",
+    "objectID": "chapter_1/gis_tips.html#cardinality",
+    "href": "chapter_1/gis_tips.html#cardinality",
+    "title": "Tips",
     "section": "",
-    "text": "Make sure you have downloaded the software using the instructions in Software & Accounts\nTableau is a leading data visualization tool that simplifies the process of converting complex data into interactive and visually appealing dashboards and reports. It is highly regarded in the business intelligence (BI) community for its ability to facilitate data-driven decision-making through an intuitive interface that accommodates users of all skill levels. By supporting a wide variety of data sources (including some spatial formats like shapefiles)) and enabling quick identification of data trends and patterns.",
+    "text": "Occurs when each record in one table corresponds to exactly one record in another table.\n\n\n\n\n\n\n\nOccurs when a single record in one table can be associated with one or more records in another table.\n\n\n\n\n\n\n\nOccurrs when multiple records from one table correspond with one or more in another table.\n\n\n\n\n\n\n\n\n\n\nImportant\n\n\n\n\nWhen using joins you are not modifying the original tables.\nYour resulting table can be much smaller or (exponentially) larger than any of the original tables.",
     "crumbs": [
       "GIS Tools",
-      "Bonus: Tableau"
+      "Tips"
     ]
   },
   {
-    "objectID": "chapter_1/intro_to_tableau.html#tableau-desktop-structure",
-    "href": "chapter_1/intro_to_tableau.html#tableau-desktop-structure",
-    "title": "Bonus: Tableau",
-    "section": "Tableau Desktop Structure",
-    "text": "Tableau Desktop Structure\n\n\n\n\n\nflowchart LR\n    subgraph Datasources\n    A[(DB 1)]\n    a[(DB 2)]\n    end \n\n    subgraph Views\n    B[Linechart]\n    C[Map]\n    D[Barchart]\n    end\n\n    subgraph Dashboards\n    E{{Dashboard 1}}\n    F{{Dashboard 2}}\n    end \n\n    subgraph Stories\n    S{Story}\n    end \n\n    A --&gt; B\n    A --&gt; C\n    A --&gt; D\n    a --&gt; D\n\n    B --&gt; E\n    C --&gt; E\n    D --&gt; F\n    i(((images))) -.- E\n    t(((texts))) -.- F \n\n    E --&gt; S\n    F --&gt; S\n    i -.- S\n    t -.- S",
-    "crumbs": [
-      "GIS Tools",
-      "Bonus: Tableau"
-    ]
-  },
-  {
-    "objectID": "chapter_1/intro_to_tableau.html#data-sources-connecting-to-data",
-    "href": "chapter_1/intro_to_tableau.html#data-sources-connecting-to-data",
-    "title": "Bonus: Tableau",
-    "section": "Data Sources: Connecting to data",
-    "text": "Data Sources: Connecting to data\nIn tableau you can connect simultaneously to multiple data sources (including Postgres) and/or individual shapefiles and .CSV (‘text files’).\nWhen you connect to more than one dataset you can establish three possible scenarios:\n\nCreate a logical table: Tableau’s lingo for the result from joining physical tables together\nCreate a relationship: In this case your tables will not be joined if the specific chart you are building does not require to do so.\nCreate an independent data source: In this case you limit the potential to use measures from multiple datasources.\n\nDepending on your use case you might want to use different techniques. But note that only the fields that you bring into the view are considered for the construction of the queries (behind the scenes).\n\nLive vs Extract\nOnce the tables have been brought in and your initial filters have been set you can choose one of two options on how you are going to operate with the data in the next steps.\n\nLive : when your establish just the relationships described above but the actual queries happen as you build your charts (and maps) are directed to your connections in each modification. Heavier on performance.\nExtract : when you create a resulting file (called Tableau extract) which is optimized to speed up performance and incoportates the resultiong joined tables and relatioships you have established. This is the reccomended approach.\n\nNote that Extracts can always be refreshed if your input data changes or you want to make adjustment to your joins / relations.\n\n\n\n\n\n\nDatasets\n\n\n\nFor this excercise we are going to use Spanish Census data at the ‘census section’ level (the lowest level of annonimised data). Both datasets come from the INE - National Institute of Statitics in Spanish.\n\nPopulation by gender and origin in .CSV format : here\nCensus Sections in .SHP format : here",
-    "crumbs": [
-      "GIS Tools",
-      "Bonus: Tableau"
-    ]
-  },
-  {
-    "objectID": "chapter_1/intro_to_tableau.html#views-creating-visualizations",
-    "href": "chapter_1/intro_to_tableau.html#views-creating-visualizations",
-    "title": "Bonus: Tableau",
-    "section": "Views: Creating visualizations",
-    "text": "Views: Creating visualizations\nThis is where you are going to create all of your individual charts and graphs. Two important field types are automatically created (based on the data types) to help you set up your visualisations:\n\nDimensions (blue): All qualitative and categorical fields in your dataset. eg. ‘nationality’, ‘gender’, etc…\nMeasures (green): Continuous fields where you can apply SUM, AVG, MIN, MAX calculations. eg. ‘population’, ‘age’, etc..\n\nNote that geometries are considered measures but deconstructed automatically into Longitude and Latitude when brought to the view.\n\n\nTo create new fields right click next to your fields ans select Create Calculated Field... &gt; Tableau uses a SQL based syntax but to discover more see documentation\nTo build your charts 3 things need careful attention:\n\nMARKS CARD: Establishes the type of graph you want to build. eg: lineschart, barchart, map, piechart. etc..\nCOLUMNS and ROWS shelves: Determine what happend in your vertical and horizontal axis.\nFILTERS CARD: The place to customized what gets filtered for the current chart.\n\n\n\n\n\n\n\nWarning\n\n\n\nBe extra critical about the numbers! Tableau is really good at generating outputs but the results should make sense to you and if possible, always try to sense check with other sources.\n\n\n\n\n\n\n\n\nExercise\n\n\n\nDrag and drop fields to create the following charts:\n\nMap: Displaying the total population per ‘census section’ in the ‘Vasque Country’ (Pais Vasco)\nBar graph: Number of people per province splitted by gender.\nBig Numbers: Three big numbers: Total Population, % Nacionals, % Foreigns.\n\nThese will serve us to sense check the values on our Dashboard\n\nOthers: try to come up with new fields that could enrich the analysis.",
-    "crumbs": [
-      "GIS Tools",
-      "Bonus: Tableau"
-    ]
-  },
-  {
-    "objectID": "chapter_1/intro_to_tableau.html#dashboards-stories-interacting-and-enhancing-views",
-    "href": "chapter_1/intro_to_tableau.html#dashboards-stories-interacting-and-enhancing-views",
-    "title": "Bonus: Tableau",
-    "section": "Dashboards (& Stories): Interacting and Enhancing views",
-    "text": "Dashboards (& Stories): Interacting and Enhancing views\nIn this step is where you put your pieces together. If the visualizations you have made share the same datasource, you can use the different views to filter or highlight parts of other views.\nThe recomendation is to create dashboards with no more than 3 or 4 components (views, text blocks, images). When trying to tell a story with data you want to eliminate all possible distractions.\n\n\n\n\n\n\nTip\n\n\n\nVisual guide to selecting the right type of chart. The Financial Times Visual Vocabulary:\n\nWeb version\nPoster version(s) in multiple languages.\nTableau Public",
-    "crumbs": [
-      "GIS Tools",
-      "Bonus: Tableau"
-    ]
-  },
-  {
-    "objectID": "chapter_1/intro_to_tableau.html#sharing-and-publishing",
-    "href": "chapter_1/intro_to_tableau.html#sharing-and-publishing",
-    "title": "Bonus: Tableau",
-    "section": "Sharing and Publishing",
-    "text": "Sharing and Publishing\nDashboards, Stories and Views can be exported as images (PDF, JPEG, etc..), as PowerPoint presentations but you can Publish your results to Tableau Public - a free and open server where dashboards remain interactive.\nLike other softwares you can share your work as Tableau workbook packaged (.twbx), which contains all the data, or as a visualization tool only (.twb) if you know that the other person will have access to the same data connections you used.",
-    "crumbs": [
-      "GIS Tools",
-      "Bonus: Tableau"
-    ]
-  },
-  {
-    "objectID": "chapter_1/intro_to_tableau.html#resources-for-further-learning",
-    "href": "chapter_1/intro_to_tableau.html#resources-for-further-learning",
-    "title": "Bonus: Tableau",
-    "section": "Resources for Further Learning",
-    "text": "Resources for Further Learning\n\nTableau Public\nOfficial videos\nVizWiz one of the best teaching resouces out there. #MakeOverMondays are great excercises.",
-    "crumbs": [
-      "GIS Tools",
-      "Bonus: Tableau"
-    ]
-  },
-  {
-    "objectID": "chapter_1/gis.html",
-    "href": "chapter_1/gis.html",
-    "title": "Intro to GIS",
+    "objectID": "chapter_1/gis_tips.html#introduction-to-spatial-joins",
+    "href": "chapter_1/gis_tips.html#introduction-to-spatial-joins",
+    "title": "Tips",
     "section": "",
-    "text": "Vector and raster data are two fundamental types of spatial data used in Geographic Information Systems (GIS). Vector data represents geographical features as distinct shapes using points, lines, and polygons, each of which can carry detailed attribute information, making it ideal for precise mapping applications like boundaries, roads, and infrastructure networks. It excels in accuracy and detail for discrete data. In contrast, raster data consists of a grid of pixels, each holding a value, effectively representing continuous data. This format is well-suited for environmental analysis, land cover studies, and satellite imagery, as it captures variations over a wide area, such as elevation, temperature, or vegetation. While vector data is preferred for its precision in depicting specific geographic entities and managing related data, raster data is favored for its ability to represent complex, continuous phenomena over large spatial scales.\n\n\n\n\nVector data types are primarily categorized into Points, Linestrings, and Polygons, each with distinct characteristics and uses. Additionally, there are multi-geometry versions of these types, such as MultiPoints, MultiLinestrings, and MultiPolygons, which offer more complex feature groupings.\n\nPoints: Points are used to represent discrete locations on the earth’s surface. Each point is defined by a pair of coordinates (e.g. latitude and longitude, or an easting and northing) and can represent features such as the location of a tree or a landmark. They can have attributes further describing characteristics of interest, such as tree species or landmark name.\nLinestring: Lines connect a series of points to describe linear features such as roads or rivers. Linestring geometries inherently have length and may include attributes such as road type or river name.\nPolygons: Polygons are closed shapes used to represent areas such as city boundaries or land parcels. Polygon geometries inherently have an area and perimeter and may have attributes such as population counts or land use types.\n\n\n\n\nGeometry types\n\n\n\nMulti-Geometry Versions: Multi geometries provide a way to associated a grouping of Features which can share the same feature attributes.\n\nMultiPoint: For example, a grouping of trees.\nMultiLinestring: For example, a grouping of related segments describing a long-distance hiking trail.\nMultiPolygon: For example, a grouping of buildings which together represent a larger entity such as a hospital or university.\n\n\n\n\n\nEsri Shapefile\nShapefile is a prevalent geospatial file type in GIS software, requiring three mandatory files:\n\nSHP (feature geometry)\nSHX (shape index position)\nDBF (attribute data)\nShapefiles often also include optional files such as PRJ (coordinate reference system).\n\nGeoPackage\nGeoPackage provides a modern and simpler alternative to shapefiles and is rapidly gaining acceptance. It can store multiple data layers and it’s use of SQLite means that you can use SQL query data from the file.\nGeoJSON\nGeoJSON encodes geographic data structures using JSON, a format commonly used for web development.\n\nReference: https://gisgeography.com/gis-formats/\n\n\n\n\n\nRasters contain a grid of pixels, where the value used for each grid cell can represent a characteristic such as temperature or landcover. Geographic rasters typically include Geospatial information necessary to correctly project and locate the information in GIS software.\n\n\n\nRaster image grid cells\n\n\n\n\n\nASCII Grid\nASCII Grid files (ASC) store raster data as text in a grid format. Each cell in the grid is represented by a numeric value corresponding to the geographic attribute being mapped, such as elevation. ASCII Grid files include a header specifying metadata like cell size, number of rows and columns, and coordinates of the lower left corner. The format is simple and can be generated or edited with a text editor, and may use space, comma, or tab-delimiters.\nGeoTIFF\nGeoTIFF is widely becoming the defacto raster format in GIS. It embeds coordinate reference system information within a TIFF (Tagged Image File Format) file. GeoTIFFs are commonly used for storing satellite imagery, elevation data, and land surface temperatures.\n\nReference: https://gisgeography.com/gis-formats/",
+    "text": "Similar to joining tables based on their attributes, it is possible to join them based on their location. This is a very common technique in spatial databases (e.g. PostGIS) where you’ll commonly use a feature such as a city boundary to filter and join data from another table (e.g. streets).\nTo achieve the expected results, make sure that both origin tables are in the same CRS.\n\n\nIn QGIS and spatial databases, spatial predicates are used to define spatial relationships between features. These are used for joining or selecting data based on the relationships between the features. Some of the common predicates are:\n\nContains: Determines if one geometry contains another.\nWithin: Checks if one geometry is within another geometry.\nIntersects: Tests if two geometries intersect at any point.\nDisjoint: Determines if two geometries do not intersect.\nTouches: Checks if two geometries have at least one point in common but their interiors do not intersect.\nCrosses: Determines if the geometries have some, but not all, interior points in common.\nEquals: Checks if two geometries are exactly the same in terms of spatial coordinates.\nOverlaps: Determines if two geometries overlap, meaning they share some but not all points, and the intersection has the same dimension as the geometries themselves.\n\n\n\n\n\n\n\nCaution\n\n\n\nPlease note that depending on the size and complexity of your joins some operations can be computationally expensive and some advanced techniques might need to be implemented to achieve best performance.",
     "crumbs": [
       "GIS Tools",
-      "Intro to GIS"
+      "Tips"
     ]
   },
   {
-    "objectID": "chapter_1/gis.html#file-types",
-    "href": "chapter_1/gis.html#file-types",
-    "title": "Intro to GIS",
+    "objectID": "chapter_1/gis_tips.html#tools-and-plugins",
+    "href": "chapter_1/gis_tips.html#tools-and-plugins",
+    "title": "Tips",
+    "section": "Tools and plugins",
+    "text": "Tools and plugins\nIn QGIS, georeferencing can be carried out using the built-in Georeferencer tool, which can be found under the menu Layer -&gt; Georeferencer.... This tool allows you to manually add control points that link the location on the image with geographic coordinates on the map, adjusting the image to fit the spatial data.\n\n\n\n\n\n\nTip\n\n\n\nThe more nodes you add and the further away from each other, the more refences the algorithm has to accomodate the original file. Minimum of 5 points should be considered to have an descent baseline.\n\n\n\nPlugins: For more advanced or specific georeferencing needs, there are additional plugins like Freehand Raster Georeferencer, allowing for more flexible manipulation of images directly within the map canvas.",
+    "crumbs": [
+      "GIS Tools",
+      "Tips"
+    ]
+  },
+  {
+    "objectID": "chapter_1/gis_tips.html#use-cases-of-georeferenced-images",
+    "href": "chapter_1/gis_tips.html#use-cases-of-georeferenced-images",
+    "title": "Tips",
+    "section": "Use cases of georeferenced images",
+    "text": "Use cases of georeferenced images\n\nHistorical Maps: Bringing old maps into modern GIS projects, helping to study changes over time.\nTracing Exercises: Overlaying aerial or satellite imagery to digitize features such as roads, buildings, or land use.\nReshaping sketches: Planning and ideation sketches usually are our of scale and conveniently reshaping elements of the environment. Georefereincing them helps to better transition ideas into reality.\n\n\n\n\n\n\n\nIt’s important to consider potential distortions when georeferencing images, as the process involves stretching or rotating the image to align with real-world coordinates. Understanding and managing these distortions is key to ensuring the accuracy of the geospatial analysis.",
+    "crumbs": [
+      "GIS Tools",
+      "Tips"
+    ]
+  },
+  {
+    "objectID": "chapter_1/gis_tips.html#demo",
+    "href": "chapter_1/gis_tips.html#demo",
+    "title": "Tips",
+    "section": "Demo …",
+    "text": "Demo …",
+    "crumbs": [
+      "GIS Tools",
+      "Tips"
+    ]
+  },
+  {
+    "objectID": "chapter_1/sql.html",
+    "href": "chapter_1/sql.html",
+    "title": "SQL for GIS",
     "section": "",
-    "text": "Vector and raster data are two fundamental types of spatial data used in Geographic Information Systems (GIS). Vector data represents geographical features as distinct shapes using points, lines, and polygons, each of which can carry detailed attribute information, making it ideal for precise mapping applications like boundaries, roads, and infrastructure networks. It excels in accuracy and detail for discrete data. In contrast, raster data consists of a grid of pixels, each holding a value, effectively representing continuous data. This format is well-suited for environmental analysis, land cover studies, and satellite imagery, as it captures variations over a wide area, such as elevation, temperature, or vegetation. While vector data is preferred for its precision in depicting specific geographic entities and managing related data, raster data is favored for its ability to represent complex, continuous phenomena over large spatial scales.\n\n\n\n\nVector data types are primarily categorized into Points, Linestrings, and Polygons, each with distinct characteristics and uses. Additionally, there are multi-geometry versions of these types, such as MultiPoints, MultiLinestrings, and MultiPolygons, which offer more complex feature groupings.\n\nPoints: Points are used to represent discrete locations on the earth’s surface. Each point is defined by a pair of coordinates (e.g. latitude and longitude, or an easting and northing) and can represent features such as the location of a tree or a landmark. They can have attributes further describing characteristics of interest, such as tree species or landmark name.\nLinestring: Lines connect a series of points to describe linear features such as roads or rivers. Linestring geometries inherently have length and may include attributes such as road type or river name.\nPolygons: Polygons are closed shapes used to represent areas such as city boundaries or land parcels. Polygon geometries inherently have an area and perimeter and may have attributes such as population counts or land use types.\n\n\n\n\nGeometry types\n\n\n\nMulti-Geometry Versions: Multi geometries provide a way to associated a grouping of Features which can share the same feature attributes.\n\nMultiPoint: For example, a grouping of trees.\nMultiLinestring: For example, a grouping of related segments describing a long-distance hiking trail.\nMultiPolygon: For example, a grouping of buildings which together represent a larger entity such as a hospital or university.\n\n\n\n\n\nEsri Shapefile\nShapefile is a prevalent geospatial file type in GIS software, requiring three mandatory files:\n\nSHP (feature geometry)\nSHX (shape index position)\nDBF (attribute data)\nShapefiles often also include optional files such as PRJ (coordinate reference system).\n\nGeoPackage\nGeoPackage provides a modern and simpler alternative to shapefiles and is rapidly gaining acceptance. It can store multiple data layers and it’s use of SQLite means that you can use SQL query data from the file.\nGeoJSON\nGeoJSON encodes geographic data structures using JSON, a format commonly used for web development.\n\nReference: https://gisgeography.com/gis-formats/\n\n\n\n\n\nRasters contain a grid of pixels, where the value used for each grid cell can represent a characteristic such as temperature or landcover. Geographic rasters typically include Geospatial information necessary to correctly project and locate the information in GIS software.\n\n\n\nRaster image grid cells\n\n\n\n\n\nASCII Grid\nASCII Grid files (ASC) store raster data as text in a grid format. Each cell in the grid is represented by a numeric value corresponding to the geographic attribute being mapped, such as elevation. ASCII Grid files include a header specifying metadata like cell size, number of rows and columns, and coordinates of the lower left corner. The format is simple and can be generated or edited with a text editor, and may use space, comma, or tab-delimiters.\nGeoTIFF\nGeoTIFF is widely becoming the defacto raster format in GIS. It embeds coordinate reference system information within a TIFF (Tagged Image File Format) file. GeoTIFFs are commonly used for storing satellite imagery, elevation data, and land surface temperatures.\n\nReference: https://gisgeography.com/gis-formats/",
-    "crumbs": [
-      "GIS Tools",
-      "Intro to GIS"
-    ]
+    "text": "This is a draft outline and will be fleshed-out closer to class. To make visible, edit _quarto.yml to include in directory.\n\n\nSQL and PostgreSQL Basics:\n\n\nUnderstanding SQL (Structured Query Language)\nIntroduction to PostgreSQL as a Relational Database Management System (RDBMS)\nWorking with Schemas in PostgreSQL\n\n\nData Manipulation with SQL and PostgreSQL:\n\n\nCREATE, SELECT, INSERT, DELETE Statements\nPrimary Keys (PK) and Foreign Keys (FK)\nCreating and Managing Indexes for Performance Optimization\n\n\nSQL Concepts:\n\n\nAggregations: COUNT, SUM, AVG, MIN, MAX\nComplex Queries and Subqueries WITH, WHERE\nConditional Statements: CASE Statements\n\n\nIntroduction to GIS Integration with PostgreSQL:\n\n\nSpatial Data Types in PostgreSQL\nSpatial Indexing for Efficient Spatial Queries\nSpatial Functions and Operators in PostgreSQL\n\n\nSpatial and Non-Spatial Joins:\n\n\nPerforming Spatial Joins for GIS Analysis\nNon-Spatial Joins for Relational Data Analysis\nCombining Spatial and Non-Spatial Data in Queries\n\n\nHow to ask ChatGPT\n\n\nIterating query development\nDebugging"
   },
   {
-    "objectID": "chapter_1/gis.html#coordinate-reference-systems",
-    "href": "chapter_1/gis.html#coordinate-reference-systems",
-    "title": "Intro to GIS",
-    "section": "Coordinate Reference Systems",
-    "text": "Coordinate Reference Systems\nGeographic data is intrinsically tied to the earth’s surface and is represented using coordinates within defined Coordinate Reference Systems (CRS). Broadly, these systems fall into two categories: Geographic Coordinate Systems and Projected Coordinate Systems.\nGeographic CRSs use a spherical surface to define locations on the earth’s surface. They are based on degrees in latitude and longitude and are most commonly referenced to the WGS84 datum. While they accurately represent the earth’s curved surface and preserve the true shape and angular relationships of features, distances and areas may not be as accurate, especially over larger distances.\nProjected CRSs translate the earth’s three-dimensional surface onto a two-dimensional plane, making it easier to analyze and visualize spatial data. They use a mathematical projection to flatten the curved surface of the earth, which can lead to distortions in shape, area, distance, or direction. Different types of projections are designed to minimize these distortions for specific regions or purposes. For example, projections can be optimized for preserving areas (equal-area projections), angles and shapes (conformal), or distances (equidistant).\n\n\n\nDymaxion Fuller projection. NFF image rights.\n\n\n\n\n\n\n\n\nTip\n\n\n\nA useful reference website for different CRS is EPSG.io: Coordinate Systems Worldwide\n\n\n\nGeographic\nGeographic Coordinate Reference Systems (CRS) use a spherical or ellipsoidal surface to represent locations on the Earth’s curved surface. Geographic CRSs are based on latitude and longitude coordinates and are useful for global or regional mapping.\n\nUnits: Degrees\nCommon Examples:\n\nWGS 84 (World Geodetic System 1984) EPSG:4326: A widely used CRS for global mapping and GPS navigation.\nNAD83 (North American Datum 1983) EPSG:4269: A CRS commonly used in North America.\n\n\n\n\nProjected\nProjected Coordinate Reference Systems (CRS) use a Cartesian coordinate system to represent locations on a flat surface. These CRSs are created by “projecting” the curved Earth onto a flat surface, which introduces distortions. This inevitably requires tradeoffs in distances, areas, or shapes, with different projection systems involving different trade-offs. Projected CRSs are commonly used for local or small-scale mapping appropriate to specific countries or regions of the globe, where locally accurate measurements and comparisons are required.\n\nUnits: Meters (most commonly)\nCommon Examples:\n\nLAEA (Lambert Azimuthal Equal Area) Europe projection EPSG:3035: This CRS is commonly used for Europe, though note that countries will typically also have even more localised projected CRS.\nBritish National Grid (BNG) EPSG:27700: This CRS is commonly used in the United Kingdom.\nState Plane Coordinate System (SPCS): This CRS is widely used in the United States, and divides the country into zones, each with their own projection.\n\n\n\n\nSome visual examples\n\n\nhttps://gisgeography.com",
-    "crumbs": [
-      "GIS Tools",
-      "Intro to GIS"
-    ]
+    "objectID": "chapter_1/sql.html#key-topics",
+    "href": "chapter_1/sql.html#key-topics",
+    "title": "SQL for GIS",
+    "section": "Key Topics",
+    "text": "Key Topics\n\nIntroduction to Data Analysis and Databases:\n\n\nImportance of Data Analysis in Decision Making\nOverview of Relational Databases\n\n\nConnecting to Google Cloud Platform (GCP):\n\n\nConnecting to NFI’s database(s)\nSetting Up a GCP Account\n\n\nSQL and PostgreSQL Basics:\n\n\nUnderstanding SQL (Structured Query Language)\nIntroduction to PostgreSQL as a Relational Database Management System (RDBMS)\nWorking with Schemas in PostgreSQL\n\n\nData Manipulation with SQL and PostgreSQL:\n\n\nCREATE, SELECT, INSERT, DELETE Statements\nPrimary Keys (PK) and Foreign Keys (FK)\nCreating and Managing Indexes for Performance Optimization\n\n\nSQL Concepts:\n\n\nAggregations: COUNT, SUM, AVG, MIN, MAX\nComplex Queries and Subqueries WITH, WHERE\nConditional Statements: CASE Statements\n\n\nIntroduction to GIS Integration with PostgreSQL:\n\n\nSpatial Data Types in PostgreSQL\nSpatial Indexing for Efficient Spatial Queries\nSpatial Functions and Operators in PostgreSQL\n\n\nSpatial and Non-Spatial Joins:\n\n\nPerforming Spatial Joins for GIS Analysis\nNon-Spatial Joins for Relational Data Analysis\nCombining Spatial and Non-Spatial Data in Queries"
   },
   {
-    "objectID": "chapter_1/gis.html#gis-data",
-    "href": "chapter_1/gis.html#gis-data",
-    "title": "Intro to GIS",
-    "section": "GIS Data",
-    "text": "GIS Data\n\nSources\nDiscovering sources for GIS (Geographic Information System) data is a handy skill for spatial analysis and mapping! There are various official and non-official sources, each offering different types of data suited to specific needs and applications. When searching for and using different data sources, try to remain cognisant of the merits and limitations of different sources, which may impact considerations such as data accuracy or bias.\n\nGovernment Agencies: National agencies often provide official and reliable forms of GIS data. However, these datasets may reflect governmental priorities and perspectives or they may be reluctant to make these datasets openly available.\nInternational Organizations: Organizations such as the United Nations (UN) and the World Bank offer global GIS datasets, but these may have limited local detail due to their broad scope.\nLocal Authorities: City and regional councils often create and maintain local GIS datasets, often tailored to specific local government projects and priorities. Their local specificity may make it tricky to compare to different datasets sourced from other cities.\nPrivate Sector: There are many private sector organisations which generate, curate, or distribute data, however, these datasets are less likely to be openly available and may incur substantial monetary cost.\nOpen Data Platforms: Platforms such as OpenStreetMap offer freely accessible GIS data, contributed by a community of users. These datasets may require additional validation if used for mission-critical purposes, though can otherwise be extremely useful, allowing for generalisable workflows and providing coverage in some instances where no other options exist.\nAPIs and Web Scraping: Involves the automated collection of data from online APIs or websites. The quality of data can vary but may otherwise be useful for obtaining interesting data. These techniques may involve significant technical skills for data extraction and processing. Legal and ethical considerations are important, as scraping can sometimes violate terms of service or data privacy laws.\n\n\n\nPurposely Collected Data\nPurposely collected data is gathered specifically to address a certain research question or project goal, using structured approaches such as surveys, experiments, or observations. It’s tailored to meet the specific needs of a study, with careful control over variables to ensure the data’s relevance and accuracy. This type of data is highly pertinent to the project it’s collected for, due to its focused nature and methodical collection process.\n\n\nAdapted Data\nOn the other hand, data can also be adapted to new research needs from information originally collected for different purposes. This may include repurposing data from various sources such as public databases, existing research studies, or web scraping.",
-    "crumbs": [
-      "GIS Tools",
-      "Intro to GIS"
-    ]
+    "objectID": "chapter_1/sql.html#software-needed",
+    "href": "chapter_1/sql.html#software-needed",
+    "title": "SQL for GIS",
+    "section": "Software needed",
+    "text": "Software needed\n\nFor this session please make sure you have downloaded the following software(s):\n\nTablePlus | Modern, Native Tool for Database Management."
   },
   {
-    "objectID": "chapter_1/gis.html#attribution",
-    "href": "chapter_1/gis.html#attribution",
-    "title": "Intro to GIS",
-    "section": "Attribution",
-    "text": "Attribution\nAttribution or citation refers to giving proper credit to the original source or creator of the data. Just as with citing sources in academic papers, it’s important to acknowledge the origin of the data you are using. This helps provide transparency, accountability, and recognition to the creators of the dataset.\n\nLicenses:\nWhen dealing with data, licenses refer to legal agreements or permissions that determine how the data can be used, distributed, or modified. Different datasets may have different licensing requirements, so it’s important to understand and comply with the specific license terms associated with the data you are using.\nExamples:\n\nCreative Commons (CC) licenses: These are standardized licenses that allow creators to specify permissions for their work. They are commonly used for a variety of creative works, including images, music, videos, and written content.\nOpen Government Licenses: These licenses have been adopted by governments and may allow individuals and organizations permissive use, reuse, and sharing of information.\nGNU General Public License (GPL): This is a copyleft license for open-source software. It permits users to modify and distribute the software, but any modifications or derivative works must also be licensed under the GPL. This license is popular for promoting open-source principles and collaborative software development.\nMIT / Apache / BSD Licenses: Permissive open-source software licenses. These may allow great flexibility such as using, copying, modifying, and distributing derivative work, even for commercial purposes. The primary requirement is to include the original copyright and license notice in any significant portions of the software.",
-    "crumbs": [
-      "GIS Tools",
-      "Intro to GIS"
-    ]
+    "objectID": "chapter_1/sql.html#connecting-to-data-on-postgis",
+    "href": "chapter_1/sql.html#connecting-to-data-on-postgis",
+    "title": "SQL for GIS",
+    "section": "Connecting to data on PostGIS 👨🏽‍💻",
+    "text": "Connecting to data on PostGIS 👨🏽‍💻\n\n\n\n⚙\nCONNECTION SETTINGS\n\n\n\n\nIP Address\n(will be provided during class)\n\n\nDatabase names\nnfi / urban_analytics\n\n\nPort\n5432\n\n\nUsername\nscholar\n\n\nPassword\n(will be provided during class)\n\n\n\n\n\n\n\n\n\nTip\n\n\n\nNote that the connections to the Databases are restricted by the source IP address."
   },
   {
-    "objectID": "chapter_1/gis.html#privacy",
-    "href": "chapter_1/gis.html#privacy",
-    "title": "Intro to GIS",
-    "section": "Privacy",
-    "text": "Privacy\nPrivacy considerations are important when working with data, especially if the data contains personally identifiable information or sensitive information. It’s very important to handle and store data in a way that respects privacy laws and regulations. This may involve anonymizing or de-identifying data, implementing security measures, and obtaining consent from individuals whose data is being used.\n\n\n\n\n\n\nNote\n\n\n\nPlease avoid using any and all data containing private or sensitive data unless you first review this and seek approval from faculty. Handling these forms of data comes with numerous steps and safeguards and will generally be strongly discouraged.",
-    "crumbs": [
-      "GIS Tools",
-      "Intro to GIS"
-    ]
+    "objectID": "chapter_1/sql.html#to-dos",
+    "href": "chapter_1/sql.html#to-dos",
+    "title": "SQL for GIS",
+    "section": "To-Dos",
+    "text": "To-Dos\n\nCreate a table with the following characteristics.\nUse schema. ua0\nTable name : [yourinitials] + “_prof_exp”\nFields required: (assign data types as you think would be best)\n\nid\nscholar_id\nindustry_id\ninstitution\nyears_of_experience\neducation\nlocation (crs: 4326)\nend_year\nnotes\n\n** If you think more fields are necessary, feel free to add them\nCreate a GitHub account\n\nadd link to public.scholars.github_link (varchar)\n\n\n\nOptional\nCreate a local instance of PostGIS for use in the upcoming months\nLearn PostgreSQL Tutorial - Full Course for Beginners"
   },
   {
-    "objectID": "chapter_1/gis.html#quirks---part-1",
-    "href": "chapter_1/gis.html#quirks---part-1",
-    "title": "Intro to GIS",
-    "section": "Quirks - Part 1",
-    "text": "Quirks - Part 1\n\nMAUP\nThe Modifiable Areal Unit Problem (MAUP) is encountered when using different scales or zones of analysis to group data. This can cause significant changes in the balance and aggregation of data based on how it is grouped. This can have a potentially significant impact on visualisation or analysis. MAUP is exploited for political purposes through the process of gerrymandering.\n\nhttps://gisgeography.com\n\n\n\nYouTube",
-    "crumbs": [
-      "GIS Tools",
-      "Intro to GIS"
-    ]
+    "objectID": "chapter_1/sql.html#useful-resources",
+    "href": "chapter_1/sql.html#useful-resources",
+    "title": "SQL for GIS",
+    "section": "Useful Resources",
+    "text": "Useful Resources\n\nPOSTGRESQL & POSTGIS CHEATSHEETS\n\nPostgreSQL & PostGIS cheatsheet (a work in progress)\nPostgres Cheatsheet"
   },
   {
-    "objectID": "chapter_1/gis.html#resources",
-    "href": "chapter_1/gis.html#resources",
-    "title": "Intro to GIS",
-    "section": "Resources",
-    "text": "Resources\nThe following resources provide further information on common types of map visualisations and best practices:\n\nCARTO - 5 Popular Thematic map Types\nFundamentals of Data Visualisation\n\nColor scales\nVisualizing geospatial data\nCommon pitfalls of color use\n\nColor Brewer",
-    "crumbs": [
-      "GIS Tools",
-      "Intro to GIS"
-    ]
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "NFI Urban Analytics 2024",
+    "objectID": "chapter_1/qgis_mapping.html",
+    "href": "chapter_1/qgis_mapping.html",
+    "title": "QGIS Mapping",
     "section": "",
-    "text": "Welcome to Part 1 of the Urban Analytics course at NFI. This course is designed to empower scholars with the skills and knowledge to harness the power of urban analytics for analyzing and interpreting urban data.\nThis is a practical course and is best approached with a hands-on and explorative mindset. It consists of three parts:\n\nPart 1 includes information on general setup and provides an introduction to basic concepts. See the sidebar for the Sections.\nPart 2 will be released separately and delves into targeted themes and skills development.\nPart 3 will be framed around pilot cities specific workflows.\n\nWe hope you enjoy the course!\n\n\n\nThis course is will touch on a number of broad topics. High-level guidance will be provided and scholars will then be encouraged to further explore these approaches and develop their skillsets based on methods of interest or relevance to their work:\n\nSpatial Analysis: Exploring Geographic Information Systems, spatial data handling, and mapping urban data.\nPython: Introduction to Python and its usage for geospatial analysis.\nData Handling: Techniques for handling datasets and an introduction to data science methods.\nProject Work: Lab work tasks and workflows.\n\n\n\n\nYou have been added to a Google Spaces for online discussions. This platform is your primary hub for:\n\nSeeking peer assistance.\nDiscussing course materials and urban analytics topics.\nCollaborating on projects and assignments.\nAnnouncements and updates from the course team.",
+    "text": "We’ll first start with another statistical quirk!\n\n\nAn interesting conundrum arises in statistical analysis when relationships between variables for grouped data are assumed to be valid for the individuals within those groupings. Individual level information is lost in the process of grouping information into larger aggregations, and statistical observations computed for these larger groupings may therefore be different, or potentially misleading in the context of individuals. As a general rule, use individual level (unaggregated) data or the smallest groupings of data (e.g. census statistics) available.\nHere is some background reading, with some examples:\n\nWikipedia: Ecological Correlations\nBritannica: Ecological Fallacy\nThe ecological correlations fallacy",
     "crumbs": [
-      "Home"
+      "GIS Tools",
+      "QGIS Mapping"
     ]
   },
   {
-    "objectID": "index.html#ua-part-1",
-    "href": "index.html#ua-part-1",
-    "title": "NFI Urban Analytics 2024",
+    "objectID": "chapter_1/qgis_mapping.html#quirks---part-2",
+    "href": "chapter_1/qgis_mapping.html#quirks---part-2",
+    "title": "QGIS Mapping",
     "section": "",
-    "text": "Welcome to Part 1 of the Urban Analytics course at NFI. This course is designed to empower scholars with the skills and knowledge to harness the power of urban analytics for analyzing and interpreting urban data.\nThis is a practical course and is best approached with a hands-on and explorative mindset. It consists of three parts:\n\nPart 1 includes information on general setup and provides an introduction to basic concepts. See the sidebar for the Sections.\nPart 2 will be released separately and delves into targeted themes and skills development.\nPart 3 will be framed around pilot cities specific workflows.\n\nWe hope you enjoy the course!",
+    "text": "We’ll first start with another statistical quirk!\n\n\nAn interesting conundrum arises in statistical analysis when relationships between variables for grouped data are assumed to be valid for the individuals within those groupings. Individual level information is lost in the process of grouping information into larger aggregations, and statistical observations computed for these larger groupings may therefore be different, or potentially misleading in the context of individuals. As a general rule, use individual level (unaggregated) data or the smallest groupings of data (e.g. census statistics) available.\nHere is some background reading, with some examples:\n\nWikipedia: Ecological Correlations\nBritannica: Ecological Fallacy\nThe ecological correlations fallacy",
     "crumbs": [
-      "Home"
+      "GIS Tools",
+      "QGIS Mapping"
     ]
   },
   {
-    "objectID": "index.html#topics",
-    "href": "index.html#topics",
-    "title": "NFI Urban Analytics 2024",
-    "section": "",
-    "text": "This course is will touch on a number of broad topics. High-level guidance will be provided and scholars will then be encouraged to further explore these approaches and develop their skillsets based on methods of interest or relevance to their work:\n\nSpatial Analysis: Exploring Geographic Information Systems, spatial data handling, and mapping urban data.\nPython: Introduction to Python and its usage for geospatial analysis.\nData Handling: Techniques for handling datasets and an introduction to data science methods.\nProject Work: Lab work tasks and workflows.",
+    "objectID": "chapter_1/qgis_mapping.html#mapping",
+    "href": "chapter_1/qgis_mapping.html#mapping",
+    "title": "QGIS Mapping",
+    "section": "Mapping",
+    "text": "Mapping\nAs part of our practical exercises in class, we will focus on the essential skill of drawing street networks using vector data mapping. This exercise is centered on the historic center of San Marino and is designed to enhance your proficiency in inputting geometry. The main task will involve creating a GeoPackage Layer:\n\nStreet Network layer: representing the pedestrian routes through the assigned tiles.\n\nFor those interested in exploring further and applying additional GIS skills, we offer the optional task of creating a Buildings layer:\n\nBuildings layer (Optional): representing all the buildings within the assigned tiles.\n\nThis approach allows you to focus on the critical aspect of mapping the street network, with the option to delve into building mapping as an additional challenge.",
     "crumbs": [
-      "Home"
+      "GIS Tools",
+      "QGIS Mapping"
     ]
   },
   {
-    "objectID": "index.html#communication",
-    "href": "index.html#communication",
-    "title": "NFI Urban Analytics 2024",
-    "section": "",
-    "text": "You have been added to a Google Spaces for online discussions. This platform is your primary hub for:\n\nSeeking peer assistance.\nDiscussing course materials and urban analytics topics.\nCollaborating on projects and assignments.\nAnnouncements and updates from the course team.",
+    "objectID": "chapter_1/qgis_mapping.html#connecting-to-db",
+    "href": "chapter_1/qgis_mapping.html#connecting-to-db",
+    "title": "QGIS Mapping",
+    "section": "Connecting to DB",
+    "text": "Connecting to DB\nAlthough the exercise is primarily based on local data manipulation, connecting to NFI’s database is recommended to access the reference grid and familiarize yourself with its structure. The database is read-only for scholars, ensuring no accidental modifications.\n\n\n\n\n\n\nTip\n\n\n\nConnection details will be provided in class. All connections to the database are IP protected.",
     "crumbs": [
-      "Home"
+      "GIS Tools",
+      "QGIS Mapping"
+    ]
+  },
+  {
+    "objectID": "chapter_1/qgis_mapping.html#mapping-vector-data",
+    "href": "chapter_1/qgis_mapping.html#mapping-vector-data",
+    "title": "QGIS Mapping",
+    "section": "Mapping Vector Data",
+    "text": "Mapping Vector Data\nWe will use the historic center of San Marino for this exercise, aiming to familiarize you with inputting geometry. Attributes will be considered at later stages. Each scholar can produce individual GeoPackage Layers (locally):\n\nStreet Network layer (Linestring, CRS: 3035) is the primary focus, emphasizing the mapping of pedestrian routes.\n\nSuggested name: network_[scholarname]\n\nBuildings layer (Polygons, CRS: 3035) for those who wish to further challenge themselves by mapping the area’s buildings.\n\nSuggested name: buildings_[scholarname]\n\n\nScholars will refer to specific areas of the republic found in the nfi database path: - nfi.sanmarino.base_mapping\nExplore the street_network attribute to see your areas and collaborate with neighboring tiles.",
+    "crumbs": [
+      "GIS Tools",
+      "QGIS Mapping"
+    ]
+  },
+  {
+    "objectID": "chapter_1/qgis_mapping.html#contextual-resources-for-mapping",
+    "href": "chapter_1/qgis_mapping.html#contextual-resources-for-mapping",
+    "title": "QGIS Mapping",
+    "section": "Contextual Resources for Mapping",
+    "text": "Contextual Resources for Mapping\nUse OSM or Bing maps XYZ Tiles, as detailed in our previous lesson, for a better understanding of your mapping area. The 3D CESIUM Story offers a 3D view of the 2D polygons you’ll be mapping, enhancing your perspective and accuracy.\n\nOSM tile: https://tile.openstreetmap.org/{z}/{x}/{y}.png\nBing tile URL : https://t0.tiles.virtualearth.net/tiles/a{q}.jpeg?g=685&mkt=en-us&n=z\n\n\n\n\n\n\n\nTip\n\n\n\nActivate the Snapping Toolbar for precision in mapping. Experiment with different pixel tolerance values and options like Topological Editing and Intersection Snapping.",
+    "crumbs": [
+      "GIS Tools",
+      "QGIS Mapping"
+    ]
+  },
+  {
+    "objectID": "chapter_1/qgis_mapping.html#contextual-resources-for-mapping-1",
+    "href": "chapter_1/qgis_mapping.html#contextual-resources-for-mapping-1",
+    "title": "QGIS Mapping",
+    "section": "Contextual Resources for Mapping",
+    "text": "Contextual Resources for Mapping\nFor a better understanding of your mapping area, utilize OSM or Bing maps XYZ Tiles as detailed in our previous lesson. Additionally, explore the 3D CESIUM Story for an immersive 3D view of the 2D polygons and lines you will be mapping. These resources will enhance your perspective and accuracy in representing San Marino’s historic center.",
+    "crumbs": [
+      "GIS Tools",
+      "QGIS Mapping"
+    ]
+  },
+  {
+    "objectID": "chapter_1/qgis_mapping.html#rules-for-correctly-drawing-the-street-network",
+    "href": "chapter_1/qgis_mapping.html#rules-for-correctly-drawing-the-street-network",
+    "title": "QGIS Mapping",
+    "section": "Rules for Correctly Drawing the Street Network",
+    "text": "Rules for Correctly Drawing the Street Network\nTo ensure the accuracy and efficiency of the street network layer you create, follow these guidelines:\n\nIntersection to Intersection: A ‘street’ should be mapped from one intersection to another. If the street continues beyond an intersection, it should be added as an additional feature. A single street can have several intermediate points, but the fewer, the better.\nSnapping: All beginnings and ends of streets must be snapped to each other to enable correct analysis and connectivity within the network.\nBoundary Responsibility: For the edges of your assigned tiles, you are responsible for mapping features that cross the bottom and right boundaries. This means if a street or building extends beyond these edges, you should include it in your drawing. Conversely, features that extend beyond the top or left boundaries of your tile are the responsibility of your neighboring scholars. Therefore, you can omit such streets or buildings, assuming they will be covered by your colleagues’ efforts.\nUnique ID Column: Ideally, each table should have at least one ID column with no duplicates.\n\nIn QGIS, you can ensure uniqueness by using the “Field Calculator” to create a new field. Use an expression like @row_number to automatically assign a unique number to each feature.\n\nMinimizing Elements: The most effective street network is one described using the fewest number of elements while still accurately representing all possible connections. Strive for simplicity and completeness in your mapping.\n\n\nExtra Mile\nEngage further by combining tiles with your adjacent neighbors and/or adding attributes to your layers, especially if you choose to work on the optional Buildings layer.\nWhen merging files, ensure that all Linestrings (from the Network layer) and Polygon edges are appropriately snapped.",
+    "crumbs": [
+      "GIS Tools",
+      "QGIS Mapping"
     ]
   },
   {
@@ -601,210 +482,274 @@
     ]
   },
   {
-    "objectID": "chapter_1/qgis_mapping.html",
-    "href": "chapter_1/qgis_mapping.html",
-    "title": "QGIS Mapping",
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "NFI Urban Analytics 2024",
     "section": "",
-    "text": "We’ll first start with another statistical quirk!\n\n\nAn interesting conundrum arises in statistical analysis when relationships between variables for grouped data are assumed to be valid for the individuals within those groupings. Individual level information is lost in the process of grouping information into larger aggregations, and statistical observations computed for these larger groupings may therefore be different, or potentially misleading in the context of individuals. As a general rule, use individual level (unaggregated) data or the smallest groupings of data (e.g. census statistics) available.\nHere is some background reading, with some examples:\n\nWikipedia: Ecological Correlations\nBritannica: Ecological Fallacy\nThe ecological correlations fallacy",
+    "text": "Welcome to Part 1 of the Urban Analytics course at NFI. This course is designed to empower scholars with the skills and knowledge to harness the power of urban analytics for analyzing and interpreting urban data.\nThis is a practical course and is best approached with a hands-on and explorative mindset. It consists of three parts:\n\nPart 1 includes information on general setup and provides an introduction to basic concepts. See the sidebar for the Sections.\nPart 2 will be released separately and delves into targeted themes and skills development.\nPart 3 will be framed around pilot cities specific workflows.\n\nWe hope you enjoy the course!\n\n\n\nThis course is will touch on a number of broad topics. High-level guidance will be provided and scholars will then be encouraged to further explore these approaches and develop their skillsets based on methods of interest or relevance to their work:\n\nSpatial Analysis: Exploring Geographic Information Systems, spatial data handling, and mapping urban data.\nPython: Introduction to Python and its usage for geospatial analysis.\nData Handling: Techniques for handling datasets and an introduction to data science methods.\nProject Work: Lab work tasks and workflows.\n\n\n\n\nYou have been added to a Google Spaces for online discussions. This platform is your primary hub for:\n\nSeeking peer assistance.\nDiscussing course materials and urban analytics topics.\nCollaborating on projects and assignments.\nAnnouncements and updates from the course team.",
     "crumbs": [
-      "GIS Tools",
-      "QGIS Mapping"
+      "Home"
     ]
   },
   {
-    "objectID": "chapter_1/qgis_mapping.html#quirks---part-2",
-    "href": "chapter_1/qgis_mapping.html#quirks---part-2",
-    "title": "QGIS Mapping",
+    "objectID": "index.html#ua-part-1",
+    "href": "index.html#ua-part-1",
+    "title": "NFI Urban Analytics 2024",
     "section": "",
-    "text": "We’ll first start with another statistical quirk!\n\n\nAn interesting conundrum arises in statistical analysis when relationships between variables for grouped data are assumed to be valid for the individuals within those groupings. Individual level information is lost in the process of grouping information into larger aggregations, and statistical observations computed for these larger groupings may therefore be different, or potentially misleading in the context of individuals. As a general rule, use individual level (unaggregated) data or the smallest groupings of data (e.g. census statistics) available.\nHere is some background reading, with some examples:\n\nWikipedia: Ecological Correlations\nBritannica: Ecological Fallacy\nThe ecological correlations fallacy",
+    "text": "Welcome to Part 1 of the Urban Analytics course at NFI. This course is designed to empower scholars with the skills and knowledge to harness the power of urban analytics for analyzing and interpreting urban data.\nThis is a practical course and is best approached with a hands-on and explorative mindset. It consists of three parts:\n\nPart 1 includes information on general setup and provides an introduction to basic concepts. See the sidebar for the Sections.\nPart 2 will be released separately and delves into targeted themes and skills development.\nPart 3 will be framed around pilot cities specific workflows.\n\nWe hope you enjoy the course!",
     "crumbs": [
-      "GIS Tools",
-      "QGIS Mapping"
+      "Home"
     ]
   },
   {
-    "objectID": "chapter_1/qgis_mapping.html#mapping",
-    "href": "chapter_1/qgis_mapping.html#mapping",
-    "title": "QGIS Mapping",
-    "section": "Mapping",
-    "text": "Mapping\nAs part of our practical exercises in class, we will focus on the essential skill of drawing street networks using vector data mapping. This exercise is centered on the historic center of San Marino and is designed to enhance your proficiency in inputting geometry. The main task will involve creating a GeoPackage Layer:\n\nStreet Network layer: representing the pedestrian routes through the assigned tiles.\n\nFor those interested in exploring further and applying additional GIS skills, we offer the optional task of creating a Buildings layer:\n\nBuildings layer (Optional): representing all the buildings within the assigned tiles.\n\nThis approach allows you to focus on the critical aspect of mapping the street network, with the option to delve into building mapping as an additional challenge.",
-    "crumbs": [
-      "GIS Tools",
-      "QGIS Mapping"
-    ]
-  },
-  {
-    "objectID": "chapter_1/qgis_mapping.html#connecting-to-db",
-    "href": "chapter_1/qgis_mapping.html#connecting-to-db",
-    "title": "QGIS Mapping",
-    "section": "Connecting to DB",
-    "text": "Connecting to DB\nAlthough the exercise is primarily based on local data manipulation, connecting to NFI’s database is recommended to access the reference grid and familiarize yourself with its structure. The database is read-only for scholars, ensuring no accidental modifications.\n\n\n\n\n\n\nTip\n\n\n\nConnection details will be provided in class. All connections to the database are IP protected.",
-    "crumbs": [
-      "GIS Tools",
-      "QGIS Mapping"
-    ]
-  },
-  {
-    "objectID": "chapter_1/qgis_mapping.html#mapping-vector-data",
-    "href": "chapter_1/qgis_mapping.html#mapping-vector-data",
-    "title": "QGIS Mapping",
-    "section": "Mapping Vector Data",
-    "text": "Mapping Vector Data\nWe will use the historic center of San Marino for this exercise, aiming to familiarize you with inputting geometry. Attributes will be considered at later stages. Each scholar can produce individual GeoPackage Layers (locally):\n\nStreet Network layer (Linestring, CRS: 3035) is the primary focus, emphasizing the mapping of pedestrian routes.\n\nSuggested name: network_[scholarname]\n\nBuildings layer (Polygons, CRS: 3035) for those who wish to further challenge themselves by mapping the area’s buildings.\n\nSuggested name: buildings_[scholarname]\n\n\nScholars will refer to specific areas of the republic found in the nfi database path: - nfi.sanmarino.base_mapping\nExplore the street_network attribute to see your areas and collaborate with neighboring tiles.",
-    "crumbs": [
-      "GIS Tools",
-      "QGIS Mapping"
-    ]
-  },
-  {
-    "objectID": "chapter_1/qgis_mapping.html#contextual-resources-for-mapping",
-    "href": "chapter_1/qgis_mapping.html#contextual-resources-for-mapping",
-    "title": "QGIS Mapping",
-    "section": "Contextual Resources for Mapping",
-    "text": "Contextual Resources for Mapping\nUse OSM or Bing maps XYZ Tiles, as detailed in our previous lesson, for a better understanding of your mapping area. The 3D CESIUM Story offers a 3D view of the 2D polygons you’ll be mapping, enhancing your perspective and accuracy.\n\nOSM tile: https://tile.openstreetmap.org/{z}/{x}/{y}.png\nBing tile URL : https://t0.tiles.virtualearth.net/tiles/a{q}.jpeg?g=685&mkt=en-us&n=z\n\n\n\n\n\n\n\nTip\n\n\n\nActivate the Snapping Toolbar for precision in mapping. Experiment with different pixel tolerance values and options like Topological Editing and Intersection Snapping.",
-    "crumbs": [
-      "GIS Tools",
-      "QGIS Mapping"
-    ]
-  },
-  {
-    "objectID": "chapter_1/qgis_mapping.html#contextual-resources-for-mapping-1",
-    "href": "chapter_1/qgis_mapping.html#contextual-resources-for-mapping-1",
-    "title": "QGIS Mapping",
-    "section": "Contextual Resources for Mapping",
-    "text": "Contextual Resources for Mapping\nFor a better understanding of your mapping area, utilize OSM or Bing maps XYZ Tiles as detailed in our previous lesson. Additionally, explore the 3D CESIUM Story for an immersive 3D view of the 2D polygons and lines you will be mapping. These resources will enhance your perspective and accuracy in representing San Marino’s historic center.",
-    "crumbs": [
-      "GIS Tools",
-      "QGIS Mapping"
-    ]
-  },
-  {
-    "objectID": "chapter_1/qgis_mapping.html#rules-for-correctly-drawing-the-street-network",
-    "href": "chapter_1/qgis_mapping.html#rules-for-correctly-drawing-the-street-network",
-    "title": "QGIS Mapping",
-    "section": "Rules for Correctly Drawing the Street Network",
-    "text": "Rules for Correctly Drawing the Street Network\nTo ensure the accuracy and efficiency of the street network layer you create, follow these guidelines:\n\nIntersection to Intersection: A ‘street’ should be mapped from one intersection to another. If the street continues beyond an intersection, it should be added as an additional feature. A single street can have several intermediate points, but the fewer, the better.\nSnapping: All beginnings and ends of streets must be snapped to each other to enable correct analysis and connectivity within the network.\nBoundary Responsibility: For the edges of your assigned tiles, you are responsible for mapping features that cross the bottom and right boundaries. This means if a street or building extends beyond these edges, you should include it in your drawing. Conversely, features that extend beyond the top or left boundaries of your tile are the responsibility of your neighboring scholars. Therefore, you can omit such streets or buildings, assuming they will be covered by your colleagues’ efforts.\nUnique ID Column: Ideally, each table should have at least one ID column with no duplicates.\n\nIn QGIS, you can ensure uniqueness by using the “Field Calculator” to create a new field. Use an expression like @row_number to automatically assign a unique number to each feature.\n\nMinimizing Elements: The most effective street network is one described using the fewest number of elements while still accurately representing all possible connections. Strive for simplicity and completeness in your mapping.\n\n\nExtra Mile\nEngage further by combining tiles with your adjacent neighbors and/or adding attributes to your layers, especially if you choose to work on the optional Buildings layer.\nWhen merging files, ensure that all Linestrings (from the Network layer) and Polygon edges are appropriately snapped.",
-    "crumbs": [
-      "GIS Tools",
-      "QGIS Mapping"
-    ]
-  },
-  {
-    "objectID": "chapter_1/sql.html",
-    "href": "chapter_1/sql.html",
-    "title": "SQL for GIS",
+    "objectID": "index.html#topics",
+    "href": "index.html#topics",
+    "title": "NFI Urban Analytics 2024",
     "section": "",
-    "text": "This is a draft outline and will be fleshed-out closer to class. To make visible, edit _quarto.yml to include in directory.\n\n\nSQL and PostgreSQL Basics:\n\n\nUnderstanding SQL (Structured Query Language)\nIntroduction to PostgreSQL as a Relational Database Management System (RDBMS)\nWorking with Schemas in PostgreSQL\n\n\nData Manipulation with SQL and PostgreSQL:\n\n\nCREATE, SELECT, INSERT, DELETE Statements\nPrimary Keys (PK) and Foreign Keys (FK)\nCreating and Managing Indexes for Performance Optimization\n\n\nSQL Concepts:\n\n\nAggregations: COUNT, SUM, AVG, MIN, MAX\nComplex Queries and Subqueries WITH, WHERE\nConditional Statements: CASE Statements\n\n\nIntroduction to GIS Integration with PostgreSQL:\n\n\nSpatial Data Types in PostgreSQL\nSpatial Indexing for Efficient Spatial Queries\nSpatial Functions and Operators in PostgreSQL\n\n\nSpatial and Non-Spatial Joins:\n\n\nPerforming Spatial Joins for GIS Analysis\nNon-Spatial Joins for Relational Data Analysis\nCombining Spatial and Non-Spatial Data in Queries\n\n\nHow to ask ChatGPT\n\n\nIterating query development\nDebugging"
+    "text": "This course is will touch on a number of broad topics. High-level guidance will be provided and scholars will then be encouraged to further explore these approaches and develop their skillsets based on methods of interest or relevance to their work:\n\nSpatial Analysis: Exploring Geographic Information Systems, spatial data handling, and mapping urban data.\nPython: Introduction to Python and its usage for geospatial analysis.\nData Handling: Techniques for handling datasets and an introduction to data science methods.\nProject Work: Lab work tasks and workflows.",
+    "crumbs": [
+      "Home"
+    ]
   },
   {
-    "objectID": "chapter_1/sql.html#key-topics",
-    "href": "chapter_1/sql.html#key-topics",
-    "title": "SQL for GIS",
-    "section": "Key Topics",
-    "text": "Key Topics\n\nIntroduction to Data Analysis and Databases:\n\n\nImportance of Data Analysis in Decision Making\nOverview of Relational Databases\n\n\nConnecting to Google Cloud Platform (GCP):\n\n\nConnecting to NFI’s database(s)\nSetting Up a GCP Account\n\n\nSQL and PostgreSQL Basics:\n\n\nUnderstanding SQL (Structured Query Language)\nIntroduction to PostgreSQL as a Relational Database Management System (RDBMS)\nWorking with Schemas in PostgreSQL\n\n\nData Manipulation with SQL and PostgreSQL:\n\n\nCREATE, SELECT, INSERT, DELETE Statements\nPrimary Keys (PK) and Foreign Keys (FK)\nCreating and Managing Indexes for Performance Optimization\n\n\nSQL Concepts:\n\n\nAggregations: COUNT, SUM, AVG, MIN, MAX\nComplex Queries and Subqueries WITH, WHERE\nConditional Statements: CASE Statements\n\n\nIntroduction to GIS Integration with PostgreSQL:\n\n\nSpatial Data Types in PostgreSQL\nSpatial Indexing for Efficient Spatial Queries\nSpatial Functions and Operators in PostgreSQL\n\n\nSpatial and Non-Spatial Joins:\n\n\nPerforming Spatial Joins for GIS Analysis\nNon-Spatial Joins for Relational Data Analysis\nCombining Spatial and Non-Spatial Data in Queries"
-  },
-  {
-    "objectID": "chapter_1/sql.html#software-needed",
-    "href": "chapter_1/sql.html#software-needed",
-    "title": "SQL for GIS",
-    "section": "Software needed",
-    "text": "Software needed\n\nFor this session please make sure you have downloaded the following software(s):\n\nTablePlus | Modern, Native Tool for Database Management."
-  },
-  {
-    "objectID": "chapter_1/sql.html#connecting-to-data-on-postgis",
-    "href": "chapter_1/sql.html#connecting-to-data-on-postgis",
-    "title": "SQL for GIS",
-    "section": "Connecting to data on PostGIS 👨🏽‍💻",
-    "text": "Connecting to data on PostGIS 👨🏽‍💻\n\n\n\n⚙\nCONNECTION SETTINGS\n\n\n\n\nIP Address\n(will be provided during class)\n\n\nDatabase names\nnfi / urban_analytics\n\n\nPort\n5432\n\n\nUsername\nscholar\n\n\nPassword\n(will be provided during class)\n\n\n\n\n\n\n\n\n\nTip\n\n\n\nNote that the connections to the Databases are restricted by the source IP address."
-  },
-  {
-    "objectID": "chapter_1/sql.html#to-dos",
-    "href": "chapter_1/sql.html#to-dos",
-    "title": "SQL for GIS",
-    "section": "To-Dos",
-    "text": "To-Dos\n\nCreate a table with the following characteristics.\nUse schema. ua0\nTable name : [yourinitials] + “_prof_exp”\nFields required: (assign data types as you think would be best)\n\nid\nscholar_id\nindustry_id\ninstitution\nyears_of_experience\neducation\nlocation (crs: 4326)\nend_year\nnotes\n\n** If you think more fields are necessary, feel free to add them\nCreate a GitHub account\n\nadd link to public.scholars.github_link (varchar)\n\n\n\nOptional\nCreate a local instance of PostGIS for use in the upcoming months\nLearn PostgreSQL Tutorial - Full Course for Beginners"
-  },
-  {
-    "objectID": "chapter_1/sql.html#useful-resources",
-    "href": "chapter_1/sql.html#useful-resources",
-    "title": "SQL for GIS",
-    "section": "Useful Resources",
-    "text": "Useful Resources\n\nPOSTGRESQL & POSTGIS CHEATSHEETS\n\nPostgreSQL & PostGIS cheatsheet (a work in progress)\nPostgres Cheatsheet"
-  },
-  {
-    "objectID": "chapter_1/gis_tips.html",
-    "href": "chapter_1/gis_tips.html",
-    "title": "Tips",
+    "objectID": "index.html#communication",
+    "href": "index.html#communication",
+    "title": "NFI Urban Analytics 2024",
     "section": "",
-    "text": "In multiple scenarios you may find information in one table/layer that you might want to connect to information from another. JOINS are the way to do this, and work by connecting two different datasources based on a shared attribute. So doing, the attributes from one table can be connected to another for analysis or visualision purposes.\n\n\n\n\nInner Join: Returns only rows that have been matched across both tables.\nLeft (Outer) Join: Returns all rows from the left table, and matched rows from the right table where found.\nRight (Outer) Join: Returns all rows from the right table, and matched rows from the left table where found.\nFull (Outer) Join: Returns all rows from both tables, regardless of whether matches were found in the other table.\nCross Join: Returns a Cartesian product of the two tables, i.e. each row connected to each other row from the other table. Use with caution!\n\n\n\n\n\nJoin types\n\n\n\n\n\n\n\n\n\nOccurs when each record in one table corresponds to exactly one record in another table.\n\n\n\n\n\n\n\nOccurs when a single record in one table can be associated with one or more records in another table.\n\n\n\n\n\n\n\nOccurrs when multiple records from one table correspond with one or more in another table.\n\n\n\n\n\n\n\n\n\n\nImportant\n\n\n\n\nWhen using joins you are not modifying the original tables.\nYour resulting table can be much smaller or (exponentially) larger than any of the original tables.\n\n\n\n\n\n\nSimilar to joining tables based on their attributes, it is possible to join them based on their location. This is a very common technique in spatial databases (e.g. PostGIS) where you’ll commonly use a feature such as a city boundary to filter and join data from another table (e.g. streets).\nTo achieve the expected results, make sure that both origin tables are in the same CRS.\n\n\nIn QGIS and spatial databases, spatial predicates are used to define spatial relationships between features. These are used for joining or selecting data based on the relationships between the features. Some of the common predicates are:\n\nContains: Determines if one geometry contains another.\nWithin: Checks if one geometry is within another geometry.\nIntersects: Tests if two geometries intersect at any point.\nDisjoint: Determines if two geometries do not intersect.\nTouches: Checks if two geometries have at least one point in common but their interiors do not intersect.\nCrosses: Determines if the geometries have some, but not all, interior points in common.\nEquals: Checks if two geometries are exactly the same in terms of spatial coordinates.\nOverlaps: Determines if two geometries overlap, meaning they share some but not all points, and the intersection has the same dimension as the geometries themselves.\n\n\n\n\n\n\n\nCaution\n\n\n\nPlease note that depending on the size and complexity of your joins some operations can be computationally expensive and some advanced techniques might need to be implemented to achieve best performance.",
+    "text": "You have been added to a Google Spaces for online discussions. This platform is your primary hub for:\n\nSeeking peer assistance.\nDiscussing course materials and urban analytics topics.\nCollaborating on projects and assignments.\nAnnouncements and updates from the course team.",
     "crumbs": [
-      "GIS Tools",
-      "Tips"
+      "Home"
     ]
   },
   {
-    "objectID": "chapter_1/gis_tips.html#join-types",
-    "href": "chapter_1/gis_tips.html#join-types",
-    "title": "Tips",
+    "objectID": "chapter_1/gis.html",
+    "href": "chapter_1/gis.html",
+    "title": "Intro to GIS",
     "section": "",
-    "text": "Inner Join: Returns only rows that have been matched across both tables.\nLeft (Outer) Join: Returns all rows from the left table, and matched rows from the right table where found.\nRight (Outer) Join: Returns all rows from the right table, and matched rows from the left table where found.\nFull (Outer) Join: Returns all rows from both tables, regardless of whether matches were found in the other table.\nCross Join: Returns a Cartesian product of the two tables, i.e. each row connected to each other row from the other table. Use with caution!\n\n\n\n\n\nJoin types",
+    "text": "Vector and raster data are two fundamental types of spatial data used in Geographic Information Systems (GIS). Vector data represents geographical features as distinct shapes using points, lines, and polygons, each of which can carry detailed attribute information, making it ideal for precise mapping applications like boundaries, roads, and infrastructure networks. It excels in accuracy and detail for discrete data. In contrast, raster data consists of a grid of pixels, each holding a value, effectively representing continuous data. This format is well-suited for environmental analysis, land cover studies, and satellite imagery, as it captures variations over a wide area, such as elevation, temperature, or vegetation. While vector data is preferred for its precision in depicting specific geographic entities and managing related data, raster data is favored for its ability to represent complex, continuous phenomena over large spatial scales.\n\n\n\n\nVector data types are primarily categorized into Points, Linestrings, and Polygons, each with distinct characteristics and uses. Additionally, there are multi-geometry versions of these types, such as MultiPoints, MultiLinestrings, and MultiPolygons, which offer more complex feature groupings.\n\nPoints: Points are used to represent discrete locations on the earth’s surface. Each point is defined by a pair of coordinates (e.g. latitude and longitude, or an easting and northing) and can represent features such as the location of a tree or a landmark. They can have attributes further describing characteristics of interest, such as tree species or landmark name.\nLinestring: Lines connect a series of points to describe linear features such as roads or rivers. Linestring geometries inherently have length and may include attributes such as road type or river name.\nPolygons: Polygons are closed shapes used to represent areas such as city boundaries or land parcels. Polygon geometries inherently have an area and perimeter and may have attributes such as population counts or land use types.\n\n\n\n\nGeometry types\n\n\n\nMulti-Geometry Versions: Multi geometries provide a way to associated a grouping of Features which can share the same feature attributes.\n\nMultiPoint: For example, a grouping of trees.\nMultiLinestring: For example, a grouping of related segments describing a long-distance hiking trail.\nMultiPolygon: For example, a grouping of buildings which together represent a larger entity such as a hospital or university.\n\n\n\n\n\nEsri Shapefile\nShapefile is a prevalent geospatial file type in GIS software, requiring three mandatory files:\n\nSHP (feature geometry)\nSHX (shape index position)\nDBF (attribute data)\nShapefiles often also include optional files such as PRJ (coordinate reference system).\n\nGeoPackage\nGeoPackage provides a modern and simpler alternative to shapefiles and is rapidly gaining acceptance. It can store multiple data layers and it’s use of SQLite means that you can use SQL query data from the file.\nGeoJSON\nGeoJSON encodes geographic data structures using JSON, a format commonly used for web development.\n\nReference: https://gisgeography.com/gis-formats/\n\n\n\n\n\nRasters contain a grid of pixels, where the value used for each grid cell can represent a characteristic such as temperature or landcover. Geographic rasters typically include Geospatial information necessary to correctly project and locate the information in GIS software.\n\n\n\nRaster image grid cells\n\n\n\n\n\nASCII Grid\nASCII Grid files (ASC) store raster data as text in a grid format. Each cell in the grid is represented by a numeric value corresponding to the geographic attribute being mapped, such as elevation. ASCII Grid files include a header specifying metadata like cell size, number of rows and columns, and coordinates of the lower left corner. The format is simple and can be generated or edited with a text editor, and may use space, comma, or tab-delimiters.\nGeoTIFF\nGeoTIFF is widely becoming the defacto raster format in GIS. It embeds coordinate reference system information within a TIFF (Tagged Image File Format) file. GeoTIFFs are commonly used for storing satellite imagery, elevation data, and land surface temperatures.\n\nReference: https://gisgeography.com/gis-formats/",
     "crumbs": [
       "GIS Tools",
-      "Tips"
+      "Intro to GIS"
     ]
   },
   {
-    "objectID": "chapter_1/gis_tips.html#cardinality",
-    "href": "chapter_1/gis_tips.html#cardinality",
-    "title": "Tips",
+    "objectID": "chapter_1/gis.html#file-types",
+    "href": "chapter_1/gis.html#file-types",
+    "title": "Intro to GIS",
     "section": "",
-    "text": "Occurs when each record in one table corresponds to exactly one record in another table.\n\n\n\n\n\n\n\nOccurs when a single record in one table can be associated with one or more records in another table.\n\n\n\n\n\n\n\nOccurrs when multiple records from one table correspond with one or more in another table.\n\n\n\n\n\n\n\n\n\n\nImportant\n\n\n\n\nWhen using joins you are not modifying the original tables.\nYour resulting table can be much smaller or (exponentially) larger than any of the original tables.",
+    "text": "Vector and raster data are two fundamental types of spatial data used in Geographic Information Systems (GIS). Vector data represents geographical features as distinct shapes using points, lines, and polygons, each of which can carry detailed attribute information, making it ideal for precise mapping applications like boundaries, roads, and infrastructure networks. It excels in accuracy and detail for discrete data. In contrast, raster data consists of a grid of pixels, each holding a value, effectively representing continuous data. This format is well-suited for environmental analysis, land cover studies, and satellite imagery, as it captures variations over a wide area, such as elevation, temperature, or vegetation. While vector data is preferred for its precision in depicting specific geographic entities and managing related data, raster data is favored for its ability to represent complex, continuous phenomena over large spatial scales.\n\n\n\n\nVector data types are primarily categorized into Points, Linestrings, and Polygons, each with distinct characteristics and uses. Additionally, there are multi-geometry versions of these types, such as MultiPoints, MultiLinestrings, and MultiPolygons, which offer more complex feature groupings.\n\nPoints: Points are used to represent discrete locations on the earth’s surface. Each point is defined by a pair of coordinates (e.g. latitude and longitude, or an easting and northing) and can represent features such as the location of a tree or a landmark. They can have attributes further describing characteristics of interest, such as tree species or landmark name.\nLinestring: Lines connect a series of points to describe linear features such as roads or rivers. Linestring geometries inherently have length and may include attributes such as road type or river name.\nPolygons: Polygons are closed shapes used to represent areas such as city boundaries or land parcels. Polygon geometries inherently have an area and perimeter and may have attributes such as population counts or land use types.\n\n\n\n\nGeometry types\n\n\n\nMulti-Geometry Versions: Multi geometries provide a way to associated a grouping of Features which can share the same feature attributes.\n\nMultiPoint: For example, a grouping of trees.\nMultiLinestring: For example, a grouping of related segments describing a long-distance hiking trail.\nMultiPolygon: For example, a grouping of buildings which together represent a larger entity such as a hospital or university.\n\n\n\n\n\nEsri Shapefile\nShapefile is a prevalent geospatial file type in GIS software, requiring three mandatory files:\n\nSHP (feature geometry)\nSHX (shape index position)\nDBF (attribute data)\nShapefiles often also include optional files such as PRJ (coordinate reference system).\n\nGeoPackage\nGeoPackage provides a modern and simpler alternative to shapefiles and is rapidly gaining acceptance. It can store multiple data layers and it’s use of SQLite means that you can use SQL query data from the file.\nGeoJSON\nGeoJSON encodes geographic data structures using JSON, a format commonly used for web development.\n\nReference: https://gisgeography.com/gis-formats/\n\n\n\n\n\nRasters contain a grid of pixels, where the value used for each grid cell can represent a characteristic such as temperature or landcover. Geographic rasters typically include Geospatial information necessary to correctly project and locate the information in GIS software.\n\n\n\nRaster image grid cells\n\n\n\n\n\nASCII Grid\nASCII Grid files (ASC) store raster data as text in a grid format. Each cell in the grid is represented by a numeric value corresponding to the geographic attribute being mapped, such as elevation. ASCII Grid files include a header specifying metadata like cell size, number of rows and columns, and coordinates of the lower left corner. The format is simple and can be generated or edited with a text editor, and may use space, comma, or tab-delimiters.\nGeoTIFF\nGeoTIFF is widely becoming the defacto raster format in GIS. It embeds coordinate reference system information within a TIFF (Tagged Image File Format) file. GeoTIFFs are commonly used for storing satellite imagery, elevation data, and land surface temperatures.\n\nReference: https://gisgeography.com/gis-formats/",
     "crumbs": [
       "GIS Tools",
-      "Tips"
+      "Intro to GIS"
     ]
   },
   {
-    "objectID": "chapter_1/gis_tips.html#introduction-to-spatial-joins",
-    "href": "chapter_1/gis_tips.html#introduction-to-spatial-joins",
-    "title": "Tips",
+    "objectID": "chapter_1/gis.html#coordinate-reference-systems",
+    "href": "chapter_1/gis.html#coordinate-reference-systems",
+    "title": "Intro to GIS",
+    "section": "Coordinate Reference Systems",
+    "text": "Coordinate Reference Systems\nGeographic data is intrinsically tied to the earth’s surface and is represented using coordinates within defined Coordinate Reference Systems (CRS). Broadly, these systems fall into two categories: Geographic Coordinate Systems and Projected Coordinate Systems.\nGeographic CRSs use a spherical surface to define locations on the earth’s surface. They are based on degrees in latitude and longitude and are most commonly referenced to the WGS84 datum. While they accurately represent the earth’s curved surface and preserve the true shape and angular relationships of features, distances and areas may not be as accurate, especially over larger distances.\nProjected CRSs translate the earth’s three-dimensional surface onto a two-dimensional plane, making it easier to analyze and visualize spatial data. They use a mathematical projection to flatten the curved surface of the earth, which can lead to distortions in shape, area, distance, or direction. Different types of projections are designed to minimize these distortions for specific regions or purposes. For example, projections can be optimized for preserving areas (equal-area projections), angles and shapes (conformal), or distances (equidistant).\n\n\n\nDymaxion Fuller projection. NFF image rights.\n\n\n\n\n\n\n\n\nTip\n\n\n\nA useful reference website for different CRS is EPSG.io: Coordinate Systems Worldwide\n\n\n\nGeographic\nGeographic Coordinate Reference Systems (CRS) use a spherical or ellipsoidal surface to represent locations on the Earth’s curved surface. Geographic CRSs are based on latitude and longitude coordinates and are useful for global or regional mapping.\n\nUnits: Degrees\nCommon Examples:\n\nWGS 84 (World Geodetic System 1984) EPSG:4326: A widely used CRS for global mapping and GPS navigation.\nNAD83 (North American Datum 1983) EPSG:4269: A CRS commonly used in North America.\n\n\n\n\nProjected\nProjected Coordinate Reference Systems (CRS) use a Cartesian coordinate system to represent locations on a flat surface. These CRSs are created by “projecting” the curved Earth onto a flat surface, which introduces distortions. This inevitably requires tradeoffs in distances, areas, or shapes, with different projection systems involving different trade-offs. Projected CRSs are commonly used for local or small-scale mapping appropriate to specific countries or regions of the globe, where locally accurate measurements and comparisons are required.\n\nUnits: Meters (most commonly)\nCommon Examples:\n\nLAEA (Lambert Azimuthal Equal Area) Europe projection EPSG:3035: This CRS is commonly used for Europe, though note that countries will typically also have even more localised projected CRS.\nBritish National Grid (BNG) EPSG:27700: This CRS is commonly used in the United Kingdom.\nState Plane Coordinate System (SPCS): This CRS is widely used in the United States, and divides the country into zones, each with their own projection.\n\n\n\n\nSome visual examples\n\n\nhttps://gisgeography.com",
+    "crumbs": [
+      "GIS Tools",
+      "Intro to GIS"
+    ]
+  },
+  {
+    "objectID": "chapter_1/gis.html#gis-data",
+    "href": "chapter_1/gis.html#gis-data",
+    "title": "Intro to GIS",
+    "section": "GIS Data",
+    "text": "GIS Data\n\nSources\nDiscovering sources for GIS (Geographic Information System) data is a handy skill for spatial analysis and mapping! There are various official and non-official sources, each offering different types of data suited to specific needs and applications. When searching for and using different data sources, try to remain cognisant of the merits and limitations of different sources, which may impact considerations such as data accuracy or bias.\n\nGovernment Agencies: National agencies often provide official and reliable forms of GIS data. However, these datasets may reflect governmental priorities and perspectives or they may be reluctant to make these datasets openly available.\nInternational Organizations: Organizations such as the United Nations (UN) and the World Bank offer global GIS datasets, but these may have limited local detail due to their broad scope.\nLocal Authorities: City and regional councils often create and maintain local GIS datasets, often tailored to specific local government projects and priorities. Their local specificity may make it tricky to compare to different datasets sourced from other cities.\nPrivate Sector: There are many private sector organisations which generate, curate, or distribute data, however, these datasets are less likely to be openly available and may incur substantial monetary cost.\nOpen Data Platforms: Platforms such as OpenStreetMap offer freely accessible GIS data, contributed by a community of users. These datasets may require additional validation if used for mission-critical purposes, though can otherwise be extremely useful, allowing for generalisable workflows and providing coverage in some instances where no other options exist.\nAPIs and Web Scraping: Involves the automated collection of data from online APIs or websites. The quality of data can vary but may otherwise be useful for obtaining interesting data. These techniques may involve significant technical skills for data extraction and processing. Legal and ethical considerations are important, as scraping can sometimes violate terms of service or data privacy laws.\n\n\n\nPurposely Collected Data\nPurposely collected data is gathered specifically to address a certain research question or project goal, using structured approaches such as surveys, experiments, or observations. It’s tailored to meet the specific needs of a study, with careful control over variables to ensure the data’s relevance and accuracy. This type of data is highly pertinent to the project it’s collected for, due to its focused nature and methodical collection process.\n\n\nAdapted Data\nOn the other hand, data can also be adapted to new research needs from information originally collected for different purposes. This may include repurposing data from various sources such as public databases, existing research studies, or web scraping.",
+    "crumbs": [
+      "GIS Tools",
+      "Intro to GIS"
+    ]
+  },
+  {
+    "objectID": "chapter_1/gis.html#attribution",
+    "href": "chapter_1/gis.html#attribution",
+    "title": "Intro to GIS",
+    "section": "Attribution",
+    "text": "Attribution\nAttribution or citation refers to giving proper credit to the original source or creator of the data. Just as with citing sources in academic papers, it’s important to acknowledge the origin of the data you are using. This helps provide transparency, accountability, and recognition to the creators of the dataset.\n\nLicenses:\nWhen dealing with data, licenses refer to legal agreements or permissions that determine how the data can be used, distributed, or modified. Different datasets may have different licensing requirements, so it’s important to understand and comply with the specific license terms associated with the data you are using.\nExamples:\n\nCreative Commons (CC) licenses: These are standardized licenses that allow creators to specify permissions for their work. They are commonly used for a variety of creative works, including images, music, videos, and written content.\nOpen Government Licenses: These licenses have been adopted by governments and may allow individuals and organizations permissive use, reuse, and sharing of information.\nGNU General Public License (GPL): This is a copyleft license for open-source software. It permits users to modify and distribute the software, but any modifications or derivative works must also be licensed under the GPL. This license is popular for promoting open-source principles and collaborative software development.\nMIT / Apache / BSD Licenses: Permissive open-source software licenses. These may allow great flexibility such as using, copying, modifying, and distributing derivative work, even for commercial purposes. The primary requirement is to include the original copyright and license notice in any significant portions of the software.",
+    "crumbs": [
+      "GIS Tools",
+      "Intro to GIS"
+    ]
+  },
+  {
+    "objectID": "chapter_1/gis.html#privacy",
+    "href": "chapter_1/gis.html#privacy",
+    "title": "Intro to GIS",
+    "section": "Privacy",
+    "text": "Privacy\nPrivacy considerations are important when working with data, especially if the data contains personally identifiable information or sensitive information. It’s very important to handle and store data in a way that respects privacy laws and regulations. This may involve anonymizing or de-identifying data, implementing security measures, and obtaining consent from individuals whose data is being used.\n\n\n\n\n\n\nNote\n\n\n\nPlease avoid using any and all data containing private or sensitive data unless you first review this and seek approval from faculty. Handling these forms of data comes with numerous steps and safeguards and will generally be strongly discouraged.",
+    "crumbs": [
+      "GIS Tools",
+      "Intro to GIS"
+    ]
+  },
+  {
+    "objectID": "chapter_1/gis.html#quirks---part-1",
+    "href": "chapter_1/gis.html#quirks---part-1",
+    "title": "Intro to GIS",
+    "section": "Quirks - Part 1",
+    "text": "Quirks - Part 1\n\nMAUP\nThe Modifiable Areal Unit Problem (MAUP) is encountered when using different scales or zones of analysis to group data. This can cause significant changes in the balance and aggregation of data based on how it is grouped. This can have a potentially significant impact on visualisation or analysis. MAUP is exploited for political purposes through the process of gerrymandering.\n\nhttps://gisgeography.com\n\n\n\nYouTube",
+    "crumbs": [
+      "GIS Tools",
+      "Intro to GIS"
+    ]
+  },
+  {
+    "objectID": "chapter_1/gis.html#resources",
+    "href": "chapter_1/gis.html#resources",
+    "title": "Intro to GIS",
+    "section": "Resources",
+    "text": "Resources\nThe following resources provide further information on common types of map visualisations and best practices:\n\nCARTO - 5 Popular Thematic map Types\nFundamentals of Data Visualisation\n\nColor scales\nVisualizing geospatial data\nCommon pitfalls of color use\n\nColor Brewer",
+    "crumbs": [
+      "GIS Tools",
+      "Intro to GIS"
+    ]
+  },
+  {
+    "objectID": "chapter_1/intro_to_tableau.html",
+    "href": "chapter_1/intro_to_tableau.html",
+    "title": "Bonus: Tableau",
     "section": "",
-    "text": "Similar to joining tables based on their attributes, it is possible to join them based on their location. This is a very common technique in spatial databases (e.g. PostGIS) where you’ll commonly use a feature such as a city boundary to filter and join data from another table (e.g. streets).\nTo achieve the expected results, make sure that both origin tables are in the same CRS.\n\n\nIn QGIS and spatial databases, spatial predicates are used to define spatial relationships between features. These are used for joining or selecting data based on the relationships between the features. Some of the common predicates are:\n\nContains: Determines if one geometry contains another.\nWithin: Checks if one geometry is within another geometry.\nIntersects: Tests if two geometries intersect at any point.\nDisjoint: Determines if two geometries do not intersect.\nTouches: Checks if two geometries have at least one point in common but their interiors do not intersect.\nCrosses: Determines if the geometries have some, but not all, interior points in common.\nEquals: Checks if two geometries are exactly the same in terms of spatial coordinates.\nOverlaps: Determines if two geometries overlap, meaning they share some but not all points, and the intersection has the same dimension as the geometries themselves.\n\n\n\n\n\n\n\nCaution\n\n\n\nPlease note that depending on the size and complexity of your joins some operations can be computationally expensive and some advanced techniques might need to be implemented to achieve best performance.",
+    "text": "Make sure you have downloaded the software using the instructions in Software & Accounts\nTableau is a leading data visualization tool that simplifies the process of converting complex data into interactive and visually appealing dashboards and reports. It is highly regarded in the business intelligence (BI) community for its ability to facilitate data-driven decision-making through an intuitive interface that accommodates users of all skill levels. By supporting a wide variety of data sources (including some spatial formats like shapefiles)) and enabling quick identification of data trends and patterns.",
     "crumbs": [
       "GIS Tools",
-      "Tips"
+      "Bonus: Tableau"
     ]
   },
   {
-    "objectID": "chapter_1/gis_tips.html#tools-and-plugins",
-    "href": "chapter_1/gis_tips.html#tools-and-plugins",
-    "title": "Tips",
-    "section": "Tools and plugins",
-    "text": "Tools and plugins\nIn QGIS, georeferencing can be carried out using the built-in Georeferencer tool, which can be found under the menu Layer -&gt; Georeferencer.... This tool allows you to manually add control points that link the location on the image with geographic coordinates on the map, adjusting the image to fit the spatial data.\n\n\n\n\n\n\nTip\n\n\n\nThe more nodes you add and the further away from each other, the more refences the algorithm has to accomodate the original file. Minimum of 5 points should be considered to have an descent baseline.\n\n\n\nPlugins: For more advanced or specific georeferencing needs, there are additional plugins like Freehand Raster Georeferencer, allowing for more flexible manipulation of images directly within the map canvas.",
+    "objectID": "chapter_1/intro_to_tableau.html#tableau-desktop-structure",
+    "href": "chapter_1/intro_to_tableau.html#tableau-desktop-structure",
+    "title": "Bonus: Tableau",
+    "section": "Tableau Desktop Structure",
+    "text": "Tableau Desktop Structure\n\n\n\n\n\nflowchart LR\n    subgraph Datasources\n    A[(DB 1)]\n    a[(DB 2)]\n    end \n\n    subgraph Views\n    B[Linechart]\n    C[Map]\n    D[Barchart]\n    end\n\n    subgraph Dashboards\n    E{{Dashboard 1}}\n    F{{Dashboard 2}}\n    end \n\n    subgraph Stories\n    S{Story}\n    end \n\n    A --&gt; B\n    A --&gt; C\n    A --&gt; D\n    a --&gt; D\n\n    B --&gt; E\n    C --&gt; E\n    D --&gt; F\n    i(((images))) -.- E\n    t(((texts))) -.- F \n\n    E --&gt; S\n    F --&gt; S\n    i -.- S\n    t -.- S",
     "crumbs": [
       "GIS Tools",
-      "Tips"
+      "Bonus: Tableau"
     ]
   },
   {
-    "objectID": "chapter_1/gis_tips.html#use-cases-of-georeferenced-images",
-    "href": "chapter_1/gis_tips.html#use-cases-of-georeferenced-images",
-    "title": "Tips",
-    "section": "Use cases of georeferenced images",
-    "text": "Use cases of georeferenced images\n\nHistorical Maps: Bringing old maps into modern GIS projects, helping to study changes over time.\nTracing Exercises: Overlaying aerial or satellite imagery to digitize features such as roads, buildings, or land use.\nReshaping sketches: Planning and ideation sketches usually are our of scale and conveniently reshaping elements of the environment. Georefereincing them helps to better transition ideas into reality.\n\n\n\n\n\n\n\nIt’s important to consider potential distortions when georeferencing images, as the process involves stretching or rotating the image to align with real-world coordinates. Understanding and managing these distortions is key to ensuring the accuracy of the geospatial analysis.",
+    "objectID": "chapter_1/intro_to_tableau.html#data-sources-connecting-to-data",
+    "href": "chapter_1/intro_to_tableau.html#data-sources-connecting-to-data",
+    "title": "Bonus: Tableau",
+    "section": "Data Sources: Connecting to data",
+    "text": "Data Sources: Connecting to data\nIn tableau you can connect simultaneously to multiple data sources (including Postgres) and/or individual shapefiles and .CSV (‘text files’).\nWhen you connect to more than one dataset you can establish three possible scenarios:\n\nCreate a logical table: Tableau’s lingo for the result from joining physical tables together\nCreate a relationship: In this case your tables will not be joined if the specific chart you are building does not require to do so.\nCreate an independent data source: In this case you limit the potential to use measures from multiple datasources.\n\nDepending on your use case you might want to use different techniques. But note that only the fields that you bring into the view are considered for the construction of the queries (behind the scenes).\n\nLive vs Extract\nOnce the tables have been brought in and your initial filters have been set you can choose one of two options on how you are going to operate with the data in the next steps.\n\nLive : when your establish just the relationships described above but the actual queries happen as you build your charts (and maps) are directed to your connections in each modification. Heavier on performance.\nExtract : when you create a resulting file (called Tableau extract) which is optimized to speed up performance and incoportates the resultiong joined tables and relatioships you have established. This is the reccomended approach.\n\nNote that Extracts can always be refreshed if your input data changes or you want to make adjustment to your joins / relations.\n\n\n\n\n\n\nDatasets\n\n\n\nFor this excercise we are going to use Spanish Census data at the ‘census section’ level (the lowest level of annonimised data). Both datasets come from the INE - National Institute of Statitics in Spanish.\n\nPopulation by gender and origin in .CSV format : here\nCensus Sections in .SHP format : here",
     "crumbs": [
       "GIS Tools",
-      "Tips"
+      "Bonus: Tableau"
     ]
   },
   {
-    "objectID": "chapter_1/gis_tips.html#demo",
-    "href": "chapter_1/gis_tips.html#demo",
-    "title": "Tips",
-    "section": "Demo …",
-    "text": "Demo …",
+    "objectID": "chapter_1/intro_to_tableau.html#views-creating-visualizations",
+    "href": "chapter_1/intro_to_tableau.html#views-creating-visualizations",
+    "title": "Bonus: Tableau",
+    "section": "Views: Creating visualizations",
+    "text": "Views: Creating visualizations\nThis is where you are going to create all of your individual charts and graphs. Two important field types are automatically created (based on the data types) to help you set up your visualisations:\n\nDimensions (blue): All qualitative and categorical fields in your dataset. eg. ‘nationality’, ‘gender’, etc…\nMeasures (green): Continuous fields where you can apply SUM, AVG, MIN, MAX calculations. eg. ‘population’, ‘age’, etc..\n\nNote that geometries are considered measures but deconstructed automatically into Longitude and Latitude when brought to the view.\n\n\nTo create new fields right click next to your fields ans select Create Calculated Field... &gt; Tableau uses a SQL based syntax but to discover more see documentation\nTo build your charts 3 things need careful attention:\n\nMARKS CARD: Establishes the type of graph you want to build. eg: lineschart, barchart, map, piechart. etc..\nCOLUMNS and ROWS shelves: Determine what happend in your vertical and horizontal axis.\nFILTERS CARD: The place to customized what gets filtered for the current chart.\n\n\n\n\n\n\n\nWarning\n\n\n\nBe extra critical about the numbers! Tableau is really good at generating outputs but the results should make sense to you and if possible, always try to sense check with other sources.\n\n\n\n\n\n\n\n\nExercise\n\n\n\nDrag and drop fields to create the following charts:\n\nMap: Displaying the total population per ‘census section’ in the ‘Vasque Country’ (Pais Vasco)\nBar graph: Number of people per province splitted by gender.\nBig Numbers: Three big numbers: Total Population, % Nacionals, % Foreigns.\n\nThese will serve us to sense check the values on our Dashboard\n\nOthers: try to come up with new fields that could enrich the analysis.",
     "crumbs": [
       "GIS Tools",
-      "Tips"
+      "Bonus: Tableau"
+    ]
+  },
+  {
+    "objectID": "chapter_1/intro_to_tableau.html#dashboards-stories-interacting-and-enhancing-views",
+    "href": "chapter_1/intro_to_tableau.html#dashboards-stories-interacting-and-enhancing-views",
+    "title": "Bonus: Tableau",
+    "section": "Dashboards (& Stories): Interacting and Enhancing views",
+    "text": "Dashboards (& Stories): Interacting and Enhancing views\nIn this step is where you put your pieces together. If the visualizations you have made share the same datasource, you can use the different views to filter or highlight parts of other views.\nThe recomendation is to create dashboards with no more than 3 or 4 components (views, text blocks, images). When trying to tell a story with data you want to eliminate all possible distractions.\n\n\n\n\n\n\nTip\n\n\n\nVisual guide to selecting the right type of chart. The Financial Times Visual Vocabulary:\n\nWeb version\nPoster version(s) in multiple languages.\nTableau Public",
+    "crumbs": [
+      "GIS Tools",
+      "Bonus: Tableau"
+    ]
+  },
+  {
+    "objectID": "chapter_1/intro_to_tableau.html#sharing-and-publishing",
+    "href": "chapter_1/intro_to_tableau.html#sharing-and-publishing",
+    "title": "Bonus: Tableau",
+    "section": "Sharing and Publishing",
+    "text": "Sharing and Publishing\nDashboards, Stories and Views can be exported as images (PDF, JPEG, etc..), as PowerPoint presentations but you can Publish your results to Tableau Public - a free and open server where dashboards remain interactive.\nLike other softwares you can share your work as Tableau workbook packaged (.twbx), which contains all the data, or as a visualization tool only (.twb) if you know that the other person will have access to the same data connections you used.",
+    "crumbs": [
+      "GIS Tools",
+      "Bonus: Tableau"
+    ]
+  },
+  {
+    "objectID": "chapter_1/intro_to_tableau.html#resources-for-further-learning",
+    "href": "chapter_1/intro_to_tableau.html#resources-for-further-learning",
+    "title": "Bonus: Tableau",
+    "section": "Resources for Further Learning",
+    "text": "Resources for Further Learning\n\nTableau Public\nOfficial videos\nVizWiz one of the best teaching resouces out there. #MakeOverMondays are great excercises.",
+    "crumbs": [
+      "GIS Tools",
+      "Bonus: Tableau"
+    ]
+  },
+  {
+    "objectID": "chapter_1/cloud_gis.html",
+    "href": "chapter_1/cloud_gis.html",
+    "title": "Cloud GIS",
+    "section": "",
+    "text": "This will be an in-class hands-on session providing an introduction to the use of CARTO for publishing and styling interactive maps.\nThe are two excercises that will help us explore different components of the platform:\nEach excersice will be lead by a live demo of the main steps to better control the visualization of the datasets. Then, each student will have time to explore on their own time the tool and come up with a shereable map.",
+    "crumbs": [
+      "GIS Tools",
+      "Cloud GIS"
+    ]
+  },
+  {
+    "objectID": "chapter_1/cloud_gis.html#connecting-to-carto",
+    "href": "chapter_1/cloud_gis.html#connecting-to-carto",
+    "title": "Cloud GIS",
+    "section": "Connecting to CARTO",
+    "text": "Connecting to CARTO\nBecause this will be the first time you log in, you will have to log in into www.carto.com using your GitHub account (you will need the Student Development Pack approved - see the Software & Accounts section).\n\nSearch for Are you a student? and Access using GitHub\n\n\n\nUse GitHub login\n\n\n\nFollow the stepts to create your account and note that each scholar will create a separate ‘organization’. This means all your files and maps will be yours and you will not be joining NFI’s organization. You can name ir however you like!",
+    "crumbs": [
+      "GIS Tools",
+      "Cloud GIS"
+    ]
+  },
+  {
+    "objectID": "chapter_1/cloud_gis.html#datasets",
+    "href": "chapter_1/cloud_gis.html#datasets",
+    "title": "Cloud GIS",
+    "section": "Datasets",
+    "text": "Datasets\nFor this excercise we will use two official data sources. I\n\nCycling routes (LINESTRINGS, 4326):\n\nDownload geopackage file\nConsult official source : for references to the .gpkg file above\n\nCycling docks (POINTS, 4326):\n\nDownload geopackage file\nConsult official source : for references to the .gpkg file above\n\n\n\n\n\n\n\n\nNote\n\n\n\nNote that both file have been reprojected to EPSG: 4326 as this is the prefered projection system for CARTO\n\n\n\nLoading Data\nThere are several ways to use the data in CARTO. But this time we are going to upload it directly from CARTO BUILDER\n\nUsing the main menu, navigate to Maps –&gt; + New map button. This takes you to a new tab with an instance of CARTO’s Builder.\nAdd source from... and upload the gpkg in a folder of your preference.\n\n\n\n\n\n\n\nNote that multiple layers can be added from the same\n\n\n\nAdd style\nDepending on the geometry types, you will have different option for styling your Points (docking stations) and the Linestrings (cycling routes).\n\n\n\n\n\n\nNote\n\n\n\nAlways familirise yourself with the data before jumping into modifying its style \n\n\nFor now we encourage you to explore the following three tabs:\n\nLayers\nLegends\nBasemaps\n\n\n\n\n\n\n\n\nPublish\nWhen you are happy with the map make sure you SHARE your results by publishing them to allow for public access\n\nAdd your resulting URL to this notion card\n\n\n\nYour example\n\nThe best maps will be added to complete this section!",
+    "crumbs": [
+      "GIS Tools",
+      "Cloud GIS"
+    ]
+  },
+  {
+    "objectID": "chapter_1/cloud_gis.html#datasets-1",
+    "href": "chapter_1/cloud_gis.html#datasets-1",
+    "title": "Cloud GIS",
+    "section": "Datasets",
+    "text": "Datasets\nFor this excercise we are going to use the same datasets than we did in our previous session. However, this time we are going to use the full dataset containing the population data.\n\nDownload the municipal neighbourhoods as a SHP file: Barrios municipales de Madrid\nDownload the population by district and neighbourhood dataset as a CSV file: Población por distrito y barrio a 1 de enero",
+    "crumbs": [
+      "GIS Tools",
+      "Cloud GIS"
+    ]
+  },
+  {
+    "objectID": "chapter_1/cloud_gis.html#workflows",
+    "href": "chapter_1/cloud_gis.html#workflows",
+    "title": "Cloud GIS",
+    "section": "Workflows",
+    "text": "Workflows\nFrom our previous experience, we know that in order to join the datasets, we first had to clean and filter the data. This time we are going to make use of CARTO’s WORKFLOWS: a no-code visual interface for replicating processes like cleaning, filtering, joining (and much more). Visit for more.",
+    "crumbs": [
+      "GIS Tools",
+      "Cloud GIS"
+    ]
+  },
+  {
+    "objectID": "chapter_1/cloud_gis.html#hands-on",
+    "href": "chapter_1/cloud_gis.html#hands-on",
+    "title": "Cloud GIS",
+    "section": "Hands-on",
+    "text": "Hands-on\nThe following are the general steps we encourage you to follow to get familiar with other functions of CARTO.\n\nData prep\nFor this excerse we just want you to import the file below and update the inputs and output parameters\n\n\n\nCARTO’s Workflow\n\n\n\nUnder menu Data Explorer –&gt; Import both datasets (CSV and SHP)\nUnder menu Workflows –&gt; Import this SQL procedure to give you a head start\nUpdate workflow :\n\nInputs: data sources according to the location and name of your files\nOutput: select where you want to store the results\n\nRun the workflow to identify potential issues\n\nRememeber to read the Error messages (if at all), to debug your workflow\n\n\n\n\nData viz\nNow we are going to move into another builder instance and load the newly created table (from the steps above). This time we encourage you to look into the other two tabs :\n\nWidgets : allow you to interact and filter the data plotted on the map\nInteractions : helps you surface propreties of individual elements in the map\n\n\n\n\n\n\n\n\nPublish\nWhen you are happy with the map make sure you SHARE your results by publishing them to allow for public access\n\nAdd your resulting URL to this notion card\n\n\n\nOutput Example\n    \n\nMadrid’s Population Dashboard - Greg Maya",
+    "crumbs": [
+      "GIS Tools",
+      "Cloud GIS"
     ]
   },
   {
@@ -812,7 +757,51 @@
     "href": "chapter_2/intro_to_python.html",
     "title": "Welcome to Python",
     "section": "",
-    "text": "Python is a great language for general purpose data wrangling. If you’re working with geospatial data and general data science then it is arguably THE language. (Though “R” fans will probably debate this!)",
+    "text": "Computation, once too theoretical, expensive, and technical to be of use outside of highly specialised realms and big budget tech firms has become accessible to almost anyone with a computer. At the heart of this is the concept of computation itself; a process that enables us to perform calculations and solve problems by systematically following a series of steps. This concept has evolved dramatically over the centuries, from the abacus to the sophisticated digital computers that permeate our modern lives to open source software and the recent emergence of LLM AI tools such as ChatGPT.\nTwo pivotal figures in the history of computation are Alan Turing and John von Neumann, whose groundbreaking work laid the foundational principles on which modern computers are based.\nAlan Turing introduced the concept of the Turing machine in 1936. This is an abstract device conceived to encapsulate the underlying essence of computation. Turing’s machine can, in theory, simulate any other machine’s computation process, thus providing a universal model for computing. Turing’s work during World War II on breaking the Enigma code is also celebrated for its profound impact on the outcome of the war and the field of cryptography.\nJohn von Neumann, contributed significantly to the development of architecture the digital computer and was instrumental in the development of some of the earliest computers. An engaging review of this early history can be found in the book Turing’s Cathedral.",
+    "crumbs": [
+      "Basic Coding",
+      "Welcome to Python"
+    ]
+  },
+  {
+    "objectID": "chapter_2/intro_to_python.html#computation",
+    "href": "chapter_2/intro_to_python.html#computation",
+    "title": "Welcome to Python",
+    "section": "",
+    "text": "Computation, once too theoretical, expensive, and technical to be of use outside of highly specialised realms and big budget tech firms has become accessible to almost anyone with a computer. At the heart of this is the concept of computation itself; a process that enables us to perform calculations and solve problems by systematically following a series of steps. This concept has evolved dramatically over the centuries, from the abacus to the sophisticated digital computers that permeate our modern lives to open source software and the recent emergence of LLM AI tools such as ChatGPT.\nTwo pivotal figures in the history of computation are Alan Turing and John von Neumann, whose groundbreaking work laid the foundational principles on which modern computers are based.\nAlan Turing introduced the concept of the Turing machine in 1936. This is an abstract device conceived to encapsulate the underlying essence of computation. Turing’s machine can, in theory, simulate any other machine’s computation process, thus providing a universal model for computing. Turing’s work during World War II on breaking the Enigma code is also celebrated for its profound impact on the outcome of the war and the field of cryptography.\nJohn von Neumann, contributed significantly to the development of architecture the digital computer and was instrumental in the development of some of the earliest computers. An engaging review of this early history can be found in the book Turing’s Cathedral.",
+    "crumbs": [
+      "Basic Coding",
+      "Welcome to Python"
+    ]
+  },
+  {
+    "objectID": "chapter_2/intro_to_python.html#why-python",
+    "href": "chapter_2/intro_to_python.html#why-python",
+    "title": "Welcome to Python",
+    "section": "Why Python?",
+    "text": "Why Python?\nEarly programming languages, some of which are still in use today, were very “low-level” languages, meaning they operated closer to the hardware level, directly manipulating the machine’s memory and processing capabilities. This required programmers to have a deep understanding of the hardware they were working on. This allowed for precise control over the computer’s hardware, enabling optimizations that can significantly improve the performance and efficiency of the code. However, writing in these languages is time-consuming and prone to errors because it requires managing numerous highly complex details related to the hardware.\nThe necessity for low-level programming languages stemmed from the need to maximize the performance of early computers, which had very limited processing power and memory compared to today’s standards. Low-level languages are still used for specialised or performance critical purposes, but they are complete overkill for the great majority of everyday use-cases because their complexities can make it very difficult to learn the languages or to use them productively.\nEnter Python!\nPython, created by Guido van Rossum and released in 1991, is a high-level, interpreted programming language known for its simplicity and readability, making it ideal for beginners and experienced programmers alike. It offers an easy-to-use syntax that lends itself to clear and readible code that is easier to development and maintain. Python has evolved over time and is now at version 3. Its extensive standard library is mature and it has a vast ecosystem of third-party packages making it an ideal choice for applications such as data analysis, geospatial analysis, and scientific computing.\nSome tips:\n\nDon’t get distracted by arguments of performance. People will sometimes talk about how one language outperforms another, but in reality the most important aspect is the usability, versatility, and speed of development. Python itself is a so-called “slow” language but it wraps highly optimised and very performant packages under-the-hood, so it can offer the best of both worlds.\nPython is more verstaile than the R language, which is sometimes popular with dedicated academics, statisticians, or geographers.",
+    "crumbs": [
+      "Basic Coding",
+      "Welcome to Python"
+    ]
+  },
+  {
+    "objectID": "chapter_2/intro_to_python.html#setup",
+    "href": "chapter_2/intro_to_python.html#setup",
+    "title": "Welcome to Python",
+    "section": "Setup",
+    "text": "Setup\nIn the past, one of the initial hurdles for beginners learning Python is the process of setting up a development environment. This involves installing Python, managing dependencies, and configuring an Integrated Development Environment (IDE) or a code editor. Each of these steps comes with its own set of challenges, from dealing with system path variables to understanding virtual environments for managing project-specific dependencies without conflicts.\nJupyter Notebooks bypass this initial complexity and let us get straight to the fun parts. Notebooks provide an interactive computing environment that combines automated code execution with rich text elements, making it an excellent tool for learning, sharing, and storytelling with data. Anaconda + JupyterLab is a great way to get started with Python, and we recommend staying with these for the time being. That said, those of you who would like to become more proficient Python users over time will benefit from using a more structured Python development environment (when the time is right!).",
+    "crumbs": [
+      "Basic Coding",
+      "Welcome to Python"
+    ]
+  },
+  {
+    "objectID": "chapter_2/intro_to_python.html#when-you-get-stuck",
+    "href": "chapter_2/intro_to_python.html#when-you-get-stuck",
+    "title": "Welcome to Python",
+    "section": "When you get stuck",
+    "text": "When you get stuck\nRoughly ten years ago, resources such as Stack Overflow were indispensible. However, Stack Overflow has been recently been usurped by Large Language Models such as ChatGPT, which are excellent and reading, debugging, and suggesting code. Note, however, that as useful as these can be, they can still ‘miss-the-mark’ or hallucinate, in which case you’ll need to roll up your sleeves and do things the old-fashioned way. LLMs are going to make your life much easier, but they could also make you lazy or over-confident…!\nIn class, we’ll point you to a Github Repository where you can post your issues and we’ll try to help you. This is for when you need help setting up customised workflows or run into tricky situations. Please do try to use Stack Overflow and ChatGPT as a first port of call.",
     "crumbs": [
       "Basic Coding",
       "Welcome to Python"
@@ -823,7 +812,7 @@
     "href": "chapter_2/intro_to_python.html#some-basics",
     "title": "Welcome to Python",
     "section": "Some basics",
-    "text": "Some basics\nFire up your JupyterLab and follow along by typing and executing these examples. You can hover over a cell and click the copy icon to copy the code.\n\na_variable = 'boo'\nprint(a_variable)\n\nboo\n\n\nPython works with variables which store references to information. These variables can be named so that they are easy to remember and should be descriptive so that they make their purpose clear. By convention, variables in Python use lower caps with underscores and should not start with a number.\nNotice that these variable names don’t tell us very much:\n\na = 21\nb = 34\nd = b - a\n\nBut these ones do:\n\ntemp_day_1 = 21\ntemp_day_2 = 34\ntemp_diff = temp_day_2 - temp_day_1\n\nYou should also use comments to explain your code, this becomes important as the code grows in complexity. Use a hash symbol for a line comment and triple quotes for block comments.\n\n\"\"\"\nThe following lines detail the procedure for\ncomputing a temperature difference from day 1 to 2.\n\"\"\"\n# the temperature on day 1\ntemp_day_1 = 21\n# the temperature on day 2\ntemp_day_2 = 34\n# the temperature difference from day 1 to 2\ntemp_diff = temp_day_2 - temp_day_1\n\nAnother concept is the use of functions. Functions take parameters (arguments) and return a result according to a defined sequence of steps. In certain contexts they are also referred to as “methods”, but don’t worry too much about that for now. A commonly used function in Python is the print() method. Notice that a function has parentheses, and this is where you pass your function arguments.\n\n# you can pass a parameter to print()\n# it will then take the parameter and print it to the screen\nprint('This will print boo!')\n# the same for a variable\nprint(temp_diff)\n# and in the case of the print() method\n# multiple arguments can be passed at once\n# function arguments are separated with commas\nprint('The temp diff is:', temp_diff)\n\nThis will print boo!\n13\nThe temp diff is: 13\n\n\nYou can define a function using the def keyword. Let’s define a function which takes a number and multiplies it by a specified multiplier.\n\n# you must use \"def\"\n# define your parameters\ndef num_multiply(a_number, multiple):\n  # note the use of indented lines\n  multiplied_number = a_number * multiple\n  # you must return a value if you want to use\n  # it outside of the function\n  return multiplied_number\n\n# let's try it out\n# assign the returned value to a variable\nout_num_a = num_multiply(2, 2)\nprint('2x2=', out_num_a)\n# functions save us from rewriting the\n# same bits of code over and over...\n# we can use the same logic with new arguments\nout_num_b = num_multiply(3, 10)\nprint('3x10=', out_num_b)\n\n2x2= 4\n3x10= 30\n\n\n\nIf you find yourself writing bits of code which seem repetitive, then you probably want to be using functions…!\n\nVariables can store different kinds of data, including str, int, float (decimal), and other types such as “booleans” (True and False) and None types. If you want to find out what type a variable is, you can use the built-in type() method, which will tell you what type a given variable is.\n\n# here we are nesting methods\n# the type() method will run first and returns a result\n# this result is then passed to the print() method\nprint(type(a_variable))\nprint(type(temp_diff))\nprint(type(1))\nprint(type(1.0))\nprint(type(True))\nprint(type(None))\n\n&lt;class 'str'&gt;\n&lt;class 'int'&gt;\n&lt;class 'int'&gt;\n&lt;class 'float'&gt;\n&lt;class 'bool'&gt;\n&lt;class 'NoneType'&gt;\n\n\nOnce you’ve assigned a value to a variable, you can use this variable to do things like maths (in the case of int or float types).\n\ntemp_day_1 = 21\ntemp_day_2 = 34\nprint('added:', temp_day_1 + temp_day_2)\nprint('subtracted:', temp_day_2 - temp_day_1)\nprint('divided:', temp_day_2 / 2)\n# modulo gives the remainder after division\nprint('modulo:', temp_day_1 % 2)\n\nadded: 55\nsubtracted: 13\ndivided: 17.0\nmodulo: 1\n\n\nIt is a good idea to become familiar with Python Operators: these will become second nature over time. Here are some examples:\n\nmy_var1 = 5\nmy_var1 = my_var1 + 10\nprint(my_var1)\n# assignment operators can be combined with arithmetic\nmy_var2 = 5\nmy_var2 += 10\nprint(my_var2)\n# checking for equality is done with double equal signs\nprint('equal?:', my_var1 == my_var2)\nprint('equal?:', my_var1 == 'boo')\n# pay attention to operator precedence\n# use brackets to make intention explicit\nprint('precedence a:', 5 * 10 + 2)\nprint('precedence b:', 5 * (10 + 2))\n\n15\n15\nequal?: True\nequal?: False\nprecedence a: 52\nprecedence b: 60\n\n\nYou can do surprising things with strings as well.\n\npart_1 = 'Hello'\npart_2 = 'there!'\n# here we'll combine the parts using an empty space\ntogether = part_1 + ' ' + part_2\nprint(together)\n\nHello there!\n\n\nPython has some other types that can be useful. One of these is lists, which use square brackets to collect several items into the same variable.\n\nmy_list = [1, 2, 3, 4]\n# gets the length of a list\nprint('number of items:', len(my_list))\n# indexes into the first item in a list\n# in Python, lists are zero indexed\n# note the use of square brackets for indexing\nget_something = my_list[0]\nprint('first item:', get_something)\n# gets the last item\nget_something_else = my_list[-1]\nprint('last item:', get_something_else)\n# gets list entries from index 0 to before index 2\nget_several_things = my_list[0:2]\nprint('several items A:', get_several_things)\n# which happens to be the same as this\nget_several_things = my_list[0:-2]\nprint('several items B:', get_several_things)\n# and this\nget_several_things = my_list[-4:-2]\nprint('several items C:', get_several_things)\n\nnumber of items: 4\nfirst item: 1\nlast item: 4\nseveral items A: [1, 2]\nseveral items B: [1, 2]\nseveral items C: [1, 2]\n\n\nYou can use in and not in syntax to check if something is inside a list. This will return a bool, and if this evaluates to True then it will execute the indented code.\n\n# you can check if things are in a list\nif 2 in my_list:\n  print('yes, 2 is in my_list')\nif 5 in my_list:\n  print('not gonna see this!')\nif 5 not in my_list:\n  print('you will see this!!')\n\nyes, 2 is in my_list\nyou will see this!!\n\n\nNote that you can iterate over lists using for and in syntax. For each loop of the iteration, the value at that iteration is assigned to a variable, which we are here calling num. We can then use that variable to do something.\n\n# this will print each number in my_list\nfor num in my_list:\n    # note the indented line\n    # indentation has to be used consistently\n    print('num is currently:', num)\n\nnum is currently: 1\nnum is currently: 2\nnum is currently: 3\nnum is currently: 4\n\n\nPython has a number of built-in convenience methods, which can simplify common tasks:\n\nprint('min:', min(my_list))\nprint('max:', max(my_list))\n# note the extra step to casts the output\n# from reversed to a list type\nprint('reversed:', list(reversed(my_list)))\nprint('absolute:', abs(-100))\n\nmin: 1\nmax: 4\nreversed: [4, 3, 2, 1]\nabsolute: 100",
+    "text": "Some basics\nFire up your JupyterLab and follow along by typing and executing these examples. You can hover over a cell and click the copy icon to copy the code.\n\na_variable = 'boo'\nprint(a_variable)\n\nboo\n\n\nPython works with variables which store references to information. These variables can be named so that they are easy to remember and should be descriptive so that they make their purpose clear. By convention, variables in Python use lower caps with underscores and should not start with a number. An exception is class names, which typically start with a capitalised letter.\nNotice that these variable names don’t tell us very much:\n\na = 21\nb = 34\nd = b - a\n\nBut these ones do:\n\ntemp_day_1 = 21\ntemp_day_2 = 34\ntemp_diff = temp_day_2 - temp_day_1\n\nYou should also use comments to explain your code, this becomes important as the code grows in complexity. Use a hash symbol for a line comment and triple quotes for block comments.\n\n\"\"\"\nThe following lines detail the procedure for\ncomputing a temperature difference from day 1 to 2.\n\"\"\"\n# the temperature on day 1\ntemp_day_1 = 21\n# the temperature on day 2\ntemp_day_2 = 34\n# the temperature difference from day 1 to 2\ntemp_diff = temp_day_2 - temp_day_1\n\nAnother concept is the use of functions. Functions take parameters (arguments) and return a result according to a defined sequence of steps. In certain contexts they are also referred to as “methods” (in the context of “classes”, but don’t worry too much about that for now). A commonly used function in Python is print(). Notice that a function has parentheses, and this is where you pass your function arguments.\n\n# you can pass a parameter to print()\n# it will then take the parameter and print it to the screen\nprint('This will print boo!')\n# the same for a variable\nprint(temp_diff)\n# and in the case of the print() method\n# multiple arguments can be passed at once\n# function arguments are separated with commas\nprint('The temp diff is:', temp_diff)\n\nThis will print boo!\n13\nThe temp diff is: 13\n\n\nYou can define a function using the def keyword. Let’s define a function which takes a number and multiplies it by a specified multiplier.\n\n# you must use \"def\"\n# define your parameters\ndef num_multiply(a_number, the_multiple):\n  # note the use of indented lines\n  multiplied_number = a_number * the_multiple\n  # you must return a value if you want to use\n  # it outside of the function\n  return multiplied_number\n\n# let's try it out\n# assign the returned value to a variable\nout_num_a = num_multiply(2, 2)\nprint('2x2=', out_num_a)\n# functions save us from rewriting the\n# same bits of code over and over...\n# we can use the same logic with new arguments\nout_num_b = num_multiply(3, 10)\nprint('3x10=', out_num_b)\n\n2x2= 4\n3x10= 30\n\n\n\nIf you find yourself writing bits of code which seem repetitive, then you probably want to be using functions…!\n\nVariables can store different kinds of data, including str, int, float (decimal), and other types such as “booleans” (True and False) and None types. If you want to find out what type a variable is, you can use the built-in type() method, which will tell you what type a given variable is.\n\n# here we are nesting methods\n# the type() method will run first and returns a result\n# this result is then passed to the print() method\nprint(type(a_variable))\nprint(type(temp_diff))\nprint(type(1))\nprint(type(1.0))\nprint(type(True))\nprint(type(None))\n\n&lt;class 'str'&gt;\n&lt;class 'int'&gt;\n&lt;class 'int'&gt;\n&lt;class 'float'&gt;\n&lt;class 'bool'&gt;\n&lt;class 'NoneType'&gt;\n\n\nOnce you’ve assigned a value to a variable, you can use this variable to do things like maths (in the case of int or float types).\n\ntemp_day_1 = 21\ntemp_day_2 = 34\nprint('added:', temp_day_1 + temp_day_2)\nprint('subtracted:', temp_day_2 - temp_day_1)\nprint('divided:', temp_day_2 / 2)\n# modulo gives the remainder after division\nprint('modulo:', temp_day_1 % 2)\n\nadded: 55\nsubtracted: 13\ndivided: 17.0\nmodulo: 1\n\n\nIt is a good idea to become familiar with Python Operators: these will become second nature over time. Here are some examples:\n\n# you can assign new values to existing variables\nmy_var1 = 5\nmy_var1 = my_var1 + 10\nprint('addition', my_var1)\n# assignment operators can be combined with arithmetic\nmy_var2 = 5\nmy_var2 += 10\nprint('increment', my_var2)\n\naddition 15\nincrement 15\n\n\nChecking for equality is done with double equal signs.\n\nprint('checks equal:', my_var1 == my_var2)\nprint('checks equal:', my_var1 == 'boo')\n# returns True if not equal, otherwise False\nprint('checks not equal:', my_var1 != my_var2)\nprint('checks not equal:', my_var1 != 'boo')\n\nchecks equal: True\nchecks equal: False\nchecks not equal: False\nchecks not equal: True\n\n\nUse “is” when checking for booleans or None types.\n\nnone_var = None\nprint('checks None:', none_var is None)\nnone_var = 'boo'\nprint('checks None:', none_var is None)\nbool_var = True\nprint('checks True:', bool_var is True)\nbool_var = False\nprint('checks True:', bool_var is True)\n\nchecks None: True\nchecks None: False\nchecks True: True\nchecks True: False\n\n\nPay attention to operator precedence, use brackets to make your intentions explicit.\n\nprint('precedence a:', 5 * 10 + 2)\nprint('precedence b:', 5 * (10 + 2))\n\nprecedence a: 52\nprecedence b: 60\n\n\nYou can do surprising things with strings as well.\n\npart_1 = 'Hello'\npart_2 = 'there!'\n# here we'll combine the parts using an empty space\ntogether = part_1 + ' ' + part_2\nprint(together)\n# there are a large number of built-in methods for strings\n# here are a few examples\nprint(part_1.lower())\nprint(part_1.upper())\nprint(part_1.lstrip('H'))\nprint('str len:', len('what is the length of a piece of string?'))\n\nHello there!\nhello\nHELLO\nello\nstr len: 40\n\n\nPython has some other types that can be useful. One of these is lists, which use square brackets to collect several items into the same variable.\n\nmy_list = [1, 2, 3, 4]\n# the built-in len() method gets the length of a list\nprint('number of items:', len(my_list))\n# use square brackets to index into a list\n# in Python, lists are zero indexed\nget_something = my_list[0]\nprint('first item:', get_something)\n# gets the last item\nget_something_else = my_list[-1]\nprint('last item:', get_something_else)\n# gets list entries from index 0 to before index 2\nget_several_things = my_list[0:2]\nprint('several items A:', get_several_things)\n# which happens to be the same as this\nget_several_things = my_list[0:-2]\nprint('several items B:', get_several_things)\n# and this\nget_several_things = my_list[-4:-2]\nprint('several items C:', get_several_things)\n# let's add something to the list\nmy_list.append(5)\nprint('more items:', my_list)\n\nnumber of items: 4\nfirst item: 1\nlast item: 4\nseveral items A: [1, 2]\nseveral items B: [1, 2]\nseveral items C: [1, 2]\nmore items: [1, 2, 3, 4, 5]\n\n\nYou can use in and not in syntax to check if something is inside a list. This will return a bool, and if this evaluates to True then it will execute the indented code.\n\n# you can check if things are in a list\nif 2 in my_list:\n  print('yes, 2 is in my_list')\nif 5 in my_list:\n  print('not gonna see this!')\nif 5 not in my_list:\n  print('you will see this!!')\n\nyes, 2 is in my_list\nnot gonna see this!\n\n\nNote that you can iterate over lists using for and in syntax. For each loop of the iteration, the value at that iteration is assigned to a variable, which we are here calling num. We can then use that variable to do something.\n\n# this will print each number in my_list\nfor num in my_list:\n    # note the indented line\n    # indentation has to be used consistently\n    print('num is currently:', num)\n\nnum is currently: 1\nnum is currently: 2\nnum is currently: 3\nnum is currently: 4\nnum is currently: 5\n\n\nPython has a number of built-in convenience functions, which can simplify common tasks:\n\n# these will return the min and max values\nprint('min:', min(my_list))\nprint('max:', max(my_list))\nprint('min:', min('zfs'))\nprint('max:', max('zfs'))\n\nmin: 1\nmax: 5\nmin: f\nmax: z\n\n\n\n# you can cast types from one to another\n# ...within reason\nprint('now an int:', int(4.0))\nprint('loses decimal:', int(4.5))\nprint('now a float:', float(4))\nprint('this works:', str(3))\n\nnow an int: 4\nloses decimal: 4\nnow a float: 4.0\nthis works: 3\n\n\n\n# uncomment to run\n# print('this wont work': int('a'))\n# some more built-in functions\n# note the extra step to cast the output\nprint('without cast', reversed(my_list))\nprint('with cast:', list(reversed(my_list)))\nprint('absolute:', abs(-100))\n\nwithout cast &lt;list_reverseiterator object at 0x7f77ec6e91b0&gt;\nwith cast: [5, 4, 3, 2, 1]\nabsolute: 100",
     "crumbs": [
       "Basic Coding",
       "Welcome to Python"
@@ -834,7 +823,7 @@
     "href": "chapter_2/intro_to_python.html#importing-packages",
     "title": "Welcome to Python",
     "section": "Importing packages",
-    "text": "Importing packages\nPython can import packages which contain reusable code.\nPackages have to be installed before they are used, unless they are part of the default Python library. Let’s install the shapely package. Note that this method of installing a package with a leading exclamation mark is particular to JupyterLab Notebooks, and only has to be done if the package is not yet installed.\n\n# checks that the shapely package\n# is installed for this notebook\n# uncomment the next line to run\n# !pip install shapely\n\nOnce installed and available, we can use modules provided by the package. Here we are using the from and import syntax to import the geometry module which is available from the shapely package.\n\nfrom shapely import geometry",
+    "text": "Importing packages\nPython can import packages which contain reusable code.\nPackages have to be installed before they are used, unless they are part of the default Python library. Note that this method of installing a package with a leading exclamation mark is particular to JupyterLab Notebooks, and only has to be done if the package is not yet installed.\n\n# checks that the shapely package\n# is installed for this notebook\n# uncomment the next line to run\n# !pip install shapely\n\nOnce installed and available, we can use modules provided by the package. Here we are using the from and import syntax to import the geometry module which is available from the shapely package.\n\nfrom shapely import geometry",
     "crumbs": [
       "Basic Coding",
       "Welcome to Python"
@@ -845,7 +834,7 @@
     "href": "chapter_2/intro_to_python.html#shapely",
     "title": "Welcome to Python",
     "section": "Shapely",
-    "text": "Shapely\nshapely let’s us do some neat things with spatial information. Let’s define a Point type using the geometry module. The geometry module has some already defined methods which we can call. Let’s use the Point constructor to generate a new point. Note the use of dot-notation.\n\n# this creates a point using the Point constructor\n# defined by the geometry module\npoint_a = geometry.Point(0, 0)\nprint(point_a)\nprint(type(point_a))\n\nPOINT (0 0)\n&lt;class 'shapely.geometry.point.Point'&gt;\n\n\nDifferent packages and modules define set patterns of behaviour. To understand what these are and what you can do with them, refer to the package documentation and ask ChatGPT to help you along the way. Some packages are better documented than others. In the case of shapely, here is a link to the official documents.\nAlternatively, you can use the built-in help() method which will tell you more about a module or class’ functionality.\n\n# this will return a lot of text\n# uncomment to run\n# help(point_a)\n\nFor example, a shapely Point type has built-in methods which allow you to easily produce certain forms of behaviour. You can access these using dot-notation. Let’s buffer the point object using the provided buffer() method.\n\nbuff = point_a.buffer(10)\nprint(buff)\nprint(type(buff))\n\nPOLYGON ((10 0, 9.95184726672197 -0.980171403295606, 9.807852804032304 -1.9509032201612824, 9.569403357322088 -2.902846772544623, 9.238795325112868 -3.826834323650898, 8.819212643483551 -4.7139673682599765, 8.314696123025453 -5.555702330196022, 7.73010453362737 -6.343932841636455, 7.0710678118654755 -7.071067811865475, 6.343932841636455 -7.73010453362737, 5.555702330196023 -8.314696123025453, 4.713967368259978 -8.81921264348355, 3.8268343236508984 -9.238795325112868, 2.902846772544623 -9.56940335732209, 1.9509032201612833 -9.807852804032304, 0.9801714032956077 -9.951847266721968, 0.0000000000000006 -10, -0.9801714032956065 -9.95184726672197, -1.950903220161282 -9.807852804032304, -2.9028467725446214 -9.56940335732209, -3.826834323650897 -9.238795325112868, -4.713967368259977 -8.819212643483551, -5.55570233019602 -8.314696123025454, -6.3439328416364535 -7.730104533627371, -7.071067811865475 -7.0710678118654755, -7.73010453362737 -6.343932841636455, -8.314696123025453 -5.555702330196022, -8.81921264348355 -4.713967368259978, -9.238795325112868 -3.826834323650899, -9.569403357322088 -2.902846772544624, -9.807852804032304 -1.9509032201612861, -9.951847266721968 -0.9801714032956083, -10 -0.0000000000000012, -9.95184726672197 0.9801714032956059, -9.807852804032304 1.9509032201612837, -9.56940335732209 2.902846772544621, -9.238795325112868 3.8268343236508966, -8.819212643483551 4.7139673682599765, -8.314696123025454 5.55570233019602, -7.730104533627371 6.343932841636453, -7.071067811865477 7.071067811865475, -6.343932841636459 7.730104533627367, -5.555702330196022 8.314696123025453, -4.713967368259978 8.81921264348355, -3.8268343236509033 9.238795325112864, -2.9028467725446245 9.569403357322088, -1.9509032201612866 9.807852804032303, -0.9801714032956045 9.95184726672197, -0.0000000000000018 10, 0.9801714032956009 9.95184726672197, 1.950903220161283 9.807852804032304, 2.9028467725446205 9.56940335732209, 3.8268343236509 9.238795325112866, 4.713967368259976 8.819212643483551, 5.555702330196018 8.314696123025454, 6.343932841636456 7.730104533627369, 7.071067811865474 7.071067811865477, 7.730104533627367 6.343932841636459, 8.314696123025453 5.555702330196022, 8.819212643483548 4.713967368259979, 9.238795325112864 3.826834323650904, 9.569403357322088 2.902846772544625, 9.807852804032303 1.9509032201612873, 9.95184726672197 0.980171403295605, 10 0))\n&lt;class 'shapely.geometry.polygon.Polygon'&gt;\n\n\nNotice that we now have a Polygon type since the returned type is no longer a Point. Types (which are a form of Python class) can have properties which are accessed using dot-notation. Unlike methods, properties do not require parentheses because they do not accept arguments.\n\n# here we are using the area property to retrieve the area\nprint('Point area:', point_a.area)\nprint('Polygon area:', buff.area)\n# properties can be nested via dot-notation\n# for example, polygons have an exterior property\n# which returns a LinearRing\n# let's get the LinearRing's length property\nprint(type(buff.exterior))\nprint('Polygon circumference:', buff.exterior.length)\n\nPoint area: 0.0\nPolygon area: 313.6548490545941\n&lt;class 'shapely.geometry.polygon.LinearRing'&gt;\nPolygon circumference: 62.80662313909506\n\n\nLet’s create a line. The LineString constructor requires a list of points.\n\npoint_b = geometry.Point(1, 1)\nline = geometry.LineString([point_a, point_b])\nprint(line)\nprint(list(line.coords))\nprint(line.length)\n\nLINESTRING (0 0, 1 1)\n[(0.0, 0.0), (1.0, 1.0)]\n1.4142135623730951",
+    "text": "Shapely\nshapely let’s us do some neat things with spatial information. Let’s define a Point type using the geometry module. The geometry module has some already defined methods which we can call. Let’s use the Point constructor to generate a new point. Note the use of dot-notation.\n\n# this creates a point using the Point constructor\n# defined by the geometry module\npoint_a = geometry.Point(0, 0)\nprint(point_a)\nprint(type(point_a))\n\nPOINT (0 0)\n&lt;class 'shapely.geometry.point.Point'&gt;\n\n\nDifferent packages and modules define set patterns of behaviour. To understand what these are and what you can do with them, refer to the package documentation. If it is a widely used package with a lot of public examples, then you can ask ChatGPT to help you. Some packages are better documented than others. In the case of shapely, here is a link to the official documents.\nAlternatively, you can use the built-in help() method which will tell you more about a module or class’ functionality.\n\n# this will return a lot of text\n# uncomment to run\n# help(point_a)\n\nFor example, a shapely Point type has built-in methods which allow you to easily produce certain forms of behaviour. You can access these using dot-notation. Let’s buffer the point object using the provided buffer() method.\n\nbuff = point_a.buffer(10)\nprint(buff)\nprint(type(buff))\n\nPOLYGON ((10 0, 9.95184726672197 -0.980171403295606, 9.807852804032304 -1.9509032201612824, 9.569403357322088 -2.902846772544623, 9.238795325112868 -3.826834323650898, 8.819212643483551 -4.7139673682599765, 8.314696123025453 -5.555702330196022, 7.73010453362737 -6.343932841636455, 7.0710678118654755 -7.071067811865475, 6.343932841636455 -7.73010453362737, 5.555702330196023 -8.314696123025453, 4.713967368259978 -8.81921264348355, 3.8268343236508984 -9.238795325112868, 2.902846772544623 -9.56940335732209, 1.9509032201612833 -9.807852804032304, 0.9801714032956077 -9.951847266721968, 0.0000000000000006 -10, -0.9801714032956065 -9.95184726672197, -1.950903220161282 -9.807852804032304, -2.9028467725446214 -9.56940335732209, -3.826834323650897 -9.238795325112868, -4.713967368259977 -8.819212643483551, -5.55570233019602 -8.314696123025454, -6.3439328416364535 -7.730104533627371, -7.071067811865475 -7.0710678118654755, -7.73010453362737 -6.343932841636455, -8.314696123025453 -5.555702330196022, -8.81921264348355 -4.713967368259978, -9.238795325112868 -3.826834323650899, -9.569403357322088 -2.902846772544624, -9.807852804032304 -1.9509032201612861, -9.951847266721968 -0.9801714032956083, -10 -0.0000000000000012, -9.95184726672197 0.9801714032956059, -9.807852804032304 1.9509032201612837, -9.56940335732209 2.902846772544621, -9.238795325112868 3.8268343236508966, -8.819212643483551 4.7139673682599765, -8.314696123025454 5.55570233019602, -7.730104533627371 6.343932841636453, -7.071067811865477 7.071067811865475, -6.343932841636459 7.730104533627367, -5.555702330196022 8.314696123025453, -4.713967368259978 8.81921264348355, -3.8268343236509033 9.238795325112864, -2.9028467725446245 9.569403357322088, -1.9509032201612866 9.807852804032303, -0.9801714032956045 9.95184726672197, -0.0000000000000018 10, 0.9801714032956009 9.95184726672197, 1.950903220161283 9.807852804032304, 2.9028467725446205 9.56940335732209, 3.8268343236509 9.238795325112866, 4.713967368259976 8.819212643483551, 5.555702330196018 8.314696123025454, 6.343932841636456 7.730104533627369, 7.071067811865474 7.071067811865477, 7.730104533627367 6.343932841636459, 8.314696123025453 5.555702330196022, 8.819212643483548 4.713967368259979, 9.238795325112864 3.826834323650904, 9.569403357322088 2.902846772544625, 9.807852804032303 1.9509032201612873, 9.95184726672197 0.980171403295605, 10 0))\n&lt;class 'shapely.geometry.polygon.Polygon'&gt;\n\n\nNotice that we now have a Polygon type since the returned type is no longer a Point. Types (which are a form of Python class) can have properties which are accessed using dot-notation. Unlike methods, properties do not require parentheses because they do not accept arguments.\n\n# here we are using the area property to retrieve the area\nprint('Point area:', point_a.area)\nprint('Polygon area:', buff.area)\n# properties can be nested via dot-notation\n# for example, polygons have an exterior property\n# which returns a LinearRing\n# let's get the LinearRing's length property\nprint(type(buff.exterior))\nprint('Polygon circumference:', buff.exterior.length)\n\nPoint area: 0.0\nPolygon area: 313.6548490545941\n&lt;class 'shapely.geometry.polygon.LinearRing'&gt;\nPolygon circumference: 62.80662313909506\n\n\nLet’s create a line. The LineString constructor requires a list of points.\n\npoint_b = geometry.Point(1, 1)\nline = geometry.LineString([point_a, point_b])\nprint(line)\nprint(list(line.coords))\nprint(line.length)\n\nLINESTRING (0 0, 1 1)\n[(0.0, 0.0), (1.0, 1.0)]\n1.4142135623730951",
     "crumbs": [
       "Basic Coding",
       "Welcome to Python"
@@ -867,7 +856,18 @@
     "href": "chapter_2/intro_to_python.html#geopandas",
     "title": "Welcome to Python",
     "section": "GeoPandas",
-    "text": "GeoPandas\nThere is an easier way to keep track of multiple geometries: GeoPandas! GeoPandas is a geospatial enabled version of Pandas DataFrames. Think of it as a CSV spreadsheet with the ability to handle geometry data types.\n\n# install if necessary by uncommenting the next line\n# !pip install geopandas\n\nLet’s create a GeoPandas DataFrame from our collected points\n\n# we'll import the whole geoopandas package\n# and we'll give it a shorter alias using \"as\"\nimport geopandas as gpd\n# let's create a dataframe from the points\ndf = gpd.GeoDataFrame(geometry=collect_points, crs=None)\n# the head() method returns the first (typically 5) rows\nprint(df.head())\n\n                  geometry\n0  POINT (0.00000 0.00000)\n1  POINT (0.00000 1.00000)\n2  POINT (0.00000 2.00000)\n3  POINT (0.00000 3.00000)\n4  POINT (1.00000 0.00000)\n\n\nThere we go, that’s a lot neater. You can add columns to DataFrames and you can also export (or import) from common geospatial file types such as gpkg. GeoDataFrames are also much easier to visualise.\n\ndf.plot()\n\n\n\n\n\n\n\n\nYou can run the typical shapely operations on a GeoDataFrame’s geometry column. Let’s see what happens if we buffer the GeoDataFrame.\n\nbuff_series = df.buffer(0.6)\n# this returns a GeoSeries\n# essentially a single column of a DataFrame\nprint(type(buff_series))\n# the geometry type is now POLYGON\nprint(buff_series.head())\nbuff_series.plot()\n\n&lt;class 'geopandas.geoseries.GeoSeries'&gt;\n0    POLYGON ((0.60000 0.00000, 0.59711 -0.05881, 0...\n1    POLYGON ((0.60000 1.00000, 0.59711 0.94119, 0....\n2    POLYGON ((0.60000 2.00000, 0.59711 1.94119, 0....\n3    POLYGON ((0.60000 3.00000, 0.59711 2.94119, 0....\n4    POLYGON ((1.60000 0.00000, 1.59711 -0.05881, 1...\ndtype: geometry\n\n\n\n\n\n\n\n\n\nDataFrames are really useful for handling data. Let’s add a column called area and assign it the area value for the geometry.\n\n# create a new GeoDataFrame from the polygon GeoSeries column\ndf_buff = gpd.GeoDataFrame(geometry=buff_series, crs=None)\n# adds a new column called area\n# sets it to the value of the respective geometry areas\ndf_buff['area'] = df_buff.geometry.area\n# let's do the same for x and y\ndf_buff['x'] = df_buff.geometry.centroid.x\ndf_buff['y'] = df_buff.geometry.centroid.y\n# and let's filter the columns for printing\n# we can do this by passing a list of column names\n# to GeoPandas indexer - which uses square brackets\nprint(df_buff[['area', 'x', 'y']].head())\n\n       area             x             y\n0  1.129157 -1.808352e-18 -3.430668e-18\n1  1.129157 -5.745118e-18  1.000000e+00\n2  1.129157  2.928570e-18  2.000000e+00\n3  1.129157  1.931576e-17  3.000000e+00\n4  1.129157  1.000000e+00  3.075098e-17\n\n\nDataFrames are useful for filtering data.\n\n# here we are filtering rows based on their x values\n# we are then assigning this to a new variable\n# the part \"df_buff.x &lt; 2\" is what does the magic\nfiltered_df_buff = df_buff[df_buff.x &lt; 2]\nfiltered_df_buff.plot()\n\n\n\n\n\n\n\n\nThere are almost limitless ways to manipulate data in DataFrames and these are well documented on the web. If you’re ever stuck, remember that ChatGPT is quite good at finding bugs and tends to have an intuitive grasp of what you’re trying to do if you explain your objective well.\nThe Intro to GeoPandas lesson will demonstrate some of GeoPandas data handling capabilities in more depth.",
+    "text": "GeoPandas\nThere is an easier way to keep track of multiple geometries: GeoPandas! GeoPandas is a geospatial enabled version of Pandas DataFrames. Think of it as a CSV spreadsheet with the ability to handle geometry data types.\n\n# install if necessary by uncommenting the next line\n# !pip install geopandas\n\nLet’s create a GeoPandas DataFrame from our collected points\n\n# we'll import the whole geopandas package\n# and we'll give it a shorter alias using \"as\"\nimport geopandas as gpd\n# let's create a dataframe from the points\ndf = gpd.GeoDataFrame(geometry=collect_points, crs=None)\n# the head() method returns the first (typically 5) rows\nprint(df.head())\n\n                  geometry\n0  POINT (0.00000 0.00000)\n1  POINT (0.00000 1.00000)\n2  POINT (0.00000 2.00000)\n3  POINT (0.00000 3.00000)\n4  POINT (1.00000 0.00000)\n\n\nThere we go, that’s a lot neater. You can add columns to DataFrames and you can also export (or import) from common geospatial file types such as gpkg. GeoDataFrames are also much easier to visualise.\n\ndf.plot()\n\n\n\n\n\n\n\n\nYou can run the typical shapely operations on a GeoDataFrame’s geometry column. Let’s see what happens if we buffer the GeoDataFrame.\n\nbuff_series = df.buffer(0.6)\n# this returns a GeoSeries\n# essentially a single column of a DataFrame\nprint(type(buff_series))\n# the geometry type is now POLYGON\nprint(buff_series.head())\nbuff_series.plot()\n\n&lt;class 'geopandas.geoseries.GeoSeries'&gt;\n0    POLYGON ((0.60000 0.00000, 0.59711 -0.05881, 0...\n1    POLYGON ((0.60000 1.00000, 0.59711 0.94119, 0....\n2    POLYGON ((0.60000 2.00000, 0.59711 1.94119, 0....\n3    POLYGON ((0.60000 3.00000, 0.59711 2.94119, 0....\n4    POLYGON ((1.60000 0.00000, 1.59711 -0.05881, 1...\ndtype: geometry\n\n\n\n\n\n\n\n\n\nDataFrames are really useful for handling data. Let’s add a column called area and assign it the area value for the geometry.\n\n# create a new GeoDataFrame from the polygon GeoSeries column\ndf_buff = gpd.GeoDataFrame(geometry=buff_series, crs=None)\n# adds a new column called area\n# sets it to the value of the respective geometry areas\ndf_buff['area'] = df_buff.geometry.area\n# let's do the same for x and y\ndf_buff['x'] = df_buff.geometry.centroid.x\ndf_buff['y'] = df_buff.geometry.centroid.y\n# and let's filter the columns for printing\n# we can do this by passing a list of column names\n# to GeoPandas indexer - which uses square brackets\nprint(df_buff[['area', 'x', 'y']].head())\n\n       area             x             y\n0  1.129157 -1.808352e-18 -3.430668e-18\n1  1.129157 -5.745118e-18  1.000000e+00\n2  1.129157  2.928570e-18  2.000000e+00\n3  1.129157  1.931576e-17  3.000000e+00\n4  1.129157  1.000000e+00  3.075098e-17\n\n\nDataFrames are useful for filtering data.\n\n# here we are filtering rows based on their x values\n# we are then assigning this to a new variable\n# the part \"df_buff.x &lt; 2\" is what does the magic\nfiltered_df_buff = df_buff[df_buff.x &lt; 2]\nfiltered_df_buff.plot()\n\n\n\n\n\n\n\n\nThere are almost limitless ways to manipulate data in DataFrames and these are well documented on the web. If you’re ever stuck, remember that ChatGPT is quite good at finding bugs and tends to have an intuitive grasp of what you’re trying to do if you explain your objective well.",
+    "crumbs": [
+      "Basic Coding",
+      "Welcome to Python"
+    ]
+  },
+  {
+    "objectID": "chapter_2/intro_to_python.html#census-data",
+    "href": "chapter_2/intro_to_python.html#census-data",
+    "title": "Welcome to Python",
+    "section": "Census Data",
+    "text": "Census Data\nIn future lessons we will demonstrate some of GeoPandas data handling capabilities in more depth. For now, let’s take a lightning-tour look at the census data you’ve been using for Bilbao.\n\nThe census boundaries have been downloaded as a Shapefile. They were then filtered for Bizkaia (to keep the file size down for the demo) and saved as a GeoPackage file.\n\nOriginal Source: Census Boundaries Data - 2023\nLocal link: Census Geoms Bizkaia\n\nThe population census data by sex and birth.\n\nOriginal Source: ine.es file code 61438\nLocal link: 61438.xls\n\n\n\nOpening a spreadsheet\n\n# uncomment to install (if necessary)\n# !pip install pandas openpyxl\n\nLet’s import Pandas and GeoPandas into our working notebook.\n\nimport pandas as pd\nimport geopandas as gpd\n\nLet’s use Pandas to open the census data excel file, you’ll need to copy the file to a local directory and update the filepath to point to your data file location. We recommend keeping the data file in an adjacently located directory so that your filepaths remain simple.\n\n# reads an excel file using a built-in pandas method\ndf_excel = pd.read_excel('./data/61438.xlsx')\nprint(df_excel.head(10))\n\n/opt/hostedtoolcache/Python/3.11.8/x64/lib/python3.11/site-packages/openpyxl/styles/stylesheet.py:226: UserWarning: Workbook contains no default style, apply openpyxl's default\n  warn(\"Workbook contains no default style, apply openpyxl's default\")\n\n\n                   Resultados por secciones censales   Unnamed: 1 Unnamed: 2  \\\n0                                           Año 2023          NaN        NaN   \n1                                                NaN          NaN        NaN   \n2  Población por sexo y país de nacimiento (Españ...          NaN        NaN   \n3                                 Unidades: personas          NaN        NaN   \n4                                                NaN          NaN        NaN   \n5                                                     Ambos sexos        NaN   \n6                                                           Total     España   \n7                                     Total Nacional     48085361   39881155   \n8                                     01 Araba/Álava       336308     287266   \n9                             01001 Alegría-Dulantzi         2969       2534   \n\n   Unnamed: 3 Unnamed: 4 Unnamed: 5  Unnamed: 6 Unnamed: 7 Unnamed: 8  \\\n0         NaN        NaN        NaN         NaN        NaN        NaN   \n1         NaN        NaN        NaN         NaN        NaN        NaN   \n2         NaN        NaN        NaN         NaN        NaN        NaN   \n3         NaN        NaN        NaN         NaN        NaN        NaN   \n4         NaN        NaN        NaN         NaN        NaN        NaN   \n5         NaN     Hombre        NaN         NaN      Mujer        NaN   \n6  Extranjero      Total     España  Extranjero      Total     España   \n7     8204206   23565593   19597540     3968053   24519768   20283615   \n8       49042     165600     141686       23914     170708     145580   \n9         435       1537       1312         225       1432       1222   \n\n   Unnamed: 9  \n0         NaN  \n1         NaN  \n2         NaN  \n3         NaN  \n4         NaN  \n5         NaN  \n6  Extranjero  \n7     4236153  \n8       25128  \n9         210  \n\n\nA look at the excel file shows that the document contains nested headers. Let’s remove the first few lines and then we’ll set the column names manually.\n\n# removes the first seven rows\ndf_clipped = df_excel[7:]\n# resets the dataframe's index to match the new rows\ndf_clipped = df_clipped.reset_index(drop=True)\nprint(df_clipped.head())\n\n  Resultados por secciones censales Unnamed: 1 Unnamed: 2 Unnamed: 3  \\\n0                    Total Nacional   48085361   39881155    8204206   \n1                    01 Araba/Álava     336308     287266      49042   \n2            01001 Alegría-Dulantzi       2969       2534        435   \n3                        0100101001       1390       1212        178   \n4                        0100101002       1579       1322        257   \n\n  Unnamed: 4 Unnamed: 5 Unnamed: 6 Unnamed: 7 Unnamed: 8 Unnamed: 9  \n0   23565593   19597540    3968053   24519768   20283615    4236153  \n1     165600     141686      23914     170708     145580      25128  \n2       1537       1312        225       1432       1222        210  \n3        725        629         96        665        583         82  \n4        812        683        129        767        639        128  \n\n\nLet’s set the new column names.\n\n# we can override the existing column names using a list\ndf_clipped.columns = ['regions', 'all_total', 'all_spanish', 'all_immig', 'male_total', 'male_spanish', 'male_immig', 'female_total', 'female_spanish', 'female_immig']\nprint(df_clipped.head())\n\n                  regions all_total all_spanish all_immig male_total  \\\n0          Total Nacional  48085361    39881155   8204206   23565593   \n1          01 Araba/Álava    336308      287266     49042     165600   \n2  01001 Alegría-Dulantzi      2969        2534       435       1537   \n3              0100101001      1390        1212       178        725   \n4              0100101002      1579        1322       257        812   \n\n  male_spanish male_immig female_total female_spanish female_immig  \n0     19597540    3968053     24519768       20283615      4236153  \n1       141686      23914       170708         145580        25128  \n2         1312        225         1432           1222          210  \n3          629         96          665            583           82  \n4          683        129          767            639          128  \n\n\n\n\nOpening a geopandas file\nLet’s use GeoPandas to open the census boundaries. Notice that we are now using GeoPandas and not Pandas, since Pandas alone does not support geospatial functionality.\n\ngdf_geoms = gpd.read_file('./data/census_geoms_bizkaia.gpkg')\nprint(gdf_geoms.head())\ngdf_geoms.plot()\n\n        CUSEC  CUMUN CSEC CDIS CMUN CPRO CCA    CUDIS  CLAU2     NPRO  \\\n0  4800101001  48001  001   01  001   48  16  4800101  48001  Bizkaia   \n1  4800101002  48001  002   01  001   48  16  4800101  48001  Bizkaia   \n2  4800101003  48001  003   01  001   48  16  4800101  48001  Bizkaia   \n3  4800101004  48001  004   01  001   48  16  4800101  48001  Bizkaia   \n4  4800101005  48001  005   01  001   48  16  4800101  48001  Bizkaia   \n\n          NCA CNUT0 CNUT1 CNUT2 CNUT3     NMUN  \\\n0  País Vasco    ES     2     1     3  Abadiño   \n1  País Vasco    ES     2     1     3  Abadiño   \n2  País Vasco    ES     2     1     3  Abadiño   \n3  País Vasco    ES     2     1     3  Abadiño   \n4  País Vasco    ES     2     1     3  Abadiño   \n\n                                            geometry  \n0  MULTIPOLYGON (((531741.572 4778196.351, 531754...  \n1  MULTIPOLYGON (((532059.634 4780999.945, 532086...  \n2  MULTIPOLYGON (((531601.998 4779332.460, 531520...  \n3  MULTIPOLYGON (((534606.378 4777100.800, 534602...  \n4  MULTIPOLYGON (((531601.998 4779332.460, 531605...  \n\n\n\n\n\n\n\n\n\nLet’s do an attribute join to connect the population data to the spatial data. Notice that we have to specify the type of join method in the “how” parameter, as well as the columns to use for matching the left and right datasets. In this case, let’s look through the outputs from previous cells to identify the column names. We’ll then do a “left” join, which means we’ll only keep the columns from the ‘left’ dataset.\n\nmerged_data = gdf_geoms.merge(df_clipped, left_on='CUSEC', right_on='regions', how='left')\nprint(merged_data.head())\n\n        CUSEC  CUMUN CSEC CDIS CMUN CPRO CCA    CUDIS  CLAU2     NPRO  ...  \\\n0  4800101001  48001  001   01  001   48  16  4800101  48001  Bizkaia  ...   \n1  4800101002  48001  002   01  001   48  16  4800101  48001  Bizkaia  ...   \n2  4800101003  48001  003   01  001   48  16  4800101  48001  Bizkaia  ...   \n3  4800101004  48001  004   01  001   48  16  4800101  48001  Bizkaia  ...   \n4  4800101005  48001  005   01  001   48  16  4800101  48001  Bizkaia  ...   \n\n      regions all_total all_spanish all_immig male_total male_spanish  \\\n0  4800101001      1418        1287       131        708          634   \n1  4800101002      1183        1084        99        606          556   \n2  4800101003      1098         944       154        524          442   \n3  4800101004      2212        2056       156       1125         1044   \n4  4800101005      1809        1668       141        897          837   \n\n  male_immig female_total female_spanish female_immig  \n0         74          710            653           57  \n1         50          577            528           49  \n2         82          574            502           72  \n3         81         1087           1012           75  \n4         60          912            831           81  \n\n[5 rows x 27 columns]\n\n\n\n\nPlots\nLet’s plot again, this time using a column for setting the colour intensity. We’ll also use a colormap.\n\nmerged_data.plot(column='all_total', cmap='viridis')\n\n\n\n\n\n\n\n\nRemember that DataFrames can be filtered. Let’s filter out locations where there are more men than women, then we’ll plot the filtered data using the Reds colormap.\n\n# let's plot just locations where there are more women than men\nfiltered_data = merged_data[merged_data.male_total &gt; merged_data.female_total]\nfiltered_data.plot(column='male_total', cmap='Reds')\n\n\n\n\n\n\n\n\n\n\nSaving a GeoPandas file\nWe can now save the GeoPandas DataFrame as a file which you can then open from other locations, such as QGIS.\n\nmerged_data.to_file('./data/bizkaia_pop_census.gpkg')\n\nWe have just skimmed the surface! DataFrames have a lot of power. Remember that you can use ChatGPT to help you to figure out how to filter and style your data.",
     "crumbs": [
       "Basic Coding",
       "Welcome to Python"
