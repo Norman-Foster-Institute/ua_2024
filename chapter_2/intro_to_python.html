@@ -312,37 +312,36 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="computation" class="level2">
 <h2 class="anchored" data-anchor-id="computation">Computation</h2>
-<p>Computation, once too theoretical, expensive, and technical to be of use outside of highly specialised realms and big budget tech firms has become accessible to almost anyone with a computer. At the heart of this is the concept of computation itself; a process that enables us to perform calculations and solve problems by systematically following a series of steps. This concept has evolved dramatically over the centuries, from the abacus to the sophisticated digital computers that permeate our modern lives to open source software and the recent emergence of LLM AI tools such as ChatGPT.</p>
-<p>Two pivotal figures in the history of computation are <a href="https://en.wikipedia.org/wiki/Alan_Turing">Alan Turing</a> and <a href="https://en.wikipedia.org/wiki/John_von_Neumann">John von Neumann</a>, whose groundbreaking work laid the foundational principles on which modern computers are based.</p>
+<p>Computation, once too technical and expensive to be of use outside of specialised realms and big budget tech firms, has become accessible to almost anyone with a computer. The ability to perform calculations to perform a task has evolved rapidly from rudimentary mechanical devices to increasingly efficient digital computers. The combination of open source software, networked information on the worldwide web, and Large Language Model AI tools capable of synthesising this information means that the rate of development is now difficult to fathom. It also means that resources for learning have never been better…!</p>
+<p>Two pivotal figures in the history of computation are <a href="https://en.wikipedia.org/wiki/Alan_Turing">Alan Turing</a> and <a href="https://en.wikipedia.org/wiki/John_von_Neumann">John von Neumann</a>.</p>
 <p>Alan Turing introduced the concept of the Turing machine in 1936. This is an abstract device conceived to encapsulate the underlying essence of computation. Turing’s machine can, in theory, simulate any other machine’s computation process, thus providing a universal model for computing. Turing’s work during World War II on breaking the Enigma code is also celebrated for its profound impact on the outcome of the war and the field of cryptography.</p>
-<p>John von Neumann, contributed significantly to the development of architecture the digital computer and was instrumental in the development of some of the earliest computers. An engaging review of this early history can be found in the book <a href="https://www.theguardian.com/books/2012/mar/25/turings-cathedral-george-dyson-review">Turing’s Cathedral</a>.</p>
+<p>John von Neumann, contributed significantly to the development of the architecture of modern computers and was instrumental in the realisation of some of the earliest computing devices. He had a prodigious output and dabbled with fascinating ideas along the way, such as Cellular Automata. An engaging review of this early history can be found in the book <a href="https://www.theguardian.com/books/2012/mar/25/turings-cathedral-george-dyson-review">Turing’s Cathedral</a>.</p>
 </section>
 <section id="why-python" class="level2">
 <h2 class="anchored" data-anchor-id="why-python">Why Python?</h2>
-<p>Early programming languages, some of which are still in use today, were very “low-level” languages, meaning they operated closer to the hardware level, directly manipulating the machine’s memory and processing capabilities. This required programmers to have a deep understanding of the hardware they were working on. This allowed for precise control over the computer’s hardware, enabling optimizations that can significantly improve the performance and efficiency of the code. However, writing in these languages is time-consuming and prone to errors because it requires managing numerous highly complex details related to the hardware.</p>
-<p>The necessity for low-level programming languages stemmed from the need to maximize the performance of early computers, which had very limited processing power and memory compared to today’s standards. Low-level languages are still used for specialised or performance critical purposes, but they are complete overkill for the great majority of everyday use-cases because their complexities can make it very difficult to learn the languages or to use them productively.</p>
+<p>Early programming languages, some of which are still in use today, were very “low-level” languages, meaning they operated closer to the hardware level, directly manipulating the computer’s memory and processing capabilities. Early computers had very limited processing power and memory compared to today, and it was therefore necessary to manage computational and memory resources in closely monitored and complex ways. Low-level languages are still used for specialised or performance critical purposes, but they are overkill for the great majority of everyday use-cases: their complexities can make it very difficult to learn how to code and can seriously hamper productivity.</p>
 <p>Enter Python!</p>
-<p>Python, created by Guido van Rossum and released in 1991, is a high-level, interpreted programming language known for its simplicity and readability, making it ideal for beginners and experienced programmers alike. It offers an easy-to-use syntax that lends itself to clear and readible code that is easier to development and maintain. Python has evolved over time and is now at version 3. Its extensive standard library is mature and it has a vast ecosystem of third-party packages making it an ideal choice for applications such as data analysis, geospatial analysis, and scientific computing.</p>
+<p>Python, created by Guido van Rossum and released in the early 90s, is a high-level, interpreted programming language known for its simplicity and readability, making it ideal for beginners and experienced programmers alike. It offers an easy-to-use syntax that lends itself to clear and readible code that is easier to develop and maintain. Python has evolved over time and is now at version 3. It has reached a level of maturity and is supported by a burgeoning ecosystem of third-party packages making it an indispensible choice for tasks such as data science, geospatial analysis, and scientific computing.</p>
 <p>Some tips:</p>
 <ul>
-<li><p>Don’t get distracted by arguments of performance. People will sometimes talk about how one language outperforms another, but in reality the most important aspect is the usability, versatility, and speed of development. Python itself is a so-called “slow” language but it wraps highly optimised and very performant packages under-the-hood, so it can offer the best of both worlds.</p></li>
-<li><p>Python is more verstaile than the <code>R</code> language, which is sometimes popular with dedicated academics, statisticians, or geographers.</p></li>
+<li><p>Don’t get distracted by arguments of performance. People will sometimes talk about how one language outperforms another, but in reality the most important aspect is the usability, versatility, and speed of development. It’s like saying you want to use a formula 1 car on an offroad course. Python itself is a so-called “slow” language but it wraps highly optimised and performant packages under-the-hood, so it can offer the best of both worlds: usability where it matters and performance where it counts.</p></li>
+<li><p>Python is more verstaile than the <code>R</code> language, which is sometimes popular with dedicated academics, statisticians, or geographers. You are free to learn <code>R</code> and other languages, but please don’t get caught up in needless comparisonsn or distractions.</p></li>
 </ul>
 </section>
 <section id="setup" class="level2">
 <h2 class="anchored" data-anchor-id="setup">Setup</h2>
-<p>In the past, one of the initial hurdles for beginners learning Python is the process of setting up a development environment. This involves installing Python, managing dependencies, and configuring an Integrated Development Environment (IDE) or a code editor. Each of these steps comes with its own set of challenges, from dealing with system path variables to understanding virtual environments for managing project-specific dependencies without conflicts.</p>
-<p>Jupyter Notebooks bypass this initial complexity and let us get straight to the fun parts. Notebooks provide an interactive computing environment that combines automated code execution with rich text elements, making it an excellent tool for learning, sharing, and storytelling with data. Anaconda + JupyterLab is a great way to get started with Python, and we recommend staying with these for the time being. That said, those of you who would like to become more proficient Python users over time will benefit from using a more structured Python development environment (when the time is right!).</p>
+<p>In the past, one of the initial hurdles for beginners learning Python was the process of setting up a development environment. This involves installing Python, managing dependencies, and configuring an Integrated Development Environment (IDE). Each of these steps comes with its own set of challenges, from dealing with system path variables to understanding virtual environments for managing project-specific dependencies without conflicts.</p>
+<p>Jupyter Notebooks bypass this initial complexity and gets us straight to the fun parts. A code notebook provides an interactive computing environment, making it an ideal tool for learning, sharing, and storytelling with code and data. Anaconda + JupyterLab is a fantastic way to get started with Python, and we recommend staying with these for the time being. That said, those of you who would like to become more proficient Python users over time will benefit from using a more structured Python development environment. But please don’t get bogged down in this until you’ve first gained a bit of momentum.</p>
 </section>
 <section id="when-you-get-stuck" class="level2">
 <h2 class="anchored" data-anchor-id="when-you-get-stuck">When you get stuck</h2>
-<p>Roughly ten years ago, resources such as <a href="https://stackoverflow.com">Stack Overflow</a> were indispensible. However, Stack Overflow has been recently been usurped by Large Language Models such as ChatGPT, which are excellent and reading, debugging, and suggesting code. Note, however, that as useful as these can be, they can still ‘miss-the-mark’ or hallucinate, in which case you’ll need to roll up your sleeves and do things the old-fashioned way. LLMs are going to make your life much easier, but they could also make you lazy or over-confident…!</p>
-<p>In class, we’ll point you to a Github Repository where you can post your issues and we’ll try to help you. This is for when you need help setting up customised workflows or run into tricky situations. Please do try to use Stack Overflow and ChatGPT as a first port of call.</p>
+<p>Roughly ten years ago, resources such as <a href="https://stackoverflow.com">Stack Overflow</a> were indispensible. However, Stack Overflow has been now been usurped by Large Language Models such as ChatGPT, which are excellent for reading, debugging, and suggesting code. Note, however, that as useful as these can be, they can still ‘miss-the-mark’ or hallucinate, in which case you’ll need to roll up your sleeves and do things the old-fashioned way. LLMs are going to make your life much easier, but they could also make you lazy or over-confident…!</p>
+<p>In class, we’ll point you to a Github Repository where you can post questions or ask for help for specific issues. Please do try to use Stack Overflow and ChatGPT as a first port of call or for generic questions.</p>
 </section>
 <section id="some-basics" class="level2">
 <h2 class="anchored" data-anchor-id="some-basics">Some basics</h2>
 <p>Fire up your JupyterLab and follow along by typing and executing these examples. You can hover over a cell and click the copy icon to copy the code.</p>
-<div id="079b7b6e" class="cell" data-execution_count="1">
+<div id="be52b4c2" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>a_variable <span class="op">=</span> <span class="st">'boo'</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(a_variable)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -351,19 +350,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>Python works with variables which store references to information. These variables can be named so that they are easy to remember and should be descriptive so that they make their purpose clear. By convention, variables in Python use lower caps with underscores and should not start with a number. An exception is class names, which typically start with a capitalised letter.</p>
 <p>Notice that these variable names don’t tell us very much:</p>
-<div id="c5e4e3a4" class="cell" data-execution_count="2">
+<div id="661f5cda" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="dv">21</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> <span class="dv">34</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>d <span class="op">=</span> b <span class="op">-</span> a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>But these ones do:</p>
-<div id="8167fd2a" class="cell" data-execution_count="3">
+<div id="50f3791a" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>temp_day_1 <span class="op">=</span> <span class="dv">21</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>temp_day_2 <span class="op">=</span> <span class="dv">34</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>temp_diff <span class="op">=</span> temp_day_2 <span class="op">-</span> temp_day_1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>You should also use comments to explain your code, this becomes important as the code grows in complexity. Use a hash symbol for a line comment and triple quotes for block comments.</p>
-<div id="5cfa19a8" class="cell" data-execution_count="4">
+<div id="495c37c4" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">"""</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co">The following lines detail the procedure for</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co">computing a temperature difference from day 1 to 2.</span></span>
@@ -376,7 +375,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>temp_diff <span class="op">=</span> temp_day_2 <span class="op">-</span> temp_day_1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Another concept is the use of functions. Functions take parameters (arguments) and return a result according to a defined sequence of steps. In certain contexts they are also referred to as “methods” (in the context of “classes”, but don’t worry too much about that for now). A commonly used function in Python is <code>print()</code>. Notice that a function has parentheses, and this is where you pass your function arguments.</p>
-<div id="da2bece9" class="cell" data-execution_count="5">
+<div id="0fddbacd" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># you can pass a parameter to print()</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co"># it will then take the parameter and print it to the screen</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'This will print boo!'</span>)</span>
@@ -393,7 +392,7 @@ The temp diff is: 13</code></pre>
 </div>
 </div>
 <p>You can define a function using the <code>def</code> keyword. Let’s define a function which takes a number and multiplies it by a specified multiplier.</p>
-<div id="3907e001" class="cell" data-execution_count="6">
+<div id="093d3225" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># you must use "def"</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co"># define your parameters</span></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> num_multiply(a_number, the_multiple):</span>
@@ -421,7 +420,7 @@ The temp diff is: 13</code></pre>
 <p>If you find yourself writing bits of code which seem repetitive, then you probably want to be using functions…!</p>
 </blockquote>
 <p>Variables can store different kinds of data, including <code>str</code>, <code>int</code>, <code>float</code> (decimal), and other types such as “booleans” (<code>True</code> and <code>False</code>) and <code>None</code> types. If you want to find out what <code>type</code> a variable is, you can use the built-in <code>type()</code> method, which will tell you what <code>type</code> a given variable is.</p>
-<div id="e7571880" class="cell" data-execution_count="7">
+<div id="e068a6e2" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># here we are nesting methods</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co"># the type() method will run first and returns a result</span></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co"># this result is then passed to the print() method</span></span>
@@ -441,7 +440,7 @@ The temp diff is: 13</code></pre>
 </div>
 </div>
 <p>Once you’ve assigned a value to a variable, you can use this variable to do things like maths (in the case of <code>int</code> or <code>float</code> types).</p>
-<div id="09341c73" class="cell" data-execution_count="8">
+<div id="bd6ed521" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>temp_day_1 <span class="op">=</span> <span class="dv">21</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>temp_day_2 <span class="op">=</span> <span class="dv">34</span></span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'added:'</span>, temp_day_1 <span class="op">+</span> temp_day_2)</span>
@@ -457,7 +456,7 @@ modulo: 1</code></pre>
 </div>
 </div>
 <p>It is a good idea to become familiar with <a href="https://www.w3schools.com/python/python_operators.asp">Python Operators</a>: these will become second nature over time. Here are some examples:</p>
-<div id="79bc1f35" class="cell" data-execution_count="9">
+<div id="54475d5f" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># you can assign new values to existing variables</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>my_var1 <span class="op">=</span> <span class="dv">5</span></span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>my_var1 <span class="op">=</span> my_var1 <span class="op">+</span> <span class="dv">10</span></span>
@@ -472,7 +471,7 @@ increment 15</code></pre>
 </div>
 </div>
 <p>Checking for equality is done with double equal signs.</p>
-<div id="0b027469" class="cell" data-execution_count="10">
+<div id="fc21a222" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'checks equal:'</span>, my_var1 <span class="op">==</span> my_var2)</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'checks equal:'</span>, my_var1 <span class="op">==</span> <span class="st">'boo'</span>)</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="co"># returns True if not equal, otherwise False</span></span>
@@ -486,7 +485,7 @@ checks not equal: True</code></pre>
 </div>
 </div>
 <p>Use “is” when checking for booleans or None types.</p>
-<div id="62338d77" class="cell" data-execution_count="11">
+<div id="7278d3a5" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>none_var <span class="op">=</span> <span class="va">None</span></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'checks None:'</span>, none_var <span class="kw">is</span> <span class="va">None</span>)</span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>none_var <span class="op">=</span> <span class="st">'boo'</span></span>
@@ -503,7 +502,7 @@ checks True: False</code></pre>
 </div>
 </div>
 <p>Pay attention to operator precedence, use brackets to make your intentions explicit.</p>
-<div id="808bd6ce" class="cell" data-execution_count="12">
+<div id="b488d772" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'precedence a:'</span>, <span class="dv">5</span> <span class="op">*</span> <span class="dv">10</span> <span class="op">+</span> <span class="dv">2</span>)</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'precedence b:'</span>, <span class="dv">5</span> <span class="op">*</span> (<span class="dv">10</span> <span class="op">+</span> <span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -512,7 +511,7 @@ precedence b: 60</code></pre>
 </div>
 </div>
 <p>You can do surprising things with strings as well.</p>
-<div id="f3d7c138" class="cell" data-execution_count="13">
+<div id="3a3a1ecd" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>part_1 <span class="op">=</span> <span class="st">'Hello'</span></span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>part_2 <span class="op">=</span> <span class="st">'there!'</span></span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="co"># here we'll combine the parts using an empty space</span></span>
@@ -533,7 +532,7 @@ str len: 40</code></pre>
 </div>
 </div>
 <p>Python has some other types that can be useful. One of these is lists, which use square brackets to collect several items into the same variable.</p>
-<div id="00ca6ab5" class="cell" data-execution_count="14">
+<div id="500cb9f2" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>my_list <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>]</span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="co"># the built-in len() method gets the length of a list</span></span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'number of items:'</span>, <span class="bu">len</span>(my_list))</span>
@@ -567,7 +566,7 @@ more items: [1, 2, 3, 4, 5]</code></pre>
 </div>
 </div>
 <p>You can use <code>in</code> and <code>not in</code> syntax to check if something is inside a list. This will return a <code>bool</code>, and if this evaluates to <code>True</code> then it will execute the indented code.</p>
-<div id="5a5515be" class="cell" data-execution_count="15">
+<div id="be9162f5" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># you can check if things are in a list</span></span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="dv">2</span> <span class="kw">in</span> my_list:</span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(<span class="st">'yes, 2 is in my_list'</span>)</span>
@@ -581,7 +580,7 @@ not gonna see this!</code></pre>
 </div>
 </div>
 <p>Note that you can iterate over lists using <code>for</code> and <code>in</code> syntax. For each loop of the iteration, the value at that iteration is assigned to a variable, which we are here calling <code>num</code>. We can then use that variable to do something.</p>
-<div id="88b2a6a6" class="cell" data-execution_count="16">
+<div id="d710bd7c" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># this will print each number in my_list</span></span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> num <span class="kw">in</span> my_list:</span>
 <span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># note the indented line</span></span>
@@ -596,7 +595,7 @@ num is currently: 5</code></pre>
 </div>
 </div>
 <p>Python has a number of built-in convenience functions, which can simplify common tasks:</p>
-<div id="7d42daae" class="cell" data-execution_count="17">
+<div id="1a9c1f59" class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># these will return the min and max values</span></span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'min:'</span>, <span class="bu">min</span>(my_list))</span>
 <span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'max:'</span>, <span class="bu">max</span>(my_list))</span>
@@ -609,7 +608,7 @@ min: f
 max: z</code></pre>
 </div>
 </div>
-<div id="371b8d11" class="cell" data-execution_count="18">
+<div id="5603869e" class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># you can cast types from one to another</span></span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="co"># ...within reason</span></span>
 <span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'now an int:'</span>, <span class="bu">int</span>(<span class="fl">4.0</span>))</span>
@@ -623,7 +622,7 @@ now a float: 4.0
 this works: 3</code></pre>
 </div>
 </div>
-<div id="1fbc7964" class="cell" data-execution_count="19">
+<div id="69b89382" class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># uncomment to run</span></span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="co"># print('this wont work': int('a'))</span></span>
 <span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="co"># some more built-in functions</span></span>
@@ -632,7 +631,7 @@ this works: 3</code></pre>
 <span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'with cast:'</span>, <span class="bu">list</span>(<span class="bu">reversed</span>(my_list)))</span>
 <span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'absolute:'</span>, <span class="bu">abs</span>(<span class="op">-</span><span class="dv">100</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>without cast &lt;list_reverseiterator object at 0x7fa1c85ec550&gt;
+<pre><code>without cast &lt;list_reverseiterator object at 0x7fce7443db40&gt;
 with cast: [5, 4, 3, 2, 1]
 absolute: 100</code></pre>
 </div>
@@ -642,21 +641,21 @@ absolute: 100</code></pre>
 <h2 class="anchored" data-anchor-id="importing-packages">Importing packages</h2>
 <p>Python can import packages which contain reusable code.</p>
 <p>Packages have to be installed before they are used, unless they are part of the default Python library. Note that this method of installing a package with a leading exclamation mark is particular to JupyterLab Notebooks, and only has to be done if the package is not yet installed.</p>
-<div id="feeab301" class="cell" data-execution_count="20">
+<div id="992ef8ae" class="cell" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># checks that the shapely package</span></span>
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="co"># is installed for this notebook</span></span>
 <span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="co"># uncomment the next line to run</span></span>
 <span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a><span class="co"># !pip install shapely</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Once installed and available, we can use modules provided by the package. Here we are using the <code>from</code> and <code>import</code> syntax to import the <code>geometry</code> module which is available from the <code>shapely</code> package.</p>
-<div id="d89f0f29" class="cell" data-execution_count="21">
+<div id="482fd840" class="cell" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> shapely <span class="im">import</span> geometry</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="shapely" class="level2">
 <h2 class="anchored" data-anchor-id="shapely">Shapely</h2>
 <p><code>shapely</code> let’s us do some neat things with spatial information. Let’s define a <code>Point</code> type using the <code>geometry</code> module. The <code>geometry</code> module has some already defined methods which we can call. Let’s use the <code>Point</code> constructor to generate a new point. Note the use of dot-notation.</p>
-<div id="9af1a53a" class="cell" data-execution_count="22">
+<div id="1c5b44de" class="cell" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># this creates a point using the Point constructor</span></span>
 <span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="co"># defined by the geometry module</span></span>
 <span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>point_a <span class="op">=</span> geometry.Point(<span class="dv">0</span>, <span class="dv">0</span>)</span>
@@ -669,13 +668,13 @@ absolute: 100</code></pre>
 </div>
 <p>Different packages and modules define set patterns of behaviour. To understand what these are and what you can do with them, refer to the package documentation. If it is a widely used package with a lot of public examples, then you can ask ChatGPT to help you. Some packages are better documented than others. In the case of <code>shapely</code>, here is a link to the <a href="https://shapely.readthedocs.io/en/stable/">official documents</a>.</p>
 <p>Alternatively, you can use the built-in <code>help()</code> method which will tell you more about a module or class’ functionality.</p>
-<div id="ffa27e34" class="cell" data-execution_count="23">
+<div id="795a62c6" class="cell" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># this will return a lot of text</span></span>
 <span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="co"># uncomment to run</span></span>
 <span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="co"># help(point_a)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>For example, a <code>shapely</code> <code>Point</code> type has built-in methods which allow you to easily produce certain forms of behaviour. You can access these using dot-notation. Let’s buffer the point object using the provided <code>buffer()</code> method.</p>
-<div id="21d46aba" class="cell" data-execution_count="24">
+<div id="c760fa6e" class="cell" data-execution_count="24">
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>buff <span class="op">=</span> point_a.<span class="bu">buffer</span>(<span class="dv">10</span>)</span>
 <span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(buff)</span>
 <span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(buff))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -685,7 +684,7 @@ absolute: 100</code></pre>
 </div>
 </div>
 <p>Notice that we now have a <code>Polygon</code> type since the returned type is no longer a <code>Point</code>. Types (which are a form of Python <code>class</code>) can have properties which are accessed using dot-notation. Unlike methods, properties do not require parentheses because they do not accept arguments.</p>
-<div id="f1a16d5f" class="cell" data-execution_count="25">
+<div id="84b9193a" class="cell" data-execution_count="25">
 <div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># here we are using the area property to retrieve the area</span></span>
 <span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Point area:'</span>, point_a.area)</span>
 <span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Polygon area:'</span>, buff.area)</span>
@@ -703,7 +702,7 @@ Polygon circumference: 62.80662313909506</code></pre>
 </div>
 </div>
 <p>Let’s create a line. The <code>LineString</code> constructor requires a list of points.</p>
-<div id="5206e4ac" class="cell" data-execution_count="26">
+<div id="cd53621a" class="cell" data-execution_count="26">
 <div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>point_b <span class="op">=</span> geometry.Point(<span class="dv">1</span>, <span class="dv">1</span>)</span>
 <span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>line <span class="op">=</span> geometry.LineString([point_a, point_b])</span>
 <span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(line)</span>
@@ -719,7 +718,7 @@ Polygon circumference: 62.80662313909506</code></pre>
 <section id="putting-things-together" class="level2">
 <h2 class="anchored" data-anchor-id="putting-things-together">Putting things together</h2>
 <p>Let’s try putting some things together. If you’re wondering what a certain line is doing, then try pasting the code block into ChatGPT, which will typically provide a detailed description.</p>
-<div id="16f47e90" class="cell" data-execution_count="27">
+<div id="c7a388a7" class="cell" data-execution_count="27">
 <div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>x_coords <span class="op">=</span> [<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]</span>
 <span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>y_coords <span class="op">=</span> [<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]</span>
 <span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a><span class="co"># this is where we'll store the points</span></span>
@@ -744,12 +743,12 @@ Polygon circumference: 62.80662313909506</code></pre>
 <section id="geopandas" class="level2">
 <h2 class="anchored" data-anchor-id="geopandas">GeoPandas</h2>
 <p>There is an easier way to keep track of multiple geometries: GeoPandas! GeoPandas is a geospatial enabled version of Pandas DataFrames. Think of it as a CSV spreadsheet with the ability to handle geometry data types.</p>
-<div id="2343c64f" class="cell" data-execution_count="28">
+<div id="e801ec71" class="cell" data-execution_count="28">
 <div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install if necessary by uncommenting the next line</span></span>
 <span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="co"># !pip install geopandas</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Let’s create a GeoPandas DataFrame from our collected points</p>
-<div id="2ce158c7" class="cell" data-execution_count="29">
+<div id="1269535f" class="cell" data-execution_count="29">
 <div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co"># we'll import the whole geopandas package</span></span>
 <span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="co"># and we'll give it a shorter alias using "as"</span></span>
 <span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> geopandas <span class="im">as</span> gpd</span>
@@ -767,7 +766,7 @@ Polygon circumference: 62.80662313909506</code></pre>
 </div>
 </div>
 <p>There we go, that’s a lot neater. You can add columns to DataFrames and you can also export (or import) from common geospatial file types such as <code>gpkg</code>. GeoDataFrames are also much easier to visualise.</p>
-<div id="fa1dc92c" class="cell" data-execution_count="30">
+<div id="cf77fe16" class="cell" data-execution_count="30">
 <div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>df.plot()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
@@ -778,7 +777,7 @@ Polygon circumference: 62.80662313909506</code></pre>
 </div>
 </div>
 <p>You can run the typical <code>shapely</code> operations on a GeoDataFrame’s geometry column. Let’s see what happens if we buffer the GeoDataFrame.</p>
-<div id="a40f60e1" class="cell" data-execution_count="31">
+<div id="5dbb90b1" class="cell" data-execution_count="31">
 <div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>buff_series <span class="op">=</span> df.<span class="bu">buffer</span>(<span class="fl">0.6</span>)</span>
 <span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a><span class="co"># this returns a GeoSeries</span></span>
 <span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a><span class="co"># essentially a single column of a DataFrame</span></span>
@@ -804,7 +803,7 @@ dtype: geometry</code></pre>
 </div>
 </div>
 <p>DataFrames are really useful for handling data. Let’s add a column called area and assign it the area value for the geometry.</p>
-<div id="96fdf167" class="cell" data-execution_count="32">
+<div id="001fe9f0" class="cell" data-execution_count="32">
 <div class="sourceCode cell-code" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create a new GeoDataFrame from the polygon GeoSeries column</span></span>
 <span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>df_buff <span class="op">=</span> gpd.GeoDataFrame(geometry<span class="op">=</span>buff_series, crs<span class="op">=</span><span class="va">None</span>)</span>
 <span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a><span class="co"># adds a new column called area</span></span>
@@ -827,7 +826,7 @@ dtype: geometry</code></pre>
 </div>
 </div>
 <p>DataFrames are useful for filtering data.</p>
-<div id="9b0b2983" class="cell" data-execution_count="33">
+<div id="a843c8af" class="cell" data-execution_count="33">
 <div class="sourceCode cell-code" id="cb57"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="co"># here we are filtering rows based on their x values</span></span>
 <span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a><span class="co"># we are then assigning this to a new variable</span></span>
 <span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a><span class="co"># the part "df_buff.x &lt; 2" is what does the magic</span></span>
@@ -860,17 +859,17 @@ dtype: geometry</code></pre>
 </ul>
 <section id="opening-a-spreadsheet" class="level3">
 <h3 class="anchored" data-anchor-id="opening-a-spreadsheet">Opening a spreadsheet</h3>
-<div id="3e3a0c48" class="cell" data-execution_count="34">
+<div id="cde60319" class="cell" data-execution_count="34">
 <div class="sourceCode cell-code" id="cb58"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="co"># uncomment to install (if necessary)</span></span>
 <span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a><span class="co"># !pip install pandas geopandas openpyxl matplotlib</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Let’s import Pandas and GeoPandas into our working notebook.</p>
-<div id="0d61d9b7" class="cell" data-execution_count="35">
+<div id="5963e164" class="cell" data-execution_count="35">
 <div class="sourceCode cell-code" id="cb59"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> geopandas <span class="im">as</span> gpd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Let’s use Pandas to open the census data excel file, you’ll need to copy the file to a local directory and update the filepath to point to your data file location. We recommend keeping the data file in an adjacently located directory so that your filepaths remain simple.</p>
-<div id="a6089668" class="cell" data-execution_count="36">
+<div id="b3a72d02" class="cell" data-execution_count="36">
 <div class="sourceCode cell-code" id="cb60"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="co"># reads an excel file using a built-in pandas method</span></span>
 <span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>df_excel <span class="op">=</span> pd.read_excel(<span class="st">'./data/61438.xlsx'</span>)</span>
 <span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df_excel.head(<span class="dv">10</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -917,7 +916,7 @@ dtype: geometry</code></pre>
 </div>
 </div>
 <p>A look at the excel file shows that the document contains nested headers. Let’s remove the first few lines and then we’ll set the column names manually.</p>
-<div id="f4708ebd" class="cell" data-execution_count="37">
+<div id="d61d1c40" class="cell" data-execution_count="37">
 <div class="sourceCode cell-code" id="cb63"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="co"># removes the first seven rows</span></span>
 <span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a>df_clipped <span class="op">=</span> df_excel[<span class="dv">7</span>:]</span>
 <span id="cb63-3"><a href="#cb63-3" aria-hidden="true" tabindex="-1"></a><span class="co"># resets the dataframe's index to match the new rows</span></span>
@@ -940,7 +939,7 @@ dtype: geometry</code></pre>
 </div>
 </div>
 <p>Let’s set the new column names.</p>
-<div id="0f80d8c0" class="cell" data-execution_count="38">
+<div id="4866cca5" class="cell" data-execution_count="38">
 <div class="sourceCode cell-code" id="cb65"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="co"># we can override the existing column names using a list</span></span>
 <span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a>df_clipped.columns <span class="op">=</span> [<span class="st">'regions'</span>, <span class="st">'all_total'</span>, <span class="st">'all_spanish'</span>, <span class="st">'all_immig'</span>, <span class="st">'male_total'</span>, <span class="st">'male_spanish'</span>, <span class="st">'male_immig'</span>, <span class="st">'female_total'</span>, <span class="st">'female_spanish'</span>, <span class="st">'female_immig'</span>]</span>
 <span id="cb65-3"><a href="#cb65-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df_clipped.head())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -964,7 +963,7 @@ dtype: geometry</code></pre>
 <section id="opening-a-geopandas-file" class="level3">
 <h3 class="anchored" data-anchor-id="opening-a-geopandas-file">Opening a geopandas file</h3>
 <p>Let’s use GeoPandas to open the census boundaries. Notice that we are now using GeoPandas and not Pandas, since Pandas alone does not support geospatial functionality.</p>
-<div id="7fb89c81" class="cell" data-execution_count="39">
+<div id="141c3c94" class="cell" data-execution_count="39">
 <div class="sourceCode cell-code" id="cb67"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a>gdf_geoms <span class="op">=</span> gpd.read_file(<span class="st">'./data/census_geoms_bizkaia.gpkg'</span>)</span>
 <span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(gdf_geoms.head())</span>
 <span id="cb67-3"><a href="#cb67-3" aria-hidden="true" tabindex="-1"></a>gdf_geoms.plot()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -999,7 +998,7 @@ dtype: geometry</code></pre>
 </div>
 </div>
 <p>Let’s do an attribute join to connect the population data to the spatial data. Notice that we have to specify the type of join method in the “how” parameter, as well as the columns to use for matching the left and right datasets. In this case, let’s look through the outputs from previous cells to identify the column names. We’ll then do a “inner” join, which means we’ll only keep the matched rows, i.e.&nbsp;we don’t want random unmatched census data for the rest of Spain since our geometries are for the Bizkaia region onnly!</p>
-<div id="b9dff2e9" class="cell" data-execution_count="40">
+<div id="72224b48" class="cell" data-execution_count="40">
 <div class="sourceCode cell-code" id="cb69"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a>merged_data <span class="op">=</span> gdf_geoms.merge(df_clipped, left_on<span class="op">=</span><span class="st">'CUSEC'</span>, right_on<span class="op">=</span><span class="st">'regions'</span>, how<span class="op">=</span><span class="st">'inner'</span>)</span>
 <span id="cb69-2"><a href="#cb69-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(merged_data.head())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1031,7 +1030,7 @@ dtype: geometry</code></pre>
 <section id="plots" class="level3">
 <h3 class="anchored" data-anchor-id="plots">Plots</h3>
 <p>Let’s plot again, this time using a column for setting the colour intensity. We’ll also use a colormap.</p>
-<div id="ea559e9c" class="cell" data-execution_count="41">
+<div id="95eea1ce" class="cell" data-execution_count="41">
 <div class="sourceCode cell-code" id="cb71"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a>merged_data.plot(column<span class="op">=</span><span class="st">'all_total'</span>, cmap<span class="op">=</span><span class="st">'viridis'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
@@ -1042,7 +1041,7 @@ dtype: geometry</code></pre>
 </div>
 </div>
 <p>What if we wanted to plot density instead of the simple totals? We can use the row geometries to divide the totals by the geometry areas. This will give a more realistic sense of population intensities.</p>
-<div id="0d63eb74" class="cell" data-execution_count="42">
+<div id="9b6f41a6" class="cell" data-execution_count="42">
 <div class="sourceCode cell-code" id="cb72"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="co"># let's divide by area and convert to square km</span></span>
 <span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a><span class="co"># the ** symbol will take the exponent (square in this case)</span></span>
 <span id="cb72-3"><a href="#cb72-3" aria-hidden="true" tabindex="-1"></a><span class="co"># use brackets for operator order!!</span></span>
@@ -1057,7 +1056,7 @@ dtype: geometry</code></pre>
 </div>
 </div>
 <p>Remember that DataFrames can be filtered. Let’s filter out locations where the density is lower than 5k per km2.</p>
-<div id="10db4ab8" class="cell" data-execution_count="43">
+<div id="f1b7063c" class="cell" data-execution_count="43">
 <div class="sourceCode cell-code" id="cb73"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a>filtered_data <span class="op">=</span> merged_data[merged_data.density <span class="op">&gt;</span> <span class="dv">5000</span>]</span>
 <span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a>filtered_data.plot(column<span class="op">=</span><span class="st">'density'</span>, cmap<span class="op">=</span><span class="st">'Reds'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
@@ -1072,11 +1071,11 @@ dtype: geometry</code></pre>
 <section id="saving-a-geopandas-file" class="level3">
 <h3 class="anchored" data-anchor-id="saving-a-geopandas-file">Saving a GeoPandas file</h3>
 <p>We can now save the GeoPandas DataFrame as a file which you can then open from other locations, such as QGIS.</p>
-<div id="1dadf9c4" class="cell" data-execution_count="44">
+<div id="4a6d1d7c" class="cell" data-execution_count="44">
 <div class="sourceCode cell-code" id="cb74"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a>merged_data.to_file(<span class="st">'./data/bizkaia_pop_census.gpkg'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>But, wait a minute, we’ve noticed that the output data is written as text instead of number types, so let’s fix that for our <code>density</code> column and then we’ll rewrite the file.</p>
-<div id="db210806" class="cell" data-execution_count="45">
+<div id="99874051" class="cell" data-execution_count="45">
 <div class="sourceCode cell-code" id="cb75"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a>merged_data[<span class="st">'density'</span>] <span class="op">=</span> merged_data[<span class="st">'density'</span>].astype(<span class="bu">float</span>)</span>
 <span id="cb75-2"><a href="#cb75-2" aria-hidden="true" tabindex="-1"></a>merged_data.to_file(<span class="st">'./data/bizkaia_pop_census.gpkg'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
