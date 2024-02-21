@@ -45,7 +45,7 @@ In class, we'll point you to a Github Repository where you can post questions or
 
 ## Some basics
 
-Fire up your JupyterLab and follow along by typing and executing these examples. You can hover over a cell and click the copy icon to copy the code.
+Today we're going to cover some rudimentary basics so that you have a basic understanding of Python before we get to future lessons. Fire up your JupyterLab and follow along by typing and executing these examples. You can hover over a cell and click the copy icon to copy the code.
 
 ```{python}
 a_variable = 'boo'
@@ -273,11 +273,11 @@ print('now an int:', int(4.0))
 print('loses decimal:', int(4.5))
 print('now a float:', float(4))
 print('this works:', str(3))
+# uncomment to run
+# print('this wont work': int('a'))
 ```
 
 ```{python}
-# uncomment to run
-# print('this wont work': int('a'))
 # some more built-in functions
 # note the extra step to cast the output
 print('without cast', reversed(my_list))
