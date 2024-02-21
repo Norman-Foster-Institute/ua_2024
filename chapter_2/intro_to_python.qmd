@@ -37,11 +37,13 @@ Some tips:
 
 In the past, one of the initial hurdles for beginners learning Python is the process of setting up a development environment. This involves installing Python, managing dependencies, and configuring an Integrated Development Environment (IDE) or a code editor. Each of these steps comes with its own set of challenges, from dealing with system path variables to understanding virtual environments for managing project-specific dependencies without conflicts.
 
-Jupyter Notebooks bypass this initial complexity and let us get straight to the fun parts. Notebooks provide an interactive computing environment that combines automated code execution with rich text elements, making it an excellent tool for learning, sharing, and storytelling with data.
+Jupyter Notebooks bypass this initial complexity and let us get straight to the fun parts. Notebooks provide an interactive computing environment that combines automated code execution with rich text elements, making it an excellent tool for learning, sharing, and storytelling with data. Anaconda + JupyterLab is a great way to get started with Python, and we recommend staying with these for the time being. That said, those of you who would like to become more proficient Python users over time will benefit from using a more structured Python development environment (when the time is right!). 
 
 ## When you get stuck
 
-Roughly ten years ago, resources such as [Stack Overflow](https://stackoverflow.com) were indispensible. However, Stack Overflow has been recently been usurped by Large Language Models such as ChatGPT, which are excellent and reading, debugging, and suggesting code. Note, however, that as useful as these can be, they can still 'miss-the-mark' or hallucinate, in which case you'll need to roll up your sleeves and do things the old-fashioned way. LLMs are going to make your life much easier, but they could also make you lazy or over-confident...! In class, we'll also point you to a Github Repository where you can post your issues and we'll try to help you.
+Roughly ten years ago, resources such as [Stack Overflow](https://stackoverflow.com) were indispensible. However, Stack Overflow has been recently been usurped by Large Language Models such as ChatGPT, which are excellent and reading, debugging, and suggesting code. Note, however, that as useful as these can be, they can still 'miss-the-mark' or hallucinate, in which case you'll need to roll up your sleeves and do things the old-fashioned way. LLMs are going to make your life much easier, but they could also make you lazy or over-confident...!
+
+In class, we'll point you to a Github Repository where you can post your issues and we'll try to help you. This is for when you need help setting up customised workflows or run into tricky situations. Please do try to use Stack Overflow and ChatGPT as a first port of call.
 
 ## Some basics
 
