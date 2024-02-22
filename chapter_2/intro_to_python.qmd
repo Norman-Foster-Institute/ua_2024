@@ -98,30 +98,14 @@ print(temp_diff)
 print('The temp diff is:', temp_diff)
 ```
 
-You can define a function using the `def` keyword. Let's define a function which takes a number and multiplies it by a specified multiplier.
+Don't muddle your use of inverted commas, otherwise the Python interpreter won't know where your strings (text) start and end...
 
 ```{python}
-# you must use "def"
-# define your parameters
-def num_multiply(a_number, the_multiple):
-  # note the use of indented lines
-  multiplied_number = a_number * the_multiple
-  # you must return a value if you want to use
-  # it outside of the function
-  return multiplied_number
-
-# let's try it out
-# assign the returned value to a variable
-out_num_a = num_multiply(2, 2)
-print('2x2=', out_num_a)
-# functions save us from rewriting the
-# same bits of code over and over...
-# we can use the same logic with new arguments
-out_num_b = num_multiply(3, 10)
-print('3x10=', out_num_b)
+# note that nested quotes have to be different from the outer quotes
+print('This "works"...')
+# uncomment to run
+# print('This is 'broken'')
 ```
-
-> If you find yourself writing bits of code which seem repetitive, then you probably want to be using functions...!
 
 Variables can store different kinds of data, including `str`, `int`, `float` (decimal), and other types such as "booleans" (`True` and `False`) and `None` types. If you want to find out what `type` a variable is, you can use the built-in `type()` method, which will tell you what `type` a given variable is.
 
@@ -162,27 +146,83 @@ my_var2 += 10
 print('increment', my_var2)
 ```
 
-Checking for equality is done with double equal signs.
+You can define a function using the `def` keyword. Let's define a function which takes a number and multiplies it by a specified multiplier.
 
 ```{python}
-print('checks equal:', my_var1 == my_var2)
-print('checks equal:', my_var1 == 'boo')
-# returns True if not equal, otherwise False
-print('checks not equal:', my_var1 != my_var2)
-print('checks not equal:', my_var1 != 'boo')
+# you must use "def"
+# define your parameters
+def num_multiply(a_number, the_multiple):
+  # note the use of indented lines
+  multiplied_number = a_number * the_multiple
+  # you must return a value if you want to use
+  # it outside of the function
+  return multiplied_number
+
+# let's try it out
+# assign the returned value to a variable
+out_num_a = num_multiply(2, 2)
+print('2x2=', out_num_a)
+# functions save us from rewriting the
+# same bits of code over and over...
+# we can use the same logic with new arguments
+out_num_b = num_multiply(3, 10)
+print('3x10=', out_num_b)
+```
+
+::: {.callout-tip}
+If you find yourself writing bits of code which seem repetitive, then you probably want to be using functions...!
+:::
+
+::: {.callout-note}
+Create a function called `num_addition` which takes the arguments `num_1` and `num_2`, then returns the addition of the two numbers. Print the results of `4` + `3` and `1` + `2`.
+:::
+
+Checking for equality is done with double equal signs, and variations thereof. These conditional expressions broadly evaluate to "truthiness" to decide whether or not to run a section of code, and are often used with `if` and `else` statements.
+
+```{python}
+# let's use an "if" statement with a conditional
+if my_var1 == my_var2:
+  print('my_var1 is equal to my_var2')
+
+# notice the use of "else"
+if my_var1 == 'boo':
+  print('not going to see this')
+else:
+  # notice the use of different single vs double inverted commas
+  print('yup, my_var1 is not equal to "boo"')
+
+# you can similarly check if something is not equal
+if my_var1 != my_var2:
+  print('not going to see this')
+
+if my_var1 != 'boo':
+  print('checks not equal')
+
+# greater than
+if 4 > 3:
+  print('four is greater than three')
+
+# less than or equal
+if 4 <= 2:
+  print('not going to see this')
+else:
+  print('four is clearly not smaller than or equal to two...')
 ```
 
 Use "is" when checking for booleans or None types.
 
 ```{python} 
 none_var = None
-print('checks None:', none_var is None)
-none_var = 'boo'
-print('checks None:', none_var is None)
+if none_var is None:
+  print('none_var is None')
+
 bool_var = True
-print('checks True:', bool_var is True)
+if bool_var is True:
+  print('bool_var is True')
+
 bool_var = False
-print('checks True:', bool_var is True)
+if bool_var is True:
+  print('not going to see this...')
 ```
 
 Pay attention to operator precedence, use brackets to make your intentions explicit.
@@ -202,11 +242,19 @@ together = part_1 + ' ' + part_2
 print(together)
 # there are a large number of built-in methods for strings
 # here are a few examples
-print(part_1.lower())
-print(part_1.upper())
-print(part_1.lstrip('H'))
-print('str len:', len('what is the length of a piece of string?'))
+print(together.lower())
+print(together.upper())
+print(together.lstrip('H'))
+print(together.replace('!', '*'))
+print('str len:', len(together))
 ```
+
+::: {.callout-note}
+Create a variable called `my_note` and assign some text.
+
+- Print the text to upper case.
+- Can you work out how to strip the last (right) character from your string?
+:::
 
 Python has some other types that can be useful. One of these is lists, which use square brackets to collect several items into the same variable.
 ```{python}
@@ -256,6 +304,13 @@ for num in my_list:
     print('num is currently:', num)
 ```
 
+::: {.callout-note}
+Let's practice! Create a list called `the_list` with numbers from `5` to `10`.
+
+- Check if the number `4` is in the list and print "4 has been found", else "not found".
+- Iterate through the list contents and print "7 has been found" if the current iteration matches the number `7`.
+:::
+
 Python has a number of built-in convenience functions, which can simplify common tasks:
 
 ```{python}
@@ -303,6 +358,17 @@ Once installed and available, we can use modules provided by the package. Here w
 ```{python}
 from shapely import geometry
 ```
+
+::: {.callout-note}
+Note that imports can be assigned to aliases. You can also decide to import specific classes or functions from a module.
+
+```{python}
+# using an alias
+from shapely import geometry as geom
+# using a specific class
+from shapely.geometry import Point
+```
+:::
 
 ## Shapely
 
@@ -508,7 +574,7 @@ print(gdf_geoms.head())
 gdf_geoms.plot()
 ```
 
-Let's do an attribute join to connect the population data to the spatial data. Notice that we have to specify the type of join method in the "how" parameter, as well as the columns to use for matching the left and right datasets. In this case, let's look through the outputs from previous cells to identify the column names. We'll then do a "inner" join, which means we'll only keep the matched rows, i.e. we don't want random unmatched census data for the rest of Spain since our geometries are for the Bizkaia region onnly!
+Let's do an attribute join to connect the population data to the spatial data. Notice that we have to specify the type of join method in the "how" parameter, as well as the columns to use for matching the left and right datasets. In this case, let's look through the outputs from previous cells to identify the column names. We'll then do a "inner" join, which means we'll only keep the matched rows, i.e. we don't want random unmatched census data for the rest of Spain since our geometries are for the Bizkaia region only!
 
 ```{python}
 merged_data = gdf_geoms.merge(df_clipped, left_on='CUSEC', right_on='regions', how='inner')
@@ -538,6 +604,21 @@ Remember that DataFrames can be filtered. Let's filter out locations where the d
 filtered_data = merged_data[merged_data.density > 5000]
 filtered_data.plot(column='density', cmap='Reds')
 ```
+
+::: {.callout-note}
+Remember that ChatGPT is great for figuring out complex syntax. For example, if you tell it you have a GeoPandas dataframe with certain column names, you can then ask it how to filter based on specific values, ranges, or combinations of columns. It is also great for helping with plots. For example, what if you wanted a scatter plot using two of the columns in your dataframe?
+
+```{python}
+filtered_data.plot(
+  kind='scatter',
+  x='male_total',
+  y='female_total',
+  color='blue',
+  title='Male / Female'
+)
+```
+
+:::
 
 ### Saving a GeoPandas file
 
