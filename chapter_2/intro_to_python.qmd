@@ -329,7 +329,7 @@ print('loses decimal:', int(4.5))
 print('now a float:', float(4))
 print('this works:', str(3))
 # uncomment to run
-# print('this wont work': int('a'))
+# print('this wont work:', int('a'))
 ```
 
 ```{python}
@@ -350,7 +350,7 @@ Packages have to be installed before they are used, unless they are part of the 
 # checks that the shapely package
 # is installed for this notebook
 # uncomment the next line to run
-# !pip install shapely
+# !pip install shapely matplotlib
 ```
 
 Once installed and available, we can use modules provided by the package. Here we are using the `from` and `import` syntax to import the `geometry` module which is available from the `shapely` package.
@@ -452,7 +452,7 @@ There is an easier way to keep track of multiple geometries: GeoPandas! GeoPanda
 
 ```{python}
 # install if necessary by uncommenting the next line
-# !pip install geopandas
+# !pip install geopandas matplotlib
 ```
 
 Let's create a GeoPandas DataFrame from our collected points
